@@ -1,4 +1,4 @@
-# NAFABox
+# NAFABox (Nomad Astronomy For All)
 Installation scripts for NAFABox installation.
 
 Step by Step
