@@ -1,0 +1,11 @@
+Description=Start x11vnc at startup
+After=multi-user.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/x11vnc -display :0 -shared -forever -o /var/log/x11vnc.log -rfbport 5900
+Restart=on-success
+SuccessExitStatus=3
+
+[Install]
+WantedBy=multi-user.target

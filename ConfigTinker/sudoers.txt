@@ -1,0 +1,2 @@
+www-data ALL=NOPASSWD: /bin/date
+MOI ALL=NOPASSWD: /bin/date
