@@ -14,6 +14,8 @@ whereiam=$(pwd)
 ######
 # Installation des pré-requis
 ######
+sudo apt -y install g++
+sudo apt -y install libusb-1.0-0-dev
 ######
 # Installation du programme : lin_guider
 #      Récupération

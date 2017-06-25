@@ -84,6 +84,19 @@ echo "<?php
    echo \"${dial[2]}\".\$date;
 ?>" > $site/setdate.php
 sudo chown www-data:www-data $site/setdate.php
+######
+# Pour les machines pour lesquelles le hanshake se passe mal
+######
+cat hotspotawake.service | sed -e "s/MOI/${moi}/g" > /tmp/hotspotawake.service
+sudo cp /tmp/hotspotawake.service /etc/systemd/system/.
+chmod +x hotspotawake.sh
+cp hotspotawake.sh ~/bin/.
+sudo systemctl stop hotspotawake.service
+sudo systemctl disable hotspotawake.service
+sudo systemctl daemon-reload
+sudo systemctl enable hotspotawake.service
+sudo systemctl start hotspotawake.service
+###### 
 cat $data/sudoers.txt | sed -e "s/MOI/${moi}/g" > /tmp/sudoers
 sudo cp /tmp/sudoers /etc/sudoers.d/perm$moi
 echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"

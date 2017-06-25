@@ -9,8 +9,16 @@
 #!/bin/bash
 options="--auto-remove --yes -q"
 ######
+# detect language
+######
+source detect_language.sh
+######
 # Installation des pré-requis
 ######
+if $french
+then
+	sudo apt-get $options language-pack-kde-fr
+fi
 sudo apt-get $options install gsc
 sudo apt-get $options install libqt5sql5-sqlite
 ######

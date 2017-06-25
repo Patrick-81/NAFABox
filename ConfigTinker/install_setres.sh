@@ -17,7 +17,7 @@ then
 		echo "setres yet installed"
 	fi
 else
-	sudo apt-get install python-tk python-imaging-tk python3-tk
+	sudo apt-get -y install python-tk python-imaging-tk python3-tk
 	cp $(pwd)/setres.py ~/bin/.
 	chmod +x ~/bin/setres.py
 	sudo cp /usr/share/icons/gnome/48x48/apps/preferences-desktop-display.png /usr/share/pixmaps/setres.png
