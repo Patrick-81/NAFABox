@@ -38,6 +38,7 @@ installconf()
 	choice[6]="Planetary Imager"
 	choice[7]="Siril"
 	choice[8]="Stellarium"
+	choice[9]="install astrometry index(s)"
 
 	DIALOG=${DIALOG=dialog}
 	fichtemp=`tempfile 2>/dev/null` || fichtemp=/tmp/test$$
@@ -45,7 +46,7 @@ installconf()
 
 	$DIALOG --backtitle "${dial[0]}" \
 		--title "${dial[1]}" --clear \
-    	--checklist "${dial[2]}" 20 61 8 \
+    	--checklist "${dial[2]}" 20 61 9 \
         	0 "${choice[0]}" on\
 			1 "${choice[1]}" off\
 			2 "${choice[2]}" on\
@@ -54,7 +55,8 @@ installconf()
 			5 "${choice[5]}" off\
 			6 "${choice[6]}" off\
 			7 "${choice[7]}" off \
-			8 "${choice[8]}" off 2> $fichtemp
+			8 "${choice[8]}" off\
+			9 "${choice[9]}" 2> $fichtemp
 	valret=$?
 	for n in $(cat $fichtemp)
 	do
@@ -96,6 +98,10 @@ installconf()
 			echo "Install stellarium"
 			$(pwd)/install_stellarium.sh
 			;;
+		9)
+			echo "Install index(s)"
+			$(pwd)/install_index.sh
+			;;
 		255)
 			echo "escape";;
 		esac
@@ -134,16 +140,6 @@ then
 	echo prereq >> $(pwd)/install-status.txt
 fi
 ######
-# Detect language
-######
-lang=$(locale | grep LANG= | grep fr_FR)
-if [[ $lang == *"fr_FR"* ]]
-then
-	french=true
-else
-	french=false
-fi
-######
 # Installer les utilitaires
 # Install utilities
 ######
@@ -151,49 +147,17 @@ mkdir -p ~/bin
 # Modificateur de résolution
 # Resolution modifier
 $(pwd)/install_setres.sh
-
-while true
-do
-	installconf $french
 ######
-# Reboot required
+# Install conf updater
 ######
-	if $french
-	then
-		dial[0]="Voulez-vous maintenant ?"
-		dial[1]="Sélectionnez une option"
-		dial[2]="Arrêter la machine"
-		dial[3]="Compléter l'installation"
-		dial[4]="Quitter l'installation"
-	else
-		dial[0]="What do you want to do now ?"
-		dial[1]="Select one option"
-		dial[2]="Shutdown now"
-		dial[3]="Complete installation"
-		dial[4]="Quit the installation"
-	fi
-	option=$(dialog --title "${dial[0]}" --menu "${dial[1]}" 12 60 6 1 "${dial[2]}" 2 "${dial[3]}"\
-				 3 "${dial[4]}" 3>&1 1>&2 2>&3)
-# Get exit status
-# 0 means user hit [yes] button.
-# 1 means user hit [no] button.
-# 255 means user hit [Esc] key.
-	response=$?
-	case $option in
-	1)
-		echo "Reboot"
-		sudo shutdown now
-		;;
-	2)
-		echo "back to install software"
-		;;
-	3)
-		echo "Quit"
-		exit
-		;;
-	255)
-		echo "[ESC] key pressed."
-		;;
-	esac
-done
+cp update_conf.sh ~/bin/.
+chmod +x ~/bin/update_conf.sh
+sudo ln -sf ~/bin/update_conf.sh /usr/bin/update_conf
+sudo cp /usr/share/icons/gnome/32x32/apps/system-software-update.png /usr/share/pixmaps/update_conf.png
+# Création de l'icône sur le bureau
+$(pwd)/install_shortcut.sh update_conf
+######
+# Install/Update conf
+######
+~/bin/update_conf.sh
 
