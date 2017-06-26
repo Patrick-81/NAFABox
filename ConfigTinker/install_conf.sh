@@ -58,5 +58,5 @@ $(pwd)/install_shortcut.sh update_conf
 ######
 # Install/Update conf
 ######
-~/bin/update_conf.sh
+~/bin/update_conf.sh initial
 

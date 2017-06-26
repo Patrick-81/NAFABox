@@ -7,6 +7,14 @@
 # V0.1
 ################################################
 #!/bin/bash
+init=false
+if test ! -z "$*" 
+then
+	if [ $1 == "initial" ]
+	then
+     	init=true
+	fi
+fi
 ######
 # Recherche du répertoire contenant les scripts d'installation
 ######
@@ -45,6 +53,14 @@ installconf()
 	choice[8]="Stellarium"
 	choice[9]="install astrometry index(s)"
 
+	if $init
+	then
+		st=(on off on on off off off off off)
+	else
+		st=(off off off off off off off off off)
+	fi		
+	echo ${st[*]}
+
 	DIALOG=${DIALOG=dialog}
 	fichtemp=`tempfile 2>/dev/null` || fichtemp=/tmp/test$$
 	trap "rm -f $fichtemp" 0 1 2 5 15
@@ -52,16 +68,17 @@ installconf()
 	$DIALOG --backtitle "${dial[0]}" \
 		--title "${dial[1]}" --clear \
     	--checklist "${dial[2]}" 20 61 9 \
-        	0 "${choice[0]}" off\
-			1 "${choice[1]}" off\
-			2 "${choice[2]}" off\
-			3 "${choice[3]}" off\
-			4 "${choice[4]}" off\
-			5 "${choice[5]}" off\
-			6 "${choice[6]}" off\
-			7 "${choice[7]}" off \
-			8 "${choice[8]}" off\
-			9 "${choice[9]}" off 2> $fichtemp
+        	0 "${choice[0]}" "${st[0]}"\
+			1 "${choice[1]}" "${st[1]}"\
+			2 "${choice[2]}" "${st[2]}"\
+			3 "${choice[3]}" "${st[3]}"\
+			4 "${choice[4]}" "${st[4]}"\
+			5 "${choice[5]}" "${st[5]}"\
+			6 "${choice[6]}" "${st[6]}"\
+			7 "${choice[7]}" "${st[7]}"\
+			8 "${choice[8]}" "${st[8]}"\
+			9 "${choice[9]}" "${st[9]}"\
+			 2> $fichtemp
 	valret=$?
 	for n in $(cat $fichtemp)
 	do
