@@ -138,16 +138,18 @@ do
 		dial[1]="Sélectionnez une option"
 		dial[2]="Quitter l'installation"
 		dial[3]="Compléter l'installation"
-		dial[4]="Arrêter la machine"
+		dial[4]="Installer le point d'accès"
+		dial[5]="Arrêter la machine"
 	else
 		dial[0]="What do you want to do now ?"
 		dial[1]="Select one option"
 		dial[2]="Quit the installation"
 		dial[3]="Complete installation"
-		dial[4]="Shutdown now"
+		dial[4]="Install the hotspot"
+		dial[5]="Shutdown now"
 	fi
 	option=$(dialog --title "${dial[0]}" --menu "${dial[1]}" 12 60 6 1 "${dial[2]}" 2 "${dial[3]}"\
-				 3 "${dial[4]}" 3>&1 1>&2 2>&3)
+				 3 "${dial[4]}" 4 "${dial[5]}" 3>&1 1>&2 2>&3)
 # Get exit status
 # 0 means user hit [yes] button.
 # 1 means user hit [no] button.
@@ -162,6 +164,10 @@ do
 		echo "back to install software"
 		;;
 	3)
+		echo "Install hotspot"
+		sudo $(pwd)/install_hotspot.sh
+		;;
+	4)
 		echo "Reboot"
 		sudo shutdown now
 		;;
