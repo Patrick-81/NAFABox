@@ -12,6 +12,7 @@ sudo apt-get -y install software-properties-common
 sudo update
 sudo apt-get -y install dialog
 sudo apt-get -y install dirmngr
+sudo apt-get -y install git
 ######
 # Options d'installation
 ######
@@ -47,6 +48,7 @@ then
 	sudo apt-add-repository -y ppa:ubuntu-mate-dev/xenial-mate 
 	# désinstallation xfce4
 	sudo apt-get -y remove --purge  xfce*
+	sudo apt-get -y remove --purge  lxde*
 	sudo apt autoremove -y
 	sudo apt-get -y clean
 	# installation de base de maté
@@ -89,7 +91,6 @@ then
 	#sudo apt-get $options install firefox-locale.fr
 	sudo locale-gen fr_FR fr_FR.UTF-8
 	sudo update-locale LC_ALL=fr_FR.UTF-8 LANG=fr_FR.UTF-8
-	sudo dpkg-reconfigure locales
 	sudo dpkg-reconfigure keyboard-configuration
 fi
 	
