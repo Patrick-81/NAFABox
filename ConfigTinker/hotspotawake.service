@@ -1,0 +1,13 @@
+[Unit]
+Description=Effectue une operation iw toutes les 5s.
+
+[Service]
+User=MOI
+Group=MOI
+Restart=always
+RestartSec=5s
+ExecStart=/home/MOI/bin/hotspotawake.sh
+
+[Install]
+WantedBy=multi-user.target
+
