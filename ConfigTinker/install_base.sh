@@ -8,6 +8,8 @@
 ################################################
 #!/bin/bash
 ######
+sudo rm /var/lib/dpkg/lock
+sudo apt-get -y install libnss3
 sudo apt-get -y install software-properties-common
 sudo update
 sudo apt-get -y install dialog
