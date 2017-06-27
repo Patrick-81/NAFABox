@@ -3,7 +3,7 @@ After=multi-user.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/x11vnc -display :0 -shared -forever -o /var/log/x11vnc.log -rfbport 5900
+ExecStart=/usr/bin/x11vnc -shared -forever -o /var/log/x11vnc.log -rfbport 5900 -auth guess
 Restart=on-success
 SuccessExitStatus=3
 

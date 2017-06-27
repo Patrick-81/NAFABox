@@ -8,7 +8,13 @@
 ################################################
 #!/bin/bash
 source detect_language.sh
-if [ -f ~/bin/setres.sh ] && [ -f ~/Desktop/$AppName.desktop ] && [ -f /usr/share/pixmaps/setres.png ]
+if test -d Desktop
+then
+	desktop="Desktop"
+else
+	desktop="Bureau"
+fi
+if [ -f ~/bin/setres.sh ] && [ -f ~/$desktop/$AppName.desktop ] && [ -f /usr/share/pixmaps/setres.png ]
 then
 	if $french
 	then

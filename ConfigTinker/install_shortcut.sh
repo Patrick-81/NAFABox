@@ -35,7 +35,7 @@ if [ -f $fichier ]; then
 else
 	AppName=$(echo $1 | sed 's/^./\u&/')
 	cat $(pwd)/template.desktop  | sed -e "s/APP_NAME/$1/g" > /tmp/shortcut1
-	cat /tmp/shortcut1  | sed -e "s/APP_EXEC/$AppExec/g" > /tmp/shortcut2
+	cat /tmp/shortcut1  | sed -e "s%APP_EXEC%$AppExec%g" > /tmp/shortcut2
 	cat /tmp/shortcut2 | sed -e "s/NAME/$AppName/g" > ~/$desktop/$AppName.desktop
 	chmod +x ~/$desktop/$AppName.desktop
 fi

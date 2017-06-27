@@ -54,7 +54,7 @@ chmod +x ~/bin/update_conf.sh
 sudo ln -sf ~/bin/update_conf.sh /usr/bin/update_conf
 sudo cp /usr/share/icons/gnome/32x32/apps/system-software-update.png /usr/share/pixmaps/update_conf.png
 # Création de l'icône sur le bureau
-$(pwd)/install_shortcut.sh update_conf
+$(pwd)/install_shortcut.sh update_conf "mate-terminal -e \"/bin/bash update_conf\"" 
 ######
 # Install/Update conf
 ######
