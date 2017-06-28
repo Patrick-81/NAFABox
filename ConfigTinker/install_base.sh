@@ -20,6 +20,7 @@ sudo update
 sudo apt-get -y install dialog
 sudo apt-get -y install dirmngr
 sudo apt-get -y install git
+sudo apt-get -y install gparted
 ######
 # Options d'installation
 ######
