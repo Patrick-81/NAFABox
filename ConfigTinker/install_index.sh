@@ -10,6 +10,10 @@
 ######
 # Calcul de champ
 ######
+# Recherche du répertoire ConfigTinker
+######
+dirinstall=$(find ~ -name ConfigTinker)
+######
 # test locale
 ######
 source detect_language.sh
@@ -79,7 +83,7 @@ if [ $exitstatus = 0 ]; then
 ######
 # Charger le fichier des références d'index
 ######
-	file2read=$(pwd)/index.txt
+	file2read=$dirinstall/index.txt
 	declare -a tabfile
 	declare -a tabvmin
 	declare -a tabvmax

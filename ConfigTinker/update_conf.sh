@@ -7,6 +7,11 @@
 # V0.1
 ################################################
 #!/bin/bash
+######
+# Recherche du répertoire ConfigTinker
+######
+dirinstall=$(find ~ -name ConfigTinker)
+######
 init=false
 if test ! -z "$*" 
 then
@@ -85,44 +90,44 @@ installconf()
 		case $n in
 		0)
 			echo "Install web communications"
-			$(pwd)/install_comsetup.sh
-			echo com >> $(pwd)/install-status.txt
+			$dirinstall/install_comsetup.sh
+			echo com >> $dirinstall/install-status.txt
 		;;
 		1) 
 			echo "Install Lin_guider"
-			$(pwd)/install_linguider.sh
+			$dirinstall/install_linguider.sh
 			;;
 		2)
 			echo "Install kstars"
-			$(pwd)/install_kstars.sh
+			$dirinstall/install_kstars.sh
 			;;
 		3)
 			echo "Install phd2"
-			$(pwd)/install_phd2.sh
+			$dirinstall/install_phd2.sh
 			;;
 		4)
 			echo "Installation Skychart"
-			$(pwd)/install_skychart.sh
+			$dirinstall/install_skychart.sh
 			;;
 		5)
 			echo "Install ccdciel"
-			$(pwd)/install_ccdciel.sh
+			$dirinstall/install_ccdciel.sh
 			;;
 		6)
 			echo "Install planetary imager"
-			$(pwd)/install_planetaryimager.sh
+			$dirinstall/install_planetaryimager.sh
 			;;
 		7)
 			echo "Install siril"
-			$(pwd)/install_siril.sh
+			$dirinstall/install_siril.sh
 			;;
 		8)
 			echo "Install stellarium"
-			$(pwd)/install_stellarium.sh
+			$dirinstall/install_stellarium.sh
 			;;
 		9)
 			echo "Install index(s)"
-			$(pwd)/install_index.sh
+			$dirinstall/install_index.sh
 			;;
 		255)
 			echo "escape";;
@@ -182,7 +187,7 @@ do
 		;;
 	3)
 		echo "Install hotspot"
-		sudo $(pwd)/install_hotspot.sh
+		sudo $dirinstall/install_hotspot.sh
 		;;
 	4)
 		echo "Reboot"

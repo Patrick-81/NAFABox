@@ -8,12 +8,16 @@
 ################################################
 #!/bin/bash
 ######
+# Recherche du répertoire ConfigTinker
+######
+dirinstall=$(find ~ -name ConfigTinker)
+######
 # Installation des pré-requis
 ######
 ######
 # détection de l'architecture
 ######
-source $(pwd)/proctype.sh
+source $dirinstall/proctype.sh
 ######
 # add repository
 ######
@@ -29,5 +33,5 @@ sudo apt-get -y install stellarium
 ######
 # Création de l'icône sur le bureau
 ######
-$(pwd)/install_shortcut.sh stellarium
+$dirinstall/install_shortcut.sh stellarium
 

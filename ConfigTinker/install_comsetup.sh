@@ -8,10 +8,14 @@
 ################################################
 #!/bin/bash
 ######
+# Recherche du répertoire ConfigTinker
+######
+dirinstall=$(find ~ -name ConfigTinker)
+######
 # recupere le user
 ######
 moi=$(whoami)
-data=$(pwd)
+data=$dirinstall
 ######
 # detect language
 ######
@@ -116,9 +120,11 @@ sudo ln -sf /etc/nginx/sites-available/site-$moi /etc/nginx/sites-enabled/site-$
 ######
 # Installation x11vnc
 ######
-sudo apt install -y x11vnc
+mkdir -p ~/.x11vnc
+echo '# Start x11vnc server\
+/usr/bin/x11vnc -forever -o ~/.x11vnc/x11vnc.log > /dev/null 2>&1 &' >> ~/.bashrc
 # sudo x11vnc -storepasswd "12345678" /root/.vncpasswd
-sudo cp $data/x11vnc.service /etc/systemd/system/x11vnc.service
+#sudo cp $data/x11vnc.service /etc/systemd/system/x11vnc.service
 ######
 # Installation accès vnc via navigateur
 ######
@@ -127,14 +133,14 @@ cd /home/$moi
 git clone git://github.com/kanaka/noVNC
 cat $data/novnc.service | sed -e "s/MOI/${moi}/g" > /tmp/novnc.service
 sudo cp /tmp/novnc.service /etc/systemd/system/novnc.service
-sudo systemctl stop x11vnc.service
-sudo systemctl stop novnc.service
-sudo systemctl disable x11vnc.service
-sudo systemctl disable novnc.service
 sudo systemctl daemon-reload
-sudo systemctl enable x11vnc.service
+#sudo systemctl stop x11vnc.service
+#sudo systemctl disable x11vnc.service
+#sudo systemctl enable x11vnc.service
+#sudo systemctl start x11vnc.service
+sudo systemctl stop novnc.service
+sudo systemctl disable novnc.service
 sudo systemctl enable novnc.service
-sudo systemctl start x11vnc.service
 sudo systemctl start novnc.service
 
 

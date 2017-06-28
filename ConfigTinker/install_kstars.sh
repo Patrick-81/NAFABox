@@ -7,6 +7,11 @@
 # V0.1
 ################################################
 #!/bin/bash
+######
+# Recherche du répertoire ConfigTinker
+######
+dirinstall=$(find ~ -name ConfigTinker)
+######
 options="--auto-remove --yes -q"
 ######
 # detect language
@@ -30,15 +35,15 @@ sudo apt-get $options install indi-full kstars-bleeding
 ######
 # Installer le pad amélioré
 ######
-$(pwd)/install_pad.sh
+$dirinstall/install_pad.sh
 ######
 # Installation du web manager pour indi
 ######
-$(pwd)/install_indiwebmanager.sh
+$dirinstall/install_indiwebmanager.sh
 ######
 # Création de l'icône sur le bureau
 ######
-$(pwd)/install_shortcut.sh kstars
+$dirinstall/install_shortcut.sh kstars
 ######
 # Installation du programme de résolution astrométrique
 ######
@@ -46,6 +51,6 @@ sudo apt-get $options install astrometry.net
 ######
 # Installation des index
 ######
-$(pwd)/install_index.sh
+$dirinstall/install_index.sh
 
 

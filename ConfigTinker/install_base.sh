@@ -8,6 +8,11 @@
 ################################################
 #!/bin/bash
 ######
+######
+# Recherche du répertoire ConfigTinker
+######
+dirinstall=$(find ~ -name ConfigTinker)
+######
 sudo rm /var/lib/dpkg/lock
 sudo apt-get -y install libnss3
 sudo apt-get -y install software-properties-common
@@ -79,9 +84,9 @@ then
 	# mise à jour de tout le système
 	sudo apt-get -q --yes dist-upgrade
 	# Installation du fond d'écran
-	backpic="M101p2000bagi.jpg"
+	backpic="PIA16008-1920x1200.jpg"
 	dest="/usr/share/backgrounds/mate/desktop"
-	sudo cp $(pwd)/$backpic $dest/.
+	sudo cp $dirinstall/$backpic $dest/.
 	gsettings set org.mate.background picture-filename $dest/$backpic
 fi
 if [[ $language == 1 ]]

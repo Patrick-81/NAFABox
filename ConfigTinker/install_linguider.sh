@@ -8,9 +8,13 @@
 ################################################
 #!/bin/bash
 ######
+# Recherche du répertoire ConfigTinker
+######
+dirinstall=$(find ~ -name ConfigTinker)
+######
 # Remember where I am
 ######
-whereiam=$(pwd)
+whereiam=$dirinstall
 ######
 # Installation des pré-requis
 ######
@@ -29,7 +33,7 @@ wget https://sourceforge.net/projects/linguider/files/$version/$file -P /tmp/lin
 tar xvjf /tmp/linguider/$file -C /tmp/linguider
 # Pour la compilation on se déplace dans le répertoire expansé linguider
 cd /tmp/linguider/lin_guider_pack/lin_guider
-echo "Configuration $(pwd)"
+echo "Configuration $dirinstall"
 ./configure
 echo "Make"
 make
@@ -39,7 +43,7 @@ sudo cp lin_guider /usr/bin/.
 ######
 sudo cp rc/lin_guider.png /usr/share/pixmaps/.
 cd $whereiam
-$(pwd)/install_shortcut.sh lin_guider
+$dirinstall/install_shortcut.sh lin_guider
 
 
 

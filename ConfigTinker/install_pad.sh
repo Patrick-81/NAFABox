@@ -7,9 +7,14 @@
 # V0.1
 ################################################
 #!/bin/bash
+######
+# Recherche du répertoire ConfigTinker
+######
+dirinstall=$(find ~ -name ConfigTinker)
+######
 dest="/usr/share/kstars/ekos/mount/qml/"
 sudo mv $dest/mountbox.qml $dest/mountbox.qml.old
-cp $(pwd)/pad.zip /tmp
-sudo tar xvzf $(pwd)/pad.tar.gz -C $dest
+cp $dirinstall/pad.zip /tmp
+sudo tar xvzf $dirinstall/pad.tar.gz -C $dest
  
 

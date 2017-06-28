@@ -7,6 +7,11 @@
 # V0.1
 ################################################
 #!/bin/bash
+######
+# Recherche du répertoire ConfigTinker
+######
+dirinstall=$(find ~ -name ConfigTinker)
+######
 source detect_language.sh
 if test -d Desktop
 then
@@ -24,10 +29,10 @@ then
 	fi
 else
 	sudo apt-get -y install python-tk python-imaging-tk python3-tk
-	cp $(pwd)/setres.py ~/bin/.
+	cp $dirinstall/setres.py ~/bin/.
 	chmod +x ~/bin/setres.py
 	sudo cp /usr/share/icons/gnome/48x48/apps/preferences-desktop-display.png /usr/share/pixmaps/setres.png
 	sudo ln -sf ~/bin/setres.py /usr/bin/setres
-	$(pwd)/install_shortcut.sh setres
+	$dirinstall/install_shortcut.sh setres
 fi
 

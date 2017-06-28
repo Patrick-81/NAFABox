@@ -8,13 +8,17 @@
 ################################################
 #!/bin/bash
 ######
+# Recherche du répertoire ConfigTinker
+######
+dirinstall=$(find ~ -name ConfigTinker)
+######
 # Installation des pré-requis
 ######
-$(pwd)/install_libpasastro.sh
+$dirinstall/install_libpasastro.sh
 ######
 # détection de l'architecture
 ######
-source $(pwd)/proctype.sh
+source $dirinstall/proctype.sh
 ######
 # Installation du programme : ccdciel
 ######
@@ -26,5 +30,5 @@ sudo dpkg -i /tmp/$file
 ######
 # Création de l'icône sur le bureau
 ######
-$(pwd)/install_shortcut.sh ccdciel
+$dirinstall/install_shortcut.sh ccdciel
 

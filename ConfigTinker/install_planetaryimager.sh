@@ -8,6 +8,10 @@
 ################################################
 #!/bin/bash
 ######
+# Recherche du répertoire ConfigTinker
+######
+dirinstall=$(find ~ -name ConfigTinker)
+######
 # Installation des pré-requis
 ######
 sudo apt-get -y install libccfits0v5 libopencv-highgui2.4v5 libqt5opengl5 libv4l-0 libv4lconvert0
@@ -35,5 +39,5 @@ sudo dpkg --force overwrite -i /tmp/$file
 # Création de l'icône sur le bureau
 ######
 sudo cp /usr/share/icons/hicolor/32x32/apps/planetary_imager.png /usr/share/pixmaps
-$(pwd)/install_shortcut.sh planetary_imager
+$dirinstall/install_shortcut.sh planetary_imager
 

@@ -7,8 +7,13 @@
 # V0.1
 ################################################
 #!/bin/bash
+######
+# Recherche du répertoire ConfigTinker
+######
+dirinstall=$(find ~ -name ConfigTinker)
+######
 # Installation de libpasastro
-source $(pwd)/proctype.sh
+source $dirinstall/proctype.sh
 software="libpasastro"
 version="version_1.1-19"
 file="libpasastro_1.1-19$proc.deb"
