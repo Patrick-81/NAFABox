@@ -5,7 +5,7 @@ Step by Step
 
 1/ For the Tinkerboard Install ARMBIAN distribution
 
-https://dl.armbian.com/tinkerboard/archive/Armbian_5.27_Tinkerboard_Ubuntu_xenial_default_4.4.70_desktop.7z
+https://dl.armbian.com/tinkerboard/Ubuntu_xenial_default_desktop.7z
 
 2/ Get the folder as zip file and expanse it to your desktop
 
