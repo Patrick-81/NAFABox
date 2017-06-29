@@ -27,11 +27,19 @@ sudo dpkg-reconfigure tzdata
 ######
 # Installer nginx
 ######
-sudo apt-get -y install nginx
+installed=$(apt -qq list nginx)
+if test -z "$installed"
+then
+	sudo apt-get -y install nginx
+fi
 ######
 # Installer php
 ######
-sudo apt-get -y install php
+installed=$(apt -qq list php)
+if test -z "$installed"
+then
+	sudo apt-get -y install php
+fi
 ######
 # Creer le répertoire www
 ######
@@ -110,7 +118,7 @@ echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
 ######
 # Installation du serveur nginx
 ######
-sudo apt install -y --reinstall nginx
+#sudo apt install -y --reinstall nginx
 sudo rm /etc/nginx/sites-available/default
 sudo rm /etc/nginx/sites-enabled/default
 cat $data/server.txt | sed -e "s/MOI/${moi}/g" > /tmp/site-$moi
@@ -121,9 +129,10 @@ sudo ln -sf /etc/nginx/sites-available/site-$moi /etc/nginx/sites-enabled/site-$
 # Installation x11vnc
 ######
 mkdir -p ~/.x11vnc
-cp $dirinstall/startsx11vnc.sh ~/bin/.
-chmod +x ~/bin/startsx11vnc.sh
-cp $dirinstall/startsx11vnc.desktop ~/.config/autostart/.
+cp $dirinstall/startx11vnc.sh ~/bin/.
+chmod +x ~/bin/startx11vnc.sh
+~/bin/startx11vnc.sh
+cp $dirinstall/startx11vnc.desktop ~/.config/autostart/.
 #sudo cp $data/x11vnc.service /etc/systemd/system/x11vnc.service
 ######
 # Installation accès vnc via navigateur
