@@ -121,9 +121,9 @@ sudo ln -sf /etc/nginx/sites-available/site-$moi /etc/nginx/sites-enabled/site-$
 # Installation x11vnc
 ######
 mkdir -p ~/.x11vnc
-echo '# Start x11vnc server\
-/usr/bin/x11vnc -forever -o ~/.x11vnc/x11vnc.log > /dev/null 2>&1 &' >> ~/.bashrc
-# sudo x11vnc -storepasswd "12345678" /root/.vncpasswd
+cp $dirinstall/startsx11vnc.sh ~/bin/.
+chmod +x ~/bin/startsx11vnc.sh
+cp $dirinstall/startsx11vnc.desktop ~/.config/autostart/.
 #sudo cp $data/x11vnc.service /etc/systemd/system/x11vnc.service
 ######
 # Installation accès vnc via navigateur
