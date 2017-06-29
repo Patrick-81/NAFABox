@@ -1,5 +1,5 @@
 [connection]
-id=MOIbox
+id=HOTSPOTNAME
 uuid=UUID
 type=wifi
 interface-name=wlan0
@@ -12,7 +12,7 @@ mac-address-blacklist=
 mac-address-randomization=0
 mode=ap
 seen-bssids=
-ssid=nafabox
+ssid=HOTSPOTNAME
 
 [ipv4]
 dns-search=

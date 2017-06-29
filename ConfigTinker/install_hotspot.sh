@@ -1,8 +1,20 @@
 #!/bin/bash
 ######
+# Recherche du répertoire ConfigTinker
+######
+dirinstall=$(find ~ -name ConfigTinker)
+######
 # pre-requis
 ######
-sudo apt -y install uuid
+installed=$(apt -qq list uuid)
+if test -z "$installed"
+then
+	sudo apt -y install uuid
+fi
+######
+# detect language
+######
+source $dirinstall/detect_language.sh
 ######
 # recupere le user
 ######
@@ -22,15 +34,61 @@ then
 ######
 # Création du hotspot
 ######
-	hotspot_name="$moi""box"
+	OUTPUT=$(tempfile)
+	# cleanup  - add a trap that will remove $OUTPUT
+	# if any of the signals - SIGHUP SIGINT SIGTERM it received.
+	trap "rm $OUTPUT; exit" SIGHUP SIGINT SIGTERM
+	default_hostname="$moi"
+	if $french
+	then
+		dial[0]="Fixer un nom discriminant pour votre hotspot"
+		dial[1]="Soyez créatif d'autres personnes peuvent aussi utiliser une NAFABox"
+		dial[2]="Nom original pour votre hotspot ou défaut"
+	else
+		dial[0]="Give a discriminant name for your hotspot"
+		dial[1]="Be creative other people close to you may also use a NAFABox"
+		dial[2]="Original name for your hotspot or default"
+	fi
+	# Demande du nom de hotspot
+	dialog --clear \
+		--title "${dial[0]}" \
+		--backtitle "${dial[1]}" \
+		--inputbox "${dial[2]}" \
+		8 60 $default_hostname \
+		2>$OUTPUT
+	reponse=$?
+	# make a decsion 
+	case $reponse in
+  	0) 
+		hotspot_name=$(<$OUTPUT)"box"
+  		;;
+  	1) 
+		exit
+  		;;
+  	255) 
+   		echo "[ESC] key pressed."
+		exit
+		;;
+	esac
 	fic0=$(tempfile)
-	cat nafabox.template | sed -e "s/wlan0/${device}/g" > $fic0
+	cat $dirinstall/nafabox.template | sed -e "s/wlan0/${device}/g" > $fic0
 	fic1=$(tempfile)
-	cat $fic0 | sed -e "s/MOI/${moi}/g" > $fic1
+	cat $fic0 | sed -e "s/HOTSPOTNAME/${hotspot_name}/g" > $fic1
 	fic2=$(tempfile)
 	cat $fic1 | sed -e "s/UUID/${hsuuid}/g" > $fic2
 	fic3=$(tempfile)
 	cat $fic2 | sed -e "s/MAC_ADDRESS/${mac_address}/g" > $fic3
+######
+# Find active access point
+######
+	activeap=$(iw $device info | grep ssid | cut -f 2 -d" ")
+	if test -z $activeap
+	then
+		sudo rm -f /etc/NetworkManager/system-connections/$activeap
+	fi
+######
+# Create new one
+######
 	sudo cp $fic3 /etc/NetworkManager/system-connections/$hotspot_name
 	sudo systemctl stop NetworkManager
 	sleep 5
