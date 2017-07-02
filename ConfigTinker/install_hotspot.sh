@@ -82,7 +82,7 @@ then
 # Find active access point
 ######
 	activeap=$(iw $device info | grep ssid | cut -f 2 -d" ")
-	if test -z $activeap
+	if test ! -z $activeap
 	then
 		sudo rm -f /etc/NetworkManager/system-connections/$activeap
 	fi
