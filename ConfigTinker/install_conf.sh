@@ -39,7 +39,7 @@ then
 	sudo apt update
 	sudo apt-get $options install libpangox-1.0-0 libespeak1 libpango1.0-0 \
 	libsonic0 espeak-data fonts-freefont-ttf ttf-freefont libjpeg62 libglu1 \
-	xplanet espeak qt4-default openssh-server
+	xplanet espeak qt4-default openssh-server uuid
 	echo prereq >> $dirinstall/install-status.txt
 fi
 ######

@@ -7,10 +7,17 @@ dirinstall=$(find ~ -name ConfigTinker)
 # pre-requis
 ######
 installed=$(apt -qq list uuid)
-if test -z "$installed"
+testinstall=$([[ $(grep "install" <<< $installed) ]] && echo true || echo false)
+
+if $testinstall 
+#if test -z "$installed"
 then
+	echo "installé"
+else
+	echo "installation uuid"
 	sudo apt -y install uuid
 fi
+exit
 ######
 # detect language
 ######
