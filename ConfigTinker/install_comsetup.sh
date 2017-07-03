@@ -128,6 +128,7 @@ sudo ln -sf /etc/nginx/sites-available/site-$moi /etc/nginx/sites-enabled/site-$
 ######
 # Installation x11vnc
 ######
+sudo apt -y install x11vnc
 mkdir -p ~/.x11vnc
 cp $dirinstall/startx11vnc.sh ~/bin/.
 chmod +x ~/bin/startx11vnc.sh
