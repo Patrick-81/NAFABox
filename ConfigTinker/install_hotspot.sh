@@ -17,7 +17,6 @@ else
 	echo "installation uuid"
 	sudo apt -y install uuid
 fi
-exit
 ######
 # detect language
 ######
