@@ -126,6 +126,10 @@ sudo cp /tmp/site-$moi /etc/nginx/sites-available/site-$moi
 sudo chown $moi:$moi /etc/nginx/sites-available/site-$moi
 sudo ln -sf /etc/nginx/sites-available/site-$moi /etc/nginx/sites-enabled/site-$moi
 ######
+# Install of webdav server
+######
+sudo $data/install_webdavServer.sh
+######
 # Installation x11vnc
 ######
 mkdir -p ~/.x11vnc
