@@ -23,8 +23,10 @@ source $dirinstall/proctype.sh
 # Installation du programme : ccdciel
 ######
 software="ccdciel"
-version="ccdciel_0.8.14"
-file="ccdciel_0.8.14-382$proc.deb"
+version="$software""_""0.8.16"
+subversion="400"
+file="$version""-$subversion""$proc.deb"
+echo $file
 wget https://sourceforge.net/projects/$software/files/$version/$file -P /tmp/
 sudo dpkg -i /tmp/$file
 ######
