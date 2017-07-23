@@ -69,7 +69,7 @@ $dirinstall/install_shortcut.sh update_conf "mate-terminal -e \"/bin/bash update
 cp $dirinstall/install_index.sh ~/bin/.
 sudo ln -sf ~/bin/install_index.sh /usr/bin/install_index
 sudo cp $dirinstall/install_index.png /usr/share/pixmaps/.
-sudo cp $dirinstall/index.txt ~/bin/.
+cp $dirinstall/index.txt ~/bin/.
 $dirinstall/install_shortcut.sh install_index "mate-terminal -e \"/bin/bash install_index\"" 
 ######
 # Création du raccourci pour install_hotspot.sh
