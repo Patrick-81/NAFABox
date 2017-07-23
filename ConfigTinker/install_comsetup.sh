@@ -118,7 +118,7 @@ echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
 ######
 # Installation du serveur nginx
 ######
-#sudo apt install -y --reinstall nginx
+sudo apt install -y --reinstall nginx
 sudo rm /etc/nginx/sites-available/default
 sudo rm /etc/nginx/sites-enabled/default
 cat $data/server.txt | sed -e "s/MOI/${moi}/g" > /tmp/site-$moi
@@ -128,7 +128,7 @@ sudo ln -sf /etc/nginx/sites-available/site-$moi /etc/nginx/sites-enabled/site-$
 ######
 # Install of webdav server
 ######
-sudo $data/install_webdavServer.sh
+sudo $data/install_webdavserver.sh
 ######
 # Installation x11vnc
 ######

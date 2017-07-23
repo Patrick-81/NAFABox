@@ -21,6 +21,9 @@ sudo apt-get -y install dialog
 sudo apt-get -y install dirmngr
 sudo apt-get -y install git
 sudo apt-get -y install gparted
+sudo echo "NAFABox" > /etc/hostname
+#sudo usermod -l nafa -d /home/nafa -m tinker
+
 ######
 # Options d'installation
 ######
@@ -54,13 +57,22 @@ if [[ $installMate == 1 ]]
 then
 	# add repository pour avoir la 1.16 au lieu de la 1.12
 	sudo apt-add-repository -y ppa:ubuntu-mate-dev/xenial-mate 
+	sudo apt-get update
 	# désinstallation xfce4
 	sudo apt-get -y remove --purge  xfce*
-	sudo apt-get -y remove --purge  lxde*
+	sudo apt-get -y remove --purge  lxde
+	sudo apt-get -y remove --purge  lubuntu*
 	sudo apt autoremove -y
 	sudo apt-get -y clean
-	# installation de base de maté
 	sudo apt-get update
+	# installation du session manager
+	sudo apt-get -y install lightdm
+	sudo apt-get -y install xserver-xorg
+	sudo apt-get -y install lightdm-greeter
+	# Mise à jourde l'autologin
+	cat  $dirinstall/20-lightdm.conf | sed -e "s/MOI/$(whoami)/g" > /tmp/20-lightdm.conf
+	sudo cp /tmp/20-lightdm.conf /etc/lighdm/lightdm.conf.d/.
+	# installation de base de maté
 	sudo apt-get $options install mate
 	# installation de maté compléments
 	sudo apt-get $options install mate-desktop-environment-extras
@@ -79,11 +91,13 @@ then
 	sudo apt-get $options install mate-applets
 	sudo apt-get $options install mate-panel
 	sudo apt-get $options install mate-system-monitor
+	sudo apt-get $options install blueman
+	sudo apt-get $options install firefox
 	# désinstallation diverses des relicats de xfce et de thunderbird ajouté par maté
-	sudo apt-get -y purge blueman thunderbird transmission-gtk thunar firefox-locale.en
+	sudo apt-get -y purge thunderbird transmission-gtk thunar chromium-browser
 	sudo apt-get -y remove --purge  libreoffice*
 	# mise à jour de tout le système
-	sudo apt-get -q --yes dist-upgrade
+	# sudo apt-get -q --yes dist-upgrade
 	# Installation du fond d'écran
 	backpic="PIA16008-1920x1200.jpg"
 	dest="/usr/share/backgrounds/mate/desktop"
@@ -96,7 +110,7 @@ then
 	# ajout des packs langage
 	sudo apt-get $options language-pack-kde-fr
 	sudo apt-get $options install language-pack-fr language-pack-gnome-fr
-	#sudo apt-get $options install firefox-locale.fr
+	sudo apt-get $options install firefox-locale.fr
 	sudo locale-gen fr_FR fr_FR.UTF-8
 	sudo update-locale LC_ALL=fr_FR.UTF-8 LANG=fr_FR.UTF-8
 	sudo dpkg-reconfigure keyboard-configuration

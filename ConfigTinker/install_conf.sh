@@ -77,7 +77,14 @@ $dirinstall/install_shortcut.sh install_index "mate-terminal -e \"/bin/bash inst
 cp $dirinstall/install_hotspot.sh ~/bin/.
 sudo ln -sf ~/bin/install_hotspot.sh /usr/bin/install_hotspot
 sudo cp $dirinstall/install_hotspot.png /usr/share/pixmaps/.
-$dirinstall/install_shortcut.sh install_hotspot "mate-terminal -e \"/bin/bash install_hotspot\"" 
+$dirinstall/install_shortcut.sh install_hotspot "mate-terminal -e \"/bin/bash install_hotspot\""
+##### 
+# Création du raccourci pour switch_laguage.sh
+######
+cp $dirinstall/switch_language.sh ~/bin/.
+sudo ln -sf ~/bin/switch_language.sh /usr/bin/switch_language
+sudo cp /usr/share/icons/gnome/48x48/apps/config-language.png /usr/share/pixmaps/switch_language.png
+$dirinstall/install_shortcut.sh switch_language "mate-terminal -e \"/bin/bash switch_language\""
 
 
 
