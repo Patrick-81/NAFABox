@@ -15,7 +15,7 @@ dirinstall=$(find ~ -name ConfigTinker)
 # Statut d'installation
 # Installation status
 ######
-touch $dirinstall/install-status.txt
+#touch $dirinstall/install-status.txt
 ######
 # option for apt
 ######
@@ -23,25 +23,25 @@ options="--auto-remove --yes -q"
 ######
 # Install mate
 ######
-if [[ -z $(cat $dirinstall/install-status.txt | grep mate) ]]
-then
-	$dirinstall/install_base.sh
-	echo mate >> $dirinstall/install-status.txt
-fi
+#if [[ -z $(cat $dirinstall/install-status.txt | grep mate) ]]
+#then
+#	$dirinstall/install_base.sh
+#	echo mate >> $dirinstall/install-status.txt
+#fi
 ######
 # pré-requis
 # pre requisite
 ######
-if [[ -z $(cat install-status.txt | grep prereq) ]]
-then
+#if [[ -z $(cat install-status.txt | grep prereq) ]]
+#then
 	sudo apt-add-repository -y ppa:mutlaqja/ppa
 	sudo apt-add-repository -y ppa:pch/phd2	
 	sudo apt update
 	sudo apt-get $options install libpangox-1.0-0 libespeak1 libpango1.0-0 \
 	libsonic0 espeak-data fonts-freefont-ttf ttf-freefont libjpeg62 libglu1 \
 	xplanet espeak qt4-default openssh-server uuid
-	echo prereq >> $dirinstall/install-status.txt
-fi
+#	echo prereq >> $dirinstall/install-status.txt
+#fi
 ######
 # Installer les utilitaires
 # Install utilities
@@ -69,7 +69,7 @@ $dirinstall/install_shortcut.sh update_conf "mate-terminal -e \"/bin/bash update
 cp $dirinstall/install_index.sh ~/bin/.
 sudo ln -sf ~/bin/install_index.sh /usr/bin/install_index
 sudo cp $dirinstall/install_index.png /usr/share/pixmaps/.
-cp $dirinstall/index.txt ~/bin/.
+sudo cp $dirinstall/index.txt ~/bin/.
 $dirinstall/install_shortcut.sh install_index "mate-terminal -e \"/bin/bash install_index\"" 
 ######
 # Création du raccourci pour install_hotspot.sh

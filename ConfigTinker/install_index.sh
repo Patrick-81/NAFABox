@@ -12,7 +12,22 @@
 ######
 # Recherche du répertoire ConfigTinker
 ######
-dirinstall=$(find ~ -name ConfigTinker)
+echo $1
+if [ "$1" = "debug" ]
+then
+	dirinstall=$(pwd)
+else
+	dirinstall=$(find ~ -name ConfigTinker)
+fi
+######
+# Fonction min
+######
+valmax="define vmax(a, b) {
+				if (a > b) {
+					return (a);
+				}
+				return (b);
+			}"
 ######
 # test locale
 ######
@@ -47,12 +62,12 @@ trap "rm -f $fichtemp" 0 1 2 5 15
 
 $DIALOG  --backtitle "${compute[0]}" --title "${compute[1]}" \
 --form "${compute[2]}" 20 60 30 \
-"${compute[3]}" 1 1 "1200" 1 38 15 30 \
+"${compute[3]}" 1 1 "3010" 1 38 15 30 \
 "${compute[4]}" 2 1 "1" 2 38 15 30 \
-"${compute[5]}" 3 1 "3096" 3 38 15 30 \
-"${compute[6]}" 4 1 "2080" 4 38 15 30 \
-"${compute[7]}" 5 1 "2.4" 5 38 15 30 \
-"${compute[8]}" 6 1 "2.4" 6 38 15 30 \
+"${compute[5]}" 3 1 "2750" 3 38 15 30 \
+"${compute[6]}" 4 1 "2200" 4 38 15 30 \
+"${compute[7]}" 5 1 "4.54" 5 38 15 30 \
+"${compute[8]}" 6 1 "4.54" 6 38 15 30 \
 2>$fichtemp
 exitstatus=$?
 echo $exitsatus
@@ -66,18 +81,14 @@ if [ $exitstatus = 0 ]; then
 	PH=$(echo ${values[4]} | xargs)
 	PV=$(echo ${values[5]} | xargs)
 	
-	LC=$(echo "scale=2;($PH*$RH/1000.0)" | bc)
-	HC=$(echo "scale=2;($PV*$RV/1000.0)" | bc)
-	ChampX=$(echo "scale=2;(60*57.3*$LC/$F)" | bc)
-	ChampY=$(echo "scale=2;(60*57.3*$HC/$F)" | bc)
-	Diag=$(echo "scale=2;sqrt($ChampX*$ChampX+$ChampY*$ChampY)" | bc)
-	v=$(echo "$ChampX<$ChampY" | bc)
-	if [[ $v -eq 1 ]]
-	then
-		vmin=$ChampX
-	else
-		vmin=$ChampY
-	fi
+	LC=$(echo "scale=1;($PH*$RH/1000.0)" | bc)
+	HC=$(echo "scale=1;($PV*$RV/1000.0)" | bc)
+	ChampX=$(echo "scale=1;(60*57.3*$LC/$F)" | bc)
+	ChampY=$(echo "scale=1;(60*57.3*$HC/$F)" | bc)
+	Diag=$(echo "scale=1;sqrt($ChampX*$ChampX+$ChampY*$ChampY)" | bc)
+	vmin=$(echo "scale=1;0.5*$Diag" | bc)
+	vmax=$(echo "$valmax;vmax($ChampX,$ChampY)" | bc)
+
 #echo "Largeur capteur (mm) "$LC" Hauteur capteur(mm)"$HC\
 #	" Champ X(') "$ChampX" Champ Y(') "$ChampY" Diag (') "$Diag
 ######
@@ -112,10 +123,10 @@ if [ $exitstatus = 0 ]; then
 				indmin=$index
 			fi
 		fi
-		a=$(echo "$Diag <= ${tabvmax[$index]}" | bc)
+		a=$(echo "$vmax <= ${tabvmax[$index]}" | bc)
 		if [[ $a -eq 1 ]]
 		then
-			a=$(expr "$Diag >= ${tabvmin[$index]}" | bc)
+			a=$(expr "$vmax >= ${tabvmin[$index]}" | bc)
 			if  [[ $a -eq 1 ]]
 			then
 				maxfile=${tabfile[$index]}

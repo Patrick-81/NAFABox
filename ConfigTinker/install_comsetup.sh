@@ -128,7 +128,7 @@ sudo ln -sf /etc/nginx/sites-available/site-$moi /etc/nginx/sites-enabled/site-$
 ######
 # Install of webdav server
 ######
-$dirinstall/install_webdavserver.sh
+sudo $data/install_webdavserver.sh
 ######
 # Installation x11vnc
 ######

@@ -91,8 +91,7 @@ installconf()
 		0)
 			echo "Install web communications"
 			$dirinstall/install_comsetup.sh
-			echo com >> $dirinstall/install-status.txt
-		;;
+			;;
 		1) 
 			echo "Install Lin_guider"
 			$dirinstall/install_linguider.sh
