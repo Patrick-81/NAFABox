@@ -27,19 +27,11 @@ sudo dpkg-reconfigure tzdata
 ######
 # Installer nginx
 ######
-installed=$(apt -qq list nginx)
-if test -z "$installed"
-then
-	sudo apt-get -y install nginx
-fi
+sudo apt-get -y install nginx
 ######
 # Installer php
 ######
-installed=$(apt -qq list php)
-if test -z "$installed"
-then
-	sudo apt-get -y install php
-fi
+sudo apt-get -y install php
 ######
 # Creer le répertoire www
 ######

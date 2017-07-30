@@ -15,7 +15,8 @@ server {
 		root /usr/share/nginx/www;
 	}
 	# pass the PHP scripts to FastCGI server listening on the php-fpm socket
-	location ~ \.php$ {
+	location ~* \.php$ {
+    	fastcgi_split_path_info ^(.+\.php)(/.+)$;
 		try_files $uri =404;
 		fastcgi_pass unix:/var/run/php/php7.0-fpm.sock;
 		fastcgi_index index.php;
