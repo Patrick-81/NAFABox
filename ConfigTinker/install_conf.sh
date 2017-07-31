@@ -25,7 +25,7 @@ options="--auto-remove --yes -q"
 ######
 #if [[ -z $(cat $dirinstall/install-status.txt | grep mate) ]]
 #then
-#	$dirinstall/install_base.sh
+$dirinstall/install_base.sh
 #	echo mate >> $dirinstall/install-status.txt
 #fi
 ######
