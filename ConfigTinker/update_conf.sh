@@ -12,19 +12,7 @@
 ######
 dirinstall=$(find ~ -name ConfigTinker)
 ######
-init=false
-if test ! -z "$*" 
-then
-	if [ $1 == "initial" ]
-	then
-     	init=true
-	fi
-fi
-######
-# Recherche du répertoire contenant les scripts d'installation
-######
-loc=$(echo $(find ~ -name ConfigTinker) | cut -f 1 -d' ')
-cd $loc
+cd $dirinstall
 ######
 # Fonction pour l'installation
 ######
