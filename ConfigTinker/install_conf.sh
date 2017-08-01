@@ -85,6 +85,14 @@ cp $dirinstall/switch_language.sh ~/bin/.
 sudo ln -sf ~/bin/switch_language.sh /usr/bin/switch_language
 sudo cp /usr/share/icons/gnome/48x48/apps/config-language.png /usr/share/pixmaps/switch_language.png
 $dirinstall/install_shortcut.sh switch_language "mate-terminal -e \"/bin/bash switch_language\""
+##### 
+# Création du raccourci pour setup_time.sh
+######
+script="setup_time"
+cp $dirinstall/$script.sh ~/bin/.
+sudo ln -sf ~/bin/$script.sh /usr/bin/$script
+sudo cp $dirinstall/clock.png /usr/share/pixmaps/.
+$dirinstall/install_shortcut.sh $script "mate-terminal -e \"/bin/bash $script\""
 
 
 
