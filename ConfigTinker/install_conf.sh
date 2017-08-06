@@ -91,7 +91,7 @@ $dirinstall/install_shortcut.sh switch_language "mate-terminal -e \"/bin/bash sw
 script="setup_time"
 cp $dirinstall/$script.sh ~/bin/.
 sudo ln -sf ~/bin/$script.sh /usr/bin/$script
-sudo cp $dirinstall/clock.png /usr/share/pixmaps/.
+sudo cp $dirinstall/$script.png /usr/share/pixmaps/.
 $dirinstall/install_shortcut.sh $script "mate-terminal -e \"/bin/bash $script\""
 
 

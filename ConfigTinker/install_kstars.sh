@@ -33,6 +33,10 @@ sudo apt-get $options install libqt5sql5-sqlite
 ######
 sudo apt-get $options install indi-full kstars-bleeding
 ######
+# Installation des drivers 3rdparty qui ne sont pas sous forme de dépot
+######
+$dirinstall/install_other3rdparty_drivers.sh
+######
 # Installer le pad amélioré
 ######
 $dirinstall/install_pad.sh
@@ -51,6 +55,6 @@ sudo apt-get $options install astrometry.net
 ######
 # Installation des index
 ######
-$dirinstall/install_index.sh
+#$dirinstall/install_index.sh
 
 
