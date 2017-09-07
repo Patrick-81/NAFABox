@@ -11,10 +11,12 @@
 # Recherche du répertoire ConfigTinker
 ######
 dirinstall=$(find ~ -name ConfigTinker)
+##### 
+# Création du raccourci pour setup_time.sh
 ######
-dest="/usr/share/kstars/ekos/mount/qml/"
-sudo mv $dest/mountbox.qml $dest/mountbox.qml.old
-cp $dirinstall/pad.tar.gz /tmp
-sudo tar xvzf $dirinstall/pad.tar.gz -C $dest
- 
+script="setup_time"
+cp $dirinstall/$script.sh ~/bin/.
+sudo ln -sf ~/bin/$script.sh /usr/bin/$script
+sudo cp $dirinstall/$script.png /usr/share/pixmaps/.
+$dirinstall/install_shortcut.sh $script "mate-terminal -e \"/bin/bash $script\""
 
