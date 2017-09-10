@@ -10,7 +10,7 @@
 ######
 # Recherche du répertoire ConfigTinker
 ######
-dirinstall=$(find ~ -name ConfigTinker)
+dirinstall=${PWD}
 ######
 dest="/usr/share/kstars/ekos/mount/qml/"
 sudo mv $dest/mountbox.qml $dest/mountbox.qml.old

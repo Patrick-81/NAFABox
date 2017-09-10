@@ -7,7 +7,7 @@
 # V0.1
 ################################################
 #!/bin/bash
-dirinstall=$(find ~ -name ConfigTinker)
+dirinstall=${PWD}
 cd $dirinstall
 chmod +x ./*
 ./install_conf.sh
