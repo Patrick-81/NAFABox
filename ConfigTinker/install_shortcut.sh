@@ -16,6 +16,7 @@ source detect_language.sh
 ######
 # Créer le raccourci bureau
 ######
+echo $1 $2
 echo $2
 if [ -n "$2"  ]; then
 	AppExec=$2
