@@ -11,7 +11,7 @@
 ######
 # Recherche du répertoire ConfigTinker
 ######
-dirinstall=$(find ~ -name ConfigTinker)
+dirinstall=${PWD}
 ######
 sudo rm /var/lib/dpkg/lock
 sudo apt-get -y install libnss3
