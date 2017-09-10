@@ -21,7 +21,7 @@ sudo apt-get -y install dialog
 sudo apt-get -y install dirmngr
 sudo apt-get -y install git
 sudo apt-get -y install gparted
-sudo echo "NAFABox" > /etc/hostname
+#sudo echo "NAFABox" > /etc/hostname
 #sudo usermod -l nafa -d /home/nafa -m tinker
 
 ######
