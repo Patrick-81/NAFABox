@@ -2,7 +2,7 @@
 ######
 # Recherche du répertoire ConfigTinker
 ######
-dirinstall=$(find ~ -name ConfigTinker)
+dirinstall=${PWD}
 ######
 # Installation du driver : atikccd
 ######
