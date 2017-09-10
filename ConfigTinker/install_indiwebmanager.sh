@@ -28,11 +28,11 @@ pip install indiweb
 dir=/etc/systemd/system   #mettre le chemin du service en memoire
 MOI=$USER
 
-sudo updatedb     # mettre à jour la base d'indexation
+sudo updatedb     # mettre Ã  jour la base d'indexation
 
-dirindiweb=$(locate indi-web)  #récupérer le chemin du binaire indi-web
+dirindiweb=$(locate indi-web)  #rÃ©cupÃ©rer le chemin du binaire indi-web
 
-echo -e '[UNIT]\nDescription=INDI Web Manager\nAfter=multi-user.target\n\n[Service]\nType=idle\nUser='$MOI'\nExecStart='$dirindiweb' -v\nRestart=Always\nRestartSec=5\n[Install]\nWantedBy=multi-user.target' >> /tmp/indiwebmanager.service
+sudo echo -e '[UNIT]\nDescription=INDI Web Manager\nAfter=multi-user.target\n\n[Service]\nType=idle\nUser='$MOI'\nExecStart='$dirindiweb' -v\nRestart=Always\nRestartSec=5\n[Install]\nWantedBy=multi-user.target' >> /tmp/indiwebmanager.service
 
 sudo cp /tmp/indiwebmanager.service $dir/
 sudo chmod 644 $dir/indiwebmanager.service
