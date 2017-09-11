@@ -16,7 +16,7 @@ case $(uname -p) in
     ;;
 esac
 software="atikccd"
-version="$software""-""1.23"
+version="$software""-""1.24"
 file="$version""$proc.deb"
 echo $file
 wget http://download.cloudmakers.eu/$file -P /tmp/
@@ -37,7 +37,7 @@ software="indi-inova-ccd-"
 version="$software""-""1.3.0"
 file="$version""$proc.deb"
 echo $file
-wget http://download.cloudmakers.eu/$file -P /tmp/
+wget http://www.inova-ccd.fr/download/E.\ Drivers/Linux/$file -P /tmp/
 sudo dpkg -i /tmp/$file
 sudo apt install -f
 
