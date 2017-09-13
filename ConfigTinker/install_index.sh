@@ -19,6 +19,9 @@ then
 else
 	dirinstall=$(find ~ -name ConfigTinker)
 fi
+
+sudo -k dpkg --configure -a #réinitialise le passe root et reconfigure dpkg
+
 ######
 # Fonction min
 ######
