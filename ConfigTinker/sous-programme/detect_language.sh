@@ -5,11 +5,14 @@
 # 			Laurent Roge
 # On June 10 2017
 # V0.1
+# script appelé par install_setres.sh
 ################################################
 #!/bin/bash
-######
-# Detect language
-######
+#
+#########################
+# Detection du language #
+#########################
+#
 lang=$(locale | grep LANG= | grep fr_FR)
 if [[ $lang == *"fr_FR"* ]]
 then
@@ -17,4 +20,9 @@ then
 else
 	french=false
 fi
-
+#
+########################
+# fin de script quater #
+########################
+#
+exit
