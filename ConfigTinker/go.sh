@@ -13,9 +13,13 @@ sudo apt-get update
 sudo dpkg --configure -a
 dirinstall=$(find ~ -name ConfigTinker)
 cd $dirinstall
-chmod +x ./*.sh
+chmod +x ./*
+chmod +x ./sous-programme/*
+chmod +x ./annexe/*
 #
-./install_conf.sh
+./sous-programme/install_base.sh
+#
+./sous-programme/install_conf.sh
 #
 ##########################
 # fin du script primaire #
