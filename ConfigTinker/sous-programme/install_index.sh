@@ -5,13 +5,16 @@
 # 			Laurent Roge
 # On June 10 2017
 # V0.1
+# script appelé par update_conf.sh
 ################################################
 #!/bin/bash
-######
-# Calcul de champ
-######
-# Recherche du répertoire ConfigTinker
-######
+#
+dirinstall=$(find ~ -name ConfigTinker)
+#
+######################
+# installation index #
+######################
+#
 echo $1
 if [ "$1" = "debug" ]
 then
@@ -19,19 +22,20 @@ then
 else
 	dirinstall=$(find ~ -name ConfigTinker)
 fi
-######
+#
 # Fonction min
-######
+#
 valmax="define vmax(a, b) {
 				if (a > b) {
 					return (a);
 				}
 				return (b);
 			}"
-######
+#
 # test locale
-######
-source detect_language.sh
+#
+source $dirinstall/sous-programme/detect_language.sh
+#
 if $french
 then
 	compute[0]="Chargement des fichiers index"
@@ -89,12 +93,12 @@ if [ $exitstatus = 0 ]; then
 	vmin=$(echo "scale=1;0.5*$Diag" | bc)
 	vmax=$(echo "$valmax;vmax($ChampX,$ChampY)" | bc)
 
-#echo "Largeur capteur (mm) "$LC" Hauteur capteur(mm)"$HC\
-#	" Champ X(') "$ChampX" Champ Y(') "$ChampY" Diag (') "$Diag
-######
-# Charger le fichier des références d'index
-######
-	file2read=$dirinstall/index.txt
+#
+#############################################
+# Charger le fichier des références d'index #
+#############################################
+#
+	file2read=$dirinstall/annexe/index.txt
 	declare -a tabfile
 	declare -a tabvmin
 	declare -a tabvmax
@@ -107,9 +111,11 @@ if [ $exitstatus = 0 ]; then
 		((index++))
 	done < $file2read
 	nval=$index
-######
-# Chercher les fichiers utiles
-######
+#
+################################
+# Chercher les fichiers utiles #
+################################
+#
 	index=0
 	while [ $index -lt $nval ]
 	do
@@ -135,9 +141,11 @@ if [ $exitstatus = 0 ]; then
 		fi
 		((index++))
 	done
-######
-# what files to download ?
-######
+#
+############################
+# what files to download ? #
+############################
+#
 	listfile=""
 	for index in $(seq $indmax $indmin);
 	do
@@ -150,10 +158,11 @@ if [ $exitstatus = 0 ]; then
 	else
 		listefile=$(echo -e "Files to download:\n"$listfile)
 	fi
-
-######
-# Select files to download
-######
+#
+############################
+# Select files to download #
+############################
+#
 	MENU_OPTIONS=
 	allfiles=
 	COUNT=0
@@ -219,4 +228,11 @@ else
 	echo $exitstatus
 	exit
 fi
+#
+#################
+# fin de script #
+#################
+#
+exit
+
 
