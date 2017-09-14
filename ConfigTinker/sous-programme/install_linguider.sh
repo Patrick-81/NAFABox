@@ -5,27 +5,27 @@
 # 			Laurent Roge
 # On June 10 2017
 # V0.1
+# script appelé par update_conf.sh
 ################################################
 #!/bin/bash
-######
-# Recherche du répertoire ConfigTinker
-######
+#
 dirinstall=$(find ~ -name ConfigTinker)
-######
-# Remember where I am
-######
 whereiam=$dirinstall
-######
-# Installation des pré-requis
-######
+#
+###############################
+# Installation des pré-requis #
+###############################
+#
 sudo apt -y install g++
 sudo apt -y install libusb-1.0-0-dev
-######
-# Installation du programme : lin_guider
-#      Récupération
-#      Compilation
-#      Installation
-######
+#
+##########################################
+# Installation du programme : lin_guider #
+#      Récupération                      #  
+#      Compilation                       #
+#      Installation                      #
+##########################################
+#
 version="4.2.0"
 file="lin_guider-4.2.0.tar.bz2"
 mkdir -p /tmp/linguider
@@ -38,12 +38,20 @@ echo "Configuration $dirinstall"
 echo "Make"
 make
 sudo cp lin_guider /usr/bin/.
-######
-# Création de l'icône sur le bureau
-######
+#
+#####################################
+# Création de l'icône sur le bureau #
+#####################################
+#
 sudo cp rc/lin_guider.png /usr/share/pixmaps/.
 cd $whereiam
-$dirinstall/install_shortcut.sh lin_guider
+$dirinstall/sous-programme/install_shortcut.sh lin_guider
+#
+#################
+# fin de script #
+#################
+#
+exit
 
 
 
