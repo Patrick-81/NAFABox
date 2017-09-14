@@ -5,6 +5,7 @@
 # 			Laurent Roge
 # On June 10 2017
 # V0.1
+# script appelé par go.sh
 ################################################
 #!/bin/bash
 ######
@@ -12,22 +13,9 @@
 ######
 dirinstall=$(find ~ -name ConfigTinker)
 ######
-# Statut d'installation
-# Installation status
-######
-#touch $dirinstall/install-status.txt
-######
 # option for apt
 ######
 options="--auto-remove --yes -q"
-######
-# Install mate
-######
-#if [[ -z $(cat $dirinstall/install-status.txt | grep mate) ]]
-#then
-$dirinstall/install_base.sh
-#	echo mate >> $dirinstall/install-status.txt
-#fi
 ######
 # pré-requis
 # pre requisite
@@ -89,6 +77,12 @@ $dirinstall/install_shortcut.sh switch_language "mate-terminal -e \"/bin/bash sw
 # Création du raccourci pour setup_time.sh
 ######
 $dirinstall/install_setup-time.sh
+
+#
+# fin de scrpit second
+#
+exit
+
 
 
 
