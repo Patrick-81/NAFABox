@@ -5,6 +5,7 @@
 # 			Laurent Roge
 # On June 10 2017
 # V0.1
+# script appelé par install_conf.sh
 ################################################
 #!/bin/bash
 dirinstall=$(find ~ -name ConfigTinker)
@@ -169,7 +170,7 @@ do
 		;;
 	3)
 		echo "Install hotspot"
-		sudo $dirinstall/install_hotspot.sh
+		sudo $dirinstall/sous-programme/install_hotspot.sh
 		;;
 	4)
 		echo "Reboot"
