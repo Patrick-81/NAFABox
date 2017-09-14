@@ -5,28 +5,27 @@
 # 			Laurent Roge
 # On June 10 2017
 # V0.1
+# script appelé par go.sh
 ################################################
 #!/bin/bash
-######
-######
-# Recherche du répertoire ConfigTinker
-######
+#
+########################################
+# Recherche du répertoire ConfigTinker #
+########################################
+#
 dirinstall=$(find ~ -name ConfigTinker)
-######
-sudo rm /var/lib/dpkg/lock
+#
 sudo apt-get -y install libnss3
 sudo apt-get -y install software-properties-common
-sudo update
 sudo apt-get -y install dialog
 sudo apt-get -y install dirmngr
 sudo apt-get -y install git
 sudo apt-get -y install gparted
-sudo echo "NAFABox" > /etc/hostname
-#sudo usermod -l nafa -d /home/nafa -m tinker
-
-######
-# Options d'installation
-######
+#
+##########################
+# Options d'installation #
+##########################
+#
 DIALOG=${DIALOG=dialog}
 fichtemp=`tempfile 2>/dev/null` || fichtemp=/tmp/test$$
 trap "rm -f $fichtemp" 0 1 2 5 15
@@ -49,10 +48,17 @@ do
 		;;
 	esac
 done
-	
-# Options de apt-get pour l'installation des paquets
+#
+######################################################
+# Options de apt-get pour l'installation des paquets #
+######################################################
+#
 options="-y"
-#  Désinstallation de xfce et installation de Mate
+#
+####################################################
+#  Désinstallation de xfce et installation de Mate #
+####################################################
+#
 if [[ $installMate == 1 ]]
 then
 	# add repository pour avoir la 1.16 au lieu de la 1.12
@@ -69,8 +75,8 @@ then
 	sudo apt-get -y install lightdm
 	sudo apt-get -y install xserver-xorg
 	sudo apt-get -y install lightdm-greeter
-	# Mise à jourde l'autologin
-	cat  $dirinstall/20-lightdm.conf | sed -e "s/MOI/$(whoami)/g" > /tmp/20-lightdm.conf
+	# Mise à jour de l'autologin
+	cat  $dirinstall/annexe/20-lightdm.conf | sed -e "s/MOI/$(whoami)/g" > /tmp/20-lightdm.conf
 	sudo cp /tmp/20-lightdm.conf /etc/lighdm/lightdm.conf.d/.
 	# installation de base de maté
 	sudo apt-get $options install mate
@@ -115,5 +121,9 @@ then
 	sudo update-locale LC_ALL=fr_FR.UTF-8 LANG=fr_FR.UTF-8
 	sudo dpkg-reconfigure keyboard-configuration
 fi
-	
-
+#
+########################
+# fin de script second #
+########################
+#
+exit
