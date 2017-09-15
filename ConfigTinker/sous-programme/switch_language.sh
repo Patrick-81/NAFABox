@@ -7,7 +7,7 @@ dirinstall=$(find ~ -name ConfigTinker)
 ######
 # detect current language
 ######
-source $dirinstall/detect_language.sh
+source $dirinstall/sous-programme/detect_language.sh
 # open fd
 tempfile=`tempfile 2>/dev/null` || tempfile=/tmp/test$$
 trap "rm -f $tempfile" 0 1 2 5 15
