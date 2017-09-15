@@ -47,7 +47,7 @@ case $(uname -p) in
 esac
 #
 software="indi-inova-ccd-"
-version="$software""-""1.3.0"
+version="$software""1.3.0"
 file="$version""$proc.deb"
 echo $file
 wget http://www.inova-ccd.fr/download/E.\ Drivers/Linux/$file -P /tmp/
@@ -59,6 +59,4 @@ sudo apt install -f
 # fin de script #
 #################
 #
-exit
-
 

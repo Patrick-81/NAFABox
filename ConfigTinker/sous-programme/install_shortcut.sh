@@ -50,6 +50,4 @@ fi
 # fin de script #
 #################
 #
-exit
-
 

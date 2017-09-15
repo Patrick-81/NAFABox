@@ -63,4 +63,4 @@ sudo apt-get $options install astrometry.net
 # fin de script #
 #################
 #
-exit
+

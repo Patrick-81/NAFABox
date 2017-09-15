@@ -38,11 +38,11 @@ sudo apt-get $options install siril
 # Création de l'icône sur le bureau #
 #####################################
 #
-sudo cp /usr/share/icons/hicolor/32x32/apps/siril.png /usr/share/pixmaps
+sudo cp /usr/share/icons/hicolor/32x32/apps/siril.png /usr/share/pixmaps/
 $dirinstall/sous-programme/install_shortcut.sh siril
 #
 #################
 # fin de script #
 #################
 #
-exit
+

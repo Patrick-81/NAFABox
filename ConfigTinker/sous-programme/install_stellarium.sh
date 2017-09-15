@@ -39,4 +39,4 @@ $dirinstall/sous-programme/install_shortcut.sh stellarium
 # fin de script #
 #################
 #
-exit
+

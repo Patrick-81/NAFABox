@@ -30,4 +30,4 @@ $dirinstall/sous-programme/install_shortcut.sh phd2
 # fin de script #
 #################
 #
-exit
+

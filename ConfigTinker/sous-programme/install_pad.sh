@@ -24,4 +24,4 @@ sudo tar xvzf /tmp/pad.tar.gz -C $dest
 # fin de script #
 #################
 #
-exit
+

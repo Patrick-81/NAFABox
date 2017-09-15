@@ -47,4 +47,4 @@ sudo systemctl start indiwebmanager
 # fin de script #
 #################
 #
-exit
+

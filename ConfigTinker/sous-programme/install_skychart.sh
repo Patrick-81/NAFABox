@@ -47,4 +47,4 @@ $dirinstall/sous-programme/install_shortcut.sh skychart
 # fin de script #
 #################
 #
-exit
+

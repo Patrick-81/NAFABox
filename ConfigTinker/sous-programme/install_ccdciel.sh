@@ -41,4 +41,4 @@ $dirinstall/sous-programme/install_shortcut.sh ccdciel
 # fin de script #
 #################
 #
-exit
+

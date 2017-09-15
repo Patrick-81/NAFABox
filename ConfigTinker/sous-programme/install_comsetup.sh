@@ -88,9 +88,9 @@ sudo chown www-data:www-data $site/setdate.php
 # Pour les machines pour lesquelles le hanshake se passe mal
 ######
 cat $data/annexe/hotspotawake.service | sed -e "s/MOI/${moi}/g" > /tmp/hotspotawake.service
-sudo cp /tmp/hotspotawake.service /etc/systemd/system/.
+sudo cp /tmp/hotspotawake.service /etc/systemd/system/
 chmod +x hotspotawake.sh
-cp $data/sous-programme/hotspotawake.sh ~/bin/.
+cp $data/sous-programme/hotspotawake.sh ~/bin/
 sudo systemctl stop hotspotawake.service
 sudo systemctl disable hotspotawake.service
 sudo systemctl daemon-reload
@@ -158,4 +158,4 @@ sudo systemctl start novnc.service
 # fin de script #
 #################
 #
-exit
+

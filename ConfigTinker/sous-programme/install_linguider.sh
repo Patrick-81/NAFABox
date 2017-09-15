@@ -28,22 +28,22 @@ sudo apt -y install libusb-1.0-0-dev
 #
 version="4.2.0"
 file="lin_guider-4.2.0.tar.bz2"
-mkdir -p /tmp/linguider
-wget https://sourceforge.net/projects/linguider/files/$version/$file -P /tmp/linguider
-tar xvjf /tmp/linguider/$file -C /tmp/linguider
+mkdir -p /tmp/linguider/
+wget https://sourceforge.net/projects/linguider/files/$version/$file -P /tmp/linguider/
+tar xvjf /tmp/linguider/$file -C /tmp/linguider/
 # Pour la compilation on se déplace dans le répertoire expansé linguider
-cd /tmp/linguider/lin_guider_pack/lin_guider
+cd /tmp/linguider/lin_guider_pack/lin_guider/
 echo "Configuration $dirinstall"
 ./configure
 echo "Make"
 make
-sudo cp lin_guider /usr/bin/.
+sudo cp lin_guider /usr/bin/
 #
 #####################################
 # Création de l'icône sur le bureau #
 #####################################
 #
-sudo cp rc/lin_guider.png /usr/share/pixmaps/.
+sudo cp rc/lin_guider.png /usr/share/pixmaps/
 cd $whereiam
 $dirinstall/sous-programme/install_shortcut.sh lin_guider
 #
@@ -51,8 +51,4 @@ $dirinstall/sous-programme/install_shortcut.sh lin_guider
 # fin de script #
 #################
 #
-exit
-
-
-
 

@@ -28,4 +28,4 @@ sudo dpkg -i /tmp/$file
 # fin de script #
 #################
 #
-exit
+

@@ -186,4 +186,4 @@ done
 # fin de script #
 #################
 #
-exit
+
