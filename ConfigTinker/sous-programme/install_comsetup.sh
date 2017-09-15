@@ -146,7 +146,7 @@ cd /home/$moi
 
 git clone git://github.com/kanaka/noVNC
 
-cat $data/novnc.service | sed -e "s/MOI/${moi}/g" > /tmp/novnc.service
+cat $data/annexe/novnc.service | sed -e "s/MOI/${moi}/g" > /tmp/novnc.service
 sudo cp /tmp/novnc.service /etc/systemd/system/novnc.service
 sudo systemctl stop novnc.service
 sudo systemctl disable novnc.service
