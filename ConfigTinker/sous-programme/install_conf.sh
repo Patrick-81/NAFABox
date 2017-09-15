@@ -49,7 +49,7 @@ sudo cp /usr/share/icons/gnome/32x32/apps/system-software-update.png /usr/share/
 #
 # Création du raccourci pour update_conf
 #
-$dirinstall/install_shortcut.sh update_conf "mate-terminal -e \"/bin/bash update_conf\"" 
+$dirinstall/sous-programme/install_shortcut.sh update_conf "mate-terminal -e \"/bin/bash update_conf\"" 
 #
 ~/bin/update_conf.sh initial
 #
