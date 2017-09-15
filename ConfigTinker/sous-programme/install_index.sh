@@ -13,7 +13,7 @@
 # récolter les information du setup: #
 ######################################
 #
-focale=$(whiptail --title "calcul des index necessaire" --inputbox "quelle est la foclae de votre instrument en mm ?" 0 0 3>&1 1>&2 2>&3)
+focale=$(whiptail --title "calcul des index necessaire" --inputbox "quelle est la focale de votre instrument en mm ?" 0 0 3>&1 1>&2 2>&3)
 
 largeur=$(whiptail --title "calcul des index necessaire" --inputbox "quelle est la largeur de votre capteur en mm (coté le plus grand) ?" 0 0 3>&1 1>&2 2>&3)
 
