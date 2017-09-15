@@ -10,7 +10,6 @@
 #!/bin/bash
 #set -xv
 sudo apt-get update
-sudo dpkg --configure -a
 dirinstall=$(find ~ -name ConfigTinker)
 cd $dirinstall
 chmod +x ./*
