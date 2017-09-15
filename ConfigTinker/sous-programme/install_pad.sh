@@ -18,7 +18,7 @@ dirinstall=$(find ~ -name ConfigTinker)
 dest="/usr/share/kstars/ekos/mount/qml/"
 sudo mv $dest/mountbox.qml $dest/mountbox.qml.old
 cp $dirinstall/annexe/pad.tar.gz /tmp
-sudo tar xvzf $dirinstall/annexe/pad.tar.gz -C $dest
+sudo tar xvzf /tmp/pad.tar.gz -C $dest
 #
 #################
 # fin de script #
