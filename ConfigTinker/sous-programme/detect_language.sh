@@ -25,4 +25,3 @@ fi
 # fin de script quater #
 ########################
 #
-exit
