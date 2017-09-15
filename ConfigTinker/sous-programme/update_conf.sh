@@ -5,17 +5,17 @@
 # 			Laurent Roge
 # On June 10 2017
 # V0.1
+# script appelé par install_conf.sh
 ################################################
 #!/bin/bash
-######
-# Recherche du répertoire ConfigTinker
-######
 dirinstall=$(find ~ -name ConfigTinker)
-######
+#
 cd $dirinstall
-######
-# Fonction pour l'installation
-######
+#
+################################
+# Fonction pour l'installation #
+################################
+#
 installconf()
 {
 	if $1
@@ -78,43 +78,43 @@ installconf()
 		case $n in
 		0)
 			echo "Install web communications"
-			$dirinstall/install_comsetup.sh
+			$dirinstall/sous-programme/install_comsetup.sh
 			;;
 		1) 
 			echo "Install Lin_guider"
-			$dirinstall/install_linguider.sh
+			$dirinstall/sous-programme/install_linguider.sh
 			;;
 		2)
 			echo "Install kstars"
-			$dirinstall/install_kstars.sh
+			$dirinstall/sous-programme/install_kstars.sh
 			;;
 		3)
 			echo "Install phd2"
-			$dirinstall/install_phd2.sh
+			$dirinstall/sous-programme/install_phd2.sh
 			;;
 		4)
 			echo "Installation Skychart"
-			$dirinstall/install_skychart.sh
+			$dirinstall/sous-programme/install_skychart.sh
 			;;
 		5)
 			echo "Install ccdciel"
-			$dirinstall/install_ccdciel.sh
+			$dirinstall/sous-programme/install_ccdciel.sh
 			;;
 		6)
 			echo "Install planetary imager"
-			#$dirinstall/install_planetaryimager.sh
+			$dirinstall/sous-programme/install_planetaryimager.sh
 			;;
 		7)
 			echo "Install siril"
-			$dirinstall/install_siril.sh
+			$dirinstall/sous-programme/install_siril.sh
 			;;
 		8)
 			echo "Install stellarium"
-			$dirinstall/install_stellarium.sh
+			$dirinstall/sous-programme/install_stellarium.sh
 			;;
 		9)
 			echo "Install index(s)"
-			$dirinstall/install_index.sh
+			$dirinstall/sous-programme/install_index.sh
 			;;
 		255)
 			echo "escape";;
@@ -122,25 +122,21 @@ installconf()
 	done
 	return
 }
-######
-# Detect language
-######
-lang=$(locale | grep LANG= | grep fr_FR)
-if [[ $lang == *"fr_FR"* ]]
-then
-	french=true
-else
-	french=false
-fi
-######
-# Update conf
-######
+#
+####################################################
+source $dirinstall/sous-programme/detect_language.sh
+####################################################
+#
+###############
+# Update conf #
+###############
+#
 while true
 do
 	installconf $french
-######
+#
 # Reboot required
-######
+#
 	if $french
 	then
 		dial[0]="Voulez-vous maintenant ?"
@@ -174,7 +170,7 @@ do
 		;;
 	3)
 		echo "Install hotspot"
-		sudo $dirinstall/install_hotspot.sh
+		sudo $dirinstall/sous-programme/install_hotspot.sh
 		;;
 	4)
 		echo "Reboot"
@@ -185,4 +181,9 @@ do
 		;;
 	esac
 done
+#
+#################
+# fin de script #
+#################
+#
 

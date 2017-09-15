@@ -14,7 +14,7 @@ dirinstall=$(find ~ -name ConfigTinker)
 ######
 # Fonction pour l'installation
 ######
-source detect_language.sh
+source $dirinstall/sous-programme/detect_language.sh
 if $french
 then
 	sethour[0]="Mise à l'heure du système"

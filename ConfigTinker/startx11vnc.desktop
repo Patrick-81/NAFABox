@@ -1,9 +1,0 @@
-[Desktop Entry]
-Type=Application
-Exec=/home/nafa/bin/startx11vnc.sh
-Hidden=false
-X-MATE-Autostart-enabled=true
-Name[fr_FR]=Démarrage x11vnc
-Name=Démarrage x11vnc
-Comment[fr_FR]=
-Comment=

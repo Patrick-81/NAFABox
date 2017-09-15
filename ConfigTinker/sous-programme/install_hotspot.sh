@@ -1,11 +1,16 @@
+################################################
+# Under GPL license
+#     https://www.gnu.org/licenses/gpl.html
+# Authors:	Patrick Dutoit
+# 			Laurent Roge
+# On June 10 2017
+# V0.1
+# script appelé par update_conf.sh
+################################################
 #!/bin/bash
-######
-# Recherche du répertoire ConfigTinker
-######
+#
 dirinstall=$(find ~ -name ConfigTinker)
-######
-# pre-requis
-######
+#
 installed=$(apt -qq list uuid)
 testinstall=$([[ $(grep "install" <<< $installed) ]] && echo true || echo false)
 
@@ -20,7 +25,7 @@ fi
 ######
 # detect language
 ######
-source $dirinstall/detect_language.sh
+source $dirinstall/sous-programme/detect_language.sh
 ######
 # recupere le user
 ######
@@ -77,7 +82,7 @@ then
 		;;
 	esac
 	fic0=$(tempfile)
-	cat $dirinstall/nafabox.template | sed -e "s/wlan0/${device}/g" > $fic0
+	cat $dirinstall/annexe/nafabox.template | sed -e "s/wlan0/${device}/g" > $fic0
 	fic1=$(tempfile)
 	cat $fic0 | sed -e "s/HOTSPOTNAME/${hotspot_name}/g" > $fic1
 	fic2=$(tempfile)
@@ -102,5 +107,9 @@ then
 else
 	echo "No wifi decice found"
 fi
-
+#
+#################
+# fin de script #
+#################
+#
 

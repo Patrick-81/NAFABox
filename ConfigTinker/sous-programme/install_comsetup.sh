@@ -5,42 +5,38 @@
 # 			Laurent Roge
 # On June 10 2017
 # V0.1
+# script appelé par update_conf.sh
 ################################################
 #!/bin/bash
-######
-# Recherche du répertoire ConfigTinker
-######
+#
 dirinstall=$(find ~ -name ConfigTinker)
-######
-# recupere le user
-######
 moi=$(whoami)
 data=$dirinstall
-######
-# detect language
-######
-source detect_language.sh
-######
+#
+####################################################
+source $dirinstall/sous-programme/detect_language.sh
+####################################################
+#
 # Définir time zone
-######
+#
 sudo dpkg-reconfigure tzdata
-######
+#
 # Installer nginx
-######
+#
 sudo apt-get -y install nginx
-######
+#
 # Installer php
-######
+#
 sudo apt-get -y install php
-######
+#
 # Creer le répertoire www
-######
+#
 site=/home/$moi/www
 mkdir -p /home/$moi/www
-######
+#
 # Installer les fichiers nécessaires pour la mise à l'heure
 # en remote
-######
+#
 # le fichier html d'accès au site
 if $french
 then
@@ -91,62 +87,75 @@ sudo chown www-data:www-data $site/setdate.php
 ######
 # Pour les machines pour lesquelles le hanshake se passe mal
 ######
-cat hotspotawake.service | sed -e "s/MOI/${moi}/g" > /tmp/hotspotawake.service
-sudo cp /tmp/hotspotawake.service /etc/systemd/system/.
+cat $data/annexe/hotspotawake.service | sed -e "s/MOI/${moi}/g" > /tmp/hotspotawake.service
+sudo cp /tmp/hotspotawake.service /etc/systemd/system/
 chmod +x hotspotawake.sh
-cp hotspotawake.sh ~/bin/.
+cp $data/sous-programme/hotspotawake.sh ~/bin/
 sudo systemctl stop hotspotawake.service
 sudo systemctl disable hotspotawake.service
 sudo systemctl daemon-reload
 sudo systemctl enable hotspotawake.service
 sudo systemctl start hotspotawake.service
 ###### 
-cat $data/sudoers.txt | sed -e "s/MOI/${moi}/g" > /tmp/sudoers
+cat $data/annexe/sudoers.txt | sed -e "s/MOI/${moi}/g" > /tmp/sudoers
 sudo cp /tmp/sudoers /etc/sudoers.d/perm$moi
 echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
 echo "${dial[3]}"
 echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
-
-######
-# Installation du serveur nginx
-######
+#
+#################################
+# Installation du serveur nginx #
+#################################
+#
 sudo apt install -y --reinstall nginx
 sudo rm /etc/nginx/sites-available/default
 sudo rm /etc/nginx/sites-enabled/default
-cat $data/server.txt | sed -e "s/MOI/${moi}/g" > /tmp/site-$moi
+cat $data/annexe/server.txt | sed -e "s/MOI/${moi}/g" > /tmp/site-$moi
 sudo cp /tmp/site-$moi /etc/nginx/sites-available/site-$moi
 sudo chown $moi:$moi /etc/nginx/sites-available/site-$moi
 sudo ln -sf /etc/nginx/sites-available/site-$moi /etc/nginx/sites-enabled/site-$moi
-######
-# Install of webdav server
-######
-sudo $data/install_webdavserver.sh
-######
-# Installation x11vnc
-######
+#
+############################
+# Install of webdav server #
+############################
+#
+sudo $data/sous-programme/install_webdavserver.sh
+#
+#######################
+# Installation x11vnc #
+#######################
+#
 sudo apt -y install x11vnc
 mkdir -p ~/.x11vnc
-cp $dirinstall/startx11vnc.sh ~/bin/.
+mkdir -p ~/bin/
+cp $data/sous-programme/startx11vnc.sh ~/bin/
 chmod +x ~/bin/startx11vnc.sh
 ~/bin/startx11vnc.sh
-cp $dirinstall/startx11vnc.desktop ~/.config/autostart/.
-#sudo cp $data/x11vnc.service /etc/systemd/system/x11vnc.service
-######
-# Installation accès vnc via navigateur
-######
+mkdir -p ~/.config/autostart/
+cat $data/annexe/startx11vnc.desktop | sed -e "s/test/${moi}/g" > /tmp/startx11vnc.desktop
+cp /tmp/startx11vnc.desktop ~/.config/autostart/
+#
+#########################################
+# Installation accès vnc via navigateur #
+#########################################
+#
 sudo apt-get install -y novnc
+sudo apt-get install -y git
+
 cd /home/$moi
+
 git clone git://github.com/kanaka/noVNC
-cat $data/novnc.service | sed -e "s/MOI/${moi}/g" > /tmp/novnc.service
+
+cat $data/annexe/novnc.service | sed -e "s/MOI/${moi}/g" > /tmp/novnc.service
 sudo cp /tmp/novnc.service /etc/systemd/system/novnc.service
-sudo systemctl daemon-reload
-#sudo systemctl stop x11vnc.service
-#sudo systemctl disable x11vnc.service
-#sudo systemctl enable x11vnc.service
-#sudo systemctl start x11vnc.service
 sudo systemctl stop novnc.service
 sudo systemctl disable novnc.service
+sudo systemctl daemon-reload
 sudo systemctl enable novnc.service
 sudo systemctl start novnc.service
-
+#
+#################
+# fin de script #
+#################
+#
 

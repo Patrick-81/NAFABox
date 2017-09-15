@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Exec=/home/test/bin/startx11vnc.sh
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name[fr_FR]=startx11vnc.desktop
+Name=x11vnc
+Comment[fr_FR]=
+Comment=
