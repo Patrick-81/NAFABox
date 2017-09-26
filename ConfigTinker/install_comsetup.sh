@@ -126,26 +126,44 @@ sudo $data/install_webdavserver.sh
 ######
 sudo apt -y install x11vnc
 mkdir -p ~/.x11vnc
-cp $dirinstall/startx11vnc.sh ~/bin/.
+mkdir -p ~/bin/
+cp $dirinstall/startx11vnc.sh ~/bin/
 chmod +x ~/bin/startx11vnc.sh
 ~/bin/startx11vnc.sh
-cp $dirinstall/startx11vnc.desktop ~/.config/autostart/.
-#sudo cp $data/x11vnc.service /etc/systemd/system/x11vnc.service
+mkdir -p ~/.config/autostart/
+cat $dirinstall/startx11vnc.desktop | sed -e "s/nafa/${moi}/g" > /tmp/startx11vnc.desktop
+cp /tmp/startx11vnc.desktop ~/.config/autostart/
+#
 ######
 # Installation accès vnc via navigateur
 ######
 sudo apt-get install -y novnc
+sudo apt-get install -y git
+
 cd /home/$moi
+#
+#test si le dossier noVNC existe, si oui suppression
+#
+if [ -d "/home/${moi}/noVNC" ]
+  then
+  echo "suppression de l'ancien dossier noVNC"
+  rm -Rf /home/$moi/noVNC
+fi
+
 git clone git://github.com/kanaka/noVNC
+
+if [ -f /etc/systemd/system/novnc.service ]
+  then
+  sudo systemctl stop novnc.service
+  sudo systemctl disable novnc.service
+  sudo rm /etc/systemd/system/novnc.service
+fi
+
 cat $data/novnc.service | sed -e "s/MOI/${moi}/g" > /tmp/novnc.service
 sudo cp /tmp/novnc.service /etc/systemd/system/novnc.service
+sudo chmod 644 /etc/systemd/system/novnc.service
+
 sudo systemctl daemon-reload
-#sudo systemctl stop x11vnc.service
-#sudo systemctl disable x11vnc.service
-#sudo systemctl enable x11vnc.service
-#sudo systemctl start x11vnc.service
-sudo systemctl stop novnc.service
-sudo systemctl disable novnc.service
 sudo systemctl enable novnc.service
 sudo systemctl start novnc.service
 
