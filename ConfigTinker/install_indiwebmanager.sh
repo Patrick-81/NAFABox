@@ -15,11 +15,15 @@
 #####
 
 sudo apt-get install -y python-pip
+sudo apt-get install -y python-setuptools
+sudo apt-get install -y python-dev
+sudo apt-get install -y mlocate
 
 # installation des sources du serveur
 ######
-
+pip install --upgrade pip
 pip install indiweb
+#pip install indiweb --user
 
 ######
 # Installation du service

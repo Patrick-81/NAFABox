@@ -23,8 +23,8 @@ source $dirinstall/proctype.sh
 # Installation du programme : ccdciel
 ######
 software="ccdciel"
-version="$software""_""0.9.4"
-subversion="496"
+version="$software""_""0.9.6"
+subversion="533"
 file="$version""-$subversion""$proc.deb"
 echo $file
 wget https://sourceforge.net/projects/$software/files/$version/$file -P /tmp/

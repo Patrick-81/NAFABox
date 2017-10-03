@@ -93,8 +93,10 @@ then
 	sudo apt-get $options install mate-system-monitor
 	sudo apt-get $options install blueman
 	sudo apt-get $options install firefox
+	sudo apt-get $options install ubuntu-mate-themes
+	#sudo apt-get $options install chromium-browser
 	# désinstallation diverses des relicats de xfce et de thunderbird ajouté par maté
-	sudo apt-get -y purge thunderbird transmission-gtk thunar chromium-browser
+	sudo apt-get -y purge thunderbird transmission-gtk thunar
 	sudo apt-get -y remove --purge  libreoffice*
 	# mise à jour de tout le système
 	# sudo apt-get -q --yes dist-upgrade
