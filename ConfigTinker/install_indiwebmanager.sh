@@ -18,6 +18,8 @@ sudo apt-get install -y python-pip
 sudo apt-get install -y python-setuptools
 sudo apt-get install -y python-dev
 sudo apt-get install -y mlocate
+sudo apt-get install -y python-bottle python-psutil python-requests
+sudo chmod -R u+rw /usr/local
 
 # installation des sources du serveur
 ######
