@@ -19,7 +19,7 @@ sudo apt-get install -y python-setuptools
 sudo apt-get install -y python-dev
 sudo apt-get install -y mlocate
 sudo apt-get install -y python-bottle python-psutil python-requests
-sudo chmod -R u+rw /usr/local
+sudo chmod -R uga+rw /usr/local
 
 # installation des sources du serveur
 ######
@@ -39,8 +39,12 @@ sudo updatedb     # mettre à jour la base d'indexation
 dirindiweb=$(locate indi-web)  #récupérer le chemin du binaire indi-web
 
 echo -e '[UNIT]\nDescription=INDI Web Manager\nAfter=multi-user.target\n\n[Service]\nType=idle\nUser='$MOI'\nExecStart='$dirindiweb' -v\nRestart=Always\nRestartSec=5\n[Install]\nWantedBy=multi-user.target' >> /tmp/indiwebmanager.service
+#echo -e '[UNIT]\nDescription=INDI Web Manager\nAfter=multi-user.target\n\n[Service]\nType=idle\nUser='$MOI'\nExecStart=/usr/local/bin/indi-web -v\nRestart=Always\nRestartSec=5\n[Install]\nWantedBy=multi-user.target' >> /tmp/indiwebmanager.service
+
+
 
 sudo cp /tmp/indiwebmanager.service $dir/
+sudo rm /tmp/indiwebmanager.service
 sudo chmod 644 $dir/indiwebmanager.service
 
 ######

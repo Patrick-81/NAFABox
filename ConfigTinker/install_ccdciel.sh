@@ -14,21 +14,30 @@ dirinstall=$(find ~ -name ConfigTinker)
 ######
 # Installation des pré-requis
 ######
-$dirinstall/install_libpasastro.sh
+#$dirinstall/install_libpasastro.sh
 ######
 # détection de l'architecture
 ######
-source $dirinstall/proctype.sh
+#source $dirinstall/proctype.sh
 ######
 # Installation du programme : ccdciel
 ######
-software="ccdciel"
-version="$software""_""0.9.6"
-subversion="533"
-file="$version""-$subversion""$proc.deb"
-echo $file
-wget https://sourceforge.net/projects/$software/files/$version/$file -P /tmp/
-sudo dpkg -i /tmp/$file
+#software="ccdciel"
+#version="$software""_""0.9.8"
+#subversion="533"
+#file="$version""-$subversion""$proc.deb"
+#echo $file
+#wget https://sourceforge.net/projects/$software/files/$version/$file -P /tmp/
+#sudo dpkg -i /tmp/$file
+######
+# Installation du programme : ccdciel + libpasastro via ppa
+######
+
+sudo apt-add-repository 'deb http://www.ap-i.net/apt unstable main'
+apt-key adv --keyserver keyserver.ubuntu.com --recv-keys AA716FC2
+sudo apt-get update
+sudo apt-get -y install ccdciel
+
 ######
 # Création de l'icône sur le bureau
 ######
