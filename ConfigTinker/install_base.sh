@@ -34,10 +34,12 @@ $DIALOG --backtitle "Option" \
 	--title "Options" --clear \
     --checklist "Select Option" 20 61 8 \
         0 "Mate destktop and components" off\
-		1 "Fr language" off 2> $fichtemp
+		1 "Fr language" off\ 
+		2 "Autologin for user" off 2> $fichtemp
 valret=$?
 language=0
 installMate=0
+autologin=0
 for n in $(cat $fichtemp)
 do
 	case $n in
@@ -47,11 +49,28 @@ do
 	1)
 		language=1
 		;;
+	2)
+		autologin=1
+		;;
 	esac
 done
 	
 # Options de apt-get pour l'installation des paquets
 options="-y"
+#activation de l'autologin pour les version nightly
+if [[$autologin == 1]]
+then
+	if [ -f "/usr/share/lightdm/lightdm.conf.d/60-lightdm-gtk-greeter.conf" ]
+	then
+		if [grep -q "autologin" "/usr/share/lightdm/lightdm.conf.d/60-lightdm-gtk-greeter.conf" ]
+		then
+			echo "autologin exist"
+		else
+			echo "autologin activate"
+			echo "autologin-user=$USER"| sudo tee -a /usr/share/lightdm/lightdm.conf.d/60-lightdm-gtk-greeter.conf
+		fi
+	fi
+fi
 #  Désinstallation de xfce et installation de Mate
 if [[ $installMate == 1 ]]
 then
