@@ -35,7 +35,7 @@ $DIALOG --backtitle "Option" \
     --checklist "Select Option" 20 61 8 \
         0 "Mate destktop and components" off\
 		1 "Fr language" off\ 
-		2 "Autologin for user" off 2> $fichtemp
+		2 "Autologin for user armbian" on 2> $fichtemp
 valret=$?
 language=0
 installMate=0
