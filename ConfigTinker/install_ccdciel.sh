@@ -36,7 +36,7 @@ dirinstall=$(find ~ -name ConfigTinker)
 sudo apt-add-repository 'deb http://www.ap-i.net/apt unstable main'
 apt-key adv --keyserver keyserver.ubuntu.com --recv-keys AA716FC2
 sudo apt-get update
-sudo apt-get -y install ccdciel
+sudo apt-get -y --allow-unauthenticated install ccdciel
 
 ######
 # Création de l'icône sur le bureau
