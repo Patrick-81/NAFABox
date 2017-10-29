@@ -16,7 +16,7 @@ case $(uname -p) in
     ;;
 esac
 software="atikccd"
-version="$software""-""1.25"
+version="$software""-""1.26"
 file="$version""$proc.deb"
 echo $file
 wget http://download.cloudmakers.eu/$file -P /tmp/
