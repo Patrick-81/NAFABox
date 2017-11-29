@@ -21,19 +21,24 @@ sudo apt-get -y install libccfits0v5 libopencv-highgui2.4v5 libqt5opengl5 libv4l
 case $(uname -p) in
 "armv7l") 
 	proc="armv7"
+	code="AABmt2KGu8THriaSPnkt3cD0a"
 	;;
 "x86_64")
 	proc="x86_64"
+	code="AABRn_pACN8l0_jsjTJqed1Ga"
 	;;
 esac
 ######
 # Installation du programme : cartes du ciel
 ######
 software="PlanetaryImager"
-version="0.6.2"
-site="https://github.com/GuLinux/$software/releases/download/v$version"
-file="$software-$version-Linux-$proc""_ubuntu-16.04.deb"
-wget $site/$file -P /tmp/
+version="0.7.0"
+#site="https://github.com/GuLinux/$software/releases/download/v$version"
+site="https://www.dropbox.com/sh/7ofjp0s6gbelff4/$code/releases"
+#file="$software-$version-Linux-$proc""_ubuntu-16.04.deb"
+file="$version/$software-$version-Linux-$proc""_ubuntu-16.04.deb"
+#wget $site/$file -P /tmp/
+wget $site/$file -P /tmp/ --no-check-certificate
 sudo dpkg --force overwrite -i /tmp/$file
 ######
 # Création de l'icône sur le bureau
