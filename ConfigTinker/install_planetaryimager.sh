@@ -36,13 +36,13 @@ version="0.7.0"
 #site="https://github.com/GuLinux/$software/releases/download/v$version"
 site="https://www.dropbox.com/sh/7ofjp0s6gbelff4/$code/releases"
 #file="$software-$version-Linux-$proc""_ubuntu-16.04.deb"
-file="$version/$software-$version-Linux-$proc""_ubuntu-16.04.deb"
+file="$software-$version-Linux-$proc""_ubuntu-16.04.deb"
 #wget $site/$file -P /tmp/
-wget $site/$file -P /tmp/ --no-check-certificate
+wget $site/$version/$file -P /tmp/ --no-check-certificate
 sudo dpkg --force overwrite -i /tmp/$file
 ######
 # Création de l'icône sur le bureau
 ######
-sudo cp /usr/share/icons/hicolor/32x32/apps/planetary_imager.png /usr/share/pixmaps
+sudo cp /usr/share/icons/hicolor/24x24/apps/planetary_imager.png /usr/share/pixmaps
 $dirinstall/install_shortcut.sh planetary_imager
 
