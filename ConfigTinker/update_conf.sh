@@ -102,7 +102,7 @@ installconf()
 			;;
 		6)
 			echo "Install planetary imager"
-			#$dirinstall/install_planetaryimager.sh
+			$dirinstall/install_planetaryimager.sh
 			;;
 		7)
 			echo "Install siril"
