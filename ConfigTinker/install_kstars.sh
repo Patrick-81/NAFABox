@@ -32,6 +32,7 @@ sudo apt-get $options install libqt5sql5-sqlite
 #              de tous les drivers
 ######
 sudo apt-get $options install indi-full kstars-bleeding
+sudo apt-get $options install indi-dbg kstars-bleeding-dbg
 ######
 # Installation des drivers 3rdparty qui ne sont pas sous forme de dépot
 ######
