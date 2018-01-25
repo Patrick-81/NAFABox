@@ -33,9 +33,11 @@ installconf()
 	then
 		choice[0]="Couche de communication web"
 		choice[4]="Carte du ciel"
+		choice[9]="install GPSD pour GPS USB"
 	else
 		choice[0]="Web communication layer"
 		choice[4]="Skychart"
+		choice[9]="install GPSD for USB GPS"
 	fi
 	choice[1]="Lin_guider"
 	choice[2]="Kstars"
@@ -44,13 +46,14 @@ installconf()
 	choice[6]="Planetary Imager"
 	choice[7]="Siril"
 	choice[8]="Stellarium"
-	choice[9]="install astrometry index(s)"
+	choice[10]="install astrometry index(s)"
+	choice[11]="install ip_indicator"
 
 	if $init
 	then
-		st=(on off on on off off off off off)
+		st=(on off on on off off off off off off off)
 	else
-		st=(off off off off off off off off off)
+		st=(off off off off off off off off off off off)
 	fi		
 	echo ${st[*]}
 
@@ -71,6 +74,8 @@ installconf()
 			7 "${choice[7]}" "${st[7]}"\
 			8 "${choice[8]}" "${st[8]}"\
 			9 "${choice[9]}" "${st[9]}"\
+			10 "${choice[10]}" "${st[10]}"\
+			11 "${choice[11]}" "${st[11]}"\
 			 2> $fichtemp
 	valret=$?
 	for n in $(cat $fichtemp)
@@ -113,9 +118,17 @@ installconf()
 			$dirinstall/install_stellarium.sh
 			;;
 		9)
+			echo "Install GPSD"
+			$dirinstall/install_gps.sh
+			;;
+		10)
 			echo "Install index(s)"
 			$dirinstall/install_index.sh
 			;;
+		11)
+			echo "Install IP_indicator"
+			$dirinstall/install_ip_indicator.sh
+			;
 		255)
 			echo "escape";;
 		esac
