@@ -54,11 +54,11 @@ do
 		;;
 	esac
 done
-	
+
 # Options de apt-get pour l'installation des paquets
 options="-y"
 #activation de l'autologin pour les version nightly
-if [[$autologin == 1]]
+if [ $autologin = 1 ]
 then
 	if [ -f "/usr/share/lightdm/lightdm.conf.d/60-lightdm-gtk-greeter.conf" ]
 	then
@@ -137,4 +137,5 @@ then
 	sudo dpkg-reconfigure keyboard-configuration
 fi
 	
+
 

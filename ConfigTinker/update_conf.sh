@@ -128,7 +128,7 @@ installconf()
 		11)
 			echo "Install IP_indicator"
 			$dirinstall/install_ip_indicator.sh
-			;
+			;;
 		255)
 			echo "escape";;
 		esac
