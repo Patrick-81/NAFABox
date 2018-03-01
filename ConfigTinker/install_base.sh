@@ -3,6 +3,7 @@
 #     https://www.gnu.org/licenses/gpl.html
 # Authors:	Patrick Dutoit
 # 			Laurent Roge
+#			Sébastien Durand
 # On June 10 2017
 # V0.1
 ################################################
@@ -21,39 +22,58 @@ sudo apt-get -y install dialog
 sudo apt-get -y install dirmngr
 sudo apt-get -y install git
 sudo apt-get -y install gparted
+sudo apt-get -y install zenity
 sudo echo "NAFABox" > /etc/hostname
 #sudo usermod -l nafa -d /home/nafa -m tinker
 
 ######
 # Options d'installation
 ######
-DIALOG=${DIALOG=dialog}
+
+# affichage
 fichtemp=`tempfile 2>/dev/null` || fichtemp=/tmp/test$$
-trap "rm -f $fichtemp" 0 1 2 5 15
-$DIALOG --backtitle "Option" \
-	--title "Options" --clear \
-    --checklist "Select Option" 20 61 8 \
-        0 "Mate destktop and components" off\
-		1 "Fr language" off\
-		2 "Autologin for user armbian" off 2> $fichtemp
-valret=$?
+error=`tempfile 2>/dev/null` || fichtemp=/tmp/error$$
+
+zenity --title "Select Installation Options :" \
+	--width=400 --height=200 \
+	--list \
+	--checklist \
+	--column "install" --column "Program" \
+	FALSE "Mate destktop and components" FALSE "Fr language" FALSE "Autologin for user armbian" 1>$fichtemp 2>$error
+
+# init
 language=0
 installMate=0
 autologin=0
-for n in $(cat $fichtemp)
-do
-	case $n in
-	0)
-		installMate=1
-		;;
-	1)
-		language=1
-		;;
-	2)
-		autologin=1
-		;;
-	esac
-done
+
+# test 
+cat $fichtemp | grep -q "Mate destktop and components"
+	installMate=$?
+if [ $installMate = 0 ]
+then
+	installMate=1
+else
+	installMate=0
+fi
+
+cat $fichtemp | grep -q "Fr language"
+	language=$?
+if [ $language = 0 ]
+then
+	language=1
+else
+	language=0
+fi
+
+cat $fichtemp | grep -q "Autologin for user armbian"
+	autologin=$?
+if [ $autologin = 0 ]
+then
+	autologin=1
+else
+	autologin=0
+fi
+
 
 # Options de apt-get pour l'installation des paquets
 options="-y"

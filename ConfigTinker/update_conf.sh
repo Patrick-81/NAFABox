@@ -18,121 +18,110 @@ cd $dirinstall
 ######
 installconf()
 {
-	if $1
+if $1
+then
+	dial[0]="Installation/Mise à jour des logiciels"
+	dial[1]="Installation complémentaire"
+	dial[2]="Choisir le(s) logiciel(s) à installer"
+else
+	dial[0]="Install/Update of software"
+	dial[1]="Additional software(s)"
+	dial[2]="Choose software(s) to install"
+fi
+
+if $1
+then
+	choice[0]="Couche de communication web"
+	choice[4]="Carte du ciel"
+	choice[9]="install GPSD pour GPS USB"
+else
+	choice[0]="Web communication layer"
+	choice[4]="Skychart"
+	choice[9]="install GPSD for USB GPS"
+fi
+choice[1]="Lin_guider"
+choice[2]="Kstars"
+choice[3]="Phd2"
+choice[5]="Ccdciel"
+choice[6]="Planetary Imager"
+choice[7]="Siril"
+choice[8]="Stellarium"
+choice[10]="install astrometry index(s)"
+choice[11]="install ip indicator"
+
+message[0]="Install web communications"
+message[1]="Install Lin_guider"
+message[2]="Install kstars"
+message[3]="Install phd2"
+message[4]="Installation Skychart"
+message[5]="Install ccdciel"
+message[6]="Install planetary imager"
+message[7]="Install siril"
+message[8]="Install stellarium"
+message[9]="Install GPSD"
+message[10]="Install index(s)"
+message[11]="Install IP_indicator"
+
+script[0]=install_comsetup.sh
+script[1]=install_linguider.sh
+script[2]=install_kstars.sh
+script[3]=install_phd2.sh
+script[4]=install_skychart.sh
+script[5]=install_ccdciel.sh
+script[6]=install_planetaryimager.sh
+script[7]=install_siril.sh
+script[8]=install_stellarium.sh
+script[9]=install_gps.sh
+script[10]=install_index.sh
+script[11]=install_ip_indicator.sh
+
+
+if $init
+then
+	#st=(true false true true false false false false false false false false)
+	st=(true true true true true true true true true true true true)
+else
+	st=(false false false false false false false false false false false false)
+fi
+echo ${st[*]}
+echo ${choise[*]}
+echo ${dial[*]}
+
+
+# affichage
+fichtemp=`tempfile 2>/dev/null` || fichtemp=/tmp/test$$
+error=`tempfile 2>/dev/null` || fichtemp=/tmp/error$$
+
+zenity --title "${dial[1]}" \
+	--width=400 --height=400 \
+	--list \
+	--checklist \
+	--column "install" --column "Program" \
+	"${st[0]}" "${choice[0]}" \
+	"${st[1]}" "${choice[1]}" \
+	"${st[2]}" "${choice[2]}" \
+	"${st[3]}" "${choice[3]}" \
+	"${st[4]}" "${choice[4]}" \
+	"${st[5]}" "${choice[5]}" \
+	"${st[6]}" "${choice[6]}" \
+	"${st[7]}" "${choice[7]}" \
+	"${st[8]}" "${choice[8]}" \
+	"${st[9]}" "${choice[9]}" \
+	"${st[10]}" "${choice[10]}" \
+	"${st[11]}" "${choice[11]}" 1>$fichtemp 2>$error
+
+
+
+# test 
+for (( i=1; i<=11; i++ ))
+do
+	cat $fichtemp | grep -q "${choice[$i]}"
+	if [ $? = 0 ]
 	then
-		dial[0]="Installation/Mise à jour des logiciels"
-		dial[1]="Installation complémentaire"
-		dial[2]="Choisir le(s) logiciel(s) à installer"
-	else
-		dial[0]="Install/Update of software"
-		dial[1]="Additional software(s)"
-		dial[2]="Choose software(s) to install"
+		echo ${choice[$i]}
+		$dirinstall/${script[$i]}
 	fi
-
-	if $1
-	then
-		choice[0]="Couche de communication web"
-		choice[4]="Carte du ciel"
-		choice[9]="install GPSD pour GPS USB"
-	else
-		choice[0]="Web communication layer"
-		choice[4]="Skychart"
-		choice[9]="install GPSD for USB GPS"
-	fi
-	choice[1]="Lin_guider"
-	choice[2]="Kstars"
-	choice[3]="Phd2"
-	choice[5]="Ccdciel"
-	choice[6]="Planetary Imager"
-	choice[7]="Siril"
-	choice[8]="Stellarium"
-	choice[10]="install astrometry index(s)"
-	choice[11]="install ip_indicator"
-
-	if $init
-	then
-		st=(on off on on off off off off off off off)
-	else
-		st=(off off off off off off off off off off off)
-	fi		
-	echo ${st[*]}
-
-	DIALOG=${DIALOG=dialog}
-	fichtemp=`tempfile 2>/dev/null` || fichtemp=/tmp/test$$
-	trap "rm -f $fichtemp" 0 1 2 5 15
-
-	$DIALOG --backtitle "${dial[0]}" \
-		--title "${dial[1]}" --clear \
-    	--checklist "${dial[2]}" 20 61 9 \
-        	0 "${choice[0]}" "${st[0]}"\
-			1 "${choice[1]}" "${st[1]}"\
-			2 "${choice[2]}" "${st[2]}"\
-			3 "${choice[3]}" "${st[3]}"\
-			4 "${choice[4]}" "${st[4]}"\
-			5 "${choice[5]}" "${st[5]}"\
-			6 "${choice[6]}" "${st[6]}"\
-			7 "${choice[7]}" "${st[7]}"\
-			8 "${choice[8]}" "${st[8]}"\
-			9 "${choice[9]}" "${st[9]}"\
-			10 "${choice[10]}" "${st[10]}"\
-			11 "${choice[11]}" "${st[11]}"\
-			 2> $fichtemp
-	valret=$?
-	for n in $(cat $fichtemp)
-	do
-		case $n in
-		0)
-			echo "Install web communications"
-			$dirinstall/install_comsetup.sh
-			;;
-		1) 
-			echo "Install Lin_guider"
-			$dirinstall/install_linguider.sh
-			;;
-		2)
-			echo "Install kstars"
-			$dirinstall/install_kstars.sh
-			;;
-		3)
-			echo "Install phd2"
-			$dirinstall/install_phd2.sh
-			;;
-		4)
-			echo "Installation Skychart"
-			$dirinstall/install_skychart.sh
-			;;
-		5)
-			echo "Install ccdciel"
-			$dirinstall/install_ccdciel.sh
-			;;
-		6)
-			echo "Install planetary imager"
-			$dirinstall/install_planetaryimager.sh
-			;;
-		7)
-			echo "Install siril"
-			$dirinstall/install_siril.sh
-			;;
-		8)
-			echo "Install stellarium"
-			$dirinstall/install_stellarium.sh
-			;;
-		9)
-			echo "Install GPSD"
-			$dirinstall/install_gps.sh
-			;;
-		10)
-			echo "Install index(s)"
-			$dirinstall/install_index.sh
-			;;
-		11)
-			echo "Install IP_indicator"
-			$dirinstall/install_ip_indicator.sh
-			;;
-		255)
-			echo "escape";;
-		esac
-	done
+done
 	return
 }
 ######
