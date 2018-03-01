@@ -21,3 +21,5 @@ https://dl.armbian.com/tinkerboard/Ubuntu_xenial_default_desktop.7z
 
 8/ When finished shutdown and restart your board.
 
+
+documentation : https://lroge.scenari-community.org/KstarsEkosIndi/#Nafabox_1
