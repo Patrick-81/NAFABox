@@ -14,7 +14,7 @@ dirinstall=$(find ~ -name ConfigTinker)
 ######
 # Add PPA
 ######
-sudo apt-add-repository ppa:bovender/bovender
+sudo apt-add-repository -y ppa:bovender/bovender
 ######
 # basic update
 ######
