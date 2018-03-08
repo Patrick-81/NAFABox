@@ -78,8 +78,8 @@ script[11]=install_ip_indicator.sh
 
 if $init
 then
-	#st=(true false true true false false false false false false false false)
-	st=(true true true true true true true true true true true true)
+	st=(true false true true false false false false false false false false)
+	
 else
 	st=(false false false false false false false false false false false false)
 fi
@@ -113,7 +113,7 @@ zenity --title "${dial[1]}" \
 
 
 # test 
-for (( i=1; i<=11; i++ ))
+for (( i=0; i<=11; i++ ))
 do
 	cat $fichtemp | grep -q "${choice[$i]}"
 	if [ $? = 0 ]
