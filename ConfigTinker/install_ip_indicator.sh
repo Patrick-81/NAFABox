@@ -14,7 +14,7 @@ dirinstall=$(find ~ -name ConfigTinker)
 ######
 # Add PPA
 ######
-sudo apt-add-repository ppa:bovender/bovender
+sudo apt-add-repository -y ppa:bovender/bovender
 ######
 # basic update
 ######
@@ -22,7 +22,8 @@ sudo apt-get update
 ######
 # Installation des pré-requis
 ######
-sudo apt-get -y install mate-indicator-applet libatk-adaptor libgail-common 
+sudo apt-get -y install mate-indicator-applet libatk-adaptor libgail-common libido gsettings-ubuntu-schemas libgee liburl
+sudo apt-get -y install indicator-application indicator-messages indicator-sound 
 sudo apt-get -y install indicator-application-gtk2 indicator-messages-gtk2 indicator-sound-gtk2
 ######
 # détection de l'architecture
