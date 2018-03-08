@@ -83,9 +83,9 @@ then
 else
 	st=(false false false false false false false false false false false false)
 fi
-echo ${st[*]}
-echo ${choise[*]}
-echo ${dial[*]}
+# echo ${st[*]}
+# echo ${choise[*]}
+# echo ${dial[*]}
 
 
 # affichage
