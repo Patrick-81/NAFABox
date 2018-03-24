@@ -1,0 +1,43 @@
+18c18
+< 
+---
+> //#define TINKER 1
+20a21,23
+> #ifdef TINKER 
+> #include <wiringPi.h>
+> #elif
+21a25
+> #endif
+28a33,42
+> #ifdef TINKER
+> #define bcm2835_gpio_write digitalWrite
+> #define bcm2835_delay delay
+> #define bcm2835_gpio_lev digitalRead
+> #define bcm2835_gpio_fsel pinMode
+> #define BCM2835_GPIO_FSEL_OUTP OUTPUT
+> #define BCM2835_GPIO_FSEL_INPT INPUT
+> #define BCM2835_GPIO_PUD_OFF   PUD_OFF
+> #endif
+> 
+29a44,49
+> #ifdef TINKER
+> #define IN1 29
+> #define IN2 31
+> #define IN3 33
+> #define IN4 37
+> #elif
+33a54
+> #endif
+86c107,114
+< 
+---
+> #ifdef TINKER
+>     int ret=!wiringPiSetupPhys();
+> 	if (!ret)
+> 	{
+> 		IDLog("Problem initiating Astroberry Board.");
+> 		return;
+> 	}
+> #elif
+100a129
+> #endif
