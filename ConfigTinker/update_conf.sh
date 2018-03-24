@@ -48,6 +48,7 @@ choice[7]="Siril"
 choice[8]="Stellarium"
 choice[10]="install astrometry index(s)"
 choice[11]="install ip indicator"
+choice[12]="install astroberry_diy"
 
 message[0]="Install web communications"
 message[1]="Install Lin_guider"
@@ -61,6 +62,7 @@ message[8]="Install stellarium"
 message[9]="Install GPSD"
 message[10]="Install index(s)"
 message[11]="Install IP_indicator"
+message[12]="Install astroberry_diy"
 
 script[0]=install_comsetup.sh
 script[1]=install_linguider.sh
@@ -74,6 +76,7 @@ script[8]=install_stellarium.sh
 script[9]=install_gps.sh
 script[10]=install_index.sh
 script[11]=install_ip_indicator.sh
+script[12]=install_astroberry_diy.sh
 
 
 if $init
@@ -108,7 +111,8 @@ zenity --title "${dial[1]}" \
 	"${st[8]}" "${choice[8]}" \
 	"${st[9]}" "${choice[9]}" \
 	"${st[10]}" "${choice[10]}" \
-	"${st[11]}" "${choice[11]}" 1>$fichtemp 2>$error
+	"${st[11]}" "${choice[11]}" \
+	"${st[12]}" "${choice[12]}" 1>$fichtemp 2>$error
 
 
 
