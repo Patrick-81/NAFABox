@@ -1,10 +1,18 @@
 #!/usr/bin/python
+from os.path import expanduser
 from Tkinter import *
 import os
 
 class Application(Frame):
     def setres(self, res):
         cmd="xrandr --fb "+res
+        home = expanduser("~")
+        fresname=home+"/.config/resol.scr"
+        fres=open(fresname,"w")
+        fres.write("#!/bin/bash"+'\n')
+        fres.write(cmd+'\n')
+        fres.close()
+        os.system("chmod +x "+fresname)
         print "res:",cmd
         os.system(cmd)
 

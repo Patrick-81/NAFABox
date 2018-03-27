@@ -1,0 +1,2 @@
+#!/bin/bash
+xrandr --fb 1600x900
