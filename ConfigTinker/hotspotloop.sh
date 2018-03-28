@@ -5,7 +5,7 @@ do
 	else
     	echo "'iwlist' is not installed (package \"wireless-tools\")."
 	fi
-	sleep 5
+	sleep 1
 done) &
 
 
