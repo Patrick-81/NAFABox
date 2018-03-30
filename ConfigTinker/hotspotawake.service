@@ -1,11 +1,11 @@
 [Unit]
-Description=Effectue une operation iw toutes les 1s.
+Description=Effectue une operation iw toutes les 2s.
 
 [Service]
 User=MOI
 Group=MOI
 Restart=always
-RestartSec=1s
+RestartSec=2s
 ExecStart=/home/MOI/bin/hotspotawake.sh
 
 [Install]
