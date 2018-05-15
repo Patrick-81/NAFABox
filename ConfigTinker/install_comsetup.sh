@@ -16,6 +16,7 @@ dirinstall=$(find ~ -name ConfigTinker)
 ######
 moi=$(whoami)
 data=$dirinstall
+cd $dirinstall
 ######
 # detect language
 ######
@@ -44,50 +45,26 @@ mkdir -p /home/$moi/www
 # le fichier html d'accès au site
 if $french
 then
-	dial[0]="Mettre à l'heure"
-	dial[1]="Actualiser l'affichage de l'heure"
+	dial[0]="Actualiser la date"
+	dial[1]="Date==>NAFABox"
 	dial[2]="Date actualisée a"
 	dial[3]="Pour la mise a l'heure se connecter sur le boitier
 avec l'adresse IP de ce dernier qui differe selon qu'il
 est soit en reseau domestique soit en mode point d'acces."
 else
-	dial[0]="Set time and date"
-	dial[1]="Update time and date"
+	dial[0]="Actuate Date"
+	dial[1]="Update hour"
 	dial[2]="Date and time updated to"
 	dial[3]="To update remote date do connect to the box with its
 IP adress which is different if it is on home network or access point"
 fi
-echo "<form action=\"/setdate.php\" method=\"post\">
-  <div>
-    <input name=\"date\" id=\"date\" value=\"\">
-  </div>
-  <script type=\"text/javascript\">
-	var a = update();
-    function update() {
-      var d = new Date();
-      var utc=d.toString();
-      console.log(utc)
-      document.getElementById(\"date\").value = utc;
-    }
- </script>
- <div>
-    <button>"${dial[0]}"</button>
-  </div>
-</form>
-<form action="">
-  <div>
-	<button onclick=\"update()\">"${dial[1]}"</button>
-  </div>
-</form>" > $site/index.html
-
-# le fichier de mise à l'heure
-echo "<?php 
-   \$date  = \$_POST['date'];
-   \$command=\"sudo date -s \\\"{\$date}\\\"\";
-   shell_exec(\$command);
-   echo \"${dial[2]}\".\$date;
-?>" > $site/setdate.php
+echo "Dirinstall "$dirinstall
+cat index.html | sed -e "s/ACTUATE/${dial[0]}/g" > $site/index.html
+cp setdate.php $site/setdate.php
+cp shutdown_reboot.php $site/shutdown_reboot.php
 sudo chown www-data:www-data $site/setdate.php
+sudo chown www-data:www-data $site/shutdown_reboot.php
+
 ######
 # Pour les machines pour lesquelles le hanshake se passe mal
 ######
@@ -101,7 +78,8 @@ sudo systemctl daemon-reload
 sudo systemctl enable hotspotawake.service
 sudo systemctl start hotspotawake.service
 ###### 
-cat $data/sudoers.txt | sed -e "s/MOI/${moi}/g" > /tmp/sudoers
+
+cat sudoers.txt | sed -e "s/MOI/${moi}/g" > /tmp/sudoers
 sudo cp /tmp/sudoers /etc/sudoers.d/perm$moi
 echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
 echo "${dial[3]}"

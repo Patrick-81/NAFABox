@@ -1,5 +1,7 @@
 www-data ALL=NOPASSWD: /bin/date
-MOI ALL=NOPASSWD: /usr/bin/date
-MOI ALL=NOPASSWD: /usr/bin/wireless-info
-MOI ALL=NOPASSWD: /bin/grep
-MOI ALL=NOPASSWD: /sbin/iwlist
+www-data ALL=NOPASSWD: /sbin/shutdown
+www-data ALL=NOPASSWD: /sbin/reboot
+nafa ALL=NOPASSWD: /usr/bin/date
+nafa ALL=NOPASSWD: /usr/bin/wireless-info
+nafa ALL=NOPASSWD: /bin/grep
+nafa ALL=NOPASSWD: /sbin/iwlist
