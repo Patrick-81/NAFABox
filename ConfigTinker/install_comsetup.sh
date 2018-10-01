@@ -5,6 +5,7 @@
 # 			Laurent Roge
 # On June 10 2017
 # V0.1
+# v0.2  ajout de browsepy (Patrick Dutoit)
 ################################################
 #!/bin/bash
 ######
@@ -99,6 +100,10 @@ sudo ln -sf /etc/nginx/sites-available/site-$moi /etc/nginx/sites-enabled/site-$
 # Install of webdav server
 ######
 sudo $data/install_webdavserver.sh
+######
+# Install of browsepy
+######
+sudo $data/install_browsepy.sh
 ######
 # Installation x11vnc
 ######
