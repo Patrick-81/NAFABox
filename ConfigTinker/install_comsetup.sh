@@ -49,9 +49,9 @@ then
 	dial[0]="Actualiser la date"
 	dial[1]="Date==>NAFABox"
 	dial[2]="Date actualisée a"
-	dial[3]="Pour la mise a l'heure se connecter sur le boitier
-avec l'adresse IP de ce dernier qui differe selon qu'il
-est soit en reseau domestique soit en mode point d'acces."
+	dial[3]="Pour la mise a l\'heure se connecter sur le boitier
+avec l\'adresse IP de ce dernier qui differe selon qu\'il
+est soit en reseau domestique soit en mode point d\'acces."
 else
 	dial[0]="Actuate Date"
 	dial[1]="Update hour"
@@ -107,16 +107,32 @@ sudo $data/install_browsepy.sh
 ######
 # Installation x11vnc
 ######
+
 sudo apt -y install x11vnc
-mkdir -p ~/.x11vnc
-mkdir -p ~/bin/
-cp $dirinstall/startx11vnc.sh ~/bin/
-chmod +x ~/bin/startx11vnc.sh
-~/bin/startx11vnc.sh
-mkdir -p ~/.config/autostart/
-cat $dirinstall/startx11vnc.desktop | sed -e "s/nafa/${moi}/g" > /tmp/startx11vnc.desktop
-cp /tmp/startx11vnc.desktop ~/.config/autostart/
+
+# demarage sur la session 
+
+#mkdir -p ~/.x11vnc
+#mkdir -p ~/bin/
+#cp $dirinstall/startx11vnc.sh ~/bin/
+#chmod +x ~/bin/startx11vnc.sh
+#~/bin/startx11vnc.sh
+#mkdir -p ~/.config/autostart/
+#cat $dirinstall/startx11vnc.desktop | sed -e "s/nafa/${moi}/g" > /tmp/startx11vnc.desktop
+#cp /tmp/startx11vnc.desktop ~/.config/autostart/
 #
+
+# demarage sur le X11
+echo "Enter Le mot de passe VNC pour votre BOX :"
+sudo x11vnc -storepasswd /etc/x11vnc.pass
+echo "Merci ! ----------------------------------"
+# injection fichier system
+sudo cp $dirinstall/x11vnc.service /lib/systemd/system/x11vnc.service
+# allumage au démarage
+sudo systemctl daemon-reload
+sudo systemctl enable x11vnc.service
+echo "Need reboot for active VNC"
+
 ######
 # Installation accès vnc via navigateur
 ######
