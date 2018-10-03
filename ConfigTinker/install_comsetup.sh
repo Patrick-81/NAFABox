@@ -29,7 +29,7 @@ cd $dirinstall
 ######
 # detect language
 ######
-source detect_language.sh
+source $dirinstall/detect_language.sh
 ######
 # Définir time zone
 ######
@@ -107,11 +107,11 @@ sudo ln -sf /etc/nginx/sites-available/site-$moi /etc/nginx/sites-enabled/site-$
 ######
 # Install of webdav server
 ######
-sudo $data/install_webdavserver.sh | tee -a "$dirinstall/nafabox.log"
+sudo $data/install_webdavserver.sh
 ######
 # Install of browsepy
 ######
-sudo $data/install_browsepy.sh | tee -a "$dirinstall/nafabox.log"
+sudo $data/install_browsepy.sh
 ######
 # Installation x11vnc
 ######

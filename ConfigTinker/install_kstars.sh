@@ -21,7 +21,7 @@ echo "================================================="
 ######
 # detect language
 ######
-source detect_language.sh
+source $dirinstall/detect_language.sh
 ######
 # Installation des pré-requis
 ######

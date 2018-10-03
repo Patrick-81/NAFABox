@@ -17,7 +17,7 @@ echo "================================================="
 echo "================================================="
 
 ######
-source detect_language.sh
+source $dirinstall/detect_language.sh
 if test -d Desktop
 then
 	desktop="Desktop"
