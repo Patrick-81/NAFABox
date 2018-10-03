@@ -21,6 +21,7 @@ echo "================================================="
 sudo apt-add-repository 'deb http://www.ap-i.net/apt unstable main'
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys AA716FC2
 sudo apt-get update
+sudo apt install libpango1.0-0 xplanet espeak indistarter skychart-data-dso skychart-data-pictures
 #$dirinstall/install_libpasastro.sh
 ######
 # détection de l'architecture

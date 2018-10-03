@@ -20,7 +20,7 @@ echo "================================================="
 # Installation des pré-requis
 ######
 sudo apt -y install libccfits-dev libopencv-dev libqt5opengl5 libv4l-0 libv4lconvert0 
-sudo apt -y install gcc libboost-all-dev fxload git cmake qtbase5-dev
+sudo apt -y install gcc libboost-all-dev fxload git cmake qtbase5-dev qtdeclarative5-dev
 
 # Install libdc1394
 wget https://sourceforge.net/projects/libdc1394/files/libdc1394-2/2.2.5/libdc1394-2.2.5.tar.gz -P /tmp/libdc1394
