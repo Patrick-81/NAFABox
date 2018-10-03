@@ -25,6 +25,7 @@ whereiam=$dirinstall
 ######
 sudo apt -y install g++
 sudo apt -y install libusb-1.0-0-dev
+sudo apt -y install libqt4-dev
 ######
 # Installation du programme : lin_guider
 #      Récupération
