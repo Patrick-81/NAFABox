@@ -121,7 +121,7 @@ for (( i=0; i<=11; i++ ))
 do
 	cat $fichtemp | grep -q "${choice[$i]}"
 	if [ $? = 0 ]
-	thene
+	then
 		$dirinstall/${script[$i]} | tee -a "$dirinstall/nafabox.log"
 	fi
 done
