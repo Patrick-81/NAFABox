@@ -18,7 +18,7 @@ https://dl.armbian.com/tinkerboard/Ubuntu_xenial_default_desktop.7z
 
 4/ Open the folder
 
-5/ right clic on go.sh and set permissions to execute (chmod +x ./go.sh)
+5/ right clic on install.sh and set permissions to execute (chmod +x ./go.sh)
 
 6/ in file menu "open terminal" (right click)
 
