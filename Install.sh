@@ -8,9 +8,9 @@
 ################################################
 
 
-source ./ConfigTinker/pwd_configTinker.sh | tee -a "$dirinstall/nafabox.log"
-dirinstall=$ConfigTinker_path
-cd $dirinstall
+cd ./ConfigTinker
+source ./pwd_ConfigTinker.sh
+echo $dirinstall
 chmod +x ./*
 echo "start NAFABOX installation"
 ./install_conf.sh | tee -a "$dirinstall/nafabox.log"
