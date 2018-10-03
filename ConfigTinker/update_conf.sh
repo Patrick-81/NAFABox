@@ -123,7 +123,7 @@ do
 	if [ $? = 0 ]
 	then
 		echo ${choice[$i]}
-		$dirinstall/${script[$i] | tee -a "$dirinstall/nafabox.log"}
+		$dirinstall/${script[$i]}
 	fi
 done
 	return
