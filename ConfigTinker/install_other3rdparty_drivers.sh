@@ -2,7 +2,7 @@
 ######
 # Recherche du répertoire ConfigTinker
 ######
-dirinstall=$(find ~ -name ConfigTinker)
+dirinstall=$(head -n 1 temp_directory.tmp)
 ######
 # Installation du driver : atikccd
 ######

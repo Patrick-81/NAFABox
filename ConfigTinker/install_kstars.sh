@@ -10,13 +10,13 @@
 ######
 # Recherche du répertoire ConfigTinker
 ######
-dirinstall=$(find ~ -name ConfigTinker)
+dirinstall=$(head -n 1 temp_directory.tmp)
 ######
 options="--auto-remove --yes -q"
 ######
 # detect language
 ######
-source detect_language.sh
+source detect_language.sh | tee -a "$dirinstall/nafabox.log"
 ######
 # Installation des pré-requis
 ######
@@ -36,19 +36,19 @@ sudo apt-get $options install indi-dbg kstars-bleeding-dbg
 ######
 # Installation des drivers 3rdparty qui ne sont pas sous forme de dépot
 ######
-$dirinstall/install_other3rdparty_drivers.sh
+$dirinstall/install_other3rdparty_drivers.sh | tee -a "$dirinstall/nafabox.log"
 ######
 # Installer le pad amélioré
 ######
-$dirinstall/install_pad.sh
+$dirinstall/install_pad.sh | tee -a "$dirinstall/nafabox.log"
 ######
 # Installation du web manager pour indi
 ######
-$dirinstall/install_indiwebmanager.sh
+$dirinstall/install_indiwebmanager.sh | tee -a "$dirinstall/nafabox.log"
 ######
 # Création de l'icône sur le bureau
 ######
-$dirinstall/install_shortcut.sh kstars
+$dirinstall/install_shortcut.sh kstars | tee -a "$dirinstall/nafabox.log"
 ######
 # Installation du programme de résolution astrométrique
 ######

@@ -10,7 +10,7 @@
 ######
 # Recherche du répertoire ConfigTinker
 ######
-dirinstall=$(find ~ -name ConfigTinker)
+dirinstall=$(head -n 1 temp_directory.tmp)
 ######
 # Installation des pré-requis
 ######
@@ -36,5 +36,5 @@ sudo apt-get $options install siril
 # Création de l'icône sur le bureau
 ######
 sudo cp /usr/share/icons/hicolor/32x32/apps/siril.png /usr/share/pixmaps/.
-$dirinstall/install_shortcut.sh siril
+$dirinstall/install_shortcut.sh siril | tee -a "$dirinstall/nafabox.log"
 

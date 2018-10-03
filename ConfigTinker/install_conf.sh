@@ -10,7 +10,9 @@
 ######
 # Recherche du répertoire ConfigTinker
 ######
-dirinstall=$(find ~ -name ConfigTinker)
+
+dirinstall=$(head -n 1 temp_directory.tmp)
+
 ######
 # Statut d'installation
 # Installation status
@@ -49,7 +51,7 @@ $dirinstall/install_base.sh
 mkdir -p ~/bin
 # Modificateur de résolution
 # Resolution modifier
-$dirinstall/install_setres.sh
+$dirinstall/install_setres.sh | tee -a "$dirinstall/nafabox.log"
 ######
 # Install conf updater
 ######
@@ -58,11 +60,11 @@ chmod +x ~/bin/update_conf.sh
 sudo ln -sf ~/bin/update_conf.sh /usr/bin/update_conf
 sudo cp /usr/share/icons/gnome/32x32/apps/system-software-update.png /usr/share/pixmaps/update_conf.png
 # Création du raccourci pour update_conf
-$dirinstall/install_shortcut.sh update_conf "mate-terminal -e \"/bin/bash update_conf\"" 
+$dirinstall/install_shortcut.sh update_conf "mate-terminal -e \"/bin/bash update_conf\"" | tee -a "$dirinstall/nafabox.log"
 ######
 # Install/Update conf
 ######
-~/bin/update_conf.sh initial
+~/bin/update_conf.sh initial | tee -a "$dirinstall/nafabox.log"
 ######
 # Création du raccourci pour install_index.sh
 ######
@@ -70,25 +72,25 @@ cp $dirinstall/install_index.sh ~/bin/.
 sudo ln -sf ~/bin/install_index.sh /usr/bin/install_index
 sudo cp $dirinstall/install_index.png /usr/share/pixmaps/.
 sudo cp $dirinstall/index.txt ~/bin/.
-$dirinstall/install_shortcut.sh install_index "mate-terminal -e \"/bin/bash install_index\"" 
+$dirinstall/install_shortcut.sh install_index "mate-terminal -e \"/bin/bash install_index\"" | tee -a "$dirinstall/nafabox.log"
 ######
 # Création du raccourci pour install_hotspot.sh
 ######
 cp $dirinstall/install_hotspot.sh ~/bin/.
 sudo ln -sf ~/bin/install_hotspot.sh /usr/bin/install_hotspot
 sudo cp $dirinstall/install_hotspot.png /usr/share/pixmaps/.
-$dirinstall/install_shortcut.sh install_hotspot "mate-terminal -e \"/bin/bash install_hotspot\""
+$dirinstall/install_shortcut.sh install_hotspot "mate-terminal -e \"/bin/bash install_hotspot\"" | tee -a "$dirinstall/nafabox.log"
 ##### 
 # Création du raccourci pour switch_laguage.sh
 ######
 cp $dirinstall/switch_language.sh ~/bin/.
 sudo ln -sf ~/bin/switch_language.sh /usr/bin/switch_language
 sudo cp /usr/share/icons/gnome/48x48/apps/config-language.png /usr/share/pixmaps/switch_language.png
-$dirinstall/install_shortcut.sh switch_language "mate-terminal -e \"/bin/bash switch_language\""
+$dirinstall/install_shortcut.sh switch_language "mate-terminal -e \"/bin/bash switch_language\"" | tee -a "$dirinstall/nafabox.log"
 ##### 
 # Création du raccourci pour setup_time.sh
 ######
-$dirinstall/install_setup-time.sh
+$dirinstall/install_setup-time.sh | tee -a "$dirinstall/nafabox.log"
 
 
 

@@ -10,16 +10,16 @@
 ######
 # Recherche du répertoire ConfigTinker
 ######
-dirinstall=$(find ~ -name ConfigTinker)
+dirinstall=$(head -n 1 temp_directory.tmp)
 ######
 ######
 # Installation des pré-requis
 ######
-$dirinstall/install_libpasastro.sh
+$dirinstall/install_libpasastro.sh | tee -a "$dirinstall/nafabox.log"
 ######
 # détection de l'architecture
 ######
-source $dirinstall/proctype.sh
+source $dirinstall/proctype.sh | tee -a "$dirinstall/nafabox.log"
 ######
 # Installation du programme : cartes du ciel
 ######
@@ -37,6 +37,6 @@ sudo dpkg -i /tmp/$file
 ######
 # Création de l'icône sur le bureau
 ######
-$dirinstall/install_shortcut.sh skychart
+$dirinstall/install_shortcut.sh skychart | tee -a "$dirinstall/nafabox.log"
 
 

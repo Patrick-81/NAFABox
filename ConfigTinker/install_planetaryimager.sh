@@ -10,7 +10,7 @@
 ######
 # Recherche du répertoire ConfigTinker
 ######
-dirinstall=$(find ~ -name ConfigTinker)
+dirinstall=$(head -n 1 temp_directory.tmp)
 ######
 # Installation des pré-requis
 ######
@@ -44,5 +44,5 @@ sudo dpkg --force overwrite -i /tmp/$file
 # Création de l'icône sur le bureau
 ######
 sudo cp /usr/share/icons/hicolor/24x24/apps/planetary_imager.png /usr/share/pixmaps
-$dirinstall/install_shortcut.sh planetary_imager
+$dirinstall/install_shortcut.sh planetary_imager | tee -a "$dirinstall/nafabox.log"
 

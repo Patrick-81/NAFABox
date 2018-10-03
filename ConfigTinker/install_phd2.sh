@@ -10,7 +10,7 @@
 ######
 # Recherche du répertoire ConfigTinker
 ######
-dirinstall=$(find ~ -name ConfigTinker)
+dirinstall=$(head -n 1 temp_directory.tmp)
 ######
 options="--auto-remove --yes -q"
 ######
@@ -23,5 +23,5 @@ sudo apt-get $options install phd2
 ######
 # Création de l'icône sur le bureau
 ######
-$dirinstall/install_shortcut.sh phd2
+$dirinstall/install_shortcut.sh phd2 | tee -a "$dirinstall/nafabox.log"
 

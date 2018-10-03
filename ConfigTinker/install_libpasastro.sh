@@ -10,10 +10,10 @@
 ######
 # Recherche du répertoire ConfigTinker
 ######
-dirinstall=$(find ~ -name ConfigTinker)
+dirinstall=$(head -n 1 temp_directory.tmp)
 ######
 # Installation de libpasastro
-source $dirinstall/proctype.sh
+source $dirinstall/proctype.sh | tee -a "$dirinstall/nafabox.log"
 software="libpasastro"
 version="version_1.1-19"
 file="libpasastro_1.1-19$proc.deb"

@@ -10,14 +10,14 @@
 ######
 # Recherche du répertoire ConfigTinker
 ######
-dirinstall=$(find ~ -name ConfigTinker)
+dirinstall=$(head -n 1 temp_directory.tmp)
 ######
 # Installation des pré-requis
 ######
 ######
 # détection de l'architecture
 ######
-source $dirinstall/proctype.sh
+source $dirinstall/proctype.sh | tee -a "$dirinstall/nafabox.log"
 ######
 # add repository
 ######
@@ -33,5 +33,5 @@ sudo apt-get -y install stellarium
 ######
 # Création de l'icône sur le bureau
 ######
-$dirinstall/install_shortcut.sh stellarium
+$dirinstall/install_shortcut.sh stellarium | tee -a "$dirinstall/nafabox.log"
 

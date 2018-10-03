@@ -10,16 +10,16 @@
 ######
 # Recherche du répertoire ConfigTinker
 ######
-dirinstall=$(find ~ -name ConfigTinker)
+dirinstall=$(head -n 1 temp_directory.tmp)
 ######
 # Fonction pour l'installation
 ######
-source detect_language.sh
+source detect_language.sh | tee -a "$dirinstall/nafabox.log"
 if $french
 then
-	sethour[0]="Mise à l'heure du système"
+	sethour[0]="Mise à l\'heure du système"
 	sethour[1]="Réglage date et heure"
-	compute[2]="Entrez les paramètres dans l'ordre demandé"
+	compute[2]="Entrez les paramètres dans l\'ordre demandé"
 	compute[3]="Jour"
 	compute[4]="Mois"
 	compute[5]="Année"

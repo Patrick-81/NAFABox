@@ -17,7 +17,7 @@ if [ "$1" = "debug" ]
 then
 	dirinstall=$(pwd)
 else
-	dirinstall=$(find ~ -name ConfigTinker)
+	dirinstall=$(head -n 1 temp_directory.tmp)
 fi
 ######
 # Fonction min
@@ -31,7 +31,7 @@ valmax="define vmax(a, b) {
 ######
 # test locale
 ######
-source detect_language.sh
+source detect_language.sh | tee -a "$dirinstall/nafabox.log"
 if $french
 then
 	compute[0]="Chargement des fichiers index"

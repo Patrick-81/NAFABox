@@ -10,7 +10,7 @@
 ######
 # Recherche du répertoire ConfigTinker
 ######
-dirinstall=$(find ~ -name ConfigTinker)
+dirinstall=$(head -n 1 temp_directory.tmp)
 ######
 # Add PPA
 ######
@@ -25,10 +25,8 @@ sudo apt-get update
 sudo apt-get -y install mate-indicator-applet libatk-adaptor libgail-common libido gsettings-ubuntu-schemas libgee liburl
 sudo apt-get -y install indicator-application indicator-messages indicator-sound 
 sudo apt-get -y install indicator-application-gtk2 indicator-messages-gtk2 indicator-sound-gtk2
-######
-# détection de l'architecture
-######
-source $dirinstall/proctype.sh
+
+
 ######
 # Installation du programme : IP_Indicator
 ######

@@ -11,7 +11,7 @@
 ######
 # Recherche du répertoire ConfigTinker
 ######
-dirinstall=$(find ~ -name ConfigTinker)
+dirinstall=$(head -n 1 temp_directory.tmp)
 ######
 # recupere le user
 ######
@@ -21,7 +21,7 @@ cd $dirinstall
 ######
 # detect language
 ######
-source detect_language.sh
+source detect_language.sh | tee -a "$dirinstall/nafabox.log"
 ######
 # Définir time zone
 ######
@@ -99,11 +99,11 @@ sudo ln -sf /etc/nginx/sites-available/site-$moi /etc/nginx/sites-enabled/site-$
 ######
 # Install of webdav server
 ######
-sudo $data/install_webdavserver.sh
+sudo $data/install_webdavserver.sh | tee -a "$dirinstall/nafabox.log"
 ######
 # Install of browsepy
 ######
-sudo $data/install_browsepy.sh
+sudo $data/install_browsepy.sh | tee -a "$dirinstall/nafabox.log"
 ######
 # Installation x11vnc
 ######

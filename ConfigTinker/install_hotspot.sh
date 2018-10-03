@@ -2,7 +2,7 @@
 ######
 # Recherche du répertoire ConfigTinker
 ######
-dirinstall=$(find ~ -name ConfigTinker)
+dirinstall=$(head -n 1 temp_directory.tmp)
 ######
 # pre-requis
 ######
@@ -20,7 +20,7 @@ fi
 ######
 # detect language
 ######
-source $dirinstall/detect_language.sh
+source $dirinstall/detect_language.sh | tee -a "$dirinstall/nafabox.log"
 ######
 # recupere le user
 ######

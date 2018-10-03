@@ -10,7 +10,7 @@
 ######
 # Recherche du répertoire ConfigTinker
 ######
-dirinstall=$(find ~ -name ConfigTinker)
+dirinstall=$(head -n 1 temp_directory.tmp)
 ######
 # Installation des pré-requis
 ######
@@ -41,5 +41,5 @@ sudo apt-get -y --allow-unauthenticated install ccdciel
 ######
 # Création de l'icône sur le bureau
 ######
-$dirinstall/install_shortcut.sh ccdciel
+$dirinstall/install_shortcut.sh ccdciel | tee -a "$dirinstall/nafabox.log"
 

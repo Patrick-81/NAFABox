@@ -10,14 +10,14 @@
 ######
 # Recherche du répertoire ConfigTinker
 ######
-dirinstall=$(find ~ -name ConfigTinker)
+dirinstall=$(head -n 1 temp_directory.tmp)
 ######
 # Installation des pré-requis
 ######
 ######
 # détection de l'architecture
 ######
-source $dirinstall/proctype.sh
+source $dirinstall/proctype.sh | tee -a "$dirinstall/nafabox.log"
 ######
 # basic update
 ######

@@ -10,7 +10,7 @@
 ######
 # Recherche du répertoire ConfigTinker
 ######
-dirinstall=$(find ~ -name ConfigTinker)
+dirinstall=$(head -n 1 temp_directory.tmp)
 ######
 cd $dirinstall
 ######
@@ -64,19 +64,19 @@ message[10]="Install index(s)"
 message[11]="Install IP_indicator"
 message[12]="Install astroberry_diy"
 
-script[0]=install_comsetup.sh
-script[1]=install_linguider.sh
-script[2]=install_kstars.sh
-script[3]=install_phd2.sh
-script[4]=install_skychart.sh
-script[5]=install_ccdciel.sh
-script[6]=install_planetaryimager.sh
-script[7]=install_siril.sh
-script[8]=install_stellarium.sh
-script[9]=install_gps.sh
-script[10]=install_index.sh
-script[11]=install_ip_indicator.sh
-script[12]=install_astroberry_diy.sh
+script[0]=install_comsetup.sh | tee -a "$dirinstall/nafabox.log"
+script[1]=install_linguider.sh | tee -a "$dirinstall/nafabox.log"
+script[2]=install_kstars.sh | tee -a "$dirinstall/nafabox.log"
+script[3]=install_phd2.sh | tee -a "$dirinstall/nafabox.log"
+script[4]=install_skychart.sh | tee -a "$dirinstall/nafabox.log"
+script[5]=install_ccdciel.sh | tee -a "$dirinstall/nafabox.log"
+script[6]=install_planetaryimager.sh | tee -a "$dirinstall/nafabox.log"
+script[7]=install_siril.sh | tee -a "$dirinstall/nafabox.log"
+script[8]=install_stellarium.sh | tee -a "$dirinstall/nafabox.log"
+script[9]=install_gps.sh | tee -a "$dirinstall/nafabox.log"
+script[10]=install_index.sh | tee -a "$dirinstall/nafabox.log"
+script[11]=install_ip_indicator.sh | tee -a "$dirinstall/nafabox.log"
+script[12]=install_astroberry_diy.sh | tee -a "$dirinstall/nafabox.log"
 
 
 if $init
@@ -180,7 +180,7 @@ do
 		;;
 	3)
 		echo "Install hotspot"
-		sudo $dirinstall/install_hotspot.sh
+		sudo $dirinstall/install_hotspot.sh | tee -a "$dirinstall/nafabox.log"
 		;;
 	4)
 		echo "Reboot"

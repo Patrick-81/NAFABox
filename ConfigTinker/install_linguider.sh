@@ -10,7 +10,7 @@
 ######
 # Recherche du répertoire ConfigTinker
 ######
-dirinstall=$(find ~ -name ConfigTinker)
+dirinstall=$(head -n 1 temp_directory.tmp)
 ######
 # Remember where I am
 ######
@@ -43,7 +43,7 @@ sudo cp lin_guider /usr/bin/.
 ######
 sudo cp rc/lin_guider.png /usr/share/pixmaps/.
 cd $whereiam
-$dirinstall/install_shortcut.sh lin_guider
+$dirinstall/install_shortcut.sh lin_guider | tee -a "$dirinstall/nafabox.log"
 
 
 

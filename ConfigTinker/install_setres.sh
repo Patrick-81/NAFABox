@@ -10,9 +10,9 @@
 ######
 # Recherche du répertoire ConfigTinker
 ######
-dirinstall=$(find ~ -name ConfigTinker)
+dirinstall=$(head -n 1 temp_directory.tmp)
 ######
-source detect_language.sh
+source detect_language.sh | tee -a "$dirinstall/nafabox.log"
 if test -d Desktop
 then
 	desktop="Desktop"
@@ -36,6 +36,6 @@ else
 	chmod +x ~/bin/setres.py
 	sudo cp /usr/share/icons/gnome/48x48/apps/preferences-desktop-display.png /usr/share/pixmaps/setres.png
 	sudo ln -sf ~/bin/setres.py /usr/bin/setres
-	$dirinstall/install_shortcut.sh setres
+	$dirinstall/install_shortcut.sh setres | tee -a "$dirinstall/nafabox.log"
 fi
 
