@@ -9,6 +9,11 @@
 # Recherche du répertoire ConfigTinker
 ######
 dirinstall=$(find ~ -name ConfigTinker)
+
+figlet -k Install BrowsePy
+echo "================================================="
+echo "================================================="
+
 ######
 # recupere le user
 ######

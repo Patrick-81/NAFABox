@@ -12,6 +12,14 @@
 # Recherche du répertoire ConfigTinker
 ######
 dirinstall=$(head -n 1 temp_directory.tmp)
+
+figlet -k Install ComSetup
+echo "================================================="
+echo "================================================="
+echo " Install time zone, nginx, php, X11VNC, WebDavServer, BrowsePy and NoVNC"
+echo "================================================="
+echo "================================================="
+
 ######
 # recupere le user
 ######

@@ -7,11 +7,14 @@
 # V0.1
 ################################################
 
-
+sudo apt install figlet
 cd ./ConfigTinker
 source ./pwd_ConfigTinker.sh
 echo $dirinstall
 chmod +x ./*
-echo "start NAFABOX installation"
+figlet -k NAFABox
+echo "================================================="
+echo "================================================="
+
 ./install_conf.sh | tee -a "$dirinstall/nafabox.log"
 

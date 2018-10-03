@@ -11,6 +11,11 @@
 # Recherche du répertoire ConfigTinker
 ######
 dirinstall=$(head -n 1 temp_directory.tmp)
+
+figlet -k Install LibPasAstro
+echo "================================================="
+echo "================================================="
+
 ######
 # Installation de libpasastro
 source $dirinstall/proctype.sh | tee -a "$dirinstall/nafabox.log"

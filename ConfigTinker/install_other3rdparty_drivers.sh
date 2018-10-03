@@ -3,6 +3,11 @@
 # Recherche du répertoire ConfigTinker
 ######
 dirinstall=$(head -n 1 temp_directory.tmp)
+
+figlet -k Install 3rd Party Driver
+echo "================================================="
+echo "================================================="
+
 ######
 # Installation du driver : atikccd
 ######

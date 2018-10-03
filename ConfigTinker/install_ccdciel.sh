@@ -11,9 +11,16 @@
 # Recherche du répertoire ConfigTinker
 ######
 dirinstall=$(head -n 1 temp_directory.tmp)
+
+figlet -k Install CCDciel
+echo "================================================="
+echo "================================================="
 ######
 # Installation des pré-requis
 ######
+sudo apt-add-repository 'deb http://www.ap-i.net/apt unstable main'
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys AA716FC2
+sudo apt-get update
 #$dirinstall/install_libpasastro.sh
 ######
 # détection de l'architecture
@@ -33,9 +40,6 @@ dirinstall=$(head -n 1 temp_directory.tmp)
 # Installation du programme : ccdciel + libpasastro via ppa
 ######
 
-sudo apt-add-repository 'deb http://www.ap-i.net/apt unstable main'
-sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys AA716FC2
-sudo apt-get update
 sudo apt-get -y --allow-unauthenticated install ccdciel
 
 ######

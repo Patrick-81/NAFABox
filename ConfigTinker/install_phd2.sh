@@ -11,11 +11,19 @@
 # Recherche du répertoire ConfigTinker
 ######
 dirinstall=$(head -n 1 temp_directory.tmp)
+
 ######
 options="--auto-remove --yes -q"
+
+figlet -k Install PHD2
+echo "================================================="
+echo "================================================="
+
 ######
 # Installation des pré-requis
 ######
+sudo apt-add-repository -y ppa:pch/phd2
+sudo apt update
 ######
 # Installation du programme : phd2
 ######

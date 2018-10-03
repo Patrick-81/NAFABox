@@ -4,6 +4,11 @@ options="-y"
 # Recherche du répertoire ConfigTinker
 ######
 dirinstall=$(head -n 1 temp_directory.tmp)
+
+figlet -k Install Switch_Language
+echo "================================================="
+echo "================================================="
+
 ######
 # detect current language
 ######

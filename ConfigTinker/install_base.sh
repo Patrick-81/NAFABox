@@ -80,6 +80,10 @@ options="-y"
 #activation de l'autologin pour les version nightly
 if [ $autologin = 1 ]
 then
+	figlet -k Install AutoLogin
+	echo "================================================="
+	echo "================================================="
+
 	if [ -f "/usr/share/lightdm/lightdm.conf.d/60-lightdm-gtk-greeter.conf" ]
 	then
 		if [grep -q "autologin" "/usr/share/lightdm/lightdm.conf.d/60-lightdm-gtk-greeter.conf" ]
@@ -94,8 +98,12 @@ fi
 #  Désinstallation de xfce et installation de Mate
 if [[ $installMate == 1 ]]
 then
+
+	figlet -k Install Ubuntu Mate
+	echo "================================================="
+	echo "================================================="
 	# add repository pour avoir la 1.16 au lieu de la 1.12
-	sudo apt-add-repository -y ppa:ubuntu-mate-dev/xenial-mate 
+	sudo apt-add-repository -y ppa:ubuntu-mate-dev/xenial-mate # ==> bug
 	sudo apt-get update
 	# désinstallation xfce4
 	sudo apt-get -y remove --purge  xfce*
@@ -108,16 +116,21 @@ then
 	sudo apt-get -y install lightdm
 	sudo apt-get -y install xserver-xorg
 	sudo apt-get -y install lightdm-greeter
-	# Mise à jourde l'autologin
+	# Mise à jour de l'autologin
 	cat  $dirinstall/20-lightdm.conf | sed -e "s/MOI/$(whoami)/g" > /tmp/20-lightdm.conf
 	sudo cp /tmp/20-lightdm.conf /etc/lighdm/lightdm.conf.d/.
-	# installation de base de maté
+	# installation de base de mate
 	sudo apt-get $options install mate
-	# installation de maté compléments
+	# installation de mate compléments
 	sudo apt-get $options install mate-desktop-environment-extras
 	# supprimer veille
 	sudo sed -i "/DPMS/ s/true/false/" /etc/X11/xorg.conf.d/01-armbian-defaults.conf
 	# Ajout d'utilitaires
+	echo "================================================="
+	echo "================================================="
+	echo "install supplements"
+	echo "================================================="
+	echo "================================================="
 	sudo apt-get $options install synaptic
 	sudo apt-get $options install engrapa
 	sudo apt-get $options install caja-actions
@@ -133,10 +146,16 @@ then
 	sudo apt-get $options install blueman
 	sudo apt-get $options install firefox
 	sudo apt-get $options install ubuntu-mate-themes
-	#sudo apt-get $options install chromium-browser
+	sudo apt-get $options install chromium-browser
 	# désinstallation diverses des relicats de xfce et de thunderbird ajouté par maté
 	sudo apt-get -y purge thunderbird transmission-gtk thunar
 	sudo apt-get -y remove --purge  libreoffice*
+
+	echo "================================================="
+	echo "================================================="
+	echo "install Background"
+	echo "================================================="
+	echo "================================================="
 	# mise à jour de tout le système
 	# sudo apt-get -q --yes dist-upgrade
 	# Installation du fond d'écran
@@ -147,6 +166,10 @@ then
 fi
 if [[ $language == 1 ]]
 then
+
+	figlet -k Install Language
+	echo "================================================="
+	echo "================================================="
 	# passer le systeme en français
 	# ajout des packs langage
 	sudo apt-get $options language-pack-kde-fr

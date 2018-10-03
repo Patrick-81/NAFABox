@@ -13,6 +13,11 @@
 dirinstall=$(head -n 1 temp_directory.tmp)
 ######
 options="--auto-remove --yes -q"
+
+figlet -k Install Kstars Ekos Indi
+echo "================================================="
+echo "================================================="
+
 ######
 # detect language
 ######
@@ -20,6 +25,8 @@ source detect_language.sh | tee -a "$dirinstall/nafabox.log"
 ######
 # Installation des pré-requis
 ######
+sudo apt-add-repository -y ppa:mutlaqja/ppa
+sudo apt update
 if $french
 then
 	sudo apt-get $options language-pack-kde-fr

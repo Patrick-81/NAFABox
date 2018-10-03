@@ -19,6 +19,11 @@ then
 else
 	dirinstall=$(head -n 1 temp_directory.tmp)
 fi
+
+figlet -k Install Index
+echo "================================================="
+echo "================================================="
+
 ######
 # Fonction min
 ######

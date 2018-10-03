@@ -10,7 +10,12 @@
 ######
 # Recherche du répertoire ConfigTinker
 ######
-dirinstall=$(head -n 1 temp_directory.tmp)
+dirinstall=$(head -n 1 temp_directory.tmp)*
+
+figlet -k Install Serveur WebDav
+echo "================================================="
+echo "================================================="
+
 ######
 # recupere le user
 ######

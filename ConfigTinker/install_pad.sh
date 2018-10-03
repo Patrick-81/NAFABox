@@ -12,6 +12,11 @@
 ######
 dirinstall=$(head -n 1 temp_directory.tmp)
 ######
+
+figlet -k Install PAD
+echo "================================================="
+echo "================================================="
+
 dest="/usr/share/kstars/ekos/mount/qml/"
 sudo mv $dest/mountbox.qml $dest/mountbox.qml.old
 cp $dirinstall/pad.tar.gz /tmp

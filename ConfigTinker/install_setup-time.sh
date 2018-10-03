@@ -11,6 +11,11 @@
 # Recherche du répertoire ConfigTinker
 ######
 dirinstall=$(head -n 1 temp_directory.tmp)
+
+figlet -k Install Setup_Time
+echo "================================================="
+echo "================================================="
+
 ##### 
 # Création du raccourci pour setup_time.sh
 ######
