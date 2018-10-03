@@ -10,7 +10,7 @@
 ######
 # Recherche du répertoire ConfigTinker
 ######
-dirinstall=$(head -n 1 temp_directory.tmp)*
+dirinstall=$nafabox_path
 
 figlet -k Install Serveur WebDav
 echo "================================================="
@@ -24,7 +24,7 @@ data=$dirinstall
 ######
 # detect language
 ######
-source detect_language.sh
+source $dirinstall/detect_language.sh
 ######
 # Installation du serveur webdav
 ######

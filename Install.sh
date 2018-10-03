@@ -9,12 +9,16 @@
 
 sudo apt install figlet
 cd ./ConfigTinker
-source ./pwd_ConfigTinker.sh
-echo $dirinstall
+#source ./pwd_ConfigTinker.sh
+if [ -z "$nafabox_path" ]
+then
+	echo "export nafabox_path=$`pwd`"  >> ~/.bashrc
+	echo -e "nafabox_path was added"
+fi
 chmod +x ./*
 figlet -k NAFABox
 echo "================================================="
 echo "================================================="
 
-./install_conf.sh | tee -a "$dirinstall/nafabox.log"
+./install_conf.sh | tee -a "$nafabox_path/nafabox.log"
 

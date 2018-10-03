@@ -8,7 +8,7 @@
 ######
 # Recherche du répertoire ConfigTinker
 ######
-dirinstall=$(find ~ -name ConfigTinker)
+dirinstall=$nafabox_path
 
 figlet -k Install BrowsePy
 echo "================================================="

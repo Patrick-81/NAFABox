@@ -7,11 +7,8 @@
 # V0.1
 ################################################
 
-if [ -f "./temp_directory.tmp" ]
+if [ -z "$nafabox_path" ]
 then
-	rm ./temp_directory.tmp
+	echo "export nafabox_path=$`pwd`"  >> ~/.bashrc
+	echo -e "nafabox_path was added"
 fi
-
-dirinstall=`pwd`
-
-echo ''$dirinstall''>> $dirinstall/temp_directory.tmp

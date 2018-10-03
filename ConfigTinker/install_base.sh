@@ -12,7 +12,7 @@
 ######
 # Recherche du répertoire ConfigTinker
 ######
-dirinstall=$(head -n 1 temp_directory.tmp)
+dirinstall=$nafabox_path
 ######
 sudo rm /var/lib/dpkg/lock
 sudo apt-get -y install libnss3

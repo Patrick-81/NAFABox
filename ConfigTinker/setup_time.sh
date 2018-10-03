@@ -10,11 +10,11 @@
 ######
 # Recherche du répertoire ConfigTinker
 ######
-dirinstall=$(head -n 1 temp_directory.tmp)
+dirinstall=$nafabox_path
 ######
 # Fonction pour l'installation
 ######
-source detect_language.sh | tee -a "$dirinstall/nafabox.log"
+source $dirinstall/detect_language.sh
 if $french
 then
 	sethour[0]="Mise à l\'heure du système"

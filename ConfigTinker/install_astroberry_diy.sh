@@ -16,7 +16,7 @@
 ######
 # Recherche du répertoire ConfigTinker
 ######
-dirinstall=$(find ~ -name ConfigTinker)
+dirinstall=$nafabox_path
 ######
 sudo apt install --reinstall lshw
 mkdir -p /home/nafa/Projects

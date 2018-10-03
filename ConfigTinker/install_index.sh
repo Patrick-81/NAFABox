@@ -17,7 +17,7 @@ if [ "$1" = "debug" ]
 then
 	dirinstall=$(pwd)
 else
-	dirinstall=$(head -n 1 temp_directory.tmp)
+	dirinstall=$nafabox_path
 fi
 
 figlet -k Install Index

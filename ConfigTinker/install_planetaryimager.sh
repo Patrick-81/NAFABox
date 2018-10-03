@@ -10,7 +10,7 @@
 ######
 # Recherche du répertoire ConfigTinker
 ######
-dirinstall=$(head -n 1 temp_directory.tmp)
+dirinstall=$nafabox_path
 
 figlet -k Install PlanetaryImager
 echo "================================================="
