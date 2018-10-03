@@ -22,7 +22,7 @@ echo "================================================="
 ######
 # détection de l'architecture
 ######
-source $dirinstall/proctype.sh | tee -a "$dirinstall/nafabox.log"
+source $dirinstall/proctype.sh
 ######
 # add repository
 ######
@@ -38,5 +38,5 @@ sudo apt-get -y install stellarium
 ######
 # Création de l'icône sur le bureau
 ######
-$dirinstall/install_shortcut.sh stellarium | tee -a "$dirinstall/nafabox.log"
+$dirinstall/install_shortcut.sh stellarium
 

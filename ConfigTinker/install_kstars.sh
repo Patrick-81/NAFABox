@@ -21,7 +21,7 @@ echo "================================================="
 ######
 # detect language
 ######
-source detect_language.sh | tee -a "$dirinstall/nafabox.log"
+source detect_language.sh
 ######
 # Installation des pré-requis
 ######
@@ -55,7 +55,7 @@ $dirinstall/install_indiwebmanager.sh | tee -a "$dirinstall/nafabox.log"
 ######
 # Création de l'icône sur le bureau
 ######
-$dirinstall/install_shortcut.sh kstars | tee -a "$dirinstall/nafabox.log"
+$dirinstall/install_shortcut.sh kstars
 ######
 # Installation du programme de résolution astrométrique
 ######

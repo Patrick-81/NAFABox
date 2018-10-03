@@ -24,7 +24,7 @@ data=$dirinstall
 ######
 # detect language
 ######
-source detect_language.sh | tee -a "$dirinstall/nafabox.log"
+source detect_language.sh
 ######
 # Installation du serveur webdav
 ######

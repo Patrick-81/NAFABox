@@ -22,7 +22,7 @@ echo "================================================="
 ######
 # détection de l'architecture
 ######
-source $dirinstall/proctype.sh | tee -a "$dirinstall/nafabox.log"
+source $dirinstall/proctype.sh
 ######
 # basic update
 ######

@@ -12,7 +12,7 @@
 ######
 dirinstall=$(head -n 1 temp_directory.tmp)
 ######
-source detect_language.sh | tee -a "$dirinstall/nafabox.log"
+source detect_language.sh
 ######
 # Créer le raccourci bureau
 ######

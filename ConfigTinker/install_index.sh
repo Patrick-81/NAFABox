@@ -36,7 +36,7 @@ valmax="define vmax(a, b) {
 ######
 # test locale
 ######
-source detect_language.sh | tee -a "$dirinstall/nafabox.log"
+source detect_language.sh
 if $french
 then
 	compute[0]="Chargement des fichiers index"

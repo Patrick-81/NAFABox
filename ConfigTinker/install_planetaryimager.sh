@@ -49,5 +49,5 @@ sudo dpkg --force overwrite -i /tmp/$file
 # Création de l'icône sur le bureau
 ######
 sudo cp /usr/share/icons/hicolor/24x24/apps/planetary_imager.png /usr/share/pixmaps
-$dirinstall/install_shortcut.sh planetary_imager | tee -a "$dirinstall/nafabox.log"
+$dirinstall/install_shortcut.sh planetary_imager
 

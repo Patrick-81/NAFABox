@@ -24,7 +24,7 @@ $dirinstall/install_libpasastro.sh | tee -a "$dirinstall/nafabox.log"
 ######
 # détection de l'architecture
 ######
-source $dirinstall/proctype.sh | tee -a "$dirinstall/nafabox.log"
+source $dirinstall/proctype.sh
 ######
 # Installation du programme : cartes du ciel
 ######
@@ -42,6 +42,6 @@ sudo dpkg -i /tmp/$file
 ######
 # Création de l'icône sur le bureau
 ######
-$dirinstall/install_shortcut.sh skychart | tee -a "$dirinstall/nafabox.log"
+$dirinstall/install_shortcut.sh skychart
 
 

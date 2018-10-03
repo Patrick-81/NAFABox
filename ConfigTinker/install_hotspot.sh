@@ -25,7 +25,7 @@ fi
 ######
 # detect language
 ######
-source $dirinstall/detect_language.sh | tee -a "$dirinstall/nafabox.log"
+source $dirinstall/detect_language.sh
 ######
 # recupere le user
 ######

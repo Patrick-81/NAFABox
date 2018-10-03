@@ -45,5 +45,5 @@ sudo apt-get -y --allow-unauthenticated install ccdciel
 ######
 # Création de l'icône sur le bureau
 ######
-$dirinstall/install_shortcut.sh ccdciel | tee -a "$dirinstall/nafabox.log"
+$dirinstall/install_shortcut.sh ccdciel
 

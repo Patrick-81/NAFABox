@@ -17,7 +17,7 @@ echo "================================================="
 echo "================================================="
 
 ######
-source detect_language.sh | tee -a "$dirinstall/nafabox.log"
+source detect_language.sh
 if test -d Desktop
 then
 	desktop="Desktop"
@@ -41,6 +41,6 @@ else
 	chmod +x ~/bin/setres.py
 	sudo cp /usr/share/icons/gnome/48x48/apps/preferences-desktop-display.png /usr/share/pixmaps/setres.png
 	sudo ln -sf ~/bin/setres.py /usr/bin/setres
-	$dirinstall/install_shortcut.sh setres | tee -a "$dirinstall/nafabox.log"
+	$dirinstall/install_shortcut.sh setres
 fi
 

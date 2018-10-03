@@ -48,7 +48,7 @@ sudo cp lin_guider /usr/bin/.
 ######
 sudo cp rc/lin_guider.png /usr/share/pixmaps/.
 cd $whereiam
-$dirinstall/install_shortcut.sh lin_guider | tee -a "$dirinstall/nafabox.log"
+$dirinstall/install_shortcut.sh lin_guider
 
 
 
