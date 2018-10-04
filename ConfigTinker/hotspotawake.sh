@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -i
 if [ -x /sbin/iwlist ]
 then
 	connected=$(iw dev wlan0 station dump)

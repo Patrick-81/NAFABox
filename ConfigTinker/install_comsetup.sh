@@ -7,7 +7,7 @@
 # V0.1
 # v0.2  ajout de browsepy (Patrick Dutoit)
 ################################################
-#!/bin/bash
+#!/bin/bash -i
 ######
 # Recherche du répertoire ConfigTinker
 ######

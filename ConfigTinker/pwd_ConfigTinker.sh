@@ -6,7 +6,7 @@
 # On Sept 02 2018
 # V0.1
 ################################################
-
+#!/bin/bash -i
 if [ -z "$nafabox_path" ]
 then
 	echo "export nafabox_path=$`pwd`"  >> ~/.bashrc

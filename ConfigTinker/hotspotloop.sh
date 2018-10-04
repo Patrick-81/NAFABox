@@ -1,3 +1,4 @@
+#!/bin/bash -i
 (while true
 do
 	if [ -x /sbin/iwlist ]; then

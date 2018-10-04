@@ -6,6 +6,7 @@
 # On Sept 02 2018
 # V0.1
 ################################################
+#!/bin/bash -i
 
 sudo apt install figlet
 cd ./ConfigTinker

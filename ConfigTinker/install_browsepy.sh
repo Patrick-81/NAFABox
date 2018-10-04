@@ -5,6 +5,7 @@
 # On October 2018
 # V0.1
 ################################################
+#!/bin/bash -i
 ######
 # Recherche du répertoire ConfigTinker
 ######

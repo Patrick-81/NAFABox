@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -i
 options="-y"
 ######
 # Recherche du répertoire ConfigTinker
