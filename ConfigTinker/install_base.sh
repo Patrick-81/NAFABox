@@ -23,7 +23,7 @@ sudo apt-get -y install dirmngr
 sudo apt-get -y install git
 sudo apt-get -y install gparted
 sudo apt-get -y install zenity
-sudo echo "NAFABox" > /etc/hostname
+sudo echo "NAFABox" > /etc/hostname # --> not permission
 #sudo usermod -l nafa -d /home/nafa -m tinker
 
 ######
