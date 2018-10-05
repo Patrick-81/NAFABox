@@ -58,6 +58,8 @@ http://cdimage.ubuntu.com/ubuntu-mate/releases/16.04.3/release/ubuntu-mate-16.04
 
 3/ Get the folder as zip file and expanse it to your Linux Mate desktop
 
+4/ __Check that you have access to "APT" (auto update disable,...)__
+
 ... Same instruction ...
 
 
