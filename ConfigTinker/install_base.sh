@@ -164,8 +164,8 @@ then
 	# sudo apt-get -q --yes dist-upgrade
 	# Installation du fond d'écran
 	backpic="PIA16008-1920x1200.jpg"
-	dest="~/bin"
-	cp $dirinstall/$backpic $dest/.
+	dest="$HOME/bin"
+	cp $dirinstall/$backpic $dest/$backpic
 	gsettings set org.mate.background picture-filename $dest/$backpic
 fi
 if [[ $language == 1 ]]

@@ -20,6 +20,7 @@ echo "================================================="
 ######
 sudo apt-add-repository 'deb http://www.ap-i.net/apt unstable main'
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys AA716FC2
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 8B8B57C1AA716FC2
 sudo apt-get update
 sudo apt install libpango1.0-0 xplanet espeak indistarter skychart-data-dso skychart-data-pictures
 #$dirinstall/install_libpasastro.sh
@@ -41,7 +42,7 @@ sudo apt install libpango1.0-0 xplanet espeak indistarter skychart-data-dso skyc
 # Installation du programme : ccdciel + libpasastro via ppa
 ######
 
-sudo apt-get -y --allow-unauthenticated install ccdciel
+sudo apt-get -y install ccdciel
 
 ######
 # Création de l'icône sur le bureau

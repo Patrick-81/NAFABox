@@ -41,9 +41,15 @@ echo "================================================="
 #if [[ -z $(cat install-status.txt | grep prereq) ]]
 #then
 
-	sudo apt-get $options install libpangox-1.0-0 libespeak1 libpango1.0-0 \
-	libsonic0 espeak-data fonts-freefont-ttf ttf-freefont libjpeg62 libglu1 \
-	xplanet espeak qt4-default openssh-server uuid
+sudo apt-get $options install libpangox-1.0-0 libespeak1 libpango1.0-0
+sudo apt-get $options install libsonic0 espeak-data fonts-freefont-ttf
+version=lsb_release -c -s
+if [[ $version == "xenial" ]]
+then
+	sudo apt-get $options install ttf-freefont 
+fi
+sudo apt-get $options install libjpeg62 libglu1
+sudo apt-get $options install xplanet espeak qt4-default openssh-server uuid
 #	echo prereq >> $dirinstall/install-status.txt
 #fi
 ######
