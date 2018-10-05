@@ -20,3 +20,5 @@ then
 fi
 chmod +x ./*
 
+echo "Please Reload Terminal and Run Install.sh"
+
