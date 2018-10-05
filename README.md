@@ -24,7 +24,7 @@ https://dl.armbian.com/tinkerboard/Ubuntu_xenial_default_desktop.7z
 
 `$ ./Pre_Install.sh` 
 
-6/ After the end of Pre_Install script you can start Install.sh script 
+6/ After the end of Pre_Install script open new terminal. You can start Install.sh script 
 
 `$ ./Install.sh` 
 

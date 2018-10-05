@@ -13,5 +13,5 @@ figlet -k NAFABox
 echo "================================================="
 echo "================================================="
 
-./install_conf.sh | tee -a "$nafabox_path/nafabox.log"
+$nafabox_path/install_conf.sh | tee -a "$nafabox_path/nafabox.log"
 
