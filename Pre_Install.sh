@@ -9,9 +9,13 @@
 #!/bin/bash -i
 
 sudo apt update
-figlet -k NAFABox
-echo "================================================="
-echo "================================================="
-
-./install_conf.sh | tee -a "$nafabox_path/nafabox.log"
+sudo apt install figlet
+cd ./ConfigTinker
+#source ./pwd_ConfigTinker.sh
+if [ -z "$nafabox_path" ]
+then
+	echo "export nafabox_path=$`pwd`"  >> ~/.bashrc
+	echo -e "nafabox_path was added"
+fi
+chmod +x ./*
 
