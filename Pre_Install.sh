@@ -10,6 +10,7 @@
 
 sudo apt update
 sudo apt install figlet
+chmod +x ./Install.sh
 cd ./ConfigTinker
 #source ./pwd_ConfigTinker.sh
 if [ -z "$nafabox_path" ]

@@ -18,15 +18,20 @@ https://dl.armbian.com/tinkerboard/Ubuntu_xenial_default_desktop.7z
 
 4/ Open the folder
 
-5/ right clic on install.sh and set permissions to execute (chmod +x ./go.sh)
+5/ right clic on Pre_Install.sh and set permissions to execute 
+`$ chmod +x ./Pre_Install.sh` 
+`$ ./Pre_Install.sh` 
 
-6/ in file menu "open terminal" (right click)
+6/ After the end of Pre_Install script you can start Install.sh script 
+`$ ./Install.sh` 
 
-7/ type ./go.sh (be aware on azerty keyboards set the numeric pad active and use use it for ./) type go and use tab to complete.
+7/ in file menu "open terminal" (right click)
 
-8/ answer to the questions when you are asked for your password or a "y/n", fill the menus when needed.
+8/ type ./go.sh (be aware on azerty keyboards set the numeric pad active and use use it for ./) type go and use tab to complete.
 
-9/ When finished shutdown and restart your board.
+9/ answer to the questions when you are asked for your password or a "y/n", fill the menus when needed.
+
+10/ When finished shutdown and restart your board.
 
 ### For Raspberry Pi 2/3 :
 
