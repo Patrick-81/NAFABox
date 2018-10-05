@@ -19,10 +19,13 @@ https://dl.armbian.com/tinkerboard/Ubuntu_xenial_default_desktop.7z
 4/ Open the folder
 
 5/ right clic on Pre_Install.sh and set permissions to execute 
+
 `$ chmod +x ./Pre_Install.sh` 
+
 `$ ./Pre_Install.sh` 
 
 6/ After the end of Pre_Install script you can start Install.sh script 
+
 `$ ./Install.sh` 
 
 7/ in file menu "open terminal" (right click)
