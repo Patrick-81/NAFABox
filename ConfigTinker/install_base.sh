@@ -49,7 +49,7 @@ autologin=0
 # test 
 cat $fichtemp | grep -q "Mate destktop and components"
 	installMate=$?
-if [ $installMate = 0 ]
+if [[ $installMate == 0 ]]
 then
 	installMate=1
 else
@@ -58,7 +58,7 @@ fi
 
 cat $fichtemp | grep -q "Fr language"
 	language=$?
-if [ $language = 0 ]
+if [[ $language == 0 ]]
 then
 	language=1
 else
@@ -67,7 +67,7 @@ fi
 
 cat $fichtemp | grep -q "Autologin for user armbian"
 	autologin=$?
-if [ $autologin = 0 ]
+if [[ $autologin == 0 ]]
 then
 	autologin=1
 else
@@ -78,7 +78,7 @@ fi
 # Options de apt-get pour l'installation des paquets
 options="-y"
 #activation de l'autologin pour les version nightly
-if [ $autologin = 1 ]
+if [[ $autologin == 1 ]]
 then
 	figlet -k Install AutoLogin
 	echo "================================================="
@@ -103,7 +103,11 @@ then
 	echo "================================================="
 	echo "================================================="
 	# add repository pour avoir la 1.16 au lieu de la 1.12
-	sudo apt-add-repository -y ppa:ubuntu-mate-dev/xenial-mate # ==> bug
+	version=lsb_release -c -s
+	if [[ $version == "xenial" ]]
+	then
+		sudo apt-add-repository -y ppa:ubuntu-mate-dev/xenial-mate # ==> bug
+	fi
 	sudo apt-get update
 	# désinstallation xfce4
 	sudo apt-get -y remove --purge  xfce*
@@ -160,8 +164,8 @@ then
 	# sudo apt-get -q --yes dist-upgrade
 	# Installation du fond d'écran
 	backpic="PIA16008-1920x1200.jpg"
-	dest="/usr/share/backgrounds/mate/desktop"
-	sudo cp $dirinstall/$backpic $dest/.
+	dest="~/bin"
+	cp $dirinstall/$backpic $dest/.
 	gsettings set org.mate.background picture-filename $dest/$backpic
 fi
 if [[ $language == 1 ]]
