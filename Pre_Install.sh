@@ -8,8 +8,8 @@
 ################################################
 #!/bin/bash -i
 
-sudo apt update
-sudo apt install figlet dialog zenity
+sudo apt-get update
+sudo apt-get -y install figlet dialog zenity
 chmod +x ./Install.sh
 cd ./ConfigTinker
 #source ./pwd_ConfigTinker.sh

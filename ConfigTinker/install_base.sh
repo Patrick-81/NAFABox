@@ -163,6 +163,8 @@ then
 	# mise à jour de tout le système
 	# sudo apt-get -q --yes dist-upgrade
 	# Installation du fond d'écran
+
+	mkdir -p ~/bin
 	backpic="PIA16008-1920x1200.jpg"
 	dest="$HOME/bin"
 	cp $dirinstall/$backpic $dest/$backpic
