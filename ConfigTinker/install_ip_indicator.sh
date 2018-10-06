@@ -30,8 +30,8 @@ sudo apt-get update
 sudo apt-get -y install mate-indicator-applet libatk-adaptor libgail-common gsettings-ubuntu-schemas 
 sudo apt-get -y install libido3-0.1-dev  libgee-0.8-dev liburl-dispatcher1-dev
 sudo apt-get -y install indicator-application indicator-messages indicator-sound 
-sudo apt-get -y install indicator-application-gtk2 indicator-messages-gtk2 indicator-sound-gtk2
-
+sudo apt-get -y install indicator-application-gtk2 indicator-sound-gtk2
+sudo apt-get -y install indicator-messages-gtk2
 
 ######
 # Installation du programme : IP_Indicator

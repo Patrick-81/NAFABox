@@ -43,15 +43,15 @@ sudo apt-get $options install indi-dbg kstars-bleeding-dbg
 ######
 # Installation des drivers 3rdparty qui ne sont pas sous forme de dépot
 ######
-$dirinstall/install_other3rdparty_drivers.sh | tee -a "$dirinstall/nafabox.log"
+$dirinstall/install_other3rdparty_drivers.sh
 ######
 # Installer le pad amélioré
 ######
-$dirinstall/install_pad.sh | tee -a "$dirinstall/nafabox.log"
+$dirinstall/install_pad.sh
 ######
 # Installation du web manager pour indi
 ######
-$dirinstall/install_indiwebmanager.sh | tee -a "$dirinstall/nafabox.log"
+$dirinstall/install_indiwebmanager.sh
 ######
 # Création de l'icône sur le bureau
 ######
