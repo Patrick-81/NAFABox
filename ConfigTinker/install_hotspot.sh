@@ -20,7 +20,7 @@ then
 	echo "installé"
 else
 	echo "installation uuid"
-	sudo apt -y install uuid
+	sudo apt-get -y install uuid
 fi
 ######
 # detect language

@@ -19,12 +19,12 @@ echo "================================================="
 ######
 # Installation des pré-requis
 ######
-sudo apt -y install libconfig++9v5 libffms2-4 libraw15
-sudo apt -y install -f
+sudo apt-get -y install libconfig++9v5 libffms2-4 libraw15
+sudo apt-get -y install -f
 ######
 # Options de apt-get pour l'installation des paquets
 ######
-options="--auto-remove --yes -q"
+options="--autoremove -y -q"
 ######
 # add repository
 ######

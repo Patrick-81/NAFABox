@@ -44,5 +44,5 @@ file="$version""$proc.deb"
 echo $file
 wget http://www.inova-ccd.fr/download/E.\ Drivers/Linux/$file -P /tmp/
 sudo dpkg -i /tmp/$file
-sudo apt install -f
+sudo apt-get install -f
 
