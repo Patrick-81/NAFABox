@@ -18,7 +18,7 @@ cd $dirinstall
 # s'assurer que que pip est installe
 sudo apt-get install python-pip python3-pip
 # installer browsepy
-pip install browsepy
+sudo pip install browsepy
 # Lancer le serveur au demarrage
 # placer la commande sous .config/autostart
 cat $dirinstall/browsepy.desktop | sed -e "s#MOI#${HOME}#g" > /tmp/browsepy.desktop
