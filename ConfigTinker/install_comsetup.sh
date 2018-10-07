@@ -62,12 +62,14 @@ else
 	dial[3]="To update remote date do connect to the box with its
 IP adress which is different if it is on home network or access point"
 fi
-echo "Dirinstall "$dirinstall
-cat index.html | sed -e "s/ACTUATE/${dial[0]}/g" > $site/index.html
-cp $dirinstall/setdate.php $site/setdate.php
-cp $dirinstall/shutdown_reboot.php $site/shutdown_reboot.php
+#echo "Dirinstall "$dirinstall
+cat $dirinstall/index.html | sed -e "s/ACTUATE/${dial[0]}/g" > $site/index.html
+sudo systemctl stop nginx.service
+sudo cp $dirinstall/setdate.php $site/setdate.php
+sudo cp $dirinstall/shutdown_reboot.php $site/shutdown_reboot.php
 sudo chown www-data:www-data $site/setdate.php
 sudo chown www-data:www-data $site/shutdown_reboot.php
+sudo systemctl start nginx.service
 
 ######
 # Pour les machines pour lesquelles le hanshake se passe mal
