@@ -26,7 +26,7 @@ source $dirinstall/detect_language.sh
 # Installation des pré-requis
 ######
 sudo apt-add-repository -y ppa:mutlaqja/ppa
-sudo apt update
+sudo apt-get update
 if $french
 then
 	sudo apt-get $options language-pack-kde-fr
