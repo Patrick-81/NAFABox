@@ -28,7 +28,7 @@ sudo chmod -R uga+rw /usr/local
 
 # installation des sources du serveur
 ######
-pip install --upgrade pip
+#pip install --upgrade pip
 pip install indiweb
 #pip install indiweb --user
 
