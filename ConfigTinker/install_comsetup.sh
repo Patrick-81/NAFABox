@@ -20,11 +20,6 @@ echo " Install time zone, nginx, php, X11VNC, WebDavServer, BrowsePy and NoVNC"
 echo "================================================="
 echo "================================================="
 
-######
-# recupere le user
-######
-moi=$(whoami)
-data=$dirinstall
 cd $dirinstall
 ######
 # detect language
@@ -45,8 +40,8 @@ sudo apt-get -y install php
 ######
 # Creer le répertoire www
 ######
-site=/home/$moi/www
-mkdir -p /home/$moi/www
+site=/home/$USER/www
+mkdir -p /home/$USER/www
 ######
 # Installer les fichiers nécessaires pour la mise à l'heure
 # en remote
@@ -69,15 +64,15 @@ IP adress which is different if it is on home network or access point"
 fi
 echo "Dirinstall "$dirinstall
 cat index.html | sed -e "s/ACTUATE/${dial[0]}/g" > $site/index.html
-cp setdate.php $site/setdate.php
-cp shutdown_reboot.php $site/shutdown_reboot.php
+cp $dirinstall/setdate.php $site/setdate.php
+cp $dirinstall/shutdown_reboot.php $site/shutdown_reboot.php
 sudo chown www-data:www-data $site/setdate.php
 sudo chown www-data:www-data $site/shutdown_reboot.php
 
 ######
 # Pour les machines pour lesquelles le hanshake se passe mal
 ######
-cat hotspotawake.service | sed -e "s/MOI/${moi}/g" > /tmp/hotspotawake.service
+cat hotspotawake.service | sed -e "s/MOI/${USER}/g" > /tmp/hotspotawake.service
 sudo cp /tmp/hotspotawake.service /etc/systemd/system/.
 chmod +x hotspotawake.sh
 cp hotspotawake.sh ~/bin/.
@@ -88,8 +83,8 @@ sudo systemctl enable hotspotawake.service
 sudo systemctl start hotspotawake.service
 ###### 
 
-cat sudoers.txt | sed -e "s/MOI/${moi}/g" > /tmp/sudoers
-sudo cp /tmp/sudoers /etc/sudoers.d/perm$moi
+cat sudoers.txt | sed -e "s/MOI/${USER}/g" > /tmp/sudoers
+sudo cp /tmp/sudoers /etc/sudoers.d/perm$USER
 echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
 echo "${dial[3]}"
 echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
@@ -97,26 +92,26 @@ echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
 ######
 # Installation du serveur nginx
 ######
-sudo apt install -y --reinstall nginx
+sudo apt-get install -y --reinstall nginx
 sudo rm /etc/nginx/sites-available/default
 sudo rm /etc/nginx/sites-enabled/default
-cat $data/server.txt | sed -e "s/MOI/${moi}/g" > /tmp/site-$moi
-sudo cp /tmp/site-$moi /etc/nginx/sites-available/site-$moi
-sudo chown $moi:$moi /etc/nginx/sites-available/site-$moi
-sudo ln -sf /etc/nginx/sites-available/site-$moi /etc/nginx/sites-enabled/site-$moi
+cat $dirinstall/server.txt | sed -e "s/MOI/${USER}/g" > /tmp/site-$USER
+sudo cp /tmp/site-$USER /etc/nginx/sites-available/site-$USER
+sudo chown $USER:$USER /etc/nginx/sites-available/site-$USER
+sudo ln -sf /etc/nginx/sites-available/site-$USER /etc/nginx/sites-enabled/site-$USER
 ######
 # Install of webdav server
 ######
-sudo $data/install_webdavserver.sh
+sudo $dirinstall/install_webdavserver.sh
 ######
 # Install of browsepy
 ######
-sudo $data/install_browsepy.sh
+sudo $dirinstall/install_browsepy.sh
 ######
 # Installation x11vnc
 ######
 
-sudo apt -y install x11vnc
+sudo apt-get -y install x11vnc
 
 # demarage sur la session 
 
@@ -126,7 +121,7 @@ sudo apt -y install x11vnc
 #chmod +x ~/bin/startx11vnc.sh
 #~/bin/startx11vnc.sh
 #mkdir -p ~/.config/autostart/
-#cat $dirinstall/startx11vnc.desktop | sed -e "s/nafa/${moi}/g" > /tmp/startx11vnc.desktop
+#cat $dirinstall/startx11vnc.desktop | sed -e "s/nafa/${USER}/g" > /tmp/startx11vnc.desktop
 #cp /tmp/startx11vnc.desktop ~/.config/autostart/
 #
 
@@ -147,14 +142,14 @@ echo "Need reboot for active VNC"
 sudo apt-get install -y novnc
 sudo apt-get install -y git
 
-cd /home/$moi
+cd /home/$USER
 #
 #test si le dossier noVNC existe, si oui suppression
 #
-if [ -d "/home/${moi}/noVNC" ]
+if [ -d "/home/${USER}/noVNC" ]
   then
   echo "suppression de l'ancien dossier noVNC"
-  rm -Rf /home/$moi/noVNC
+  rm -Rf /home/$USER/noVNC
 fi
 
 git clone git://github.com/kanaka/noVNC
@@ -166,7 +161,7 @@ if [ -f /etc/systemd/system/novnc.service ]
   sudo rm /etc/systemd/system/novnc.service
 fi
 
-cat $data/novnc.service | sed -e "s/MOI/${moi}/g" > /tmp/novnc.service
+cat $dirinstall/novnc.service | sed -e "s/MOI/${USER}/g" > /tmp/novnc.service
 sudo cp /tmp/novnc.service /etc/systemd/system/novnc.service
 sudo chmod 644 /etc/systemd/system/novnc.service
 
