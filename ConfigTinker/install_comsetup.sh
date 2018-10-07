@@ -104,11 +104,11 @@ sudo ln -sf /etc/nginx/sites-available/site-$USER /etc/nginx/sites-enabled/site-
 ######
 # Install of webdav server
 ######
-sudo $dirinstall/install_webdavserver.sh
+$dirinstall/install_webdavserver.sh
 ######
 # Install of browsepy
 ######
-sudo $dirinstall/install_browsepy.sh
+$dirinstall/install_browsepy.sh
 ######
 # Installation x11vnc
 ######
