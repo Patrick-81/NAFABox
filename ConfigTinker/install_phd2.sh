@@ -23,7 +23,7 @@ echo "================================================="
 # Installation des pré-requis
 ######
 sudo apt-add-repository -y ppa:pch/phd2
-sudo apt update
+sudo apt-get update
 ######
 # Installation du programme : phd2
 ######
