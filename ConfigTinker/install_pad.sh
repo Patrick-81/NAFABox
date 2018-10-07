@@ -17,9 +17,9 @@ figlet -k Install PAD
 echo "================================================="
 echo "================================================="
 
-dest="/usr/share/kstars/ekos/mount/qml/"
+dest="/usr/share/kstars/ekos/mount/qml"
 sudo mv $dest/mountbox.qml $dest/mountbox.qml.old
 cp $dirinstall/pad.tar.gz /tmp
-sudo tar xvzf $dirinstall/pad.tar.gz -C $dest
+sudo tar xvzf $dirinstall/pad.tar.gz -C $dest/
  
 
