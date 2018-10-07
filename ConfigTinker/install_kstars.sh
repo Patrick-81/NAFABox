@@ -47,7 +47,7 @@ $dirinstall/install_other3rdparty_drivers.sh
 ######
 # Installer le pad amélioré
 ######
-$dirinstall/install_pad.sh
+#$dirinstall/install_pad.sh
 ######
 # Installation du web manager pour indi
 ######
