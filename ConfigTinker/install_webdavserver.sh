@@ -26,8 +26,8 @@ source $dirinstall/detect_language.sh
 # Extras nginx
 sudo apt-get -y install nginx-extras
 # copy of the server file
-cat $dirinstall/webdav-server.txt | sed -e "s/MOI/${USER}/g" > /tmp/site-webdav
-sudo cp /tmp/site-webdav /etc/nginx/sites-available/.
+cat $dirinstall/webdav-server.txt | sed -e "s/MOI/${USER}/g" > /tmp/site-webdav_tmp
+sudo cp /tmp/site-webdav_tmp /etc/nginx/sites-available/site-webdav
 sudo chown $USER:$USER /etc/nginx/sites-available/site-webdav
 sudo ln -sf /etc/nginx/sites-available/site-webdav /etc/nginx/sites-enabled/site-webdav
 # Restart nginx
