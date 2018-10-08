@@ -23,7 +23,7 @@ sudo pip install browsepy
 # placer la commande sous .config/autostart
 cat $dirinstall/browsepy.desktop | sed -e "s#MOI#${HOME}#g" > /tmp/browsepy.desktop
 
-cp /tmp/browsepy.desktop $HOME/.config/autostart/.
+sudo cp /tmp/browsepy.desktop $HOME/.config/autostart/.
 # fin
 
 
