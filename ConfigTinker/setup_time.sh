@@ -60,8 +60,7 @@ then
 	mon=$(echo "$date_t" | cut -d "/" -f2) #mois
 	years=$(echo "$date_t" | cut -d "/" -f3) #annee
 
-	sudo date +%D -s "$mon/$day/$years"
-	sudo date +%T -s "$HH:$MM:$SS"
+	sudo date +%D_%T -s "$mon/$day/$years_$HH:$MM:$SS"
 else
 	echo "cancel"
 fi
