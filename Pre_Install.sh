@@ -8,8 +8,9 @@
 ################################################
 #!/bin/bash -i
 
+sudo add-apt-repository ppa:nilarimogard/webupd8 -y
 sudo apt-get update
-sudo apt-get -y install figlet dialog zenity
+sudo apt-get -y install figlet dialog zenity yad
 chmod +x ./Install.sh
 cd ./ConfigTinker
 #source ./pwd_ConfigTinker.sh
