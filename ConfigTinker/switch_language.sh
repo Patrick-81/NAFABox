@@ -44,6 +44,7 @@ then
 		sudo dpkg-reconfigure keyboard-configuration
 		exit
 	elif [[ $reponse == ${lbl[3]} ]]
+	then
 		# passer le systeme en français
 		# ajout des packs langage
 		sudo apt-get $options install language-pack-kde-fr
