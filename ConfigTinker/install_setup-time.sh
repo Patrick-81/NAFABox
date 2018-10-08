@@ -23,5 +23,5 @@ script="setup_time"
 cp $dirinstall/$script.sh ~/bin/.
 sudo ln -sf ~/bin/$script.sh /usr/bin/$script
 sudo cp $dirinstall/$script.png /usr/share/pixmaps/.
-$dirinstall/install_shortcut.sh $script "mate-terminal -e \"/bin/bash $script\""
+$dirinstall/install_shortcut.sh $script "mate-terminal -e \"bash -ic $script\""
 
