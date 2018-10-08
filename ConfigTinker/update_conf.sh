@@ -52,7 +52,7 @@ choice[12]="install astroberry_diy"
 
 message[0]="Install web communications"
 message[1]="Install Lin_guider"
-message[2]="Install kstars"
+message[2]="Install kstars-ekos-indi"
 message[3]="Install phd2"
 message[4]="Installation Skychart"
 message[5]="Install ccdciel"
@@ -79,7 +79,7 @@ script[11]=install_ip_indicator.sh
 script[12]=install_astroberry_diy.sh
 
 
-if $init
+if [[ $2 == "initial" ]]
 then
 	st=(true false true true false false false false false false false false)
 	
@@ -142,7 +142,7 @@ fi
 ######
 while true
 do
-	installconf $french
+	installconf $french $1
 ######
 # Reboot required
 ######
