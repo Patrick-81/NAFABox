@@ -3,6 +3,7 @@
 #     https://www.gnu.org/licenses/gpl.html
 # Authors:	Patrick Dutoit
 # 			Laurent Roge
+#				Sébastien Durand
 # On June 10 2017
 # V0.1
 ################################################
@@ -17,53 +18,50 @@ dirinstall=$nafabox_path
 source $dirinstall/detect_language.sh
 if $french
 then
-	sethour[0]="Mise à l\'heure du système"
-	sethour[1]="Réglage date et heure"
-	compute[2]="Entrez les paramètres dans l\'ordre demandé"
-	compute[3]="Jour"
-	compute[4]="Mois"
-	compute[5]="Année"
-	compute[6]="Heure" 
-	compute[7]="Minutes"
-	compute[8]="Secondes"
+	compute[0]="Mise à l'heure du système"
+	compute[1]="Réglage date et heure"
+	compute[2]="Heure" 
+	compute[3]="Minutes"
+	compute[4]="Secondes"
+	compute[5]="Date"
 else
 	compute[0]="System time setup"
 	compute[1]="Set date and time"
-	compute[2]="Input the parameters in required order"
-	compute[3]="Day"
-	compute[4]="Month"
-	compute[5]="year"
-	compute[6]="Hour" 
-	compute[7]="Minutes"
-	compute[8]="Seconds"
+	compute[2]="Hour" 
+	compute[3]="Minutes"
+	compute[4]="Seconds"
+	compute[5]="Date"
 fi
 
+default_h=`date +%k`
+default_m=`date +%M`
+default_s=`date +%S`
+default_date=`date +%d/%m/%Y`
 
-DIALOG=${DIALOG=dialog}
-fichtemp=`tempfile 2>/dev/null` || fichtemp=/tmp/test$$
-trap "rm -f $fichtemp" 0 1 2 5 15
 
-$DIALOG  --backtitle "${compute[0]}" --title "${compute[1]}" \
---form "${compute[2]}" 20 30 25 \
-"${compute[3]}" 1 1 "01" 1 15 8 25 \
-"${compute[4]}" 2 1 "06" 2 15 8 25 \
-"${compute[5]}" 3 1 "2017" 3 15 8 25 \
-"${compute[6]}" 4 1 "16" 4 15 8 25 \
-"${compute[7]}" 5 1 "30" 5 15 8 25 \
-"${compute[8]}" 6 1 "00" 6 15 8 25 \
-2>$fichtemp
-exitstatus=$?
-if [ $exitstatus = 0 ]; then
-	readarray values < $fichtemp
-	DD=$(echo ${values[0]} | xargs)
-	MM=$(echo ${values[1]} | xargs)
-	YY=$(echo ${values[2]} | xargs)
-	HH=$(echo ${values[3]} | xargs)
-	MN=$(echo ${values[4]} | xargs)
-	SS=$(echo ${values[5]} | xargs)
-	sudo date +%Y%m%d -s "$YY$MM$DD"
-	sudo date +%T -s "$HH:$MN:$SS"
+if temps=`yad --width=300 \
+	--center \
+	--form \
+	--title="${compute[0]}" \
+	--text="${compute[1]}" \
+	--field="${compute[2]}" \
+	--field="${compute[3]}" \
+	--field="${compute[4]}" \
+	--field="${compute[5]}":DT \
+	"$default_h" "$default_m" "$default_s" "$default_date"`
+then
+
+	# recuperation des valeurs
+	HH=$(echo "$temps" | cut -d "|" -f1) #heures
+	MM=$(echo "$temps" | cut -d "|" -f2) #minutes
+	SS=$(echo "$temps" | cut -d "|" -f3) #secondes
+	date_t=$(echo "$temps" | cut -d "|" -f4) #date
+	day=$(echo "$date_t" | cut -d "/" -f1) #jour
+	mon=$(echo "$date_t" | cut -d "/" -f2) #mois
+	years=$(echo "$date_t" | cut -d "/" -f3) #annee
+
+	sudo date +%D -s "$mon/$day/$years"
+	sudo date +%T -s "$HH:$MM:$SS"
+else
+	echo "cancel"
 fi
-
-
-
