@@ -29,7 +29,7 @@ else
 	lbl[3]="Anglais"
 fi
 
-if ret=`zenity --entry --title=${lbl[0]} --text=${lbl[1]} --entry-text=${lbl[2]} ${lbl[2]} ${lbl[3]}`
+if ret=`zenity --entry --title="${lbl[0]}" --text="${lbl[1]}" --entry-text="${lbl[2]}" "${lbl[2]}" "${lbl[3]}"`
 then
 	reponse=$ret
 	if [[ $reponse == ${lbl[2]} ]]
