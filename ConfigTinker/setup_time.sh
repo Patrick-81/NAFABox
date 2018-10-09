@@ -43,6 +43,7 @@ if temps=`yad --width=300 \
 	--center \
 	--form \
 	--title="${compute[0]}" \
+	--image=$dirinstall/setup_time.png \
 	--text="${compute[1]}" \
 	--field="${compute[2]}" \
 	--field="${compute[3]}" \

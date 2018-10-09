@@ -33,6 +33,7 @@ if ret=`yad --width 400 \
 			--center \
 			--entry \
 			--title "${lbl[0]}" \
+			--image=switch_language \
 			--text "${lbl[1]}" \
 			--button="gtk-ok:0" \
 			--button="gtk-close:1" \
