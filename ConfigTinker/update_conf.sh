@@ -180,18 +180,18 @@ do
 				--button="gtk-close:1" \
 				--entry-text "${dial[2]}" "${dial[3]}" "${dial[4]}" "${dial[5]}"`
 	then
-		if [[ $option == "${dial[2]}"]]
+		if [[ $option == "${dial[2]}" ]]
 		then
 			echo "Quit"
 			exit
-		elif [[ $option == "${dial[3]}"]]
+		elif [[ $option == "${dial[3]}" ]]
 		then
 			echo "back to install software"
-		elif [[ $option == "${dial[4]}"]]
+		elif [[ $option == "${dial[4]}" ]]
 		then
 			echo "Install hotspot"
 			sudo $dirinstall/install_hotspot.sh | tee -a "$dirinstall/nafabox.log"
-		elif [[ $option == "${dial[5]}"]]
+		elif [[ $option == "${dial[5]}" ]]
 		then
 			echo "Reboot"
 			sudo reboot
