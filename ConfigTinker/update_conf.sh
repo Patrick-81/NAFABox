@@ -123,7 +123,7 @@ then
 	for (( i=0; i<=$number-1; i++ ))
 	do
 		j=$(($i+2))
-		re=$(echo "$chose" | cut -d "|" -f)
+		re=$(echo "$chose" | cut -d "|" -f$j)
 		if [[ $re == "TRUE" ]]
 		then
 			$dirinstall/${script[$i]} | tee -a "$dirinstall/nafabox.log"

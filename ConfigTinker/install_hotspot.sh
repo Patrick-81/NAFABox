@@ -55,32 +55,29 @@ then
 		dial[0]="Fixer un nom discriminant pour votre hotspot"
 		dial[1]="Soyez créatif d'autres personnes peuvent aussi utiliser une NAFABox"
 		dial[2]="Nom original pour votre hotspot ou défaut"
+		dial[3]="Nom du HotSpot :"
 	else
 		dial[0]="Give a discriminant name for your hotspot"
 		dial[1]="Be creative other people close to you may also use a NAFABox"
 		dial[2]="Original name for your hotspot or default"
+		dial[3]="HotSpot Name :"
 	fi
 	# Demande du nom de hotspot
-	dialog --clear \
-		--title "${dial[0]}" \
-		--backtitle "${dial[1]}" \
-		--inputbox "${dial[2]}" \
-		8 60 $default_hostname \
-		2>$OUTPUT
-	reponse=$?
-	# make a decsion 
-	case $reponse in
-  	0) 
-		hotspot_name=$(<$OUTPUT)"box"
-  		;;
-  	1) 
-		exit
-  		;;
-  	255) 
+	if option=`yad --width 450 \
+				--center \
+				--form \
+				--title "${dial[2]}" \
+				--image=$dirinstall/install_hotspot.png \
+				--text "${dial[0]}, \n${dial[1]}" \
+				--field="${dial[2]}" "$default_hostname"`
+	then
+		option=$(echo "$option" | cut -d "|" -f1)
+		hotspot_name=$option"_box"
+	else
    		echo "[ESC] key pressed."
 		exit
-		;;
-	esac
+	fi
+
 	fic0=$(tempfile)
 	cat $dirinstall/nafabox.template | sed -e "s/wlan0/${device}/g" > $fic0
 	fic1=$(tempfile)

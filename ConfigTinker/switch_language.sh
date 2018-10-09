@@ -29,7 +29,14 @@ else
 	lbl[3]="Anglais"
 fi
 
-if ret=`zenity --entry --title="${lbl[0]}" --text="${lbl[1]}" --entry-text="${lbl[2]}" "${lbl[2]}" "${lbl[3]}"`
+if ret=`yad --width 400 \
+			--center \
+			--entry \
+			--title "${lbl[0]}" \
+			--text "${lbl[1]}" \
+			--button="gtk-ok:0" \
+			--button="gtk-close:1" \
+			--entry-text "${lbl[2]}" "${lbl[3]}"`
 then
 	reponse=$ret
 	if [[ $reponse == ${lbl[2]} ]]
@@ -54,9 +61,10 @@ then
 		sudo update-locale LC_ALL=fr_FR.UTF-8 LANG=fr_FR.UTF-8
 		sudo dpkg-reconfigure keyboard-configuration
 		exit
-	else
-		echo "cancel"
-		exit
+
 	fi
+else
+	echo "cancel"
+	exit
 fi
 
