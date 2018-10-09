@@ -21,12 +21,10 @@ installconf()
 if $1
 then
 	dial[0]="Installation/Mise à jour des logiciels"
-	dial[1]="Installation complémentaire"
-	dial[2]="Choisir le(s) logiciel(s) à installer"
+	dial[1]="Choisir le(s) logiciel(s) à installer"
 else
 	dial[0]="Install/Update of software"
-	dial[1]="Additional software(s)"
-	dial[2]="Choose software(s) to install"
+	dial[1]="Choose software(s) to install"
 fi
 
 if $1
@@ -86,50 +84,61 @@ then
 else
 	st=(false false false false false false false false false false false false)
 fi
+
+# nombre de logiciel
+number=12
+
 # echo ${st[*]}
 # echo ${choise[*]}
 # echo ${dial[*]}
 
 
 # affichage
-fichtemp=`tempfile 2>/dev/null` || fichtemp=/tmp/test$$
-error=`tempfile 2>/dev/null` || fichtemp=/tmp/error$$
 
-zenity --title "${dial[1]}" \
-	--width=400 --height=400 \
-	--list \
-	--checklist \
-	--column "install" --column "Program" \
-	"${st[0]}" "${choice[0]}" \
-	"${st[1]}" "${choice[1]}" \
-	"${st[2]}" "${choice[2]}" \
-	"${st[3]}" "${choice[3]}" \
-	"${st[4]}" "${choice[4]}" \
-	"${st[5]}" "${choice[5]}" \
-	"${st[6]}" "${choice[6]}" \
-	"${st[7]}" "${choice[7]}" \
-	"${st[8]}" "${choice[8]}" \
-	"${st[9]}" "${choice[9]}" \
-	"${st[10]}" "${choice[10]}" \
-	"${st[11]}" "${choice[11]}" \
-	"${st[12]}" "${choice[12]}" 1>$fichtemp 2>$error
+if chose=`yad --width=400 \
+then
+	--center \
+	--form \
+	--title="${dial[0]}" \
+	--text="${dial[1]}" \
+	--field=":LBL" \
+	--field="${choice[0]}:CHK" \
+	--field="${choice[1]}:CHK" \
+	--field="${choice[2]}:CHK" \
+	--field="${choice[3]}:CHK" \
+	--field="${choice[4]}:CHK" \
+	--field="${choice[5]}:CHK" \
+	--field="${choice[6]}:CHK" \
+	--field="${choice[7]}:CHK" \
+	--field="${choice[8]}:CHK" \
+	--field="${choice[9]}:CHK" \
+	--field="${choice[10]}:CHK" \
+	--field="${choice[11]}:CHK" \
+	--field="${choice[12]}:CHK" \
+	"" "${st[0]}" "${st[1]}" "${st[2]}" \
+	"${st[3]}" "${st[4]}" "${st[5]}" "${st[6]}" \
+	"${st[7]}" "${st[8]}" "${st[9]}" "${st[10]}" \
+	"${st[11]}" "${st[12]}"`
 
+	for (( i=0; i<=$number-1; i++ ))
+	do
+		j=$(($i+2))
+		re=$(echo "$chose" | cut -d "|" -f)
+		if [[ $re == "TRUE" ]]
+		then
+			$dirinstall/${script[$i]} | tee -a "$dirinstall/nafabox.log"
+		fi
+	done
+else
+	echo "cancel"
+fi
 
-
-# test 
-for (( i=0; i<=11; i++ ))
-do
-	cat $fichtemp | grep -q "${choice[$i]}"
-	if [ $? = 0 ]
-	then
-		$dirinstall/${script[$i]} | tee -a "$dirinstall/nafabox.log"
-	fi
-done
 	return
 }
 ######
 # Detect language
 ######
+
 lang=$(locale | grep LANG= | grep fr_FR)
 if [[ $lang == *"fr_FR"* ]]
 then
@@ -162,32 +171,34 @@ do
 		dial[4]="Install the hotspot"
 		dial[5]="Shutdown now"
 	fi
-	option=$(dialog --title "${dial[0]}" --menu "${dial[1]}" 12 60 6 1 "${dial[2]}" 2 "${dial[3]}"\
-				 3 "${dial[4]}" 4 "${dial[5]}" 3>&1 1>&2 2>&3)
-# Get exit status
-# 0 means user hit [yes] button.
-# 1 means user hit [no] button.
-# 255 means user hit [Esc] key.
-	response=$?
-	case $option in
-	1)
-		echo "Quit"
-		exit
-		;;
-	2)
-		echo "back to install software"
-		;;
-	3)
-		echo "Install hotspot"
-		sudo $dirinstall/install_hotspot.sh | tee -a "$dirinstall/nafabox.log"
-		;;
-	4)
-		echo "Reboot"
-		sudo shutdown now
-		;;
-	255)
+	if option=`yad --width 400 \
+				--center \
+				--entry \
+				--title "${dial[0]}" \
+				--image=gnome-shutdown \
+				--text "${dial[1]}" \
+				--button="gtk-ok:0" \
+				--button="gtk-close:1" \
+				--entry-text "${dial[2]}" "${dial[3]}" "${dial[4]}" "${dial[5]}"`
+	then
+		if [[ $option == "${dial[2]}"]]
+		then
+			echo "Quit"
+			exit
+		elif [[ $option == "${dial[3]}"]]
+		then
+			echo "back to install software"
+		elif [[ $option == "${dial[4]}"]]
+		then
+			echo "Install hotspot"
+			sudo $dirinstall/install_hotspot.sh | tee -a "$dirinstall/nafabox.log"
+		elif [[ $option == "${dial[5]}"]]
+		then
+			echo "Reboot"
+			sudo reboot
+		fi
+	else
 		echo "[ESC] key pressed."
-		;;
-	esac
+	fi
 done
 

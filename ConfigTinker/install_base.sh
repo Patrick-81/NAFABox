@@ -30,55 +30,58 @@ sudo echo "NAFABox" > /etc/hostname # --> not permission
 # Options d'installation
 ######
 
-# affichage
-fichtemp=`tempfile 2>/dev/null` || fichtemp=/tmp/test$$
-error=`tempfile 2>/dev/null` || fichtemp=/tmp/error$$
-
-zenity --title "Select Installation Options :" \
-	--width=400 --height=200 \
-	--list \
-	--checklist \
-	--column "install" --column "Program" \
-	FALSE "Mate destktop and components" FALSE "Fr language" FALSE "Autologin for user armbian" 1>$fichtemp 2>$error
-
 # init
-language=0
-installMate=0
-autologin=0
 
-# test 
-cat $fichtemp | grep -q "Mate destktop and components"
-	installMate=$?
-if [[ $installMate == 0 ]]
-then
-	installMate=1
-else
-	installMate=0
-fi
+installMate="FALSE"
+language="FALSE"
+autologin="FALSE"
 
-cat $fichtemp | grep -q "Fr language"
-	language=$?
-if [[ $language == 0 ]]
+if [[ $DESKTOP_SESSION == "mate" ]]
 then
-	language=1
-else
-	language=0
-fi
+	if chose=`yad --width=350 \
+		--center \
+		--form \
+		--title="Select Installation Options :" \
+		--text="Install Program :" \
+		--field=":LBL" \
+		--field="Fr language:CHK" \
+		--field="Autologin for dev armbian (nightly):CHK" \
+		"" "FALSE" "FALSE"`
+	then
+		# recuperation des valeurs
+		language=$(echo "$chose" | cut -d "|" -f2) #minutes
+		autologin=$(echo "$chose" | cut -d "|" -f3) #secondes
 
-cat $fichtemp | grep -q "Autologin for user armbian"
-	autologin=$?
-if [[ $autologin == 0 ]]
-then
-	autologin=1
+	else
+		echo "cancel"
+	fi
 else
-	autologin=0
+	if chose=`yad --width=300 \
+		--center \
+		--form \
+		--title="Select Installation Options :" \
+		--text="Install Program :" \
+		--field=":LBL" \
+		--field="Mate destktop and components:CHK" \
+		--field="Fr language:CHK" \
+		--field="Autologin for dev armbian (nightly):CHK" \
+		"" "TRUE" "FALSE" "FALSE"`
+	then
+		# recuperation des valeurs
+		installMate=$(echo "$chose" | cut -d "|" -f2) #heures
+		language=$(echo "$chose" | cut -d "|" -f3) #minutes
+		autologin=$(echo "$chose" | cut -d "|" -f4) #secondes
+
+	else
+		echo "cancel"
+	fi
 fi
 
 
 # Options de apt-get pour l'installation des paquets
 options="-y"
 #activation de l'autologin pour les version nightly
-if [[ $autologin == 1 ]]
+if [[ $autologin == "TRUE" ]]
 then
 	figlet -k Install AutoLogin
 	echo "================================================="
@@ -96,7 +99,7 @@ then
 	fi
 fi
 #  Désinstallation de xfce et installation de Mate
-if [[ $installMate == 1 ]]
+if [[ $installMate == "TRUE" ]]
 then
 
 	figlet -k Install Ubuntu Mate
@@ -170,7 +173,7 @@ then
 	cp $dirinstall/$backpic $dest/$backpic
 	gsettings set org.mate.background picture-filename $dest/$backpic
 fi
-if [[ $language == 1 ]]
+if [[ $language == "TRUE" ]]
 then
 
 	figlet -k Install Language
