@@ -167,12 +167,15 @@ then
 	# sudo apt-get -q --yes dist-upgrade
 	# Installation du fond d'écran
 
-	mkdir -p ~/bin
-	backpic="PIA16008-1920x1200.jpg"
-	dest="$HOME/bin"
-	cp $dirinstall/$backpic $dest/$backpic
-	gsettings set org.mate.background picture-filename $dest/$backpic
+
 fi
+# set NAFABox wallpaper
+mkdir -p ~/bin
+backpic="PIA16008-1920x1200.jpg"
+dest="$HOME/bin"
+cp $dirinstall/$backpic $dest/$backpic
+gsettings set org.$DESKTOP_SESSION.background picture-filename $dest/$backpic
+
 if [[ $language == "TRUE" ]]
 then
 
