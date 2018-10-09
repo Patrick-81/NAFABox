@@ -96,7 +96,6 @@ number=12
 # affichage
 
 if chose=`yad --width=400 \
-then
 	--center \
 	--form \
 	--title="${dial[0]}" \
@@ -119,7 +118,7 @@ then
 	"${st[3]}" "${st[4]}" "${st[5]}" "${st[6]}" \
 	"${st[7]}" "${st[8]}" "${st[9]}" "${st[10]}" \
 	"${st[11]}" "${st[12]}"`
-
+then
 	for (( i=0; i<=$number-1; i++ ))
 	do
 		j=$(($i+2))
