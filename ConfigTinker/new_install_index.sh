@@ -94,7 +94,7 @@ then
 	ChampY=$(echo "scale=2;(60*57.3*$HC/$F)" | bc)
 	Diag=$(echo "scale=2;sqrt($ChampX*$ChampX+$ChampY*$ChampY)" | bc)
 	vmax=$(echo "scale=2;0.5*$Diag" | bc)
-	vmin=$(echo "$valmin;vmax($ChampX,$ChampY)" | bc)
+	vmin=$(echo "$valmin;vmax($ChampX,$ChampY)" | bc) #--> bug
 
 	#echo "Largeur capteur (mm) "$LC" Hauteur capteur(mm)"$HC\
 	#	" Champ X(') "$ChampX" Champ Y(') "$ChampY" Diag (') "$Diag
