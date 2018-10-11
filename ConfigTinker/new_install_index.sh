@@ -25,15 +25,6 @@ echo "================================================="
 echo "================================================="
 
 ######
-# Fonction min
-######
-valmin="define vmin(a, b) {
-				if (a < b) {
-					return (a);
-				}
-				return (b);
-			}"
-######
 # test locale
 ######
 source $dirinstall/detect_language.sh
@@ -88,13 +79,19 @@ then
 
 
 	F=$(echo "scale=2;$F*$R" | bc)
-	LC=$(echo "scale=2;($P*$RH/1000.0)" | bc)
-	HC=$(echo "scale=2;($P*$RV/1000.0)" | bc)
-	ChampX=$(echo "scale=2;(60*57.3*$LC/$F)" | bc)
-	ChampY=$(echo "scale=2;(60*57.3*$HC/$F)" | bc)
-	Diag=$(echo "scale=2;sqrt($ChampX*$ChampX+$ChampY*$ChampY)" | bc)
-	vmax=$(echo "scale=2;0.5*$Diag" | bc)
-	vmin=$(echo "$valmin;vmax($ChampX,$ChampY)" | bc) #--> bug
+	LC=$(echo "scale=2;($P*$RH/1000.0)" | bc) # taille du capteur en micrométre horizontal
+	HC=$(echo "scale=2;($P*$RV/1000.0)" | bc) # taille du capteur en micrométre vertical
+	ChampX=$(echo "scale=2;(60*57.3*$LC/$F)" | bc) # champs horizontal en arcmin
+	ChampY=$(echo "scale=2;(60*57.3*$HC/$F)" | bc) # champs vertical en arcmin
+	Diag=$(echo "scale=2;sqrt($ChampX*$ChampX+$ChampY*$ChampY)" | bc) # champs diagonal en arcmin
+	vmin=$(echo "scale=2;0.5*$Diag" | bc) #--> pourquoi ?
+
+	if [ $(echo " $ChampX >= $ChampY" | bc) -eq 1 ]
+	then 
+		vmax=$ChampX 
+	else 
+		vmax=$ChampY 
+	fi
 
 	#echo "Largeur capteur (mm) "$LC" Hauteur capteur(mm)"$HC\
 	#	" Champ X(') "$ChampX" Champ Y(') "$ChampY" Diag (') "$Diag
