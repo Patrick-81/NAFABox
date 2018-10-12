@@ -12,7 +12,7 @@
 ######
 dirinstall=$nafabox_path
 ######
-options="--auto-remove --yes -q"
+options="-y -q --autoremove"
 
 figlet -k Install Kstars Ekos Indi
 echo "================================================="
@@ -30,7 +30,7 @@ sudo apt-add-repository -y ppa:mutlaqja/ppa
 sudo apt-get update
 if $french
 then
-	sudo apt-get $options language-pack-kde-fr
+	sudo apt-get $options install language-pack-kde-fr
 fi
 sudo apt-get $options install gsc
 sudo apt-get $options install libqt5sql5-sqlite qtdeclarative5-dev
@@ -46,8 +46,10 @@ if [[ $1 == "kstars_dev" ]]
 then
 	sudo apt-get $options install build-essential cmake git libeigen3-dev libcfitsio-dev zlib1g-dev libindi-dev extra-cmake-modules libkf5plotting-dev libqt5svg5-dev libkf5xmlgui-dev kio-dev kinit-dev libkf5newstuff-dev kdoctools-dev libkf5notifications-dev libkf5crash-dev gettext libnova-dev libgsl-dev libraw-dev libkf5notifyconfig-dev wcslib-dev libqt5websockets5-dev qt5keychain-dev xplanet xplanet-images
 	sudo apt-get $options install libusb-1.0-0-dev libjpeg-dev libcurl4-gnutls-dev
-	sudo apt-get $options install libftdi-dev libgps-dev libdc1394-22-dev libgphoto2-dev libboost-dev libboost-regex-dev librtlsdr-dev liblimesuite-dev libftdi1-dev libfftw3-dev
-
+	sudo apt-get $options install libftdi-dev libgps-dev libdc1394-22-dev libgphoto2-dev libboost-dev libboost-regex-dev librtlsdr-dev libftdi1-dev libfftw3-dev
+	sudo add-apt-repository -y ppa:myriadrf/drivers
+	sudo apt-get update
+	sudo apt-get $options install liblimesuite-dev
 
 	if [ -d "/home/${USER}/Projects/build/kstars" ]
 	then
@@ -73,7 +75,10 @@ elif [[ $1 == "indi_dev" ]]
 then
 	sudo apt-get $options install build-essential cmake git libeigen3-dev libcfitsio-dev zlib1g-dev libindi-dev extra-cmake-modules libkf5plotting-dev libqt5svg5-dev libkf5xmlgui-dev kio-dev kinit-dev libkf5newstuff-dev kdoctools-dev libkf5notifications-dev libkf5crash-dev gettext libnova-dev libgsl-dev libraw-dev libkf5notifyconfig-dev wcslib-dev libqt5websockets5-dev qt5keychain-dev xplanet xplanet-images
 	sudo apt-get $options install libusb-1.0-0-dev libjpeg-dev libcurl4-gnutls-dev
-	sudo apt-get $options install libftdi-dev libgps-dev libdc1394-22-dev libgphoto2-dev libboost-dev libboost-regex-dev librtlsdr-dev liblimesuite-dev libftdi1-dev libfftw3-dev
+	sudo apt-get $options install libftdi-dev libgps-dev libdc1394-22-dev libgphoto2-dev libboost-dev libboost-regex-dev librtlsdr-dev libftdi1-dev libfftw3-dev
+	sudo add-apt-repository -y ppa:myriadrf/drivers
+	sudo apt-get update
+	sudo apt-get $options install liblimesuite-dev
 
 	if [ -d "/home/${USER}/Projects/build/libindi" ]
 	then
@@ -122,7 +127,10 @@ elif [[ $1 == "all_dev" ]]
 then
 	sudo apt-get $options install build-essential cmake git libeigen3-dev libcfitsio-dev zlib1g-dev libindi-dev extra-cmake-modules libkf5plotting-dev libqt5svg5-dev libkf5xmlgui-dev kio-dev kinit-dev libkf5newstuff-dev kdoctools-dev libkf5notifications-dev libkf5crash-dev gettext libnova-dev libgsl-dev libraw-dev libkf5notifyconfig-dev wcslib-dev libqt5websockets5-dev qt5keychain-dev xplanet xplanet-images
 	sudo apt-get $options install libusb-1.0-0-dev libjpeg-dev libcurl4-gnutls-dev
-	sudo apt-get $options install libftdi-dev libgps-dev libdc1394-22-dev libgphoto2-dev libboost-dev libboost-regex-dev librtlsdr-dev liblimesuite-dev libftdi1-dev libfftw3-dev
+	sudo apt-get $options install libftdi-dev libgps-dev libdc1394-22-dev libgphoto2-dev libboost-dev libboost-regex-dev librtlsdr-dev libftdi1-dev libfftw3-dev
+	sudo add-apt-repository -y ppa:myriadrf/drivers
+	sudo apt-get update
+	sudo apt-get $options install liblimesuite-dev
 
 	if [ -d "/home/${USER}/Projects/build/libindi" ]
 	then

@@ -86,12 +86,14 @@ then
 	Diag=$(echo "scale=2;sqrt($ChampX*$ChampX+$ChampY*$ChampY)" | bc) # champs diagonal en arcmin
 	vmin=$(echo "scale=2;0.5*$Diag" | bc) #--> pourquoi ?
 
-	if [ $(echo " $ChampX >= $ChampY" | bc) -eq 1 ]
-	then 
-		vmax=$ChampX 
-	else 
-		vmax=$ChampY 
-	fi
+	#if [ $(echo " $ChampX >= $ChampY" | bc) -eq 1 ]
+	#then 
+	#	vmax=$ChampX 
+	#else 
+	#	vmax=$ChampY 
+	#fi
+
+	vmax=$(echo "scale=2;1.3*$Diag" | bc)
 
 	#echo "Largeur capteur (mm) "$LC" Hauteur capteur(mm)"$HC\
 	#	" Champ X(') "$ChampX" Champ Y(') "$ChampY" Diag (') "$Diag
@@ -99,6 +101,7 @@ then
 	# Charger le fichier des références d'index
 	######
 	file2read=$dirinstall/index.txt
+
 	declare -a tabfile
 	declare -a tabvmin
 	declare -a tabvmax
@@ -144,17 +147,19 @@ then
 	######
 	# what files to download ?
 	######
+	# création de la liste des fichiers :
 	listfile=""
 	for index in $(seq $indmax $indmin);
 	do
 		listfile=$listfile"\t"${tabfile[$index]}'\n'
 	done
-	#
+
+	# affichage de la liste
 	if $french
 	then
-		listfile=$(echo -e "Les fichiers a telecharger sont:\n"$listfile)
+		echo -e "Les fichiers a telecharger sont:\n"$listfile
 	else
-		listefile=$(echo -e "Files to download:\n"$listfile)
+		echo -e "Files to download:\n"$listfile
 	fi
 
 	######
@@ -162,6 +167,7 @@ then
 	######
 	MENU_OPTIONS=
 	allfiles=
+	choices=
 	COUNT=0
 	for index in $(seq $indmax $indmin);
 	do
@@ -177,50 +183,75 @@ then
 	   		COUNT=$[COUNT+1]
 			allfiles[$COUNT]=$f
 			label="$f""->$length(M)"
-	   		MENU_OPTIONS="${MENU_OPTIONS} ${COUNT} $label off "
+	   		MENU_OPTIONS="${MENU_OPTIONS} false ${COUNT} $label"
 		done
 	done
-
+	#echo $MENU_OPTIONS
+	# choix de la langue
 	if $french
 	then
-		select[0]="Sélectionnez les fichiers \
-à installer:\nAttention à la taille des fichiers (jusqu'à plusieurs Go)\
+		select[0]="Sélectionnez les fichiers à installer:"
+		select[1]="Attention à la taille des fichiers (jusqu'à plusieurs Go)\
 \nVoir sur data.astrometry.net/debian"
-		select[1]="installation du paquet "
-		select[2]="installé"
-		select[3]="est déjà installé"
-		select[4]="problème d'installation pour "
+		select[2]="installation du paquet "
+		select[3]="installé"
+		select[4]="est déjà installé"
+		select[5]="problème d'installation pour"
 	else
-		select[0]="Select the files \
-to install:\nBeware to the size of the files (some are many Go)\
+		select[0]="Select the files to install:"
+		select[1]="\nBeware to the size of the files (some are many Go)\
 \nTake a look on data.astrometry.net/debian"
-		select[1]="install packet "
-		select[2]="installed"
-		select[3]="is yet installed"
-		select[4]="Installation problems on "
+		select[2]="install packet "
+		select[3]="installed"
+		select[4]="is yet installed"
+		select[5]="Installation problems on"
 	fi
-# download files
-	cmd=(dialog --separate-output --clear --checklist "${select[0]}" 22 76 16)
-	options=(${MENU_OPTIONS})
-	choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
-	for choice in $choices
-	do
-		f=${allfiles[$choice]}
-		verifinstall=$(sudo apt list | grep $f)		
-		if [[ -z "$verifinstall" ]]
-		then
-			echo "${select[1]} $f"
-			wget http://data.astrometry.net/debian/$f\_0.45_all.deb -P /tmp
-			sudo dpkg -i /tmp/$f\_0.45_all.deb
-		else
-			if [[ $verifinstall == *"${select[2]}"* ]]
+
+	# affichage des options d'installation
+	if cmd=(yad --list --no-headers \
+				--center
+				--title="${select[0]}" \
+				--checklist \
+				--text="${select[1]}" \
+				--column="choix" \
+				--column="numero" \
+				--column="packet")
+	then
+		options=(${MENU_OPTIONS})
+		# affichage
+		
+		choices_tmp=$("${cmd[@]}" "${options[@]}")
+
+		for choice_tmp in $choices_tmp
+		do
+			choices="${choices} $(echo "$choice_tmp" | cut -d "|" -f2)"
+		done
+		echo $choices
+
+
+		# download files
+		for choice in $choices
+		do
+			f=${allfiles[$choice]}
+			verifinstall=$(sudo apt list | grep $f)		
+			if [[ -z "$verifinstall" ]]
 			then
-				echo "$f ${select[3]}"
+				echo "${select[2]} $f"
+				wget http://data.astrometry.net/debian/$f\_0.45_all.deb -P /tmp
+				sudo dpkg -i /tmp/$f\_0.45_all.deb
 			else
-				echo "${select[4]} $f\n$verifinstall"
+				if [[ $verifinstall == *"${select[2]}"* ]]
+				then
+					echo "$f ${select[4]}"
+				else
+					echo -e "${select[5]} $f\n$verifinstall"
+				fi
 			fi
-		fi
-	done
+		done
+	else
+		echo "cancel"
+		exit
+	fi
 else
 	echo "cancel"
 	exit
