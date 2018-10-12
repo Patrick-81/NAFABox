@@ -240,7 +240,7 @@ then
 				wget http://data.astrometry.net/debian/$f\_0.45_all.deb -P /tmp
 				sudo dpkg -i /tmp/$f\_0.45_all.deb
 			else
-				if [[ $verifinstall == *"${select[2]}"* ]]
+				if [[ $verifinstall == *"${select[3]}"* ]]
 				then
 					echo "$f ${select[4]}"
 				else
