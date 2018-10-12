@@ -25,15 +25,6 @@ echo "================================================="
 echo "================================================="
 
 ######
-# Fonction min
-######
-valmax="define vmax(a, b) {
-				if (a > b) {
-					return (a);
-				}
-				return (b);
-			}"
-######
 # test locale
 ######
 source $dirinstall/detect_language.sh
@@ -46,8 +37,7 @@ then
 	compute[4]="Réducteur/Barlow (x)"
 	compute[5]="Résolution horizontale capteur(pix)"
 	compute[6]="Résolution verticale capteur(pix)" 
-	compute[7]="Taille horizontale pixel(µm)"
-	compute[8]="Taille verticale pixel (µm)"
+	compute[7]="Taille du pixel(µm)"
 else
 	compute[0]="Index file load"
 	compute[1]="Your setup characteristics"
@@ -56,50 +46,62 @@ else
 	compute[4]="Reducer/Barlow (x)"
 	compute[5]="Horizontal sensor resolution (pix)"
 	compute[6]="Vertical sensor resolution(pix)" 
-	compute[7]="Horizontal pixel size(µm)"
-	compute[8]="Vertical pixel size (µm)"
+	compute[7]="pixel size(µm)"
 fi
 echo ${compute["baktitle"]}
 
-DIALOG=${DIALOG=dialog}
-fichtemp=`tempfile 2>/dev/null` || fichtemp=/tmp/test$$
-trap "rm -f $fichtemp" 0 1 2 5 15
+if tel=`yad --width=300 \
+	--center \
+	--form \
+	--title="${compute[0]}" \
+	--image=$dirinstall/install_index.png \
+	--text="${compute[1]}\n${compute[2]} :" \
+	--field=":LBL" \
+	--field="${compute[3]}":NUM \
+	--field="${compute[4]}":NUM \
+	--field="${compute[5]}":NUM \
+	--field="${compute[6]}":NUM \
+	--field="${compute[7]}":NUM \
+	"" \
+	'2032!1..100000!1!2' \
+	'1!0.1..10!0.1!1' \
+	'3888!1..1000000!1!0' \
+	'2592!1..1000000!1!0' \
+	'5.7!0.1..100!0.1!2'`
+then
 
-$DIALOG  --backtitle "${compute[0]}" --title "${compute[1]}" \
---form "${compute[2]}" 20 60 30 \
-"${compute[3]}" 1 1 "3010" 1 38 15 30 \
-"${compute[4]}" 2 1 "1" 2 38 15 30 \
-"${compute[5]}" 3 1 "2750" 3 38 15 30 \
-"${compute[6]}" 4 1 "2200" 4 38 15 30 \
-"${compute[7]}" 5 1 "4.54" 5 38 15 30 \
-"${compute[8]}" 6 1 "4.54" 6 38 15 30 \
-2>$fichtemp
-exitstatus=$?
-echo $exitsatus
-if [ $exitstatus = 0 ]; then
-	readarray values < $fichtemp
-	F=$(echo ${values[0]} | xargs)
-	R=$(echo ${values[1]} | xargs)
+	# recuperation des valeurs
+	F=$(echo "$tel" | cut -d "|" -f2 | sed '/[0-9]\,/s/\,/./g') #focal
+	R=$(echo "$tel" | cut -d "|" -f3 | sed '/[0-9]\,/s/\,/./g') #barlow ou reducteur
+	RH=$(echo "$tel" | cut -d "|" -f4 | sed '/[0-9]\,/s/\,/./g') #nombre pixel horizontal
+	RV=$(echo "$tel" | cut -d "|" -f5 | sed '/[0-9]\,/s/\,/./g') #nombre pixel vertical
+	P=$(echo "$tel" | cut -d "|" -f6 | sed '/[0-9]\,/s/\,/./g') #taille pixel
+
+
 	F=$(echo "scale=2;$F*$R" | bc)
-	RH=$(echo ${values[2]} | xargs)
-	RV=$(echo ${values[3]} | xargs)
-	PH=$(echo ${values[4]} | xargs)
-	PV=$(echo ${values[5]} | xargs)
-	
-	LC=$(echo "scale=1;($PH*$RH/1000.0)" | bc)
-	HC=$(echo "scale=1;($PV*$RV/1000.0)" | bc)
-	ChampX=$(echo "scale=1;(60*57.3*$LC/$F)" | bc)
-	ChampY=$(echo "scale=1;(60*57.3*$HC/$F)" | bc)
-	Diag=$(echo "scale=1;sqrt($ChampX*$ChampX+$ChampY*$ChampY)" | bc)
-	vmin=$(echo "scale=1;0.5*$Diag" | bc)
-	vmax=$(echo "$valmax;vmax($ChampX,$ChampY)" | bc)
+	LC=$(echo "scale=2;($P*$RH/1000.0)" | bc) # taille du capteur en micrométre horizontal
+	HC=$(echo "scale=2;($P*$RV/1000.0)" | bc) # taille du capteur en micrométre vertical
+	ChampX=$(echo "scale=2;(60*57.3*$LC/$F)" | bc) # champs horizontal en arcmin
+	ChampY=$(echo "scale=2;(60*57.3*$HC/$F)" | bc) # champs vertical en arcmin
+	Diag=$(echo "scale=2;sqrt($ChampX*$ChampX+$ChampY*$ChampY)" | bc) # champs diagonal en arcmin
+	vmin=$(echo "scale=2;0.5*$Diag" | bc) #--> pourquoi ?
 
-#echo "Largeur capteur (mm) "$LC" Hauteur capteur(mm)"$HC\
-#	" Champ X(') "$ChampX" Champ Y(') "$ChampY" Diag (') "$Diag
-######
-# Charger le fichier des références d'index
-######
+	#if [ $(echo " $ChampX >= $ChampY" | bc) -eq 1 ]
+	#then 
+	#	vmax=$ChampX 
+	#else 
+	#	vmax=$ChampY 
+	#fi
+
+	vmax=$(echo "scale=2;1.3*$Diag" | bc)
+
+	#echo "Largeur capteur (mm) "$LC" Hauteur capteur(mm)"$HC\
+	#	" Champ X(') "$ChampX" Champ Y(') "$ChampY" Diag (') "$Diag
+	######
+	# Charger le fichier des références d'index
+	######
 	file2read=$dirinstall/index.txt
+
 	declare -a tabfile
 	declare -a tabvmin
 	declare -a tabvmax
@@ -112,9 +114,10 @@ if [ $exitstatus = 0 ]; then
 		((index++))
 	done < $file2read
 	nval=$index
-######
-# Chercher les fichiers utiles
-######
+
+	######
+	# Chercher les fichiers utiles
+	######
 	index=0
 	while [ $index -lt $nval ]
 	do
@@ -140,27 +143,31 @@ if [ $exitstatus = 0 ]; then
 		fi
 		((index++))
 	done
-######
-# what files to download ?
-######
+
+	######
+	# what files to download ?
+	######
+	# création de la liste des fichiers :
 	listfile=""
 	for index in $(seq $indmax $indmin);
 	do
 		listfile=$listfile"\t"${tabfile[$index]}'\n'
 	done
-#
+
+	# affichage de la liste
 	if $french
 	then
-		listfile=$(echo -e "Les fichiers a telecharger sont:\n"$listfile)
+		echo -e "Les fichiers a telecharger sont:\n"$listfile
 	else
-		listefile=$(echo -e "Files to download:\n"$listfile)
+		echo -e "Files to download:\n"$listfile
 	fi
 
-######
-# Select files to download
-######
+	######
+	# Select files to download
+	######
 	MENU_OPTIONS=
 	allfiles=
+	choices=
 	COUNT=0
 	for index in $(seq $indmax $indmin);
 	do
@@ -176,52 +183,77 @@ if [ $exitstatus = 0 ]; then
 	   		COUNT=$[COUNT+1]
 			allfiles[$COUNT]=$f
 			label="$f""->$length(M)"
-	   		MENU_OPTIONS="${MENU_OPTIONS} ${COUNT} $label off "
+	   		MENU_OPTIONS="${MENU_OPTIONS} false ${COUNT} $label"
 		done
 	done
-
+	#echo $MENU_OPTIONS
+	# choix de la langue
 	if $french
 	then
-		select[0]="Sélectionnez les fichiers \
-à installer:\nAttention à la taille des fichiers (jusqu'à plusieurs Go)\
+		select[0]="Sélectionnez les fichiers à installer:"
+		select[1]="Attention à la taille des fichiers (jusqu'à plusieurs Go)\
 \nVoir sur data.astrometry.net/debian"
-		select[1]="installation du paquet "
-		select[2]="installé"
-		select[3]="est déjà installé"
-		select[4]="problème d'installation pour "
+		select[2]="installation du paquet "
+		select[3]="installé"
+		select[4]="est déjà installé"
+		select[5]="problème d'installation pour"
 	else
-		select[0]="Select the files \
-to install:\nBeware to the size of the files (some are many Go)\
+		select[0]="Select the files to install:"
+		select[1]="\nBeware to the size of the files (some are many Go)\
 \nTake a look on data.astrometry.net/debian"
-		select[1]="install packet "
-		select[2]="installed"
-		select[3]="is yet installed"
-		select[4]="Installation problems on "
+		select[2]="install packet "
+		select[3]="installed"
+		select[4]="is yet installed"
+		select[5]="Installation problems on"
 	fi
-# download files
-	cmd=(dialog --separate-output --clear --checklist "${select[0]}" 22 76 16)
-	options=(${MENU_OPTIONS})
-	choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
-	for choice in $choices
-	do
-		f=${allfiles[$choice]}
-		verifinstall=$(sudo apt list | grep $f)		
-		if [[ -z "$verifinstall" ]]
-		then
-			echo "${select[1]} $f"
-			wget http://data.astrometry.net/debian/$f\_0.45_all.deb -P /tmp
-			sudo dpkg -i /tmp/$f\_0.45_all.deb
-		else
-			if [[ $verifinstall == *"${select[2]}"* ]]
+
+	# affichage des options d'installation
+	if cmd=(yad --list --no-headers \
+				--center
+				--title="${select[0]}" \
+				--checklist \
+				--text="${select[1]}" \
+				--column="choix" \
+				--column="numero" \
+				--column="packet")
+	then
+		options=(${MENU_OPTIONS})
+		# affichage
+		
+		choices_tmp=$("${cmd[@]}" "${options[@]}")
+
+		for choice_tmp in $choices_tmp
+		do
+			choices="${choices} $(echo "$choice_tmp" | cut -d "|" -f2)"
+		done
+		echo $choices
+
+
+		# download files
+		for choice in $choices
+		do
+			f=${allfiles[$choice]}
+			verifinstall=$(sudo apt list | grep $f)		
+			if [[ -z "$verifinstall" ]]
 			then
-				echo "$f ${select[3]}"
+				echo "${select[2]} $f"
+				wget http://data.astrometry.net/debian/$f\_0.45_all.deb -P /tmp
+				sudo dpkg -i /tmp/$f\_0.45_all.deb
 			else
-				echo "${select[4]} $f\n$verifinstall"
+				if [[ $verifinstall == *"${select[3]}"* ]]
+				then
+					echo "$f ${select[4]}"
+				else
+					echo -e "${select[5]} $f\n$verifinstall"
+				fi
 			fi
-		fi
-	done
+		done
+	else
+		echo "cancel"
+		exit
+	fi
 else
-	echo $exitstatus
+	echo "cancel"
 	exit
 fi
 
