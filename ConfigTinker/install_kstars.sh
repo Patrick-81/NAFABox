@@ -22,7 +22,7 @@ source detect_language.sh
 ######
 if $french
 then
-	sudo apt-get $options language-pack-kde-fr
+	sudo apt-get $options install language-pack-kde-fr
 fi
 sudo apt-get $options install gsc
 sudo apt-get $options install libqt5sql5-sqlite
