@@ -3,6 +3,7 @@
 #     https://www.gnu.org/licenses/gpl.html
 # Authors:	Patrick Dutoit
 # 			Laurent Roge
+#			Sébastien Durand
 # On June 10 2017
 # V0.1
 ################################################
@@ -10,6 +11,11 @@
 ######
 # Recherche du répertoire ConfigTinker
 ######
+if [ -z "$nafabox_path" ]
+then
+	echo "Run first Pre_Install.sh and reload Terminal"
+	exit
+fi
 dirinstall=$nafabox_path
 ######
 cd $dirinstall
@@ -30,23 +36,32 @@ fi
 if $1
 then
 	choice[0]="Couche de communication web"
-	choice[4]="Carte du ciel"
-	choice[9]="install GPSD pour GPS USB"
+	choice[1]="Installation Lin_guider"
+	choice[2]="Installation Kstars-EKOS-INDI"
+	choice[3]="Installation Phd2"
+	choice[4]="installation de Carte du ciel (Beta)"
+	choice[5]="Installation Ccdciel (Beta)"
+	choice[6]="Installation Planetary Imager (Beta)"
+	choice[7]="Installation Siril (Beta)"
+	choice[8]="Installation Stellarium"
+	choice[9]="Telechargement du/des index(s) astrometrique"
+	choice[10]="installation de astroberry_diy"
+	
+	
 else
 	choice[0]="Web communication layer"
+	choice[1]="Lin_guider"
+	choice[2]="Install Kstars-EKOS-INDI"
+	choice[3]="Phd2"
 	choice[4]="Skychart"
-	choice[9]="install GPSD for USB GPS"
+	choice[5]="Ccdciel"
+	choice[6]="Planetary Imager"
+	choice[7]="Siril"
+	choice[8]="Stellarium"
+	choice[9]="install astrometry index(s)"
+	choice[10]="install astroberry_diy"
 fi
-choice[1]="Lin_guider"
-choice[2]="Kstars"
-choice[3]="Phd2"
-choice[5]="Ccdciel"
-choice[6]="Planetary Imager"
-choice[7]="Siril"
-choice[8]="Stellarium"
-choice[10]="install astrometry index(s)"
-choice[11]="install ip indicator"
-choice[12]="install astroberry_diy"
+
 
 message[0]="Install web communications"
 message[1]="Install Lin_guider"
@@ -57,10 +72,8 @@ message[5]="Install ccdciel"
 message[6]="Install planetary imager"
 message[7]="Install siril"
 message[8]="Install stellarium"
-message[9]="Install GPSD"
-message[10]="Install index(s)"
-message[11]="Install IP_indicator"
-message[12]="Install astroberry_diy"
+message[9]="Install index(s)"
+message[10]="Install astroberry_diy"
 
 script[0]=install_comsetup.sh
 script[1]=install_linguider.sh
@@ -71,22 +84,20 @@ script[5]=install_ccdciel.sh
 script[6]=install_planetaryimager.sh
 script[7]=install_siril.sh
 script[8]=install_stellarium.sh
-script[9]=install_gps.sh
-script[10]=install_index.sh
-script[11]=install_ip_indicator.sh
-script[12]=install_astroberry_diy.sh
+script[9]=install_index.sh
+script[10]=install_astroberry_diy.sh
 
 
 if [[ $2 == "initial" ]]
 then
-	st=(true false true true false false false false false false false false)
+	st=(true false true true false false false false false false false)
 	
 else
-	st=(false false false false false false false false false false false false)
+	st=(false false false false false false false false false false false)
 fi
 
 # nombre de logiciel
-number=12
+number=11
 
 # echo ${st[*]}
 # echo ${choise[*]}
@@ -112,12 +123,9 @@ if chose=`yad --width=400 \
 	--field="${choice[8]}:CHK" \
 	--field="${choice[9]}:CHK" \
 	--field="${choice[10]}:CHK" \
-	--field="${choice[11]}:CHK" \
-	--field="${choice[12]}:CHK" \
 	"" "${st[0]}" "${st[1]}" "${st[2]}" \
 	"${st[3]}" "${st[4]}" "${st[5]}" "${st[6]}" \
-	"${st[7]}" "${st[8]}" "${st[9]}" "${st[10]}" \
-	"${st[11]}" "${st[12]}"`
+	"${st[7]}" "${st[8]}" "${st[9]}" "${st[10]}"`
 then
 	for (( i=0; i<=$number-1; i++ ))
 	do

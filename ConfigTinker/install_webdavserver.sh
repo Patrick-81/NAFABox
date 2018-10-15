@@ -10,6 +10,11 @@
 ######
 # Recherche du répertoire ConfigTinker
 ######
+if [ -z "$nafabox_path" ]
+then
+	echo "Run first Pre_Install.sh and reload Terminal"
+	exit
+fi
 dirinstall=$nafabox_path
 
 figlet -k Install Serveur WebDav

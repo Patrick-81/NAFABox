@@ -12,6 +12,11 @@
 ######
 # Recherche du répertoire ConfigTinker
 ######
+if [ -z "$nafabox_path" ]
+then
+	echo "Run first Pre_Install.sh and reload Terminal"
+	exit
+fi
 dirinstall=$nafabox_path
 ######
 sudo rm /var/lib/dpkg/lock
@@ -44,13 +49,15 @@ then
 		--title="Select Installation Options :" \
 		--text="Install Program :" \
 		--field=":LBL" \
+		--field="Mate plugin IP Indicator"
 		--field="Fr language:CHK" \
 		--field="Autologin for dev armbian (nightly):CHK" \
-		"" "FALSE" "FALSE"`
+		"" "FALSE" "FALSE" "FALSE"`
 	then
 		# recuperation des valeurs
-		language=$(echo "$chose" | cut -d "|" -f2) #minutes
-		autologin=$(echo "$chose" | cut -d "|" -f3) #secondes
+		ip_indicator=$(echo "$chose" | cut -d "|" -f2)
+		language=$(echo "$chose" | cut -d "|" -f3)
+		autologin=$(echo "$chose" | cut -d "|" -f4)
 
 	else
 		echo "cancel"
@@ -68,9 +75,9 @@ else
 		"" "TRUE" "FALSE" "FALSE"`
 	then
 		# recuperation des valeurs
-		installMate=$(echo "$chose" | cut -d "|" -f2) #heures
-		language=$(echo "$chose" | cut -d "|" -f3) #minutes
-		autologin=$(echo "$chose" | cut -d "|" -f4) #secondes
+		installMate=$(echo "$chose" | cut -d "|" -f2)
+		language=$(echo "$chose" | cut -d "|" -f3)
+		autologin=$(echo "$chose" | cut -d "|" -f4)
 
 	else
 		echo "cancel"
@@ -165,10 +172,15 @@ then
 	echo "================================================="
 	# mise à jour de tout le système
 	# sudo apt-get -q --yes dist-upgrade
-	# Installation du fond d'écran
-
-
+	
 fi
+# install ip indicator
+if [[ $language == "TRUE" ]]
+then
+	$dirinstall/install_ip_indicator.sh
+fi
+
+# Installation du fond d'écran
 # set NAFABox wallpaper
 mkdir -p ~/bin
 backpic="PIA16008-1920x1200.jpg"

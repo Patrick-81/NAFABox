@@ -10,7 +10,6 @@
 ######
 # Recherche du répertoire ConfigTinker
 ######
-dirinstall=$nafabox_path
 
 figlet -k Install IP_Indicator
 echo "================================================="
