@@ -189,6 +189,14 @@ then
 	sudo apt-get $options install indi-full
 	sudo apt-get $options install indi-dbg
 fi
+
+######
+# Installation du web manager pour indi
+######
+if [[ $indiW == "TRUE" ]]
+then
+	$dirinstall/install_indiwebmanager.sh
+
 ######
 # Installation des drivers 3rdparty qui ne sont pas sous forme de dépot
 ######
@@ -196,25 +204,26 @@ if [[ $driver_3rd == "TRUE" ]]
 then
 	$dirinstall/install_other3rdparty_drivers.sh
 fi
+
 ######
 # Installer le pad amélioré
 ######
 #$dirinstall/install_pad.sh
+
 ######
-# Installation du web manager pour indi
+# Installer gpsd
 ######
-if [[ $indiW == "TRUE" ]]
-then
-	$dirinstall/install_indiwebmanager.sh
 fi
 if [[ $gps == "TRUE" ]]
 then
 	$dirinstall/install_gps.sh
 fi
+
 ######
 # Création de l'icône sur le bureau
 ######
 $dirinstall/install_shortcut.sh kstars
+
 ######
 # Installation du programme de résolution astrométrique
 ######
