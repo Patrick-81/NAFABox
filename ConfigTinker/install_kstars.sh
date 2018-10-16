@@ -128,6 +128,7 @@ then
 	indi=true
 
 elif [[ $kstars == "TRUE" ]]
+then
 	sudo apt-get $options install indi-full kstars-bleeding
 	sudo apt-get $options install indi-dbg kstars-bleeding-dbg
 fi
@@ -184,6 +185,7 @@ then
 		sudo make install
 	fi
 elif [[ $indi == "TRUE" ]]
+then
 	sudo apt-get $options install indi-full
 	sudo apt-get $options install indi-dbg
 fi
