@@ -29,6 +29,9 @@ figlet -k Install Index
 echo "================================================="
 echo "================================================="
 
+# install dependances
+sudo apt-get -y install curl
+
 ######
 # test locale
 ######

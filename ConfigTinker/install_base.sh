@@ -49,7 +49,7 @@ then
 		--title="Select Installation Options :" \
 		--text="Install Program :" \
 		--field=":LBL" \
-		--field="Mate plugin IP Indicator"
+		--field="Mate plugin IP Indicator:CHK" \
 		--field="Fr language:CHK" \
 		--field="Autologin for dev armbian (nightly):CHK" \
 		"" "FALSE" "FALSE" "FALSE"`
