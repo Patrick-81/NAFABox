@@ -40,7 +40,7 @@ echo $file
 wget http://download.cloudmakers.eu/$file -P /tmp/
 sudo dpkg -i /tmp/$file
 sudo cp /usr/local/share/indi/indi_atik.xml /usr/share/indi/
-systemctl restart indiwebmanager.service
+sudo systemctl restart indiwebmanager.service
 ######
 # Installation du driver : inova
 ######

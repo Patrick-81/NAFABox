@@ -184,8 +184,8 @@ do
 				--title "${dial[0]}" \
 				--image=gnome-shutdown \
 				--text "${dial[1]}" \
-				--button="gtk-close:1" \
-				--button="gtk-ok:0" \
+				--button="gtk-close:0" \
+				--button="gtk-ok:1" \
 				--entry-text "${dial[2]}" "${dial[3]}" "${dial[4]}" "${dial[5]}"`
 	then
 		if [[ $option == "${dial[2]}" ]]
