@@ -30,6 +30,9 @@ class Application(Frame):
         self.res1366x768 = Button(self, text="1366x768", command=lambda: self.setres("1366x768"))
         self.res1366x768.pack({"side": "top"})
 
+        self.res1280x1024 = Button(self, text="1280x1024", command=lambda: self.setres("1280x1024"))
+        self.res1280x1024.pack({"side": "top"})
+
         self.res1280x800 = Button(self, text="1280x800", command=lambda: self.setres("1280x800"))
         self.res1280x800.pack({"side": "top"})
 

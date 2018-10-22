@@ -186,7 +186,13 @@ mkdir -p ~/bin
 backpic="PIA16008-1920x1200.jpg"
 dest="$HOME/bin"
 cp $dirinstall/$backpic $dest/$backpic
-gsettings set org.$DESKTOP_SESSION.background picture-filename $dest/$backpic
+
+if [[ $installMate == "TRUE" ]]
+then
+    gsettings set org.mate.background picture-filename $dest/$backpic
+else
+    gsettings set org.$DESKTOP_SESSION.background picture-filename $dest/$backpic
+fi
 
 if [[ $language == "TRUE" ]]
 then
