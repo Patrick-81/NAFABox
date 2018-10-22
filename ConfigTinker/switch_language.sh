@@ -40,8 +40,6 @@ if ret=`yad --width 400 \
 			--title "${lbl[0]}" \
 			--image=switch_language \
 			--text "${lbl[1]}" \
-			--button="gtk-ok:1" \
-			--button="gtk-close:0" \
 			--entry-text "${lbl[2]}" "${lbl[3]}"`
 then
 	reponse=$ret
