@@ -185,6 +185,7 @@ then
 	# Install of browsepy
 	######
 	$dirinstall/install_browsepy.sh
+fi
 
 if [[ $xvnc == "TRUE" ]]
 then
