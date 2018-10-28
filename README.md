@@ -65,3 +65,11 @@ http://cdimage.ubuntu.com/ubuntu-mate/releases/16.04.3/release/ubuntu-mate-16.04
 
 ### documentation for TinkerBoard : https://lroge.scenari-community.org/KstarsEkosIndi/#Nafabox_1
 ### documentation for Raspberry Pi 2/3 : https://lroge.scenari-community.org/KstarsEkosIndi/#PI
+
+__User URL :__
+
+- Indiwebmanger : IP:8624
+- BrowsePy : IP:8180
+- X11VNC : IP:5900
+- NoVNC : IP:5901
+- Webdav : IP:443
