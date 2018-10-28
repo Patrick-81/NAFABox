@@ -49,7 +49,7 @@ then
 		--title="Select Installation Options :" \
 		--text="Install Program :" \
 		--field=":LBL" \
-		--field="Mate plugin IP Indicator:CHK" \
+		--field="Plugin IP Indicator:CHK" \
 		--field="Fr language:CHK" \
 		--field="Autologin for dev armbian (nightly):CHK" \
 		"" "FALSE" "FALSE" "FALSE"`
@@ -71,7 +71,7 @@ else
 		--field=":LBL" \
 		--field="Mate destktop and components:CHK" \
 		--field="Fr language:CHK" \
-		--field="Mate plugin IP Indicator:CHK" \
+		--field="Plugin IP Indicator:CHK" \
 		--field="Autologin for dev armbian (nightly):CHK" \
 		"" "FALSE" "FALSE" "FALSE" "FALSE"`
 	then
@@ -138,7 +138,7 @@ then
 	# installation de base de mate
 	sudo apt-get $options install mate
 	# installation de mate compléments
-	sudo apt-get $options install mate-desktop-environment-extras
+	sudo apt-get $options install mate-desktop-environment-extras mate-indicator-applet
 	# supprimer veille
 	sudo sed -i "/DPMS/ s/true/false/" /etc/X11/xorg.conf.d/01-armbian-defaults.conf
 	# Ajout d'utilitaires
