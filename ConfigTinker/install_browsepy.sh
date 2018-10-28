@@ -21,7 +21,7 @@ echo "================================================="
 echo "================================================="
 cd $dirinstall
 # s'assurer que que pip est installe
-sudo apt-get -y install python-pip python3-pip
+sudo apt-get -y install python-pip python3-pip python-setuptools python3-setuptools
 # installer browsepy
 sudo pip install browsepy
 # Lancer le serveur au demarrage
