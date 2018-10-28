@@ -71,13 +71,15 @@ else
 		--field=":LBL" \
 		--field="Mate destktop and components:CHK" \
 		--field="Fr language:CHK" \
+		--field="Mate plugin IP Indicator:CHK" \
 		--field="Autologin for dev armbian (nightly):CHK" \
-		"" "TRUE" "FALSE" "FALSE"`
+		"" "FALSE" "FALSE" "FALSE" "FALSE"`
 	then
 		# recuperation des valeurs
 		installMate=$(echo "$chose" | cut -d "|" -f2)
 		language=$(echo "$chose" | cut -d "|" -f3)
-		autologin=$(echo "$chose" | cut -d "|" -f4)
+		ip_indicator=$(echo "$chose" | cut -d "|" -f4)
+		autologin=$(echo "$chose" | cut -d "|" -f5)
 
 	else
 		echo "cancel"
