@@ -34,6 +34,7 @@ echo "================================================="
 ######
 # installation des dépendances
 ######
+sudo apt-get update
 sudo apt-get install libusb-dev git
 
 if $french
@@ -169,7 +170,7 @@ then
 	type="linuxarm"
 fi
 
-arduino_v="1.8.7"
+arduino_v="1.8.5" # need 1.8.5 for onstep compatibility
 teensduino_v="144"
 
 if [[ $ide_arduino == "TRUE" ]]
@@ -183,9 +184,14 @@ then
 	fi
 
 	if [[ $type != "no" ]]
-		wget $lien/arduino-$arduino_v-linuxaarch64.tar.xz -P /tmp/
+		if [[ $type == "linuxaarch64" ]]
+		then
+			echo "linuxaarch64 not support arduino $arduino_v, force v1.8.7"
+			arduino_v="1.8.7"
+		fi
+		wget $lien/arduino-$arduino_v-$type.tar.xz -P /tmp/
 		cd /home/$USER
-		tar -xf /tmp/arduino-$arduino_v-linuxaarch64.tar.xz
+		tar -xf /tmp/arduino-$arduino_v-$type.tar.xz
 		/home/$USER/arduino-$arduino_v/install.sh
 
 		echo "Arduino folder is : /home/$USER/arduino-$arduino_v/"
@@ -215,9 +221,34 @@ then
 
 fi
 	
-if [[ $ide_arduino == "TRUE" ]]
+if [[ $gen == "TRUE" ]]
 then
-	echo "TO DO"
+
+	sudo apt-get -y install python3 python3-pyqt5
+
+	onstep_generator_path="/home/$USER/Onstep_Generator"
+
+	cd /home/$USER
+
+	if [ -d "/home/${USER}/Onstep_Generator" ]
+	then
+		echo "Update Onstep_Generator"
+		cd $onstep_generator_path
+		git reset --hard
+		git pull
+	else
+		git clone https://github.com/dragonlost/Onstep_Generator.git
+		cd $onstep_generator_path
+
+	cp $onstep_generator_path/temp_Onstep_Generator.desktop.temp /tmp/Onstep_Generator.desktop
+	sed -i -e "s=/LOCAL_FOLDER=$onstep_generator_path=" /tmp/Onstep_Generator.desktop
+	echo -e "Icon update"
+
+	sudo cp /tmp/Onstep_Generator.desktop /usr/share/applications/
+	
+	echo -e "Propagator Icon was created on the Program list"
+	echo -e "OnStep Generator Installation Complete"
+	
 fi
 
 
