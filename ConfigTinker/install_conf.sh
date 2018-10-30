@@ -92,7 +92,7 @@ echo "================================================="
 cp $dirinstall/install_index.sh ~/bin/install_index.sh
 sudo ln -sf ~/bin/install_index.sh /usr/bin/install_index
 sudo cp $dirinstall/install_index.png /usr/share/pixmaps/install_index.png
-sudo cp $dirinstall/index.txt ~/bin/index.txt
+cp $dirinstall/index.txt ~/bin/index.txt
 $dirinstall/install_shortcut.sh install_index "mate-terminal -e \"bash -ic install_index\""
 
 ######
