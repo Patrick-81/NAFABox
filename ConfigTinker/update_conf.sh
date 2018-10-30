@@ -1,4 +1,4 @@
-################################################
+a################################################
 # Under GPL license
 #     https://www.gnu.org/licenses/gpl.html
 # Authors:	Patrick Dutoit
@@ -169,14 +169,14 @@ do
 		dial[2]="Quitter l'installation"
 		dial[3]="Compléter l'installation"
 		dial[4]="Installer le point d'accès"
-		dial[5]="Arrêter la machine"
+		dial[5]="Redémarer la machine"
 	else
 		dial[0]="What do you want to do now ?"
 		dial[1]="Select one option"
 		dial[2]="Quit the installation"
 		dial[3]="Complete installation"
 		dial[4]="Install the hotspot"
-		dial[5]="Shutdown now"
+		dial[5]="Reboot now"
 	fi
 	if option=`yad --width 400 \
 				--center \
