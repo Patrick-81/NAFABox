@@ -49,5 +49,6 @@ else
 	cat /tmp/shortcut1  | sed -e "s%APP_EXEC%$AppExec%g" > /tmp/shortcut2
 	cat /tmp/shortcut2 | sed -e "s/NAME/$AppName/g" > ~/$desktop/$AppName.desktop
 	chmod +x ~/$desktop/$AppName.desktop
+	sudo cp ~/$desktop/$AppName.desktop /usr/share/applications/$AppName.desktop
 fi
 
