@@ -27,6 +27,10 @@ echo "================================================="
 sudo apt-get -y install libccfits-dev libopencv-dev libqt5opengl5 libv4l-0 libv4lconvert0 
 sudo apt-get -y install gcc libboost-all-dev fxload git cmake qtbase5-dev qtdeclarative5-dev
 
+if [ -d "/tmp/libdc1394" ]
+then
+	rm -Rf /tmp/libdc1394
+fi
 # Install libdc1394
 wget https://sourceforge.net/projects/libdc1394/files/libdc1394-2/2.2.5/libdc1394-2.2.5.tar.gz -P /tmp/libdc1394
 tar zxvf /tmp/libdc1394/libdc1394-2.2.5.tar.gz -C /tmp/libdc1394
@@ -57,7 +61,10 @@ echo "==========================================================================
 ######
 # Installation du programme : Planetary Imager
 ######
-
+if [ -d "/tmp/planetary" ]
+then
+	rm -Rf /tmp/planetary
+fi
 mkdir /tmp/planetary/
 cd /tmp/planetary/
 git clone --recursive -b v0.7 https://github.com/GuLinux/PlanetaryImager.git
