@@ -43,6 +43,7 @@ then
 	choice[3]="Install WebDav"
 	choice[4]="Installation BrowsePy"
 	choice[5]="Installation NoVNC"
+	choice[6]="HotspotAwake Script"
 
 else
 	dial[0]="Install/Update of software"
@@ -53,10 +54,11 @@ else
 	choice[3]="Install WebDav"
 	choice[4]="Install BrowsePy"
 	choice[5]="Install NoVNC"
+	choice[6]="HotspotAwake Script"
 
 fi
 
-st=(true true true true true true)
+st=(true true true true true true false)
 
 # interface de choix
 if chose=`yad --width=400 \
@@ -71,8 +73,9 @@ if chose=`yad --width=400 \
 	--field="${choice[3]}:CHK" \
 	--field="${choice[4]}:CHK" \
 	--field="${choice[5]}:CHK" \
+	--field="${choice[6]}:CHK" \
 	"" "${st[0]}" "${st[1]}" "${st[2]}" \
-	"${st[3]}" "${st[4]}" "${st[5]}"`
+	"${st[3]}" "${st[4]}" "${st[5]}" "${st[6]}"`
 then
 	time_z=$(echo "$chose" | cut -d "|" -f2)
 	web=$(echo "$chose" | cut -d "|" -f3)
@@ -80,6 +83,7 @@ then
 	dav=$(echo "$chose" | cut -d "|" -f5)
 	browse=$(echo "$chose" | cut -d "|" -f6)
 	novnc=$(echo "$chose" | cut -d "|" -f7)
+	awake=$(echo "$chose" | cut -d "|" -f8)
 else
 	echo "cancel"
 fi
@@ -155,19 +159,22 @@ then
 
 fi
 
-######
-# Pour les machines pour lesquelles le hanshake se passe mal
-######
-cat $dirinstall/hotspotawake.service | sed -e "s/MOI/${USER}/g" > /tmp/hotspotawake.service
-sudo cp /tmp/hotspotawake.service /lib/systemd/system/hotspotawake.service
-chmod +x $dirinstall/hotspotawake.sh
-cp $dirinstall/hotspotawake.sh ~/bin/
-sudo systemctl stop hotspotawake.service
-sudo systemctl disable hotspotawake.service
-sudo systemctl daemon-reload
-sudo systemctl enable hotspotawake.service
-sudo systemctl start hotspotawake.service
-###### 
+if [[ $awake == "TRUE" ]]
+then
+	######
+	# Pour les machines pour lesquelles le hanshake se passe mal
+	######
+	cat $dirinstall/hotspotawake.service | sed -e "s/MOI/${USER}/g" > /tmp/hotspotawake.service
+	sudo cp /tmp/hotspotawake.service /lib/systemd/system/hotspotawake.service
+	chmod +x $dirinstall/hotspotawake.sh
+	cp $dirinstall/hotspotawake.sh ~/bin/
+	sudo systemctl stop hotspotawake.service
+	sudo systemctl disable hotspotawake.service
+	sudo systemctl daemon-reload
+	sudo systemctl enable hotspotawake.service
+	sudo systemctl start hotspotawake.service
+	######
+fi
 
 
 
