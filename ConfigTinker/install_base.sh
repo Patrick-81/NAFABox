@@ -28,7 +28,9 @@ sudo apt-get -y install dirmngr
 sudo apt-get -y install git
 sudo apt-get -y install gparted
 sudo apt-get -y install chromium-browser
-sudo echo "NAFABox" > /etc/hostname # --> not permission
+sudo echo "NAFABox" > /tmp/hostname
+sudo mv /tmp/hostname /etc/hostname
+
 #sudo usermod -l nafa -d /home/nafa -m tinker
 
 ######
