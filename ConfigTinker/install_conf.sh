@@ -89,26 +89,26 @@ echo "================================================="
 # Création du raccourci pour install_index.sh
 ######
 
-cp $dirinstall/install_index.sh ~/bin/.
+cp $dirinstall/install_index.sh ~/bin/install_index.sh
 sudo ln -sf ~/bin/install_index.sh /usr/bin/install_index
-sudo cp $dirinstall/install_index.png /usr/share/pixmaps/.
-sudo cp $dirinstall/index.txt ~/bin/.
+sudo cp $dirinstall/install_index.png /usr/share/pixmaps/install_index.png
+sudo cp $dirinstall/index.txt ~/bin/index.txt
 $dirinstall/install_shortcut.sh install_index "mate-terminal -e \"bash -ic install_index\""
 
 ######
 # Création du raccourci pour install_hotspot.sh
 ######
 
-cp $dirinstall/install_hotspot.sh ~/bin/.
+cp $dirinstall/install_hotspot.sh ~/bin/install_hotspot.sh
 sudo ln -sf ~/bin/install_hotspot.sh /usr/bin/install_hotspot
-sudo cp $dirinstall/install_hotspot.png /usr/share/pixmaps/.
+sudo cp $dirinstall/install_hotspot.png /usr/share/pixmaps/install_hotspot.png
 $dirinstall/install_shortcut.sh install_hotspot "mate-terminal -e \"bash -ic install_hotspot\""
 
 ##### 
 # Création du raccourci pour switch_language.sh
 ######
 
-cp $dirinstall/switch_language.sh ~/bin/.
+cp $dirinstall/switch_language.sh ~/bin/switch_language.sh
 sudo ln -sf ~/bin/switch_language.sh /usr/bin/switch_language
 sudo cp /usr/share/icons/gnome/48x48/apps/config-language.png /usr/share/pixmaps/switch_language.png
 $dirinstall/install_shortcut.sh switch_language "mate-terminal -e \"bash -ic switch_language\""
@@ -119,5 +119,11 @@ $dirinstall/install_shortcut.sh switch_language "mate-terminal -e \"bash -ic swi
 
 $dirinstall/install_setup-time.sh | tee -a "$dirinstall/nafabox.log"
 
+##### 
+# Création du programme d'upadet des scripts
+######
 
-
+cp $dirinstall/update_nafabox.sh ~/bin/update_nafabox.sh
+sudo ln -sf ~/bin/update_nafabox.sh /usr/bin/update_nafabox.sh
+sudo cp /usr/share/icons/gnome/48x48/apps/system-software-update.png /usr/share/pixmaps/update_conf.png
+$dirinstall/install_shortcut.sh update_nafabox "mate-terminal -e \"bash -ic update_nafabox\""
