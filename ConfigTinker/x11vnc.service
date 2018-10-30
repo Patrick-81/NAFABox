@@ -4,7 +4,7 @@ After=multi-user.target
  
 [Service]
 Type=simple
-ExecStart=/usr/bin/x11vnc -forever -loop -noxdamage -noxrecord -repeat -rfbauth /etc/x11vnc.pass -rfbport 5900 -shared -xkb
+ExecStart=/usr/bin/x11vnc -forever -loop -noxdamage -noxrecord -repeat -rfbauth /home/$USER/x11vnc.pass -rfbport 5900 -shared -xkb
  
 [Install]
 WantedBy=multi-user.target
