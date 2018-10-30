@@ -92,7 +92,7 @@ echo "================================================="
 cp $dirinstall/install_index.sh ~/bin/install_index.sh
 sudo ln -sf ~/bin/install_index.sh /usr/bin/install_index
 sudo cp $dirinstall/install_index.png /usr/share/pixmaps/install_index.png
-cp $dirinstall/index.txt ~/bin/index.txt
+sudo cp $dirinstall/index.txt ~/bin/index.txt
 $dirinstall/install_shortcut.sh install_index "bash -ic install_index"
 
 ######
@@ -102,7 +102,7 @@ $dirinstall/install_shortcut.sh install_index "bash -ic install_index"
 cp $dirinstall/install_hotspot.sh ~/bin/install_hotspot.sh
 sudo ln -sf ~/bin/install_hotspot.sh /usr/bin/install_hotspot
 sudo cp $dirinstall/install_hotspot.png /usr/share/pixmaps/install_hotspot.png
-$dirinstall/install_shortcut.sh install_hotspot "bash -ic install_hotspot\"
+$dirinstall/install_shortcut.sh install_hotspot "bash -ic install_hotspot"
 
 ##### 
 # Création du raccourci pour switch_language.sh
@@ -111,7 +111,7 @@ $dirinstall/install_shortcut.sh install_hotspot "bash -ic install_hotspot\"
 cp $dirinstall/switch_language.sh ~/bin/switch_language.sh
 sudo ln -sf ~/bin/switch_language.sh /usr/bin/switch_language
 sudo cp /usr/share/icons/gnome/48x48/apps/config-language.png /usr/share/pixmaps/switch_language.png
-$dirinstall/install_shortcut.sh switch_language "bash -ic switch_language\"
+$dirinstall/install_shortcut.sh switch_language "bash -ic switch_language"
 
 ##### 
 # Création du raccourci pour setup_time.sh
