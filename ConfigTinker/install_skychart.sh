@@ -46,8 +46,9 @@ echo "================================================="
 #sudo dpkg -i /tmp/$file
 
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys AA716FC2
-echo "deb http://www.ap-i.net/apt stable main" > /tmp/skychart.list
-sudo mv /tmp/skychart.list /etc/apt/sources.list.d/skychart.list
+#echo "deb http://www.ap-i.net/apt stable main" > /tmp/skychart.list
+#sudo mv /tmp/skychart.list /etc/apt/sources.list.d/skychart.list
+sudo apt-add-repository 'deb http://www.ap-i.net/apt stable main'
 sudo apt-get update
 sudo apt-get install skychart skychart-data-stars
 

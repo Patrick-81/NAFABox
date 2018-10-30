@@ -25,8 +25,9 @@ echo "================================================="
 ######
 
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys AA716FC2
-echo "deb http://www.ap-i.net/apt unstable main" > /tmp/skychart.list
-sudo mv /tmp/skychart.list /etc/apt/sources.list.d/skychart.list
+#echo "deb http://www.ap-i.net/apt unstable main" > /tmp/skychart.list
+#sudo mv /tmp/skychart.list /etc/apt/sources.list.d/skychart.list
+sudo apt-add-repository 'deb http://www.ap-i.net/apt unstable main'
 sudo apt-get update
 
 sudo apt-get -y install libpango1.0-0 xplanet espeak indistarter skychart-data-dso skychart-data-pictures eqmodgui
