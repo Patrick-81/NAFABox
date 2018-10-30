@@ -159,9 +159,9 @@ fi
 # Pour les machines pour lesquelles le hanshake se passe mal
 ######
 cat hotspotawake.service | sed -e "s/MOI/${USER}/g" > /tmp/hotspotawake.service
-sudo cp /tmp/hotspotawake.service /etc/systemd/system/.
+sudo cp /tmp/hotspotawake.service /etc/systemd/system/
 chmod +x hotspotawake.sh
-cp hotspotawake.sh ~/bin/.
+cp hotspotawake.sh ~/bin/
 sudo systemctl stop hotspotawake.service
 sudo systemctl disable hotspotawake.service
 sudo systemctl daemon-reload
