@@ -158,10 +158,10 @@ fi
 ######
 # Pour les machines pour lesquelles le hanshake se passe mal
 ######
-cat hotspotawake.service | sed -e "s/MOI/${USER}/g" > /tmp/hotspotawake.service
-sudo cp /tmp/hotspotawake.service /etc/systemd/system/
-chmod +x hotspotawake.sh
-cp hotspotawake.sh ~/bin/
+cat $dirinstall/hotspotawake.service | sed -e "s/MOI/${USER}/g" > /tmp/hotspotawake.service
+sudo cp /tmp/hotspotawake.service /lib/systemd/system/hotspotawake.service
+chmod +x $dirinstall/hotspotawake.sh
+cp $dirinstall/hotspotawake.sh ~/bin/
 sudo systemctl stop hotspotawake.service
 sudo systemctl disable hotspotawake.service
 sudo systemctl daemon-reload
@@ -212,7 +212,8 @@ then
 	x11vnc -storepasswd
 	echo "Merci ! ----------------------------------"
 	# injection fichier system
-	sudo cp $dirinstall/x11vnc.service /lib/systemd/system/x11vnc.service
+	cat $dirinstall/x11vnc.service | sed -e "s/MOI/${USER}/g" > /tmp/x11vnc.service
+	sudo mv tmp/x11vnc.service /lib/systemd/system/x11vnc.service
 	# allumage au démarage
 	sudo systemctl daemon-reload
 	sudo systemctl enable x11vnc.service
