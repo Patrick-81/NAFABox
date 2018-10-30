@@ -179,7 +179,7 @@ then
 	
 fi
 # install ip indicator
-if [[ $language == "TRUE" ]]
+if [[ $ip_indicator == "TRUE" ]]
 then
 	$dirinstall/install_ip_indicator.sh
 fi
