@@ -61,6 +61,9 @@ echo "==========================================================================
 ######
 # Installation du programme : Planetary Imager
 ######
+echo "==========================================================================================="
+echo " warning desactivate miniconda/anaconda for install planetary imager"
+echo "==========================================================================================="
 if [ -d "/tmp/planetary" ]
 then
 	rm -Rf /tmp/planetary
