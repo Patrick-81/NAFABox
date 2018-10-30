@@ -23,12 +23,13 @@ echo "================================================="
 ######
 # Installation des pré-requis
 ######
-sudo apt-add-repository 'deb http://www.ap-i.net/apt unstable main'
+
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys AA716FC2
-sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 8B8B57C1AA716FC2
+echo "deb http://www.ap-i.net/apt unstable main" > /tmp/skychart.list
+sudo mv /tmp/skychart.list /etc/apt/sources.list.d/skychart.list
 sudo apt-get update
 
-sudo apt-get -y install libpango1.0-0 xplanet espeak indistarter skychart-data-dso skychart-data-pictures
+sudo apt-get -y install libpango1.0-0 xplanet espeak indistarter skychart-data-dso skychart-data-pictures eqmodgui
 #$dirinstall/install_libpasastro.sh
 ######
 # détection de l'architecture

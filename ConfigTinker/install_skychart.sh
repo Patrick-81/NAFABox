@@ -45,9 +45,10 @@ echo "================================================="
 #wget https://sourceforge.net/projects/$software/files/2-catalogs/Stars/$file -P /tmp
 #sudo dpkg -i /tmp/$file
 
-sudo apt-add-repository 'deb http://www.ap-i.net/apt stable main'
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys AA716FC2
-sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 8B8B57C1AA716FC2
+echo "deb http://www.ap-i.net/apt stable main" > /tmp/skychart.list
+sudo mv /tmp/skychart.list /etc/apt/sources.list.d/skychart.list
+sudo apt-get update
 sudo apt-get install skychart skychart-data-stars
 
 ######
