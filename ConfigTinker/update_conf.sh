@@ -1,4 +1,4 @@
-a################################################
+################################################
 # Under GPL license
 #     https://www.gnu.org/licenses/gpl.html
 # Authors:	Patrick Dutoit
