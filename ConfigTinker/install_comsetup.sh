@@ -209,7 +209,7 @@ then
 
 	# demarage sur le X11
 	echo "Enter Le mot de passe VNC pour votre BOX :"
-	sudo x11vnc -storepasswd /etc/x11vnc.pass
+	x11vnc -storepasswd
 	echo "Merci ! ----------------------------------"
 	# injection fichier system
 	sudo cp $dirinstall/x11vnc.service /lib/systemd/system/x11vnc.service
