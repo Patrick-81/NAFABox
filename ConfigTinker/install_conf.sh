@@ -125,5 +125,5 @@ $dirinstall/install_setup-time.sh | tee -a "$dirinstall/nafabox.log"
 
 cp $dirinstall/update_nafabox.sh ~/bin/update_nafabox.sh
 sudo ln -sf ~/bin/update_nafabox.sh /usr/bin/update_nafabox.sh
-sudo cp /usr/share/icons/gnome/48x48/apps/system-software-update.png /usr/share/pixmaps/update_conf.png
+sudo cp /usr/share/icons/gnome/48x48/apps/system-software-update.png /usr/share/pixmaps/update_nafabox.png
 $dirinstall/install_shortcut.sh update_nafabox "bash -ic update_nafabox"
