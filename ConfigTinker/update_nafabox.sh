@@ -49,7 +49,7 @@ then
 	echo "suppression de l'ancien dossier NAFABOX"
 	rm -Rf $nafa_path
 
-	cd back_path
+	cd $back_path
 	git clone https://github.com/Patrick-81/NAFABox.git
 	cd NAFABox
 	git checkout gui_zenity

@@ -246,10 +246,6 @@ then
 		option="-auth guess -forever -bg -noxdamage -noxrecord -repeat -shared -xkb -rfbauth $vnc_path -rfport 5900"
 	fi
 
-
-	option="-forever -bg -noxdamage -noxrecord -repeat -shared -xkb -rfbauth $vnc_path -rfport 5900"
-
-
 	# injection fichier system
 	cat $dirinstall/x11vnc.service | sed -e "s=OPTION=$option=g" > /tmp/x11vnc.service
 	sudo mv tmp/x11vnc.service /lib/systemd/system/x11vnc.service
