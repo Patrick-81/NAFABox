@@ -136,10 +136,12 @@ then
 	#echo "Dirinstall "$dirinstall
 	cat $dirinstall/index.html | sed -e "s/ACTUATE/${dial[0]}/g" > $site/index.html
 	sudo systemctl stop nginx.service
+	sudo systemctl disable nginx.service
 	sudo cp $dirinstall/setdate.php $site/setdate.php
 	sudo cp $dirinstall/shutdown_reboot.php $site/shutdown_reboot.php
 	sudo chown www-data:www-data $site/setdate.php
 	sudo chown www-data:www-data $site/shutdown_reboot.php
+	sudo systemctl enable nginx.service
 	sudo systemctl start nginx.service
 
 	cat sudoers.txt | sed -e "s/MOI/${USER}/g" > /tmp/sudoers
@@ -234,7 +236,7 @@ then
 			option="-auth guess -forever -bg -noxdamage -noxrecord -repeat -shared -xkb -rfbauth $vnc_path -rfport 5900"
 		else
 			option="-forever -bg -noxdamage -noxrecord -repeat -shared -xkb -rfbauth $vnc_path -rfport 5900"
-
+		fi
 	elif [[ $proc == "_x86" ]]
 	then
 		option="-auth guess -forever -bg -noxdamage -noxrecord -repeat -shared -xkb -rfbauth $vnc_path -rfport 5900"
