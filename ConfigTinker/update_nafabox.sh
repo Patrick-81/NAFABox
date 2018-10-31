@@ -34,7 +34,7 @@ fi
 
 
 if choix=`yad --width 350 --height 100 \
-				--center --entry \
+				--center \
 				--title="$title" \
 				--text="$text" \
 				--button="gtk-yes:0" \
