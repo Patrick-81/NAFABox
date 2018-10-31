@@ -117,7 +117,7 @@ then
 	echo "================================================="
 	echo "================================================="
 	# add repository pour avoir la 1.16 au lieu de la 1.12
-	version=lsb_release -c -s
+	version=`lsb_release -c -s`
 	if [[ $version == "xenial" ]]
 	then
 		sudo apt-add-repository -y ppa:ubuntu-mate-dev/xenial-mate # ==> bug

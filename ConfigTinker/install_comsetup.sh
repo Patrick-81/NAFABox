@@ -30,6 +30,8 @@ cd $dirinstall
 # detect language
 ######
 source $dirinstall/detect_language.sh
+source $dirinstall/proctype.sh
+
 
 sudo apt-get update
 
@@ -218,8 +220,36 @@ then
 	echo "Enter Le mot de passe VNC pour votre BOX :"
 	x11vnc -storepasswd
 	echo "Merci ! ----------------------------------"
+	vnc_path=/home/$USER/.vnc/passwd
+
+	machine=$(sudo lshw | grep "produit\|product" | grep "Raspberry")
+ 	#test version
+	if [[ $proc == "_amd64" ]]
+	then
+		option="-auth guess -forever -bg -noxdamage -noxrecord -repeat -shared -xkb -rfbauth $vnc_path -rfport 5900"
+	elif [[ $proc == "_armhf" ]]
+	then
+		if [[ $machine == *"Raspberry"* ]]
+		then 
+			option="-auth guess -forever -bg -noxdamage -noxrecord -repeat -shared -xkb -rfbauth $vnc_path -rfport 5900"
+		else
+			option="-forever -bg -noxdamage -noxrecord -repeat -shared -xkb -rfbauth $vnc_path -rfport 5900"
+
+	elif [[ $proc == "_x86" ]]
+	then
+		option="-auth guess -forever -bg -noxdamage -noxrecord -repeat -shared -xkb -rfbauth $vnc_path -rfport 5900"
+	elif [[ $proc == "_aarch64" ]]
+	then
+		echo "not support"
+		option="-auth guess -forever -bg -noxdamage -noxrecord -repeat -shared -xkb -rfbauth $vnc_path -rfport 5900"
+	fi
+
+
+	option="-forever -bg -noxdamage -noxrecord -repeat -shared -xkb -rfbauth $vnc_path -rfport 5900"
+
+
 	# injection fichier system
-	cat $dirinstall/x11vnc.service | sed -e "s/MOI/${USER}/g" > /tmp/x11vnc.service
+	cat $dirinstall/x11vnc.service | sed -e "s/OPTION/$option/g" > /tmp/x11vnc.service
 	sudo mv tmp/x11vnc.service /lib/systemd/system/x11vnc.service
 	# allumage au démarage
 	sudo systemctl daemon-reload

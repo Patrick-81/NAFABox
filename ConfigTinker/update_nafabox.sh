@@ -20,17 +20,40 @@ dirinstall=$nafabox_path
 ######
 # Fonction pour l'installation
 ######
+source $dirinstall/detect_language.sh
+if $french
+then
+	title="Mise à jour des script NAFABox"
+	text="Voulez vous mettere à jour les script NAFABox ?"
+	message="suppression de l'ancien dossier NAFABOX"
+else
+	title="Update NAFABox Script"
+	text="Do you want to update the NAFABox scripts?"
+	message="delete outdate NAFABox Folder"
+fi
 
-cd $dirinstall
-cd ..
-cd ..
+
+if choix=`yad --width 350 --height 100 \
+				--center --entry \
+				--title="$title" \
+				--text="$text" \
+				--button="gtk-yes:0" \
+				--button="gtk-no:1" \
+				--button="gtk-cancel:1"`
+then
+
+	cd $dirinstall
+	cd ..
+	cd ..
 
 
-echo "suppression de l'ancien dossier NAFABOX"
-rm -Rf $dirinstall/../
+	echo "suppression de l'ancien dossier NAFABOX"
+	rm -Rf $dirinstall/../
 
-git clone https://github.com/Patrick-81/NAFABox.git
-cd NAFABox
-git checkout gui_zenity
-echo "update script"
-$dirinstall/install_conf.sh
+	git clone https://github.com/Patrick-81/NAFABox.git
+	cd NAFABox
+	git checkout gui_zenity
+	$dirinstall/install_conf.sh
+	echo "script update"
+else
+	echo "exit"

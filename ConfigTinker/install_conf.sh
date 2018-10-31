@@ -47,7 +47,7 @@ echo "================================================="
 
 sudo apt-get $options install libpangox-1.0-0 libespeak1 libpango1.0-0
 sudo apt-get $options install libsonic0 espeak-data fonts-freefont-ttf
-version=lsb_release -c -s
+version=`lsb_release -c -s`
 if [[ $version == "xenial" ]]
 then
 	sudo apt-get $options install ttf-freefont 
