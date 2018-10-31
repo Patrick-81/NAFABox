@@ -41,6 +41,8 @@ sudo apt-get -y install chromium-browser
 installMate="FALSE"
 language="FALSE"
 autologin="FALSE"
+ip_indicator="FALSE"
+host="FALSE"
 
 if [[ $DESKTOP_SESSION == "mate" ]]
 then
@@ -93,23 +95,9 @@ fi
 
 if [[ $host == "TRUE" ]]
 then
-	
-	if name=`yad --width=300 \
-				--center \
-				--form \
-				--title="Choose your HostName :" \
-				--text="Chose your HostName (no special character):" \
-				--field="HostName:" "NAFABox"`
-	then
-		new_host=$(echo "$name" | cut -d "|" -f1)
-		def_host=`cat /etc/hostname`
-		sudo echo $new_host > /tmp/hostname
-		sudo mv /tmp/hostname /etc/hostname
-		cat  /etc/hosts | sed -e "s=$def_host=$new_host=g" > /tmp/hosts
-		sudo mv /tmp/hosts /etc/hosts
-	else
-		echo "hostname not change"
-	fi
+
+	$dirinstall/install_hostname.sh
+
 fi
 
 # Options de apt-get pour l'installation des paquets
