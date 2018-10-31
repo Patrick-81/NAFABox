@@ -251,7 +251,7 @@ then
 
 
 	# injection fichier system
-	cat $dirinstall/x11vnc.service | sed -e "s/OPTION/$option/g" > /tmp/x11vnc.service
+	cat $dirinstall/x11vnc.service | sed -e "s=OPTION=$option=g" > /tmp/x11vnc.service
 	sudo mv tmp/x11vnc.service /lib/systemd/system/x11vnc.service
 	# allumage au démarage
 	sudo systemctl daemon-reload
@@ -286,7 +286,7 @@ then
 	  sudo rm /etc/systemd/system/novnc.service
 	fi
 
-	cat $dirinstall/novnc.service | sed -e "s/MOI/${USER}/g" > /tmp/novnc.service
+	cat $dirinstall/novnc.service | sed -e "s=MOI=${USER}=g" > /tmp/novnc.service
 	sudo cp /tmp/novnc.service /etc/systemd/system/novnc.service
 	sudo chmod 644 /etc/systemd/system/novnc.service
 

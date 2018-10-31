@@ -28,8 +28,7 @@ sudo apt-get -y install dirmngr
 sudo apt-get -y install git
 sudo apt-get -y install gparted
 sudo apt-get -y install chromium-browser
-sudo echo "NAFABox" > /tmp/hostname
-sudo mv /tmp/hostname /etc/hostname
+
 
 #sudo usermod -l nafa -d /home/nafa -m tinker
 
@@ -54,12 +53,14 @@ then
 		--field="Plugin IP Indicator:CHK" \
 		--field="Fr language:CHK" \
 		--field="Autologin for dev armbian (nightly):CHK" \
-		"" "FALSE" "FALSE" "FALSE"`
+		--field="Change hostname to NAFABox ?" \
+		"" "TRUE" "FALSE" "FALSE" "TRUE"`
 	then
 		# recuperation des valeurs
 		ip_indicator=$(echo "$chose" | cut -d "|" -f2)
 		language=$(echo "$chose" | cut -d "|" -f3)
 		autologin=$(echo "$chose" | cut -d "|" -f4)
+		host=$(echo "$chose" | cut -d "|" -f5)
 
 	else
 		echo "cancel"
@@ -75,19 +76,41 @@ else
 		--field="Fr language:CHK" \
 		--field="Plugin IP Indicator:CHK" \
 		--field="Autologin for dev armbian (nightly):CHK" \
-		"" "FALSE" "FALSE" "FALSE" "FALSE"`
+		--field="Change hostname to NAFABox ?" \
+		"" "TRUE" "FALSE" "TRUE" "FALSE" "TRUE"`
 	then
 		# recuperation des valeurs
 		installMate=$(echo "$chose" | cut -d "|" -f2)
 		language=$(echo "$chose" | cut -d "|" -f3)
 		ip_indicator=$(echo "$chose" | cut -d "|" -f4)
 		autologin=$(echo "$chose" | cut -d "|" -f5)
+		host=$(echo "$chose" | cut -d "|" -f6)
 
 	else
 		echo "cancel"
 	fi
 fi
 
+if [[ $host == "TRUE" ]]
+then
+	
+	if name=`yad --width=300 \
+				--center \
+				--form \
+				--title="Choose your HostName :" \
+				--text="Chose your HostName (no special character):" \
+				--field="HostName:" "NAFABox"`
+	then
+		new_host=$(echo "$name" | cut -d "|" -f1)
+		def_host=`cat /etc/hostname`
+		sudo echo $new_host > /tmp/hostname
+		sudo mv /tmp/hostname /etc/hostname
+		cat  /etc/hosts | sed -e "s=$def_host=$new_host=g" > /tmp/hosts
+		sudo mv /tmp/hosts /etc/hosts
+	else
+		echo "hostname not change"
+	fi
+fi
 
 # Options de apt-get pour l'installation des paquets
 options="-y"
