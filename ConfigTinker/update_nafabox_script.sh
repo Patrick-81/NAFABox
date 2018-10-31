@@ -1,9 +1,7 @@
 ################################################
 # Under GPL license
 #     https://www.gnu.org/licenses/gpl.html
-# Authors:	Patrick Dutoit
-# 			Laurent Roge
-#				Sébastien Durand
+# Authors:	Sébastien Durand
 # On June 10 2017
 # V0.1
 ################################################
