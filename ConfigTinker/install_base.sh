@@ -53,7 +53,7 @@ then
 		--field="Plugin IP Indicator:CHK" \
 		--field="Fr language:CHK" \
 		--field="Autologin for dev armbian (nightly):CHK" \
-		--field="Change hostname to NAFABox ?" \
+		--field="Change hostname to NAFABox ?:CHK" \
 		"" "TRUE" "FALSE" "FALSE" "TRUE"`
 	then
 		# recuperation des valeurs
@@ -76,7 +76,7 @@ else
 		--field="Fr language:CHK" \
 		--field="Plugin IP Indicator:CHK" \
 		--field="Autologin for dev armbian (nightly):CHK" \
-		--field="Change hostname to NAFABox ?" \
+		--field="Change hostname to NAFABox ?:CHK" \
 		"" "TRUE" "FALSE" "TRUE" "FALSE" "TRUE"`
 	then
 		# recuperation des valeurs
