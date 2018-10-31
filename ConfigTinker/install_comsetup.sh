@@ -225,25 +225,28 @@ then
 	vnc_path=/home/$USER/.vnc/passwd
 
 	machine=$(sudo lshw | grep "produit\|product" | grep "Raspberry")
+	normal_option="-auth guess -forever -loop -ncache 10 -noxdamage -noxrecord -repeat -shared -xkb -rfbauth $vnc_path -rfbport 5900"
+	tinker_option="-forever -loop -ncache 10 -noxdamage -noxrecord -repeat -shared -xkb -rfbauth $vnc_path -rfbport 5900"
+
  	#test version
 	if [[ $proc == "_amd64" ]]
 	then
-		option="-auth guess -forever -loop -noxdamage -noxrecord -repeat -shared -xkb -rfbauth $vnc_path -rfbport 5900"
+		option=$normal_option
 	elif [[ $proc == "_armhf" ]]
 	then
 		if [[ $machine == *"Raspberry"* ]]
 		then 
-			option="-auth guess -forever -loop -noxdamage -noxrecord -repeat -shared -xkb -rfbauth $vnc_path -rfbport 5900"
+			option=$normal_option
 		else
-			option="-forever -loop -noxdamage -noxrecord -repeat -shared -xkb -rfbauth $vnc_path -rfbport 5900"
+			option=$tinker_option
 		fi
 	elif [[ $proc == "_x86" ]]
 	then
-		option="-auth guess -forever -loop -noxdamage -noxrecord -repeat -shared -xkb -rfbauth $vnc_path -rfbport 5900"
+		option=$normal_option
 	elif [[ $proc == "_aarch64" ]]
 	then
 		echo "not support"
-		option="-auth guess -forever -loop -noxdamage -noxrecord -repeat -shared -xkb -rfbauth $vnc_path -rfbport 5900"
+		option=$normal_option
 	fi
 
 	# injection fichier system
