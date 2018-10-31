@@ -228,7 +228,7 @@ then
  	#test version
 	if [[ $proc == "_amd64" ]]
 	then
-		option="-auth guess -forever -bg -noxdamage -noxrecord -repeat -shared -xkb -rfbauth $vnc_path -rfbport 5900"
+		option="-auth guess -forever -loop -noxdamage -noxrecord -repeat -shared -xkb -rfbauth $vnc_path -rfbport 5900"
 	elif [[ $proc == "_armhf" ]]
 	then
 		if [[ $machine == *"Raspberry"* ]]
