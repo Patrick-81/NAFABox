@@ -65,6 +65,11 @@ mkdir -p ~/bin
 # Modificateur de résolution
 # Resolution modifier
 $dirinstall/install_setres.sh | tee -a "$dirinstall/nafabox.log"
+
+figlet -k Install Conf Updater
+echo "================================================="
+echo "================================================="
+
 ######
 # Install conf updater
 ######
@@ -75,19 +80,13 @@ sudo cp /usr/share/icons/gnome/32x32/apps/system-software-update.png /usr/share/
 # Création du raccourci pour update_conf
 $dirinstall/install_shortcut.sh update_conf "bash -ic update_conf"
 
-######
-# Install/Update conf
-######
-
-figlet -k Install Configuration
-echo "================================================="
-echo "================================================="
-
-~/bin/update_conf.sh initial
 
 ######
 # Création du raccourci pour install_index.sh
 ######
+figlet -k Install Index program
+echo "================================================="
+echo "================================================="
 
 cp $dirinstall/install_index.sh ~/bin/install_index.sh
 sudo ln -sf ~/bin/install_index.sh /usr/bin/install_index
@@ -99,6 +98,10 @@ $dirinstall/install_shortcut.sh install_index "bash -ic install_index"
 # Création du raccourci pour install_hotspot.sh
 ######
 
+figlet -k Install hotspot program
+echo "================================================="
+echo "================================================="
+
 cp $dirinstall/install_hotspot.sh ~/bin/install_hotspot.sh
 sudo ln -sf ~/bin/install_hotspot.sh /usr/bin/install_hotspot
 sudo cp $dirinstall/install_hotspot.png /usr/share/pixmaps/install_hotspot.png
@@ -107,6 +110,9 @@ $dirinstall/install_shortcut.sh install_hotspot "bash -ic install_hotspot"
 ##### 
 # Création du raccourci pour switch_language.sh
 ######
+figlet -k Install switch language program
+echo "================================================="
+echo "================================================="
 
 cp $dirinstall/switch_language.sh ~/bin/switch_language.sh
 sudo ln -sf ~/bin/switch_language.sh /usr/bin/switch_language
@@ -122,8 +128,21 @@ $dirinstall/install_setup-time.sh | tee -a "$dirinstall/nafabox.log"
 ##### 
 # Création du programme d'upadet des scripts
 ######
-
+figlet -k Install Script updater program
+echo "================================================="
+echo "================================================="
 cp $dirinstall/update_nafabox_script.sh ~/bin/update_nafabox_script.sh
 sudo ln -sf ~/bin/update_nafabox_script.sh /usr/bin/update_nafabox_script
 sudo cp /usr/share/icons/gnome/48x48/apps/system-software-update.png /usr/share/pixmaps/update_nafabox_script.png
 $dirinstall/install_shortcut.sh update_nafabox_script "bash -ic update_nafabox_script"
+
+######
+# Install/Update conf
+######
+
+figlet -k Install Configuration
+echo "================================================="
+echo "================================================="
+
+~/bin/update_conf.sh initial
+
