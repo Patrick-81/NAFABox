@@ -141,6 +141,15 @@ then
 	sudo cp $dirinstall/shutdown_reboot.php $site/shutdown_reboot.php
 	sudo chown www-data:www-data $site/setdate.php
 	sudo chown www-data:www-data $site/shutdown_reboot.php
+
+	# move apache at port 8280
+	cat /etc/apache2/ports.conf | sed -e "s/Listen 80/Listen 8280/g" > /tmp/ports.conf
+	sudo mv /tmp/ports.conf /etc/apache2/ports.conf
+	cat /etc/apache2/sites-enabled/000-default.conf | sed -e "s=*:80=*:8280=g" > /tmp/000-default.conf
+	sudo mv /tmp/000-default.conf /etc/apache2/sites-enabled/000-default.conf
+	sudo service apache2 restart
+
+
 	sudo systemctl enable nginx.service
 	sudo systemctl start nginx.service
 
