@@ -248,7 +248,7 @@ then
 
 	# injection fichier system
 	cat $dirinstall/x11vnc.service | sed -e "s=OPTION=$option=g" > /tmp/x11vnc.service
-	sudo mv tmp/x11vnc.service /lib/systemd/system/x11vnc.service
+	sudo mv /tmp/x11vnc.service /lib/systemd/system/x11vnc.service
 	# allumage au démarage
 	sudo systemctl daemon-reload
 	sudo systemctl enable x11vnc.service
