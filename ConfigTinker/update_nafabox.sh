@@ -42,14 +42,14 @@ if choix=`yad --width 350 --height 100 \
 				--button="gtk-cancel:1"`
 then
 
-	cd $dirinstall
-	cd ..
-	cd ..
-
-
+	cd $dirinstall/../
+	nafa_path=`pwd`
+	cd $dirinstall/../../
+	back_path=`pwd`
 	echo "suppression de l'ancien dossier NAFABOX"
-	rm -Rf $dirinstall/../
+	rm -Rf $nafa_path
 
+	cd back_path
 	git clone https://github.com/Patrick-81/NAFABox.git
 	cd NAFABox
 	git checkout gui_zenity
