@@ -50,7 +50,7 @@ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys AA716FC2
 #sudo mv /tmp/skychart.list /etc/apt/sources.list.d/skychart.list
 sudo apt-add-repository 'deb http://www.ap-i.net/apt stable main'
 sudo apt-get update
-sudo apt-get install skychart skychart-data-stars
+sudo apt-get install -y skychart skychart-data-stars
 
 ######
 # Création de l'icône sur le bureau
