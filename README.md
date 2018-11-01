@@ -73,3 +73,6 @@ __User URL :__
 - X11VNC : IP:5900
 - NoVNC : IP:5901
 - Webdav : IP:443
+
+For NAFABox OS Image :
+https://share.obspm.fr/index.php/s/oGtH7pbD9ZsyTTG
