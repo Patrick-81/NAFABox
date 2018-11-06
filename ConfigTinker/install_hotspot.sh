@@ -39,10 +39,10 @@ moi=$(whoami)
 # Get mac_address
 ######
 # get wifi device
-device=$(basename $(find /sys/class/net -name wl*))
+device=($(basename $(find /sys/class/net -name wl*)))
 if test ! -z $device
 then
-	mac_address=$(sudo cat /sys/class/net/$device/address)
+	
 ######
 # Créer l'uuid
 ######
@@ -67,6 +67,10 @@ then
 		dial[2]="Original name for your hotspot or default"
 		dial[3]="HotSpot Name :"
 	fi
+
+	echo ${device[@]} | tr " " ! > /tmp/device
+	liste_device=`cat /tmp/device`
+
 	# Demande du nom de hotspot
 	if option=`yad --width 450 \
 				--center \
@@ -74,38 +78,61 @@ then
 				--title "${dial[2]}" \
 				--image=$dirinstall/install_hotspot.png \
 				--text "${dial[0]}, \n${dial[1]}" \
+				--field="WIFI Board :":CB "$liste_device" \
 				--field="${dial[2]}" "$default_hostname"`
+				--field="PassWord :":H \
+				
 	then
-		option=$(echo "$option" | cut -d "|" -f1)
-		hotspot_name=$option"_box"
+		de_wifi=$(echo "$option" | cut -d "|" -f1)
+		name_w=$(echo "$option" | cut -d "|" -f2)
+		mdp=$(echo "$option" | cut -d "|" -f3)
+		hotspot_name=$name_w"_box"
+
+		mac_address=$(sudo cat /sys/class/net/$de_wifi/address)
+		security="[wifi-security]\ngroup=\nkey-mgmt=wpa-psk\npairwise=\nproto=\npsk=MDP"
+
+		fic0=$(tempfile)
+		cat $dirinstall/nafabox.template | sed -e "s/WLAN/${de_wifi}/g" > $fic0
+		fic1=$(tempfile)
+		cat $fic0 | sed -e "s/HOTSPOTNAME/${hotspot_name}/g" > $fic1
+		fic2=$(tempfile)
+		cat $fic1 | sed -e "s/UUID/${hsuuid}/g" > $fic2
+		fic3=$(tempfile)
+		cat $fic2 | sed -e "s/MAC_ADDRESS/${mac_address}/g" > $fic3
+	
+
+		if [[ -z "$mdp" ]]
+		then
+			fic5=$(tempfile)
+			cat $fic3 | sed -e "s/SECURITY//g" > $fic5
+		else
+			fic4=$(tempfile)
+			cat $fic3 | sed -e "s/SECURITY/${security}/g" > $fic4
+			fic5=$(tempfile)
+			cat $fic4 | sed -e "s/MDP/${mdp}/g" > $fic5
+		fi
+		######
+		# Find active access point
+		######
+		activeap=$(iw $device info | grep ssid | cut -f 2 -d" ")
+		if test ! -z $activeap
+		then
+			sudo rm -f /etc/NetworkManager/system-connections/$activeap
+		fi
+		######
+		# Create new one
+		######
+		sudo cp $fic5 /etc/NetworkManager/system-connections/$hotspot_name
+		sudo systemctl stop NetworkManager
+		sleep 5
+		sudo systemctl start NetworkManager
+
+
 	else
    		echo "[ESC] key pressed."
 		exit
 	fi
 
-	fic0=$(tempfile)
-	cat $dirinstall/nafabox.template | sed -e "s/wlan0/${device}/g" > $fic0
-	fic1=$(tempfile)
-	cat $fic0 | sed -e "s/HOTSPOTNAME/${hotspot_name}/g" > $fic1
-	fic2=$(tempfile)
-	cat $fic1 | sed -e "s/UUID/${hsuuid}/g" > $fic2
-	fic3=$(tempfile)
-	cat $fic2 | sed -e "s/MAC_ADDRESS/${mac_address}/g" > $fic3
-######
-# Find active access point
-######
-	activeap=$(iw $device info | grep ssid | cut -f 2 -d" ")
-	if test ! -z $activeap
-	then
-		sudo rm -f /etc/NetworkManager/system-connections/$activeap
-	fi
-######
-# Create new one
-######
-	sudo cp $fic3 /etc/NetworkManager/system-connections/$hotspot_name
-	sudo systemctl stop NetworkManager
-	sleep 5
-	sudo systemctl start NetworkManager
 else
 	echo "No wifi decice found"
 fi
