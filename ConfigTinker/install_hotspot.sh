@@ -39,7 +39,7 @@ moi=$(whoami)
 # Get mac_address
 ######
 # get wifi device
-device=($(basename $(find /sys/class/net -name wl*)))
+device=($(basename -a $(find /sys/class/net -name wl*)))
 if test ! -z $device
 then
 	
@@ -79,8 +79,8 @@ then
 				--image=$dirinstall/install_hotspot.png \
 				--text "${dial[0]}, \n${dial[1]}" \
 				--field="WIFI Board :":CB "$liste_device" \
-				--field="${dial[2]}" "$default_hostname"`
-				--field="PassWord :":H \
+				--field="${dial[2]}" "$default_hostname" \
+				--field="PassWord :":H`
 				
 	then
 		de_wifi=$(echo "$option" | cut -d "|" -f1)
@@ -114,7 +114,7 @@ then
 		######
 		# Find active access point
 		######
-		activeap=$(iw $device info | grep ssid | cut -f 2 -d" ")
+		activeap=$(iw $de_wifi info | grep ssid | cut -f 2 -d" ")
 		if test ! -z $activeap
 		then
 			sudo rm -f /etc/NetworkManager/system-connections/$activeap
