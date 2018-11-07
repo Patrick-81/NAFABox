@@ -80,7 +80,7 @@ then
 				--text "${dial[0]}, \n${dial[1]}" \
 				--field="WIFI Board :":CB "$liste_device" \
 				--field="${dial[2]}" "$default_hostname" \
-				--field="PassWord :":H`
+				--field="Password (8 characters min):":H`
 				
 	then
 		de_wifi=$(echo "$option" | cut -d "|" -f1)
