@@ -23,7 +23,7 @@ then
 fi
 dirinstall=$nafabox_path
 ######
-sudo apt install --reinstall lshw
+sudo apt-get install --reinstall lshw
 mkdir -p /home/nafa/Projects
 cd /home/nafa/Projects
 machine=$(sudo lshw | grep "produit\|product" | grep "Intel")
@@ -42,9 +42,9 @@ fi
 git clone https://github.com/RPi-Distro/RTIMULib
 git clone https://github.com/TinkerBoard/gpio_lib_c 
 
-sudo apt install cmake
-sudo apt install libnova-dev
-sudo apt install libgps-dev
+sudo apt-get install cmake
+sudo apt-get install libnova-dev
+sudo apt-get install libgps-dev
 
 cd /home/nafa/Projects/gpio_lib_c
 chmod +x build
