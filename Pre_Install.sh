@@ -10,7 +10,7 @@
 
 sudo add-apt-repository ppa:nilarimogard/webupd8 -y
 sudo apt-get update
-sudo apt-get -y install figlet dialog zenity yad xterm
+sudo apt-get -y install figlet dialog zenity yad xterm lshw
 chmod +x ./Install.sh
 cd ./ConfigTinker
 #source ./pwd_ConfigTinker.sh
