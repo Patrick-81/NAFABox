@@ -129,6 +129,11 @@ then
 	echo "================================================="
 	# add repository pour avoir la 1.16 au lieu de la 1.12
 	version=`lsb_release -c -s`
+    if [ -z "$DESKTOP_SESSION" ]
+    then
+	    echo "export DESKTOP_SESSION=\"mate\""  >> ~/.bashrc
+    fi
+
 	if [[ $version == "xenial" ]]
 	then
 		sudo apt-add-repository -y ppa:ubuntu-mate-dev/xenial-mate # ==> bug
@@ -142,6 +147,9 @@ then
 	sudo apt-get -y clean
 	sudo apt-get update
 	# installation du session manager
+    echo "#################################"
+    echo "Chose NoDM after install"
+    echo "#################################"
 	sudo apt-get -y install lightdm
 	sudo apt-get -y install xserver-xorg
 	sudo apt-get -y install lightdm-greeter
@@ -177,7 +185,7 @@ then
 	sudo apt-get $options install ubuntu-mate-themes
 	sudo apt-get $options install chromium-browser
 	# désinstallation diverses des relicats de xfce et de thunderbird ajouté par maté
-	sudo apt-get -y purge thunderbird transmission-gtk thunar
+	sudo apt-get -y purge thunderbird transmission-gtk thunar 
 	sudo apt-get -y remove --purge  libreoffice*
 
 	echo "================================================="
