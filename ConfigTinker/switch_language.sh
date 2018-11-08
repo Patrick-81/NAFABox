@@ -43,7 +43,7 @@ if ret=`yad --width 400 \
 			--entry-text "${lbl[2]}" "${lbl[3]}"`
 then
 	reponse=$ret
-	if [[ $reponse == ${lbl[2]} ]]
+	if [[ $reponse == ${lbl[3]} ]]
 	then
 		# passer le systeme en français
 		# ajout des packs langage
@@ -54,7 +54,7 @@ then
 		sudo update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
 		sudo dpkg-reconfigure keyboard-configuration
 		exit
-	elif [[ $reponse == ${lbl[3]} ]]
+	elif [[ $reponse == ${lbl[2]} ]]
 	then
 		# passer le systeme en français
 		# ajout des packs langage
