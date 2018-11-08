@@ -199,7 +199,7 @@ then
 	sudo apt-get $options install pluma
 	sudo apt-get $options install mate-tweak
 	sudo apt-get $options install mate-themes
-	sudo apt-get $options install mate-applets
+	sudo apt-get $options install mate-applets gnome-media
 	sudo apt-get $options install mate-panel
 	sudo apt-get $options install mate-system-monitor
 	sudo apt-get $options install blueman
