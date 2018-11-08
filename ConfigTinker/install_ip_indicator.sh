@@ -28,9 +28,14 @@ sudo apt-get update
 ######
 sudo apt-get -y install libatk-adaptor libgail-common gsettings-ubuntu-schemas 
 sudo apt-get -y install libido3-0.1-dev  libgee-0.8-dev liburl-dispatcher1-dev
-sudo apt-get -y install indicator-application indicator-messages indicator-sound 
+sudo apt-get -y install indicator-application indicator-messages indicator-sound
 sudo apt-get -y install indicator-application-gtk2 indicator-sound-gtk2
-sudo apt-get -y install indicator-messages-gtk2
+version=`lsb_release -c -s`
+if [[ $version == "xenial" ]]
+then
+    sudo apt-get -y install indicator-messages-gtk2
+fi
+
 
 ######
 # Installation du programme : IP_Indicator

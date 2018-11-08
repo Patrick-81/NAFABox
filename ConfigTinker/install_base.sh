@@ -18,6 +18,8 @@ then
 	exit
 fi
 dirinstall=$nafabox_path
+source $dirinstall/proctype.sh
+
 ######
 sudo rm /var/lib/dpkg/lock
 sudo apt-get -y install libnss3
@@ -28,7 +30,7 @@ sudo apt-get -y install dirmngr
 sudo apt-get -y install git
 sudo apt-get -y install gparted
 sudo apt-get -y install chromium-browser
-
+version=`lsb_release -c -s`
 
 #sudo usermod -l nafa -d /home/nafa -m tinker
 
@@ -128,7 +130,7 @@ then
 	echo "================================================="
 	echo "================================================="
 	# add repository pour avoir la 1.16 au lieu de la 1.12
-	version=`lsb_release -c -s`
+
     if [ -z "$DESKTOP_SESSION" ]
     then
 	    echo "export DESKTOP_SESSION=\"mate\""  >> ~/.bashrc
@@ -156,8 +158,27 @@ then
 	# Mise à jour de l'autologin
 	cat  $dirinstall/20-lightdm.conf | sed -e "s/MOI/$(whoami)/g" > /tmp/20-lightdm.conf
 	sudo cp /tmp/20-lightdm.conf /etc/lighdm/lightdm.conf.d/.
+
+    # remove special package for bionic armbian tinkerboard
+    sudo dpkg --purge chromium-browser
+    machine=$(sudo lshw | grep "produit\|product" | grep "Raspberry")
+	if [[ $version == "bionic" ]]
+	then
+        if [[ $proc == "_armhf" ]]
+	        then
+		        if [[ $machine != *"Raspberry"* ]]
+		        then 
+			        sudo dpkg --purge linux-bionic-root-next-tinkerboard
+                fi
+            fi
+        fi
+    fi
+
 	# installation de base de mate
 	sudo apt-get $options install mate
+    sudo apt-get $options install ubuntu-mate-core ubuntu-mate-desktop
+    sudo apt-get $options install ubuntu-mate-default-settings ubuntu-mate-icon-themes
+    sudo apt-get $options install ubuntu-mate-live-settings ubuntu-mate-guide
 	# installation de mate compléments
 	sudo apt-get $options install mate-desktop-environment-extras mate-indicator-applet
 	# supprimer veille
@@ -168,6 +189,7 @@ then
 	echo "install supplements"
 	echo "================================================="
 	echo "================================================="
+
 	sudo apt-get $options install synaptic
 	sudo apt-get $options install engrapa
 	sudo apt-get $options install caja-actions
@@ -183,10 +205,18 @@ then
 	sudo apt-get $options install blueman
 	sudo apt-get $options install firefox
 	sudo apt-get $options install ubuntu-mate-themes
-	sudo apt-get $options install chromium-browser
+    sudo apt-get $options install pulseaudio indicator-sound indicator-sound-gtk2 libcanberra-pulse paprefs 
+    sudo apt-get $options install pulseaudio-module-bluetooth pulse-audio-module-gconf pulseaudio-module-zeroconf
+    sudo alsa force-reload
 	# désinstallation diverses des relicats de xfce et de thunderbird ajouté par maté
-	sudo apt-get -y purge thunderbird transmission-gtk thunar 
+	sudo apt-get -y purge thunderbird transmission-gtk thunar leafpad hexchat geany k3b brasero cheese
 	sudo apt-get -y remove --purge  libreoffice*
+    sudo apt-get -y install chromium-browser
+
+    sudo dpkg --configure -a
+    sudo apt-get install -f
+    sudo apt-get -y autoremove
+    sudo apt-get clean
 
 	echo "================================================="
 	echo "================================================="
@@ -213,9 +243,18 @@ cp $dirinstall/$backpic $dest/$backpic
 if [[ $installMate == "TRUE" ]]
 then
     gsettings set org.mate.background picture-filename $dest/$backpic
-else
-    gsettings set org.$DESKTOP_SESSION.background picture-filename $dest/$backpic
+elif [[ $DESKTOP_SESSION == "mate" ]]
+then
+    gsettings set org.mate.background picture-filename $dest/$backpic
+elif [[ $DESKTOP_SESSION == "lxde" ]]
+then
+    pcmanfm --set-wallpaper="$dest/$backpic"
+elif [[ $DESKTOP_SESSION == "xfce" ]]
+then
+    xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor0/image-show -s true
+    xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitor0/image-path --set $dest/$backpic
 fi
+
 
 if [[ $language == "TRUE" ]]
 then
