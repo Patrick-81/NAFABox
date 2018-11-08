@@ -49,7 +49,7 @@ then
 		# ajout des packs langage
 		sudo apt-get $options install language-pack-kde-en
 		sudo apt-get $options install language-pack-en language-pack-gnome-en
-		sudo apt-get $options install firefox-locale.en
+		sudo apt-get $options install firefox-locale-en
 		sudo locale-gen en_US en_US.UTF-8
 		sudo update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
 		sudo dpkg-reconfigure keyboard-configuration
@@ -60,7 +60,7 @@ then
 		# ajout des packs langage
 		sudo apt-get $options install language-pack-kde-fr
 		sudo apt-get $options install language-pack-fr language-pack-gnome-fr
-		sudo apt-get $options install firefox-locale.fr
+		sudo apt-get $options install firefox-locale-fr
 		sudo locale-gen fr_FR fr_FR.UTF-8
 		sudo update-locale LC_ALL=fr_FR.UTF-8 LANG=fr_FR.UTF-8
 		sudo dpkg-reconfigure keyboard-configuration
