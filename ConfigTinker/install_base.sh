@@ -24,8 +24,7 @@ source $dirinstall/proctype.sh
 sudo rm /var/lib/dpkg/lock
 sudo apt-get -y install libnss3
 sudo apt-get -y install software-properties-common
-sudo apt-get update
-sudo apt-get -y install dialog zenity 
+sudo apt-get update 
 sudo apt-get -y install dirmngr
 sudo apt-get -y install git
 sudo apt-get -y install gparted
@@ -97,6 +96,7 @@ fi
 
 if [[ $host == "TRUE" ]]
 then
+
 
 	$dirinstall/install_hostname.sh
 
