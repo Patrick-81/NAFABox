@@ -17,6 +17,10 @@ then
 fi
 dirinstall=$nafabox_path
 
+figlet -k Install Hostname
+echo "================================================="
+echo "================================================="
+
 if name=`yad --width=300 \
 			--center \
 			--form \
