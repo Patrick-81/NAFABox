@@ -172,7 +172,6 @@ then
                 fi
             fi
         fi
-    fi
 
 	# installation de base de mate
 	sudo apt-get $options install mate
@@ -218,11 +217,7 @@ then
     sudo apt-get -y autoremove
     sudo apt-get clean
 
-	echo "================================================="
-	echo "================================================="
-	echo "install Background"
-	echo "================================================="
-	echo "================================================="
+
 	# mise à jour de tout le système
 	# sudo apt-get -q --yes dist-upgrade
 	
@@ -234,6 +229,11 @@ then
 fi
 
 # Installation du fond d'écran
+echo "================================================="
+echo "================================================="
+echo "install Background"
+echo "================================================="
+echo "================================================="
 # set NAFABox wallpaper
 mkdir -p ~/bin
 backpic="PIA16008-1920x1200.jpg"
