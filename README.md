@@ -50,9 +50,9 @@ https://ubuntu-mate.org/raspberry-pi/ubuntu-mate-16.04.2-desktop-armhf-raspberry
 
 ### For X86 Ubuntu Linux system :
 
-1/ Install Ubuntu Mate (16.04.3) distribution (via Etcher for USB installation)
+1/ Install Ubuntu Mate (18.04.1) distribution (via Etcher for USB installation)
 
-http://cdimage.ubuntu.com/ubuntu-mate/releases/16.04.3/release/ubuntu-mate-16.04.3-desktop-amd64.iso
+http://cdimage.ubuntu.com/ubuntu-mate/releases/18.04/release/ubuntu-mate-18.04.1-desktop-amd64.iso
 
 2/ Download zip file :  https://github.com/Patrick-81/NAFABox/archive/master.zip
 
