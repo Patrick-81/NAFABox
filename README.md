@@ -1,4 +1,4 @@
-# NAFABox (Nomad Astronomy For All)
+# NAFABox (Nomad Astronomy For All) BETA
 Installation scripts for NAFABox installation.
 
 The scripts are compatible with the Tinker Board, the Raspberry Pi 2/3 as well as with an x86 ubuntu system. 
@@ -10,7 +10,13 @@ Requires a SD card or a place on the hard drive of more than 8go.
 
 1/ Install ARMBIAN (default) distribution (via Etcher)
 
-https://dl.armbian.com/tinkerboard/Ubuntu_xenial_default_desktop.7z
+https://dl.armbian.com/tinkerboard/Ubuntu_xenial_default_desktop.7z 
+
+After Install need open "armbian-config" and switch to nightly build :
+
+`$ sudo armbian-config`
+
+go to 
 
 2/ Download zip file :  https://github.com/Patrick-81/NAFABox/archive/master.zip
 

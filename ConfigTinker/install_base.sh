@@ -160,7 +160,7 @@ then
 	sudo cp /tmp/20-lightdm.conf /etc/lighdm/lightdm.conf.d/.
 
     # remove special package for bionic armbian tinkerboard
-    sudo dpkg --purge chromium-browser
+    #sudo dpkg --purge chromium-browser
     machine=$(sudo lshw | grep "produit\|product" | grep "Raspberry")
 	if [[ $version == "bionic" ]]
 	then
@@ -168,8 +168,8 @@ then
 	        then
 		        if [[ $machine != *"Raspberry"* ]]
 		        then 
-			        sudo dpkg --purge linux-bionic-root-next-tinkerboard
-				echo "purge next-tinkerboard package"
+			        #sudo dpkg --purge linux-bionic-root-next-tinkerboard
+				    echo "purge next-tinkerboard package"
                 fi
             fi
         fi
@@ -179,9 +179,12 @@ then
     sudo apt-get $options install ubuntu-mate-core ubuntu-mate-desktop
     sudo apt-get $options install ubuntu-mate-default-settings ubuntu-mate-icon-themes
     sudo apt-get $options install ubuntu-mate-live-settings ubuntu-mate-guide
+
 	# installation de mate compléments
 	sudo apt-get $options install mate-desktop-environment-extras mate-indicator-applet
 	sudo apt-get $options install mate-dock-applet plank mate-hud mate-applet-brisk-menu mate-menu mate-applet-appmenu
+
+    # dangereux à remplacer des que possible
 	sudo apt-get $options install mate-*
 	sudo apt-get $options install indicator-*
 	
