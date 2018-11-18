@@ -9,7 +9,12 @@
 # On June 10 2017
 # V0.1
 ################################################
-#/bin/bash
+#!/bin/bash -i
+
+figlet -k Install IndiWebManager
+echo "================================================="
+echo "================================================="
+
 ######
 # pre-req
 #####
@@ -23,7 +28,7 @@ sudo chmod -R uga+rw /usr/local
 
 # installation des sources du serveur
 ######
-pip install --upgrade pip
+#pip install --upgrade pip
 pip install indiweb
 #pip install indiweb --user
 

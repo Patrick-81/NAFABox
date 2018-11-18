@@ -1,0 +1,41 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+  <script type="text/javascript">
+	var a = update();
+    function update() {
+      var d = new Date();
+      var utc=d.toString();
+      console.log(utc)
+      document.getElementById("date").value = utc;
+      return utc;
+    }
+ </script>
+</head>
+<p>
+  <span>
+    <form style="display:inline-block;">
+	    <button style="color:blue;background:#DFDFDF" onclick="update()">ACTUATE</button>
+    </form>
+  </span>
+  <span>
+    <form method="post" action='setdate.php' style="width:400px; display:inline-block;">
+       <input name="date" id="date">
+       <script type="text/javascript">
+         document.getElementById("date").value = update();
+       </script>
+       <button style="color:red;background:#DFDFDF">Date==>NAFABox</button>
+    </form>
+  </span>
+</p>
+<p>
+  <div>
+    <span>
+      <form  method="post" action="shutdown_reboot.php" style="width:400px; display:inline-block;">
+        <button style="color:blue;background:#DFDFDF" type="submit" name="action" value="shutdown">Shutdown</button>
+        <button style="color:blue;background:#DFDFDF" type="submit" name="action" value="reboot">Reboot</button>
+      </form>
+    </span>
+  </div>
+</p>
+</html>

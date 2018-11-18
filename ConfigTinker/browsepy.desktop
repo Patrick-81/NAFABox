@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Exec=/usr/local/bin/browsepy --directory MOI 0.0.0.0 8180
+Hidden=false
+X-MATE-Autostart-enabled=true
+Name[fr_FR]=Autoriser l'accès au fichiers à distance
+Name=browsepy
+Comment[fr_FR]=
+Comment=

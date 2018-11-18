@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Exec=/home/nafa/.config/resol.scr
+Hidden=false
+X-MATE-Autostart-enabled=true
+Name[fr_FR]=Définir la resolution en auto
+Name=Setres
+Comment[fr_FR]=
+Comment=

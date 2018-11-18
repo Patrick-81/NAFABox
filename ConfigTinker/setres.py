@@ -1,10 +1,18 @@
 #!/usr/bin/python
+from os.path import expanduser
 from Tkinter import *
 import os
 
 class Application(Frame):
     def setres(self, res):
         cmd="xrandr --fb "+res
+        home = expanduser("~")
+        fresname=home+"/.config/resol.scr"
+        fres=open(fresname,"w")
+        fres.write("#!/bin/bash"+'\n')
+        fres.write(cmd+'\n')
+        fres.close()
+        os.system("chmod +x "+fresname)
         print "res:",cmd
         os.system(cmd)
 
@@ -21,6 +29,9 @@ class Application(Frame):
 
         self.res1366x768 = Button(self, text="1366x768", command=lambda: self.setres("1366x768"))
         self.res1366x768.pack({"side": "top"})
+
+        self.res1280x1024 = Button(self, text="1280x1024", command=lambda: self.setres("1280x1024"))
+        self.res1280x1024.pack({"side": "top"})
 
         self.res1280x800 = Button(self, text="1280x800", command=lambda: self.setres("1280x800"))
         self.res1280x800.pack({"side": "top"})

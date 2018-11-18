@@ -6,13 +6,18 @@
 # On June 10 2017
 # V0.1
 ################################################
-#!/bin/bash
+#!/bin/bash -i
 ######
 # Recherche du répertoire ConfigTinker
 ######
-dirinstall=$(find ~ -name ConfigTinker)
+if [ -z "$nafabox_path" ]
+then
+	echo "Run first Pre_Install.sh and reload Terminal"
+	exit
+fi
+dirinstall=$nafabox_path
 ######
-source detect_language.sh
+source $dirinstall/detect_language.sh
 ######
 # Créer le raccourci bureau
 ######
@@ -44,5 +49,6 @@ else
 	cat /tmp/shortcut1  | sed -e "s%APP_EXEC%$AppExec%g" > /tmp/shortcut2
 	cat /tmp/shortcut2 | sed -e "s/NAME/$AppName/g" > ~/$desktop/$AppName.desktop
 	chmod +x ~/$desktop/$AppName.desktop
+	sudo cp ~/$desktop/$AppName.desktop /usr/share/applications/$AppName.desktop
 fi
 

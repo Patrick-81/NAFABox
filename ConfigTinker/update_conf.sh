@@ -3,14 +3,20 @@
 #     https://www.gnu.org/licenses/gpl.html
 # Authors:	Patrick Dutoit
 # 			Laurent Roge
+#			Sébastien Durand
 # On June 10 2017
 # V0.1
 ################################################
-#!/bin/bash
+#!/bin/bash -i
 ######
 # Recherche du répertoire ConfigTinker
 ######
-dirinstall=$(find ~ -name ConfigTinker)
+if [ -z "$nafabox_path" ]
+then
+	echo "Run first Pre_Install.sh and reload Terminal"
+	exit
+fi
+dirinstall=$nafabox_path
 ######
 cd $dirinstall
 ######
@@ -18,126 +24,128 @@ cd $dirinstall
 ######
 installconf()
 {
-	if $1
-	then
-		dial[0]="Installation/Mise à jour des logiciels"
-		dial[1]="Installation complémentaire"
-		dial[2]="Choisir le(s) logiciel(s) à installer"
-	else
-		dial[0]="Install/Update of software"
-		dial[1]="Additional software(s)"
-		dial[2]="Choose software(s) to install"
-	fi
+if $1
+then
+	dial[0]="Installation/Mise à jour des logiciels"
+	dial[1]="Choisir le(s) logiciel(s) à installer"
+else
+	dial[0]="Install/Update of software"
+	dial[1]="Choose software(s) to install"
+fi
 
-	if $1
-	then
-		choice[0]="Couche de communication web"
-		choice[4]="Carte du ciel"
-		choice[9]="install GPSD pour GPS USB"
-	else
-		choice[0]="Web communication layer"
-		choice[4]="Skychart"
-		choice[9]="install GPSD for USB GPS"
-	fi
+if $1
+then
+	choice[0]="Couche de communication web"
+	choice[1]="Installation Lin_guider"
+	choice[2]="Installation Kstars-EKOS-INDI"
+	choice[3]="Installation Phd2"
+	choice[4]="installation de Carte du ciel (Beta)"
+	choice[5]="Installation Ccdciel (Beta)"
+	choice[6]="Installation Planetary Imager (Beta)"
+	choice[7]="Installation Siril (Beta)"
+	choice[8]="Installation Stellarium"
+	choice[9]="Telechargement du/des index(s) astrometrique"
+	choice[10]="installation de astroberry_diy"
+	
+	
+else
+	choice[0]="Web communication layer"
 	choice[1]="Lin_guider"
-	choice[2]="Kstars"
+	choice[2]="Install Kstars-EKOS-INDI"
 	choice[3]="Phd2"
+	choice[4]="Skychart"
 	choice[5]="Ccdciel"
 	choice[6]="Planetary Imager"
 	choice[7]="Siril"
 	choice[8]="Stellarium"
-	choice[10]="install astrometry index(s)"
-	choice[11]="install ip_indicator"
+	choice[9]="install astrometry index(s)"
+	choice[10]="install astroberry_diy"
+fi
 
-	if $init
-	then
-		st=(on off on on off off off off off off off)
-	else
-		st=(off off off off off off off off off off off)
-	fi		
-	echo ${st[*]}
 
-	DIALOG=${DIALOG=dialog}
-	fichtemp=`tempfile 2>/dev/null` || fichtemp=/tmp/test$$
-	trap "rm -f $fichtemp" 0 1 2 5 15
+message[0]="Install web communications"
+message[1]="Install Lin_guider"
+message[2]="Install kstars-ekos-indi"
+message[3]="Install phd2"
+message[4]="Installation Skychart"
+message[5]="Install ccdciel"
+message[6]="Install planetary imager"
+message[7]="Install siril"
+message[8]="Install stellarium"
+message[9]="Install index(s)"
+message[10]="Install astroberry_diy"
 
-	$DIALOG --backtitle "${dial[0]}" \
-		--title "${dial[1]}" --clear \
-    	--checklist "${dial[2]}" 20 61 9 \
-        	0 "${choice[0]}" "${st[0]}"\
-			1 "${choice[1]}" "${st[1]}"\
-			2 "${choice[2]}" "${st[2]}"\
-			3 "${choice[3]}" "${st[3]}"\
-			4 "${choice[4]}" "${st[4]}"\
-			5 "${choice[5]}" "${st[5]}"\
-			6 "${choice[6]}" "${st[6]}"\
-			7 "${choice[7]}" "${st[7]}"\
-			8 "${choice[8]}" "${st[8]}"\
-			9 "${choice[9]}" "${st[9]}"\
-			10 "${choice[10]}" "${st[10]}"\
-			11 "${choice[11]}" "${st[11]}"\
-			 2> $fichtemp
-	valret=$?
-	for n in $(cat $fichtemp)
+script[0]=install_comsetup.sh
+script[1]=install_linguider.sh
+script[2]=install_kstars.sh
+script[3]=install_phd2.sh
+script[4]=install_skychart.sh
+script[5]=install_ccdciel.sh
+script[6]=install_planetaryimager.sh
+script[7]=install_siril.sh
+script[8]=install_stellarium.sh
+script[9]=install_index.sh
+script[10]=install_astroberry_diy.sh
+
+
+if [[ $2 == "initial" ]]
+then
+	st=(true false true true false false false false false false false)
+	
+else
+	st=(false false false false false false false false false false false)
+fi
+
+# nombre de logiciel
+number=11
+
+# echo ${st[*]}
+# echo ${choise[*]}
+# echo ${dial[*]}
+
+
+# affichage
+
+if chose=`yad --width=400 \
+	--center \
+	--form \
+	--title="${dial[0]}" \
+	--text="${dial[1]}" \
+	--field=":LBL" \
+	--field="${choice[0]}:CHK" \
+	--field="${choice[1]}:CHK" \
+	--field="${choice[2]}:CHK" \
+	--field="${choice[3]}:CHK" \
+	--field="${choice[4]}:CHK" \
+	--field="${choice[5]}:CHK" \
+	--field="${choice[6]}:CHK" \
+	--field="${choice[7]}:CHK" \
+	--field="${choice[8]}:CHK" \
+	--field="${choice[9]}:CHK" \
+	--field="${choice[10]}:CHK" \
+	"" "${st[0]}" "${st[1]}" "${st[2]}" \
+	"${st[3]}" "${st[4]}" "${st[5]}" "${st[6]}" \
+	"${st[7]}" "${st[8]}" "${st[9]}" "${st[10]}"`
+then
+	for (( i=0; i<=$number-1; i++ ))
 	do
-		case $n in
-		0)
-			echo "Install web communications"
-			$dirinstall/install_comsetup.sh
-			;;
-		1) 
-			echo "Install Lin_guider"
-			$dirinstall/install_linguider.sh
-			;;
-		2)
-			echo "Install kstars"
-			$dirinstall/install_kstars.sh
-			;;
-		3)
-			echo "Install phd2"
-			$dirinstall/install_phd2.sh
-			;;
-		4)
-			echo "Installation Skychart"
-			$dirinstall/install_skychart.sh
-			;;
-		5)
-			echo "Install ccdciel"
-			$dirinstall/install_ccdciel.sh
-			;;
-		6)
-			echo "Install planetary imager"
-			$dirinstall/install_planetaryimager.sh
-			;;
-		7)
-			echo "Install siril"
-			$dirinstall/install_siril.sh
-			;;
-		8)
-			echo "Install stellarium"
-			$dirinstall/install_stellarium.sh
-			;;
-		9)
-			echo "Install GPSD"
-			$dirinstall/install_gps.sh
-			;;
-		10)
-			echo "Install index(s)"
-			$dirinstall/install_index.sh
-			;;
-		11)
-			echo "Install IP_indicator"
-			$dirinstall/install_ip_indicator.sh
-			;;
-		255)
-			echo "escape";;
-		esac
+		j=$(($i+2))
+		re=$(echo "$chose" | cut -d "|" -f$j)
+		if [[ $re == "TRUE" ]]
+		then
+			$dirinstall/${script[$i]} | tee -a "$dirinstall/nafabox.log"
+		fi
 	done
+else
+	echo "cancel"
+fi
+
 	return
 }
 ######
 # Detect language
 ######
+
 lang=$(locale | grep LANG= | grep fr_FR)
 if [[ $lang == *"fr_FR"* ]]
 then
@@ -150,7 +158,7 @@ fi
 ######
 while true
 do
-	installconf $french
+	installconf $french $1
 ######
 # Reboot required
 ######
@@ -161,41 +169,41 @@ do
 		dial[2]="Quitter l'installation"
 		dial[3]="Compléter l'installation"
 		dial[4]="Installer le point d'accès"
-		dial[5]="Arrêter la machine"
+		dial[5]="Redémarer la machine"
 	else
 		dial[0]="What do you want to do now ?"
 		dial[1]="Select one option"
 		dial[2]="Quit the installation"
 		dial[3]="Complete installation"
 		dial[4]="Install the hotspot"
-		dial[5]="Shutdown now"
+		dial[5]="Reboot now"
 	fi
-	option=$(dialog --title "${dial[0]}" --menu "${dial[1]}" 12 60 6 1 "${dial[2]}" 2 "${dial[3]}"\
-				 3 "${dial[4]}" 4 "${dial[5]}" 3>&1 1>&2 2>&3)
-# Get exit status
-# 0 means user hit [yes] button.
-# 1 means user hit [no] button.
-# 255 means user hit [Esc] key.
-	response=$?
-	case $option in
-	1)
-		echo "Quit"
-		exit
-		;;
-	2)
-		echo "back to install software"
-		;;
-	3)
-		echo "Install hotspot"
-		sudo $dirinstall/install_hotspot.sh
-		;;
-	4)
-		echo "Reboot"
-		sudo shutdown now
-		;;
-	255)
+	if option=`yad --width 400 \
+				--center \
+				--entry \
+				--title "${dial[0]}" \
+				--image=gnome-shutdown \
+				--text "${dial[1]}" \
+				--entry-text "${dial[2]}" "${dial[3]}" "${dial[4]}" "${dial[5]}"`
+	then
+		if [[ $option == "${dial[2]}" ]]
+		then
+			echo "Quit"
+			exit
+		elif [[ $option == "${dial[3]}" ]]
+		then
+			echo "back to install software"
+		elif [[ $option == "${dial[4]}" ]]
+		then
+			echo "Install hotspot"
+			sudo $dirinstall/install_hotspot.sh | tee -a "$dirinstall/nafabox.log"
+		elif [[ $option == "${dial[5]}" ]]
+		then
+			echo "Reboot"
+			sudo reboot
+		fi
+	else
 		echo "[ESC] key pressed."
-		;;
-	esac
+	fi
 done
 

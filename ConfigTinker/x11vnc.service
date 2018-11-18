@@ -1,0 +1,10 @@
+[Unit]
+Description=Start x11vnc at startup.
+After=multi-user.target
+ 
+[Service]
+Type=simple
+ExecStart=/usr/bin/x11vnc OPTION
+ 
+[Install]
+WantedBy=multi-user.target

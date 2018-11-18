@@ -6,11 +6,21 @@
 # On June 10 2017
 # V0.1
 ################################################
-#!/bin/bash
+#!/bin/bash -i
 ######
 # Recherche du répertoire ConfigTinker
 ######
-dirinstall=$(find ~ -name ConfigTinker)
+if [ -z "$nafabox_path" ]
+then
+	echo "Run first Pre_Install.sh and reload Terminal"
+	exit
+fi
+dirinstall=$nafabox_path
+
+figlet -k Install Stellarium
+echo "================================================="
+echo "================================================="
+
 ######
 # Installation des pré-requis
 ######

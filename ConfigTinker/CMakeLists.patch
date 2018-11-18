@@ -1,0 +1,23 @@
+26a27
+> include_directories(${CMAKE_SOURCE_DIR}/../gpio_lib_c/wiringPi)
+28a30
+> #add_library(wiringPi DYNAMIC IMPORTED)
+30,31c32,33
+< add_dependencies(bcm2835 libbcm2835)
+< 
+---
+> add_dependencies(bcm2835 libbcm2835 wiringPi)
+> add_definitions(-DTINKER)
+43,44d44
+< 
+< 
+52c52
+< target_link_libraries(indi_rpibrd indidriver bcm2835)
+---
+> target_link_libraries(indi_rpibrd indidriver bcm2835 wiringPi)
+77a78
+> 
+85c86
+< target_link_libraries(indi_rpifocus indidriver bcm2835)
+---
+> target_link_libraries(indi_rpifocus indidriver wiringPi)

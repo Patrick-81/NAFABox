@@ -2,8 +2,7 @@
 # Under GPL license
 #     https://www.gnu.org/licenses/gpl.html
 # Authors:	Patrick Dutoit
-# 			Laurent Roge
-# On June 10 2017
+# On October 2018
 # V0.1
 ################################################
 #!/bin/bash -i
@@ -17,15 +16,19 @@ then
 fi
 dirinstall=$nafabox_path
 
-figlet -k Install LibPasAstro
+figlet -k Install BrowsePy
 echo "================================================="
 echo "================================================="
+cd $dirinstall
+# s'assurer que que pip est installe
+sudo apt-get -y install python-pip python3-pip python-setuptools python3-setuptools
+# installer browsepy
+sudo pip install browsepy
+# Lancer le serveur au demarrage
+# placer la commande sous .config/autostart
+cat $dirinstall/browsepy.desktop | sed -e "s#MOI#${HOME}#g" > /tmp/browsepy.desktop
+mkdir -p ~/.config/autostart/
+sudo cp /tmp/browsepy.desktop $HOME/.config/autostart/browsepy.desktop
+# fin
 
-######
-# Installation de libpasastro
-source $dirinstall/proctype.sh
-software="libpasastro"
-version="version_1.1-20"
-file="libpasastro_1.1-20$proc.deb"
-wget https://sourceforge.net/projects/$software/files/$version/$file -P /tmp/
-sudo dpkg -i /tmp/$file
+

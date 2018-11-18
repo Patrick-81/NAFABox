@@ -1,0 +1,81 @@
+17a18
+> //#define TINKER 1
+20a22,24
+> #ifdef TINKER 
+> #include <wiringPi.h>
+> #elif
+21a26
+> #endif
+36c41,52
+< #define STEP_DELAY 4 // miliseconds
+---
+> #define STEP_DELAY 2 // miliseconds
+> #define SPEED 4
+> 
+> #ifdef TINKER
+> #define bcm2835_gpio_write digitalWrite
+> #define bcm2835_delay delay
+> #define bcm2835_gpio_lev digitalRead
+> #define bcm2835_gpio_fsel pinMode
+> #define BCM2835_GPIO_FSEL_OUTP OUTPUT
+> #define BCM2835_GPIO_FSEL_INPT INPUT
+> #define BCM2835_GPIO_PUD_OFF   PUD_OFF
+> #endif
+41c57,63
+< /*
+---
+> #ifdef TINKER
+> #define DIR 7
+> #define STEP 11
+> #define M0 15
+> #define M1 13
+> #define SLEEP 16
+> #elif
+47,48c69,70
+< */
+< 
+---
+> #endif
+> /*
+55c77
+< 
+---
+> */
+131a154,166
+> #ifdef TINKER
+>     int ret=!wiringPiSetupPhys();
+> 	if (!ret)
+> 	{
+> 		IDMessage(getDeviceName(), "Problem initiating Astroberry Focuser.");
+> 		return false;
+> 	}
+>     pinMode(DIR, OUTPUT);
+>     pinMode(STEP, OUTPUT);
+>     pinMode(SLEEP, OUTPUT);
+>     pinMode(M0, OUTPUT);
+>     pinMode(M1, OUTPUT);
+> #elif
+147c182
+< 
+---
+> #endif
+153a189,190
+> 
+> 
+167c204
+< 	
+---
+> #ifndef TINKER
+178c215,216
+< 		
+---
+> #endif
+> 
+325d362
+< /*		
+346d382
+< */
+462c498
+< 	SetSpeed(1);
+---
+> 	SetSpeed(SPEED);
