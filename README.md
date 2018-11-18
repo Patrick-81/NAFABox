@@ -1,24 +1,25 @@
 # NAFABox (Nomad Astronomy For All) BETA
 Installation scripts for NAFABox installation.
 
-The scripts are compatible with the Tinker Board, the Raspberry Pi 2/3 as well as with an x86 ubuntu system. 
-Requires a SD card or a place on the hard drive of more than 8go.
+The scripts are compatible with the Tinker Board, the Raspberry Pi 2b/3b/3b+ as well as with an x86 ubuntu Mate system. 
+Requires a SD card or a place on the hard drive of more than 16go.
 
 
 
-### Step by Step for TinkerBoard :
+### Step by Step for TinkerBoard (or other armhf board Armbian compatible):
 
-1/ Install ARMBIAN (default) distribution (via Etcher)
+1/ Install ARMBIAN (Next) distribution (via Etcher)
 
-https://dl.armbian.com/tinkerboard/Ubuntu_xenial_default_desktop.7z 
+https://dl.armbian.com/tinkerboard/Ubuntu_bionic_next_desktop.7z (or other board next ubuntu image)
 
 After Install need open "armbian-config" and switch to nightly build :
 
 `$ sudo armbian-config`
+( for french azerty keyboard : `sudo qr,biqn)config` ) 
 
-go to 
+go to system -> nightly and valid
 
-2/ Download zip file :  https://github.com/Patrick-81/NAFABox/archive/master.zip
+2/ Download zip file :  https://github.com/Patrick-81/NAFABox/archive/beta.zip
 
 3/ Get the folder as zip file and expanse it to your tinkerboard desktop
 
@@ -27,12 +28,15 @@ go to
 5/ right clic on Pre_Install.sh and set permissions to execute 
 
 `$ chmod +x ./Pre_Install.sh` 
+( for french azerty keyboard : `ch,od +x :!Pre°Instqll:sh` ) 
 
 `$ ./Pre_Install.sh` 
+( for french azerty keyboard : `:!Pre°Instqll:sh` ) 
 
 6/ After the end of Pre_Install script open new terminal. You can start Install.sh script 
 
 `$ ./Install.sh` 
+( for french azerty keyboard : `:!Instqll:sh` ) 
 
 7/ in file menu "open terminal" (right click)
 
@@ -48,7 +52,7 @@ go to
 
 https://ubuntu-mate.org/raspberry-pi/ubuntu-mate-16.04.2-desktop-armhf-raspberry-pi.img.xz
 
-2/ Download zip file :  https://github.com/Patrick-81/NAFABox/archive/master.zip
+2/ Download zip file :  https://github.com/Patrick-81/NAFABox/archive/beta.zip
 
 3/ Get the folder as zip file and expanse it to your pi desktop
 
@@ -58,9 +62,9 @@ https://ubuntu-mate.org/raspberry-pi/ubuntu-mate-16.04.2-desktop-armhf-raspberry
 
 1/ Install Ubuntu Mate (16.04.3) distribution (via Etcher for USB installation)
 
-http://cdimage.ubuntu.com/ubuntu-mate/releases/16.04.3/release/ubuntu-mate-16.04.3-desktop-amd64.iso
+http://cdimage.ubuntu.com/ubuntu-mate/releases/18.04/release/ubuntu-mate-18.04.1-desktop-amd64.iso
 
-2/ Download zip file :  https://github.com/Patrick-81/NAFABox/archive/master.zip
+2/ Download zip file :  https://github.com/Patrick-81/NAFABox/archive/beta.zip
 
 3/ Get the folder as zip file and expanse it to your Linux Mate desktop
 
