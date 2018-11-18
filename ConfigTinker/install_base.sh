@@ -184,6 +184,7 @@ then
 	sudo apt-get $options install mate-dock-applet plank mate-hud mate-applet-brisk-menu mate-menu mate-applet-appmenu
 	sudo apt-get $options install mate-*
 	sudo apt-get $options install indicator-*
+	sudo apt-get $options purge indicator-printers indicator-china-weather
 	
 	# supprimer veille
 	sudo sed -i "/DPMS/ s/true/false/" /etc/X11/xorg.conf.d/01-armbian-defaults.conf
