@@ -169,6 +169,7 @@ then
 		        if [[ $machine != *"Raspberry"* ]]
 		        then 
 			        sudo dpkg --purge linux-bionic-root-next-tinkerboard
+				echo "purge next-tinkerboard package"
                 fi
             fi
         fi
@@ -180,6 +181,10 @@ then
     sudo apt-get $options install ubuntu-mate-live-settings ubuntu-mate-guide
 	# installation de mate compléments
 	sudo apt-get $options install mate-desktop-environment-extras mate-indicator-applet
+	sudo apt-get $options install mate-dock-applet plank mate-hud mate-applet-brisk-menu mate-menu mate-applet-appmenu
+	sudo apt-get $options install mate-*
+	sudo apt-get $options install indicator-*
+	
 	# supprimer veille
 	sudo sed -i "/DPMS/ s/true/false/" /etc/X11/xorg.conf.d/01-armbian-defaults.conf
 	# Ajout d'utilitaires
