@@ -103,7 +103,7 @@ then
 	######
 	# Installer nginx
 	######
-	sudo apt-get -y install nginx
+	sudo apt-get -y install nginx apache2
 	######
 	# Installer php
 	######
