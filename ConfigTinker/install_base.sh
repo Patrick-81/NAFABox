@@ -163,11 +163,10 @@ then
 	        then
 		        if [[ $machine != *"Raspberry"* ]]
 		        then 
+				    echo "purge next-tinkerboard package"
+                    #sudo dpkg --purge chromium-browser
 			        #sudo dpkg --purge linux-bionic-root-next-tinkerboard
 				    echo "purge next-tinkerboard package"
-                    sudo dpkg --purge chromium-browser
-			        sudo dpkg --purge linux-bionic-root-next-tinkerboard
-				echo "purge next-tinkerboard package"
                 fi
             fi
         fi
