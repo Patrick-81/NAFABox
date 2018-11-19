@@ -129,13 +129,8 @@ then
 	figlet -k Install Ubuntu Mate
 	echo "================================================="
 	echo "================================================="
+
 	# add repository pour avoir la 1.16 au lieu de la 1.12
-
-    if [ -z "$DESKTOP_SESSION" ]
-    then
-	    echo "export DESKTOP_SESSION=\"mate\""  >> ~/.bashrc
-    fi
-
 	if [[ $version == "xenial" ]]
 	then
 		sudo apt-add-repository -y ppa:ubuntu-mate-dev/xenial-mate # ==> bug
@@ -160,7 +155,6 @@ then
 	sudo cp /tmp/20-lightdm.conf /etc/lighdm/lightdm.conf.d/.
 
     # remove special package for bionic armbian tinkerboard
-    sudo dpkg --purge chromium-browser
     machine=$(sudo lshw | grep "produit\|product" | grep "Raspberry")
 	if [[ $version == "bionic" ]]
 	then
@@ -168,6 +162,7 @@ then
 	        then
 		        if [[ $machine != *"Raspberry"* ]]
 		        then 
+                    sudo dpkg --purge chromium-browser
 			        sudo dpkg --purge linux-bionic-root-next-tinkerboard
 				echo "purge next-tinkerboard package"
                 fi
@@ -211,17 +206,22 @@ then
 	sudo apt-get $options install firefox
 	sudo apt-get $options install ubuntu-mate-themes
     sudo apt-get $options install pulseaudio indicator-sound indicator-sound-gtk2 libcanberra-pulse paprefs 
-    sudo apt-get $options install pulseaudio-module-bluetooth pulse-audio-module-gconf pulseaudio-module-zeroconf
+    sudo apt-get $options install pulseaudio-module-bluetooth pulseaudio-module-gconf pulseaudio-module-zeroconf
     sudo alsa force-reload
 	# désinstallation diverses des relicats de xfce et de thunderbird ajouté par maté
 	sudo apt-get -y purge thunderbird transmission-gtk thunar leafpad hexchat geany k3b brasero cheese
-	sudo apt-get -y remove --purge  libreoffice*
+	sudo apt-get -y remove --purge  libreoffice-*
     sudo apt-get -y install chromium-browser
 
     sudo dpkg --configure -a
     sudo apt-get install -f
     sudo apt-get -y autoremove
     sudo apt-get clean
+
+    if [ -z "$DESKTOP_SESSION" ]
+    then
+	    echo "export DESKTOP_SESSION=\"mate\""  >> ~/.bashrc
+    fi
 
 
 	# mise à jour de tout le système
