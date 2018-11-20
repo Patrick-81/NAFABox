@@ -228,10 +228,21 @@ then
 	#
 
 	# demarage sur le X11
-	echo "Enter Le mot de passe VNC pour votre BOX :"
-	x11vnc -storepasswd
+    vnc_path=/home/$USER/.vnc/passwd
+    rm $vnc_path
+    test_w=true
+    while $test_w
+    do
+        echo "Enter Le mot de passe VNC pour votre BOX :"
+        x11vnc -storepasswd
+        if [ -f $vnc_path ]
+        then
+            test_w=false
+        else
+            echo "Reload"
+        fi
+    done
 	echo "Merci ! ----------------------------------"
-	vnc_path=/home/$USER/.vnc/passwd
 
 	machine=$(sudo lshw | grep "produit\|product" | grep "Raspberry")
 	normal_option="-auth guess -forever -loop -noncache -noxdamage -noxrecord -repeat -shared -xkb -rfbauth $vnc_path -rfbport 5900"
