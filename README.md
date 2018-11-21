@@ -25,10 +25,7 @@ go to system -> nightly and valid
 
 4/ Open the folder
 
-5/ right clic on Pre_Install.sh and set permissions to execute 
-
-`$ chmod +x ./Pre_Install.sh` 
-( for french azerty keyboard : `ch,od +x :!Pre°Instqll:sh` ) 
+5/ Start Pre_Install.sh 
 
 `$ ./Pre_Install.sh` 
 ( for french azerty keyboard : `:!Pre°Instqll:sh` ) 
