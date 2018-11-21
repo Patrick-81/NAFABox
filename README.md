@@ -10,7 +10,7 @@ Requires a SD card or a place on the hard drive of more than 16go.
 
 1/ Install ARMBIAN (Next) distribution (via Etcher)
 
-https://dl.armbian.com/tinkerboard/Ubuntu_bionic_next_desktop.7z (or other board next ubuntu image)
+https://dl.armbian.com/tinkerboard/Ubuntu_bionic_next_desktop.7z (or other board bionic next ubuntu image)
 
 After Install need open "armbian-config" and switch to nightly build :
 
