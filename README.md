@@ -1,4 +1,4 @@
-# NAFABox (Nomad Astronomy For All) BETA
+# NAFABox (Nomad Astronomy For All)
 Installation scripts for NAFABox installation.
 
 The scripts are compatible with the Tinker Board, the Raspberry Pi 2b/3b/3b+ as well as with an x86 ubuntu Mate system. 
@@ -8,18 +8,12 @@ Requires a SD card or a place on the hard drive of more than 16go.
 
 ### Step by Step for TinkerBoard (or other armhf board Armbian compatible):
 
-1/ Install ARMBIAN (Next) distribution (via Etcher)
+1/ Install ARMBIAN (default) distribution (via Etcher)
 
-https://dl.armbian.com/tinkerboard/Ubuntu_bionic_next_desktop.7z (or other board next ubuntu image)
+https://dl.armbian.com/tinkerboard/Ubuntu_xenial_default_desktop.7z (or other board xenial default/next ubuntu image)
 
-After Install need open "armbian-config" and switch to nightly build :
 
-`$ sudo armbian-config`
-( for french azerty keyboard : `sudo qr,biqn)config` ) 
-
-go to system -> nightly and valid
-
-2/ Download zip file :  https://github.com/Patrick-81/NAFABox/archive/beta.zip
+2/ Download zip file :  https://github.com/Patrick-81/NAFABox/archive/master.zip
 
 3/ Get the folder as zip file and expanse it to your tinkerboard desktop
 
@@ -49,7 +43,7 @@ go to system -> nightly and valid
 
 https://ubuntu-mate.org/raspberry-pi/ubuntu-mate-16.04.2-desktop-armhf-raspberry-pi.img.xz
 
-2/ Download zip file :  https://github.com/Patrick-81/NAFABox/archive/beta.zip
+2/ Download zip file :  https://github.com/Patrick-81/NAFABox/archive/master.zip
 
 3/ Get the folder as zip file and expanse it to your pi desktop
 
@@ -61,7 +55,7 @@ https://ubuntu-mate.org/raspberry-pi/ubuntu-mate-16.04.2-desktop-armhf-raspberry
 
 http://cdimage.ubuntu.com/ubuntu-mate/releases/18.04/release/ubuntu-mate-18.04.1-desktop-amd64.iso
 
-2/ Download zip file :  https://github.com/Patrick-81/NAFABox/archive/beta.zip
+2/ Download zip file :  https://github.com/Patrick-81/NAFABox/archive/master.zip
 
 3/ Get the folder as zip file and expanse it to your Linux Mate desktop
 

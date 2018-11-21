@@ -155,7 +155,7 @@ then
 	sudo cp /tmp/20-lightdm.conf /etc/lighdm/lightdm.conf.d/.
 
     # remove special package for bionic armbian tinkerboard
-    #sudo dpkg --purge chromium-browser
+
     machine=$(sudo lshw | grep "produit\|product" | grep "Raspberry")
 	if [[ $version == "bionic" ]]
 	then
@@ -164,9 +164,8 @@ then
 		        if [[ $machine != *"Raspberry"* ]]
 		        then 
 				    echo "purge next-tinkerboard package"
-                    #sudo dpkg --purge chromium-browser
-			        #sudo dpkg --purge linux-bionic-root-next-tinkerboard
-				    echo "purge next-tinkerboard package"
+                    sudo dpkg --purge chromium-browser
+			        sudo dpkg --purge linux-bionic-root-next-tinkerboard
                 fi
             fi
         fi
