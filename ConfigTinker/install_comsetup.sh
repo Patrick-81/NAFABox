@@ -162,6 +162,9 @@ then
 	######
 	# Installation du serveur nginx
 	######
+	# mod 22/11/2018
+	sudo apt-get install -y --reinstall php-fpm
+    #
 	sudo apt-get install -y --reinstall nginx
 	sudo rm /etc/nginx/sites-available/default
 	sudo rm /etc/nginx/sites-enabled/default
