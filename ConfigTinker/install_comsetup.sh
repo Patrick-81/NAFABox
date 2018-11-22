@@ -166,9 +166,24 @@ then
 	sudo apt-get install -y --reinstall php-fpm
     #
 	sudo apt-get install -y --reinstall nginx
+	sudo apt-get -y install php-fpm
 	sudo rm /etc/nginx/sites-available/default
 	sudo rm /etc/nginx/sites-enabled/default
-	cat $dirinstall/server.txt | sed -e "s/MOI/${USER}/g" > /tmp/site-$USER
+	cat $dirinstall/server.txt | sed -e "s/MOI/${USER}/g" > /tmp/site-temp
+    if [ -S "/var/run/php/php7.0-fpm.sock" ]
+    then
+        cat /tmp/site-temp | sed -e "s/VER-PHP/7.0/g" > /tmp/site-$USER
+    elif  [ -S "/var/run/php/php7.1-fpm.sock" ]
+    then
+        cat /tmp/site-temp | sed -e "s/VER-PHP/7.1/g" > /tmp/site-$USER
+    elif  [ -S "/var/run/php/php7.2-fpm.sock" ]
+    then
+        cat /tmp/site-temp | sed -e "s/VER-PHP/7.2/g" > /tmp/site-$USER
+    fi
+    elif  [ -S "/var/run/php/php7.3-fpm.sock" ]
+    then
+        cat /tmp/site-temp | sed -e "s/VER-PHP/7.3/g" > /tmp/site-$USER
+    fi
 	sudo cp /tmp/site-$USER /etc/nginx/sites-available/site-$USER
 	sudo chown $USER:$USER /etc/nginx/sites-available/site-$USER
 	sudo ln -sf /etc/nginx/sites-available/site-$USER /etc/nginx/sites-enabled/site-$USER
