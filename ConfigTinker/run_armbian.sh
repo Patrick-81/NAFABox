@@ -6,13 +6,6 @@
 # V0.1
 ################################################
 #!/bin/bash -i
-# check for root priveleges
-#
-if [[ $EUID != 0 ]]; then
-	echo "This tool requires root privileges. Try again with \"sudo \" please ..." >&2
-	sleep 2
-	exit 1
-fi
 
 if [-d "/usr/lib/armbian-config/" ]
 then
