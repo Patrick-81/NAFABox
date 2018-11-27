@@ -16,22 +16,22 @@
 
 if [ -d "/usr/lib/armbian-config/" ]
 then
-    su
+    set -a
 	source /usr/lib/armbian-config/functions-network.sh
 	source /usr/lib/armbian-config/functions.sh
 	source /usr/lib/armbian-config/jobs.sh
 	source /usr/lib/armbian-config/submenu.sh
-	submenu_networking
-    exit
+	sudo submenu_networking
+    set +a
 elif [ -d "/home/$USER/armbian-config/" ]
 then
-    su
+    set -a
 	source /home/$USER/armbian-config/debian-config-functions-network
 	source /home/$USER/armbian-config/debian-config-functions
 	source /home/$USER/armbian-config/debian-config-jobs
 	source /home/$USER/armbian-config/debian-config-submenu
-	submenu_networking
-    exit
+	sudo submenu_networking
+    set +a
 else
 	mkdir -p /home/$USER/bin
 	cd /home/$USER/bin
@@ -39,11 +39,11 @@ else
 	sudo apt-get -y install git iperf3 psmisc curl bc expect dialog network-manager sunxi-tools iptables debconf-utils unzip dirmngr software-properties-common
 
 	git clone https://github.com/armbian/config.git armbian-config
-    su
+    set -a
 	source /home/$USER/armbian-config/debian-config-functions-network
 	source /home/$USER/armbian-config/debian-config-functions
 	source /home/$USER/armbian-config/debian-config-jobs
 	source /home/$USER/armbian-config/debian-config-submenu
-    submenu_networking
-    exit
+    sudo submenu_networking
+    set +a
 fi
