@@ -29,6 +29,15 @@ sudo apt-get -y install dirmngr
 sudo apt-get -y install git
 sudo apt-get -y install gparted
 sudo apt-get -y install chromium-browser
+# for bluetooth
+sudo apt-get -y install bluetooth bluez bluez-tools pulseaudio-module-bluetooth blueman
+# for hotspot
+sudo apt-get -y install dnsmasq hostapd
+sudo apt-get -y install dhcpcd5 dhcpcd-gtk
+
+#sudo apt-get --reinstall -o Dpkg::Options::="--force-confnew" -y --no-install-recommends install hostapd
+#sudo apt-get --reinstall -o Dpkg::Options::="--force-confnew" -y --no-install-recommends install hostapd-realtek
+
 version=`lsb_release -c -s`
 
 #sudo usermod -l nafa -d /home/nafa -m tinker
