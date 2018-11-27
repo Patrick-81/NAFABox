@@ -7,10 +7,10 @@
 ################################################
 #!/bin/bash -i
 
-if [-d "/usr/lib/armbian-config/" ]
+if [ -d "/usr/lib/armbian-config/" ]
 then
 	sudo armbian-config
-elif [-d "/home/$USER/bin/armbian-config/" ]
+elif [ -d "/home/$USER/bin/armbian-config/" ]
 	cd /home/$USER/bin/armbian-config/
 	sudo bash debian-config
 else
