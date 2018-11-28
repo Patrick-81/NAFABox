@@ -50,7 +50,7 @@ then
 	cd $back_path
 	git clone https://github.com/Patrick-81/NAFABox.git
 	cd NAFABox
-	git checkout master
+	git checkout beta
 	$dirinstall/install_conf.sh
 	echo "script update"
 else
