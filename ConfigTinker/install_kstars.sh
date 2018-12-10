@@ -222,7 +222,7 @@ fi
 ######
 # Création de l'icône sur le bureau
 ######
-$dirinstall/install_shortcut.sh kstars
+$dirinstall/install_shortcut.sh kstars 0
 
 ######
 # Installation du programme de résolution astrométrique

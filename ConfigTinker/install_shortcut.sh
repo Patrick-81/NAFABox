@@ -23,8 +23,14 @@ source $dirinstall/detect_language.sh
 ######
 echo $1 $2
 echo $2
-if [ -n "$2"  ]; then
-	AppExec=$2
+if [ -n "$2"  ]
+then
+    if [[ $2 == "0" ]]
+    then
+	    AppExec=$1
+    else
+        AppExec=$2
+    fi
 else
 	AppExec=$1
 fi
@@ -49,6 +55,12 @@ else
 	cat /tmp/shortcut1  | sed -e "s%APP_EXEC%$AppExec%g" > /tmp/shortcut2
 	cat /tmp/shortcut2 | sed -e "s/NAME/$AppName/g" > ~/$desktop/$AppName.desktop
 	chmod +x ~/$desktop/$AppName.desktop
-	sudo cp ~/$desktop/$AppName.desktop /usr/share/applications/$AppName.desktop
+if [ -n "$2"  ]
+then
+    if [[ $2 != "0" ]]
+    then
+	    sudo cp ~/$desktop/$AppName.desktop /usr/share/applications/$AppName.desktop
+    fi
+fi
 fi
 
