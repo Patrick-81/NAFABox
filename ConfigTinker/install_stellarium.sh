@@ -43,5 +43,5 @@ sudo apt-get -y install stellarium
 ######
 # Création de l'icône sur le bureau
 ######
-$dirinstall/install_shortcut.sh stellarium
+$dirinstall/install_shortcut.sh stellarium 0
 

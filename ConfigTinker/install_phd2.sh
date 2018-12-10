@@ -36,5 +36,5 @@ sudo apt-get $options install phd2
 ######
 # Création de l'icône sur le bureau
 ######
-$dirinstall/install_shortcut.sh phd2
+$dirinstall/install_shortcut.sh phd2 0
 
