@@ -3,8 +3,8 @@
 #     https://www.gnu.org/licenses/gpl.html
 # Authors:	Sébasien Durand
 # 			
-# On Sept 05 2017
-# V0.1
+# On Dec 14 2018
+# V0.2
 ################################################
 #!/bin/bash -i
 ######
@@ -36,6 +36,8 @@ echo "================================================="
 ######
 sudo apt-get update
 sudo apt-get install libusb-dev git
+sudo apt-get purge modemmanager
+sudo apt-get install python3-serial
 
 if $french
 then
