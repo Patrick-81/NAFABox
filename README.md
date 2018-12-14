@@ -31,11 +31,9 @@ https://dl.armbian.com/tinkerboard/Ubuntu_xenial_default_desktop.7z (or other bo
 
 7/ in file menu "open terminal" (right click)
 
-8/ type ./go.sh (be aware on azerty keyboards set the numeric pad active and use use it for ./) type go and use tab to complete.
+8/ answer to the questions when you are asked for your password or a "y/n", fill the menus when needed.
 
-9/ answer to the questions when you are asked for your password or a "y/n", fill the menus when needed.
-
-10/ When finished shutdown and restart your board.
+9/ When finished shutdown and restart your board.
 
 ### For Raspberry Pi 2/3 :
 

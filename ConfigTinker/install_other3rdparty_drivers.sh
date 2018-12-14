@@ -32,9 +32,12 @@ case $(uname -p) in
 "x86_64")
     proc="-amd64"
     ;;
+"i686")
+    proc="-i386"
+    ;;
 esac
 software="atikccd"
-version="$software""-""1.29"
+version="$software""-""1.30"
 file="$version""$proc.deb"
 echo $file
 wget http://download.cloudmakers.eu/$file -P /tmp/
