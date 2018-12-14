@@ -22,23 +22,29 @@ echo "================================================="
 echo "================================================="
 
 ######
+# detect processeur
+######
+source $dirinstall/proctype.sh
+
+######
 # Installation du driver : atikccd
 ######
-# détection de l'architecture
-case $(uname -p) in
-"armv7l") 
-    proc="-armhf"
-    ;;
-"x86_64")
-    proc="-amd64"
-    ;;
-"i686")
-    proc="-i386"
-    ;;
-esac
+
+# test proc version
+if [[ $proc == "_amd64" ]]
+then
+	type="amd64"
+elif [[ $proc == "_armhf" ]]
+then
+	type="armhf"
+elif [[ $proc == "_x86" ]]
+then
+	type="i386"
+fi
+
+version="1.30"
 software="atikccd"
-version="$software""-""1.30"
-file="$version""$proc.deb"
+file="$software""-""$version""-""$type"".deb"
 echo $file
 wget http://download.cloudmakers.eu/$file -P /tmp/
 sudo dpkg -i /tmp/$file
