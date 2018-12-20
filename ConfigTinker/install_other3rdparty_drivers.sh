@@ -31,25 +31,29 @@ source $dirinstall/proctype.sh
 ######
 
 # test proc version
-if [[ $proc == "_amd64" ]]
-then
-	type="amd64"
-elif [[ $proc == "_armhf" ]]
-then
-	type="armhf"
-elif [[ $proc == "_x86" ]]
-then
-	type="i386"
-fi
+#if [[ $proc == "_amd64" ]]
+#then
+#	type="amd64"
+#elif [[ $proc == "_armhf" ]]
+#then
+#	type="armhf"
+#elif [[ $proc == "_x86" ]]
+#then
+#	type="i386"
+#fi
 
-version="1.30"
-software="atikccd"
-file="$software""-""$version""-""$type"".deb"
-echo $file
-wget http://download.cloudmakers.eu/$file -P /tmp/
-sudo dpkg -i /tmp/$file
-sudo cp /usr/local/share/indi/indi_atik.xml /usr/share/indi/
-sudo systemctl restart indiwebmanager.service
+#version="1.30"
+#software="atikccd"
+#file="$software""-""$version""-""$type"".deb"
+#echo $file
+#wget http://download.cloudmakers.eu/$file -P /tmp/
+#sudo dpkg -i /tmp/$file
+#sudo cp /usr/local/share/indi/indi_atik.xml /usr/share/indi/
+#sudo systemctl restart indiwebmanager.service
+
+sudo apt-get install -y libatik indi-atik
+
+
 ######
 # Installation du driver : inova
 ######
@@ -68,5 +72,5 @@ sudo systemctl restart indiwebmanager.service
 #echo $file
 #wget http://www.inova-ccd.fr/download/E.\ Drivers/Linux/$file -P /tmp/
 #sudo dpkg -i /tmp/$file
-sudo apt-get install indi-inovaplx indi-inovaplx-dbg libinovasdk
+sudo apt-get install -y indi-inovaplx indi-inovaplx-dbg libinovasdk
 sudo apt-get install -f
