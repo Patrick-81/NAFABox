@@ -191,7 +191,6 @@ then
     # dangereux à remplacer des que possible
 	sudo apt-get $options install mate-*
 	sudo apt-get $options install indicator-*
-	sudo apt-get $options purge indicator-printers indicator-china-weather indicator-network-tools indicator-network-autopilot
 	
 	# supprimer veille
 	sudo sed -i "/DPMS/ s/true/false/" /etc/X11/xorg.conf.d/01-armbian-defaults.conf
@@ -224,6 +223,8 @@ then
 	sudo apt-get -y purge thunderbird transmission-gtk thunar leafpad hexchat geany k3b brasero cheese
 	sudo apt-get -y remove --purge  libreoffice-*
     sudo apt-get -y install chromium-browser
+    
+    sudo apt-get $options purge indicator-printers indicator-china-weather indicator-network-tools indicator-network-autopilot
 
     sudo dpkg --configure -a
     sudo apt-get install -f
