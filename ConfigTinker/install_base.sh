@@ -29,6 +29,13 @@ sudo apt-get -y install dirmngr
 sudo apt-get -y install git
 sudo apt-get -y install gparted
 sudo apt-get -y install chromium-browser
+
+# for bluetooth
+sudo apt-get -y install bluetooth bluez bluez-tools pulseaudio-module-bluetooth blueman
+# for hotspot
+sudo apt-get -y install dnsmasq hostapd
+sudo apt-get -y install dhcpcd5 dhcpcd-gtk
+
 version=`lsb_release -c -s`
 
 #sudo usermod -l nafa -d /home/nafa -m tinker
@@ -154,7 +161,7 @@ then
 	cat  $dirinstall/20-lightdm.conf | sed -e "s/MOI/$(whoami)/g" > /tmp/20-lightdm.conf
 	sudo cp /tmp/20-lightdm.conf /etc/lighdm/lightdm.conf.d/.
 
-    # remove special package for bionic armbian tinkerboard
+    
 
     machine=$(sudo lshw | grep "produit\|product" | grep "Raspberry")
 	if [[ $version == "bionic" ]]
@@ -162,7 +169,8 @@ then
         if [[ $proc == "_armhf" ]]
 	        then
 		        if [[ $machine != *"Raspberry"* ]]
-		        then 
+		        then
+				# remove special package for bionic armbian tinkerboard
 				    echo "purge next-tinkerboard package"
                     sudo dpkg --purge chromium-browser
 			        sudo dpkg --purge linux-bionic-root-next-tinkerboard
