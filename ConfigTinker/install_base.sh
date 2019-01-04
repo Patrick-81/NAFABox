@@ -163,22 +163,7 @@ then
 	cat  $dirinstall/20-lightdm.conf | sed -e "s/MOI/$(whoami)/g" > /tmp/20-lightdm.conf
 	sudo cp /tmp/20-lightdm.conf /etc/lighdm/lightdm.conf.d/.
 
-    # remove special package for bionic armbian tinkerboard
-    #sudo dpkg --purge chromium-browser
     machine=$(sudo lshw | grep "produit\|product" | grep "Raspberry")
-	if [[ $version == "bionic" ]]
-	then
-        if [[ $proc == "_armhf" ]]
-	        then
-		        if [[ $machine != *"Raspberry"* ]]
-		        then 
-				    echo "purge next-tinkerboard package"
-                    #sudo dpkg --purge chromium-browser
-			        #sudo dpkg --purge linux-bionic-root-next-tinkerboard
-				    echo "purge next-tinkerboard package"
-                fi
-            fi
-        fi
 
 	# installation de base de mate
 	sudo apt-get $options install mate
@@ -193,7 +178,6 @@ then
     # dangereux à remplacer des que possible
 	sudo apt-get $options install mate-*
 	sudo apt-get $options install indicator-*
-	sudo apt-get $options purge indicator-printers indicator-china-weather indicator-network-tools indicator-network-autopilot
 	
 	# supprimer veille
 	sudo sed -i "/DPMS/ s/true/false/" /etc/X11/xorg.conf.d/01-armbian-defaults.conf
@@ -226,6 +210,7 @@ then
 	sudo apt-get -y purge thunderbird transmission-gtk thunar leafpad hexchat geany k3b brasero cheese
 	sudo apt-get -y remove --purge  libreoffice-*
     sudo apt-get -y install chromium-browser
+    sudo apt-get $options purge indicator-printers indicator-china-weather indicator-network-tools indicator-network-autopilot
 
     sudo dpkg --configure -a
     sudo apt-get install -f
