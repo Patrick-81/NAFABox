@@ -42,6 +42,12 @@ sudo apt-get update
 # Installation du programme : siril
 ######
 sudo apt-get $options install siril
+
+# add folder for script :
+mkdir -p /home/$USER/siril/script
+mkdir -p /home/$USER/.siril/script
+
+
 ######
 # Création de l'icône sur le bureau
 ######
