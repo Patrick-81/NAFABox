@@ -173,15 +173,12 @@ then
 fi
 
 arduino_v="1.8.5" # need 1.8.5 for onstep compatibility
-teensduino_v="144"
+teensduino_v="145"
 
 if [[ $ide_arduino == "TRUE" ]]
 then
 	# Installation de l'IDE Arduino en version PPA
-	if [[ $type == "linuxaarch64" ]]
-	then
-		lien="https://www.pjrc.com/teensy/td_144"
-	elif [[ $type != "no" ]]
+	if [[ $type != "no" ]]
 		lien="https://downloads.arduino.cc/"
 	fi
 
