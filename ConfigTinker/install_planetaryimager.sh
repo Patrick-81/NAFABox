@@ -22,6 +22,17 @@ echo "================================================="
 echo "================================================="
 
 ######
+# detect processeur
+######
+source $dirinstall/proctype.sh
+
+if [[ $proc == "_aarch64" ]]
+then
+	echo "planetary imager is not compatible with arm64 board"
+	exit
+fi
+
+######
 # Installation des pré-requis
 ######
 sudo apt-get -y install libccfits-dev libopencv-dev libqt5opengl5 libv4l-0 libv4lconvert0 
