@@ -12,12 +12,6 @@ Requires a SD card or a place on the hard drive of more than 16go.
 
 https://dl.armbian.com/tinkerboard/Ubuntu_bionic_next_desktop.7z (or other board bionic next ubuntu image)
 
-After Install need open "armbian-config" and switch to nightly build :
-
-`$ sudo armbian-config`
-( for french azerty keyboard : `sudo qr,biqn)config` ) 
-
-go to system -> nightly and valid
 
 2/ Download zip file :  https://github.com/Patrick-81/NAFABox/archive/beta.zip
 

@@ -42,10 +42,11 @@ then
 	choice[4]="installation de Carte du ciel (Beta)"
 	choice[5]="Installation Ccdciel (Beta)"
 	choice[6]="Installation Planetary Imager (Beta)"
-	choice[7]="Installation Siril (Beta)"
-	choice[8]="Installation Stellarium"
-	choice[9]="Telechargement du/des index(s) astrometrique"
-	choice[10]="installation de astroberry_diy"
+	choice[7]="Installation OACapture"
+	choice[8]="Installation Siril (Beta)"
+	choice[9]="Installation Stellarium"
+	choice[10]="Telechargement du/des index(s) astrometrique"
+	choice[11]="installation de astroberry_diy"
 	
 	
 else
@@ -56,10 +57,11 @@ else
 	choice[4]="Skychart"
 	choice[5]="Ccdciel"
 	choice[6]="Planetary Imager"
-	choice[7]="Siril"
-	choice[8]="Stellarium"
-	choice[9]="install astrometry index(s)"
-	choice[10]="install astroberry_diy"
+	choice[7]="OACapture"
+	choice[8]="Siril"
+	choice[9]="Stellarium"
+	choice[10]="install astrometry index(s)"
+	choice[11]="install astroberry_diy"
 fi
 
 
@@ -67,13 +69,14 @@ message[0]="Install web communications"
 message[1]="Install Lin_guider"
 message[2]="Install kstars-ekos-indi"
 message[3]="Install phd2"
-message[4]="Installation Skychart"
+message[4]="Install Skychart"
 message[5]="Install ccdciel"
 message[6]="Install planetary imager"
-message[7]="Install siril"
-message[8]="Install stellarium"
-message[9]="Install index(s)"
-message[10]="Install astroberry_diy"
+message[7]="Install OACapture"
+message[8]="Install siril"
+message[9]="Install stellarium"
+message[10]="Install index(s)"
+message[11]="Install astroberry_diy"
 
 script[0]=install_comsetup.sh
 script[1]=install_linguider.sh
@@ -82,22 +85,23 @@ script[3]=install_phd2.sh
 script[4]=install_skychart.sh
 script[5]=install_ccdciel.sh
 script[6]=install_planetaryimager.sh
-script[7]=install_siril.sh
-script[8]=install_stellarium.sh
-script[9]=install_index.sh
-script[10]=install_astroberry_diy.sh
+script[7]=install_oacapture.sh
+script[8]=install_siril.sh
+script[9]=install_stellarium.sh
+script[10]=install_index.sh
+script[11]=install_astroberry_diy.sh
 
 
 if [[ $2 == "initial" ]]
 then
-	st=(true false true true false false false false false false false)
+	st=(true false true true false false false false false false false false)
 	
 else
-	st=(false false false false false false false false false false false)
+	st=(false false false false false false false false false false false false)
 fi
 
 # nombre de logiciel
-number=11
+number=12
 
 # echo ${st[*]}
 # echo ${choise[*]}
@@ -123,9 +127,11 @@ if chose=`yad --width=400 \
 	--field="${choice[8]}:CHK" \
 	--field="${choice[9]}:CHK" \
 	--field="${choice[10]}:CHK" \
+	--field="${choice[11]}:CHK" \
 	"" "${st[0]}" "${st[1]}" "${st[2]}" \
 	"${st[3]}" "${st[4]}" "${st[5]}" "${st[6]}" \
-	"${st[7]}" "${st[8]}" "${st[9]}" "${st[10]}"`
+	"${st[7]}" "${st[8]}" "${st[9]}" "${st[10]}" \
+	"${st[11]}"`
 then
 	for (( i=0; i<=$number-1; i++ ))
 	do
