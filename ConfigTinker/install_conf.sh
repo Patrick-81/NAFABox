@@ -102,8 +102,8 @@ figlet -k Install hotspot program
 echo "================================================="
 echo "================================================="
 
-cp $dirinstall/install_hotspot.sh ~/bin/install_hotspot.sh
-sudo ln -sf ~/bin/install_hotspot.sh /usr/bin/install_hotspot
+cp $dirinstall/install_hotspot_beta.sh ~/bin/install_hotspot_beta.sh
+sudo ln -sf ~/bin/install_hotspot_beta.sh /usr/bin/install_hotspot
 sudo cp $dirinstall/install_hotspot.png /usr/share/pixmaps/install_hotspot.png
 $dirinstall/install_shortcut.sh install_hotspot "bash -ic install_hotspot"
 
