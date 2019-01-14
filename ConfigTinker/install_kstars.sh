@@ -46,6 +46,7 @@ then
 	choice[4]="Installation IndiWebManager"
 	choice[5]="Installation driver Atik/Inova"
 	choice[6]="Installation driver GPS (GPSD)"
+	choice[7]="Installation OnStep driver (et Arduino)"
 	sudo apt-get $options install language-pack-kde-fr
 else
 	dial[0]="Install/Update of software"
@@ -57,9 +58,10 @@ else
 	choice[4]="Install IndiWebManager"
 	choice[5]="Install Atik/Inova driver"
 	choice[6]="Install GPS driver (GPSD)"
+	choice[7]="Install OnStep driver (and Arduino)"
 fi
 
-st=(true false true false true true true)
+st=(true false true false true true true false)
 
 sudo apt-get $options install gsc
 sudo apt-get $options install libqt5sql5-sqlite qtdeclarative5-dev
@@ -77,8 +79,9 @@ if chose=`yad --width=400 \
 	--field="${choice[4]}:CHK" \
 	--field="${choice[5]}:CHK" \
 	--field="${choice[6]}:CHK" \
+	--field="${choice[7]}:CHK" \
 	"" "${st[0]}" "${st[1]}" "${st[2]}" \
-	"${st[3]}" "${st[4]}" "${st[5]}" "${st[6]}"`
+	"${st[3]}" "${st[4]}" "${st[5]}" "${st[6]}" "${st[7]}"`
 then
 	kstars=$(echo "$chose" | cut -d "|" -f2)
 	kstars_dev=$(echo "$chose" | cut -d "|" -f3)
@@ -87,6 +90,7 @@ then
 	indiW=$(echo "$chose" | cut -d "|" -f6)
 	driver_3rd=$(echo "$chose" | cut -d "|" -f7)
 	gps=$(echo "$chose" | cut -d "|" -f8)
+	onstep=$(echo "$chose" | cut -d "|" -f9)
 else
 	echo "cancel"
 fi
@@ -217,6 +221,15 @@ fi
 if [[ $gps == "TRUE" ]]
 then
 	$dirinstall/install_gps.sh
+fi
+
+######
+# Installer onstep
+######
+fi
+if [[ $onstep == "TRUE" ]]
+then
+	$dirinstall/install_onstep.sh
 fi
 
 ######
