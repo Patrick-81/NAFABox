@@ -21,6 +21,16 @@ echo "================================================="
 echo "================================================="
 
 ######
+# detect processeur
+######
+source $dirinstall/proctype.sh
+
+if [[ $proc == "_aarch64" ]]
+then
+	echo "OAcapture is in BETA in arm64 board"
+fi
+
+######
 # Remember where I am
 ######
 whereiam=$dirinstall

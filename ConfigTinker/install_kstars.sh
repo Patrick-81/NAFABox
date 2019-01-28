@@ -47,6 +47,7 @@ then
 	choice[5]="Installation driver Atik/Inova"
 	choice[6]="Installation driver GPS (GPSD)"
 	choice[7]="Installation OnStep driver (et Arduino)"
+    choice[8]="Installation des drivers Gphoto2 (version PPA Jasem)"
 	sudo apt-get $options install language-pack-kde-fr
 else
 	dial[0]="Install/Update of software"
@@ -59,9 +60,10 @@ else
 	choice[5]="Install Atik/Inova driver"
 	choice[6]="Install GPS driver (GPSD)"
 	choice[7]="Install OnStep driver (and Arduino)"
+    choice[8]="Install Gphoto2 driver (Jasem PPA version)"
 fi
 
-st=(true false true false true true true false)
+st=(true false true false true true true false false)
 
 sudo apt-get $options install gsc
 sudo apt-get $options install libqt5sql5-sqlite qtdeclarative5-dev
@@ -80,8 +82,10 @@ if chose=`yad --width=400 \
 	--field="${choice[5]}:CHK" \
 	--field="${choice[6]}:CHK" \
 	--field="${choice[7]}:CHK" \
+    --field="${choice[8]}:CHK" \
 	"" "${st[0]}" "${st[1]}" "${st[2]}" \
-	"${st[3]}" "${st[4]}" "${st[5]}" "${st[6]}" "${st[7]}"`
+	"${st[3]}" "${st[4]}" "${st[5]}" "${st[6]}" \
+    "${st[7]}" "${st[8]}"`
 then
 	kstars=$(echo "$chose" | cut -d "|" -f2)
 	kstars_dev=$(echo "$chose" | cut -d "|" -f3)
@@ -91,6 +95,7 @@ then
 	driver_3rd=$(echo "$chose" | cut -d "|" -f7)
 	gps=$(echo "$chose" | cut -d "|" -f8)
 	onstep=$(echo "$chose" | cut -d "|" -f9)
+    gphoto_i=$(echo "$chose" | cut -d "|" -f10)
 else
 	echo "cancel"
 fi
@@ -100,6 +105,19 @@ fi
 #              du serveur : indi
 #              de tous les drivers
 ######
+
+if [[ $gphoto_i == "TRUE" ]]
+then
+    # install PPA version :
+    ######
+    # Installation de gphoto2
+    ######
+    sudo add-apt-repository -y ppa:mutlaqja/libgphoto2
+    sudo apt-get update
+    sudo apt-get -y install libgphoto2-6 libgphoto2-dev libgphoto2-l10n libgphoto2-l10n libgphoto2-port12
+fi
+
+
 
 if [[ $kstars_dev == "TRUE" ]]
 then
