@@ -35,6 +35,9 @@ source $dirinstall/detect_language.sh
 sudo apt-add-repository -y ppa:mutlaqja/ppa
 sudo apt-get update
 
+# remove media auto mount for dslr :
+sudo gsettings set org.gnome.desktop.media-handling automount false
+
 if $french
 then
 	dial[0]="Installation/Mise à jour des logiciels"
