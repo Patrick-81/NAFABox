@@ -31,10 +31,6 @@ then
 fi
 
 ######
-# Remember where I am
-######
-whereiam=$dirinstall
-######
 # Installation des pré-requis
 #######
 sudo apt-get -y install libv4l-dev libqt4-dev libdc1394-22-dev libcfitsio-dev libudev-dev libtiff-dev qt4-dev-tools qt4-qmake gawk gcc g++ yasm autoconf libtool m4 automake libevent-dev pkg-config libhidapi-dev libpng-dev libsdl-dev libusb-dev libusb-1.0 libftdi-dev libuvc-dev
@@ -80,3 +76,13 @@ cd ../../
 ./configure
 make
 sudo make install
+
+######
+# Création de l'icône sur le bureau
+######
+$dirinstall/install_shortcut.sh oacapture 0
+
+######
+# Création de l'icône sur le bureau
+######
+$dirinstall/install_shortcut.sh oalive 0

@@ -282,8 +282,7 @@ then
 		option=$normal_option
 	elif [[ $proc == "_aarch64" ]]
 	then
-		echo "not support"
-		option=$normal_option
+		option=$tinker_option
 	fi
 
 	# injection fichier system
