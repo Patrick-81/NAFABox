@@ -27,6 +27,8 @@ source $dirinstall/proctype.sh
 ######
 source $dirinstall/detect_language.sh
 
+server_choice=$1
+
 figlet -k Install OnStep
 echo "================================================="
 echo "================================================="
@@ -39,39 +41,44 @@ sudo apt-get install libusb-dev git
 sudo apt-get purge modemmanager
 sudo apt-get install python3-serial
 
-if $french
+if [[ $server_choice == "server" ]]
 then
-	dial[0]="Installation/Mise à jour des logiciels"
-	dial[1]="Choisir le(s) logiciel(s) à installer"
-	choice[0]="Installation OnStep (git et teensy)"
-	choice[1]="Installation Arduino IDE (avec Teensyduino)"
-	choice[2]="Installation OnStep Generator"
+	onstep_c=TRUE
 else
-	dial[0]="Install/Update of software"
-	dial[1]="Choose software(s) to install"
-	choice[0]="Install OnStep (git and teensy)"
-	choice[1]="Install Arduino IDE (with Teensyduino)"
-	choice[2]="Install OnStep Generator"
-fi
+	if $french
+	then
+		dial[0]="Installation/Mise à jour des logiciels"
+		dial[1]="Choisir le(s) logiciel(s) à installer"
+		choice[0]="Installation OnStep (git et teensy)"
+		choice[1]="Installation Arduino IDE (avec Teensyduino)"
+		choice[2]="Installation OnStep Generator"
+	else
+		dial[0]="Install/Update of software"
+		dial[1]="Choose software(s) to install"
+		choice[0]="Install OnStep (git and teensy)"
+		choice[1]="Install Arduino IDE (with Teensyduino)"
+		choice[2]="Install OnStep Generator"
+	fi
 
-st=(true false false)
+	st=(true false false)
 
-if chose=`yad --width=400 \
-	--center \
-	--form \
-	--title="${dial[0]}" \
-	--text="${dial[1]}" \
-	--field=":LBL" \
-	--field="${choice[0]}:CHK" \
-	--field="${choice[1]}:CHK" \
-	--field="${choice[2]}:CHK" \
-	"" "${st[0]}" "${st[1]}" "${st[2]}"`
-then
-	onstep_c=$(echo "$chose" | cut -d "|" -f2)
-	ide_arduino=$(echo "$chose" | cut -d "|" -f3)
-	gen=$(echo "$chose" | cut -d "|" -f4)
-else
-	echo "cancel"
+	if chose=`yad --width=400 \
+		--center \
+		--form \
+		--title="${dial[0]}" \
+		--text="${dial[1]}" \
+		--field=":LBL" \
+		--field="${choice[0]}:CHK" \
+		--field="${choice[1]}:CHK" \
+		--field="${choice[2]}:CHK" \
+		"" "${st[0]}" "${st[1]}" "${st[2]}"`
+	then
+		onstep_c=$(echo "$chose" | cut -d "|" -f2)
+		ide_arduino=$(echo "$chose" | cut -d "|" -f3)
+		gen=$(echo "$chose" | cut -d "|" -f4)
+	else
+		echo "cancel"
+	fi
 fi
 
 # test version
