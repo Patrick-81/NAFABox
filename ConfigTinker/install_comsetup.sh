@@ -17,6 +17,7 @@ then
 	exit
 fi
 dirinstall=$nafabox_path
+server_choice=$1
 
 figlet -k Install ComSetup
 echo "================================================="
@@ -34,60 +35,70 @@ source $dirinstall/proctype.sh
 
 
 sudo apt-get update
-
-if $french
+if [[ $server_choice == "server" ]]
 then
-	dial[0]="Installation/Mise à jour des logiciels"
-	dial[1]="Choisir le(s) logiciel(s) à installer"
-	choice[0]="Définir time zone"
-	choice[1]="Installation Interface HTML"
-	choice[2]="Installation X11VNC"
-	choice[3]="Install WebDav"
-	choice[4]="Installation BrowsePy"
-	choice[5]="Installation NoVNC"
-	choice[6]="HotspotAwake Script"
-
+	time_z=TRUE
+	web=TRUE
+	xvnc=FALSE
+	dav=TRUE
+	browse=TRUE
+	novnc=FALSE
+	awake=FALSE
 else
-	dial[0]="Install/Update of software"
-	dial[1]="Choose software(s) to install"
-	choice[0]="define time zone"
-	choice[1]="Install HTML Interface"
-	choice[2]="Install X11VNC"
-	choice[3]="Install WebDav"
-	choice[4]="Install BrowsePy"
-	choice[5]="Install NoVNC"
-	choice[6]="HotspotAwake Script"
+	if $french
+	then
+		dial[0]="Installation/Mise à jour des logiciels"
+		dial[1]="Choisir le(s) logiciel(s) à installer"
+		choice[0]="Définir time zone"
+		choice[1]="Installation Interface HTML"
+		choice[2]="Installation X11VNC"
+		choice[3]="Install WebDav"
+		choice[4]="Installation BrowsePy"
+		choice[5]="Installation NoVNC"
+		choice[6]="HotspotAwake Script"
 
-fi
+	else
+		dial[0]="Install/Update of software"
+		dial[1]="Choose software(s) to install"
+		choice[0]="define time zone"
+		choice[1]="Install HTML Interface"
+		choice[2]="Install X11VNC"
+		choice[3]="Install WebDav"
+		choice[4]="Install BrowsePy"
+		choice[5]="Install NoVNC"
+		choice[6]="HotspotAwake Script"
 
-st=(true true true true true true false)
+	fi
 
-# interface de choix
-if chose=`yad --width=400 \
-	--center \
-	--form \
-	--title="${dial[0]}" \
-	--text="${dial[1]}" \
-	--field=":LBL" \
-	--field="${choice[0]}:CHK" \
-	--field="${choice[1]}:CHK" \
-	--field="${choice[2]}:CHK" \
-	--field="${choice[3]}:CHK" \
-	--field="${choice[4]}:CHK" \
-	--field="${choice[5]}:CHK" \
-	--field="${choice[6]}:CHK" \
-	"" "${st[0]}" "${st[1]}" "${st[2]}" \
-	"${st[3]}" "${st[4]}" "${st[5]}" "${st[6]}"`
-then
-	time_z=$(echo "$chose" | cut -d "|" -f2)
-	web=$(echo "$chose" | cut -d "|" -f3)
-	xvnc=$(echo "$chose" | cut -d "|" -f4)
-	dav=$(echo "$chose" | cut -d "|" -f5)
-	browse=$(echo "$chose" | cut -d "|" -f6)
-	novnc=$(echo "$chose" | cut -d "|" -f7)
-	awake=$(echo "$chose" | cut -d "|" -f8)
-else
-	echo "cancel"
+	st=(true true true true true true false)
+
+	# interface de choix
+	if chose=`yad --width=400 \
+		--center \
+		--form \
+		--title="${dial[0]}" \
+		--text="${dial[1]}" \
+		--field=":LBL" \
+		--field="${choice[0]}:CHK" \
+		--field="${choice[1]}:CHK" \
+		--field="${choice[2]}:CHK" \
+		--field="${choice[3]}:CHK" \
+		--field="${choice[4]}:CHK" \
+		--field="${choice[5]}:CHK" \
+		--field="${choice[6]}:CHK" \
+		"" "${st[0]}" "${st[1]}" "${st[2]}" \
+		"${st[3]}" "${st[4]}" "${st[5]}" "${st[6]}"`
+	then
+		time_z=$(echo "$chose" | cut -d "|" -f2)
+		web=$(echo "$chose" | cut -d "|" -f3)
+		xvnc=$(echo "$chose" | cut -d "|" -f4)
+		dav=$(echo "$chose" | cut -d "|" -f5)
+		browse=$(echo "$chose" | cut -d "|" -f6)
+		novnc=$(echo "$chose" | cut -d "|" -f7)
+		awake=$(echo "$chose" | cut -d "|" -f8)
+	else
+		echo "cancel"
+	fi
 fi
 
 if [[ $time_z == "TRUE" ]]
