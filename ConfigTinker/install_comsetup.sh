@@ -37,6 +37,9 @@ source $dirinstall/proctype.sh
 sudo apt-get update
 if [[ $server_choice == "server" ]]
 then
+    echo "############################"
+    echo "## install in server mode ##"
+    echo "############################"
 	time_z=TRUE
 	web=TRUE
 	xvnc=FALSE

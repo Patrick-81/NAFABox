@@ -27,6 +27,9 @@ installconf()
 {
 if [[ $2 == "server" ]]
 then
+    echo "############################"
+    echo "## install in server mode ##"
+    echo "############################"
 	$dirinstall/install_comsetup.sh $2
 	$dirinstall/install_kstars.sh $2
 	

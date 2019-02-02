@@ -20,6 +20,9 @@ else
 	echo "================================================="
 	if [[ $server_choice == "server" ]]
 	then
+        echo "############################"
+        echo "## install in server mode ##"
+        echo "############################"
 		$nafabox_path/install_conf.sh server | tee -a "$nafabox_path/nafabox.log"
 	else
 

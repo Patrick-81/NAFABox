@@ -40,7 +40,9 @@ sudo apt-get update
 sudo gsettings set org.gnome.desktop.media-handling automount false
 if [[ $server_choice == "server" ]]
 then
-	echo "server install mode"
+    echo "############################"
+    echo "## install in server mode ##"
+    echo "############################"
 	kstars=FALSE
 	kstars_dev=FALSE
 	indi=TRUE

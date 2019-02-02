@@ -43,6 +43,9 @@ sudo apt-get install python3-serial
 
 if [[ $server_choice == "server" ]]
 then
+    echo "############################"
+    echo "## install in server mode ##"
+    echo "############################"
 	onstep_c=TRUE
 	ide_arduino=FALSE
 	gen=FALSE
