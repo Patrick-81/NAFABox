@@ -17,6 +17,8 @@ then
 fi
 dirinstall=$nafabox_path
 
+server_choice=$1
+
 ######
 # Statut d'installation
 # Installation status
@@ -66,75 +68,104 @@ mkdir -p ~/bin
 # Resolution modifier
 $dirinstall/install_setres.sh | tee -a "$dirinstall/nafabox.log"
 
-figlet -k Install Conf Updater
-echo "================================================="
-echo "================================================="
 
 ######
 # Install conf updater
 ######
-cp $dirinstall/update_conf.sh ~/bin/.
-chmod +x ~/bin/update_conf.sh
-sudo ln -sf ~/bin/update_conf.sh /usr/bin/update_conf
-sudo cp /usr/share/icons/gnome/32x32/apps/system-software-update.png /usr/share/pixmaps/update_conf.png
-# Création du raccourci pour update_conf
-$dirinstall/install_shortcut.sh update_conf "bash -ic update_conf"
+if [[ $server_choice == "server" ]]
+then
+	echo "no icon for server"
+else
+	figlet -k Install Conf Updater
+	echo "================================================="
+	echo "================================================="
 
+	cp $dirinstall/update_conf.sh ~/bin/.
+	chmod +x ~/bin/update_conf.sh
+	sudo ln -sf ~/bin/update_conf.sh /usr/bin/update_conf
+	sudo cp /usr/share/icons/gnome/32x32/apps/system-software-update.png /usr/share/pixmaps/update_conf.png
+	# Création du raccourci pour update_conf
+	$dirinstall/install_shortcut.sh update_conf "bash -ic update_conf"
+fi
 
 ######
 # Création du raccourci pour install_index.sh
 ######
-figlet -k Install Index program
-echo "================================================="
-echo "================================================="
+if [[ $server_choice == "server" ]]
+then
+	echo "no icon for server"
+else
+	figlet -k Install Index program
+	echo "================================================="
+	echo "================================================="
 
-cp $dirinstall/install_index.sh ~/bin/install_index.sh
-sudo ln -sf ~/bin/install_index.sh /usr/bin/install_index
-sudo cp $dirinstall/install_index.png /usr/share/pixmaps/install_index.png
-sudo cp $dirinstall/index.txt ~/bin/index.txt
-$dirinstall/install_shortcut.sh install_index "bash -ic install_index"
+	cp $dirinstall/install_index.sh ~/bin/install_index.sh
+	sudo ln -sf ~/bin/install_index.sh /usr/bin/install_index
+	sudo cp $dirinstall/install_index.png /usr/share/pixmaps/install_index.png
+	sudo cp $dirinstall/index.txt ~/bin/index.txt
+	$dirinstall/install_shortcut.sh install_index "bash -ic install_index"
+fi
 
 ######
 # Création du raccourci pour install_hotspot.sh
 ######
+if [[ $server_choice == "server" ]]
+then
+	echo "no icon for server"
+else
+	figlet -k Install hotspot program
+	echo "================================================="
+	echo "================================================="
 
-figlet -k Install hotspot program
-echo "================================================="
-echo "================================================="
-
-cp $dirinstall/install_hotspot_beta.sh ~/bin/install_hotspot_beta.sh
-sudo ln -sf ~/bin/install_hotspot_beta.sh /usr/bin/install_hotspot
-sudo cp $dirinstall/install_hotspot.png /usr/share/pixmaps/install_hotspot.png
-$dirinstall/install_shortcut.sh install_hotspot "bash -ic install_hotspot"
+	cp $dirinstall/install_hotspot_beta.sh ~/bin/install_hotspot_beta.sh
+	sudo ln -sf ~/bin/install_hotspot_beta.sh /usr/bin/install_hotspot
+	sudo cp $dirinstall/install_hotspot.png /usr/share/pixmaps/install_hotspot.png
+	$dirinstall/install_shortcut.sh install_hotspot "bash -ic install_hotspot"
+fi
 
 ##### 
 # Création du raccourci pour switch_language.sh
 ######
-figlet -k Install switch language program
-echo "================================================="
-echo "================================================="
+if [[ $server_choice == "server" ]]
+then
+	echo "no icon for server"
+else
+	figlet -k Install switch language program
+	echo "================================================="
+	echo "================================================="
 
-cp $dirinstall/switch_language.sh ~/bin/switch_language.sh
-sudo ln -sf ~/bin/switch_language.sh /usr/bin/switch_language
-sudo cp /usr/share/icons/gnome/48x48/apps/config-language.png /usr/share/pixmaps/switch_language.png
-$dirinstall/install_shortcut.sh switch_language "bash -ic switch_language"
+	cp $dirinstall/switch_language.sh ~/bin/switch_language.sh
+	sudo ln -sf ~/bin/switch_language.sh /usr/bin/switch_language
+	sudo cp /usr/share/icons/gnome/48x48/apps/config-language.png /usr/share/pixmaps/switch_language.png
+	$dirinstall/install_shortcut.sh switch_language "bash -ic switch_language"
+fi
 
 ##### 
 # Création du raccourci pour setup_time.sh
 ######
+if [[ $server_choice == "server" ]]
+then
+	echo "no icon for server"
+else
 
-$dirinstall/install_setup-time.sh | tee -a "$dirinstall/nafabox.log"
+	$dirinstall/install_setup-time.sh | tee -a "$dirinstall/nafabox.log"
+fi
 
 ##### 
 # Création du programme d'upadet des scripts
 ######
-figlet -k Install Script updater program
-echo "================================================="
-echo "================================================="
-cp $dirinstall/update_nafabox_script.sh ~/bin/update_nafabox_script.sh
-sudo ln -sf ~/bin/update_nafabox_script.sh /usr/bin/update_nafabox_script
-sudo cp /usr/share/icons/gnome/48x48/apps/system-software-update.png /usr/share/pixmaps/update_nafabox_script.png
-$dirinstall/install_shortcut.sh update_nafabox_script "bash -ic update_nafabox_script"
+if [[ $server_choice == "server" ]]
+then
+	echo "no icon for server"
+else
+	figlet -k Install Script updater program
+	echo "================================================="
+	echo "================================================="
+	cp $dirinstall/update_nafabox_script.sh ~/bin/update_nafabox_script.sh
+	sudo ln -sf ~/bin/update_nafabox_script.sh /usr/bin/update_nafabox_script
+	sudo cp /usr/share/icons/gnome/48x48/apps/system-software-update.png /usr/share/pixmaps/update_nafabox_script.png
+	$dirinstall/install_shortcut.sh update_nafabox_script "bash -ic update_nafabox_script"
+fi
 
 ######
 # Install/Update conf
@@ -143,6 +174,9 @@ $dirinstall/install_shortcut.sh update_nafabox_script "bash -ic update_nafabox_s
 figlet -k Install Configuration
 echo "================================================="
 echo "================================================="
-
-~/bin/update_conf.sh initial
-
+if [[ $server_choice == "server" ]]
+then
+	~/bin/update_conf.sh initial server
+else
+	~/bin/update_conf.sh initial
+fi
