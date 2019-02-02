@@ -41,13 +41,15 @@ sudo gsettings set org.gnome.desktop.media-handling automount false
 if [[ $server_choice == "server" ]]
 then
 	echo "server install mode"
+	kstars=FALSE
+	kstars_dev=FALSE
 	indi=TRUE
-	#indi_dev=TRUE
+	indi_dev=FALSE
 	indiW=TRUE
 	driver_3rd=TRUE
 	gps=TRUE
 	onstep=TRUE
-	#gphoto_i=TRUE
+	gphoto_i=FALSE
 else
 	if $french
 	then
@@ -61,7 +63,7 @@ else
 		choice[5]="Installation driver Atik/Inova"
 		choice[6]="Installation driver GPS (GPSD)"
 		choice[7]="Installation OnStep driver (et Arduino)"
-	    choice[8]="Installation des drivers Gphoto2 (version PPA Jasem)"
+	    	choice[8]="Installation des drivers Gphoto2 (version PPA Jasem)"
 		sudo apt-get $options install language-pack-kde-fr
 	else
 		dial[0]="Install/Update of software"
@@ -74,7 +76,7 @@ else
 		choice[5]="Install Atik/Inova driver"
 		choice[6]="Install GPS driver (GPSD)"
 		choice[7]="Install OnStep driver (and Arduino)"
-	    choice[8]="Install Gphoto2 driver (Jasem PPA version)"
+	    	choice[8]="Install Gphoto2 driver (Jasem PPA version)"
 	fi
 
 	st=(true false true false true true true false false)
@@ -99,7 +101,7 @@ else
 	    --field="${choice[8]}:CHK" \
 		"" "${st[0]}" "${st[1]}" "${st[2]}" \
 		"${st[3]}" "${st[4]}" "${st[5]}" "${st[6]}" \
-	    "${st[7]}" "${st[8]}"`
+	    	"${st[7]}" "${st[8]}"`
 	then
 		kstars=$(echo "$chose" | cut -d "|" -f2)
 		kstars_dev=$(echo "$chose" | cut -d "|" -f3)
