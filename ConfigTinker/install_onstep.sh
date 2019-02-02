@@ -44,6 +44,8 @@ sudo apt-get install python3-serial
 if [[ $server_choice == "server" ]]
 then
 	onstep_c=TRUE
+	ide_arduino=FALSE
+	gen=FALSE
 else
 	if $french
 	then
