@@ -46,7 +46,7 @@ then
 	back_path=`pwd`
 	if [[ "${dirinstall: -20}" == "NAFABox/ConfigTinker" ]] 
 	then
-		echo "suppression de l'ancien dossier NAFABOX"
+		echo "suppression de l'ancien dossier NAFABox"
 		rm -Rf $nafa_path
 		cd $back_path
 		git clone https://github.com/Patrick-81/NAFABox.git
