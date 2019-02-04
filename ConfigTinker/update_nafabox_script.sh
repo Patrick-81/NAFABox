@@ -44,15 +44,19 @@ then
 	nafa_path=`pwd`
 	cd $dirinstall/../../
 	back_path=`pwd`
-	echo "suppression de l'ancien dossier NAFABOX"
-	rm -Rf $nafa_path
-
-	cd $back_path
-	git clone https://github.com/Patrick-81/NAFABox.git
-	cd NAFABox
-	git checkout beta
-	$dirinstall/install_conf.sh
-	echo "script update"
+	if [[ "${dirinstall: -20}" == "NAFABox/ConfigTinker" ]] 
+	then
+		echo "suppression de l'ancien dossier NAFABOX"
+		rm -Rf $nafa_path
+		cd $back_path
+		git clone https://github.com/Patrick-81/NAFABox.git
+		cd NAFABox
+		git checkout beta
+		$dirinstall/install_conf.sh
+		echo "script update"
+	else
+		echo "error wrong path for nafabox script, need run Pre_install.sh"
+	fi
 else
 	echo "exit"
 fi
