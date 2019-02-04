@@ -48,7 +48,7 @@ then
 		# passer le systeme en français
 		# ajout des packs langage
 		version=`lsb_release -c -s`
-		if [[ $version == "bionic" ]]
+		if [[ $version != "xenial" ]]
 		then
 			sudo apt-get $options install language-pack-kde-en
 		fi
@@ -63,7 +63,7 @@ then
 		# passer le systeme en français
 		# ajout des packs langage
 		version=`lsb_release -c -s`
-		if [[ $version == "bionic" ]]
+		if [[ $version != "xenial" ]]
 		then
 			sudo apt-get $options install language-pack-kde-fr
 		fi
