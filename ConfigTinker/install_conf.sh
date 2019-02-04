@@ -55,7 +55,7 @@ then
 	sudo apt-get $options install ttf-freefont 
 fi
 sudo apt-get $options install libjpeg62 libglu1
-sudo apt-get $options install xplanet espeak qt4-default openssh-server uuid
+sudo apt-get $options install xplanet espeak openssh-server uuid
 #	echo prereq >> $dirinstall/install-status.txt
 #fi
 ######
