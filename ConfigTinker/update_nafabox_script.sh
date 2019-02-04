@@ -47,6 +47,7 @@ then
 	if [[ "${dirinstall: -20}" == "NAFABox/ConfigTinker" ]] 
 	then
 		echo "suppression de l'ancien dossier NAFABox"
+		cp -r $nafa_path $back_path/nafabox_temp
 		rm -Rf $nafa_path
 		cd $back_path
 		git clone https://github.com/Patrick-81/NAFABox.git
@@ -54,6 +55,12 @@ then
 		git checkout beta
 		$dirinstall/install_conf.sh
 		echo "script update"
+		if [ -d $nafa_path ]
+		then
+			rm -Rf $back_path/nafabox_temp
+		else
+			mv $back_path/nafabox_temp $nafa_path
+		fi
 	else
 		echo "error wrong path for nafabox script, need run Pre_install.sh"
 	fi
