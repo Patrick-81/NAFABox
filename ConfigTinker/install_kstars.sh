@@ -66,7 +66,11 @@ else
 		choice[6]="Installation driver GPS (GPSD)"
 		choice[7]="Installation OnStep driver (et Arduino)"
 	    	choice[8]="Installation des drivers Gphoto2 (version PPA Jasem)"
-		#sudo apt-get $options install language-pack-kde-fr
+		version=`lsb_release -c -s`
+		if [[ $version != "xenial" ]]
+		then
+			sudo apt-get $options install language-pack-kde-fr
+		fi
 	else
 		dial[0]="Install/Update of software"
 		dial[1]="Choose software(s) to install"
@@ -79,6 +83,10 @@ else
 		choice[6]="Install GPS driver (GPSD)"
 		choice[7]="Install OnStep driver (and Arduino)"
 	    	choice[8]="Install Gphoto2 driver (Jasem PPA version)"
+		if [[ $version != "xenial" ]]
+		then
+			sudo apt-get $options install language-pack-kde-en
+		fi
 	fi
 
 	st=(true false true false true true true false false)
