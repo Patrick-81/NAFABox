@@ -67,9 +67,10 @@ else
 		choice[7]="Installation OnStep driver (et Arduino)"
 	    	choice[8]="Installation des drivers Gphoto2 (version PPA Jasem)"
 		version=`lsb_release -c -s`
-		if [[ $version != "xenial" ]]
+		if [[ $version == "xenial" ]]
 		then
 			sudo apt-get $options install language-pack-kde-fr
+			sudo apt-get -o Dpkg::Options::="--force-overwrite" -f install
 		fi
 	else
 		dial[0]="Install/Update of software"
@@ -178,6 +179,7 @@ then
 elif [[ $kstars == "TRUE" ]]
 then
 	sudo apt-get $options install indi-full kstars-bleeding
+	sudo apt-get -o Dpkg::Options::="--force-overwrite" -f install
 	sudo apt-get $options install indi-dbg kstars-bleeding-dbg
 fi
 
