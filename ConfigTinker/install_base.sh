@@ -269,7 +269,6 @@ then
 	echo "================================================="
 	# passer le systeme en français
 	# ajout des packs langage
-	#sudo apt-get $options install language-pack-kde-fr
 	sudo apt-get $options install language-pack-fr language-pack-gnome-fr
 	sudo apt-get $options install firefox-locale.fr
 	sudo locale-gen fr_FR fr_FR.UTF-8
