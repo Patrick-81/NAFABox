@@ -210,7 +210,8 @@ then
 	sudo apt-get -y purge thunderbird transmission-gtk thunar leafpad hexchat geany k3b brasero cheese
 	sudo apt-get -y remove --purge  libreoffice-*
     sudo apt-get -y install chromium-browser
-    sudo apt-get $options purge indicator-printers indicator-china-weather indicator-network-tools indicator-network-autopilot
+    sudo apt-get $options purge indicator-printers indicator-china-weather 
+    sudo apt-get $options purge indicator-network-tools indicator-network-autopilot
 
     sudo dpkg --configure -a
     sudo apt-get install -f
