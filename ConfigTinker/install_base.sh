@@ -236,8 +236,8 @@ then
 	# sudo apt-get -q --yes dist-upgrade
 
 fi
-sudo apt-get $options install indicator-applet indicator-applet-appmenu indicator-applet-complete indicator-applet-session indicator-application indicator-application-gtk2 indicator-appmenu indicator-bluetooth indicator-cpufreq indicator-datetime indicator-multiload indicator-session 
 
+sudo apt-get $options install indicator-bluetooth indicator-cpufreq indicator-datetime indicator-multiload 
 sudo apt-get $options install indicator-sound indicator-sound-gtk2
 
 sudo apt-get $options purge indicator-china-weather 
