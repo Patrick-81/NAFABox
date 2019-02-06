@@ -37,13 +37,13 @@ sudo apt-get -y install qt4-dev-tools qt4-qmake libqt4-dev
 sudo apt-get -y install libv4l-dev libdc1394-22-dev libcfitsio-dev libudev-dev libtiff-dev gawk gcc g++ yasm autoconf libtool m4 automake libevent-dev pkg-config libhidapi-dev libpng-dev libsdl-dev libusb-dev libusb-1.0 libftdi-dev libraw1394-11 libgtkmm-2.4-1v5 libglademm-2.4-1v5 libgtkglextmm-x11-1.2-dev libgtkglextmm-x11-1.2 qt5-default fxload qtbase5-dev
 sudo apt-get -y install libuvc-dev qttools5-dev-tools
 # go at home
-cd ~
+cd /home/${USER}/bin/
 
-if [ -d "/home/${USER}/openastro/" ]
+if [ -d "/home/${USER}/bin/openastro/" ]
 then
 	# mise a jour
 	echo "update OACapture git"
-	cd /home/$USER/openastro/
+	cd /home/$USER/bin/openastro/
 	sudo make uninstall
 	sudo make clean
 	git pull
@@ -54,7 +54,7 @@ else
 
 fi
 
-cd /home/$USER/openastro/
+cd /home/$USER/bin/openastro/
 
 # config openastro
 set -x -e

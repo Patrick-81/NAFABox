@@ -313,17 +313,17 @@ then
 	######
 	# Installation accès vnc via navigateur
 	######
-	sudo apt-get install -y novnc
-	sudo apt-get install -y git
+	sudo apt-get -y install novnc
+	sudo apt-get -y install git
 
-	cd /home/$USER
+	cd /home/$USER/bin/
 	#
 	#test si le dossier noVNC existe, si oui suppression
 	#
-	if [ -d "/home/${USER}/noVNC" ]
+	if [ -d "/home/${USER}/bin/noVNC" ]
 	  then
 	  echo "suppression de l'ancien dossier noVNC"
-	  rm -Rf /home/$USER/noVNC
+	  rm -Rf /home/$USER/bin/noVNC
 	fi
 
 	git clone git://github.com/kanaka/noVNC
