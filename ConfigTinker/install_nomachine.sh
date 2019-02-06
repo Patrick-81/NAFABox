@@ -41,22 +41,22 @@ if [[ $proc == "_amd64" ]]
 then
 	type="amd64"
     type2="Linux"
-    sous_version="6_1"
+    sous_version="6_1_"
 elif [[ $proc == "_armhf" ]]
 then
 	type="armhf"
     type2="Arm"
-    sous_version="6_8"
+    sous_version="6_8_"
 elif [[ $proc == "_x86" ]]
 then
 	type="i386"
     type2="Linux"
-    sous_version="6_1"
+    sous_version="6_1_"
 elif [[ $proc == "_aarch64" ]]
 then
 	type="arm64"
     type2="Arm"
-    sous_version="6_8"
+    sous_version="6_8_"
 else
 	echo "architecture not support"
     exit
