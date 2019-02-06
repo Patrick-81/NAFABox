@@ -188,7 +188,7 @@ then
 
     # dangereux à remplacer des que possible
 	sudo apt-get $options install mate-*
-	sudo apt-get $options install indicator-*
+
 	
 	# supprimer veille
 	sudo sed -i "/DPMS/ s/true/false/" /etc/X11/xorg.conf.d/01-armbian-defaults.conf
@@ -214,16 +214,13 @@ then
 	sudo apt-get $options install blueman
 	sudo apt-get $options install firefox
 	sudo apt-get $options install ubuntu-mate-themes
-    sudo apt-get $options install pulseaudio indicator-sound indicator-sound-gtk2 libcanberra-pulse paprefs 
+    sudo apt-get $options install pulseaudio libcanberra-pulse paprefs 
     sudo apt-get $options install pulseaudio-module-bluetooth pulseaudio-module-gconf pulseaudio-module-zeroconf
     sudo alsa force-reload
 	# désinstallation diverses des relicats de xfce et de thunderbird ajouté par maté
 	sudo apt-get -y purge thunderbird transmission-gtk thunar leafpad hexchat geany k3b brasero cheese
 	sudo apt-get -y remove --purge  libreoffice-*
     sudo apt-get -y install chromium-browser
-    sudo apt-get $options purge indicator-printers indicator-china-weather 
-    sudo apt-get $options purge indicator-network-tools indicator-network-autopilot
-
     sudo dpkg --configure -a
     sudo apt-get install -f
     sudo apt-get -y autoremove
@@ -237,8 +234,14 @@ then
 
 	# mise à jour de tout le système
 	# sudo apt-get -q --yes dist-upgrade
-	
+
 fi
+sudo apt-get $options install indicator-applet indicator-applet-appmenu indicator-applet-complete indicator-applet-session indicator-application indicator-application-gtk2 indicator-appmenu indicator-appmenu-tools indicator-bluetooth indicator-common indicator-cpufreq indicator-datetime indicator-keyboard indicator-messages indicator-multiload indicator-power indicator-session indicator-sound indicator-sound-gtk2
+
+sudo apt-get $options purge indicator-printers indicator-china-weather 
+sudo apt-get $options purge indicator-network-tools indicator-network-autopilot
+
+
 # install ip indicator
 if [[ $ip_indicator == "TRUE" ]]
 then

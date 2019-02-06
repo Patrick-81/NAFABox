@@ -47,6 +47,7 @@ then
 	browse=TRUE
 	novnc=FALSE
 	awake=FALSE
+    nomach=FALSE
 else
 	if $french
 	then
@@ -58,7 +59,8 @@ else
 		choice[3]="Install WebDav"
 		choice[4]="Installation BrowsePy"
 		choice[5]="Installation NoVNC"
-		choice[6]="HotspotAwake Script"
+        choise[6]="Installation Nomachine"
+		choice[7]="HotspotAwake Script"
 
 	else
 		dial[0]="Install/Update of software"
@@ -69,11 +71,12 @@ else
 		choice[3]="Install WebDav"
 		choice[4]="Install BrowsePy"
 		choice[5]="Install NoVNC"
-		choice[6]="HotspotAwake Script"
+        choise[6]="Install Nomachine"
+		choice[7]="HotspotAwake Script"
 
 	fi
 
-	st=(true true true true true true false)
+	st=(true true false true true false true false)
 
 	# interface de choix
 	if chose=`yad --width=400 \
@@ -89,8 +92,10 @@ else
 		--field="${choice[4]}:CHK" \
 		--field="${choice[5]}:CHK" \
 		--field="${choice[6]}:CHK" \
+        --field="${choice[7]}:CHK" \
 		"" "${st[0]}" "${st[1]}" "${st[2]}" \
-		"${st[3]}" "${st[4]}" "${st[5]}" "${st[6]}"`
+		"${st[3]}" "${st[4]}" "${st[5]}" "${st[6]}" \
+        "${st[7]}"`
 	then
 		time_z=$(echo "$chose" | cut -d "|" -f2)
 		web=$(echo "$chose" | cut -d "|" -f3)
@@ -98,7 +103,8 @@ else
 		dav=$(echo "$chose" | cut -d "|" -f5)
 		browse=$(echo "$chose" | cut -d "|" -f6)
 		novnc=$(echo "$chose" | cut -d "|" -f7)
-		awake=$(echo "$chose" | cut -d "|" -f8)
+        nomach=$(echo "$chose" | cut -d "|" -f8)
+		awake=$(echo "$chose" | cut -d "|" -f9)
 	else
 		echo "cancel"
 	fi
@@ -236,6 +242,14 @@ then
 	# Install of browsepy
 	######
 	$dirinstall/install_browsepy.sh
+fi
+
+if [[ $nomach == "TRUE" ]]
+then
+	######
+	# Install of nomachine server
+	######
+	$dirinstall/install_nomachine.sh
 fi
 
 if [[ $xvnc == "TRUE" ]]

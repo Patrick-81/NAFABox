@@ -16,7 +16,7 @@ then
 	cd /home/$USER/bin/armbian-config/
     git pull
     echo "Armbian-config is already install in /home/$USER/armbian-config/"
-	sudo debian-config
+	sudo ./debian-config
 else
     echo "Install Armbian-config in /home/$USER/armbian-config/"
 	cd /home/$USER/bin/
