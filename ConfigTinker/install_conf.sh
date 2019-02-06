@@ -124,7 +124,7 @@ else
     then
         echo "no icon for server"
     else
-        sudo cp $dirinstall/install_hotspot.png /usr/share/pixmaps/install_hotspot.png
+        sudo cp $dirinstall/install_hotspot.png /usr/share/pixmaps/armbian-config.png
         $dirinstall/install_shortcut.sh armbian-config "bash -ic armbian-config"
     fi
 fi
