@@ -20,6 +20,8 @@ fi
 dirinstall=$nafabox_path
 source $dirinstall/proctype.sh
 
+server_choice=$1
+
 ######
 sudo rm /var/lib/dpkg/lock
 sudo apt-get -y install libnss3
@@ -54,54 +56,63 @@ autologin="FALSE"
 ip_indicator="FALSE"
 host="FALSE"
 
-if [[ $DESKTOP_SESSION == "mate" ]]
+if [[ $server_choice == "server" ]]
 then
-	if chose=`yad --width=350 \
-		--center \
-		--form \
-		--title="Select Installation Options :" \
-		--text="Install Program :" \
-		--field=":LBL" \
-		--field="Plugin IP Indicator:CHK" \
-		--field="Fr language:CHK" \
-		--field="Autologin for dev armbian (nightly):CHK" \
-		--field="Change hostname to NAFABox ?:CHK" \
-		"" "TRUE" "FALSE" "FALSE" "TRUE"`
-	then
-		# recuperation des valeurs
-		ip_indicator=$(echo "$chose" | cut -d "|" -f2)
-		language=$(echo "$chose" | cut -d "|" -f3)
-		autologin=$(echo "$chose" | cut -d "|" -f4)
-		host=$(echo "$chose" | cut -d "|" -f5)
-
-	else
-		echo "cancel"
-	fi
+    installMate="FALSE"
+    language="FALSE"
+    autologin="FALSE"
+    ip_indicator="FALSE"
+    host="FALSE"
 else
-	if chose=`yad --width=300 \
-		--center \
-		--form \
-		--title="Select Installation Options :" \
-		--text="Install Program :" \
-		--field=":LBL" \
-		--field="Mate destktop and components:CHK" \
-		--field="Fr language:CHK" \
-		--field="Plugin IP Indicator:CHK" \
-		--field="Autologin for dev armbian (nightly):CHK" \
-		--field="Change hostname to NAFABox ?:CHK" \
-		"" "TRUE" "FALSE" "TRUE" "FALSE" "TRUE"`
-	then
-		# recuperation des valeurs
-		installMate=$(echo "$chose" | cut -d "|" -f2)
-		language=$(echo "$chose" | cut -d "|" -f3)
-		ip_indicator=$(echo "$chose" | cut -d "|" -f4)
-		autologin=$(echo "$chose" | cut -d "|" -f5)
-		host=$(echo "$chose" | cut -d "|" -f6)
+#if [[ $DESKTOP_SESSION == "mate" ]]
+#then
+    if chose=`yad --width=350 \
+	    --center \
+	    --form \
+	    --title="Select Installation Options :" \
+	    --text="Install Program :" \
+	    --field=":LBL" \
+	    --field="Plugin IP Indicator:CHK" \
+	    --field="Fr language:CHK" \
+	    --field="Autologin for dev armbian (nightly):CHK" \
+	    --field="Change hostname to NAFABox ?:CHK" \
+	    "" "TRUE" "FALSE" "FALSE" "TRUE"`
+    then
+	    # recuperation des valeurs
+	    ip_indicator=$(echo "$chose" | cut -d "|" -f2)
+	    language=$(echo "$chose" | cut -d "|" -f3)
+	    autologin=$(echo "$chose" | cut -d "|" -f4)
+	    host=$(echo "$chose" | cut -d "|" -f5)
 
-	else
-		echo "cancel"
-	fi
+    else
+	    echo "cancel"
+    fi
 fi
+#else
+#	if chose=`yad --width=300 \
+#		--center \
+#		--form \
+#		--title="Select Installation Options :" \
+#		--text="Install Program :" \
+#		--field=":LBL" \
+#		--field="Mate destktop and components:CHK" \
+#		--field="Fr language:CHK" \
+#		--field="Plugin IP Indicator:CHK" \
+#		--field="Autologin for dev armbian (nightly):CHK" \
+#		--field="Change hostname to NAFABox ?:CHK" \
+#		"" "TRUE" "FALSE" "TRUE" "FALSE" "TRUE"`
+#	then
+#		# recuperation des valeurs
+#		installMate=$(echo "$chose" | cut -d "|" -f2)
+#		language=$(echo "$chose" | cut -d "|" -f3)
+#		ip_indicator=$(echo "$chose" | cut -d "|" -f4)
+#		autologin=$(echo "$chose" | cut -d "|" -f5)
+#		host=$(echo "$chose" | cut -d "|" -f6)
+#
+#	else
+#		echo "cancel"
+#	fi
+#fi
 
 if [[ $host == "TRUE" ]]
 then

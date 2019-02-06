@@ -65,11 +65,11 @@ else
 		choice[5]="Installation driver Atik/Inova"
 		choice[6]="Installation driver GPS (GPSD)"
 		choice[7]="Installation OnStep driver (et Arduino)"
-	    	choice[8]="Installation des drivers Gphoto2 (version PPA Jasem)"
+	    choice[8]="Installation des drivers Gphoto2 (version PPA Jasem)"
 		version=`lsb_release -c -s`
+        sudo apt-get $options install language-pack-kde-fr
 		if [[ $version == "xenial" ]]
 		then
-			sudo apt-get $options install language-pack-kde-fr
 			sudo apt-get -o Dpkg::Options::="--force-overwrite" -f install
 		fi
 	else
@@ -83,7 +83,7 @@ else
 		choice[5]="Install Atik/Inova driver"
 		choice[6]="Install GPS driver (GPSD)"
 		choice[7]="Install OnStep driver (and Arduino)"
-	    	choice[8]="Install Gphoto2 driver (Jasem PPA version)"
+	    choice[8]="Install Gphoto2 driver (Jasem PPA version)"
 		if [[ $version != "xenial" ]]
 		then
 			sudo apt-get $options install language-pack-kde-en
@@ -287,6 +287,7 @@ $dirinstall/install_shortcut.sh kstars 0
 # Installation du programme de résolution astrométrique
 ######
 sudo apt-get $options install astrometry.net
+sudo apt-get -o Dpkg::Options::="--force-overwrite" -f install
 
 
 

@@ -48,9 +48,9 @@ then
 		# passer le systeme en français
 		# ajout des packs langage
 		version=`lsb_release -c -s`
+        sudo apt-get $options install language-pack-kde-en
 		if [[ $version == "xenial" ]]
 		then
-			sudo apt-get $options install language-pack-kde-en
 			sudo apt-get -o Dpkg::Options::="--force-overwrite" -f install
 		fi
 		sudo apt-get $options install language-pack-en language-pack-gnome-en
@@ -64,9 +64,9 @@ then
 		# passer le systeme en français
 		# ajout des packs langage
 		version=`lsb_release -c -s`
+        sudo apt-get $options install language-pack-kde-fr
 		if [[ $version == "xenial" ]]
 		then
-			sudo apt-get $options install language-pack-kde-fr
 			sudo apt-get -o Dpkg::Options::="--force-overwrite" -f install
 		fi
 		sudo apt-get $options install language-pack-fr language-pack-gnome-fr

@@ -33,7 +33,7 @@ options="--auto-remove --yes -q"
 ######
 #if [[ -z $(cat $dirinstall/install-status.txt | grep mate) ]]
 #then
-$dirinstall/install_base.sh
+$dirinstall/install_base.sh $server_choice
 
 figlet -k Install Configuration
 echo "================================================="
@@ -109,19 +109,25 @@ fi
 ######
 # Création du raccourci pour install_hotspot.sh
 ######
+figlet -k Install hotspot program
+echo "================================================="
+echo "================================================="
+
+if [ -d "/usr/lib/armbian-config/" ]
+then
+    echo "armbian-config is already install"
+else
+    cp $dirinstall/run_armbian_config.sh ~/bin/run_armbian_config.sh
+    sudo ln -sf ~/bin/run_armbian_config.sh /usr/bin/armbian-config
+
 if [[ $server_choice == "server" ]]
 then
-	echo "no icon for server"
+    echo "no icon for server"
 else
-	figlet -k Install hotspot program
-	echo "================================================="
-	echo "================================================="
-
-	cp $dirinstall/install_hotspot_beta.sh ~/bin/install_hotspot_beta.sh
-	sudo ln -sf ~/bin/install_hotspot_beta.sh /usr/bin/install_hotspot
-	sudo cp $dirinstall/install_hotspot.png /usr/share/pixmaps/install_hotspot.png
-	$dirinstall/install_shortcut.sh install_hotspot "bash -ic install_hotspot"
+    sudo cp $dirinstall/install_hotspot.png /usr/share/pixmaps/install_hotspot.png
+    $dirinstall/install_shortcut.sh armbian-config "bash -ic armbian-config"
 fi
+
 
 ##### 
 # Création du raccourci pour switch_language.sh
@@ -174,9 +180,4 @@ fi
 figlet -k Install Configuration
 echo "================================================="
 echo "================================================="
-if [[ $server_choice == "server" ]]
-then
-	~/bin/update_conf.sh initial server
-else
-	~/bin/update_conf.sh initial
-fi
+~/bin/update_conf.sh initial $server_choice
