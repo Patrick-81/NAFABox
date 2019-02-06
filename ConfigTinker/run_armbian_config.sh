@@ -12,6 +12,7 @@ then
     echo "armbian-config is already install"
 	sudo armbian-config
 elif [ -d "/home/$USER/bin/armbian-config/" ]
+then
 	cd /home/$USER/armbian-config/
     git pull
     echo "Armbian-config is already install in /home/$USER/armbian-config/"
