@@ -53,7 +53,7 @@ then
 		git clone https://github.com/Patrick-81/NAFABox.git
 		cd NAFABox
 		git checkout beta
-		$dirinstall/install_conf.sh
+		
 		echo "script update"
 		if [ -d $nafa_path ]
 		then
@@ -61,6 +61,9 @@ then
 		else
 			mv $back_path/nafabox_temp $nafa_path
 		fi
+
+        $dirinstall/install_conf.sh
+
 	else
 		echo "error wrong path for nafabox script, need run Pre_install.sh"
 	fi

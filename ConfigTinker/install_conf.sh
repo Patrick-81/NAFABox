@@ -120,14 +120,14 @@ else
     cp $dirinstall/run_armbian_config.sh ~/bin/run_armbian_config.sh
     sudo ln -sf ~/bin/run_armbian_config.sh /usr/bin/armbian-config
 
-if [[ $server_choice == "server" ]]
-then
-    echo "no icon for server"
-else
-    sudo cp $dirinstall/install_hotspot.png /usr/share/pixmaps/install_hotspot.png
-    $dirinstall/install_shortcut.sh armbian-config "bash -ic armbian-config"
+    if [[ $server_choice == "server" ]]
+    then
+        echo "no icon for server"
+    else
+        sudo cp $dirinstall/install_hotspot.png /usr/share/pixmaps/install_hotspot.png
+        $dirinstall/install_shortcut.sh armbian-config "bash -ic armbian-config"
+    fi
 fi
-
 
 ##### 
 # Création du raccourci pour switch_language.sh
