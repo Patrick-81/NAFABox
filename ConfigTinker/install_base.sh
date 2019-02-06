@@ -236,9 +236,11 @@ then
 	# sudo apt-get -q --yes dist-upgrade
 
 fi
-sudo apt-get $options install indicator-applet indicator-applet-appmenu indicator-applet-complete indicator-applet-session indicator-application indicator-application-gtk2 indicator-appmenu indicator-appmenu-tools indicator-bluetooth indicator-common indicator-cpufreq indicator-datetime indicator-keyboard indicator-messages indicator-multiload indicator-power indicator-session indicator-sound indicator-sound-gtk2
+sudo apt-get $options install indicator-applet indicator-applet-appmenu indicator-applet-complete indicator-applet-session indicator-application indicator-application-gtk2 indicator-appmenu indicator-appmenu-tools indicator-bluetooth indicator-cpufreq indicator-datetime indicator-keyboard indicator-messages indicator-multiload indicator-power indicator-session indicator-sound indicator-sound-gtk2
 
-sudo apt-get $options purge indicator-printers indicator-china-weather 
+sudo apt-get $options install indicator-common
+
+sudo apt-get $options purge indicator-china-weather 
 sudo apt-get $options purge indicator-network-tools indicator-network-autopilot
 
 

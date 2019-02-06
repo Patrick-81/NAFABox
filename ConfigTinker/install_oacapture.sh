@@ -34,8 +34,10 @@ fi
 # Installation des pré-requis
 #######
 sudo apt-get -y install qt4-dev-tools qt4-qmake libqt4-dev
-sudo apt-get -y install libv4l-dev libdc1394-22-dev libcfitsio-dev libudev-dev libtiff-dev gawk gcc g++ yasm autoconf libtool m4 automake libevent-dev pkg-config libhidapi-dev libpng-dev libsdl-dev libusb-dev libusb-1.0 libftdi-dev libraw1394-11 libgtkmm-2.4-1v5 libglademm-2.4-1v5 libgtkglextmm-x11-1.2-dev libgtkglextmm-x11-1.2 qt5-default fxload qtbase5-dev
-sudo apt-get -y install libuvc-dev qttools5-dev-tools
+sudo apt-get -y install libv4l-dev libdc1394-22-dev libcfitsio-dev libudev-dev libtiff-dev gawk gcc g++ yasm autoconf libtool m4 automake libevent-dev pkg-config libhidapi-dev libpng-dev libsdl-dev libusb-dev libusb-1.0 libftdi-dev libraw1394-11 libgtkmm-2.4-1v5 libglademm-2.4-1v5 libgtkglextmm-x11-1.2-dev libgtkglextmm-x11-1.2 qt5-default fxload qtbase5-dev qttools5-dev-tools
+sudo apt-get -y install libuvc-dev 
+
+
 # go at home
 cd /home/${USER}/bin/
 
