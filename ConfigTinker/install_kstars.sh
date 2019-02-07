@@ -84,9 +84,10 @@ else
 		choice[6]="Install GPS driver (GPSD)"
 		choice[7]="Install OnStep driver (and Arduino)"
 	    choice[8]="Install Gphoto2 driver (Jasem PPA version)"
+	    	sudo apt-get $options install language-pack-kde-en
 		if [[ $version != "xenial" ]]
 		then
-			sudo apt-get $options install language-pack-kde-en
+			sudo apt-get -o Dpkg::Options::="--force-overwrite" -f install
 		fi
 	fi
 
