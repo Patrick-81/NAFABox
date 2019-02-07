@@ -65,6 +65,10 @@ http://cdimage.ubuntu.com/ubuntu-mate/releases/18.04/release/ubuntu-mate-18.04.1
 ### documentation for TinkerBoard : https://lroge.scenari-community.org/KstarsEkosIndi/#Nafabox_1
 ### documentation for Raspberry Pi 2/3 : https://lroge.scenari-community.org/KstarsEkosIndi/#PI
 
+### Documentation for create HotSpot :
+
+https://github.com/Patrick-81/NAFABox/blob/beta/ConfigTinker/InstallationHotspotWifi.pdf
+
 __User URL :__
 
 - Indiwebmanger : IP:8624
@@ -72,6 +76,10 @@ __User URL :__
 - X11VNC : IP:5900
 - NoVNC : IP:5901
 - Webdav : IP:443
+- Nomachine : IP:5000
 
-For NAFABox OS Image :
+### For NAFABox OS Image :
+
 https://share.obspm.fr/index.php/s/oGtH7pbD9ZsyTTG
+
+
