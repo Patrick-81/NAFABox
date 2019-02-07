@@ -20,6 +20,8 @@ fi
 dirinstall=$nafabox_path
 source $dirinstall/proctype.sh
 
+server_choice=$1
+
 ######
 sudo rm /var/lib/dpkg/lock
 sudo apt-get -y install libnss3
@@ -29,12 +31,14 @@ sudo apt-get -y install dirmngr
 sudo apt-get -y install git
 sudo apt-get -y install gparted
 sudo apt-get -y install chromium-browser
-
 # for bluetooth
 sudo apt-get -y install bluetooth bluez bluez-tools pulseaudio-module-bluetooth blueman
 # for hotspot
 sudo apt-get -y install dnsmasq hostapd
 sudo apt-get -y install dhcpcd5 dhcpcd-gtk
+
+#sudo apt-get --reinstall -o Dpkg::Options::="--force-confnew" -y --no-install-recommends install hostapd
+#sudo apt-get --reinstall -o Dpkg::Options::="--force-confnew" -y --no-install-recommends install hostapd-realtek
 
 version=`lsb_release -c -s`
 
@@ -52,54 +56,63 @@ autologin="FALSE"
 ip_indicator="FALSE"
 host="FALSE"
 
-if [[ $DESKTOP_SESSION == "mate" ]]
+if [[ $server_choice == "server" ]]
 then
-	if chose=`yad --width=350 \
-		--center \
-		--form \
-		--title="Select Installation Options :" \
-		--text="Install Program :" \
-		--field=":LBL" \
-		--field="Plugin IP Indicator:CHK" \
-		--field="Fr language:CHK" \
-		--field="Autologin for dev armbian (nightly):CHK" \
-		--field="Change hostname to NAFABox ?:CHK" \
-		"" "TRUE" "FALSE" "FALSE" "TRUE"`
-	then
-		# recuperation des valeurs
-		ip_indicator=$(echo "$chose" | cut -d "|" -f2)
-		language=$(echo "$chose" | cut -d "|" -f3)
-		autologin=$(echo "$chose" | cut -d "|" -f4)
-		host=$(echo "$chose" | cut -d "|" -f5)
-
-	else
-		echo "cancel"
-	fi
+    installMate="FALSE"
+    language="FALSE"
+    autologin="FALSE"
+    ip_indicator="FALSE"
+    host="FALSE"
 else
-	if chose=`yad --width=300 \
-		--center \
-		--form \
-		--title="Select Installation Options :" \
-		--text="Install Program :" \
-		--field=":LBL" \
-		--field="Mate destktop and components:CHK" \
-		--field="Fr language:CHK" \
-		--field="Plugin IP Indicator:CHK" \
-		--field="Autologin for dev armbian (nightly):CHK" \
-		--field="Change hostname to NAFABox ?:CHK" \
-		"" "TRUE" "FALSE" "TRUE" "FALSE" "TRUE"`
-	then
-		# recuperation des valeurs
-		installMate=$(echo "$chose" | cut -d "|" -f2)
-		language=$(echo "$chose" | cut -d "|" -f3)
-		ip_indicator=$(echo "$chose" | cut -d "|" -f4)
-		autologin=$(echo "$chose" | cut -d "|" -f5)
-		host=$(echo "$chose" | cut -d "|" -f6)
+#if [[ $DESKTOP_SESSION == "mate" ]]
+#then
+    if chose=`yad --width=350 \
+	    --center \
+	    --form \
+	    --title="Select Installation Options :" \
+	    --text="Install Program :" \
+	    --field=":LBL" \
+	    --field="Plugin IP Indicator:CHK" \
+	    --field="Fr language:CHK" \
+	    --field="Autologin for dev armbian (nightly):CHK" \
+	    --field="Change hostname to NAFABox ?:CHK" \
+	    "" "TRUE" "FALSE" "FALSE" "TRUE"`
+    then
+	    # recuperation des valeurs
+	    ip_indicator=$(echo "$chose" | cut -d "|" -f2)
+	    language=$(echo "$chose" | cut -d "|" -f3)
+	    autologin=$(echo "$chose" | cut -d "|" -f4)
+	    host=$(echo "$chose" | cut -d "|" -f5)
 
-	else
-		echo "cancel"
-	fi
+    else
+	    echo "cancel"
+    fi
 fi
+#else
+#	if chose=`yad --width=300 \
+#		--center \
+#		--form \
+#		--title="Select Installation Options :" \
+#		--text="Install Program :" \
+#		--field=":LBL" \
+#		--field="Mate destktop and components:CHK" \
+#		--field="Fr language:CHK" \
+#		--field="Plugin IP Indicator:CHK" \
+#		--field="Autologin for dev armbian (nightly):CHK" \
+#		--field="Change hostname to NAFABox ?:CHK" \
+#		"" "TRUE" "FALSE" "TRUE" "FALSE" "TRUE"`
+#	then
+#		# recuperation des valeurs
+#		installMate=$(echo "$chose" | cut -d "|" -f2)
+#		language=$(echo "$chose" | cut -d "|" -f3)
+#		ip_indicator=$(echo "$chose" | cut -d "|" -f4)
+#		autologin=$(echo "$chose" | cut -d "|" -f5)
+#		host=$(echo "$chose" | cut -d "|" -f6)
+#
+#	else
+#		echo "cancel"
+#	fi
+#fi
 
 if [[ $host == "TRUE" ]]
 then
@@ -161,22 +174,7 @@ then
 	cat  $dirinstall/20-lightdm.conf | sed -e "s/MOI/$(whoami)/g" > /tmp/20-lightdm.conf
 	sudo cp /tmp/20-lightdm.conf /etc/lighdm/lightdm.conf.d/.
 
-    
-
     machine=$(sudo lshw | grep "produit\|product" | grep "Raspberry")
-	if [[ $version == "bionic" ]]
-	then
-        if [[ $proc == "_armhf" ]]
-	        then
-		        if [[ $machine != *"Raspberry"* ]]
-		        then
-				# remove special package for bionic armbian tinkerboard
-				    echo "purge next-tinkerboard package"
-                    sudo dpkg --purge chromium-browser
-			        sudo dpkg --purge linux-bionic-root-next-tinkerboard
-                fi
-            fi
-        fi
 
 	# installation de base de mate
 	sudo apt-get $options install mate
@@ -190,7 +188,7 @@ then
 
     # dangereux à remplacer des que possible
 	sudo apt-get $options install mate-*
-	sudo apt-get $options install indicator-*
+
 	
 	# supprimer veille
 	sudo sed -i "/DPMS/ s/true/false/" /etc/X11/xorg.conf.d/01-armbian-defaults.conf
@@ -216,16 +214,13 @@ then
 	sudo apt-get $options install blueman
 	sudo apt-get $options install firefox
 	sudo apt-get $options install ubuntu-mate-themes
-    sudo apt-get $options install pulseaudio indicator-sound indicator-sound-gtk2 libcanberra-pulse paprefs 
+    sudo apt-get $options install pulseaudio libcanberra-pulse paprefs 
     sudo apt-get $options install pulseaudio-module-bluetooth pulseaudio-module-gconf pulseaudio-module-zeroconf
     sudo alsa force-reload
 	# désinstallation diverses des relicats de xfce et de thunderbird ajouté par maté
 	sudo apt-get -y purge thunderbird transmission-gtk thunar leafpad hexchat geany k3b brasero cheese
 	sudo apt-get -y remove --purge  libreoffice-*
     sudo apt-get -y install chromium-browser
-    
-    sudo apt-get $options purge indicator-printers indicator-china-weather indicator-network-tools indicator-network-autopilot
-
     sudo dpkg --configure -a
     sudo apt-get install -f
     sudo apt-get -y autoremove
@@ -239,8 +234,16 @@ then
 
 	# mise à jour de tout le système
 	# sudo apt-get -q --yes dist-upgrade
-	
+
 fi
+
+sudo apt-get $options install indicator-bluetooth indicator-cpufreq indicator-datetime indicator-multiload 
+sudo apt-get $options install indicator-sound indicator-sound-gtk2
+
+sudo apt-get $options purge indicator-china-weather 
+sudo apt-get $options purge indicator-network-tools indicator-network-autopilot
+
+
 # install ip indicator
 if [[ $ip_indicator == "TRUE" ]]
 then
@@ -283,7 +286,6 @@ then
 	echo "================================================="
 	# passer le systeme en français
 	# ajout des packs langage
-	sudo apt-get $options install language-pack-kde-fr
 	sudo apt-get $options install language-pack-fr language-pack-gnome-fr
 	sudo apt-get $options install firefox-locale.fr
 	sudo locale-gen fr_FR fr_FR.UTF-8

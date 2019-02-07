@@ -47,7 +47,12 @@ then
 	then
 		# passer le systeme en français
 		# ajout des packs langage
-		sudo apt-get $options install language-pack-kde-en
+		version=`lsb_release -c -s`
+        sudo apt-get $options install language-pack-kde-en
+		if [[ $version == "xenial" ]]
+		then
+			sudo apt-get -o Dpkg::Options::="--force-overwrite" -f install
+		fi
 		sudo apt-get $options install language-pack-en language-pack-gnome-en
 		sudo apt-get $options install firefox-locale-en
 		sudo locale-gen en_US en_US.UTF-8
@@ -58,7 +63,12 @@ then
 	then
 		# passer le systeme en français
 		# ajout des packs langage
-		sudo apt-get $options install language-pack-kde-fr
+		version=`lsb_release -c -s`
+        sudo apt-get $options install language-pack-kde-fr
+		if [[ $version == "xenial" ]]
+		then
+			sudo apt-get -o Dpkg::Options::="--force-overwrite" -f install
+		fi
 		sudo apt-get $options install language-pack-fr language-pack-gnome-fr
 		sudo apt-get $options install firefox-locale-fr
 		sudo locale-gen fr_FR fr_FR.UTF-8

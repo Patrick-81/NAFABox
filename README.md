@@ -1,4 +1,4 @@
-# NAFABox (Nomad Astronomy For All)
+# NAFABox (Nomad Astronomy For All) BETA
 Installation scripts for NAFABox installation.
 
 The scripts are compatible with the Tinker Board, the Raspberry Pi 2b/3b/3b+ as well as with an x86 ubuntu Mate system. 
@@ -8,12 +8,12 @@ Requires a SD card or a place on the hard drive of more than 16go.
 
 ### Step by Step for TinkerBoard (or other armhf board Armbian compatible):
 
-1/ Install ARMBIAN (default) distribution (via Etcher)
+1/ Install ARMBIAN (Next) distribution (via Etcher)
 
-https://dl.armbian.com/tinkerboard/Ubuntu_xenial_default_desktop.7z (or other board xenial default/next ubuntu image)
+https://dl.armbian.com/tinkerboard/Ubuntu_bionic_next_desktop.7z (or other board bionic next ubuntu image)
 
 
-2/ Download zip file :  https://github.com/Patrick-81/NAFABox/archive/master.zip
+2/ Download zip file :  https://github.com/Patrick-81/NAFABox/archive/beta.zip
 
 3/ Get the folder as zip file and expanse it to your tinkerboard desktop
 
@@ -41,7 +41,7 @@ https://dl.armbian.com/tinkerboard/Ubuntu_xenial_default_desktop.7z (or other bo
 
 https://ubuntu-mate.org/raspberry-pi/ubuntu-mate-16.04.2-desktop-armhf-raspberry-pi.img.xz
 
-2/ Download zip file :  https://github.com/Patrick-81/NAFABox/archive/master.zip
+2/ Download zip file :  https://github.com/Patrick-81/NAFABox/archive/beta.zip
 
 3/ Get the folder as zip file and expanse it to your pi desktop
 
@@ -53,7 +53,7 @@ https://ubuntu-mate.org/raspberry-pi/ubuntu-mate-16.04.2-desktop-armhf-raspberry
 
 http://cdimage.ubuntu.com/ubuntu-mate/releases/18.04/release/ubuntu-mate-18.04.1-desktop-amd64.iso
 
-2/ Download zip file :  https://github.com/Patrick-81/NAFABox/archive/master.zip
+2/ Download zip file :  https://github.com/Patrick-81/NAFABox/archive/beta.zip
 
 3/ Get the folder as zip file and expanse it to your Linux Mate desktop
 
@@ -65,6 +65,10 @@ http://cdimage.ubuntu.com/ubuntu-mate/releases/18.04/release/ubuntu-mate-18.04.1
 ### documentation for TinkerBoard : https://lroge.scenari-community.org/KstarsEkosIndi/#Nafabox_1
 ### documentation for Raspberry Pi 2/3 : https://lroge.scenari-community.org/KstarsEkosIndi/#PI
 
+### Documentation for create HotSpot :
+
+https://github.com/Patrick-81/NAFABox/blob/beta/ConfigTinker/InstallationHotspotWifi.pdf
+
 __User URL :__
 
 - Indiwebmanger : IP:8624
@@ -72,6 +76,10 @@ __User URL :__
 - X11VNC : IP:5900
 - NoVNC : IP:5901
 - Webdav : IP:443
+- Nomachine : IP:5000
 
-For NAFABox OS Image :
+### For NAFABox OS Image :
+
 https://share.obspm.fr/index.php/s/oGtH7pbD9ZsyTTG
+
+

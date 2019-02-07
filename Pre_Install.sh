@@ -14,6 +14,7 @@ sudo apt-get -y install figlet dialog yad xterm lshw
 sudo apt-get -y install appmenu-gtk2-module appmenu-gtk3-module
 chmod +x ./Install.sh
 cd ./ConfigTinker
+mkdir -p ~/bin
 #source ./pwd_ConfigTinker.sh
 if [ -z "$nafabox_path" ]
 then

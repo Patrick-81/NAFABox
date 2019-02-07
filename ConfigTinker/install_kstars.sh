@@ -19,6 +19,7 @@ fi
 dirinstall=$nafabox_path
 ######
 options="-y -q --autoremove"
+server_choice=$1
 
 figlet -k Install Kstars Ekos Indi
 echo "================================================="
@@ -35,67 +36,115 @@ source $dirinstall/detect_language.sh
 sudo apt-add-repository -y ppa:mutlaqja/ppa
 sudo apt-get update
 
-if $french
+# remove media auto mount for dslr :
+sudo gsettings set org.gnome.desktop.media-handling automount false
+if [[ $server_choice == "server" ]]
 then
-	dial[0]="Installation/Mise à jour des logiciels"
-	dial[1]="Choisir le(s) logiciel(s) à installer"
-	choice[0]="Installation Kstars"
-	choice[1]="Installation Kstars développement"
-	choice[2]="Installation Indi"
-	choice[3]="Installation Indi développement"
-	choice[4]="Installation IndiWebManager"
-	choice[5]="Installation driver Atik/Inova"
-	choice[6]="Installation driver GPS (GPSD)"
-	sudo apt-get $options install language-pack-kde-fr
+    echo "############################"
+    echo "## install in server mode ##"
+    echo "############################"
+	kstars=FALSE
+	kstars_dev=FALSE
+	indi=TRUE
+	indi_dev=FALSE
+	indiW=TRUE
+	driver_3rd=TRUE
+	gps=TRUE
+	onstep=TRUE
+	gphoto_i=FALSE
 else
-	dial[0]="Install/Update of software"
-	dial[1]="Choose software(s) to install"
-	choice[0]="Install Kstars"
-	choice[1]="Install Kstars nightly"
-	choice[2]="Install Indi"
-	choice[3]="Install Indi nightly"
-	choice[4]="Install IndiWebManager"
-	choice[5]="Install Atik/Inova driver"
-	choice[6]="Install GPS driver (GPSD)"
+	if $french
+	then
+		dial[0]="Installation/Mise à jour des logiciels"
+		dial[1]="Choisir le(s) logiciel(s) à installer"
+		choice[0]="Installation Kstars"
+		choice[1]="Installation Kstars développement"
+		choice[2]="Installation Indi"
+		choice[3]="Installation Indi développement"
+		choice[4]="Installation IndiWebManager"
+		choice[5]="Installation driver Atik/Inova"
+		choice[6]="Installation driver GPS (GPSD)"
+		choice[7]="Installation OnStep driver (et Arduino)"
+	    choice[8]="Installation des drivers Gphoto2 (version PPA Jasem)"
+		version=`lsb_release -c -s`
+        sudo apt-get $options install language-pack-kde-fr
+		if [[ $version == "xenial" ]]
+		then
+			sudo apt-get -o Dpkg::Options::="--force-overwrite" -f install
+		fi
+	else
+		dial[0]="Install/Update of software"
+		dial[1]="Choose software(s) to install"
+		choice[0]="Install Kstars"
+		choice[1]="Install Kstars nightly"
+		choice[2]="Install Indi"
+		choice[3]="Install Indi nightly"
+		choice[4]="Install IndiWebManager"
+		choice[5]="Install Atik/Inova driver"
+		choice[6]="Install GPS driver (GPSD)"
+		choice[7]="Install OnStep driver (and Arduino)"
+	    choice[8]="Install Gphoto2 driver (Jasem PPA version)"
+		if [[ $version != "xenial" ]]
+		then
+			sudo apt-get $options install language-pack-kde-en
+		fi
+	fi
+
+	st=(true false true false true true true false false)
+
+	sudo apt-get $options install gsc
+	sudo apt-get $options install libqt5sql5-sqlite qtdeclarative5-dev
+
+	if chose=`yad --width=400 \
+		--center \
+		--form \
+		--title="${dial[0]}" \
+		--text="${dial[1]}" \
+		--field=":LBL" \
+		--field="${choice[0]}:CHK" \
+		--field="${choice[1]}:CHK" \
+		--field="${choice[2]}:CHK" \
+		--field="${choice[3]}:CHK" \
+		--field="${choice[4]}:CHK" \
+		--field="${choice[5]}:CHK" \
+		--field="${choice[6]}:CHK" \
+		--field="${choice[7]}:CHK" \
+	    --field="${choice[8]}:CHK" \
+		"" "${st[0]}" "${st[1]}" "${st[2]}" \
+		"${st[3]}" "${st[4]}" "${st[5]}" "${st[6]}" \
+	    	"${st[7]}" "${st[8]}"`
+	then
+		kstars=$(echo "$chose" | cut -d "|" -f2)
+		kstars_dev=$(echo "$chose" | cut -d "|" -f3)
+		indi=$(echo "$chose" | cut -d "|" -f4)
+		indi_dev=$(echo "$chose" | cut -d "|" -f5)
+		indiW=$(echo "$chose" | cut -d "|" -f6)
+		driver_3rd=$(echo "$chose" | cut -d "|" -f7)
+		gps=$(echo "$chose" | cut -d "|" -f8)
+		onstep=$(echo "$chose" | cut -d "|" -f9)
+	    	gphoto_i=$(echo "$chose" | cut -d "|" -f10)
+	else
+		echo "cancel"
+	fi
 fi
-
-st=(true false true false true true true)
-
-sudo apt-get $options install gsc
-sudo apt-get $options install libqt5sql5-sqlite qtdeclarative5-dev
-
-if chose=`yad --width=400 \
-	--center \
-	--form \
-	--title="${dial[0]}" \
-	--text="${dial[1]}" \
-	--field=":LBL" \
-	--field="${choice[0]}:CHK" \
-	--field="${choice[1]}:CHK" \
-	--field="${choice[2]}:CHK" \
-	--field="${choice[3]}:CHK" \
-	--field="${choice[4]}:CHK" \
-	--field="${choice[5]}:CHK" \
-	--field="${choice[6]}:CHK" \
-	"" "${st[0]}" "${st[1]}" "${st[2]}" \
-	"${st[3]}" "${st[4]}" "${st[5]}" "${st[6]}"`
-then
-	kstars=$(echo "$chose" | cut -d "|" -f2)
-	kstars_dev=$(echo "$chose" | cut -d "|" -f3)
-	indi=$(echo "$chose" | cut -d "|" -f4)
-	indi_dev=$(echo "$chose" | cut -d "|" -f5)
-	indiW=$(echo "$chose" | cut -d "|" -f6)
-	driver_3rd=$(echo "$chose" | cut -d "|" -f7)
-	gps=$(echo "$chose" | cut -d "|" -f8)
-else
-	echo "cancel"
-fi
-
 ######
 # Installation du programme : kstars
 #              du serveur : indi
 #              de tous les drivers
 ######
+
+if [[ $gphoto_i == "TRUE" ]]
+then
+    # install PPA version :
+    ######
+    # Installation de gphoto2
+    ######
+    sudo add-apt-repository -y ppa:mutlaqja/libgphoto2
+    sudo apt-get update
+    sudo apt-get -y install libgphoto2-6 libgphoto2-dev libgphoto2-l10n libgphoto2-l10n libgphoto2-port12
+fi
+
+
 
 if [[ $kstars_dev == "TRUE" ]]
 then
@@ -130,6 +179,7 @@ then
 elif [[ $kstars == "TRUE" ]]
 then
 	sudo apt-get $options install indi-full kstars-bleeding
+	sudo apt-get -o Dpkg::Options::="--force-overwrite" -f install
 	sudo apt-get $options install indi-dbg kstars-bleeding-dbg
 fi
 
@@ -220,6 +270,15 @@ then
 fi
 
 ######
+# Installer onstep
+######
+fi
+if [[ $onstep == "TRUE" ]]
+then
+	$dirinstall/install_onstep.sh $server_choice
+fi
+
+######
 # Création de l'icône sur le bureau
 ######
 $dirinstall/install_shortcut.sh kstars 0
@@ -228,6 +287,7 @@ $dirinstall/install_shortcut.sh kstars 0
 # Installation du programme de résolution astrométrique
 ######
 sudo apt-get $options install astrometry.net
+sudo apt-get -o Dpkg::Options::="--force-overwrite" -f install
 
 
 
