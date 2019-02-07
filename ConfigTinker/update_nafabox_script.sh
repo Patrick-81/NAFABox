@@ -52,7 +52,7 @@ then
 		cd $back_path
 		git clone https://github.com/Patrick-81/NAFABox.git
 		cd NAFABox
-		git checkout beta
+		git checkout master
 		
 		echo "script update"
 		if [ -d $nafa_path ]
