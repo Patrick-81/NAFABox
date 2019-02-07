@@ -237,8 +237,9 @@ then
 
 fi
 
-sudo apt-get $options install indicator-bluetooth indicator-cpufreq indicator-datetime indicator-multiload 
-sudo apt-get $options install indicator-sound indicator-sound-gtk2
+sudo apt-get $options install indicator-cpufreq indicator-multiload 
+#sudo apt-get $options install indicator-sound indicator-sound-gtk2
+#sudo apt-get $options install indicator-bluetooth
 
 sudo apt-get $options purge indicator-china-weather 
 sudo apt-get $options purge indicator-network-tools indicator-network-autopilot
