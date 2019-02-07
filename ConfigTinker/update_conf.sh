@@ -20,6 +20,7 @@ dirinstall=$nafabox_path
 ######
 cd $dirinstall
 server_choice=$2
+sudo apt-get -o Dpkg::Options::="--force-overwrite" -f install
 ######
 # Fonction pour l'installation
 ######
