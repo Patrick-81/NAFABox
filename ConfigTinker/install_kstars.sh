@@ -247,7 +247,7 @@ fi
 if [[ $indiW == "TRUE" ]]
 then
 	$dirinstall/install_indiwebmanager.sh
-
+fi
 ######
 # Installation des drivers 3rdparty qui ne sont pas sous forme de dépot
 ######
@@ -264,7 +264,6 @@ fi
 ######
 # Installer gpsd
 ######
-fi
 if [[ $gps == "TRUE" ]]
 then
 	$dirinstall/install_gps.sh
@@ -273,7 +272,6 @@ fi
 ######
 # Installer onstep
 ######
-fi
 if [[ $onstep == "TRUE" ]]
 then
 	$dirinstall/install_onstep.sh $server_choice
