@@ -180,4 +180,4 @@ fi
 figlet -k Install Configuration
 echo "================================================="
 echo "================================================="
-~/bin/update_conf.sh initial $server_choice
+~/bin/update_conf.sh $1 $server_choice
