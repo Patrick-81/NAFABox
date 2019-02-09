@@ -1,7 +1,8 @@
 # NAFABox (Nomad Astronomy For All)
-Installation scripts for NAFABox installation.
 
-The scripts are compatible with the Tinker Board, the Raspberry Pi 2b/3b/3b+ as well as with an x86 ubuntu Mate system. 
+Installation scripts for create NAFABox.
+
+The scripts are compatible with the Tinker Board, the Raspberry Pi 3b/3b+ as well as with an x86 ubuntu Mate system. 
 Requires a SD card or a place on the hard drive of more than 16go.
 
 
@@ -35,7 +36,7 @@ https://dl.armbian.com/tinkerboard/Ubuntu_bionic_next_desktop.7z (or other board
 
 9/ When finished shutdown and restart your board.
 
-### For Raspberry Pi 2/3 :
+### For Raspberry Pi 3b/3b+ :
 
 1/ Install Ubuntu Mate (16.04.2) distribution (via Etcher)
 
@@ -47,7 +48,7 @@ https://ubuntu-mate.org/raspberry-pi/ubuntu-mate-16.04.2-desktop-armhf-raspberry
 
 ... Same instruction ...
 
-### For X86 Ubuntu Linux system :
+### For X86_64/Amd64 Ubuntu Linux system :
 
 1/ Install Ubuntu Mate (18.04.1) distribution (via Etcher for USB installation)
 
@@ -71,6 +72,7 @@ https://github.com/Patrick-81/NAFABox/blob/master/ConfigTinker/InstallationHotsp
 
 __User URL :__
 
+- Web Page : IP
 - Indiwebmanger : IP:8624
 - BrowsePy : IP:8180
 - X11VNC : IP:5900
