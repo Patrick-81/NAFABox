@@ -14,8 +14,8 @@ Ensuite, sélectionnez l’option **3 – Interfacing Options**, puis l’option
 
 Pour vérifier le fonctionnement de l’ensemble, il faudra installer les programmes python-smbus et i2c-tools :
 
-`sudo apt-get install python-smbus`
-`sudo apt-get install i2c-tools`
+`sudo apt-get install python-smbus`   
+`sudo apt-get install i2c-tools`   
 
 Une fois cela effectué, vous pourrez vérifier que tout fonctionne en tapant la commande suivante :
 	
@@ -66,8 +66,8 @@ Pour circonvenir à ce problème, nous allons modifier le fichier **/etc/rc.loca
 
 Nous **ajouterons** à ce fichier les deux lignes suivantes **avant** la ligne contenant **exit 0** :
 
-`echo ds3231 0x68 > /sys/class/i2c-adapter/i2c-1/new_device`
-`hwclock -s`
+`echo ds3231 0x68 > /sys/class/i2c-adapter/i2c-1/new_device`   
+`hwclock -s`   
 
 On pourra alors désactiver le service fake-hwclock qui tente de reproduire le fonctionnement d’une horloge temps réel quand on en dispose pas, via la commande suivante :
 	
