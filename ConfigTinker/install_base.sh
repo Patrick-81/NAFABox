@@ -20,7 +20,7 @@ fi
 dirinstall=$nafabox_path
 source $dirinstall/proctype.sh
 
-server_choice=$1
+server_choice=$2
 
 ######
 sudo rm /var/lib/dpkg/lock
@@ -55,6 +55,14 @@ language="FALSE"
 autologin="FALSE"
 ip_indicator="FALSE"
 host="FALSE"
+
+if [[ $1 == "initial" ]]
+then
+	st=(true false false true)
+
+else
+	st=(false false false false)
+fi
 
 if [[ $server_choice == "server" ]]
 then
