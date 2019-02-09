@@ -2,11 +2,11 @@
 
 Script d'installation pour Créer une NAFABox.
 
-Ces scripts sont compatible avec la TinkerBoard (Armbian, Ubuntu), TinkerBoard S (Armbian, Ubuntu), Raspberry Pi 3b/3b+ (Ubuntu Mate) et les système classique amd64/x86_64 (Ubuntu).  
+Ces scripts sont compatible avec la TinkerBoard (Armbian, Ubuntu), TinkerBoard S (Armbian, Ubuntu), Raspberry Pi 3b/3b+ (Ubuntu Mate) et les système classique amd64/x86_64 (Ubuntu).   
 Les scripts ont été testé avec Ubuntu Xenial (16.04 LTS) et Ubuntu Bionic (18.04 LTS).  
 Il est recomander d'utiliser **Ubuntu Bionic (18.04 LTS)**.
 
-Il est necessaire de disposé d'au moins 10Go d'espace de stockage ou d'une Carte SD de 16Go au minimum ( index d'astronomie non compris)  
+Il est necessaire de disposé d'au moins 10Go d'espace de stockage ou d'une Carte SD de 16Go au minimum ( index d'astrometrie non compris)  
 
 **ATTENTION :** Vérifier que les mise a jours automatique sont désactivé afin qu'elle n'interfère pas avec les scripts.
 
@@ -23,11 +23,11 @@ Puis démarer l'image et suivez la procedure d'installation standard (Attention:
 ou  
 2bis/ Dans votre home : `git clone https://github.com/Patrick-81/NAFABox.git`
 
-3/ Décompresser le fichier zip
+3/ Décompresser le fichier zip ( juste pour 2/)
 
 4/ Ouuvrez le dossier ainsi créé
 
-5/ lancer **Pre_Install.sh** dans un terminal (avec un clique droit)
+5/ lancer **Pre_Install.sh** dans un terminal (avec un clique droit dans le dossier)
 
 `$ ./Pre_Install.sh` 
 ( Pour un clavier Francais AZERTY : `:!Pre°Instqll:sh` ) 
@@ -43,7 +43,7 @@ ou
 
 ### Pour les Raspberry Pi 3b/3b+ :
 
-1/ Installer la distribution Ubuntu MATE (version Xenial (16.04 LTS)) via Etcher.
+1/ Installer la distribution Ubuntu Mate Xenial (16.04 LTS) via Etcher.
 
 https://ubuntu-mate.org/raspberry-pi/ubuntu-mate-16.04.2-desktop-armhf-raspberry-pi.img.xz
 
@@ -51,13 +51,13 @@ https://ubuntu-mate.org/raspberry-pi/ubuntu-mate-16.04.2-desktop-armhf-raspberry
 
 ### Pour les systèmes X86_64/Amd64 Ubuntu Linux system :
 
-1/ Install **Ubuntu Mate** Bionic (18.04 LTS) distribution (via Etcher for USB installation)
+1/ Installe la distribution **Ubuntu Mate** Bionic (18.04 LTS) via Etcher pour une installation USB.
 
-http://cdimage.ubuntu.com/ubuntu-mate/releases/18.04/release/ubuntu-mate-18.04.1-desktop-amd64.iso
-or **Xubuntu** Bionic (18.04 LTS):
-http://cdimage.ubuntu.com/xubuntu/releases/18.04/release/xubuntu-18.04.1-desktop-amd64.iso
-or **Lubuntu** Bionic (18.04 LTS):
-http://cdimage.ubuntu.com/lubuntu/releases/18.04/release/lubuntu-18.04.1-desktop-amd64.iso
+http://cdimage.ubuntu.com/ubuntu-mate/releases/18.04/release/ubuntu-mate-18.04.1-desktop-amd64.iso   
+ou **Xubuntu** Bionic (18.04 LTS):   
+http://cdimage.ubuntu.com/xubuntu/releases/18.04/release/xubuntu-18.04.1-desktop-amd64.iso   
+ou **Lubuntu** Bionic (18.04 LTS):  
+http://cdimage.ubuntu.com/lubuntu/releases/18.04/release/lubuntu-18.04.1-desktop-amd64.iso   
 
 ... Same instruction ...
 
