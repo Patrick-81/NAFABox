@@ -8,7 +8,7 @@ He is recommended to use Ubuntu Bionic (18.04 LTS).
 
 Requires a min 16 Go SD card or a place on the hard drive of more than 10go (No Astrometry Index).
 
-** CAUTION :** Check that automatic updates are disabled so that it does not interfere with scripts.
+**CAUTION :** Check that automatic updates are disabled so that it does not interfere with scripts.
 
 ### Step by Step for TinkerBoard (or other armhf board Armbian compatible):
 
