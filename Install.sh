@@ -23,9 +23,9 @@ else
         echo "############################"
         echo "## install in server mode ##"
         echo "############################"
-		$nafabox_path/install_conf.sh server | tee -a "$nafabox_path/nafabox.log"
+		$nafabox_path/install_conf.sh initial server | tee -a "$nafabox_path/nafabox.log"
 	else
 
-		$nafabox_path/install_conf.sh initial | tee -a "$nafabox_path/nafabox.log"
+		$nafabox_path/install_conf.sh | tee -a "$nafabox_path/nafabox.log"
 	fi
 fi
