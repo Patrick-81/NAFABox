@@ -17,7 +17,7 @@ then
 fi
 dirinstall=$nafabox_path
 
-server_choice=$1
+server_choice=$2
 
 ######
 # Statut d'installation
@@ -33,7 +33,7 @@ options="--auto-remove --yes -q"
 ######
 #if [[ -z $(cat $dirinstall/install-status.txt | grep mate) ]]
 #then
-$dirinstall/install_base.sh $server_choice
+$dirinstall/install_base.sh $1 $server_choice
 
 figlet -k Install Configuration
 echo "================================================="
@@ -180,4 +180,4 @@ fi
 figlet -k Install Configuration
 echo "================================================="
 echo "================================================="
-~/bin/update_conf.sh initial $server_choice
+~/bin/update_conf.sh $1 $server_choice

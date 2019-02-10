@@ -47,7 +47,7 @@ then
 	browse=TRUE
 	novnc=FALSE
 	awake=FALSE
-    nomach=FALSE
+    	nomach=FALSE
 else
 	if $french
 	then
@@ -59,7 +59,7 @@ else
 		choice[3]="Install WebDav"
 		choice[4]="Installation BrowsePy"
 		choice[5]="Installation NoVNC"
-        choise[6]="Installation Nomachine"
+        	choice[6]="Installation Nomachine"
 		choice[7]="HotspotAwake Script"
 
 	else
@@ -71,7 +71,7 @@ else
 		choice[3]="Install WebDav"
 		choice[4]="Install BrowsePy"
 		choice[5]="Install NoVNC"
-        choise[6]="Install Nomachine"
+        	choice[6]="Install Nomachine"
 		choice[7]="HotspotAwake Script"
 
 	fi
@@ -92,10 +92,10 @@ else
 		--field="${choice[4]}:CHK" \
 		--field="${choice[5]}:CHK" \
 		--field="${choice[6]}:CHK" \
-        --field="${choice[7]}:CHK" \
+        	--field="${choice[7]}:CHK" \
 		"" "${st[0]}" "${st[1]}" "${st[2]}" \
 		"${st[3]}" "${st[4]}" "${st[5]}" "${st[6]}" \
-        "${st[7]}"`
+        	"${st[7]}"`
 	then
 		time_z=$(echo "$chose" | cut -d "|" -f2)
 		web=$(echo "$chose" | cut -d "|" -f3)
@@ -103,7 +103,7 @@ else
 		dav=$(echo "$chose" | cut -d "|" -f5)
 		browse=$(echo "$chose" | cut -d "|" -f6)
 		novnc=$(echo "$chose" | cut -d "|" -f7)
-        nomach=$(echo "$chose" | cut -d "|" -f8)
+        	nomach=$(echo "$chose" | cut -d "|" -f8)
 		awake=$(echo "$chose" | cut -d "|" -f9)
 	else
 		echo "cancel"
