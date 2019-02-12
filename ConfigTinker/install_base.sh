@@ -280,10 +280,11 @@ then
 elif [[ $DESKTOP_SESSION == "lxde" ]]
 then
     pcmanfm --set-wallpaper="$dest/$backpic"
-elif [[ $DESKTOP_SESSION == "xfce" ]]
+elif [[ $DESKTOP_SESSION == "xfce" ]] || [[ $DESKTOP_SESSION == "xubuntu" ]]
 then
     xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor0/image-show -s true
     xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitor0/image-path --set $dest/$backpic
+    xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitor0/workspace0/last-image --set $dest/$backpic
 fi
 
 
