@@ -84,7 +84,7 @@ else
 	    --field="Fr language:CHK" \
 	    --field="Autologin for dev armbian (nightly):CHK" \
 	    --field="Change hostname to NAFABox ?:CHK" \
-	    "" "TRUE" "FALSE" "FALSE" "TRUE"`
+	    "" "${st[0]}" "${st[1]}" "${st[2]}" "${st[3]}"`
     then
 	    # recuperation des valeurs
 	    ip_indicator=$(echo "$chose" | cut -d "|" -f2)
