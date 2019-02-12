@@ -26,13 +26,13 @@ sudo apt-get -o Dpkg::Options::="--force-overwrite" -f install
 ######
 installconf()
 {
-if [[ $2 == "server" ]]
+if [[ $3 == "server" ]]
 then
     echo "############################"
     echo "## install in server mode ##"
     echo "############################"
-	$dirinstall/install_comsetup.sh $2
-	$dirinstall/install_kstars.sh $2
+	$dirinstall/install_comsetup.sh $3
+	$dirinstall/install_kstars.sh $3
 	
 else
 	if $1
