@@ -21,11 +21,11 @@ source $dirinstall/detect_language.sh
 ######
 # Créer le raccourci bureau
 ######
-echo $1 $2
-echo $2
+echo $1 $2 $3
+
 if [ -n "$2"  ]
 then
-    if [[ $2 == "0" ]]
+    if [[ $2 == "0" ]] || [[ $2 == "1" ]]
     then
 	    AppExec=$1
     else
@@ -34,6 +34,7 @@ then
 else
 	AppExec=$1
 fi
+
 if [ -d ~/Desktop ]
 then
 	desktop="Desktop"
@@ -52,19 +53,33 @@ cat /tmp/shortcut1  | sed -e "s%APP_EXEC%$AppExec%g" > /tmp/shortcut2
 cat /tmp/shortcut2 | sed -e "s/NAME/$AppName/g" > /tmp/$AppName.desktop
 chmod +x /tmp/$AppName.desktop
 
-if [ -n "$2"  ]
+option="rien"
+if [ -n "$3"  ]
 then
-    if [[ $2 == "1" ]]
+    if [[ $3 == "0" ]] || [[ $3 == "1" ]]
     then
-    	mv /tmp/$AppName.desktop /usr/share/applications/$AppName.desktop
-    if [[ $2 == "0" ]]
+        option=$3
+    fi
+else
+    if [ -n "$2"  ]
     then
-    	mv /tmp/$AppName.desktop ~/$desktop/$AppName.desktop
-	
-    else
-    	mv /tmp/$AppName.desktop ~/$desktop/$AppName.desktop
-	sudo cp ~/$desktop/$AppName.desktop /usr/share/applications/$AppName.desktop
+        if [[ $2 == "0" ]] || [[ $2 == "1" ]]
+        then
+            option=$2
+        fi
     fi
 fi
+    
+
+if [[ $option == "1" ]]
+then
+	sudo mv /tmp/$AppName.desktop /usr/share/applications/$AppName.desktop
+elif [[ $option == "0" ]]
+then
+	mv /tmp/$AppName.desktop ~/$desktop/$AppName.desktop
+
+else
+	mv /tmp/$AppName.desktop ~/$desktop/$AppName.desktop
+    sudo cp ~/$desktop/$AppName.desktop /usr/share/applications/$AppName.desktop
 fi
 

@@ -125,7 +125,7 @@ else
         echo "no icon for server"
     else
         sudo cp $dirinstall/install_hotspot.png /usr/share/pixmaps/armbian-config.png
-        $dirinstall/install_shortcut.sh armbian-config "bash -ic armbian-config"
+        $dirinstall/install_shortcut.sh armbian-config "bash -ic armbian-config" 1
     fi
 fi
 
@@ -147,6 +147,19 @@ else
 fi
 
 ##### 
+# Création du raccourci pour reconfig_keyboard
+######
+
+figlet -k Install reconfig_keyboard program
+echo "================================================="
+echo "================================================="
+
+cp $dirinstall/reconfig_keyboard.sh ~/bin/reconfig_keyboard.sh
+sudo ln -sf ~/bin/reconfig_keyboard.sh /usr/bin/reconfig_keyboard
+sudo cp /usr/share/icons/gnome/48x48/apps/preferences-desktop-keyboard.png /usr/share/pixmaps/reconfig_keyboard.png
+$dirinstall/install_shortcut.sh reconfig_keyboard "bash -ic reconfig_keyboard" 1
+
+##### 
 # Création du raccourci pour setup_time.sh
 ######
 if [[ $server_choice == "server" ]]
@@ -158,7 +171,7 @@ else
 fi
 
 ##### 
-# Création du programme d'upadet des scripts
+# Création du programme d'update des scripts
 ######
 if [[ $server_choice == "server" ]]
 then
