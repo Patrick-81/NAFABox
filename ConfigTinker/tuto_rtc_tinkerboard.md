@@ -76,7 +76,7 @@ Notre module est détecté, et utilisable. Cependant, nous ne savons pas encore 
 
 Si tout ce que nous avons fait avant a bien fonctionné, nous pouvons alors exécuter la commande suivante :
 	
-`echo ds3231 0x68 | sudo tee /sys/class/i2c-adapter/i2c-1/new_device`
+`echo ds1307 0x68 | sudo tee /sys/class/i2c-adapter/i2c-1/new_device`
 
 Cette commande doit “notifier” au système la présence du composant. Dès lors il est possible de consulter l’heure et la date contenue dans le module en faisant un :
 
@@ -93,14 +93,14 @@ Avant tout assurons nous que les données du système sont correctes, en vérifi
 
 Choisissez bien le bon continent et la bonne zone. Vous pouvez vérifier la date et l’heure du système via la commande  date. Lorsque celle ci est définie correctement, vous pourrez alors écrire la valeur actuelle du système en utilisant la commande suivante :
 
-`sudo hwclock -w`
+`sudo hwclock -w -f /dev/rtc1`
 
 ---
 ### Configuration du système pour utiliser automatiquement le module RTC DS3231
 
 Nous avons donc pu définir la date et l’heure du DS3231. Voyons maintenant comment configurer le Raspberry pi pour qu’il utilise ce module à chaque démarrage pour définir l’heure.
 
-En effet, si nous redémarrons maintenant, il faudra refaire *echo ds3231 0x68 > /sys/class/i2c-adapter/i2c-1/new_device* avant de pouvoir utiliser le module (sinon le sudo hwclock ne fonctionne pas).
+En effet, si nous redémarrons maintenant, il faudra refaire *echo ds1307 0x68 | sudo tee /sys/class/i2c-adapter/i2c-1/new_device* avant de pouvoir utiliser le module (sinon le sudo hwclock ne fonctionne pas).
 
 Pour circonvenir à ce problème, nous allons modifier le fichier **/etc/rc.local** via la commande suivante :
 
@@ -108,15 +108,16 @@ Pour circonvenir à ce problème, nous allons modifier le fichier **/etc/rc.loca
 
 Nous **ajouterons** à ce fichier les deux lignes suivantes **avant** la ligne contenant **exit 0** :
 
-`echo ds3231 0x68 > /sys/class/i2c-adapter/i2c-1/new_device`  
-`hwclock -r`  
-`hwclock -s`  
+`echo 'ds1307 0x68' | sudo tee /sys/class/i2c-adapter/i2c-1/new_device`  
+`hwclock -r -f /dev/rtc1`   
 
 On pourra alors désactiver le service fake-hwclock qui tente de reproduire le fonctionnement d’une horloge temps réel quand on en dispose pas, via la commande suivante :
 	
 `sudo update-rc.d fake-hwclock disable`
 
 Vous pouvez verifier que le rtc a bien été activé en tapant de nouveau la commande **sudo i2cdetect -y 1**. Cette fois ci vous devriez vous apparaitre **UU** à la place de **68**. 
+
+**Attention** : la tinkerboard met à jour automatiquement le rtc0 (pas le rtc1) au démarage si elle a reussi à synchroniser une heure sur internet. La deviation d'un ds3132 est très faible donc il n'est pas necessaire de le resynchroniser souvent.
 
 ---
 ### FIN

@@ -76,7 +76,8 @@ On pourra alors désactiver le service fake-hwclock qui tente de reproduire le f
 	
 `sudo update-rc.d fake-hwclock disable`
 
-Vous pouvez verifier que le rtc a bien été activé en tapant de nouveau la commande **sudo i2cdetect -y 1**. Cette fois ci vous devriez vous apparaitre **UU** à la place de **68**. 
+Vous pouvez verifier que le rtc a bien été activé en tapant de nouveau la commande **sudo i2cdetect -y 1**. Cette fois ci vous devriez vous apparaitre **UU** à la place de **68**.
+La deviation d'un ds3132 est très faible donc il n'est pas necessaire de le resynchroniser souvent.
 
 ---
 ### FIN
