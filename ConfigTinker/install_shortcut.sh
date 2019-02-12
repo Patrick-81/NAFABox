@@ -41,25 +41,29 @@ else
 	desktop="Bureau"
 fi
 ######
-fichier=~/$desktop/$AppName.desktop
-if [ -f $fichier ]; then
-	if $french
-	then
-   		echo "le fichier $fichier existe"
-	else
-		echo "file $fichier exists"
-	fi
-else
-	AppName=$(echo $1 | sed 's/^./\u&/')
-	cat $dirinstall/template.desktop  | sed -e "s/APP_NAME/$1/g" > /tmp/shortcut1
-	cat /tmp/shortcut1  | sed -e "s%APP_EXEC%$AppExec%g" > /tmp/shortcut2
-	cat /tmp/shortcut2 | sed -e "s/NAME/$AppName/g" > ~/$desktop/$AppName.desktop
-	chmod +x ~/$desktop/$AppName.desktop
+AppName=$(echo $1 | sed 's/^./\u&/')
+
+rm /tmp/shortcut1
+rm /tmp/shortcut2
+rm /tmp/$AppName.desktop
+
+cat $dirinstall/template.desktop  | sed -e "s/APP_NAME/$1/g" > /tmp/shortcut1
+cat /tmp/shortcut1  | sed -e "s%APP_EXEC%$AppExec%g" > /tmp/shortcut2
+cat /tmp/shortcut2 | sed -e "s/NAME/$AppName/g" > /tmp/$AppName.desktop
+chmod +x /tmp/$AppName.desktop
+
 if [ -n "$2"  ]
 then
-    if [[ $2 != "0" ]]
+    if [[ $2 == "1" ]]
     then
-	    sudo cp ~/$desktop/$AppName.desktop /usr/share/applications/$AppName.desktop
+    	mv /tmp/$AppName.desktop /usr/share/applications/$AppName.desktop
+    if [[ $2 == "0" ]]
+    then
+    	mv /tmp/$AppName.desktop ~/$desktop/$AppName.desktop
+	
+    else
+    	mv /tmp/$AppName.desktop ~/$desktop/$AppName.desktop
+	sudo cp ~/$desktop/$AppName.desktop /usr/share/applications/$AppName.desktop
     fi
 fi
 fi
