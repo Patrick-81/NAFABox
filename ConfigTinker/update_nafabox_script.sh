@@ -62,7 +62,7 @@ then
 			mv $back_path/nafabox_temp $nafa_path
 		fi
 
-        $dirinstall/install_conf.sh
+        $dirinstall/install_conf.sh reins $1
 
 	else
 		echo "error wrong path for nafabox script, need run Pre_install.sh"
