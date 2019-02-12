@@ -1,4 +1,4 @@
-## Tuto d'installation d'un RTC pour Raspberry Pi 3b ou 3b+
+## Tuto d'installation d'un RTC pour la Tinkerboard et S
 ---
 
 __source :__ http://nagashur.com/blog/2015/08/31/ds3231-raspberry-pi-rtc-ajouter-une-horloge-temps-reel-i2c-alitest/
@@ -10,7 +10,7 @@ Ce tuto est dédié au module RTC à base de DS3132
 
 Ce module fonctionne en I2C, il est donc nécessaire de l’activer et de le faire fonctionner. Pour cela, le plus simple est d’exécuter l’utilitaire raspi-config :
 	
-`sudo raspi-config`
+`sudo armbian-config`
 
 Ensuite, sélectionnez l’option **3 – Interfacing Options**, puis l’option **P4 I2C**, et choisissez YES, OK, YES, et encore OK. Vous pouvez alors faire finish, puis accepter de redémarrer.        
 
@@ -23,11 +23,51 @@ Une fois cela effectué, vous pourrez vérifier que tout fonctionne en tapant la
 	
 `sudo i2cdetect -y 1`
 
-__Attention :__ Les premiers modèles de Raspberry pi (très anciens) devront recevoir la commande sudo i2cdetect -y 0 à la place.
-
 Si tout à bien fonctionné et que le câblage est bon, vous devriez voir ceci en faisant un **sudo i2cdetect -y 1** :
 
 ![Resultat](https://github.com/Patrick-81/NAFABox/raw/master/ConfigTinker/rtc_rpi.png)
+
+---
+### Modification du système 
+
+Nous allons modifier 3 fichiers necessaires pour l'activation du RTC externe car la tinkerboard posède déjà un RTC interne ( mais non utilisable car on ne peut pas brancher de pile dessus, son nom : rtc0)
+
+1- modifier le fichier **/lib/udev/hwclock-set**
+
+`sudo nano /lib/udev/hwclock-set`
+
+Commenter les ligne suivante en mettant un **diese** # devant les lignes suivantes :   
+`if [ -e /run/systemd/system ] ; then`  
+`    exit 0`  
+`fi`  
+
+`if [ -e /run/udev/hwclock-set ]; then`  
+`    exit 0`  
+`fi`  
+
+Pour sortir `Ctrl+q` puis **y** puis `Enter`
+
+
+2- modifier le fichier **/lib/udev/rules.d/50-udev-default.rules**
+
+`sudo nano /lib/udev/rules.d/50-udev-default.rules`  
+
+Modifier la ligne suivante :   
+`SUBSYSTEM=="rtc", KERNEL=="rtc0", SYMLINK+="rtc", OPTIONS+="link_priority=-100"`  
+en  
+`SUBSYSTEM=="rtc", KERNEL=="rtc1", SYMLINK+="rtc", OPTIONS+="link_priority=-100"`    
+
+Pour sortir `Ctrl+q` puis **y** puis `Enter`
+
+3- modifier le fichier **/﻿lib/udev/rules.d/85-hwclock.rules**
+
+`sudo nano /﻿lib/udev/rules.d/85-hwclock.rules`  
+
+Modifier ou ajouter la ligne suivante :   
+`KERNEL=="rtc1", RUN+="/lib/udev/hwclock-set $root/$name"`     
+
+Pour sortir `Ctrl+q` puis **y** puis `Enter`
+
 
 ---
 ### Utilisation du module

@@ -73,6 +73,10 @@ https://github.com/Patrick-81/NAFABox/blob/master/ConfigTinker/InstallationHotsp
 
 https://github.com/Patrick-81/NAFABox/blob/master/ConfigTinker/tuto_rtc_raspberry.md
 
+### Documentation for RTC in Tinkerboard/S (in french):
+
+https://github.com/Patrick-81/NAFABox/blob/master/ConfigTinker/tuto_rtc_tinkerboard.md
+
 
 __User URL :__
 
