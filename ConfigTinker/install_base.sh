@@ -297,6 +297,7 @@ then
 	# ajout des packs langage
 	sudo apt-get $options install language-pack-fr language-pack-gnome-fr
 	sudo apt-get $options install firefox-locale.fr
+    sudo apt-get $options install language-pack-fr language-pack-gnome-fr-base
 	sudo locale-gen fr_FR fr_FR.UTF-8
 	sudo update-locale LC_ALL=fr_FR.UTF-8 LANG=fr_FR.UTF-8
 	sudo dpkg-reconfigure keyboard-configuration
