@@ -77,6 +77,11 @@ https://github.com/Patrick-81/NAFABox/blob/master/ConfigTinker/tuto_rtc_raspberr
 
 https://github.com/Patrick-81/NAFABox/blob/master/ConfigTinker/tuto_rtc_tinkerboard.md
 
+### Documentation port le mappage persistant pour les péripheriques serial/usb (en anglais): 
+
+https://indilib.org/support/tutorials/157-persistent-serial-port-mapping.html
+
+
 __Lien utile :__
 
 - Page Web : IP

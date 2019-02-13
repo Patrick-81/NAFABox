@@ -77,6 +77,9 @@ https://github.com/Patrick-81/NAFABox/blob/master/ConfigTinker/tuto_rtc_raspberr
 
 https://github.com/Patrick-81/NAFABox/blob/master/ConfigTinker/tuto_rtc_tinkerboard.md
 
+### Documentation for Persistance mapping for serial/usb device : 
+
+https://indilib.org/support/tutorials/157-persistent-serial-port-mapping.html
 
 __User URL :__
 
