@@ -3,7 +3,7 @@
 
 __source :__ http://nagashur.com/blog/2015/08/31/ds3231-raspberry-pi-rtc-ajouter-une-horloge-temps-reel-i2c-alitest/
 
-Ce tuto est dédié au module RTC à base de DS3132
+Ce tuto est dédié au module RTC à base de DS3132 (peut marché aussi avec le DS1307)
 
 ---
 ### Configuration de l’I2C
