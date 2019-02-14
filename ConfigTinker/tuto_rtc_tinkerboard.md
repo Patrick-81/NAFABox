@@ -12,7 +12,7 @@ Ce module fonctionne en I2C, il est donc nécessaire de l’activer et de le fai
 	
 `sudo armbian-config`
 
-Ensuite, sélectionnez l’option **3 – Interfacing Options**, puis l’option **P4 I2C**, et choisissez YES, OK, YES, et encore OK. Vous pouvez alors faire finish, puis accepter de redémarrer.        
+Ensuite, sélectionnez l’option **System**, puis l’option **Hardware**, et cochez **i2c1** et **i2c4**. Vous pouvez alors faire save, puis exit et enfin puis accepter de redémarrer.        
 
 Pour vérifier le fonctionnement de l’ensemble, il faudra installer les programmes python-smbus et i2c-tools :
 
@@ -45,7 +45,7 @@ Commenter les ligne suivante en mettant un **diese** # devant les lignes suivant
 `    exit 0`  
 `fi`  
 
-Pour sortir `Ctrl+q` puis **y** puis `Enter`
+Pour sortir `Ctrl+x` puis **y** puis `Enter`
 
 
 2- modifier le fichier **/lib/udev/rules.d/50-udev-default.rules**
@@ -57,16 +57,16 @@ Modifier la ligne suivante :
 en  
 `SUBSYSTEM=="rtc", KERNEL=="rtc1", SYMLINK+="rtc", OPTIONS+="link_priority=-100"`    
 
-Pour sortir `Ctrl+q` puis **y** puis `Enter`
+Pour sortir `Ctrl+x` puis **y** puis `Enter`
 
-3- modifier le fichier **/﻿lib/udev/rules.d/85-hwclock.rules**
+3- modifier le fichier **/lib/udev/rules.d/85-hwclock.rules**
 
-`sudo nano /﻿lib/udev/rules.d/85-hwclock.rules`  
+`sudo nano /lib/udev/rules.d/85-hwclock.rules`  
 
 Modifier ou ajouter la ligne suivante :   
 `KERNEL=="rtc1", RUN+="/lib/udev/hwclock-set $root/$name"`     
 
-Pour sortir `Ctrl+q` puis **y** puis `Enter`
+Pour sortir `Ctrl+x` puis **y** puis `Enter`
 
 
 ---
