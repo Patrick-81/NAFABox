@@ -50,8 +50,9 @@ then
 	indiW=TRUE
 	driver_3rd=TRUE
 	gps=TRUE
-	onstep=TRUE
+	onstep=FALSE
 	gphoto_i=FALSE
+    astrob=FALSE
 else
 	if $french
 	then
@@ -66,12 +67,10 @@ else
 		choice[6]="Installation driver GPS (GPSD)"
 		choice[7]="Installation OnStep driver (et Arduino)"
 	    choice[8]="Installation des drivers Gphoto2 (version PPA Jasem)"
+        choice[9]="installation de astroberry_diy"
 		version=`lsb_release -c -s`
         sudo apt-get $options install language-pack-kde-fr
-		if [[ $version == "xenial" ]]
-		then
-			sudo apt-get -o Dpkg::Options::="--force-overwrite" -f install
-		fi
+		sudo apt-get -o Dpkg::Options::="--force-overwrite" -f install
 	else
 		dial[0]="Install/Update of software"
 		dial[1]="Choose software(s) to install"
@@ -84,14 +83,12 @@ else
 		choice[6]="Install GPS driver (GPSD)"
 		choice[7]="Install OnStep driver (and Arduino)"
 	    choice[8]="Install Gphoto2 driver (Jasem PPA version)"
-	    	sudo apt-get $options install language-pack-kde-en
-		if [[ $version != "xenial" ]]
-		then
-			sudo apt-get -o Dpkg::Options::="--force-overwrite" -f install
-		fi
+        choice[9]="install astroberry_diy"
+	    sudo apt-get $options install language-pack-kde-en
+		sudo apt-get -o Dpkg::Options::="--force-overwrite" -f install
 	fi
 
-	st=(true false true false true true true false false)
+	st=(true false true false true true true false false false)
 
 	sudo apt-get $options install gsc
 	sudo apt-get $options install libqt5sql5-sqlite qtdeclarative5-dev
@@ -111,9 +108,10 @@ else
 		--field="${choice[6]}:CHK" \
 		--field="${choice[7]}:CHK" \
 	    --field="${choice[8]}:CHK" \
+        --field="${choice[9]}:CHK" \
 		"" "${st[0]}" "${st[1]}" "${st[2]}" \
 		"${st[3]}" "${st[4]}" "${st[5]}" "${st[6]}" \
-	    	"${st[7]}" "${st[8]}"`
+	    "${st[7]}" "${st[8]}" "${st[9]}"`
 	then
 		kstars=$(echo "$chose" | cut -d "|" -f2)
 		kstars_dev=$(echo "$chose" | cut -d "|" -f3)
@@ -123,7 +121,8 @@ else
 		driver_3rd=$(echo "$chose" | cut -d "|" -f7)
 		gps=$(echo "$chose" | cut -d "|" -f8)
 		onstep=$(echo "$chose" | cut -d "|" -f9)
-	    	gphoto_i=$(echo "$chose" | cut -d "|" -f10)
+	    gphoto_i=$(echo "$chose" | cut -d "|" -f10)
+        astrob=$(echo "$chose" | cut -d "|" -f11)
 	else
 		echo "cancel"
 	fi
@@ -276,6 +275,12 @@ if [[ $onstep == "TRUE" ]]
 then
 	$dirinstall/install_onstep.sh $server_choice
 fi
+
+if [[ $astrob == "TRUE" ]]
+then
+    $dirinstall/install_astroberry_diy.sh
+fi
+
 
 ######
 # Création de l'icône sur le bureau

@@ -57,7 +57,6 @@ else
 		choice[8]="Installation Siril"
 		choice[9]="Installation Stellarium"
 		choice[10]="Telechargement du/des index(s) astrometrique"
-		choice[11]="installation de astroberry_diy"
 
 
 	else
@@ -72,7 +71,6 @@ else
 		choice[8]="Siril"
 		choice[9]="Stellarium"
 		choice[10]="install astrometry index(s)"
-		choice[11]="install astroberry_diy"
 	fi
 
 
@@ -87,7 +85,6 @@ else
 	message[8]="Install siril"
 	message[9]="Install stellarium"
 	message[10]="Install index(s)"
-	message[11]="Install astroberry_diy"
 
 	script[0]=install_comsetup.sh
 	script[1]=install_linguider.sh
@@ -100,19 +97,18 @@ else
 	script[8]=install_siril.sh
 	script[9]=install_stellarium.sh
 	script[10]=install_index.sh
-	script[11]=install_astroberry_diy.sh
 
 
 	if [[ $2 == "initial" ]]
 	then
-		st=(true false true true false false false false false false false false)
+		st=(true false true true false false false false false false false)
 
 	else
-		st=(false false false false false false false false false false false false)
+		st=(false false false false false false false false false false false)
 	fi
 
 	# nombre de logiciel
-	number=12
+	number=11
 
 	# echo ${st[*]}
 	# echo ${choise[*]}
@@ -138,11 +134,9 @@ else
 		--field="${choice[8]}:CHK" \
 		--field="${choice[9]}:CHK" \
 		--field="${choice[10]}:CHK" \
-		--field="${choice[11]}:CHK" \
 		"" "${st[0]}" "${st[1]}" "${st[2]}" \
 		"${st[3]}" "${st[4]}" "${st[5]}" "${st[6]}" \
-		"${st[7]}" "${st[8]}" "${st[9]}" "${st[10]}" \
-		"${st[11]}"`
+		"${st[7]}" "${st[8]}" "${st[9]}" "${st[10]}"`
 	then
 		for (( i=0; i<=$number-1; i++ ))
 		do
@@ -189,15 +183,13 @@ do
 			dial[1]="Sélectionnez une option"
 			dial[2]="Quitter l'installation"
 			dial[3]="Compléter l'installation"
-			dial[4]="Installer le point d'accès"
-			dial[5]="Redémarer la machine"
+			dial[4]="Redémarer la machine"
 		else
 			dial[0]="What do you want to do now ?"
 			dial[1]="Select one option"
 			dial[2]="Quit the installation"
 			dial[3]="Complete installation"
-			dial[4]="Install the hotspot"
-			dial[5]="Reboot now"
+			dial[4]="Reboot now"
 		fi
 		if option=`yad --width 400 \
 					--center \
@@ -205,7 +197,7 @@ do
 					--title "${dial[0]}" \
 					--image=gnome-shutdown \
 					--text "${dial[1]}" \
-					--entry-text "${dial[2]}" "${dial[3]}" "${dial[4]}" "${dial[5]}"`
+					--entry-text "${dial[2]}" "${dial[3]}" "${dial[4]}"`
 		then
 			if [[ $option == "${dial[2]}" ]]
 			then
@@ -215,10 +207,6 @@ do
 			then
 				echo "back to install software"
 			elif [[ $option == "${dial[4]}" ]]
-			then
-				echo "Install hotspot"
-				sudo $dirinstall/install_hotspot.sh | tee -a "$dirinstall/nafabox.log"
-			elif [[ $option == "${dial[5]}" ]]
 			then
 				echo "Reboot"
 				sudo reboot
