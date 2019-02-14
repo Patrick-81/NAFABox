@@ -45,7 +45,7 @@ Commenter les ligne suivante en mettant un **diese** # devant les lignes suivant
 `    exit 0`  
 `fi`  
 
-Pour sortir `Ctrl+x` puis **y** puis `Enter`
+Pour sortir `Ctrl+x` puis **o** puis `Enter`
 
 
 2- modifier le fichier **/lib/udev/rules.d/50-udev-default.rules**
@@ -57,7 +57,7 @@ Modifier la ligne suivante :
 en  
 `SUBSYSTEM=="rtc", KERNEL=="rtc1", SYMLINK+="rtc", OPTIONS+="link_priority=-100"`    
 
-Pour sortir `Ctrl+x` puis **y** puis `Enter`
+Pour sortir `Ctrl+x` puis **o** puis `Enter`
 
 3- modifier le fichier **/lib/udev/rules.d/85-hwclock.rules**
 
@@ -66,7 +66,7 @@ Pour sortir `Ctrl+x` puis **y** puis `Enter`
 Modifier ou ajouter la ligne suivante :   
 `KERNEL=="rtc1", RUN+="/lib/udev/hwclock-set $root/$name"`     
 
-Pour sortir `Ctrl+x` puis **y** puis `Enter`
+Pour sortir `Ctrl+x` puis **o** puis `Enter`
 
 
 ---
@@ -80,7 +80,7 @@ Si tout ce que nous avons fait avant a bien fonctionné, nous pouvons alors exé
 
 Cette commande doit “notifier” au système la présence du composant. Dès lors il est possible de consulter l’heure et la date contenue dans le module en faisant un :
 
-`sudo hwclock`
+`sudo hwclock -f /dev/rtc1`
 
 Cela devrait dès lors afficher une date et une heure. Si vous n’avez jamais utilisé le module, celle ci sera probablement incorrecte. On pourra alors la régler.
 
