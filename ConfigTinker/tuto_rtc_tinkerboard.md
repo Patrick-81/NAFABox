@@ -12,7 +12,7 @@ Ce module fonctionne en I2C, il est donc nécessaire de l’activer et de le fai
 	
 `sudo armbian-config`
 
-Ensuite, sélectionnez l’option **System**, puis l’option **Hardware**, et cochez **i2c1** et **i2c4** (avec les fleches directionnelles et la barre espace. Vous pouvez alors faire save, puis exit et enfin puis accepter de redémarrer.        
+Ensuite, sélectionnez l’option **System**, puis l’option **Hardware**, et cochez **i2c1** et **i2c4** (avec les fléches directionnelles et la barre espace). Vous pouvez alors faire save, puis exit et enfin puis accepter de redémarrer.        
 
 Pour vérifier le fonctionnement de l’ensemble, il faudra installer les programmes python-smbus et i2c-tools :
 
