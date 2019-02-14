@@ -58,10 +58,10 @@ host="FALSE"
 
 if [[ $1 == "initial" ]]
 then
-	st=(true false false true)
+	st=(true true false false true)
 
 else
-	st=(false false false false)
+	st=(false false false false false)
 fi
 
 if [[ $server_choice == "server" ]]
@@ -72,55 +72,55 @@ then
     ip_indicator="FALSE"
     host="FALSE"
 else
-#if [[ $DESKTOP_SESSION == "mate" ]]
-#then
-    if chose=`yad --width=350 \
-	    --center \
-	    --form \
-	    --title="Select Installation Options :" \
-	    --text="Install Program :" \
-	    --field=":LBL" \
-	    --field="Plugin IP Indicator:CHK" \
-	    --field="Fr language:CHK" \
-	    --field="Autologin for dev armbian (nightly):CHK" \
-	    --field="Change hostname to NAFABox ?:CHK" \
-	    "" "${st[0]}" "${st[1]}" "${st[2]}" "${st[3]}"`
+    if [[ $DESKTOP_SESSION == "mate" ]]
     then
-	    # recuperation des valeurs
-	    ip_indicator=$(echo "$chose" | cut -d "|" -f2)
-	    language=$(echo "$chose" | cut -d "|" -f3)
-	    autologin=$(echo "$chose" | cut -d "|" -f4)
-	    host=$(echo "$chose" | cut -d "|" -f5)
+        if chose=`yad --width=350 \
+	        --center \
+	        --form \
+	        --title="Select Installation Options :" \
+	        --text="Install Program :" \
+	        --field=":LBL" \
+	        --field="Plugin IP Indicator:CHK" \
+	        --field="Fr language:CHK" \
+	        --field="Autologin for dev armbian (nightly):CHK" \
+	        --field="Change hostname to NAFABox ?:CHK" \
+	        "" "${st[1]}" "${st[2]}" "${st[3]}" "${st[4]}"`
+        then
+	        # recuperation des valeurs
+	        ip_indicator=$(echo "$chose" | cut -d "|" -f2)
+	        language=$(echo "$chose" | cut -d "|" -f3)
+	        autologin=$(echo "$chose" | cut -d "|" -f4)
+	        host=$(echo "$chose" | cut -d "|" -f5)
 
+        else
+	        echo "cancel"
+        fi
     else
-	    echo "cancel"
+	    if chose=`yad --width=300 \
+		    --center \
+		    --form \
+		    --title="Select Installation Options :" \
+		    --text="Install Program :" \
+		    --field=":LBL" \
+		    --field="Mate destktop and components:CHK" \
+		    --field="Fr language:CHK" \
+		    --field="Plugin IP Indicator:CHK" \
+		    --field="Autologin for dev armbian (nightly):CHK" \
+		    --field="Change hostname to NAFABox ?:CHK" \
+		    "" "${st[0]}" "${st[1]}" "${st[2]}" "${st[3]}" "${st[4]}"`
+	    then
+		    # recuperation des valeurs
+		    installMate=$(echo "$chose" | cut -d "|" -f2)
+		    language=$(echo "$chose" | cut -d "|" -f3)
+		    ip_indicator=$(echo "$chose" | cut -d "|" -f4)
+		    autologin=$(echo "$chose" | cut -d "|" -f5)
+		    host=$(echo "$chose" | cut -d "|" -f6)
+
+	    else
+		    echo "cancel"
+	    fi
     fi
 fi
-#else
-#	if chose=`yad --width=300 \
-#		--center \
-#		--form \
-#		--title="Select Installation Options :" \
-#		--text="Install Program :" \
-#		--field=":LBL" \
-#		--field="Mate destktop and components:CHK" \
-#		--field="Fr language:CHK" \
-#		--field="Plugin IP Indicator:CHK" \
-#		--field="Autologin for dev armbian (nightly):CHK" \
-#		--field="Change hostname to NAFABox ?:CHK" \
-#		"" "TRUE" "FALSE" "TRUE" "FALSE" "TRUE"`
-#	then
-#		# recuperation des valeurs
-#		installMate=$(echo "$chose" | cut -d "|" -f2)
-#		language=$(echo "$chose" | cut -d "|" -f3)
-#		ip_indicator=$(echo "$chose" | cut -d "|" -f4)
-#		autologin=$(echo "$chose" | cut -d "|" -f5)
-#		host=$(echo "$chose" | cut -d "|" -f6)
-#
-#	else
-#		echo "cancel"
-#	fi
-#fi
 
 if [[ $host == "TRUE" ]]
 then
