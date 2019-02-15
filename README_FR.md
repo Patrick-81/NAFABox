@@ -96,7 +96,7 @@ __Lien utile :__
 
 https://share.obspm.fr/index.php/s/oGtH7pbD9ZsyTTG
 
-**Miroir pour les dernière version :**
+**Miroir pour les dernières versions :**
 
 https://1drv.ms/f/s!AlFrxWojM_Hflr0R80wOKHzWQMI88g   
 https://drive.google.com/drive/folders/19rKybLnewPy2NaOpZ7BoXR5x_koXWGFJ?usp=sharing  
