@@ -31,7 +31,7 @@
   - NoMachine : https://www.nomachine.com/fr
   - Hotspot awake : NAFABox script for re-up hotspot (outdate)
   
-- Lin_guider : https://sourceforge.net/projects/linguider/
+- Lin Guider : https://sourceforge.net/projects/linguider/
 
 - Kstars-EKOS-INDI
   - Kstars : https://edu.kde.org/kstars/
@@ -48,7 +48,7 @@
   - last Gphoto2 : https://launchpad.net/~mutlaqja/+archive/ubuntu/libgphoto2
   - Astroberry-DIY : https://github.com/rkaczorek/astroberry-diy
   
-- Phd2 : https://openphdguiding.org/
+- PHD2 : https://openphdguiding.org/
 
 - Carte du ciel (version Beta) : https://www.ap-i.net/skychart/fr/start
 
