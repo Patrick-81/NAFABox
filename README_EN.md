@@ -95,4 +95,10 @@ __User URL :__
 
 https://share.obspm.fr/index.php/s/oGtH7pbD9ZsyTTG
 
+**Miror for last versions :**
 
+https://1drv.ms/f/s!AlFrxWojM_Hflr0R80wOKHzWQMI88g   
+https://drive.google.com/drive/folders/19rKybLnewPy2NaOpZ7BoXR5x_koXWGFJ?usp=sharing  
+
+
+### Liste des logiciels : https://github.com/Patrick-81/NAFABox/blob/master/ConfigTinker/Software.md
