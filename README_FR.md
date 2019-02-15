@@ -98,8 +98,8 @@ https://share.obspm.fr/index.php/s/oGtH7pbD9ZsyTTG
 
 **Miroir pour les dernière version :**
 
-https://1drv.ms/f/s!AlFrxWojM_Hflr0R80wOKHzWQMI88g
-https://drive.google.com/drive/folders/19rKybLnewPy2NaOpZ7BoXR5x_koXWGFJ?usp=sharing
+https://1drv.ms/f/s!AlFrxWojM_Hflr0R80wOKHzWQMI88g   
+https://drive.google.com/drive/folders/19rKybLnewPy2NaOpZ7BoXR5x_koXWGFJ?usp=sharing  
 
 ### Tuto pour utiliser les images : https://lroge.scenari-community.org/KstarsEkosIndi/#images
 
