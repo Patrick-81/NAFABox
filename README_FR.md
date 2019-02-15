@@ -62,8 +62,8 @@ http://cdimage.ubuntu.com/lubuntu/releases/18.04/release/lubuntu-18.04.1-desktop
 ... Same instruction ...
 
 
-### documentation pour la TinkerBoard/S : https://lroge.scenari-community.org/KstarsEkosIndi/#Nafabox_1
-### documentation pour les Raspberry Pi 3b/3b+ : https://lroge.scenari-community.org/KstarsEkosIndi/#PI
+### Documentation pour la TinkerBoard/S : https://lroge.scenari-community.org/KstarsEkosIndi/#Nafabox_1
+### Documentation pour les Raspberry Pi 3b/3b+ : https://lroge.scenari-community.org/KstarsEkosIndi/#PI
 
 ### Documentation pour create un HotSpot :
 
@@ -95,5 +95,13 @@ __Lien utile :__
 ### pour recuperer une image toute faite de la NAFABox :
 
 https://share.obspm.fr/index.php/s/oGtH7pbD9ZsyTTG
+
+**Miroir pour les dernière version :**
+
+https://1drv.ms/f/s!AlFrxWojM_Hflr0R80wOKHzWQMI88g
+https://drive.google.com/drive/folders/19rKybLnewPy2NaOpZ7BoXR5x_koXWGFJ?usp=sharing
+
+### Tuto pour utiliser les images : https://lroge.scenari-community.org/KstarsEkosIndi/#images
+
 
 
