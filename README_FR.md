@@ -103,5 +103,7 @@ https://drive.google.com/drive/folders/19rKybLnewPy2NaOpZ7BoXR5x_koXWGFJ?usp=sha
 
 ### Tuto pour utiliser les images : https://lroge.scenari-community.org/KstarsEkosIndi/#images
 
+### Liste des logiciels : https://github.com/Patrick-81/NAFABox/blob/master/ConfigTinker/Software.md
+
 
 
