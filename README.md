@@ -5,4 +5,4 @@
 [In English](https://github.com/Patrick-81/NAFABox/blob/master/README_EN.md)
 
 **Thanks All !**   
-**Merci tout le monde !**
+**Merci à tous !**
