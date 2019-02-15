@@ -24,8 +24,8 @@ fi
 dirinstall=$nafabox_path
 ######
 sudo apt-get install --reinstall lshw
-mkdir -p /home/nafa/Projects
-cd /home/nafa/Projects
+mkdir -p /home/nafa/bin/Projects
+cd /home/nafa/bin/Projects
 machine=$(sudo lshw | grep "produit\|product" | grep "Intel")
 if [[ $machine == *"Intel"* ]]
 then
@@ -42,18 +42,19 @@ fi
 git clone https://github.com/RPi-Distro/RTIMULib
 git clone https://github.com/TinkerBoard/gpio_lib_c 
 
-sudo apt-get install cmake
-sudo apt-get install libnova-dev
-sudo apt-get install libgps-dev
+sudo apt-get -y install cmake
+sudo apt-get -y install libnova-dev
+sudo apt-get -y install libgps-dev
+sudo apt-get -y install libindi-dev
 
-cd /home/nafa/Projects/gpio_lib_c
+cd /home/nafa/bin/Projects/gpio_lib_c
 chmod +x build
 sudo ./build
 
-cd /home/nafa/Projects/RTIMULib/RTIMULib && mkdir -p build && cd build
+cd /home/nafa/bin/Projects/RTIMULib/RTIMULib && mkdir -p build && cd build
 sudo rm -rf * && cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Debug .. && sudo make install
 
-cd /home/nafa/Projects/astroberry-diy
+cd /home/nafa/bin/Projects/astroberry-diy
 #patch CMakeLists.txt -i $dirinstall/CMakeLists.patch -o TEMP
 #cp -f TEMP CMakeLists.txt
 #patch rpi_focus.cpp -i $dirinstall/rpi_focus.patch -o TEMP
