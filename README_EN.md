@@ -56,29 +56,27 @@ https://ubuntu-mate.org/raspberry-pi/ubuntu-mate-16.04.2-desktop-armhf-raspberry
 http://cdimage.ubuntu.com/ubuntu-mate/releases/18.04/release/ubuntu-mate-18.04.1-desktop-amd64.iso
 or **Xubuntu** Bionic (18.04 LTS):   
 http://cdimage.ubuntu.com/xubuntu/releases/18.04/release/xubuntu-18.04.1-desktop-amd64.iso   
-or **Lubuntu** Bionic (18.04 LTS):  
+or **Lubuntu** Bionic (18.04 LTS): (Not tested)  
 http://cdimage.ubuntu.com/lubuntu/releases/18.04/release/lubuntu-18.04.1-desktop-amd64.iso  
 
 ... Same instruction ...
 
 
-### documentation for TinkerBoard : https://lroge.scenari-community.org/KstarsEkosIndi/#Nafabox_1
-### documentation for Raspberry Pi 2/3 : https://lroge.scenari-community.org/KstarsEkosIndi/#PI
+### documentation for TinkerBoard :   
+https://lroge.scenari-community.org/KstarsEkosIndi/#Nafabox_1
+### documentation for Raspberry Pi 2/3 :    
+https://lroge.scenari-community.org/KstarsEkosIndi/#PI
 
-### Documentation for create HotSpot (in french):
-
+### Documentation for create HotSpot (in french):   
 https://github.com/Patrick-81/NAFABox/blob/master/ConfigTinker/InstallationHotspotWifi.pdf
 
-### Documentation for RTC in Rasperry Pi 3b/3b+ (in french):
-
+### Documentation for RTC in Rasperry Pi 3b/3b+ (in french):  
 https://github.com/Patrick-81/NAFABox/blob/master/ConfigTinker/tuto_rtc_raspberry.md
 
-### Documentation for RTC in Tinkerboard/S (in french):
-
+### Documentation for RTC in Tinkerboard/S (in french):   
 https://github.com/Patrick-81/NAFABox/blob/master/ConfigTinker/tuto_rtc_tinkerboard.md
 
-### Documentation for Persistance mapping for serial/usb device : 
-
+### Documentation for Persistance mapping for serial/usb device :   
 https://indilib.org/support/tutorials/157-persistent-serial-port-mapping.html
 
 __User URL :__
@@ -91,14 +89,13 @@ __User URL :__
 - Webdav : IP:443
 - Nomachine : IP:5000
 
-### For NAFABox OS Image :
-
+### For NAFABox OS Image :   
 https://share.obspm.fr/index.php/s/oGtH7pbD9ZsyTTG
 
-**Miror for last versions :**
-
+**Miror for last versions :**   
 https://1drv.ms/f/s!AlFrxWojM_Hflr0R80wOKHzWQMI88g   
 https://drive.google.com/drive/folders/19rKybLnewPy2NaOpZ7BoXR5x_koXWGFJ?usp=sharing  
 
 
-### Liste des logiciels : https://github.com/Patrick-81/NAFABox/blob/master/ConfigTinker/Software.md
+### NAFABox Software's List :   
+https://github.com/Patrick-81/NAFABox/blob/master/ConfigTinker/Software.md

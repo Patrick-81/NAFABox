@@ -47,7 +47,7 @@ ou
 
 https://ubuntu-mate.org/raspberry-pi/ubuntu-mate-16.04.2-desktop-armhf-raspberry-pi.img.xz
 
-... Same instruction ...
+... Etape identique ...
 
 ### Pour les systèmes X86_64/Amd64 Ubuntu Linux system :
 
@@ -56,29 +56,27 @@ https://ubuntu-mate.org/raspberry-pi/ubuntu-mate-16.04.2-desktop-armhf-raspberry
 http://cdimage.ubuntu.com/ubuntu-mate/releases/18.04/release/ubuntu-mate-18.04.1-desktop-amd64.iso   
 ou **Xubuntu** Bionic (18.04 LTS):   
 http://cdimage.ubuntu.com/xubuntu/releases/18.04/release/xubuntu-18.04.1-desktop-amd64.iso   
-ou **Lubuntu** Bionic (18.04 LTS):  
+ou **Lubuntu** Bionic (18.04 LTS) (Pas testé):  
 http://cdimage.ubuntu.com/lubuntu/releases/18.04/release/lubuntu-18.04.1-desktop-amd64.iso   
 
-... Same instruction ...
+... Etape identique ...
 
 
-### Documentation pour la TinkerBoard/S : https://lroge.scenari-community.org/KstarsEkosIndi/#Nafabox_1
-### Documentation pour les Raspberry Pi 3b/3b+ : https://lroge.scenari-community.org/KstarsEkosIndi/#PI
+### Documentation pour la TinkerBoard/S :   
+https://lroge.scenari-community.org/KstarsEkosIndi/#Nafabox_1   
+### Documentation pour les Raspberry Pi 3b/3b+ :    
+https://lroge.scenari-community.org/KstarsEkosIndi/#PI  
 
-### Documentation pour create un HotSpot :
-
+### Documentation pour créer un HotSpot :  
 https://github.com/Patrick-81/NAFABox/blob/master/ConfigTinker/InstallationHotspotWifi.pdf
 
-### Documentation installer Un RTC sur Rasperry Pi 3b/3b+ :
-
+### Documentation pour installer Un RTC sur Rasperry Pi 3b/3b+ :   
 https://github.com/Patrick-81/NAFABox/blob/master/ConfigTinker/tuto_rtc_raspberry.md
 
-### Documentation installer Un RTC sur Tinkerboard/S :
-
+### Documentation pour installer Un RTC sur Tinkerboard/S :   
 https://github.com/Patrick-81/NAFABox/blob/master/ConfigTinker/tuto_rtc_tinkerboard.md
 
-### Documentation port le mappage persistant pour les péripheriques serial/usb (en anglais): 
-
+### Documentation pour le mappage persistant pour les péripheriques serial/usb (en anglais):   
 https://indilib.org/support/tutorials/157-persistent-serial-port-mapping.html
 
 
@@ -92,18 +90,18 @@ __Lien utile :__
 - Webdav : IP:443
 - Nomachine : IP:5000
 
-### pour recuperer une image toute faite de la NAFABox :
-
+### pour recuperer une image toute faite de la NAFABox :   
 https://share.obspm.fr/index.php/s/oGtH7pbD9ZsyTTG
 
-**Miroir pour les dernières versions :**
-
+**Miroir pour les dernières versions :**  
 https://1drv.ms/f/s!AlFrxWojM_Hflr0R80wOKHzWQMI88g   
 https://drive.google.com/drive/folders/19rKybLnewPy2NaOpZ7BoXR5x_koXWGFJ?usp=sharing  
 
-### Tuto pour utiliser les images : https://lroge.scenari-community.org/KstarsEkosIndi/#images
+### Tuto pour utiliser les images :   
+https://lroge.scenari-community.org/KstarsEkosIndi/#images
 
-### Liste des logiciels : https://github.com/Patrick-81/NAFABox/blob/master/ConfigTinker/Software.md
+### Liste des logiciels de la NAFABox :   
+https://github.com/Patrick-81/NAFABox/blob/master/ConfigTinker/Software.md
 
 
 
