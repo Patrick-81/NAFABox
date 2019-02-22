@@ -35,6 +35,13 @@ options="--auto-remove --yes -q"
 #then
 $dirinstall/install_base.sh $1 $server_choice
 
+######
+# detect processeur
+######
+source $dirinstall/proctype.sh
+
+
+
 figlet -k Install Configuration
 echo "================================================="
 echo "================================================="
@@ -113,20 +120,49 @@ figlet -k Install hotspot program
 echo "================================================="
 echo "================================================="
 
+machine=$(sudo lshw | grep "produit\|product" | grep "Raspberry")
+
 if [ -d "/usr/lib/armbian-config/" ]
 then
     echo "armbian-config is already install"
 else
-    cp $dirinstall/run_armbian_config.sh ~/bin/run_armbian_config.sh
-    sudo ln -sf ~/bin/run_armbian_config.sh /usr/bin/armbian-config
-
-    if [[ $server_choice == "server" ]]
+    machine=$(sudo lshw | grep "produit\|product" | grep "Raspberry")
+    if [[ $machine == *"Raspberry"* ]]
     then
-        echo "no icon for server"
-    else
-        sudo cp /usr/share/icons/gnome/48x48/categories/applications-system.png /usr/share/pixmaps/armbian-config.png
-        $dirinstall/install_shortcut.sh armbian-config "bash -ic armbian-config" 1
+        echo "install hotspot for raspberry"
+        cp $dirinstall/install_hotspot.sh ~/bin/install_hotspot.sh
+        sudo ln -sf ~/bin/install_hotspot.sh /usr/bin/install_hotspot
+        if [[ $server_choice == "server" ]]
+        then
+            echo "no icon for server"
+        else
+            sudo cp $dirinstall/install_hotspot.png /usr/share/pixmaps/install_hotspot.png
+            $dirinstall/install_shortcut.sh install_hotspot "bash -ic install_hotspot" 1
+        fi
+        
+    elif [[ $proc == "_amd64" ]] || [[ $proc == "_x86" ]]
+    then
+        echo "install hotspot for X86 and Amd64 system"
+        cp $dirinstall/install_hotspot.sh ~/bin/install_hotspot.sh
+        sudo ln -sf ~/bin/install_hotspot.sh /usr/bin/install_hotspot
+        if [[ $server_choice == "server" ]]
+        then
+            echo "no icon for server"
+        else
+            sudo cp $dirinstall/install_hotspot.png /usr/share/pixmaps/install_hotspot.png
+            $dirinstall/install_shortcut.sh install_hotspot "bash -ic install_hotspot" 1
+        fi
     fi
+    #cp $dirinstall/run_armbian_config.sh ~/bin/run_armbian_config.sh
+    #sudo ln -sf ~/bin/run_armbian_config.sh /usr/bin/armbian-config
+
+    #if [[ $server_choice == "server" ]]
+    #then
+    #    echo "no icon for server"
+    #else
+    #    sudo cp /usr/share/icons/gnome/48x48/categories/applications-system.png /usr/share/pixmaps/armbian-config.png
+    #    $dirinstall/install_shortcut.sh armbian-config "bash -ic armbian-config" 1
+    #fi
 fi
 
 ##### 

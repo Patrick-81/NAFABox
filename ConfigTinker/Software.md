@@ -38,7 +38,7 @@
   - Indi : https://indilib.org/
   - Kstars github : https://github.com/KDE/kstars
   - Indi github : https://github.com/indilib/indi
-  - GPSD : http://www.catb.org/gpsd/
+  - GPSD : http://www.catb.org/gpsd/ (for GPS USB)
   - IndiWebManager : https://github.com/knro/indiwebmanager
   - Additional driver : ATIK Indi + Inova Indi
   - Onstep and other

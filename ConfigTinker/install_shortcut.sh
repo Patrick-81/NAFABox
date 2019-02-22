@@ -44,9 +44,9 @@ fi
 ######
 AppName=$(echo $1 | sed 's/^./\u&/')
 
-rm /tmp/shortcut1
-rm /tmp/shortcut2
-rm /tmp/$AppName.desktop
+rm -f /tmp/shortcut1
+rm -f /tmp/shortcut2
+rm -f /tmp/$AppName.desktop
 
 cat $dirinstall/template.desktop  | sed -e "s/APP_NAME/$1/g" > /tmp/shortcut1
 cat /tmp/shortcut1  | sed -e "s%APP_EXEC%$AppExec%g" > /tmp/shortcut2

@@ -54,14 +54,15 @@ installMate="FALSE"
 language="FALSE"
 autologin="FALSE"
 ip_indicator="FALSE"
+o_indicator="FALSE"
 host="FALSE"
 
 if [[ $1 == "initial" ]]
 then
-	st=(true true false false true)
+	st=(true true true false false true)
 
 else
-	st=(false false false false false)
+	st=(false false false false false false)
 fi
 
 if [[ $server_choice == "server" ]]
@@ -70,6 +71,7 @@ then
     language="FALSE"
     autologin="FALSE"
     ip_indicator="FALSE"
+    o_indicator="FALSE"
     host="FALSE"
 else
     if [[ $DESKTOP_SESSION == "mate" ]]
@@ -81,16 +83,18 @@ else
 	        --text="Install Program :" \
 	        --field=":LBL" \
 	        --field="Plugin IP Indicator:CHK" \
+            --field="Other indicator:CHK" \
 	        --field="Fr language:CHK" \
 	        --field="Autologin for dev armbian (nightly):CHK" \
 	        --field="Change hostname to NAFABox ?:CHK" \
-	        "" "${st[1]}" "${st[2]}" "${st[3]}" "${st[4]}"`
+	        "" "${st[1]}" "${st[2]}" "${st[3]}" "${st[4]}" "${st[5]}"`
         then
 	        # recuperation des valeurs
 	        ip_indicator=$(echo "$chose" | cut -d "|" -f2)
-	        language=$(echo "$chose" | cut -d "|" -f3)
-	        autologin=$(echo "$chose" | cut -d "|" -f4)
-	        host=$(echo "$chose" | cut -d "|" -f5)
+            o_indicator=$(echo "$chose" | cut -d "|" -f3)
+	        language=$(echo "$chose" | cut -d "|" -f4)
+	        autologin=$(echo "$chose" | cut -d "|" -f5)
+	        host=$(echo "$chose" | cut -d "|" -f6)
 
         else
 	        echo "cancel"
@@ -105,16 +109,18 @@ else
 		    --field="Mate destktop and components:CHK" \
 		    --field="Fr language:CHK" \
 		    --field="Plugin IP Indicator:CHK" \
+            --field="Other indicator:CHK" \
 		    --field="Autologin for dev armbian (nightly):CHK" \
 		    --field="Change hostname to NAFABox ?:CHK" \
-		    "" "${st[0]}" "${st[1]}" "${st[2]}" "${st[3]}" "${st[4]}"`
+		    "" "${st[0]}" "${st[1]}" "${st[2]}" "${st[3]}" "${st[4]}" "${st[5]}"`
 	    then
 		    # recuperation des valeurs
 		    installMate=$(echo "$chose" | cut -d "|" -f2)
 		    language=$(echo "$chose" | cut -d "|" -f3)
 		    ip_indicator=$(echo "$chose" | cut -d "|" -f4)
-		    autologin=$(echo "$chose" | cut -d "|" -f5)
-		    host=$(echo "$chose" | cut -d "|" -f6)
+            o_indicator=$(echo "$chose" | cut -d "|" -f5)
+		    autologin=$(echo "$chose" | cut -d "|" -f6)
+		    host=$(echo "$chose" | cut -d "|" -f7)
 
 	    else
 		    echo "cancel"
@@ -245,12 +251,18 @@ then
 
 fi
 
-sudo apt-get $options install indicator-cpufreq indicator-multiload 
-sudo apt-get $options install indicator-sound indicator-power indicator-messages indicator-application indicator-session
-#sudo apt-get $options install indicator-bluetooth
+if [[ $o_indicator == "TRUE" ]]
+then
+    sudo apt-get $options install indicator-cpufreq indicator-multiload 
+    sudo apt-get $options install indicator-sound indicator-power indicator-messages indicator-application indicator-session
+    #sudo apt-get $options install indicator-bluetooth
+fi
 
-sudo apt-get $options purge indicator-china-weather 
-sudo apt-get $options purge indicator-network-tools indicator-network-autopilot
+sudo apt-get $options purge indicator-china-weather
+if [[ $version == "xenial" ]]
+then
+    sudo apt-get $options purge indicator-network-tools indicator-network-autopilot
+fi
 
 
 # install ip indicator
