@@ -45,7 +45,8 @@ ou
 
 1/ Installer la distribution Ubuntu Mate Xenial (16.04 LTS) via Etcher.
 
-https://ubuntu-mate.org/raspberry-pi/ubuntu-mate-16.04.2-desktop-armhf-raspberry-pi.img.xz
+https://ubuntu-mate.org/raspberry-pi/ubuntu-mate-16.04.2-desktop-armhf-raspberry-pi.img.xz --> for 3b
+https://share.obspm.fr/index.php/s/5QmGfPBkmLz8QQL --> for 3b+
 
 ... Etape identique ...
 
