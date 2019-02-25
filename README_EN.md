@@ -96,6 +96,9 @@ https://share.obspm.fr/index.php/s/oGtH7pbD9ZsyTTG
 https://1drv.ms/f/s!AlFrxWojM_Hflr0R80wOKHzWQMI88g   
 https://drive.google.com/drive/folders/19rKybLnewPy2NaOpZ7BoXR5x_koXWGFJ?usp=sharing  
 
+**For install image (in french):**
+https://nafabox.linux-astro.fr/#images
+
 
 ### NAFABox Software's List :   
 https://github.com/Patrick-81/NAFABox/blob/master/ConfigTinker/Software.md
