@@ -63,9 +63,10 @@ http://cdimage.ubuntu.com/lubuntu/releases/18.04/release/lubuntu-18.04.1-desktop
 
 
 ### documentation for TinkerBoard :   
-https://lroge.scenari-community.org/KstarsEkosIndi/#Nafabox_1
+https://nafabox.linux-astro.fr/KstarsEkosIndi/#Nafabox_1
+
 ### documentation for Raspberry Pi 2/3 :    
-https://lroge.scenari-community.org/KstarsEkosIndi/#PI
+https://nafabox.linux-astro.fr/KstarsEkosIndi/#PI
 
 ### Documentation for create HotSpot (in french):   
 https://github.com/Patrick-81/NAFABox/blob/master/ConfigTinker/InstallationHotspotWifi.pdf
