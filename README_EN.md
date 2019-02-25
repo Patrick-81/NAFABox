@@ -45,7 +45,8 @@ or
 
 1/ Install Ubuntu Mate Xenial (16.04 LTS) distribution via Etcher.
 
-https://ubuntu-mate.org/raspberry-pi/ubuntu-mate-16.04.2-desktop-armhf-raspberry-pi.img.xz
+https://ubuntu-mate.org/raspberry-pi/ubuntu-mate-16.04.2-desktop-armhf-raspberry-pi.img.xz --> for 3b
+https://share.obspm.fr/index.php/s/5QmGfPBkmLz8QQL --> for 3b+
 
 ... Same instruction ...
 
@@ -62,10 +63,10 @@ http://cdimage.ubuntu.com/lubuntu/releases/18.04/release/lubuntu-18.04.1-desktop
 ... Same instruction ...
 
 
-### documentation for TinkerBoard :   
+### documentation for TinkerBoard (in french):   
 https://nafabox.linux-astro.fr/KstarsEkosIndi/#Nafabox_1
 
-### documentation for Raspberry Pi 2/3 :    
+### documentation for Raspberry Pi 3b/3b+ (in french):    
 https://nafabox.linux-astro.fr/KstarsEkosIndi/#PI
 
 ### Documentation for create HotSpot (in french):   
