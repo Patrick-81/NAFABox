@@ -153,16 +153,28 @@ else
             $dirinstall/install_shortcut.sh install_hotspot "bash -ic install_hotspot" 1
         fi
     fi
-    #cp $dirinstall/run_armbian_config.sh ~/bin/run_armbian_config.sh
-    #sudo ln -sf ~/bin/run_armbian_config.sh /usr/bin/armbian-config
+fi
 
-    #if [[ $server_choice == "server" ]]
-    #then
-    #    echo "no icon for server"
-    #else
-    #    sudo cp /usr/share/icons/gnome/48x48/categories/applications-system.png /usr/share/pixmaps/armbian-config.png
-    #    $dirinstall/install_shortcut.sh armbian-config "bash -ic armbian-config" 1
-    #fi
+######
+# Création du raccourci pour install_hotspot.sh
+######
+figlet -k Install armbian-config program
+echo "================================================="
+echo "================================================="
+if [ -d "/usr/lib/armbian-config/" ]
+then
+    echo "armbian-config is already install"
+else
+    cp $dirinstall/run_armbian_config.sh ~/bin/run_armbian_config.sh
+    sudo ln -sf ~/bin/run_armbian_config.sh /usr/bin/armbian-config
+
+    if [[ $server_choice == "server" ]]
+    then
+        echo "no icon for server"
+    else
+        sudo cp /usr/share/icons/gnome/48x48/categories/applications-system.png /usr/share/pixmaps/armbian-config.png
+        $dirinstall/install_shortcut.sh armbian-config "bash -ic armbian-config" 1
+    fi
 fi
 
 ##### 
