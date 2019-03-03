@@ -17,6 +17,12 @@ then
 fi
 dirinstall=$nafabox_path
 
+machine=$(sudo lshw | grep "produit\|product" | grep "Raspberry")
+if [[ $machine == *"Raspberry"* ]]
+then
+    echo "stellarium requires too much power for a raspberry"
+exit
+fi
 figlet -k Install Stellarium
 echo "================================================="
 echo "================================================="
