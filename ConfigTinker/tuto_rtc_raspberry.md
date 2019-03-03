@@ -66,6 +66,8 @@ Pour circonvenir à ce problème, nous allons modifier le fichier **/etc/rc.loca
 
 `sudo nano /etc/rc.local`
 
+**Attention :** Si il n'y a pas de fichier rc.local, il faut le créer et activer le service : https://www.linuxbabe.com/linux-server/how-to-enable-etcrc-local-with-systemd
+
 Nous **ajouterons** à ce fichier les deux lignes suivantes **avant** la ligne contenant **exit 0** :
 
 `echo ds3231 0x68 > /sys/class/i2c-adapter/i2c-1/new_device`  
