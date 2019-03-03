@@ -7,11 +7,13 @@ permissions=
 secondaries=
 
 [wifi]
+band=bg
+cloned-mac-adress=preserve
 mac-address=MAC_ADDRESS
 mac-address-blacklist=
 mac-address-randomization=0
 mode=ap
-seen-bssids=
+seen-bssids=MAC_ADDRESS;
 ssid=HOTSPOTNAME
 
 SECURITY
@@ -24,4 +26,4 @@ method=shared
 addr-gen-mode=stable-privacy
 dns-search=
 ip6-privacy=0
-method=ignore
+method=shared
