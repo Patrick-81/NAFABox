@@ -160,7 +160,7 @@ then
 	    if option=`yad --width 450 \
 				    --center \
 				    --form \
-				    --title $pop \
+				    --title "$pop" \
 				    --image=$dirinstall/install_hotspot.png \
 				    --text "${dial[0]}" \
 				    --field="WIFI Board :":CB "$liste_device"`
