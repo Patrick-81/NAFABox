@@ -59,7 +59,7 @@ then
                    --title Alert \
                    --button=gtk-yes:0 \
                    --button=gtk-no:1 \
-                   --text $pop`
+                   --text "$pop"`
     then
         ######
         # Créer l'uuid
@@ -167,8 +167,8 @@ then
 				    
 	    then
 		    de_wifi=$(echo "$option" | cut -d "|" -f1)
-		    
             activeap=$(iw $de_wifi info | grep ssid | cut -f 2 -d" ")
+
             sudo systemctl stop NetworkManager
             if test ! -z $activeap
 		    then
