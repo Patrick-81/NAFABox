@@ -38,15 +38,17 @@ else
 	compute[5]="Date"
 fi
 
+LC_ALL="en_US.UTF-8"
 default_h=`date +%k`
 default_m=`date +%M`
 default_s=`date +%S`
-default_date=`date +%d/%m/%Y`
+default_date=`date +%B/%d/%Y`
 
 
 if temps=`yad --width=300 \
 	--center \
 	--form \
+    --date-format="%B/%d/%Y" \
 	--title="${compute[0]}" \
 	--image=$dirinstall/setup_time.png \
 	--text="${compute[1]}" \
@@ -62,11 +64,13 @@ then
 	MM=$(echo "$temps" | cut -d "|" -f2) #minutes
 	SS=$(echo "$temps" | cut -d "|" -f3) #secondes
 	date_t=$(echo "$temps" | cut -d "|" -f4) #date
-	day=$(echo "$date_t" | cut -d "/" -f1) #jour
-	mon=$(echo "$date_t" | cut -d "/" -f2) #mois
+	mon=$(echo "$date_t" | cut -d "/" -f1) #jour
+	day=$(echo "$date_t" | cut -d "/" -f2) #mois
 	years=$(echo "$date_t" | cut -d "/" -f3) #annee
 
-	sudo date +%D_%T -s "$mon/$day/$years_$HH:$MM:$SS"
+    mon=`echo $mon | sed -e 's/\(.\{1\}\)/\U\1/'`
+    mon=${mon:0:3}
+	sudo date -s "$mon $day $years $HH:$MM:$SS"
 else
 	echo "cancel"
 fi
