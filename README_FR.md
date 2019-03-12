@@ -69,8 +69,11 @@ http://nafabox.linux-astro.fr/#Nafabox_1
 ### Documentation pour les Raspberry Pi 3b/3b+ :    
 http://nafabox.linux-astro.fr/#nafabox
 
-### Documentation pour créer un HotSpot :  
-https://github.com/Patrick-81/NAFABox/blob/master/ConfigTinker/InstallationHotspotWifi.pdf
+### Documentation pour créer un HotSpot pour Tinkerboard/S et les autres carte sur Armbian :  
+https://github.com/Patrick-81/NAFABox/blob/master/ConfigTinker/Install_Hotspot_Armbian.md   
+
+### Documentation for create HotSpot for Raspberry Pi 3b/3b+ and X86 System (in french):   
+
 
 ### Documentation pour installer Un RTC sur Rasperry Pi 3b/3b+ :   
 https://github.com/Patrick-81/NAFABox/blob/master/ConfigTinker/tuto_rtc_raspberry.md
@@ -105,5 +108,5 @@ https://nafabox.linux-astro.fr/#images
 ### Liste des logiciels de la NAFABox :   
 https://github.com/Patrick-81/NAFABox/blob/master/ConfigTinker/Software.md
 
-
-
+### NAFABox Bug et Debug connue :
+https://github.com/Patrick-81/NAFABox/blob/master/ConfigTinker/BUG_and_DEBUG_list.md
