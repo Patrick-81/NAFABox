@@ -242,3 +242,7 @@ figlet -k Install Configuration
 echo "================================================="
 echo "================================================="
 ~/bin/update_conf.sh $1 $server_choice
+
+
+# add script for debug keyboard in nomachine :
+cp $dirinstall/setxkbmap.desktop ~/.config/autostart/setxkbmap.desktop

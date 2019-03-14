@@ -110,9 +110,7 @@ Pour circonvenir à ce problème, nous allons modifier le fichier **/etc/rc.loca
 
 Nous **ajouterons** à ce fichier les deux lignes suivantes **avant** la ligne contenant **exit 0** :
 
-`echo 'ds1307 0x68' | sudo tee /sys/class/i2c-adapter/i2c-1/new_device`  
-`sudo hwclock -s -f /dev/rtc1`   
-`sudo hwclock -w -f /dev/rtc0`
+`echo 'ds1307 0x68' | sudo tee /sys/class/i2c-adapter/i2c-1/new_device`
 
 On pourra alors désactiver le service fake-hwclock qui tente de reproduire le fonctionnement d’une horloge temps réel quand on en dispose pas, via la commande suivante :
 	
