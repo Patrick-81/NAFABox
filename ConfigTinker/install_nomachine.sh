@@ -70,6 +70,20 @@ wget https://download.nomachine.com/download/$version/$type2/$file -P /tmp/
 sudo dpkg -i /tmp/$file
 
 
+# for keyboard bug correction :
+
+######
+# detect language
+######
+source $dirinstall/detect_language.sh
+
+if $french
+then
+    localectl set-x11-keymap fr
+else
+    localectl set-x11-keymap us
+fi
+
 # ou sinon installer x2go :
 
 #sudo apt-add-repository ppa:x2go/stable
