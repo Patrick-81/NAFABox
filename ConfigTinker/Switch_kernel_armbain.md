@@ -45,6 +45,8 @@ choisisez la version voulu
 
 La version nightly est déconseillé.
 
+L'utilitaire vous proposera de redémarrer acceptez ou redémarrez vous même.
+
 ## optionnel mais conseillé surtout en version next (et nightly)
 
 Il est préférable de freezer la version du kernel afin de ne pas avoir de mauvaise surprise lors d'une mise à jour de celui ci. Il peut arriver qu'une mise à jour apporte des bugs ( trés trés rare dans default).
