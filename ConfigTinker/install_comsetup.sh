@@ -377,6 +377,7 @@ then
 	fi
     git clone git://github.com/hubaiz/DslrDashboardServer
     sudo apt-get -y install build-essential pkg-config libusb-1.0-0-dev
+    cd ~/bin/DslrDashboardServer
     g++ -Wall src/main.cpp src/communicator.cpp `pkg-config --libs --cflags libusb-1.0` -lpthread -lrt -lstdc++ -o ddserver
     sudo ln -sf ~/bin/DslrDashboardServer/ddserver /usr/bin/ddserver
 
