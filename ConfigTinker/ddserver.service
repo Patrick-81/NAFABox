@@ -1,0 +1,11 @@
+[Unit]
+Description=Run ddserver for qdslrdashboard
+
+[Service]
+User=MOI
+Group=MOI
+ExecStart=ddserver
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
