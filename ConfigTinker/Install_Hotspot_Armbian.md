@@ -159,7 +159,7 @@ Sauvegardez et redémarrez la Tinkerboard.
 
 ## Arret du Hotspot :
 
-**Attention:** ne supprimer pas le fichier hostapd pour arreter le hotspot.
+**Attention:** ne supprimez pas le fichier hostapd pour arreter le hotspot.
 
 - Démarer Armbian config en mode terminal ou graphique 
 
@@ -173,14 +173,14 @@ Sauvegardez et redémarrez la Tinkerboard.
 
 ![armbian-config](https://github.com/Patrick-81/NAFABox/raw/master/ConfigTinker/armbian_config_2.png)
 
-- Selectionner Hotspot (qui doit avoir l'option manage maintenant, comme pour la modification)
+- Sélectionnez Hotspot (qui doit avoir l'option manage maintenant, comme pour la modification)
 
 ![armbian-config](https://github.com/Patrick-81/NAFABox/raw/master/ConfigTinker/select_hotspot.png)
 
-- Setectionner Stop puis attender
+- Sélectionnez Stop puis attendez
 
 ![armbian-config](https://github.com/Patrick-81/NAFABox/raw/master/ConfigTinker/hotspot_stop.png)
 
-Vous pouvez mainetnat quitter et utiliser le reseaux wifi normalement
+Vous pouvez mainetenant quitter et utiliser le reseaux wifi normalement
 
 ### FIN
