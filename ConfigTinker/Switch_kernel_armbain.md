@@ -64,6 +64,6 @@ Puis lancez l'option **defreeze** :
 ![armbian-config](https://github.com/Patrick-81/NAFABox/raw/master/ConfigTinker/defreeze_1.png)
 
 Confirmez :    
-![armbian-config](https://github.com/Patrick-81/NAFABox/raw/master/ConfigTinker/defreeze_1.png)
+![armbian-config](https://github.com/Patrick-81/NAFABox/raw/master/ConfigTinker/defreeze_2.png)
 
 une fois fait, l'interface devient bleu et vous pourrai mettre à jour votre kernel.
