@@ -4,7 +4,7 @@ Description=Run ddserver for qdslrdashboard
 [Service]
 User=MOI
 Group=MOI
-ExecStart=ddserver
+ExecStart=/usr/bin/ddserver
 Restart=on-failure
 
 [Install]
