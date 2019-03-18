@@ -7,7 +7,9 @@ Sur Armbian Config, il faudra utiliser les touche directionnel ainsi que la touc
 
 Armbian Config est aussi utilisable en SSH sans interfaces graphiques.
 
-## correction préalable :
+L'addresse IPde la NAFABox en mode HotSpot est : **172.24.1.1**
+
+## Correction préalable :
 
 ### Suppresion du service hotspotawake
 - Ouvrir un terminal et tapez dans le terminal afin de l'arrêter    
