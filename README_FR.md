@@ -15,7 +15,7 @@ Il est necessaire de disposé d'au moins 10Go d'espace de stockage ou d'une Cart
 
 1/ Installer la distribution ARMBIAN ( version Next Bionic) via Etcher.
 
-https://dl.armbian.com/tinkerboard/Ubuntu_bionic_next_desktop.7z (ou une autre image pour une autre carte)
+https://dl.armbian.com/tinkerboard/Ubuntu_bionic_default_desktop.7z (ou une autre image pour une autre carte)
 
 Puis démarer l'image et suivez la procedure d'installation standard (Attention: par defaut Armbian en QWERTY)
 
