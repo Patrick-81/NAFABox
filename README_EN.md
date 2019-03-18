@@ -14,7 +14,7 @@ Requires a min 16 Go SD card or a place on the hard drive of more than 10go (No 
 
 1/ Install ARMBIAN (Next Bionic) distribution via Etcher.
 
-https://dl.armbian.com/tinkerboard/Ubuntu_bionic_next_desktop.7z (or other board bionic next ubuntu image)
+https://dl.armbian.com/tinkerboard/Ubuntu_bionic_default_desktop.7z (or other board bionic next ubuntu image)
 
 
 2/ Download zip file :  https://github.com/Patrick-81/NAFABox/archive/master.zip  
