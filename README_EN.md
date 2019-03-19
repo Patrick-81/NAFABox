@@ -75,10 +75,10 @@ https://github.com/Patrick-81/NAFABox/blob/master/ConfigTinker/Install_Hotspot_A
 ### Documentation for create HotSpot for Raspberry Pi 3b/3b+ and X86 System (in french):   
 
 ### Documentation for RTC in Rasperry Pi 3b/3b+ (in french):  
-https://github.com/Patrick-81/NAFABox/blob/master/ConfigTinker/tuto_rtc_raspberry.md
+https://github.com/Patrick-81/NAFABox/blob/master/ConfigTinker/Tuto_rtc_raspberry.md
 
 ### Documentation for RTC in Tinkerboard/S (in french):   
-https://github.com/Patrick-81/NAFABox/blob/master/ConfigTinker/tuto_rtc_tinkerboard.md
+https://github.com/Patrick-81/NAFABox/blob/master/ConfigTinker/Tuto_rtc_tinkerboard.md
 
 ### Documentation for Persistance mapping for serial/usb device :   
 https://indilib.org/support/tutorials/157-persistent-serial-port-mapping.html

@@ -76,10 +76,10 @@ https://github.com/Patrick-81/NAFABox/blob/master/ConfigTinker/Install_Hotspot_A
 
 
 ### Documentation pour installer Un RTC sur Rasperry Pi 3b/3b+ :   
-https://github.com/Patrick-81/NAFABox/blob/master/ConfigTinker/tuto_rtc_raspberry.md
+https://github.com/Patrick-81/NAFABox/blob/master/ConfigTinker/Tuto_rtc_raspberry.md
 
 ### Documentation pour installer Un RTC sur Tinkerboard/S :   
-https://github.com/Patrick-81/NAFABox/blob/master/ConfigTinker/tuto_rtc_tinkerboard.md
+https://github.com/Patrick-81/NAFABox/blob/master/ConfigTinker/Tuto_rtc_tinkerboard.md
 
 ### Documentation pour le mappage persistant pour les péripheriques serial/usb (en anglais):   
 https://indilib.org/support/tutorials/157-persistent-serial-port-mapping.html
