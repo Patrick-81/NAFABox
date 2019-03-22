@@ -43,8 +43,11 @@ ou
 
 ### Pour les Raspberry Pi 3b/3b+ :
 
-1/ Installer la distribution Ubuntu Mate Xenial (16.04 LTS) via Etcher.
+1/ Installer la distribution Ubuntu Mate Bionic (16.04 LTS) via Etcher.
 
+https://share.obspm.fr/index.php/s/MncDtcX8YGtBBRA --> pour 3b/3b+
+
+ou Xenial :
 https://ubuntu-mate.org/raspberry-pi/ubuntu-mate-16.04.2-desktop-armhf-raspberry-pi.img.xz --> pour 3b    
 https://share.obspm.fr/index.php/s/5QmGfPBkmLz8QQL --> pour 3b+   
 
