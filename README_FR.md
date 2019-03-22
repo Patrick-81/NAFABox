@@ -43,7 +43,7 @@ ou
 
 ### Pour les Raspberry Pi 3b/3b+ :
 
-1/ Installer la distribution Ubuntu Mate Bionic (16.04 LTS) via Etcher.
+1/ Installer la distribution Ubuntu Mate Bionic (18.04 LTS) via Etcher.
 
 https://share.obspm.fr/index.php/s/MncDtcX8YGtBBRA --> pour 3b/3b+
 
