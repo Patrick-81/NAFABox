@@ -1,5 +1,6 @@
 # ToDo liste du projet NFABox :
 
+- Ajouter un Tuto pour la synchro GPS
 - Ajouter Astrophoto plus
 - Passer sur une version stable de oacapture (1.6.0)
 - Creer une image Nanopi-M4 et Rockpi 4
