@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Exec=setxkbmap
+Hidden=false
+X-MATE-Autostart-enabled=true
+Name=test
+Comment=

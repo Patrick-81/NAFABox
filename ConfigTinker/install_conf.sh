@@ -63,6 +63,10 @@ then
 fi
 sudo apt-get $options install libjpeg62 libglu1
 sudo apt-get $options install xplanet espeak openssh-server uuid
+
+# add package for exfat :
+sudo apt-get install --reinstall -y exfat-fuse  exfat-utils
+
 #	echo prereq >> $dirinstall/install-status.txt
 #fi
 ######
@@ -242,3 +246,7 @@ figlet -k Install Configuration
 echo "================================================="
 echo "================================================="
 ~/bin/update_conf.sh $1 $server_choice
+
+
+# add script for debug keyboard in nomachine :
+sudo cp $dirinstall/setxkbmap.desktop ~/.config/autostart/setxkbmap.desktop

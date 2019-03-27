@@ -15,7 +15,7 @@ Il est necessaire de disposé d'au moins 10Go d'espace de stockage ou d'une Cart
 
 1/ Installer la distribution ARMBIAN ( version Next Bionic) via Etcher.
 
-https://dl.armbian.com/tinkerboard/Ubuntu_bionic_next_desktop.7z (ou une autre image pour une autre carte)
+https://dl.armbian.com/tinkerboard/Ubuntu_bionic_default_desktop.7z (ou une autre image pour une autre carte)
 
 Puis démarer l'image et suivez la procedure d'installation standard (Attention: par defaut Armbian en QWERTY)
 
@@ -43,8 +43,11 @@ ou
 
 ### Pour les Raspberry Pi 3b/3b+ :
 
-1/ Installer la distribution Ubuntu Mate Xenial (16.04 LTS) via Etcher.
+1/ Installer la distribution Ubuntu Mate Bionic (18.04 LTS) via Etcher.
 
+https://share.obspm.fr/index.php/s/MncDtcX8YGtBBRA --> pour 3b/3b+
+
+ou Xenial :
 https://ubuntu-mate.org/raspberry-pi/ubuntu-mate-16.04.2-desktop-armhf-raspberry-pi.img.xz --> pour 3b    
 https://share.obspm.fr/index.php/s/5QmGfPBkmLz8QQL --> pour 3b+   
 
@@ -76,10 +79,10 @@ https://github.com/Patrick-81/NAFABox/blob/master/ConfigTinker/Install_Hotspot_A
 
 
 ### Documentation pour installer Un RTC sur Rasperry Pi 3b/3b+ :   
-https://github.com/Patrick-81/NAFABox/blob/master/ConfigTinker/tuto_rtc_raspberry.md
+https://github.com/Patrick-81/NAFABox/blob/master/ConfigTinker/Tuto_rtc_raspberry.md
 
 ### Documentation pour installer Un RTC sur Tinkerboard/S :   
-https://github.com/Patrick-81/NAFABox/blob/master/ConfigTinker/tuto_rtc_tinkerboard.md
+https://github.com/Patrick-81/NAFABox/blob/master/ConfigTinker/Tuto_rtc_tinkerboard.md
 
 ### Documentation pour le mappage persistant pour les péripheriques serial/usb (en anglais):   
 https://indilib.org/support/tutorials/157-persistent-serial-port-mapping.html

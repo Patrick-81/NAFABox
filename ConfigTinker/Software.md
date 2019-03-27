@@ -30,6 +30,7 @@
   - NoVNC : https://github.com/novnc/noVNC
   - NoMachine : https://www.nomachine.com/fr
   - Hotspot awake : NAFABox script for re-up hotspot (outdate)
+  - Server for qDslrDashboard 
   
 - Lin Guider : https://sourceforge.net/projects/linguider/
 

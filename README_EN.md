@@ -14,7 +14,7 @@ Requires a min 16 Go SD card or a place on the hard drive of more than 10go (No 
 
 1/ Install ARMBIAN (Next Bionic) distribution via Etcher.
 
-https://dl.armbian.com/tinkerboard/Ubuntu_bionic_next_desktop.7z (or other board bionic next ubuntu image)
+https://dl.armbian.com/tinkerboard/Ubuntu_bionic_default_desktop.7z (or other board bionic next ubuntu image)
 
 
 2/ Download zip file :  https://github.com/Patrick-81/NAFABox/archive/master.zip  
@@ -43,10 +43,13 @@ or
 
 ### For Raspberry Pi 3b/3b+ :
 
-1/ Install Ubuntu Mate Xenial (16.04 LTS) distribution via Etcher.
+1/ Install Ubuntu Mate Bionic (18.04 LTS) distribution via Etcher.
 
+https://share.obspm.fr/index.php/s/MncDtcX8YGtBBRA --> for 3b/3b+
+
+or Xenial (16.04 LTS):
 https://ubuntu-mate.org/raspberry-pi/ubuntu-mate-16.04.2-desktop-armhf-raspberry-pi.img.xz --> for 3b    
-https://share.obspm.fr/index.php/s/5QmGfPBkmLz8QQL --> for 3b+
+https://share.obspm.fr/index.php/s/5QmGfPBkmLz8QQL --> for 3b+   
 
 ... Same instruction ...
 
@@ -75,10 +78,10 @@ https://github.com/Patrick-81/NAFABox/blob/master/ConfigTinker/Install_Hotspot_A
 ### Documentation for create HotSpot for Raspberry Pi 3b/3b+ and X86 System (in french):   
 
 ### Documentation for RTC in Rasperry Pi 3b/3b+ (in french):  
-https://github.com/Patrick-81/NAFABox/blob/master/ConfigTinker/tuto_rtc_raspberry.md
+https://github.com/Patrick-81/NAFABox/blob/master/ConfigTinker/Tuto_rtc_raspberry.md
 
 ### Documentation for RTC in Tinkerboard/S (in french):   
-https://github.com/Patrick-81/NAFABox/blob/master/ConfigTinker/tuto_rtc_tinkerboard.md
+https://github.com/Patrick-81/NAFABox/blob/master/ConfigTinker/Tuto_rtc_tinkerboard.md
 
 ### Documentation for Persistance mapping for serial/usb device :   
 https://indilib.org/support/tutorials/157-persistent-serial-port-mapping.html

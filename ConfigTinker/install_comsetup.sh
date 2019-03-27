@@ -47,7 +47,8 @@ then
 	browse=TRUE
 	novnc=FALSE
 	awake=FALSE
-    	nomach=FALSE
+    nomach=FALSE
+    ddserv=TRUE
 else
 	if $french
 	then
@@ -59,8 +60,9 @@ else
 		choice[3]="Install WebDav"
 		choice[4]="Installation BrowsePy"
 		choice[5]="Installation NoVNC"
-        	choice[6]="Installation Nomachine"
+        choice[6]="Installation Nomachine"
 		choice[7]="HotspotAwake Script"
+        choice[8]="Serveur pour QDslrDashboard"
 
 	else
 		dial[0]="Install/Update of software"
@@ -71,12 +73,13 @@ else
 		choice[3]="Install WebDav"
 		choice[4]="Install BrowsePy"
 		choice[5]="Install NoVNC"
-        	choice[6]="Install Nomachine"
+        choice[6]="Install Nomachine"
 		choice[7]="HotspotAwake Script"
+        choice[8]="Server for QDslrDashboard"
 
 	fi
 
-	st=(true true true true true true true false)
+	st=(true true true true true true true false true)
 
 	# interface de choix
 	if chose=`yad --width=400 \
@@ -92,10 +95,11 @@ else
 		--field="${choice[4]}:CHK" \
 		--field="${choice[5]}:CHK" \
 		--field="${choice[6]}:CHK" \
-        	--field="${choice[7]}:CHK" \
+        --field="${choice[7]}:CHK" \
+        --field="${choice[8]}:CHK" \
 		"" "${st[0]}" "${st[1]}" "${st[2]}" \
 		"${st[3]}" "${st[4]}" "${st[5]}" "${st[6]}" \
-        	"${st[7]}"`
+        "${st[7]}" "${st[8]}"`
 	then
 		time_z=$(echo "$chose" | cut -d "|" -f2)
 		web=$(echo "$chose" | cut -d "|" -f3)
@@ -103,8 +107,9 @@ else
 		dav=$(echo "$chose" | cut -d "|" -f5)
 		browse=$(echo "$chose" | cut -d "|" -f6)
 		novnc=$(echo "$chose" | cut -d "|" -f7)
-        	nomach=$(echo "$chose" | cut -d "|" -f8)
+        nomach=$(echo "$chose" | cut -d "|" -f8)
 		awake=$(echo "$chose" | cut -d "|" -f9)
+        ddserv=$(echo "$chose" | cut -d "|" -f10)
 	else
 		echo "cancel"
 	fi
@@ -358,3 +363,30 @@ then
 	sudo systemctl start novnc.service
 fi
 
+if [[ $ddserv == "TRUE" ]]
+then
+	######
+	# Installation du ddserver pour qdslrdashboard
+	######
+
+    cd ~/bin
+    if [ -d "/home/${USER}/bin/DslrDashboardServer" ]
+	  then
+	  echo "suppression de l'ancien dossier ddserver"
+	  rm -Rf /home/$USER/bin/DslrDashboardServer
+	fi
+    git clone git://github.com/hubaiz/DslrDashboardServer
+    sudo apt-get -y install build-essential pkg-config libusb-1.0-0-dev
+    cd ~/bin/DslrDashboardServer
+    g++ -Wall src/main.cpp src/communicator.cpp `pkg-config --libs --cflags libusb-1.0` -lpthread -lrt -lstdc++ -o ddserver
+    sudo ln -sf ~/bin/DslrDashboardServer/ddserver /usr/bin/ddserver
+
+	cat $dirinstall/ddserver.service | sed -e "s/MOI/${USER}/g" > /tmp/ddserver.service
+	sudo cp /tmp/ddserver.service /lib/systemd/system/ddserver.service
+	sudo systemctl stop ddserver.service
+	sudo systemctl disable ddserver.service
+	sudo systemctl daemon-reload
+	sudo systemctl enable ddserver.service
+	sudo systemctl start ddserver.service
+
+fi

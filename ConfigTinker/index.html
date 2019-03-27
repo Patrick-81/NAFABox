@@ -1,7 +1,7 @@
 <html>
 <head>
   <meta charset="utf-8" />
-  <script type="text/javascript">
+  	<script type="text/javascript">
 	var a = update();
     function update() {
       var d = new Date();
@@ -10,6 +10,15 @@
       document.getElementById("date").value = utc;
       return utc;
     }
+	function openbrowsepy() {
+   		window.open(window.location.origin+':8180');
+	}
+	function opennovnc() {
+   		window.open(window.location.origin+':5901/vnc.html');
+	}
+	function openindiwebmanager() {
+   		window.open(window.location.origin+':8624');
+	}
  </script>
 </head>
 <p>
@@ -27,6 +36,22 @@
        <button style="color:red;background:#DFDFDF">Date==>NAFABox</button>
     </form>
   </span>
+</p>
+<p>
+  <div>
+    <span>
+      <form  style="width:400px; display:inline-block;">
+		<!-- <a id="trans" class="button" style="color:blue;background:#DFDFDF">Open browsepy</a>
+		<script type="text/javascript">
+     		document.getElementById('trans').href=window.location.origin+':8180';
+     		window.open(window.location.origin+':8180');  -->
+        <button style="color:blue;background:#DFDFDF" onclick="openbrowsepy()">Open browsepy</button>
+        <button style="color:blue;background:#DFDFDF" onclick="opennovnc()">Open novnc</button>
+        <button style="color:blue;background:#DFDFDF" onclick="openindiwebmanager()">Open indiwebmanager</button>
+		</script>
+      </form>
+    </span>
+  </div>
 </p>
 <p>
   <div>

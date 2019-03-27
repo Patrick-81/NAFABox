@@ -51,8 +51,8 @@ then
 	driver_3rd=TRUE
 	gps=TRUE
 	onstep=FALSE
-	gphoto_i=FALSE
-    astrob=FALSE
+	gphoto_i=TRUE
+    	astrob=FALSE
 else
 	if $french
 	then
@@ -88,7 +88,7 @@ else
 		sudo apt-get -o Dpkg::Options::="--force-overwrite" -f install
 	fi
 
-	st=(true false true false true true true false false false)
+	st=(true false true false true true true false true false)
 
 	sudo apt-get $options install gsc
 	sudo apt-get $options install libqt5sql5-sqlite qtdeclarative5-dev
