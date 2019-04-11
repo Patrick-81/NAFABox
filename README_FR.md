@@ -2,44 +2,44 @@
 
 Script d'installation pour Créer une NAFABox.
 
-Ces scripts sont compatible avec la TinkerBoard (Armbian, Ubuntu), TinkerBoard S (Armbian, Ubuntu), Raspberry Pi 3b/3b+ (Ubuntu Mate) et les système classique amd64/x86_64 (Ubuntu).   
-Les scripts ont été testé avec Ubuntu Xenial (16.04 LTS) et Ubuntu Bionic (18.04 LTS).  
-Il est recomander d'utiliser **Ubuntu Bionic (18.04 LTS)**.
+Ces scripts sont compatibles avec la TinkerBoard (Armbian, Ubuntu), TinkerBoard S (Armbian, Ubuntu), Raspberry Pi 3b/3b+ (Ubuntu Mate) et les systèmes classiques amd64/x86_64 (Ubuntu).   
+Les scripts ont été testés avec Ubuntu Xenial (16.04 LTS) et Ubuntu Bionic (18.04 LTS).  
+Il est recomandé d'utiliser **Ubuntu Bionic (18.04 LTS)**.
 
-Il est necessaire de disposé d'au moins 10Go d'espace de stockage ou d'une Carte SD de 16Go au minimum ( index d'astrometrie non compris)  
+Il est nécessaire de disposer d'au moins 10Go d'espace de stockage ou d'une Carte SD de 16Go au minimum ( index d'astrométrie non compris)  
 
-**ATTENTION :** Vérifier que les mise a jours automatique sont désactivé afin qu'elle n'interfère pas avec les scripts.
+**ATTENTION :** Vérifier que les mises à jour automatiques sont désactivées afin qu'elles n'interfèrent pas avec les scripts.
 
 
-### Etape par etape pour la TinkerBoard/S (ou une autre carte (ARMHF/arm32/armv7) compatible avec Armbian):
+### Etape par étape pour la TinkerBoard/S (ou une autre carte (ARMHF/arm32/armv7) compatible avec Armbian):
 
 1/ Installer la distribution ARMBIAN ( version Next Bionic) via Etcher.
 
 https://dl.armbian.com/tinkerboard/Ubuntu_bionic_default_desktop.7z (ou une autre image pour une autre carte)
 
-Puis démarer l'image et suivez la procedure d'installation standard (Attention: par defaut Armbian en QWERTY)
+Puis démarrer l'image et suivez la procédure d'installation standard (Attention: par défaut Armbian en QWERTY)
 
-2/ Télecharger :  https://github.com/Patrick-81/NAFABox/archive/master.zip  
+2/ Télécharger :  https://github.com/Patrick-81/NAFABox/archive/master.zip  
 ou  
 2bis/ Dans votre home : `git clone https://github.com/Patrick-81/NAFABox.git`
 
 3/ Décompresser le fichier zip ( juste pour 2/)
 
-4/ Ouuvrez le dossier ainsi créé
+4/ Ouvrez le dossier ainsi créé
 
-5/ lancer **Pre_Install.sh** dans un terminal (avec un clique droit dans le dossier)
+5/ lancer **Pre_Install.sh** dans un terminal (avec un clic droit dans le dossier)
 
 `$ ./Pre_Install.sh` 
 ( Pour un clavier Francais AZERTY : `:!Pre°Instqll:sh` ) 
 
-6/ Une fois le script Pre_Install finit, fermer le terminal Puis ouvrer un nouveau terminal. Lancer **Install.sh**
+6/ Une fois le script Pre_Install fini, fermer le terminal puis ouvrir un nouveau terminal. Lancer **Install.sh**
 
 `$ ./Install.sh` 
 ( Pour un clavier Francais AZERTY : `:!Instqll:sh` ) 
 
-7/ répondez aux questions lorsque vous y êtes invité à entrer votre mot de passe quand c'est demandé, remplissez les menus si nécessaire.
+7/ répondez aux questions lorsque vous y êtes invité, et entrez votre mot de passe quand c'est demandé, remplissez les menus si nécessaire.
 
-8/ Quand tout sera finit vous pouvez redemarer.
+8/ Quand tout est fini vous pouvez redémarrer.
 
 ### Pour les Raspberry Pi 3b/3b+ :
 
@@ -55,7 +55,7 @@ https://share.obspm.fr/index.php/s/5QmGfPBkmLz8QQL --> pour 3b+
 
 ### Pour les systèmes X86_64/Amd64 Ubuntu Linux system :
 
-1/ Installe la distribution **Ubuntu Mate** Bionic (18.04 LTS) via Etcher pour une installation USB.
+1/ Installez la distribution **Ubuntu Mate** Bionic (18.04 LTS) via Etcher pour une installation USB.
 
 http://cdimage.ubuntu.com/ubuntu-mate/releases/18.04/release/ubuntu-mate-18.04.1-desktop-amd64.iso   
 ou **Xubuntu** Bionic (18.04 LTS):   
@@ -72,10 +72,10 @@ http://nafabox.linux-astro.fr/#Nafabox_1
 ### Documentation pour les Raspberry Pi 3b/3b+ :    
 http://nafabox.linux-astro.fr/#nafabox
 
-### Documentation pour créer un HotSpot pour Tinkerboard/S et les autres carte sur Armbian :  
+### Documentation pour créer un HotSpot pour Tinkerboard/S et les autres cartes sur Armbian :  
 https://github.com/Patrick-81/NAFABox/blob/master/ConfigTinker/Install_Hotspot_Armbian.md   
 
-### Documentation for create HotSpot for Raspberry Pi 3b/3b+ and X86 System (in french):   
+### Documentation to create HotSpot for Raspberry Pi 3b/3b+ and X86 System (in french):   
 
 
 ### Documentation pour installer Un RTC sur Rasperry Pi 3b/3b+ :   
@@ -98,7 +98,7 @@ __Lien utile :__
 - Webdav : IP:443
 - Nomachine : IP:5000
 
-### pour recuperer une image toute faite de la NAFABox :   
+### pour récupérer une image toute faite de la NAFABox :   
 https://share.obspm.fr/index.php/s/oGtH7pbD9ZsyTTG
 
 **Miroir pour les dernières versions :**  
@@ -111,5 +111,5 @@ https://nafabox.linux-astro.fr/#images
 ### Liste des logiciels de la NAFABox :   
 https://github.com/Patrick-81/NAFABox/blob/master/ConfigTinker/Software.md
 
-### NAFABox Bug et Debug connue :
+### NAFABox Bug et Debug connus :
 https://github.com/Patrick-81/NAFABox/blob/master/ConfigTinker/BUG_and_DEBUG_list.md
