@@ -4,14 +4,14 @@ Cette manipulation est assez experimentale mais permet une nette acceleration de
 
 __Attention :__ Stellarium ne fonctionnera plus car l'émulation openGL n'est pas dans une version assez élevé ( OpenGL 3.1).
 
-## 1/ téléchargement du pack :
+## Téléchargement du pack :
 
 rendez vous à cette adresse :   
 https://forum.armbian.com/topic/7262-rk3288-media-script-tinkerboard/
 
 Télecharger La version "2.0 for bionic desktop"
 
-## 2/ Mise en place :
+## Mise en place :
 
 rendez vous dans le dossier de télechargement puis clique droit et enfin "ouvrir un terminal ici".
 
@@ -21,7 +21,7 @@ Lancer les commandes suivante :
 `cd media-script`   
 `sudo apt remove -y libwayland-dev mesa-common-dev`   
 
-## 3/ Installation :
+## Installation :
 
 Lancer la commande suivante :    
 `./media-rk3288.sh`
@@ -34,7 +34,7 @@ Lors de l'installation coché bien opencl et opengl
 ![GPU](https://github.com/Patrick-81/NAFABox/raw/master/ConfigTinker/gpu_accel_3.png)   
 Installer la version experimentale pour plus de performance.
 
-## 4/ ajutement du système :
+## Ajutement du système :
 
 Afin de ne pas perdre l'affichage des icones ou certains autres problème veuillez desactiver le compositeur.
 
