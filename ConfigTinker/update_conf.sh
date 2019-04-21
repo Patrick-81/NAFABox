@@ -54,7 +54,7 @@ else
 		choice[5]="Installation Ccdciel (Beta)"
 		choice[6]="Installation Planetary Imager (Beta)"
 		choice[7]="Installation OACapture (Beta)"
-		choice[8]="Installation Siril"
+		choice[8]="Installation logiciel de traitement d'image"
 		choice[9]="Installation Stellarium"
 		choice[10]="Telechargement du/des index(s) astrometrique"
 
@@ -68,7 +68,7 @@ else
 		choice[5]="Ccdciel (Beta)"
 		choice[6]="Planetary Imager (Beta)"
 		choice[7]="OACapture (Beta)"
-		choice[8]="Siril"
+		choice[8]="Image processing software"
 		choice[9]="Stellarium"
 		choice[10]="install astrometry index(s)"
 	fi
@@ -82,7 +82,7 @@ else
 	message[5]="Install ccdciel"
 	message[6]="Install planetary imager"
 	message[7]="Install OACapture"
-	message[8]="Install siril"
+	message[8]="Install image processing software"
 	message[9]="Install stellarium"
 	message[10]="Install index(s)"
 
@@ -94,7 +94,7 @@ else
 	script[5]=install_ccdciel.sh
 	script[6]=install_planetaryimager.sh
 	script[7]=install_oacapture.sh
-	script[8]=install_siril.sh
+	script[8]=install_traitement.sh
 	script[9]=install_stellarium.sh
 	script[10]=install_index.sh
 
