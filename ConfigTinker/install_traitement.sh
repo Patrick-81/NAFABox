@@ -122,6 +122,17 @@ fi
 if [[ $stack == "TRUE" ]]
 then
 
+	#test si les dossiers existes, si oui suppression
+	if [ -d "/home/${USER}/bin/libskry" ]
+	then
+	  echo "suppression de l'ancien dossier libskry"
+	  rm -Rf /home/$USER/bin/libskry
+	fi
+	if [ -d "/home/${USER}/bin/stackistry" ]
+	then
+	  echo "suppression de l'ancien dossier stackistry"
+	  rm -Rf /home/$USER/bin/stackistry
+	fi
     version="0.3.0"
     sudo apt-get install -y libgtkmm-3.0-dev ffmpeg libavcodec-dev libavformat-dev libavutil-dev gcc g++
     cd ~/bin
@@ -145,6 +156,12 @@ if [[ $impg == "TRUE" ]]
 then
     sudo apt-get install -y libgtkmm-3.0-dev ffmpeg libavcodec-dev libavformat-dev libavutil-dev gcc g++ cmake libwxgtk3.0-dev libwxgtk-media3.0-dev libwxgtk-media3.0-gtk3-dev libwxgtk-webview3.0-gtk3-dev libwxgtk3.0-gtk3-dev libfreeimage-dev
 
+	#test si le dossiers existe, si oui suppression
+	if [ -d "/home/${USER}/bin/imppg" ]
+	then
+	  echo "suppression de l'ancien dossier imppg"
+	  rm -Rf /home/$USER/bin/imppg
+	fi
     #sudo ln -s /usr/bin/wx-config-3.0 /usr/bin/wx-config
     cd ~/bin
     git clone https://github.com/GreatAttractor/imppg.git

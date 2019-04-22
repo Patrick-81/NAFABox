@@ -355,7 +355,7 @@ then
 	#test si le dossier noVNC existe, si oui suppression
 	#
 	if [ -d "/home/${USER}/bin/noVNC" ]
-	  then
+	then
 	  echo "suppression de l'ancien dossier noVNC"
 	  rm -Rf /home/$USER/bin/noVNC
 	fi
