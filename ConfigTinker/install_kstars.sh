@@ -52,7 +52,22 @@ then
 	gps=TRUE
 	onstep=FALSE
 	gphoto_i=TRUE
-    	astrob=FALSE
+    astrob=FALSE
+elif [[ $server_choice == "default" ]]
+then
+    echo "#############################"
+    echo "## install in default mode ##"
+    echo "#############################"
+	kstars=TRUE
+	kstars_dev=FALSE
+	indi=TRUE
+	indi_dev=FALSE
+	indiW=TRUE
+	driver_3rd=TRUE
+	gps=TRUE
+	onstep=FALSE
+	gphoto_i=TRUE
+    astrob=FALSE
 else
 	if $french
 	then

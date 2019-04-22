@@ -72,7 +72,16 @@ then
     autologin="FALSE"
     ip_indicator="FALSE"
     o_indicator="FALSE"
-    host="FALSE"
+    host="TRUE"
+
+if [[ $server_choice == "default" ]]
+then
+    installMate="TRUE"
+    language="TRUE"
+    autologin="FALSE"
+    ip_indicator="TRUE"
+    o_indicator="TRUE"
+    host="TRUE"
 else
     if [[ $DESKTOP_SESSION == "mate" ]]
     then
@@ -132,7 +141,7 @@ if [[ $host == "TRUE" ]]
 then
 
 
-	$dirinstall/install_hostname.sh
+	$dirinstall/install_hostname.sh $server_choice
 
 fi
 

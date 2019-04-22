@@ -47,10 +47,6 @@ or
 
 https://share.obspm.fr/index.php/s/MncDtcX8YGtBBRA --> for 3b/3b+
 
-or Xenial (16.04 LTS):
-https://ubuntu-mate.org/raspberry-pi/ubuntu-mate-16.04.2-desktop-armhf-raspberry-pi.img.xz --> for 3b    
-https://share.obspm.fr/index.php/s/5QmGfPBkmLz8QQL --> for 3b+   
-
 ... Same instruction ...
 
 ### For X86_64/Amd64 Ubuntu Linux system :
@@ -73,15 +69,15 @@ https://nafabox.linux-astro.fr/#Nafabox_1
 https://nafabox.linux-astro.fr/#nafabox
 
 ### Documentation for create HotSpot for Tinkerboard/S and other Board in Armbian (in french):   
-https://github.com/Patrick-81/NAFABox/blob/master/ConfigTinker/Install_Hotspot_Armbian.md
+https://github.com/Patrick-81/NAFABox/blob/master/doc/Install_Hotspot_Armbian.md
 
 ### Documentation for create HotSpot for Raspberry Pi 3b/3b+ and X86 System (in french):   
 
 ### Documentation for RTC in Rasperry Pi 3b/3b+ (in french):  
-https://github.com/Patrick-81/NAFABox/blob/master/ConfigTinker/Tuto_rtc_raspberry.md
+https://github.com/Patrick-81/NAFABox/blob/master/doc/Tuto_rtc_raspberry.md
 
 ### Documentation for RTC in Tinkerboard/S (in french):   
-https://github.com/Patrick-81/NAFABox/blob/master/ConfigTinker/Tuto_rtc_tinkerboard.md
+https://github.com/Patrick-81/NAFABox/blob/master/doc/Tuto_rtc_tinkerboard.md
 
 ### Documentation for Persistance mapping for serial/usb device :   
 https://indilib.org/support/tutorials/157-persistent-serial-port-mapping.html
@@ -108,7 +104,7 @@ https://nafabox.linux-astro.fr/#images
 
 
 ### NAFABox Software's List :   
-https://github.com/Patrick-81/NAFABox/blob/master/ConfigTinker/Software.md
+https://github.com/Patrick-81/NAFABox/blob/master/doc/Software.md
 
 ### NAFABox Bug and Debug know :
-https://github.com/Patrick-81/NAFABox/blob/master/ConfigTinker/BUG_and_DEBUG_list.md
+https://github.com/Patrick-81/NAFABox/blob/master/doc/BUG_and_DEBUG_list.md

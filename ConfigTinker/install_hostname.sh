@@ -16,25 +16,50 @@ then
 	exit
 fi
 dirinstall=$nafabox_path
+server_choice=$1
 
 figlet -k Install Hostname
 echo "================================================="
 echo "================================================="
 
-if name=`yad --width=300 \
-			--center \
-			--form \
-			--title="Choose your HostName :" \
-			--text="Chose your HostName (no special character):" \
-			--field="HostName:" "NAFABox"`
+if [[ $server_choice == "server" ]] || [[ $server_choice == "default" ]]
 then
-	new_host=$(echo "$name" | cut -d "|" -f1)
-	def_host=`cat /etc/hostname`
-	sudo echo $new_host > /tmp/hostname
-	sudo mv /tmp/hostname /etc/hostname
-	cat  /etc/hosts | sed -e "s=$def_host=$new_host=g" > /tmp/hosts
-	sudo mv /tmp/hosts /etc/hosts
-	echo "hostname change for $new_host"
+    touch /tmp/dialogtmp && FICHTMP=/tmp/dialogtmp
+    trap "rm -f $FICHTMP" 0 1 2 3 5 15
+    dialog --backtitle "HostName changer" \
+           --title "Choose your HostName :" \
+           --inputbox "Chose your HostName (no special character):" 8 47 NAFABox 2> $FICHTMP
+    # retour d'information (boîte d'info)
+    # 0 est le code retour du bouton Accepter
+    # ici seul celui-ci attribue un nom de login.
+    if [ $? = 0 ]
+    then 
+        new_host="`cat $FICHTMP`"
+        def_host=`cat /etc/hostname`
+	    sudo echo $new_host > /tmp/hostname
+	    sudo mv /tmp/hostname /etc/hostname
+	    cat  /etc/hosts | sed -e "s=$def_host=$new_host=g" > /tmp/hosts
+	    sudo mv /tmp/hosts /etc/hosts
+	    echo "hostname change for $new_host"
+    else 
+        echo "hostname not change"
+    fi
 else
-	echo "hostname not change"
+    if name=`yad --width=300 \
+			    --center \
+			    --form \
+			    --title="Choose your HostName :" \
+			    --text="Chose your HostName (no special character):" \
+			    --field="HostName:" "NAFABox"`
+    then
+	    new_host=$(echo "$name" | cut -d "|" -f1)
+	    def_host=`cat /etc/hostname`
+	    sudo echo $new_host > /tmp/hostname
+	    sudo mv /tmp/hostname /etc/hostname
+	    cat  /etc/hosts | sed -e "s=$def_host=$new_host=g" > /tmp/hosts
+	    sudo mv /tmp/hosts /etc/hosts
+	    echo "hostname change for $new_host"
+    else
+	    echo "hostname not change"
+    fi
 fi

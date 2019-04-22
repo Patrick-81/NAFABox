@@ -45,11 +45,7 @@ ou
 
 1/ Installer la distribution Ubuntu Mate Bionic (18.04 LTS) via Etcher.
 
-https://share.obspm.fr/index.php/s/MncDtcX8YGtBBRA --> pour 3b/3b+
-
-ou Xenial :
-https://ubuntu-mate.org/raspberry-pi/ubuntu-mate-16.04.2-desktop-armhf-raspberry-pi.img.xz --> pour 3b    
-https://share.obspm.fr/index.php/s/5QmGfPBkmLz8QQL --> pour 3b+   
+https://share.obspm.fr/index.php/s/MncDtcX8YGtBBRA --> pour 3b/3b+  
 
 ... Etape identique ...
 
@@ -73,16 +69,16 @@ http://nafabox.linux-astro.fr/#Nafabox_1
 http://nafabox.linux-astro.fr/#nafabox
 
 ### Documentation pour créer un HotSpot pour Tinkerboard/S et les autres cartes sur Armbian :  
-https://github.com/Patrick-81/NAFABox/blob/master/ConfigTinker/Install_Hotspot_Armbian.md   
+https://github.com/Patrick-81/NAFABox/blob/master/doc/Install_Hotspot_Armbian.md   
 
 ### Documentation to create HotSpot for Raspberry Pi 3b/3b+ and X86 System (in french):   
 
 
 ### Documentation pour installer Un RTC sur Rasperry Pi 3b/3b+ :   
-https://github.com/Patrick-81/NAFABox/blob/master/ConfigTinker/Tuto_rtc_raspberry.md
+https://github.com/Patrick-81/NAFABox/blob/master/doc/Tuto_rtc_raspberry.md
 
 ### Documentation pour installer Un RTC sur Tinkerboard/S :   
-https://github.com/Patrick-81/NAFABox/blob/master/ConfigTinker/Tuto_rtc_tinkerboard.md
+https://github.com/Patrick-81/NAFABox/blob/master/doc/Tuto_rtc_tinkerboard.md
 
 ### Documentation pour le mappage persistant pour les péripheriques serial/usb (en anglais):   
 https://indilib.org/support/tutorials/157-persistent-serial-port-mapping.html
@@ -109,7 +105,7 @@ https://drive.google.com/drive/folders/19rKybLnewPy2NaOpZ7BoXR5x_koXWGFJ?usp=sha
 https://nafabox.linux-astro.fr/#images
 
 ### Liste des logiciels de la NAFABox :   
-https://github.com/Patrick-81/NAFABox/blob/master/ConfigTinker/Software.md
+https://github.com/Patrick-81/NAFABox/blob/master/doc/Software.md
 
 ### NAFABox Bug et Debug connus :
-https://github.com/Patrick-81/NAFABox/blob/master/ConfigTinker/BUG_and_DEBUG_list.md
+https://github.com/Patrick-81/NAFABox/blob/master/doc/BUG_and_DEBUG_list.md

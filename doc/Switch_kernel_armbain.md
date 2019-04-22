@@ -16,32 +16,32 @@ https://dl.armbian.com/tinkerboard/Ubuntu_bionic_default_desktop.7z
 
 Pour cela, lancer Armbian config ( ou via l'interface graphique):
  
-![armbian-config](https://github.com/Patrick-81/NAFABox/raw/master/ConfigTinker/armbian_conf_prompt.png)
+![armbian-config](https://github.com/Patrick-81/NAFABox/raw/master/doc/armbian_conf_prompt.png)
 
 Puis choisisez **system** :    
-![armbian-config](https://github.com/Patrick-81/NAFABox/raw/master/ConfigTinker/armbian_system.png)
+![armbian-config](https://github.com/Patrick-81/NAFABox/raw/master/doc/armbian_system.png)
 
 2 possibilités :
 
 - l'interface devient rouge, alors c'est que la version du kernel est freezer il faudra le **defreezer** (voir partie defreezer)    
-![armbian-config](https://github.com/Patrick-81/NAFABox/raw/master/ConfigTinker/defreeze_1.png)
+![armbian-config](https://github.com/Patrick-81/NAFABox/raw/master/doc/defreeze_1.png)
 
 - l'interface devient bleu, vous pouvez directement aller à l'étape suivante.
-![armbian-config](https://github.com/Patrick-81/NAFABox/raw/master/ConfigTinker/freeze_1.png)   
+![armbian-config](https://github.com/Patrick-81/NAFABox/raw/master/doc/freeze_1.png)   
 
 Choisisez **other** :    
-![armbian-config](https://github.com/Patrick-81/NAFABox/raw/master/ConfigTinker/switch_kernel_1.png)
+![armbian-config](https://github.com/Patrick-81/NAFABox/raw/master/doc/switch_kernel_1.png)
 
 Cochez la case à l'aide de la barre espace puis validez :   
-![armbian-config](https://github.com/Patrick-81/NAFABox/raw/master/ConfigTinker/switch_kernel_2.png)
+![armbian-config](https://github.com/Patrick-81/NAFABox/raw/master/doc/switch_kernel_2.png)
 
 choisisez la version voulu 
 
 (version next ) :    
-![armbian-config](https://github.com/Patrick-81/NAFABox/raw/master/ConfigTinker/switch_kernel_next.png)
+![armbian-config](https://github.com/Patrick-81/NAFABox/raw/master/doc/switch_kernel_next.png)
 
 (version default) :   
-![armbian-config](https://github.com/Patrick-81/NAFABox/raw/master/ConfigTinker/switch_kernel_default.png)
+![armbian-config](https://github.com/Patrick-81/NAFABox/raw/master/doc/switch_kernel_default.png)
 
 La version nightly est déconseillé.
 
@@ -54,7 +54,7 @@ Il est préférable de freezer la version du kernel afin de ne pas avoir de mauv
 Pour cela, retourner dans le menu **system** de Armbian Config.
 
 Puis lancez l'option **freeze** :    
-![armbian-config](https://github.com/Patrick-81/NAFABox/raw/master/ConfigTinker/freeze_1.png)
+![armbian-config](https://github.com/Patrick-81/NAFABox/raw/master/doc/freeze_1.png)
 
 une fois fait, l'interface devient rouge et vous ne pourrai plus mettre à jour votre kernel sans defreezer.
 
@@ -63,9 +63,9 @@ une fois fait, l'interface devient rouge et vous ne pourrai plus mettre à jour 
 Pour cela, retourner dans le menu **system** de Armbian Config.
 
 Puis lancez l'option **defreeze** :    
-![armbian-config](https://github.com/Patrick-81/NAFABox/raw/master/ConfigTinker/defreeze_1.png)
+![armbian-config](https://github.com/Patrick-81/NAFABox/raw/master/doc/defreeze_1.png)
 
 Confirmez :    
-![armbian-config](https://github.com/Patrick-81/NAFABox/raw/master/ConfigTinker/defreeze_2.png)
+![armbian-config](https://github.com/Patrick-81/NAFABox/raw/master/doc/defreeze_2.png)
 
 une fois fait, l'interface devient bleu et vous pourrai mettre à jour votre kernel.

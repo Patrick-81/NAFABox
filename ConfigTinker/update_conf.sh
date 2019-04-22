@@ -33,6 +33,15 @@ then
     echo "############################"
 	$dirinstall/install_comsetup.sh $3
 	$dirinstall/install_kstars.sh $3
+
+if [[ $3 == "default" ]]
+then
+    echo "############################"
+    echo "## install in default mode ##"
+    echo "############################"
+	$dirinstall/install_comsetup.sh $3
+	$dirinstall/install_kstars.sh $3
+    $dirinstall/install_phd2.sh
 	
 else
 	if $1
@@ -175,6 +184,15 @@ do
 ######
 	if [[ $server_choice == "server" ]]
 	then
+        echo "#########################################################"
+        echo "#########################################################"
+        echo "End of Server mode installation"
+		echo "need reboot after install"
+	if [[ $server_choice == "default" ]]
+	then
+        echo "#########################################################"
+        echo "#########################################################"
+        echo "End of Default mode installation"
 		echo "need reboot after install"
 	else
 		if $french

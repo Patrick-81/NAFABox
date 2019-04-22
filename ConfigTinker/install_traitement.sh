@@ -126,7 +126,6 @@ then
     sudo apt-get install -y libgtkmm-3.0-dev ffmpeg libavcodec-dev libavformat-dev libavutil-dev gcc g++
     cd ~/bin
     wget https://github.com/GreatAttractor/libskry/archive/v$version.tar.gz
-    #wget https://github.com/GreatAttractor/stackistry/archive/v0.3.0.tar.gz
     tar zxvf v$version.tar.gz
     rm ./v$version.tar.gz
     mv ./libskry-$version ./libskry

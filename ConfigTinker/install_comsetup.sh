@@ -49,6 +49,21 @@ then
 	awake=FALSE
     nomach=FALSE
     ddserv=TRUE
+elif [[ $server_choice == "default" ]]
+then
+    echo "#############################"
+    echo "## install in default mode ##"
+    echo "#############################"
+	time_z=TRUE
+	web=TRUE
+	xvnc=TRUE
+	dav=TRUE
+	browse=TRUE
+	novnc=TRUE
+	awake=TRUE
+    nomach=TRUE
+    ddserv=TRUE    
+    
 else
 	if $french
 	then

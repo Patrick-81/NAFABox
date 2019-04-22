@@ -59,6 +59,12 @@
 
 - OACapture (Beta github) : https://github.com/openastroproject/openastro
 
-- Siril : https://www.siril.org/fr/
+- logiciel de traitement photo 
+    - Siril : https://www.siril.org/fr/
+    - DarkTale : https://www.darktable.org/
+    - GIMP : https://www.gimp.org/
+    - Ser Player : https://sites.google.com/site/astropipp/ser-player
+    - Stackistry : https://github.com/GreatAttractor/stackistry/
+    - ImPPG : https://github.com/GreatAttractor/imppg/
 
 - Stellarium : https://stellarium.org/fr/
