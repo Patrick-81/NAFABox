@@ -30,6 +30,13 @@ echo "================================================="
 ######
 source $dirinstall/detect_language.sh
 
+if [ -d ~/Desktop ]
+then
+	desktop="Desktop"
+else
+	desktop="Bureau"
+fi
+
 if $french
 then
 	dial[0]="Installation/Mise à jour des logiciels"
@@ -150,6 +157,8 @@ then
     mv ./stackistry-$version ./stackistry
     cd ./stackistry
     make
+    cp $dirinstall/Stackistry.desktop ~/$desktop/Stackistry.desktop
+    sudo cp ~/$desktop/Stackistry.desktop /usr/share/applications
 fi
 
 if [[ $impg == "TRUE" ]]
@@ -168,5 +177,7 @@ then
     cd ./imppg
     cmake -G "Unix Makefiles"
     make
+    cp $dirinstall/Imppg.desktop ~/$desktop/Imppg.desktop
+    sudo cp ~/$desktop/Imppg.desktop /usr/share/applications
 fi
 
