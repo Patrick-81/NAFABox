@@ -26,141 +26,133 @@ sudo apt-get -o Dpkg::Options::="--force-overwrite" -f install
 ######
 installconf()
 {
-if [[ $3 == "server" ]]
-then
-    echo "############################"
-    echo "## install in server mode ##"
-    echo "############################"
-	$dirinstall/install_comsetup.sh $3
-	$dirinstall/install_kstars.sh $3
+    if [[ $3 == "server" ]]
+    then
+        echo "############################"
+        echo "## install in server mode ##"
+        echo "############################"
+	    $dirinstall/install_comsetup.sh $3
+	    $dirinstall/install_kstars.sh $3
 
-if [[ $3 == "default" ]]
-then
-    echo "############################"
-    echo "## install in default mode ##"
-    echo "############################"
-	$dirinstall/install_comsetup.sh $3
-	$dirinstall/install_kstars.sh $3
-    $dirinstall/install_phd2.sh
-	
-else
-	if $1
-	then
-		dial[0]="Installation/Mise à jour des logiciels"
-		dial[1]="Choisir le(s) logiciel(s) à installer"
-	else
-		dial[0]="Install/Update of software"
-		dial[1]="Choose software(s) to install"
-	fi
+    elif [[ $3 == "default" ]]
+    then
+        echo "############################"
+        echo "## install in default mode ##"
+        echo "############################"
+	    $dirinstall/install_comsetup.sh $3
+	    $dirinstall/install_kstars.sh $3
+        $dirinstall/install_phd2.sh
+	    
+    else
+	    if $1
+	    then
+		    dial[0]="Installation/Mise à jour des logiciels"
+		    dial[1]="Choisir le(s) logiciel(s) à installer"
+		    choice[0]="Couche de communication web"
+		    choice[1]="Installation Lin_guider"
+		    choice[2]="Installation Kstars-EKOS-INDI"
+		    choice[3]="Installation Phd2"
+		    choice[4]="installation de Carte du ciel (Beta)"
+		    choice[5]="Installation Ccdciel (Beta)"
+		    choice[6]="Installation Planetary Imager (Beta)"
+		    choice[7]="Installation OACapture (Beta)"
+		    choice[8]="Installation logiciel de traitement d'image"
+		    choice[9]="Installation Stellarium"
+		    choice[10]="Telechargement du/des index(s) astrometrique"
+	    else
+		    dial[0]="Install/Update of software"
+		    dial[1]="Choose software(s) to install"
+		    choice[0]="Web communication layer"
+		    choice[1]="Lin_guider"
+		    choice[2]="Install Kstars-EKOS-INDI"
+		    choice[3]="Phd2"
+		    choice[4]="Skychart (Beta)"
+		    choice[5]="Ccdciel (Beta)"
+		    choice[6]="Planetary Imager (Beta)"
+		    choice[7]="OACapture (Beta)"
+		    choice[8]="Image processing software"
+		    choice[9]="Stellarium"
+		    choice[10]="install astrometry index(s)"
+	    fi
 
-	if $1
-	then
-		choice[0]="Couche de communication web"
-		choice[1]="Installation Lin_guider"
-		choice[2]="Installation Kstars-EKOS-INDI"
-		choice[3]="Installation Phd2"
-		choice[4]="installation de Carte du ciel (Beta)"
-		choice[5]="Installation Ccdciel (Beta)"
-		choice[6]="Installation Planetary Imager (Beta)"
-		choice[7]="Installation OACapture (Beta)"
-		choice[8]="Installation logiciel de traitement d'image"
-		choice[9]="Installation Stellarium"
-		choice[10]="Telechargement du/des index(s) astrometrique"
+	    message[0]="Install web communications"
+	    message[1]="Install Lin_guider"
+	    message[2]="Install kstars-ekos-indi"
+	    message[3]="Install phd2"
+	    message[4]="Install Skychart"
+	    message[5]="Install ccdciel"
+	    message[6]="Install planetary imager"
+	    message[7]="Install OACapture"
+	    message[8]="Install image processing software"
+	    message[9]="Install stellarium"
+	    message[10]="Install index(s)"
 
-
-	else
-		choice[0]="Web communication layer"
-		choice[1]="Lin_guider"
-		choice[2]="Install Kstars-EKOS-INDI"
-		choice[3]="Phd2"
-		choice[4]="Skychart (Beta)"
-		choice[5]="Ccdciel (Beta)"
-		choice[6]="Planetary Imager (Beta)"
-		choice[7]="OACapture (Beta)"
-		choice[8]="Image processing software"
-		choice[9]="Stellarium"
-		choice[10]="install astrometry index(s)"
-	fi
-
-
-	message[0]="Install web communications"
-	message[1]="Install Lin_guider"
-	message[2]="Install kstars-ekos-indi"
-	message[3]="Install phd2"
-	message[4]="Install Skychart"
-	message[5]="Install ccdciel"
-	message[6]="Install planetary imager"
-	message[7]="Install OACapture"
-	message[8]="Install image processing software"
-	message[9]="Install stellarium"
-	message[10]="Install index(s)"
-
-	script[0]=install_comsetup.sh
-	script[1]=install_linguider.sh
-	script[2]=install_kstars.sh
-	script[3]=install_phd2.sh
-	script[4]=install_skychart.sh
-	script[5]=install_ccdciel.sh
-	script[6]=install_planetaryimager.sh
-	script[7]=install_oacapture.sh
-	script[8]=install_traitement.sh
-	script[9]=install_stellarium.sh
-	script[10]=install_index.sh
+	    script[0]=install_comsetup.sh
+	    script[1]=install_linguider.sh
+	    script[2]=install_kstars.sh
+	    script[3]=install_phd2.sh
+	    script[4]=install_skychart.sh
+	    script[5]=install_ccdciel.sh
+	    script[6]=install_planetaryimager.sh
+	    script[7]=install_oacapture.sh
+	    script[8]=install_traitement.sh
+	    script[9]=install_stellarium.sh
+	    script[10]=install_index.sh
 
 
-	if [[ $2 == "initial" ]]
-	then
-		st=(true false true true false false false false false false false)
+	    if [[ $2 == "initial" ]]
+	    then
+		    st=(true false true true false false false false false false false)
 
-	else
-		st=(false false false false false false false false false false false)
-	fi
+	    else
+		    st=(false false false false false false false false false false false)
+	    fi
 
-	# nombre de logiciel
-	number=11
+	    # nombre de logiciel
+	    number=11
 
-	# echo ${st[*]}
-	# echo ${choise[*]}
-	# echo ${dial[*]}
+	    # echo ${st[*]}
+	    # echo ${choise[*]}
+	    # echo ${dial[*]}
 
 
-	# affichage
+	    # affichage
 
-	if chose=`yad --width=400 \
-		--center \
-		--form \
-		--title="${dial[0]}" \
-		--text="${dial[1]}" \
-		--field=":LBL" \
-		--field="${choice[0]}:CHK" \
-		--field="${choice[1]}:CHK" \
-		--field="${choice[2]}:CHK" \
-		--field="${choice[3]}:CHK" \
-		--field="${choice[4]}:CHK" \
-		--field="${choice[5]}:CHK" \
-		--field="${choice[6]}:CHK" \
-		--field="${choice[7]}:CHK" \
-		--field="${choice[8]}:CHK" \
-		--field="${choice[9]}:CHK" \
-		--field="${choice[10]}:CHK" \
-		"" "${st[0]}" "${st[1]}" "${st[2]}" \
-		"${st[3]}" "${st[4]}" "${st[5]}" "${st[6]}" \
-		"${st[7]}" "${st[8]}" "${st[9]}" "${st[10]}"`
-	then
-		for (( i=0; i<=$number-1; i++ ))
-		do
-			j=$(($i+2))
-			re=$(echo "$chose" | cut -d "|" -f$j)
-			if [[ $re == "TRUE" ]]
-			then
-				$dirinstall/${script[$i]} | tee -a "$dirinstall/nafabox.log"
-			fi
-		done
-	else
-		echo "cancel"
-	fi
-fi
-	return
+	    if chose=`yad --width=400 \
+		    --center \
+		    --form \
+		    --title="${dial[0]}" \
+		    --text="${dial[1]}" \
+		    --field=":LBL" \
+		    --field="${choice[0]}:CHK" \
+		    --field="${choice[1]}:CHK" \
+		    --field="${choice[2]}:CHK" \
+		    --field="${choice[3]}:CHK" \
+		    --field="${choice[4]}:CHK" \
+		    --field="${choice[5]}:CHK" \
+		    --field="${choice[6]}:CHK" \
+		    --field="${choice[7]}:CHK" \
+		    --field="${choice[8]}:CHK" \
+		    --field="${choice[9]}:CHK" \
+		    --field="${choice[10]}:CHK" \
+		    "" "${st[0]}" "${st[1]}" "${st[2]}" \
+		    "${st[3]}" "${st[4]}" "${st[5]}" "${st[6]}" \
+		    "${st[7]}" "${st[8]}" "${st[9]}" "${st[10]}"`
+	    then
+		    for (( i=0; i<=$number-1; i++ ))
+		    do
+			    j=$(($i+2))
+			    re=$(echo "$chose" | cut -d "|" -f$j)
+			    if [[ $re == "TRUE" ]]
+			    then
+				    $dirinstall/${script[$i]} | tee -a "$dirinstall/nafabox.log"
+			    fi
+		    done
+	    else
+		    echo "cancel"
+	    fi
+    fi
+return
 }
 ######
 # Detect language
