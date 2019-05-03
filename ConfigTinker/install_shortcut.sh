@@ -10,20 +10,20 @@
 ######
 # Recherche du répertoire ConfigTinker
 ######
-if [ -z "$nafabox_path" ]
+if [[ -z "$nafabox_path" ]]
 then
 	echo "Run first Pre_Install.sh and reload Terminal"
 	exit
 fi
-dirinstall=$nafabox_path
+dirinstall=${nafabox_path}
 ######
-source $dirinstall/detect_language.sh
+source ${dirinstall}/detect_language.sh
 ######
 # Créer le raccourci bureau
 ######
 echo $1 $2 $3
 
-if [ -n "$2"  ]
+if [[ -n "$2"  ]]
 then
     if [[ $2 == "0" ]] || [[ $2 == "1" ]]
     then
@@ -35,7 +35,7 @@ else
 	AppExec=$1
 fi
 
-if [ -d ~/Desktop ]
+if [[ -d ~/Desktop ]]
 then
 	desktop="Desktop"
 else
@@ -46,22 +46,22 @@ AppName=$(echo $1 | sed 's/^./\u&/')
 
 rm -f /tmp/shortcut1
 rm -f /tmp/shortcut2
-rm -f /tmp/$AppName.desktop
+rm -f /tmp/${AppName}.desktop
 
-cat $dirinstall/template.desktop  | sed -e "s/APP_NAME/$1/g" > /tmp/shortcut1
+cat ${dirinstall}/template.desktop  | sed -e "s/APP_NAME/$1/g" > /tmp/shortcut1
 cat /tmp/shortcut1  | sed -e "s%APP_EXEC%$AppExec%g" > /tmp/shortcut2
-cat /tmp/shortcut2 | sed -e "s/NAME/$AppName/g" > /tmp/$AppName.desktop
-chmod +x /tmp/$AppName.desktop
+cat /tmp/shortcut2 | sed -e "s/NAME/$AppName/g" > /tmp/${AppName}.desktop
+chmod +x /tmp/${AppName}.desktop
 
 option="rien"
-if [ -n "$3"  ]
+if [[ -n "$3"  ]]
 then
     if [[ $3 == "0" ]] || [[ $3 == "1" ]]
     then
         option=$3
     fi
 else
-    if [ -n "$2"  ]
+    if [[ -n "$2"  ]]
     then
         if [[ $2 == "0" ]] || [[ $2 == "1" ]]
         then
@@ -71,15 +71,15 @@ else
 fi
     
 
-if [[ $option == "1" ]]
+if [[ ${option} == "1" ]]
 then
-	sudo mv /tmp/$AppName.desktop /usr/share/applications/$AppName.desktop
-elif [[ $option == "0" ]]
+	sudo mv /tmp/${AppName}.desktop /usr/share/applications/${AppName}.desktop
+elif [[ ${option} == "0" ]]
 then
-	mv /tmp/$AppName.desktop ~/$desktop/$AppName.desktop
+	mv /tmp/${AppName}.desktop ~/${desktop}/${AppName}.desktop
 
 else
-	mv /tmp/$AppName.desktop ~/$desktop/$AppName.desktop
-    sudo cp ~/$desktop/$AppName.desktop /usr/share/applications/$AppName.desktop
+	mv /tmp/${AppName}.desktop ~/${desktop}/${AppName}.desktop
+    sudo cp ~/${desktop}/${AppName}.desktop /usr/share/applications/${AppName}.desktop
 fi
 

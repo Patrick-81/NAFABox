@@ -8,7 +8,7 @@
 ################################################
 #!/bin/bash -i
 p=$(uname -p)
-case $p in
+case ${p} in
 "armv7l") 
 	proc="_armhf"
 	;;

@@ -9,17 +9,17 @@
 ######
 # Recherche du répertoire ConfigTinker
 ######
-if [ -z "$nafabox_path" ]
+if [[ -z "$nafabox_path" ]]
 then
 	echo "Run first Pre_Install.sh and reload Terminal"
 	exit
 fi
-dirinstall=$nafabox_path
+dirinstall=${nafabox_path}
 ######
 # Fonction pour l'installation
 ######
-source $dirinstall/detect_language.sh
-if $french
+source ${dirinstall}/detect_language.sh
+if ${french}
 then
 	title="Mise à jour des script NAFABox"
 	text="Voulez vous mettere à jour les script NAFABox ?"
@@ -40,29 +40,29 @@ if choix=`yad --width 350 --height 100 \
 				--button="gtk-cancel:1"`
 then
 
-	cd $dirinstall/../
+	cd ${dirinstall}/../
 	nafa_path=`pwd`
-	cd $dirinstall/../../
+	cd ${dirinstall}/../../
 	back_path=`pwd`
 	if [[ "${dirinstall: -20}" == "NAFABox/ConfigTinker" ]] 
 	then
 		echo "suppression de l'ancien dossier NAFABox"
-		cp -r $nafa_path $back_path/nafabox_temp
-		rm -Rf $nafa_path
-		cd $back_path
+		cp -r ${nafa_path} ${back_path}/nafabox_temp
+		rm -Rf ${nafa_path}
+		cd ${back_path}
 		git clone https://github.com/Patrick-81/NAFABox.git
 		cd NAFABox
 		git checkout master
 		
 		echo "script update"
-		if [ -d $nafa_path ]
+		if [[ -d ${nafa_path} ]]
 		then
-			rm -Rf $back_path/nafabox_temp
+			rm -Rf ${back_path}/nafabox_temp
 		else
-			mv $back_path/nafabox_temp $nafa_path
+			mv ${back_path}/nafabox_temp ${nafa_path}
 		fi
 
-        $dirinstall/install_conf.sh reins $1
+        ${dirinstall}/install_conf.sh reins $1
 
 	else
 		echo "error wrong path for nafabox script, need run Pre_install.sh"

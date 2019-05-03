@@ -3,12 +3,12 @@ options="-y"
 ######
 # Recherche du répertoire ConfigTinker
 ######
-if [ -z "$nafabox_path" ]
+if [[ -z "$nafabox_path" ]]
 then
 	echo "Run first Pre_Install.sh and reload Terminal"
 	exit
 fi
-dirinstall=$nafabox_path
+dirinstall=${nafabox_path}
 
 figlet -k Install Switch_Language
 echo "================================================="
@@ -17,11 +17,11 @@ echo "================================================="
 ######
 # detect current language
 ######
-source $dirinstall/detect_language.sh
+source ${dirinstall}/detect_language.sh
 # open fd
 tempfile=`tempfile 2>/dev/null` || tempfile=/tmp/test$$
-trap "rm -f $tempfile" 0 1 2 5 15
-if $french
+trap "rm -f ${tempfile}" 0 1 2 5 15
+if ${french}
 then
 	lbl[0]="Language for all system "
 	lbl[1]="Choose your language. Reboot after install"
@@ -42,31 +42,31 @@ if ret=`yad --width 400 \
 			--text "${lbl[1]}" \
 			--entry-text "${lbl[2]}" "${lbl[3]}"`
 then
-	reponse=$ret
-	if [[ $reponse == ${lbl[3]} ]]
+	reponse=${ret}
+	if [[ ${reponse} == ${lbl[3]} ]]
 	then
 		# passer le systeme en français
 		# ajout des packs langage
 		version=`lsb_release -c -s`
-        sudo apt-get $options install language-pack-kde-en
+        sudo apt-get ${options} install language-pack-kde-en
 		sudo apt-get -o Dpkg::Options::="--force-overwrite" -f install
-		sudo apt-get $options install language-pack-en language-pack-gnome-en
-		sudo apt-get $options install firefox-locale-en
-        sudo apt-get $options install language-pack-en language-pack-gnome-en-base
+		sudo apt-get ${options} install language-pack-en language-pack-gnome-en
+		sudo apt-get ${options} install firefox-locale-en
+        sudo apt-get ${options} install language-pack-en language-pack-gnome-en-base
 		sudo locale-gen en_US en_US.UTF-8
 		sudo update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
 		sudo dpkg-reconfigure keyboard-configuration
 		exit
-	elif [[ $reponse == ${lbl[2]} ]]
+	elif [[ ${reponse} == ${lbl[2]} ]]
 	then
 		# passer le systeme en français
 		# ajout des packs langage
 		version=`lsb_release -c -s`
-        sudo apt-get $options install language-pack-kde-fr
+        sudo apt-get ${options} install language-pack-kde-fr
         sudo apt-get -o Dpkg::Options::="--force-overwrite" -f install
-		sudo apt-get $options install language-pack-fr language-pack-gnome-fr
-		sudo apt-get $options install firefox-locale-fr
-        sudo apt-get $options install language-pack-fr language-pack-gnome-fr-base 
+		sudo apt-get ${options} install language-pack-fr language-pack-gnome-fr
+		sudo apt-get ${options} install firefox-locale-fr
+        sudo apt-get ${options} install language-pack-fr language-pack-gnome-fr-base
 		sudo locale-gen fr_FR fr_FR.UTF-8
 		sudo update-locale LC_ALL=fr_FR.UTF-8 LANG=fr_FR.UTF-8
 		sudo dpkg-reconfigure keyboard-configuration
