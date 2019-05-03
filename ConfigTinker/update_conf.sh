@@ -180,7 +180,7 @@ do
         echo "#########################################################"
         echo "End of Server mode installation"
 		echo "need reboot after install"
-	if [[ $server_choice == "default" ]]
+	elif [[ $server_choice == "default" ]]
 	then
         echo "#########################################################"
         echo "#########################################################"
