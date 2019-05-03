@@ -10,12 +10,12 @@
 ######
 # Recherche du répertoire ConfigTinker
 ######
-if [ -z "$nafabox_path" ]
+if [[ -z "$nafabox_path" ]]
 then
 	echo "Run first Pre_Install.sh and reload Terminal"
 	exit
 fi
-dirinstall=$nafabox_path
+dirinstall=${nafabox_path}
 
 server_choice=$2
 
@@ -33,12 +33,12 @@ options="--auto-remove --yes -q"
 ######
 #if [[ -z $(cat $dirinstall/install-status.txt | grep mate) ]]
 #then
-$dirinstall/install_base.sh $1 $server_choice
+${dirinstall}/install_base.sh $1 ${server_choice}
 
 ######
 # detect processeur
 ######
-source $dirinstall/proctype.sh
+source ${dirinstall}/proctype.sh
 
 
 
@@ -54,15 +54,15 @@ echo "================================================="
 #if [[ -z $(cat install-status.txt | grep prereq) ]]
 #then
 
-sudo apt-get $options install libpangox-1.0-0 libespeak1 libpango1.0-0
-sudo apt-get $options install libsonic0 espeak-data fonts-freefont-ttf
+sudo apt-get ${options} install libpangox-1.0-0 libespeak1 libpango1.0-0
+sudo apt-get ${options} install libsonic0 espeak-data fonts-freefont-ttf
 version=`lsb_release -c -s`
-if [[ $version == "xenial" ]]
+if [[ ${version} == "xenial" ]]
 then
-	sudo apt-get $options install ttf-freefont 
+	sudo apt-get ${options} install ttf-freefont
 fi
-sudo apt-get $options install libjpeg62 libglu1
-sudo apt-get $options install xplanet espeak openssh-server uuid
+sudo apt-get ${options} install libjpeg62 libglu1
+sudo apt-get ${options} install xplanet espeak openssh-server uuid
 
 # add package for exfat :
 sudo apt-get install --reinstall -y exfat-fuse  exfat-utils
@@ -77,13 +77,13 @@ mkdir -p ~/bin
 
 # Modificateur de résolution
 # Resolution modifier
-$dirinstall/install_setres.sh | tee -a "$dirinstall/nafabox.log"
+${dirinstall}/install_setres.sh | tee -a "$dirinstall/nafabox.log"
 
 
 ######
 # Install conf updater
 ######
-if [[ $server_choice == "server" ]]
+if [[ ${server_choice} == "server" ]]
 then
 	echo "no icon for server"
 else
@@ -91,18 +91,18 @@ else
 	echo "================================================="
 	echo "================================================="
 
-	cp $dirinstall/update_conf.sh ~/bin/.
+	cp ${dirinstall}/update_conf.sh ~/bin/.
 	chmod +x ~/bin/update_conf.sh
 	sudo ln -sf ~/bin/update_conf.sh /usr/bin/update_conf
 	sudo cp /usr/share/icons/gnome/32x32/apps/system-software-update.png /usr/share/pixmaps/update_conf.png
 	# Création du raccourci pour update_conf
-	$dirinstall/install_shortcut.sh update_conf "bash -ic update_conf"
+	${dirinstall}/install_shortcut.sh update_conf "bash -ic update_conf"
 fi
 
 ######
 # Création du raccourci pour install_index.sh
 ######
-if [[ $server_choice == "server" ]]
+if [[ ${server_choice} == "server" ]]
 then
 	echo "no icon for server"
 else
@@ -110,11 +110,11 @@ else
 	echo "================================================="
 	echo "================================================="
 
-	cp $dirinstall/install_index.sh ~/bin/install_index.sh
+	cp ${dirinstall}/install_index.sh ~/bin/install_index.sh
 	sudo ln -sf ~/bin/install_index.sh /usr/bin/install_index
-	sudo cp $dirinstall/install_index.png /usr/share/pixmaps/install_index.png
-	sudo cp $dirinstall/index.txt ~/bin/index.txt
-	$dirinstall/install_shortcut.sh install_index "bash -ic install_index"
+	sudo cp ${dirinstall}/install_index.png /usr/share/pixmaps/install_index.png
+	sudo cp ${dirinstall}/index.txt ~/bin/index.txt
+	${dirinstall}/install_shortcut.sh install_index "bash -ic install_index"
 fi
 
 ######
@@ -126,35 +126,35 @@ echo "================================================="
 
 machine=$(sudo lshw | grep "produit\|product" | grep "Raspberry")
 
-if [ -d "/usr/lib/armbian-config/" ]
+if [[ -d "/usr/lib/armbian-config/" ]]
 then
     echo "armbian-config is already install"
 else
     machine=$(sudo lshw | grep "produit\|product" | grep "Raspberry")
-    if [[ $machine == *"Raspberry"* ]]
+    if [[ ${machine} == *"Raspberry"* ]]
     then
         echo "install hotspot for raspberry"
-        cp $dirinstall/install_hotspot.sh ~/bin/install_hotspot.sh
+        cp ${dirinstall}/install_hotspot.sh ~/bin/install_hotspot.sh
         sudo ln -sf ~/bin/install_hotspot.sh /usr/bin/install_hotspot
-        if [[ $server_choice == "server" ]]
+        if [[ ${server_choice} == "server" ]]
         then
             echo "no icon for server"
         else
-            sudo cp $dirinstall/install_hotspot.png /usr/share/pixmaps/install_hotspot.png
-            $dirinstall/install_shortcut.sh install_hotspot "bash -ic install_hotspot" 1
+            sudo cp ${dirinstall}/install_hotspot.png /usr/share/pixmaps/install_hotspot.png
+            ${dirinstall}/install_shortcut.sh install_hotspot "bash -ic install_hotspot" 1
         fi
         
-    elif [[ $proc == "_amd64" ]] || [[ $proc == "_x86" ]]
+    elif [[ ${proc} == "_amd64" ]] || [[ ${proc} == "_x86" ]]
     then
         echo "install hotspot for X86 and Amd64 system"
-        cp $dirinstall/install_hotspot.sh ~/bin/install_hotspot.sh
+        cp ${dirinstall}/install_hotspot.sh ~/bin/install_hotspot.sh
         sudo ln -sf ~/bin/install_hotspot.sh /usr/bin/install_hotspot
-        if [[ $server_choice == "server" ]]
+        if [[ ${server_choice} == "server" ]]
         then
             echo "no icon for server"
         else
-            sudo cp $dirinstall/install_hotspot.png /usr/share/pixmaps/install_hotspot.png
-            $dirinstall/install_shortcut.sh install_hotspot "bash -ic install_hotspot" 1
+            sudo cp ${dirinstall}/install_hotspot.png /usr/share/pixmaps/install_hotspot.png
+            ${dirinstall}/install_shortcut.sh install_hotspot "bash -ic install_hotspot" 1
         fi
     fi
 fi
@@ -165,26 +165,26 @@ fi
 figlet -k Install armbian-config program
 echo "================================================="
 echo "================================================="
-if [ -d "/usr/lib/armbian-config/" ]
+if [[ -d "/usr/lib/armbian-config/" ]]
 then
     echo "armbian-config is already install"
 else
-    cp $dirinstall/run_armbian_config.sh ~/bin/run_armbian_config.sh
+    cp ${dirinstall}/run_armbian_config.sh ~/bin/run_armbian_config.sh
     sudo ln -sf ~/bin/run_armbian_config.sh /usr/bin/armbian-config
 
-    if [[ $server_choice == "server" ]]
+    if [[ ${server_choice} == "server" ]]
     then
         echo "no icon for server"
     else
         sudo cp /usr/share/icons/gnome/48x48/categories/applications-system.png /usr/share/pixmaps/armbian-config.png
-        $dirinstall/install_shortcut.sh armbian-config "bash -ic armbian-config" 1
+        ${dirinstall}/install_shortcut.sh armbian-config "bash -ic armbian-config" 1
     fi
 fi
 
 ##### 
 # Création du raccourci pour switch_language.sh
 ######
-if [[ $server_choice == "server" ]]
+if [[ ${server_choice} == "server" ]]
 then
 	echo "no icon for server"
 else
@@ -192,10 +192,10 @@ else
 	echo "================================================="
 	echo "================================================="
 
-	cp $dirinstall/switch_language.sh ~/bin/switch_language.sh
+	cp ${dirinstall}/switch_language.sh ~/bin/switch_language.sh
 	sudo ln -sf ~/bin/switch_language.sh /usr/bin/switch_language
 	sudo cp /usr/share/icons/gnome/48x48/apps/config-language.png /usr/share/pixmaps/switch_language.png
-	$dirinstall/install_shortcut.sh switch_language "bash -ic switch_language"
+	${dirinstall}/install_shortcut.sh switch_language "bash -ic switch_language"
 fi
 
 ##### 
@@ -206,36 +206,36 @@ figlet -k Install reconfig_keyboard program
 echo "================================================="
 echo "================================================="
 
-cp $dirinstall/reconfig_keyboard.sh ~/bin/reconfig_keyboard.sh
+cp ${dirinstall}/reconfig_keyboard.sh ~/bin/reconfig_keyboard.sh
 sudo ln -sf ~/bin/reconfig_keyboard.sh /usr/bin/reconfig_keyboard
 sudo cp /usr/share/icons/gnome/48x48/apps/preferences-desktop-keyboard.png /usr/share/pixmaps/reconfig_keyboard.png
-$dirinstall/install_shortcut.sh reconfig_keyboard "bash -ic reconfig_keyboard" 1
+${dirinstall}/install_shortcut.sh reconfig_keyboard "bash -ic reconfig_keyboard" 1
 
 ##### 
 # Création du raccourci pour setup_time.sh
 ######
-if [[ $server_choice == "server" ]]
+if [[ ${server_choice} == "server" ]]
 then
 	echo "no icon for server"
 else
 
-	$dirinstall/install_setup-time.sh | tee -a "$dirinstall/nafabox.log"
+	${dirinstall}/install_setup-time.sh | tee -a "$dirinstall/nafabox.log"
 fi
 
 ##### 
 # Création du programme d'update des scripts
 ######
-if [[ $server_choice == "server" ]]
+if [[ ${server_choice} == "server" ]]
 then
 	echo "no icon for server"
 else
 	figlet -k Install Script updater program
 	echo "================================================="
 	echo "================================================="
-	cp $dirinstall/update_nafabox_script.sh ~/bin/update_nafabox_script.sh
+	cp ${dirinstall}/update_nafabox_script.sh ~/bin/update_nafabox_script.sh
 	sudo ln -sf ~/bin/update_nafabox_script.sh /usr/bin/update_nafabox_script
 	sudo cp /usr/share/icons/gnome/48x48/apps/system-software-update.png /usr/share/pixmaps/update_nafabox_script.png
-	$dirinstall/install_shortcut.sh update_nafabox_script "bash -ic update_nafabox_script"
+	${dirinstall}/install_shortcut.sh update_nafabox_script "bash -ic update_nafabox_script"
 fi
 
 ######
@@ -245,8 +245,8 @@ fi
 figlet -k Install Configuration
 echo "================================================="
 echo "================================================="
-~/bin/update_conf.sh $1 $server_choice
+~/bin/update_conf.sh $1 ${server_choice}
 
 
 # add script for debug keyboard in nomachine :
-sudo cp $dirinstall/setxkbmap.desktop ~/.config/autostart/setxkbmap.desktop
+sudo cp ${dirinstall}/setxkbmap.desktop ~/.config/autostart/setxkbmap.desktop

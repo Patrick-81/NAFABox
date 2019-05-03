@@ -11,14 +11,14 @@
 ######
 # Recherche du répertoire ConfigTinker
 ######
-if [ -z "$nafabox_path" ]
+if [[ -z "$nafabox_path" ]]
 then
 	echo "Run first Pre_Install.sh and reload Terminal"
 	exit
 fi
-dirinstall=$nafabox_path
+dirinstall=${nafabox_path}
 ######
-cd $dirinstall
+cd ${dirinstall}
 server_choice=$2
 sudo apt-get -o Dpkg::Options::="--force-overwrite" -f install
 ######
@@ -31,17 +31,17 @@ installconf()
         echo "############################"
         echo "## install in server mode ##"
         echo "############################"
-	    $dirinstall/install_comsetup.sh $3
-	    $dirinstall/install_kstars.sh $3
+	    ${dirinstall}/install_comsetup.sh $3
+	    ${dirinstall}/install_kstars.sh $3
 
     elif [[ $3 == "default" ]]
     then
         echo "############################"
         echo "## install in default mode ##"
         echo "############################"
-	    $dirinstall/install_comsetup.sh $3
-	    $dirinstall/install_kstars.sh $3
-        $dirinstall/install_phd2.sh
+	    ${dirinstall}/install_comsetup.sh $3
+	    ${dirinstall}/install_kstars.sh $3
+        ${dirinstall}/install_phd2.sh
 	    
     else
 	    if $1
@@ -142,10 +142,10 @@ installconf()
 		    for (( i=0; i<=$number-1; i++ ))
 		    do
 			    j=$(($i+2))
-			    re=$(echo "$chose" | cut -d "|" -f$j)
-			    if [[ $re == "TRUE" ]]
+			    re=$(echo "$chose" | cut -d "|" -f${j})
+			    if [[ ${re} == "TRUE" ]]
 			    then
-				    $dirinstall/${script[$i]} | tee -a "$dirinstall/nafabox.log"
+				    ${dirinstall}/${script[$i]} | tee -a "$dirinstall/nafabox.log"
 			    fi
 		    done
 	    else
@@ -159,7 +159,7 @@ return
 ######
 
 lang=$(locale | grep LANG= | grep fr_FR)
-if [[ $lang == *"fr_FR"* ]]
+if [[ ${lang} == *"fr_FR"* ]]
 then
 	french=true
 else
@@ -170,24 +170,26 @@ fi
 ######
 while true
 do
-	installconf $french $1 $2
+	installconf ${french} $1 $2
 ######
 # Reboot required
 ######
-	if [[ $server_choice == "server" ]]
+	if [[ ${server_choice} == "server" ]]
 	then
         echo "#########################################################"
         echo "#########################################################"
         echo "End of Server mode installation"
 		echo "need reboot after install"
-	elif [[ $server_choice == "default" ]]
+		exit
+	elif [[ ${server_choice} == "default" ]]
 	then
         echo "#########################################################"
         echo "#########################################################"
         echo "End of Default mode installation"
 		echo "need reboot after install"
+		exit
 	else
-		if $french
+		if ${french}
 		then
 			dial[0]="Voulez-vous maintenant ?"
 			dial[1]="Sélectionnez une option"
@@ -209,14 +211,14 @@ do
 					--text "${dial[1]}" \
 					--entry-text "${dial[2]}" "${dial[3]}" "${dial[4]}"`
 		then
-			if [[ $option == "${dial[2]}" ]]
+			if [[ ${option} == "${dial[2]}" ]]
 			then
 				echo "Quit"
 				exit
-			elif [[ $option == "${dial[3]}" ]]
+			elif [[ ${option} == "${dial[3]}" ]]
 			then
 				echo "back to install software"
-			elif [[ $option == "${dial[4]}" ]]
+			elif [[ ${option} == "${dial[4]}" ]]
 			then
 				echo "Reboot"
 				sudo reboot

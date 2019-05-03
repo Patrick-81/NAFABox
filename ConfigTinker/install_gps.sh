@@ -10,12 +10,12 @@
 ######
 # Recherche du répertoire ConfigTinker
 ######
-if [ -z "$nafabox_path" ]
+if [[ -z "$nafabox_path" ]]
 then
 	echo "Run first Pre_Install.sh and reload Terminal"
 	exit
 fi
-dirinstall=$nafabox_path
+dirinstall=${nafabox_path}
 
 figlet -k Install GPSD
 echo "================================================="
@@ -27,7 +27,7 @@ echo "================================================="
 ######
 # détection de l'architecture
 ######
-source $dirinstall/proctype.sh
+source ${dirinstall}/proctype.sh
 ######
 # basic update
 ######

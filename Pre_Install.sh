@@ -16,7 +16,7 @@ chmod +x ./Install.sh
 cd ./ConfigTinker
 mkdir -p ~/bin
 #source ./pwd_ConfigTinker.sh
-if [ -z "$nafabox_path" ]
+if [[ -z "$nafabox_path" ]]
 then
 	echo "export nafabox_path=`pwd`"  >> ~/.bashrc
 	echo -e "nafabox_path was added"

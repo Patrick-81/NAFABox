@@ -19,14 +19,14 @@ dirinstall=$nafabox_path
 figlet -k Install BrowsePy
 echo "================================================="
 echo "================================================="
-cd $dirinstall
+cd ${dirinstall}
 # s'assurer que que pip est installe
 sudo apt-get -y install python-pip python3-pip python-setuptools python3-setuptools
 # installer browsepy
 sudo pip install browsepy
 # Lancer le serveur au demarrage
 # placer la commande sous .config/autostart
-cat $dirinstall/browsepy.desktop | sed -e "s#MOI#${HOME}#g" > /tmp/browsepy.desktop
+cat ${dirinstall}/browsepy.desktop | sed -e "s#MOI#${HOME}#g" > /tmp/browsepy.desktop
 mkdir -p ~/.config/autostart/
 sudo cp /tmp/browsepy.desktop $HOME/.config/autostart/browsepy.desktop
 # fin

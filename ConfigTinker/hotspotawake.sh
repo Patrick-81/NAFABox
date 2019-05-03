@@ -1,13 +1,13 @@
 #!/bin/bash -i
-if [ -x /sbin/iwlist ]
+if [[ -x /sbin/iwlist ]]
 then
 	connected=$(iw dev wlan0 station dump)
-	if [[ -z  $connected ]]
+	if [[ -z  ${connected} ]]
 	then
 		echo $(date) > /tmp/hotspotawake.log
 		s=$(sed -n "$=" /tmp/hotspot.wake)
 		echo "$(date) réveil du hotspot" >> /tmp/hotspot.wake
-		if [ $s -gt 100 ]
+		if [[ ${s} -gt 100 ]]
 		then
 			rm -rf /tmp/hotspot.wake
 			echo "$(date) réveil du hotspot" >> /tmp/hotspot.wake

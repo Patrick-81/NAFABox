@@ -9,18 +9,18 @@
 ######
 # Recherche du répertoire ConfigTinker
 ######
-if [ -z "$nafabox_path" ]
+if [[ -z "$nafabox_path" ]]
 then
 	echo "Run first Pre_Install.sh and reload Terminal"
 	exit
 fi
-dirinstall=$nafabox_path
+dirinstall=${nafabox_path}
 
 
 ######
 # detect processeur
 ######
-source $dirinstall/proctype.sh
+source ${dirinstall}/proctype.sh
 
 figlet -k Install processing software
 echo "================================================="
@@ -28,16 +28,16 @@ echo "================================================="
 ######
 # detect language
 ######
-source $dirinstall/detect_language.sh
+source ${dirinstall}/detect_language.sh
 
-if [ -d ~/Desktop ]
+if [[ -d ~/Desktop ]]
 then
 	desktop="Desktop"
 else
 	desktop="Bureau"
 fi
 
-if $french
+if ${french}
 then
 	dial[0]="Installation/Mise à jour des logiciels"
 	dial[1]="Choisir le(s) logiciel(s) à installer"
@@ -87,15 +87,15 @@ else
 	echo "cancel"
 fi
 
-if [[ $s_siril == "TRUE" ]]
+if [[ ${s_siril} == "TRUE" ]]
 then
-    $dirinstall/install_siril.sh
+    ${dirinstall}/install_siril.sh
 fi
 
-if [[ $s_dark == "TRUE" ]]
+if [[ ${s_dark} == "TRUE" ]]
 then
 
-    if [[ $proc == "_armhf" ]]
+    if [[ ${proc} == "_armhf" ]]
     then
         echo "darktable is not compatible with this platform"
     else
@@ -106,9 +106,9 @@ then
     
 fi
 
-if [[ $s_gimp == "TRUE" ]]
+if [[ ${s_gimp} == "TRUE" ]]
 then
-	if $french
+	if ${french}
 	then
         sudo apt-get install -y gimp-help-fr
     else
@@ -121,55 +121,55 @@ then
 
 fi
 
-if [[ $ser_p == "TRUE" ]]
+if [[ ${ser_p} == "TRUE" ]]
 then
     sudo apt-get install -y ser-player
 fi
 
-if [[ $stack == "TRUE" ]]
+if [[ ${stack} == "TRUE" ]]
 then
 
 	#test si les dossiers existes, si oui suppression
-	if [ -d "/home/${USER}/bin/libskry" ]
+	if [[ -d "/home/${USER}/bin/libskry" ]]
 	then
 	  echo "suppression de l'ancien dossier libskry"
-	  rm -Rf /home/$USER/bin/libskry
+	  rm -Rf /home/${USER}/bin/libskry
 	fi
-	if [ -d "/home/${USER}/bin/stackistry" ]
+	if [[ -d "/home/${USER}/bin/stackistry" ]]
 	then
 	  echo "suppression de l'ancien dossier stackistry"
-	  rm -Rf /home/$USER/bin/stackistry
+	  rm -Rf /home/${USER}/bin/stackistry
 	fi
     version="0.3.0"
     sudo apt-get install -y libgtkmm-3.0-dev ffmpeg libavcodec-dev libavformat-dev libavutil-dev gcc g++
     cd ~/bin
-    wget https://github.com/GreatAttractor/libskry/archive/v$version.tar.gz
-    tar zxvf v$version.tar.gz
-    rm ./v$version.tar.gz
-    mv ./libskry-$version ./libskry
+    wget https://github.com/GreatAttractor/libskry/archive/v${version}.tar.gz
+    tar zxvf v${version}.tar.gz
+    rm ./v${version}.tar.gz
+    mv ./libskry-${version} ./libskry
     cd ./libskry
     make
 
     cd ~/bin
-    wget https://github.com/GreatAttractor/stackistry/archive/v$version.tar.gz
-    tar zxvf v$version.tar.gz
-    rm ./v$version.tar.gz
-    mv ./stackistry-$version ./stackistry
+    wget https://github.com/GreatAttractor/stackistry/archive/v${version}.tar.gz
+    tar zxvf v${version}.tar.gz
+    rm ./v${version}.tar.gz
+    mv ./stackistry-${version} ./stackistry
     cd ./stackistry
     make
-    cp $dirinstall/Stackistry.desktop ~/$desktop/Stackistry.desktop
-    sudo cp ~/$desktop/Stackistry.desktop /usr/share/applications
+    cp ${dirinstall}/Stackistry.desktop ~/${desktop}/Stackistry.desktop
+    sudo cp ~/${desktop}/Stackistry.desktop /usr/share/applications
 fi
 
-if [[ $impg == "TRUE" ]]
+if [[ ${impg} == "TRUE" ]]
 then
     sudo apt-get install -y libgtkmm-3.0-dev ffmpeg libavcodec-dev libavformat-dev libavutil-dev gcc g++ cmake libwxgtk3.0-dev libwxgtk-media3.0-dev libwxgtk-media3.0-gtk3-dev libwxgtk-webview3.0-gtk3-dev libwxgtk3.0-gtk3-dev libfreeimage-dev
 
 	#test si le dossiers existe, si oui suppression
-	if [ -d "/home/${USER}/bin/imppg" ]
+	if [[ -d "/home/${USER}/bin/imppg" ]]
 	then
 	  echo "suppression de l'ancien dossier imppg"
-	  rm -Rf /home/$USER/bin/imppg
+	  rm -Rf /home/${USER}/bin/imppg
 	fi
     #sudo ln -s /usr/bin/wx-config-3.0 /usr/bin/wx-config
     cd ~/bin
@@ -177,7 +177,7 @@ then
     cd ./imppg
     cmake -G "Unix Makefiles"
     make
-    cp $dirinstall/Imppg.desktop ~/$desktop/Imppg.desktop
-    sudo cp ~/$desktop/Imppg.desktop /usr/share/applications
+    cp ${dirinstall}/Imppg.desktop ~/${desktop}/Imppg.desktop
+    sudo cp ~/${desktop}/Imppg.desktop /usr/share/applications
 fi
 

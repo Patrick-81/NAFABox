@@ -10,16 +10,17 @@
 
 server_choice=$1
 
-if [ -z "$nafabox_path" ]
+if [[ -z "$nafabox_path" ]]
 then
 	echo "Run first Pre_Install.sh and reload Terminal"
 else
+    dirinstall=$nafabox_path
     ######
     # detect language
     ######
-    source $dirinstall/detect_language.sh
+    source ${dirinstall}/detect_language.sh
 
-    if $french
+    if ${french}
     then
         title[0]="Choix du type d'installation :"
         title[1]="Menu"
@@ -57,23 +58,23 @@ Custom installation: with graphical interface,
         choice[2]="Custom installation"
     fi     
 
-    if [[ $server_choice == "" ]]
+    if [[ ${server_choice} == "" ]]
     then
         trap sert à être propre.
         touch /tmp/dialogtmp && FICHTMP=/tmp/dialogtmp
-        trap "rm -f $FICHTMP" 0 1 2 3 5 15 
+        trap "rm -f ${FICHTMP}" 0 1 2 3 5 15
         # dialog for inital choice
         dialog --backtitle "${title[0]}" --title "${title[1]}" \
         --menu "$menu_text" 22 60 6 \
         "default" "${choice[0]}" \
         "server" "${choice[1]}" \
-        "custom" "${choice[2]}" 2> $FICHTMP
+        "custom" "${choice[2]}" 2> ${FICHTMP}
         # traitement de la réponse
-        if [ $? = 0 ]
+        if [[ $? == 0 ]]
         then
-            for i in `cat $FICHTMP`
+            for i in `cat ${FICHTMP}`
             do
-                case $i in
+                case ${i} in
                 default)
                     server_choice="default" ;;
                 server) 
@@ -91,26 +92,26 @@ Custom installation: with graphical interface,
     figlet -k NAFABox
     echo "================================================="
     echo "================================================="
-    if [[ $server_choice == "server" ]]
+    if [[ ${server_choice} == "server" ]]
     then
         echo "############################"
         echo "## install in server mode ##"
         echo "############################"
-	    $nafabox_path/install_conf.sh initial $server_choice | tee -a "$nafabox_path/nafabox.log"
+	    ${dirinstall}/install_conf.sh initial ${server_choice} | tee -a "$dirinstall/nafabox.log"
 
-    elif [[ $server_choice == "default" ]]
+    elif [[ ${server_choice} == "default" ]]
     then
         echo "############################"
         echo "## install in default mode ##"
         echo "############################"
-	    $nafabox_path/install_conf.sh initial $server_choice | tee -a "$nafabox_path/nafabox.log"
-    elif [[ $server_choice == "custom" ]]
+	    ${dirinstall}/install_conf.sh initial ${server_choice} | tee -a "$dirinstall/nafabox.log"
+    elif [[ ${server_choice} == "custom" ]]
     then
 	    echo "############################"
         echo "## install in custom mode ##"
         echo "############################"        
 
-	    $nafabox_path/install_conf.sh initial | tee -a "$nafabox_path/nafabox.log"
+	    ${dirinstall}/install_conf.sh initial | tee -a "$dirinstall/nafabox.log"
     else
         echo "wrong install mode"
         exit

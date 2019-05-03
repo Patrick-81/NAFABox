@@ -9,31 +9,31 @@
 # On June 10 2017
 # V0.1
 ################################################
-#/bin/bash -i
+#!/bin/bash -i
 ######
 # pre-req
 #####
 ######
 # Recherche du répertoire ConfigTinker
 ######
-if [ -z "$nafabox_path" ]
+if [[ -z "$nafabox_path" ]]
 then
 	echo "Run first Pre_Install.sh and reload Terminal"
 	exit
 fi
-dirinstall=$nafabox_path
+dirinstall=${nafabox_path}
 ######
 sudo apt-get install --reinstall lshw
 mkdir -p /home/nafa/bin/Projects
 cd /home/nafa/bin/Projects
 machine=$(sudo lshw | grep "produit\|product" | grep "Intel")
-if [[ $machine == *"Intel"* ]]
+if [[ ${machine} == *"Intel"* ]]
 then
 	echo "GPIO non disponible\n"
 	exit
 fi
 machine=$(sudo lshw | grep "produit\|product" | grep "Raspberry")
-if [[ $machine == *"Raspberry"* ]]
+if [[ ${machine} == *"Raspberry"* ]]
 then 
 	git clone -b https://github.com/rkaczorek/astroberry-diy
 else
@@ -62,7 +62,7 @@ cd /home/nafa/bin/Projects/astroberry-diy
 #patch rpi_brd.cpp -i $dirinstall/rpi_brd.patch -o TEMP
 #cp -f TEMP rpi_brd.cpp
 mkdir -p build && cd build
-if [[ $machine == *"Raspberry"* ]]
+if [[ ${machine} == *"Raspberry"* ]]
 then
 	sudo rm -rf * && cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Debug .. && sudo make install
 else

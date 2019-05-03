@@ -14,8 +14,8 @@ then
 	echo "Run first Pre_Install.sh and reload Terminal"
 	exit
 fi
-dirinstall=$nafabox_path
+dirinstall=${nafabox_path}
 
-figlet -k Install AstroPhoto-Plus (with PHD2 support)
+figlet -k "Install AstroPhoto-Plus (with PHD2 support)"
 echo "================================================="
 echo "================================================="
