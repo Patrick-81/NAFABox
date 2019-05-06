@@ -10,15 +10,15 @@
 ######
 # Recherche du répertoire ConfigTinker
 ######
-if [ -z "$nafabox_path" ]
+if [[ -z "$nafabox_path" ]]
 then
 	echo "Run first Pre_Install.sh and reload Terminal"
 	exit
 fi
-dirinstall=$nafabox_path
+dirinstall=${nafabox_path}
 
 machine=$(sudo lshw | grep "produit\|product" | grep "Raspberry")
-if [[ $machine == *"Raspberry"* ]]
+if [[ ${machine} == *"Raspberry"* ]]
 then
     echo "stellarium requires too much power for a raspberry"
 exit
@@ -33,7 +33,7 @@ echo "================================================="
 ######
 # détection de l'architecture
 ######
-source $dirinstall/proctype.sh
+source ${dirinstall}/proctype.sh
 ######
 # add repository
 ######
@@ -49,5 +49,5 @@ sudo apt-get -y install stellarium
 ######
 # Création de l'icône sur le bureau
 ######
-$dirinstall/install_shortcut.sh stellarium 0
+${dirinstall}/install_shortcut.sh stellarium 0
 

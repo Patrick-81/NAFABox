@@ -11,17 +11,17 @@
 ######
 # Recherche du répertoire ConfigTinker
 ######
-if [ -z "$nafabox_path" ]
+if [[ -z "$nafabox_path" ]]
 then
 	echo "Run first Pre_Install.sh and reload Terminal"
 	exit
 fi
-dirinstall=$nafabox_path
+dirinstall=${nafabox_path}
 ######
 # Fonction pour l'installation
 ######
-source $dirinstall/detect_language.sh
-if $french
+source ${dirinstall}/detect_language.sh
+if ${french}
 then
 	compute[0]="Mise à l'heure du système"
 	compute[1]="Réglage date et heure"
@@ -50,7 +50,7 @@ if temps=`yad --width=300 \
 	--form \
     --date-format="%B/%d/%Y" \
 	--title="${compute[0]}" \
-	--image=$dirinstall/setup_time.png \
+	--image=${dirinstall}/setup_time.png \
 	--text="${compute[1]}" \
 	--field="${compute[2]}" \
 	--field="${compute[3]}" \
@@ -68,7 +68,7 @@ then
 	day=$(echo "$date_t" | cut -d "/" -f2) #mois
 	years=$(echo "$date_t" | cut -d "/" -f3) #annee
 
-    mon=`echo $mon | sed -e 's/\(.\{1\}\)/\U\1/'`
+    mon=`echo ${mon} | sed -e 's/\(.\{1\}\)/\U\1/'`
     mon=${mon:0:3}
 	sudo date -s "$mon $day $years $HH:$MM:$SS"
 else

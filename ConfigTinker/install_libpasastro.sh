@@ -10,12 +10,12 @@
 ######
 # Recherche du répertoire ConfigTinker
 ######
-if [ -z "$nafabox_path" ]
+if [[ -z "$nafabox_path" ]]
 then
 	echo "Run first Pre_Install.sh and reload Terminal"
 	exit
 fi
-dirinstall=$nafabox_path
+dirinstall=${nafabox_path}
 
 figlet -k Install LibPasAstro
 echo "================================================="
@@ -23,9 +23,9 @@ echo "================================================="
 
 ######
 # Installation de libpasastro
-source $dirinstall/proctype.sh
+source ${dirinstall}/proctype.sh
 software="libpasastro"
 version="version_1.1-20"
 file="libpasastro_1.1-20$proc.deb"
-wget https://sourceforge.net/projects/$software/files/$version/$file -P /tmp/
-sudo dpkg -i /tmp/$file
+wget https://sourceforge.net/projects/${software}/files/${version}/${file} -P /tmp/
+sudo dpkg -i /tmp/${file}

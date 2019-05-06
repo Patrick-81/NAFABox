@@ -9,12 +9,12 @@
 ######
 # Recherche du répertoire ConfigTinker
 ######
-if [ -z "$nafabox_path" ]
+if [[ -z "$nafabox_path" ]]
 then
 	echo "Run first Pre_Install.sh and reload Terminal"
 	exit
 fi
-dirinstall=$nafabox_path
+dirinstall=${nafabox_path}
 
 figlet -k Install OACapture
 echo "================================================="
@@ -23,9 +23,9 @@ echo "================================================="
 ######
 # detect processeur
 ######
-source $dirinstall/proctype.sh
+source ${dirinstall}/proctype.sh
 
-if [[ $proc == "_aarch64" ]]
+if [[ ${proc} == "_aarch64" ]]
 then
 	echo "OAcapture is in BETA in arm64 board"
 fi
@@ -41,11 +41,11 @@ sudo apt-get -y install libuvc-dev
 # go at home
 cd /home/${USER}/bin/
 
-if [ -d "/home/${USER}/bin/openastro/" ]
+if [[ -d "/home/${USER}/bin/openastro/" ]]
 then
 	# mise a jour
 	echo "update OACapture git"
-	cd /home/$USER/bin/openastro/
+	cd /home/${USER}/bin/openastro/
 	sudo make uninstall
 	sudo make clean
 	git pull
@@ -56,7 +56,7 @@ else
 
 fi
 
-cd /home/$USER/bin/openastro/
+cd /home/${USER}/bin/openastro/
 
 # config openastro
 set -x -e
@@ -85,9 +85,9 @@ sudo make install
 ######
 # Création de l'icône sur le bureau
 ######
-$dirinstall/install_shortcut.sh oacapture 0
+${dirinstall}/install_shortcut.sh oacapture 0
 
 ######
 # Création de l'icône sur le bureau
 ######
-$dirinstall/install_shortcut.sh oalive 0
+${dirinstall}/install_shortcut.sh oalive 0

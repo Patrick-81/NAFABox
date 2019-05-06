@@ -10,12 +10,12 @@
 ######
 # Recherche du répertoire ConfigTinker
 ######
-if [ -z "$nafabox_path" ]
+if [[ -z "$nafabox_path" ]]
 then
 	echo "Run first Pre_Install.sh and reload Terminal"
 	exit
 fi
-dirinstall=$nafabox_path
+dirinstall=${nafabox_path}
 ######
 
 figlet -k Install SkyChart
@@ -55,6 +55,6 @@ sudo apt-get install -y skychart skychart-data-stars
 ######
 # Création de l'icône sur le bureau
 ######
-$dirinstall/install_shortcut.sh skychart 0
+${dirinstall}/install_shortcut.sh skychart 0
 
 
