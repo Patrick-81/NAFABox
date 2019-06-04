@@ -49,17 +49,17 @@ cd /home/$USER/Projects/mobindi && ./startup.sh
 #######
 # Scipt de lancement du serveur au login
 #######
-echo -e '#!/bin/bash'"\ncd /home/$USER/Projects/mobindi\nnpm start &\n" > simple_ui.sh
+echo -e '#!/bin/bash'"\ncd /home/$USER/Projects/mobindi\nnpm start &\n" > /home/$USER/bin/mobindi_up.sh
+chmod +x /home/$USER/bin/mobindi_up.sh
 echo -e "[Desktop Entry]
 Encoding=UTF-8
 Version=0.9.4
 Type=Application
 Name=UI_Indi
 Comment=Contrôle de Indi
-Exec=/home/$USER/bin/simple_ui.sh
+Exec=/home/$USER/bin/mobindi_up.sh
 StartupNotify=false
 Terminal=false
-Hidden=false" > /home/$USER/.config/autostart > UI_Indi.desktop
-chmod +x /home/$USER/.config/autostart > UI_Indi.desktop
-
+Hidden=false" > /home/$USER/.config/autostart/mobindi.desktop
+chmod +x /home/$USER/.config/autostart/mobindi.desktop
 
