@@ -78,6 +78,7 @@ else
         choice[6]="Installation Nomachine"
 		choice[7]="HotspotAwake Script"
         choice[8]="Serveur pour QDslrDashboard"
+		choice[9]="Installation de Mobindi"
 
 	else
 		dial[0]="Install/Update of software"
@@ -91,10 +92,11 @@ else
         choice[6]="Install Nomachine"
 		choice[7]="HotspotAwake Script"
         choice[8]="Server for QDslrDashboard"
+		choice[9]="Install Mobindi"
 
 	fi
 
-	st=(true true true true true true true false true)
+	st=(true true true true true true true false true true)
 
 	# interface de choix
 	if chose=`yad --width=400 \
@@ -112,9 +114,10 @@ else
 		--field="${choice[6]}:CHK" \
         --field="${choice[7]}:CHK" \
         --field="${choice[8]}:CHK" \
+        --field="${choice[9]}:CHK" \
 		"" "${st[0]}" "${st[1]}" "${st[2]}" \
 		"${st[3]}" "${st[4]}" "${st[5]}" "${st[6]}" \
-        "${st[7]}" "${st[8]}"`
+        "${st[7]}" "${st[8]}" "${st[9]}"`
 	then
 		time_z=$(echo "$chose" | cut -d "|" -f2)
 		web=$(echo "$chose" | cut -d "|" -f3)
@@ -125,6 +128,7 @@ else
         nomach=$(echo "$chose" | cut -d "|" -f8)
 		awake=$(echo "$chose" | cut -d "|" -f9)
         ddserv=$(echo "$chose" | cut -d "|" -f10)
+        mobindi=$(echo "$chose" | cut -d "|" -f11)
 	else
 		echo "cancel"
 	fi
@@ -404,4 +408,9 @@ then
 	sudo systemctl enable ddserver.service
 	sudo systemctl start ddserver.service
 
+fi
+
+if [[ ${mobindi} == "TRUE" ]]
+then
+	${dirinstall}/install_mobindi.sh
 fi

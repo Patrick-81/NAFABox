@@ -101,5 +101,5 @@ make all && sudo make install
 # Création de l'icône sur le bureau
 ######
 sudo cp /usr/share/icons/hicolor/16x16/apps/planetary_imager.png /usr/share/pixmaps
-${dirinstall}/install_shortcut.sh planetary_imager 0
+${dirinstall}/install_shortcut.sh APPNAME='planetary_imager' OPTIO='0'
 

@@ -39,17 +39,23 @@ npm install
 #######
 # clonage mobindi dans ~/bin
 #######
-mkdir -p /home/$USER/Projects
-cd /home/$USER/Projects
-git clone https://github.com/pludov/mobindi.git
+mkdir -p /home/$USER/bin
+cd /home/$USER/bin
+if [[ -d "/home/$USER/bin/mobindi" ]]
+then
+	cd mobindi
+	git pull
+else
+	git clone https://github.com/pludov/mobindi.git
+fi
 #######
 # Compilation et lancement du serveur
 #######
-cd /home/$USER/Projects/mobindi && ./startup.sh
+cd /home/$USER/bin/mobindi && ./startup.sh
 #######
 # Scipt de lancement du serveur au login
 #######
-echo -e '#!/bin/bash'"\ncd /home/$USER/Projects/mobindi\nnpm start &\n" > /home/$USER/bin/mobindi_up.sh
+echo -e '#!/bin/bash'"\ncd /home/$USER/bin/mobindi\nnpm start &\n" > /home/$USER/bin/mobindi_up.sh
 chmod +x /home/$USER/bin/mobindi_up.sh
 echo -e "[Desktop Entry]
 Encoding=UTF-8

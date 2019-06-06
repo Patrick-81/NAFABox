@@ -47,7 +47,6 @@ then
     choice[3]="Ser Player"
     choice[4]="Stackistry"
     choice[5]="ImPPG"
-
     
 else
 	dial[0]="Install/Update of software"
@@ -90,6 +89,7 @@ fi
 if [[ ${s_siril} == "TRUE" ]]
 then
     ${dirinstall}/install_siril.sh
+    ${dirinstall}/install_sirilic.sh
 fi
 
 if [[ ${s_dark} == "TRUE" ]]

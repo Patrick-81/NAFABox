@@ -2,10 +2,10 @@
 [Desktop Entry]
 Version=1.0
 Type=Application
-Terminal=true
+Terminal=TERMOP
 Icon[fr_FR]=APP_NAME
 Name[fr_FR]=NAME
 Exec=APP_EXEC
 Name=NAME
-Icon=APP_NAME
+Icon=APP_ICON
 Categories=Application;Education;

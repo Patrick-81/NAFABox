@@ -218,7 +218,7 @@ then
 		# install arduino IDE
 		umake ide arduino
 
-		${dirinstall}/install_shortcut.sh arduino
+		${dirinstall}/install_shortcut.sh APPNAME='arduino'
 		echo "Arduino folder is : ~/.local/share/umake/ide/arduino"
     fi
 	sudo usermod -a -G dialout ${USER}

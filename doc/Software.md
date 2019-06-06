@@ -31,6 +31,7 @@
   - NoMachine : https://www.nomachine.com/fr
   - Hotspot awake : NAFABox script for re-up hotspot (outdate)
   - Server for qDslrDashboard 
+  - Server Mobindi : https://github.com/pludov/mobindi.git
   
 - Lin Guider : https://sourceforge.net/projects/linguider/
 
@@ -61,6 +62,7 @@
 
 - logiciel de traitement photo 
     - Siril : https://www.siril.org/fr/
+    - Sirilic : https://gitlab.com/free-astro/sirilic.git
     - DarkTale : https://www.darktable.org/
     - GIMP : https://www.gimp.org/
     - Ser Player : https://sites.google.com/site/astropipp/ser-player
