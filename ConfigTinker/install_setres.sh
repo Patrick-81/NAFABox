@@ -37,5 +37,5 @@ cp ${dirinstall}/resol.scr.desktop ~/.config/autostart/.
 chmod +x ~/bin/setres.py
 sudo cp /usr/share/icons/gnome/48x48/apps/preferences-desktop-display.png /usr/share/pixmaps/setres.png
 sudo ln -sf ~/bin/setres.py /usr/bin/setres
-${dirinstall}/install_shortcut.sh APPNAME='setres'
+${dirinstall}/install_shortcut.sh APPNAME='setres' OPTION='2'
 

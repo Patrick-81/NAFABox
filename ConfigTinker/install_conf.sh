@@ -96,7 +96,7 @@ else
 	sudo ln -sf ~/bin/update_conf.sh /usr/bin/update_conf
 	sudo cp /usr/share/icons/gnome/32x32/apps/system-software-update.png /usr/share/pixmaps/update_conf.png
 	# Création du raccourci pour update_conf
-	${dirinstall}/install_shortcut.sh APPNAME='update_conf' APPEXEC='bash -ic update_conf'
+	${dirinstall}/install_shortcut.sh APPNAME='update_conf' APPEXEC='bash -ic update_conf' OPTION='1'
 fi
 
 ######
@@ -114,7 +114,7 @@ else
 	sudo ln -sf ~/bin/install_index.sh /usr/bin/install_index
 	sudo cp ${dirinstall}/install_index.png /usr/share/pixmaps/install_index.png
 	sudo cp ${dirinstall}/index.txt ~/bin/index.txt
-	${dirinstall}/install_shortcut.sh APPNAME='install_index' APPEXEC='bash -ic install_index'
+	${dirinstall}/install_shortcut.sh APPNAME='install_index' APPEXEC='bash -ic install_index' OPTION='2'
 fi
 
 ######
@@ -141,7 +141,7 @@ else
             echo "no icon for server"
         else
             sudo cp ${dirinstall}/install_hotspot.png /usr/share/pixmaps/install_hotspot.png
-            ${dirinstall}/install_shortcut.sh APPNAME='install_hotspot' APPEXEC='bash -ic install_hotspot' OPTION='1'
+            ${dirinstall}/install_shortcut.sh APPNAME='install_hotspot' APPEXEC='bash -ic install_hotspot' OPTION='0'
         fi
         
     elif [[ ${proc} == "_amd64" ]] || [[ ${proc} == "_x86" ]]
@@ -154,7 +154,7 @@ else
             echo "no icon for server"
         else
             sudo cp ${dirinstall}/install_hotspot.png /usr/share/pixmaps/install_hotspot.png
-            ${dirinstall}/install_shortcut.sh APPNAME='install_hotspot' APPEXEC='bash -ic install_hotspot' OPTION='1'
+            ${dirinstall}/install_shortcut.sh APPNAME='install_hotspot' APPEXEC='bash -ic install_hotspot' OPTION='0'
         fi
     fi
 fi
@@ -177,7 +177,7 @@ else
         echo "no icon for server"
     else
         sudo cp /usr/share/icons/gnome/48x48/categories/applications-system.png /usr/share/pixmaps/armbian-config.png
-        ${dirinstall}/install_shortcut.sh APPNAME='armbian-config' APPEXEC='bash -ic armbian-config' OPTION='1'
+        ${dirinstall}/install_shortcut.sh APPNAME='armbian-config' APPEXEC='bash -ic armbian-config' OPTION='0'
     fi
 fi
 
@@ -195,7 +195,7 @@ else
 	cp ${dirinstall}/switch_language.sh ~/bin/switch_language.sh
 	sudo ln -sf ~/bin/switch_language.sh /usr/bin/switch_language
 	sudo cp /usr/share/icons/gnome/48x48/apps/config-language.png /usr/share/pixmaps/switch_language.png
-	${dirinstall}/install_shortcut.sh APPNAME='switch_language' APPEXEC='bash -ic switch_language'
+	${dirinstall}/install_shortcut.sh APPNAME='switch_language' APPEXEC='bash -ic switch_language' OPTION='1'
 fi
 
 ##### 
@@ -209,7 +209,7 @@ echo "================================================="
 cp ${dirinstall}/reconfig_keyboard.sh ~/bin/reconfig_keyboard.sh
 sudo ln -sf ~/bin/reconfig_keyboard.sh /usr/bin/reconfig_keyboard
 sudo cp /usr/share/icons/gnome/48x48/apps/preferences-desktop-keyboard.png /usr/share/pixmaps/reconfig_keyboard.png
-${dirinstall}/install_shortcut.sh APPNAME='reconfig_keyboard' APPEXEC='bash -ic reconfig_keyboard' OPTION='1'
+${dirinstall}/install_shortcut.sh APPNAME='reconfig_keyboard' APPEXEC='bash -ic reconfig_keyboard' OPTION='0'
 
 ##### 
 # Création du raccourci pour setup_time.sh
@@ -235,7 +235,7 @@ else
 	cp ${dirinstall}/update_nafabox_script.sh ~/bin/update_nafabox_script.sh
 	sudo ln -sf ~/bin/update_nafabox_script.sh /usr/bin/update_nafabox_script
 	sudo cp /usr/share/icons/gnome/48x48/apps/system-software-update.png /usr/share/pixmaps/update_nafabox_script.png
-	${dirinstall}/install_shortcut.sh APPNAME="update_nafabox_script" APPEXEC='bash -ic update_nafabox_script'
+	${dirinstall}/install_shortcut.sh APPNAME="update_nafabox_script" APPEXEC='bash -ic update_nafabox_script' OPTION='2'
 fi
 
 ######
