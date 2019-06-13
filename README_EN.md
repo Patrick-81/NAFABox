@@ -45,7 +45,7 @@ or
 
 1/ Install Ubuntu Mate Bionic (18.04 LTS) distribution via Etcher.
 
-https://share.obspm.fr/index.php/s/MncDtcX8YGtBBRA --> for 3b/3b+
+https://ubuntu-mate.org/raspberry-pi/ubuntu-mate-18.04.2-beta1-desktop-armhf+raspi-ext4.img.xz --> for 3b/3b+ 
 
 ... Same instruction ...
 

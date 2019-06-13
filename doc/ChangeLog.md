@@ -12,6 +12,7 @@ Start for 3.2 version. No change log before.
 - Add package for ExFat
 - Add Tutorial for Switch Kernel in Armbian
 - debug hotspot, tutorial
+- Add button for go in novnc, indiwebmanger and BrowsePy in home page
 
 ### 3.2.1 :
 - debug RTC tuto for dnsmasq autostartup

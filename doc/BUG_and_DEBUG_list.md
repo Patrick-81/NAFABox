@@ -24,6 +24,15 @@
 - Lancer **setres** et selectionner une résolution voulu puis mettez à jour le bureau (F5)   
 - Run **setres** and update Desktop (F5)   
 
+5/ bluetooth download folder error : 
+
+- Lancer un Terminal puis tapez les commandes suivantes :
+    `gsettings get org.blueman.transfer shared-path`  --> pour savoir où pointe blueman
+    `gsettings set org.blueman.transfer shared-path '/home/toto'`  --> pour faire pointer blueman vers '/home/toto'
+- Start a Terminal and type the following commands:
+     `gsettings get org.blueman.transfer shared-path` --> to find out where blueman points
+     `gsettings set org.blueman.transfer shared-path '/home/toto'` --> to point blueman to '/home/toto'
+
 X/ For New bug :
 
 - poster une "Issue" sur github et fournissez le fichier nafabox.log (dans .../NAFABox/ConfigTinker/ )    

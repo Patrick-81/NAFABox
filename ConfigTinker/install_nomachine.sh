@@ -56,13 +56,13 @@ elif [[ ${proc} == "_aarch64" ]]
 then
 	type="arm64"
     type2="Arm"
-    sous_version="8_7_"
+    sous_version="6_3_"
 else
 	echo "architecture not support"
     exit
 fi
 
-version="6.6"
+version="6.7"
 
 file=nomachine_${version}.${sous_version}${type}.deb
 
