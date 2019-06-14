@@ -23,10 +23,13 @@ echo "================================================="
 ######
 # Installation des pré-requis
 #######
-sudo apt-get install git cmake zlib1g-dev libcurl4-openssl-dev libgsl-dev libraw-dev libcfitsio-dev libjpeg-dev libpng-dev libcgicc-dev daemontools nginx
+sudo apt-get -y install git cmake zlib1g-dev libcurl4-openssl-dev libgsl-dev libraw-dev libcfitsio-dev libjpeg-dev libpng-dev libcgicc-dev daemontools nginx
+
+# install last nodejs
 curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 sudo apt-get install -y nodejs
 npm install
+
 #######
 # clonage mobindi dans ~/bin
 #######
@@ -35,14 +38,17 @@ cd /home/$USER/bin
 if [[ -d "/home/$USER/bin/mobindi" ]]
 then
 	cd mobindi
-	git pull
+	git pull --ff-only
+    # install and compil
+    ./install.sh
+    
 else
 	git clone https://github.com/pludov/mobindi.git
+    cd mobindi
+    # install and compil
+    ./install.sh
 fi
-#######
-# Compilation et lancement du serveur
-#######
-cd /home/$USER/bin/mobindi && ./startup.sh
+
 #######
 # Scipt de lancement du serveur au login
 #######
@@ -50,7 +56,7 @@ echo -e '#!/bin/bash'"\ncd /home/$USER/bin/mobindi\nnpm start &\n" > /home/$USER
 chmod +x /home/$USER/bin/mobindi_up.sh
 echo -e "[Desktop Entry]
 Encoding=UTF-8
-Version=0.9.4
+Version=1.1.0
 Type=Application
 Name=UI_Indi
 Comment=Contrôle de Indi
