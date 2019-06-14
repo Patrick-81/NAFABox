@@ -41,28 +41,28 @@ if [[ ${proc} == "_amd64" ]]
 then
 	type="amd64"
     type2="Linux"
-    sous_version="8_5_"
+    sous_version="6_11_"
 elif [[ ${proc} == "_armhf" ]]
 then
 	type="armhf"
     type2="Arm"
-    sous_version="8_5_"
+    sous_version="6_3_"
 elif [[ ${proc} == "_x86" ]]
 then
 	type="i386"
     type2="Linux"
-    sous_version="8_5_"
+    sous_version="6_11_"
 elif [[ ${proc} == "_aarch64" ]]
 then
 	type="arm64"
     type2="Arm"
-    sous_version="8_7_"
+    sous_version="6_3_"
 else
 	echo "architecture not support"
     exit
 fi
 
-version="6.6"
+version="6.7"
 
 file=nomachine_${version}.${sous_version}${type}.deb
 

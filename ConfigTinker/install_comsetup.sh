@@ -49,6 +49,7 @@ then
 	awake=FALSE
     nomach=FALSE
     ddserv=TRUE
+    mobindi=FALSE
 elif [[ ${server_choice} == "default" ]]
 then
     echo "#############################"
@@ -62,7 +63,8 @@ then
 	novnc=TRUE
 	awake=TRUE
     nomach=TRUE
-    ddserv=TRUE    
+    ddserv=TRUE
+    mobindi=TRUE
     
 else
 	if ${french}

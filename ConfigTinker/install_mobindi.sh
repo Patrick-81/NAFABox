@@ -21,15 +21,6 @@ echo "================================================="
 echo "================================================="
 
 ######
-# detect processeur
-######
-source $dirinstall/proctype.sh
-
-if [[ $proc == "_aarch64" ]]
-then
-	echo "OAcapture is in BETA in arm64 board"
-fi
-######
 # Installation des pré-requis
 #######
 sudo apt-get install git cmake zlib1g-dev libcurl4-openssl-dev libgsl-dev libraw-dev libcfitsio-dev libjpeg-dev libpng-dev libcgicc-dev daemontools nginx
