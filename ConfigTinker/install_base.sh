@@ -76,7 +76,22 @@ then
 
 elif [[ ${server_choice} == "default" ]]
 then
-    installMate="TRUE"
+    installMate="FALSE"
+    dialog --title " Install Ubuntu MATE" --clear \
+	    --yesno "Do you need install Ubuntu MATE" 10 30
+
+    case $? in
+	    0)	echo "Install Ubuntu MATE"
+            installMate="TRUE"
+            ;;
+	    1)	
+            installMate="FALSE"
+            ;;
+	    255)	
+            echo "exit"
+            ;;
+    esac
+
     language="TRUE"
     autologin="FALSE"
     ip_indicator="TRUE"

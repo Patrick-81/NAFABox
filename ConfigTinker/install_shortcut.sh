@@ -66,6 +66,7 @@ chmod +x /tmp/${AppName}.desktop
 case ${option} in
 "0")
    sudo cp /tmp/${AppName}.desktop /usr/share/applications/${AppName}.desktop
+   ;;
 "1")
    sudo cp /tmp/${AppName}.desktop ~/${desktop}/${AppName}.desktop
    ;;
