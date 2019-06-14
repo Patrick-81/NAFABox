@@ -61,7 +61,7 @@ then
 	dav=TRUE
 	browse=TRUE
 	novnc=TRUE
-	awake=TRUE
+	awake=FALSE
     nomach=TRUE
     ddserv=TRUE
     mobindi=TRUE
@@ -98,7 +98,7 @@ else
 
 	fi
 
-	st=(true true true true true true true false true true)
+	st=(true true true true true true false true true true)
 
 	# interface de choix
 	if chose=`yad --width=400 \

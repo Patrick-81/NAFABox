@@ -25,6 +25,12 @@ echo "================================================="
 #######
 sudo apt-get -y install git cmake zlib1g-dev libcurl4-openssl-dev libgsl-dev libraw-dev libcfitsio-dev libjpeg-dev libpng-dev libcgicc-dev daemontools nginx
 
+# install indi :
+sudo apt-add-repository -y ppa:mutlaqja/ppa
+sudo apt-get update
+sudo apt-get -y install indi-full
+sudo apt-get -y install indi-dbg
+
 # install last nodejs
 curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 sudo apt-get install -y nodejs
