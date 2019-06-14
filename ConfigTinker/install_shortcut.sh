@@ -62,19 +62,17 @@ rm -f /tmp/${AppName}.desktop
 num=1
 cat ${dirinstall}/template.desktop  | sed -e "s/APP_NAME/$AppName/g" | sed -e "s%APP_EXEC%$AppExec%g" | sed -e "s/NAME/$AppName/g" | sed -e "s/TERMOP/$terminal/g" | sed -e "s/APP_ICON/$AppIcon/g" > /tmp/${AppName}.desktop
 chmod +x /tmp/${AppName}.desktop
-mv /tmp/${AppName}.desktop ~/${desktop}/${AppName}.desktop
-sudo cp ~/${desktop}/${AppName}.desktop /usr/share/applications/${AppName}.desktop
 
-#if [[ -n ${option} ]]
-#then
-#	if [[ ${option} == "1" ]]
-#	then
-#		sudo mv /tmp/${AppName}.desktop /usr/share/applications/${AppName}.desktop
-#	elif [[ ${option} == "0" ]]
-#	then
-#		mv /tmp/${AppName}.desktop ~/${desktop}/${AppName}.desktop
-#	else
-#		mv /tmp/${AppName}.desktop ~/${desktop}/${AppName}.desktop
-#   	sudo cp ~/${desktop}/${AppName}.desktop /usr/share/applications/${AppName}.desktop
-#	fi
-#fi
+if [[ -n ${option} ]]
+then
+	if [[ ${option} == "1" ]]
+	then
+		sudo mv /tmp/${AppName}.desktop /usr/share/applications/${AppName}.desktop
+	elif [[ ${option} == "0" ]]
+	then
+		mv /tmp/${AppName}.desktop ~/${desktop}/${AppName}.desktop
+    fi
+else
+	mv /tmp/${AppName}.desktop ~/${desktop}/${AppName}.desktop
+    sudo cp ~/${desktop}/${AppName}.desktop /usr/share/applications/${AppName}.desktop
+fi
