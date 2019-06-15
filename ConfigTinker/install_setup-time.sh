@@ -28,5 +28,5 @@ script="setup_time"
 cp ${dirinstall}/${script}.sh ~/bin/.
 sudo ln -sf ~/bin/${script}.sh /usr/bin/${script}
 sudo cp ${dirinstall}/${script}.png /usr/share/pixmaps/.
-${dirinstall}/install_shortcut.sh APPNAME="$script" APPEXEC="bash -ic $script" TERMINAL='false' OPTION='1'
+${dirinstall}/install_shortcut.sh APPNAME="$script" APPEXEC="bash -ic $script" TERMINAL='true' OPTION='2'
 

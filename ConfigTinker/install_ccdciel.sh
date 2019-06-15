@@ -55,5 +55,5 @@ sudo apt-get -y install ccdciel
 ######
 # Création de l'icône sur le bureau
 ######
-${dirinstall}/install_shortcut.sh APPNAME="ccdciel" OPTION="0"
+${dirinstall}/install_shortcut.sh APPNAME="ccdciel" OPTION="1" TERMINAL="false"
 

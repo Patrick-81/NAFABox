@@ -55,6 +55,6 @@ sudo apt-get install -y skychart skychart-data-stars
 ######
 # Création de l'icône sur le bureau
 ######
-${dirinstall}/install_shortcut.sh APPNAME='skychart' OPTION='0'
+${dirinstall}/install_shortcut.sh APPNAME='skychart' OPTION='1' TERMINAL="false"
 
 

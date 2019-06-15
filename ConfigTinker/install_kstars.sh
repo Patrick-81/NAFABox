@@ -322,7 +322,7 @@ fi
 ######
 # Création de l'icône sur le bureau
 ######
-${dirinstall}/install_shortcut.sh APPNAME='kstars' OPTION='2'
+${dirinstall}/install_shortcut.sh APPNAME='kstars' OPTION='1' TERMINAL="false"
 
 ######
 # Installation du programme de résolution astrométrique

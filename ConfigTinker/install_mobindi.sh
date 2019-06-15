@@ -58,7 +58,7 @@ fi
 #######
 # Scipt de lancement du serveur au login
 #######
-echo -e '#!/bin/bash'"\ncd /home/$USER/bin/mobindi\nnpm start &\n" > /home/$USER/bin/mobindi_up.sh
+echo -e '#!/bin/bash'"\ncd /home/$USER/bin/mobindi\n/home/$USER/bin/mobindi/startup.sh &\n" > /home/$USER/bin/mobindi_up.sh
 chmod +x /home/$USER/bin/mobindi_up.sh
 echo -e "[Desktop Entry]
 Encoding=UTF-8

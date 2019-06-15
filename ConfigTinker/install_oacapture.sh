@@ -85,9 +85,9 @@ sudo make install
 ######
 # Création de l'icône sur le bureau
 ######
-${dirinstall}/install_shortcut.sh APPNAME='oacapture' OPTION='0'
+${dirinstall}/install_shortcut.sh APPNAME='oacapture' OPTION='1' TERMINAL='false'
 
 ######
 # Création de l'icône sur le bureau
 ######
-${dirinstall}/install_shortcut.sh APPNAME='oalive' OPTION='0'
+${dirinstall}/install_shortcut.sh APPNAME='oalive' OPTION='1' TERMINAL='false'

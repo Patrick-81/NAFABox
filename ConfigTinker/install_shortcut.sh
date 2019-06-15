@@ -21,10 +21,10 @@ source ${dirinstall}/detect_language.sh
 ######
 # Créer le raccourci bureau
 ######
-terminal='true'
-AppExec=''
-AppName=''
-option='2' # defaut en cas d'oubli
+#terminal='true'
+#AppExec=''
+#AppName=''
+#option='2' # defaut en cas d'oubli
 for ARGUMENT in "$@"
 do
 
@@ -64,15 +64,15 @@ cat ${dirinstall}/template.desktop  | sed -e "s/APP_NAME/$AppName/g" | sed -e "s
 chmod +x /tmp/${AppName}.desktop
 
 case ${option} in
-"0")
-   sudo cp /tmp/${AppName}.desktop /usr/share/applications/${AppName}.desktop
-   ;;
-"1")
-   sudo cp /tmp/${AppName}.desktop ~/${desktop}/${AppName}.desktop
-   ;;
-"2")
-   sudo cp /tmp/${AppName}.desktop ~/${desktop}/${AppName}.desktop
-   sudo cp ~/${desktop}/${AppName}.desktop /usr/share/applications/${AppName}.desktop
-   ;;
+0)
+  sudo cp /tmp/${AppName}.desktop /usr/share/applications/${AppName}.desktop
+  ;;
+1)
+  cp /tmp/${AppName}.desktop ~/${desktop}/${AppName}.desktop
+  ;;
+2)
+  cp /tmp/${AppName}.desktop ~/${desktop}/${AppName}.desktop
+  sudo cp ~/${desktop}/${AppName}.desktop /usr/share/applications/${AppName}.desktop
+  ;;
 esac
 sudo rm /tmp/${AppName}.desktop

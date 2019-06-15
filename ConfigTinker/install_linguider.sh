@@ -54,7 +54,7 @@ sudo cp lin_guider /usr/bin/.
 ######
 sudo cp rc/lin_guider.png /usr/share/pixmaps/.
 cd ${whereiam}
-${dirinstall}/install_shortcut.sh APPNAME='lin_guider' OPTION='0'
+${dirinstall}/install_shortcut.sh APPNAME='lin_guider' OPTION='1' TERMINAL="false"
 
 
 

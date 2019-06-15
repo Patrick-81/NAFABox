@@ -96,7 +96,7 @@ else
 	sudo ln -sf ~/bin/update_conf.sh /usr/bin/update_conf
 	sudo cp /usr/share/icons/gnome/32x32/apps/system-software-update.png /usr/share/pixmaps/update_conf.png
 	# Création du raccourci pour update_conf
-	${dirinstall}/install_shortcut.sh APPNAME='update_conf' APPEXEC='bash -ic update_conf' OPTION='1'
+	${dirinstall}/install_shortcut.sh APPNAME='update_conf' APPEXEC='bash -ic update_conf' OPTION='2'
 fi
 
 ######
@@ -195,7 +195,7 @@ else
 	cp ${dirinstall}/switch_language.sh ~/bin/switch_language.sh
 	sudo ln -sf ~/bin/switch_language.sh /usr/bin/switch_language
 	sudo cp /usr/share/icons/gnome/48x48/apps/config-language.png /usr/share/pixmaps/switch_language.png
-	${dirinstall}/install_shortcut.sh APPNAME='switch_language' APPEXEC='bash -ic switch_language' OPTION='1'
+	${dirinstall}/install_shortcut.sh APPNAME='switch_language' APPEXEC='bash -ic switch_language' OPTION='0'
 fi
 
 ##### 
