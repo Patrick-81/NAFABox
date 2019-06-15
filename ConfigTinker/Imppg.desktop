@@ -3,9 +3,7 @@
 Version=1.0
 Type=Application
 Terminal=true
-Icon[fr_FR]=Imppg
-Name[fr_FR]=Imppg
-Exec=~/bin/imppg/imppg
+Exec=HOME/bin/imppg/imppg
 Name=Imppg
-Icon=~/bin/imppg/images/imppg-app.png
+Icon=HOME/bin/imppg/images/imppg-app.png
 Categories=Application;Education;
