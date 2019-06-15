@@ -51,7 +51,6 @@ version=`lsb_release -c -s`
 # init
 
 installMate="FALSE"
-language="FALSE"
 autologin="FALSE"
 ip_indicator="FALSE"
 o_indicator="FALSE"
@@ -59,16 +58,15 @@ host="FALSE"
 
 if [[ $1 == "initial" ]]
 then
-	st=(true true true false false true)
+	st=(true true true false true)
 
 else
-	st=(false false false false false false)
+	st=(false false false false false)
 fi
 
 if [[ ${server_choice} == "server" ]]
 then
     installMate="FALSE"
-    language="FALSE"
     autologin="FALSE"
     ip_indicator="FALSE"
     o_indicator="FALSE"
@@ -92,7 +90,6 @@ then
             ;;
     esac
 
-    language="TRUE"
     autologin="FALSE"
     ip_indicator="TRUE"
     o_indicator="TRUE"
@@ -108,17 +105,15 @@ else
 	        --field=":LBL" \
 	        --field="Plugin IP Indicator:CHK" \
             --field="Other indicator:CHK" \
-	        --field="Fr language:CHK" \
 	        --field="Autologin for dev armbian (nightly):CHK" \
 	        --field="Change hostname to NAFABox ?:CHK" \
-	        "" "${st[1]}" "${st[2]}" "${st[3]}" "${st[4]}" "${st[5]}"`
+	        "" "${st[1]}" "${st[2]}" "${st[3]}" "${st[4]}"`
         then
 	        # recuperation des valeurs
 	        ip_indicator=$(echo "$chose" | cut -d "|" -f2)
             o_indicator=$(echo "$chose" | cut -d "|" -f3)
-	        language=$(echo "$chose" | cut -d "|" -f4)
-	        autologin=$(echo "$chose" | cut -d "|" -f5)
-	        host=$(echo "$chose" | cut -d "|" -f6)
+	        autologin=$(echo "$chose" | cut -d "|" -f4)
+	        host=$(echo "$chose" | cut -d "|" -f5)
 
         else
 	        echo "cancel"
@@ -131,20 +126,18 @@ else
 		    --text="Install Program :" \
 		    --field=":LBL" \
 		    --field="Mate destktop and components:CHK" \
-		    --field="Fr language:CHK" \
 		    --field="Plugin IP Indicator:CHK" \
             --field="Other indicator:CHK" \
 		    --field="Autologin for dev armbian (nightly):CHK" \
 		    --field="Change hostname to NAFABox ?:CHK" \
-		    "" "${st[0]}" "${st[1]}" "${st[2]}" "${st[3]}" "${st[4]}" "${st[5]}"`
+		    "" "${st[0]}" "${st[1]}" "${st[2]}" "${st[3]}" "${st[4]}"`
 	    then
 		    # recuperation des valeurs
 		    installMate=$(echo "$chose" | cut -d "|" -f2)
-		    language=$(echo "$chose" | cut -d "|" -f3)
-		    ip_indicator=$(echo "$chose" | cut -d "|" -f4)
-            o_indicator=$(echo "$chose" | cut -d "|" -f5)
-		    autologin=$(echo "$chose" | cut -d "|" -f6)
-		    host=$(echo "$chose" | cut -d "|" -f7)
+		    ip_indicator=$(echo "$chose" | cut -d "|" -f3)
+            o_indicator=$(echo "$chose" | cut -d "|" -f4)
+		    autologin=$(echo "$chose" | cut -d "|" -f5)
+		    host=$(echo "$chose" | cut -d "|" -f6)
 
 	    else
 		    echo "cancel"
@@ -324,21 +317,7 @@ then
 fi
 
 
-if [[ ${language} == "TRUE" ]]
-then
 
-	figlet -k Install Language
-	echo "================================================="
-	echo "================================================="
-	# passer le systeme en français
-	# ajout des packs langage
-	sudo apt-get ${options} install language-pack-fr language-pack-gnome-fr
-	sudo apt-get ${options} install firefox-locale.fr
-    sudo apt-get ${options} install language-pack-fr language-pack-gnome-fr-base
-	sudo locale-gen fr_FR fr_FR.UTF-8
-	sudo update-locale LC_ALL=fr_FR.UTF-8 LANG=fr_FR.UTF-8
-	sudo dpkg-reconfigure keyboard-configuration
-fi
 	
 
 
