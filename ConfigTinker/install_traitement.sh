@@ -164,7 +164,7 @@ fi
 
 if [[ ${impg} == "TRUE" ]]
 then
-    sudo apt-get install -y libgtkmm-3.0-dev ffmpeg libavcodec-dev libavformat-dev libavutil-dev gcc g++ cmake libwxgtk3.0-dev libwxgtk-media3.0-dev libwxgtk-media3.0-gtk3-dev libwxgtk-webview3.0-gtk3-dev libwxgtk3.0-gtk3-dev libfreeimage-dev
+    sudo apt-get install -y libgtkmm-3.0-dev ffmpeg libavcodec-dev libavformat-dev libavutil-dev gcc g++ cmake libwxgtk3.0-dev libwxgtk-media3.0-dev libwxgtk-media3.0-gtk3-dev libwxgtk-webview3.0-gtk3-dev libwxgtk3.0-gtk3-dev libfreeimage-dev libboost-all-dev
 
 	#test si le dossiers existe, si oui suppression
 	if [[ -d "/home/${USER}/bin/imppg" ]]
