@@ -56,8 +56,9 @@ Ainsi que les ligne **hdmi_group=..** et **hdmi_mode=..** en fonction du choix d
 non supporté par l'écran sur lequel le raspberry sera branché alors vous aurez un écran noir. 
 
 Pour :   
-`hdmi_group=1`    
-|hdmi_mode 	|resolution 	|frequence 	|notes              |   
+`hdmi_group=1`   
+ 
+| hdmi_mode 	| resolution 	| frequence 	| notes              |   
 |-----------|---------------|-----------|-------------------|    
 |4      	|720p       	|60Hz 	    |                   |   
 |16     	|1080p      	|60Hz    	|                   |   
@@ -71,64 +72,65 @@ Pour :
 |40     	|1080i      	|100Hz   	|                   |   
 |41     	|720p       	|100Hz 	    |                   |   
 |46     	|1080i      	|120Hz  	|                   |   
-|47     	|720p       	|120Hz  	|                   |   
+|47     	|720p       	|120Hz  	|                   |
    
 Pour :   
 `hdmi_group=2`   
-|hdmi_mode 	|resolution 	|frequency 	|notes	            |
-|-----------|---------------|-----------|-------------------|
-|21 	    |1152x864 	    |75Hz 	    |                   |
-|32     	|1280x960    	|60Hz   	|                   |
-|33     	|1280x960   	|85Hz   	|                   |
-|34     	|1280x960   	|120Hz  	|reduced blanking   |
-|35     	|1280x1024   	|60Hz   	|                   |
-|36     	|1280x1024 	    |75Hz       |                   |
-|37     	|1280x1024  	|85Hz       |                   |	
-|38     	|1280x1024  	|120Hz  	|reduced blanking   |
-|41     	|1400x1050  	|	        |reduced blanking   |
-|42     	|1400x1050  	|60Hz       |                   |	
-|43     	|1400x1050  	|75Hz   	|                   |
-|44     	|1400x1050  	|85Hz   	|                   |
-|45     	|1400x1050  	|120Hz   	|reduced blanking   |
-|46     	|1440x900   	|       	|reduced blanking   |
-|47     	|1440x900   	|60Hz       |                   |	
-|48     	|1440x900   	|75Hz   	|                   |
-|49     	|1440x900   	|85Hz   	|                   |
-|50     	|1440x900   	|120Hz  	|reduced blanking   |
-|51     	|1600x1200   	|60Hz       |                   |	
-|52      	|1600x1200  	|65Hz   	|                   |
-|53     	|1600x1200  	|70Hz    	|                   |
-|54     	|1600x1200  	|75Hz   	|                   |
-|55     	|1600x1200  	|85Hz   	|                   |
-|56     	|1600x1200  	|120Hz   	|reduced blanking   |
-|57     	|1680x1050      |	    	|reduced blanking   |
-|58     	|1680x1050  	|60Hz   	|                   |
-|59     	|1680x1050  	|75Hz   	|                   |
-|60     	|1680x1050  	|85Hz    	|                   |
-|61     	|1680x1050  	|120Hz   	|reduced blanking   |
-|62     	|1792x1344  	|60Hz   	|                   |
-|63     	|1792x1344  	|75Hz   	|                   |
-|64     	|1792x1344  	|120Hz   	|reduced blanking   |
-|65     	|1856x1392  	|60Hz   	|                   |
-|66     	|1856x1392  	|75Hz   	|                   |
-|67     	|1856x1392  	|120Hz   	|reduced blanking   |
-|68      	|1920x1200      |	     	|reduced blanking   |
-|69     	|1920x1200  	|60Hz   	|                   |
-|70*     	|1920x1200  	|75Hz   	|                   |
-|71*    	|1920x1200  	|85Hz   	|                   |
-|72*    	|1920x1200  	|120Hz  	|reduced blanking   |
-|73*    	|1920x1440  	|60Hz   	|                   |
-|74*    	|1920x1440  	|75Hz   	|                   |
-|75*    	|1920x1440  	|120Hz   	|reduced blanking   |
-|76*    	|2560x1600      |	    	|reduced blanking   |
-|77*    	|2560x1600  	|60Hz   	|                   |
-|78*    	|2560x1600  	|75Hz    	|                   |
-|79*    	|2560x1600  	|85Hz   	|                   |
-|80*    	|2560x1600  	|120Hz   	|reduced blanking   |
-|82     	|1920x1080  	|60Hz   	|1080p              |
-|83     	|1600x900   	|       	|reduced blanking   |
-|84     	|2048x1152  	|	        |reduced blanking   |
-|85     	|1280x720   	|60Hz   	|720p               |
+
+|hdmi_mode 	|resolution 	|frequency 	|notes	            |   
+|:-----------|:---------------|:-----------|:-------------------|    
+|21 	    |1152x864 	    |75Hz 	    |                   |  
+|32     	|1280x960    	|60Hz   	|                   |  
+|33     	|1280x960   	|85Hz   	|                   |  
+|34     	|1280x960   	|120Hz  	|reduced blanking   |  
+|35     	|1280x1024   	|60Hz   	|                   |  
+|36     	|1280x1024 	    |75Hz       |                   |  
+|37     	|1280x1024  	|85Hz       |                   |  	
+|38     	|1280x1024  	|120Hz  	|reduced blanking   |  
+|41     	|1400x1050  	|	        |reduced blanking   |  
+|42     	|1400x1050  	|60Hz       |                   |  	
+|43     	|1400x1050  	|75Hz   	|                   |  
+|44     	|1400x1050  	|85Hz   	|                   |  
+|45     	|1400x1050  	|120Hz   	|reduced blanking   |  
+|46     	|1440x900   	|       	|reduced blanking   |  
+|47     	|1440x900   	|60Hz       |                   |  	
+|48     	|1440x900   	|75Hz   	|                   |  
+|49     	|1440x900   	|85Hz   	|                   |  
+|50     	|1440x900   	|120Hz  	|reduced blanking   |  
+|51     	|1600x1200   	|60Hz       |                   |	  
+|52      	|1600x1200  	|65Hz   	|                   |  
+|53     	|1600x1200  	|70Hz    	|                   |  
+|54     	|1600x1200  	|75Hz   	|                   |   
+|55     	|1600x1200  	|85Hz   	|                   |  
+|56     	|1600x1200  	|120Hz   	|reduced blanking   |  
+|57     	|1680x1050      |	    	|reduced blanking   |  
+|58     	|1680x1050  	|60Hz   	|                   |  
+|59     	|1680x1050  	|75Hz   	|                   |  
+|60     	|1680x1050  	|85Hz    	|                   |  
+|61     	|1680x1050  	|120Hz   	|reduced blanking   |  
+|62     	|1792x1344  	|60Hz   	|                   |  
+|63     	|1792x1344  	|75Hz   	|                   |  
+|64     	|1792x1344  	|120Hz   	|reduced blanking   |  
+|65     	|1856x1392  	|60Hz   	|                   |  
+|66     	|1856x1392  	|75Hz   	|                   |  
+|67     	|1856x1392  	|120Hz   	|reduced blanking   |  
+|68      	|1920x1200      |	     	|reduced blanking   |  
+|69     	|1920x1200  	|60Hz   	|                   |  
+|70*     	|1920x1200  	|75Hz   	|                   |  
+|71*    	|1920x1200  	|85Hz   	|                   |  
+|72*    	|1920x1200  	|120Hz  	|reduced blanking   |  
+|73*    	|1920x1440  	|60Hz   	|                   |  
+|74*    	|1920x1440  	|75Hz   	|                   |  
+|75*    	|1920x1440  	|120Hz   	|reduced blanking   |  
+|76*    	|2560x1600      |	    	|reduced blanking   |  
+|77*    	|2560x1600  	|60Hz   	|                   |  
+|78*    	|2560x1600  	|75Hz    	|                   |  
+|79*    	|2560x1600  	|85Hz   	|                   |  
+|80*    	|2560x1600  	|120Hz   	|reduced blanking   |  
+|82     	|1920x1080  	|60Hz   	|1080p              |  
+|83     	|1600x900   	|       	|reduced blanking   |  
+|84     	|2048x1152  	|	        |reduced blanking   |  
+|85     	|1280x720   	|60Hz   	|720p               |  
     
 *au dessus de la limite de resolution du raspberry
 
