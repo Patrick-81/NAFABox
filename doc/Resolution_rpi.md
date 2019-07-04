@@ -37,17 +37,17 @@ Pour cela il vas faloir déjà verifier que des lignes permetant de forcer
 la resolution ne sont pas déjà présente dans le fichier.
 
 Les lignes à repérer sont les suivantes ( avec **..** = une valeur quelconque):   
-`hdmi_ignore_hotplug=..`
-`disable_overscan=..`
-`hdmi_mode=..`
-`hdmi_group=..`
+`hdmi_ignore_hotplug=..`   
+`disable_overscan=..`   
+`hdmi_mode=..`   
+`hdmi_group=..`   
    
 Si vous trouvez ces lignes il faudra les supprimer ou les commenter pour plus de 
 prudence ( rajouter seulement un `#` devant la ligne que vous shouaitez commenter).
 
-Une fois fait il ne vous reste plus qu'à ajouter les lignes suivantes à la fin du fichier :   
-`hdmi_ignore_hotplug=1`
-`disable_overscan=1`
+Une fois fait il ne vous reste plus qu'à ajouter les lignes suivantes à la fin du fichier :     
+`hdmi_ignore_hotplug=1`   
+`disable_overscan=1`   
 
 Ainsi que les ligne **hdmi_group=..** et **hdmi_mode=..** en fonction du choix de la resolution voulu : 
 
@@ -55,8 +55,8 @@ Ainsi que les ligne **hdmi_group=..** et **hdmi_mode=..** en fonction du choix d
 **ATTENTION**: la resolution sera forcé, donc si vous réglez sur une resolution 
 non supporté par l'écran sur lequel le raspberry sera branché alors vous aurez un écran noir. 
 
-Pour :
-`hdmi_group=1`
+Pour :   
+`hdmi_group=1`    
 |hdmi_mode 	|resolution 	|frequence 	|notes              |
 |-----------|---------------|-----------|-------------------|
 |4      	|720p       	|60Hz 	    |                   |
@@ -72,9 +72,9 @@ Pour :
 |41     	|720p       	|100Hz 	    |                   |
 |46     	|1080i      	|120Hz  	|                   |
 |47     	|720p       	|120Hz  	|                   |
-
-Pour :
-`hdmi_group=2`
+   
+Pour :   
+`hdmi_group=2`   
 |hdmi_mode 	|resolution 	|frequency 	|notes	            |
 |-----------|---------------|-----------|-------------------|
 |21 	    |1152x864 	    |75Hz 	    |                   |
@@ -129,7 +129,7 @@ Pour :
 |83     	|1600x900   	|       	|reduced blanking   |
 |84     	|2048x1152  	|	        |reduced blanking   |
 |85     	|1280x720   	|60Hz   	|720p               |
-
+    
 *au dessus de la limite de resolution du raspberry
 
 Une fois les lignes ajouté, n'oubliez pas de sauvegarder puis redémarer (ou remettre la carte SD).
