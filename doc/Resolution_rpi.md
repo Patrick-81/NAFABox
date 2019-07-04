@@ -57,21 +57,21 @@ non supporté par l'écran sur lequel le raspberry sera branché alors vous aure
 
 Pour :   
 `hdmi_group=1`    
-|hdmi_mode 	|resolution 	|frequence 	|notes              |
-|-----------|---------------|-----------|-------------------|
-|4      	|720p       	|60Hz 	    |                   |
-|16     	|1080p      	|60Hz    	|                   |
-|19     	|720p 	        |50Hz   	|                   |
-|20     	|1080i      	|50Hz   	|                   |
-|31     	|1080p      	|50Hz    	|                   |
-|32     	|1080p      	|24Hz   	|                   |
-|33     	|1080p      	|25Hz   	|                   |
-|34     	|1080p      	|30Hz   	|                   |
-|39     	|1080i      	|50Hz    	|reduced blanking   |
-|40     	|1080i      	|100Hz   	|                   |
-|41     	|720p       	|100Hz 	    |                   |
-|46     	|1080i      	|120Hz  	|                   |
-|47     	|720p       	|120Hz  	|                   |
+|hdmi_mode 	|resolution 	|frequence 	|notes              |   
+|-----------|---------------|-----------|-------------------|    
+|4      	|720p       	|60Hz 	    |                   |   
+|16     	|1080p      	|60Hz    	|                   |   
+|19     	|720p 	        |50Hz   	|                   |    
+|20     	|1080i      	|50Hz   	|                   |   
+|31     	|1080p      	|50Hz    	|                   |   
+|32     	|1080p      	|24Hz   	|                   |   
+|33     	|1080p      	|25Hz   	|                   |   
+|34     	|1080p      	|30Hz   	|                   |   
+|39     	|1080i      	|50Hz    	|reduced blanking   |   
+|40     	|1080i      	|100Hz   	|                   |   
+|41     	|720p       	|100Hz 	    |                   |   
+|46     	|1080i      	|120Hz  	|                   |   
+|47     	|720p       	|120Hz  	|                   |   
    
 Pour :   
 `hdmi_group=2`   
