@@ -19,6 +19,8 @@ https://www.armbian.com/download/ (version default bionic desktop)
 
 Puis démarrer l'image et suivez la procédure d'installation standard (Attention: par défaut Armbian en QWERTY)
 
+**ATTENTION** Il faut redémarer la carte avant toute manipulation
+
 2/ Télécharger :  https://github.com/Patrick-81/NAFABox/archive/master.zip  
 ou  
 2bis/ Dans votre home : `git clone https://github.com/Patrick-81/NAFABox.git`
@@ -30,7 +32,9 @@ ou
 5/ lancer **Pre_Install.sh** dans un terminal (avec un clic droit dans le dossier)
 
 `$ ./Pre_Install.sh` 
-( Pour un clavier Francais AZERTY : `:!Pre°Instqll:sh` ) 
+( Pour un clavier Francais AZERTY : `:!Pre°Instqll:sh` )
+
+Vous pouvez choisir d'installer la langue francaise et le clavier si ce n'est pas déjà fait. 
 
 6/ Une fois le script Pre_Install fini, fermer le terminal puis ouvrir un nouveau terminal. Lancer **Install.sh**
 

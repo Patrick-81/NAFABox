@@ -31,6 +31,8 @@ ou
 
 `$ ./Pre_Install.sh` 
 
+Vous pouvez choisir d'installer la langue francaise et le clavier si ce n'est pas déjà fait.
+
 6/ Une fois le script Pre_Install fini, fermer le terminal puis ouvrir un nouveau terminal. Lancer **Install.sh**
 
 `$ ./Install.sh` 
