@@ -41,6 +41,7 @@ Afin de ne pas perdre l'affichage des icones ou certains autres problème veuill
 Pour cela, ouvrez __MATE Tweak__ puis aller dans l'onglet fenêtre et enfin désactiver le compositeur en selectionnant __Marco (sans compositeur)__ dans le Gestionnaire des fenêtres.
 
 ![GPU](https://github.com/Patrick-81/NAFABox/raw/master/doc/gpu_accel_4.png)   
+
 *********************
 ** English version **
 *********************
