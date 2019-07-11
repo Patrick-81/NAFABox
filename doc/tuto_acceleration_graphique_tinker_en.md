@@ -63,9 +63,9 @@ Go to the download folder then right click and finally "open a terminal here".
 
 Start the following commands:
 
-`tar xvf media-rk3288 _ *. tar.xz`
-`cd media-script`
-`sudo apt remove -y libwayland dev-mesa-common-dev`
+`tar xvf media-rk3288_*.tar.xz`   
+`cd media-script`   
+`sudo apt remove -y libwayland-dev mesa-common-dev`   
 
 ## Installation:
 
