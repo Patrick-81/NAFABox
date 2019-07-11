@@ -1,4 +1,6 @@
-
+*********************
+** English version **
+*********************
 # Installation tutorial to enable graphical acceleration on Tinkerboard:
 
 This manipulation is quite experimental but allows a clear acceleration of the graphical interface. It is useless if you do not use the Tinkerboard desk.
