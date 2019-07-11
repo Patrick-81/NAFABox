@@ -72,12 +72,12 @@ Start the following commands:
 Start the following command:
 `. / Media-rk3288.sh`
 
-! [GPU] (https://github.com/Patrick-81/NAFABox/raw/master/doc/gpu_accel_1.png)
+! [GPU](https://github.com/Patrick-81/NAFABox/raw/master/doc/gpu_accel_1.png)
 
-! [GPU] (https://github.com/Patrick-81/NAFABox/raw/master/doc/gpu_accel_2.png)
+! [GPU](https://github.com/Patrick-81/NAFABox/raw/master/doc/gpu_accel_2.png)
 When installing checked well opencl and opengl
 
-! [GPU] (https://github.com/Patrick-81/NAFABox/raw/master/doc/gpu_accel_3.png)
+! [GPU](https://github.com/Patrick-81/NAFABox/raw/master/doc/gpu_accel_3.png)
 Install the experimental version for more performance.
 
 ## System addition:
@@ -86,4 +86,4 @@ In order not to lose the display of icons or some other problem please disable t
 
 To do this, open __MATE Tweak__ then go to the tab window and finally disable the composer by selecting __Marco (without composer)__ in the Window Manager.
 
-! [GPU] (https://github.com/Patrick-81/NAFABox/raw/master/doc/gpu_accel_4.png)
+! [GPU](https://github.com/Patrick-81/NAFABox/raw/master/doc/gpu_accel_4.png)
