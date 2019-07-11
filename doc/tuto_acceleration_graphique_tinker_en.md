@@ -70,6 +70,7 @@ Start the following commands:
 ## Installation:
 
 Start the following command:
+
 `. / Media-rk3288.sh`
 
 ! [GPU](https://github.com/Patrick-81/NAFABox/raw/master/doc/gpu_accel_1.png)
