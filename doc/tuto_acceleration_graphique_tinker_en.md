@@ -74,10 +74,10 @@ Start the following command:
 
 ! [GPU](https://github.com/Patrick-81/NAFABox/raw/master/doc/gpu_accel_1.png)
 
-! [GPU](https://github.com/Patrick-81/NAFABox/raw/master/doc/gpu_accel_2.png)
+! [GPU](https://github.com/Patrick-81/NAFABox/raw/master/doc/gpu_accel_2.png) 
 When installing checked well opencl and opengl
 
-! [GPU](https://github.com/Patrick-81/NAFABox/raw/master/doc/gpu_accel_3.png)
+! [GPU](https://github.com/Patrick-81/NAFABox/raw/master/doc/gpu_accel_3.png) 
 Install the experimental version for more performance.
 
 ## System addition:
