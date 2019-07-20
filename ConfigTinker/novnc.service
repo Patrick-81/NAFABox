@@ -1,10 +1,11 @@
 [Unit]
 Description=Start novnc at startup
-After=multi-user.target
 
 [Service]
-Type=simple
+User=MOI
+Group=MOI
 ExecStart=/home/MOI/bin/noVNC/utils/launch.sh --vnc localhost:5900 --listen 5901 --web /home/MOI/bin/noVNC
+Restart=on-failure
 
 [Install]
 WantedBy=multi-user.target

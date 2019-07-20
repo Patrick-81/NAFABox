@@ -346,11 +346,15 @@ then
 	fi
 
 	# injection fichier system
-	cat ${dirinstall}/x11vnc.service | sed -e "s=OPTION=$option=g" > /tmp/x11vnc.service
+	cat ${dirinstall}/x11vnc.service | sed -e "s=OPTION=$option=g" > /tmp/x11vnc2.service
+	cat /tmp/x11vnc2.service | sed -e "s=MOI=${USER}=g" > /tmp/x11vnc.service
 	sudo mv /tmp/x11vnc.service /lib/systemd/system/x11vnc.service
 	# allumage au démarage
+	sudo systemctl stop x11vnc.service
+	sudo systemctl disable x11vnc.service
 	sudo systemctl daemon-reload
 	sudo systemctl enable x11vnc.service
+	sudo systemctl start x11vnc.service
 	echo "Need reboot for active VNC"
 fi
 
@@ -393,12 +397,12 @@ then
 	fi
 
 	cat ${dirinstall}/novnc.service | sed -e "s=MOI=${USER}=g" > /tmp/novnc.service
-	sudo cp /tmp/novnc.service /etc/systemd/system/novnc.service
-	sudo chmod a+rwx /etc/systemd/system/novnc.service
+	sudo cp /tmp/novnc.service /lib/systemd/system/novnc.service
+	# sudo chmod a+rwx /lib/systemd/system/novnc.service
 
 	sudo systemctl daemon-reload
 	sudo systemctl enable novnc.service
-	sudo service novnc start
+	sudo systemctl start novnc.service
 fi
 
 if [[ ${ddserv} == "TRUE" ]]
