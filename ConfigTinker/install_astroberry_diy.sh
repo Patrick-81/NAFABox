@@ -24,52 +24,60 @@ fi
 dirinstall=${nafabox_path}
 ######
 sudo apt-get install --reinstall lshw
-mkdir -p /home/nafa/bin/Projects
-cd /home/nafa/bin/Projects
+mkdir -p /home/${USER}/bin/
+cd /home/${USER}/bin/
+
 machine=$(sudo lshw | grep "produit\|product" | grep "Intel")
 if [[ ${machine} == *"Intel"* ]]
 then
 	echo "GPIO non disponible\n"
 	exit
 fi
-machine=$(sudo lshw | grep "produit\|product" | grep "Raspberry")
-if [[ ${machine} == *"Raspberry"* ]]
-then 
-	git clone -b https://github.com/rkaczorek/astroberry-diy
-else
-	git clone -b tinkerboard https://github.com/rkaczorek/astroberry-diy
-fi	
-git clone https://github.com/RPi-Distro/RTIMULib
-git clone https://github.com/TinkerBoard/gpio_lib_c 
+figlet -k Install Astroberry-DIY
 
 sudo apt-get -y install cmake
-sudo apt-get -y install libnova-dev
-sudo apt-get -y install libgps-dev
-sudo apt-get -y install libindi-dev
 
-cd /home/nafa/bin/Projects/gpio_lib_c
-chmod +x build
-sudo ./build
+# check install indi :
+dpkg -s indi-full &> /dev/null
 
-cd /home/nafa/bin/Projects/RTIMULib/RTIMULib && mkdir -p build && cd build
-sudo rm -rf * && cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Debug .. && sudo make install
+if [ $? -eq 0 ]; then
+    echo "Indi-full is installed!"
+    sudo apt-get -y install libindi-dev
 
-cd /home/nafa/bin/Projects/astroberry-diy
-#patch CMakeLists.txt -i $dirinstall/CMakeLists.patch -o TEMP
-#cp -f TEMP CMakeLists.txt
-#patch rpi_focus.cpp -i $dirinstall/rpi_focus.patch -o TEMP
-#cp -f TEMP rpi_focus.cpp
-#patch rpi_brd.cpp -i $dirinstall/rpi_brd.patch -o TEMP
-#cp -f TEMP rpi_brd.cpp
-mkdir -p build && cd build
-if [[ ${machine} == *"Raspberry"* ]]
-then
-	sudo rm -rf * && cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Debug .. && sudo make install
+
+    git clone https://github.com/rkaczorek/astroberry-diy
+
+    # install wiringpi for no raspberry board
+    if [[ board_name == "tinkerboard" ]]
+    then
+        git clone https://github.com/TinkerBoard/gpio_lib_c
+        cd /home/${USER}/bin/gpio_lib_c
+        chmod a+x build
+        sudo ./build
+    elif [[ board_name == "nanopi" ]]
+    then
+        # Delete "old" version
+        wget http://112.124.9.243:8888/wiringpi/friendlyelec-rk3399/remove_oldversion_wiringPi.sh
+        chmod 755 remove_oldversion_wiringPi.sh
+        sudo ./remove_oldversion_wiringPi.sh
+        # Download and install wiringPi for RK3399
+        wget http://112.124.9.243:8888/wiringpi/friendlyelec-rk3399/wiringpi-v2.44-friendlyelec-rk3399.deb
+        sudo dpkg -i  wiringpi-v2.44-friendlyelec-rk3399.deb
+    fi
+
+    # install astroberry-diy with wiringpi
+    cd /home/${USER}/bin/astroberry-diy
+
+    mkdir -p build && cd build
+
+    cmake -DWITH_WIRINGPI=ON -DCMAKE_INSTALL_PREFIX=/usr ..
+    make
+    sudo make install
+
 else
-	sudo rm -rf * && cmake -DCMAKE_INSTALL_PREFIX=/usr -DTINKER=1 -DCMAKE_BUILD_TYPE=Debug .. && sudo make install
+    echo "Install indi-full first !"
+    exit
 fi
-
-
 
 
 
