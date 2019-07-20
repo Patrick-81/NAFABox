@@ -31,16 +31,17 @@ installconf()
         echo "############################"
         echo "## install in server mode ##"
         echo "############################"
+        ${dirinstall}/install_kstars.sh $3
 	    ${dirinstall}/install_comsetup.sh $3
-	    ${dirinstall}/install_kstars.sh $3
+
 
     elif [[ $3 == "default" ]]
     then
         echo "############################"
         echo "## install in default mode ##"
         echo "############################"
+        ${dirinstall}/install_kstars.sh $3
 	    ${dirinstall}/install_comsetup.sh $3
-	    ${dirinstall}/install_kstars.sh $3
         ${dirinstall}/install_phd2.sh
 	    
     else
