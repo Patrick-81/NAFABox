@@ -138,15 +138,17 @@ else
 	    "${st[7]}" "${st[8]}" "${st[9]}" "${st[10]}" "${st[11]}"`
 	then
 		kstars=$(echo "$chose" | cut -d "|" -f2)
-		kstars_dev=$(echo "$chose" | cut -d "|" -f3)
-		indi=$(echo "$chose" | cut -d "|" -f4)
-		indi_dev=$(echo "$chose" | cut -d "|" -f5)
-		indiW=$(echo "$chose" | cut -d "|" -f6)
-		driver_3rd=$(echo "$chose" | cut -d "|" -f7)
-		gps=$(echo "$chose" | cut -d "|" -f8)
-		onstep=$(echo "$chose" | cut -d "|" -f9)
-	    gphoto_i=$(echo "$chose" | cut -d "|" -f10)
-        astrob=$(echo "$chose" | cut -d "|" -f11)
+		kstars_beta=$(echo "$chose" | cut -d "|" -f3)
+		kstars_dev=$(echo "$chose" | cut -d "|" -f4)
+		indi=$(echo "$chose" | cut -d "|" -f5)
+		indi_beta=$(echo "$chose" | cut -d "|" -f6)
+		indi_dev=$(echo "$chose" | cut -d "|" -f7)
+		indiW=$(echo "$chose" | cut -d "|" -f8)
+		driver_3rd=$(echo "$chose" | cut -d "|" -f9)
+		gps=$(echo "$chose" | cut -d "|" -f10)
+		onstep=$(echo "$chose" | cut -d "|" -f11)
+	    gphoto_i=$(echo "$chose" | cut -d "|" -f12)
+        astrob=$(echo "$chose" | cut -d "|" -f13)
 	else
 		echo "cancel"
 	fi

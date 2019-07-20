@@ -146,6 +146,8 @@ fi
 
 if [[ ${web} == "TRUE" ]]
 then
+
+    figlet -k Install web server
 	######
 	# Installer nginx
 	######
@@ -284,6 +286,8 @@ then
 	# Installation x11vnc
 	######
 
+	figlet -k Install X11VNC
+
 	sudo apt-get -y install x11vnc
 
 	# demarage sur la session 
@@ -353,6 +357,7 @@ then
 	######
 	# Installation accès vnc via navigateur
 	######
+	figlet -k Install novnc
 	sudo apt-get -y install novnc
 	sudo apt-get -y install git
 
@@ -389,6 +394,7 @@ then
 	######
 	# Installation du ddserver pour qdslrdashboard
 	######
+	figlet -k Install ddserver
 
     cd ~/bin
     if [[ -d "/home/${USER}/bin/DslrDashboardServer" ]]

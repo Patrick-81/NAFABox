@@ -48,10 +48,10 @@ installconf()
 	    then
 		    dial[0]="Installation/Mise à jour des logiciels"
 		    dial[1]="Choisir le(s) logiciel(s) à installer"
-		    choice[0]="Couche de communication web"
-		    choice[1]="Installation Lin_guider"
-		    choice[2]="Installation Kstars-EKOS-INDI"
-		    choice[3]="Installation Phd2"
+		    choice[0]="Installation Kstars-EKOS-INDI"
+		    choice[1]="Couche de communication web"
+		    choice[2]="Installation Phd2"
+		    choice[3]="Installation Lin_guider"
 		    choice[4]="installation de Carte du ciel (Beta)"
 		    choice[5]="Installation Ccdciel (Beta)"
 		    choice[6]="Installation Planetary Imager (Beta)"
@@ -62,10 +62,10 @@ installconf()
 	    else
 		    dial[0]="Install/Update of software"
 		    dial[1]="Choose software(s) to install"
-		    choice[0]="Web communication layer"
-		    choice[1]="Lin_guider"
-		    choice[2]="Install Kstars-EKOS-INDI"
-		    choice[3]="Phd2"
+		    choice[0]="Install Kstars-EKOS-INDI"
+		    choice[1]="Web communication layer"
+		    choice[2]="Phd2"
+		    choice[3]="Lin_guider"
 		    choice[4]="Skychart (Beta)"
 		    choice[5]="Ccdciel (Beta)"
 		    choice[6]="Planetary Imager (Beta)"
@@ -75,10 +75,10 @@ installconf()
 		    choice[10]="install astrometry index(s)"
 	    fi
 
-	    message[0]="Install web communications"
-	    message[1]="Install Lin_guider"
-	    message[2]="Install kstars-ekos-indi"
-	    message[3]="Install phd2"
+	    message[0]="Install kstars-ekos-indi"
+	    message[1]="Install web communications"
+	    message[2]="Install phd2"
+	    message[3]="Install Lin_guider"
 	    message[4]="Install Skychart"
 	    message[5]="Install ccdciel"
 	    message[6]="Install planetary imager"
@@ -87,10 +87,10 @@ installconf()
 	    message[9]="Install stellarium"
 	    message[10]="Install index(s)"
 
-	    script[0]=install_comsetup.sh
-	    script[1]=install_linguider.sh
-	    script[2]=install_kstars.sh
-	    script[3]=install_phd2.sh
+        script[0]=install_kstars.sh
+	    script[1]=install_comsetup.sh
+	    script[2]=install_phd2.sh
+	    script[3]=install_linguider.sh
 	    script[4]=install_skychart.sh
 	    script[5]=install_ccdciel.sh
 	    script[6]=install_planetaryimager.sh
@@ -102,7 +102,7 @@ installconf()
 
 	    if [[ $2 == "initial" ]]
 	    then
-		    st=(true false true true false false false false false false false)
+		    st=(true true true false false false false false false false false)
 
 	    else
 		    st=(false false false false false false false false false false false)
