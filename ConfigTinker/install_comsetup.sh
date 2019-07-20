@@ -98,7 +98,7 @@ else
 
 	fi
 
-	st=(true true true true true true false true true true)
+	st=(true true true true true true true false true true)
 
 	# interface de choix
 	if chose=`yad --width=400 \
