@@ -394,7 +394,7 @@ then
 
 	cat ${dirinstall}/novnc.service | sed -e "s=MOI=${USER}=g" > /tmp/novnc.service
 	sudo cp /tmp/novnc.service /etc/systemd/system/novnc.service
-	sudo chmod 644 /etc/systemd/system/novnc.service
+	sudo chmod a+rwx /etc/systemd/system/novnc.service
 
 	sudo systemctl daemon-reload
 	sudo systemctl enable novnc.service
