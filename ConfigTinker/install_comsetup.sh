@@ -386,7 +386,7 @@ then
 
 	sudo systemctl daemon-reload
 	sudo systemctl enable novnc.service
-	sudo systemctl start novnc.service
+	#sudo systemctl start novnc.service
 fi
 
 if [[ ${ddserv} == "TRUE" ]]
