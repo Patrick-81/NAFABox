@@ -307,7 +307,7 @@ then
     rm ${vnc_path}
     test_w=true
     number_t=0
-    while [[ "$test_w" == true ]] || [[ number_t < 3 ]]
+    while [[ "$test_w" == true ]] || [[ "$number_t" < 3 ]]
     do
         echo "Enter Le mot de passe VNC pour votre BOX :"
         x11vnc -storepasswd
@@ -315,8 +315,8 @@ then
         then
             test_w=false
         else
-            echo "Reload"
-            number_t==$((number_t + 1))
+            number_t=$((number_t + 1))
+            echo "Reload, remaing test: "$((3-number_t))
         fi
     done
 	echo "Merci ! ----------------------------------"
