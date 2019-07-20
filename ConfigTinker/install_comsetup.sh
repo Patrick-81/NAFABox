@@ -306,7 +306,8 @@ then
     vnc_path=/home/${USER}/.vnc/passwd
     rm ${vnc_path}
     test_w=true
-    while ${test_w}
+    number_t=0
+    while [[ "$test_w" == true ]] || [[ number_t < 3 ]]
     do
         echo "Enter Le mot de passe VNC pour votre BOX :"
         x11vnc -storepasswd
@@ -315,6 +316,7 @@ then
             test_w=false
         else
             echo "Reload"
+            number_t==$((number_t + 1))
         fi
     done
 	echo "Merci ! ----------------------------------"
@@ -377,7 +379,7 @@ then
 
     wget https://github.com/novnc/noVNC/archive/v${version}.zip
     unzip v${version}.zip
-    rm unzip v${version}.zip
+    rm v${version}.zip
     mv noVNC-1.1.0 noVNC
 
 
@@ -396,7 +398,7 @@ then
 
 	sudo systemctl daemon-reload
 	sudo systemctl enable novnc.service
-	sudo systemctl start novnc.service
+	# sudo systemctl start novnc.service
 fi
 
 if [[ ${ddserv} == "TRUE" ]]
