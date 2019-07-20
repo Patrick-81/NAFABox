@@ -371,7 +371,17 @@ then
 	  rm -Rf /home/${USER}/bin/noVNC
 	fi
 
-	git clone git://github.com/kanaka/noVNC
+    wget https://github.com/novnc/noVNC/raw/master/VERSION
+    version=`cat VERSION`
+    rm VERSION
+
+    wget https://github.com/novnc/noVNC/archive/v${version}.zip
+    unzip v${version}.zip
+    rm unzip v${version}.zip
+    mv noVNC-1.1.0 noVNC
+
+
+	#git clone git://github.com/kanaka/noVNC
 
 	if [[ -f /etc/systemd/system/novnc.service ]]
 	  then
@@ -386,7 +396,7 @@ then
 
 	sudo systemctl daemon-reload
 	sudo systemctl enable novnc.service
-	#sudo systemctl start novnc.service
+	sudo systemctl start novnc.service
 fi
 
 if [[ ${ddserv} == "TRUE" ]]
