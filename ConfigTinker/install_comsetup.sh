@@ -323,7 +323,7 @@ then
 
 	machine=$(sudo lshw | grep "produit\|product" | grep "Raspberry")
 	normal_option="-auth guess -forever -loop -noncache -noxdamage -noxrecord -repeat -shared -xkb -rfbauth $vnc_path -rfbport 5900"
-	tinker_option="-forever -loop -noncache -noxdamage -noxrecord -repeat -shared -xkb -rfbauth $vnc_path -rfbport 5900"
+	tinker_option="-auth guess -forever -loop -noncache -noxdamage -noxrecord -repeat -shared -xkb -rfbauth $vnc_path -rfbport 5900"
 
  	#test version
 	if [[ ${proc} == "_amd64" ]]
@@ -398,7 +398,7 @@ then
 
 	sudo systemctl daemon-reload
 	sudo systemctl enable novnc.service
-	# sudo systemctl start novnc.service
+	sudo systemctl start novnc.service
 fi
 
 if [[ ${ddserv} == "TRUE" ]]
