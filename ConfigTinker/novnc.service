@@ -5,8 +5,6 @@ After=multi-user.target
 [Service]
 Type=simple
 ExecStart=/home/MOI/bin/noVNC/utils/launch.sh --vnc localhost:5900 --listen 5901 --web /home/MOI/bin/noVNC
-Restart=on-success
-SuccessExitStatus=3
 
 [Install]
 WantedBy=multi-user.target
