@@ -31,7 +31,7 @@ dpkg -s indi-full &> /dev/null
 if [ $? -eq 0 ]; then
     echo "Indi-full is installed!"
 
-
+    sudo apt-get -y install libindi-dev
     # install last nodejs
     curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
     sudo apt-get install -y nodejs
