@@ -2,7 +2,7 @@
 
 Script d'installation pour Créer une NAFABox.
 
-Ces scripts sont compatibles avec la TinkerBoard (Armbian, Ubuntu), TinkerBoard S (Armbian, Ubuntu), Raspberry Pi 3b/3b+ (Ubuntu Mate) et les systèmes classiques amd64/x86_64 (Ubuntu).   
+Ces scripts sont compatibles avec les Raspberry Pi 4b (Ubuntu Mate).   
 Les scripts ont été testés avec Ubuntu Xenial (16.04 LTS) et Ubuntu Bionic (18.04 LTS).  
 Il est recomandé d'utiliser **Ubuntu Bionic (18.04 LTS)**.
 
@@ -10,12 +10,11 @@ Il est nécessaire de disposer d'au moins 10Go d'espace de stockage ou d'une Car
 
 **ATTENTION :** Vérifier que les mises à jour automatiques sont désactivées afin qu'elles n'interfèrent pas avec les scripts.
 
-
-### Etape par étape pour les Raspberry Pi 3b/3b+ :
+### Etape par étape pour les Raspberry Pi 4b :
 
 1/ Installer la distribution Ubuntu Mate Bionic (18.04 LTS) via Etcher.
 
-https://ubuntu-mate.org/raspberry-pi/ubuntu-mate-18.04.2-beta1-desktop-armhf+raspi-ext4.img.xz --> pour 3b/3b+
+https://share.obspm.fr/index.php/s/6z7qFmkyQW9ACpm --> pour 4b
 
 Puis démarrer l'image et suivez la procédure d'installation standard
 
@@ -42,19 +41,19 @@ Vous pouvez choisir d'installer la langue francaise et le clavier si ce n'est pa
 8/ Quand tout est fini vous pouvez redémarrer.
 
 
-### Documentation pour les Raspberry Pi 3b/3b+ :    
+### Documentation pour les Raspberry Pi 3b/3b+/4b :    
 http://nafabox.linux-astro.fr/#nafabox
 
-### Documentation to create HotSpot for Raspberry Pi 3b/3b+ and X86 System (in french):   
+### Documentation to create HotSpot for Raspberry Pi 3b/3b+/4b and X86 System (in french):   
 
 
-### Documentation pour installer Un RTC sur Raspberry Pi 3b/3b+ :   
+### Documentation pour installer Un RTC sur Raspberry Pi 3b/3b+/4b :   
 https://github.com/Patrick-81/NAFABox/blob/master/doc/Tuto_rtc_raspberry.md
 
 ### Documentation pour le mappage persistant pour les péripheriques serial/usb (en anglais):   
 https://indilib.org/support/tutorials/157-persistent-serial-port-mapping.html
 
-### Tuto résolution décran pour Raspberry PI 3b/b+ :
+### Tuto résolution décran pour Raspberry PI 3b/3b+/4b :
 https://github.com/Patrick-81/NAFABox/blob/master/doc/Resolution_rpi.md
 https://github.com/Patrick-81/NAFABox/blob/master/doc/Amelioration_affichage_rpi.md
 

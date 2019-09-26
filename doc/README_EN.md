@@ -15,8 +15,11 @@ Requires a min 16 Go SD card or a place on the hard drive of more than 10go (No 
 ####For TinkerBoard or Tinkerboard S (armv7/armhf/arm32) :
 https://github.com/Patrick-81/NAFABox/blob/master/doc/Tinkerboard_en.md
 
-####Pour Raspberry PI 3B or Raspberry PI 3B+ (armv7/armhf/arm32) :
-https://github.com/Patrick-81/NAFABox/blob/master/doc/RPI_en.md
+####For Raspberry PI 3B or Raspberry PI 3B+ (armv7/armhf/arm32) :
+https://github.com/Patrick-81/NAFABox/blob/master/doc/RPI3_en.md
+
+####For Raspberry PI 4B (armv8/aarch64/arm64) :
+https://github.com/Patrick-81/NAFABox/blob/master/doc/RPI4_en.md
 
 ####For ARM compatible Armbian board (armv7/armv8/armhf/aarch64/arm32/arm64) :
 https://github.com/Patrick-81/NAFABox/blob/master/doc/arm_board_armbian_en.md

@@ -16,7 +16,10 @@ Il est nécessaire de disposer d'au moins 10Go d'espace de stockage ou d'une Car
 https://github.com/Patrick-81/NAFABox/blob/master/doc/Tinkerboard.md
 
 ####Pour Raspberry PI 3B ou Raspberry PI 3B+ (armv7/armhf/arm32) :
-https://github.com/Patrick-81/NAFABox/blob/master/doc/RPI.md
+https://github.com/Patrick-81/NAFABox/blob/master/doc/RPI3.md
+
+####Pour Raspberry PI 4B (armv8/aarch64/arm64) :
+https://github.com/Patrick-81/NAFABox/blob/master/doc/RPI4_en.md
 
 ####Pour une carte ARM compatible Armbian (armv7/armv8/armhf/aarch64/arm32/arm64) :
 https://github.com/Patrick-81/NAFABox/blob/master/doc/arm_board_armbian.md
