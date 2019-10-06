@@ -37,6 +37,7 @@ __Lien utile :__
 - NoVNC : IP:5901
 - Webdav : IP:443
 - Nomachine : IP:5000
+- Cockpit : IP:9090
 
 
 ### Liste des logiciels de la NAFABox :   

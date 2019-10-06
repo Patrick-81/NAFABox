@@ -23,7 +23,7 @@
 
 - Couche de communication web
   - timezone : Script for change time zone in system time
-  - interface HTML : NAFABox application for reboot, shutdown and change time system in html page
+  - interface HTML : NAFABox application for reboot, shutdown and change time system in html page and Cockpit dashboard
   - X11VNC : https://github.com/LibVNC/x11vnc
   - Webdav : http://www.webdav.org/
   - Browsepy : http://ergoithz.github.io/browsepy/

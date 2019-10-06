@@ -151,7 +151,7 @@ then
 	######
 	# Installer nginx
 	######
-	sudo apt-get -y install nginx apache2
+	sudo apt-get -y install nginx apache2 cockpit
 	######
 	# Installer php
 	######
