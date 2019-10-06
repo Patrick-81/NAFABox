@@ -41,22 +41,22 @@ if [[ ${proc} == "_amd64" ]]
 then
 	type="amd64"
     type2="Linux"
-    sous_version="_1_"
+    sous_version="1"
 elif [[ ${proc} == "_armhf" ]]
 then
 	type="armhf"
     type2="Arm"
-    sous_version="_1_"
+    sous_version="1"
 elif [[ ${proc} == "_x86" ]]
 then
 	type="i386"
     type2="Linux"
-    sous_version="_1_"
+    sous_version="1"
 elif [[ ${proc} == "_aarch64" ]]
 then
 	type="arm64"
     type2="Arm"
-    sous_version="_1_"
+    sous_version="1"
 else
 	echo "architecture not support"
     exit
@@ -64,7 +64,7 @@ fi
 
 version="6.8.1"
 
-file=nomachine_${version}.${sous_version}${type}.deb
+file=nomachine_${version}_${sous_version}_${type}.deb
 
 wget https://download.nomachine.com/download/${version}/${type2}/${file} -P /tmp/
 sudo dpkg -i /tmp/${file}
