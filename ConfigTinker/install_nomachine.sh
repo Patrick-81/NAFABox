@@ -37,6 +37,7 @@ dirinstall=${nafabox_path}
 source ${dirinstall}/proctype.sh
 
 base_version="6.8"
+version=${base_version}".1"
 
 # test version
 if [[ ${proc} == "_amd64" ]]
@@ -63,8 +64,6 @@ else
 	echo "architecture not support"
     exit
 fi
-
-version=${base_version}".1"
 
 file=nomachine_${version}_${sous_version}_${type}.deb
 
