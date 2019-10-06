@@ -49,7 +49,7 @@ Log in to nafa user
 
 `sudo nano /etc/modules-load.d/cups-filters.conf` --> comment all lines    
 `sudo apt remove light-locker`   
-`sudo rm /var/cash/*`   
+`sudo rm /var/crash/*`   
 `reboot`
 
 ### Remove screensaver (for xubuntu):
