@@ -36,6 +36,8 @@ dirinstall=${nafabox_path}
 ######
 source ${dirinstall}/proctype.sh
 
+base_version="6.8"
+
 # test version
 if [[ ${proc} == "_amd64" ]]
 then
@@ -62,11 +64,11 @@ else
     exit
 fi
 
-version="6.8.1"
+version=${base_version}".1"
 
 file=nomachine_${version}_${sous_version}_${type}.deb
 
-wget https://download.nomachine.com/download/${version}/${type2}/${file} -P /tmp/
+wget https://download.nomachine.com/download/${base_version}/${type2}/${file} -P /tmp/
 sudo dpkg -i /tmp/${file}
 
 
