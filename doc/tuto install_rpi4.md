@@ -22,7 +22,7 @@ Log in to ubuntu user (login : ubuntu , pwd : ubuntu)
 Log in to nafa user
 
 `sudo deluser ubuntu`
-`sudo rm -R /home/ubuntu/``
+`sudo rm -R /home/ubuntu/`
 
 ### Delete Cloud-init  (for more fast boot)
 
