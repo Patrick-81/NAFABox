@@ -14,7 +14,7 @@ You need at least 10Gb of storage space or a 16Gb SD card. You will need this sp
 
 1/ Install distribution Ubuntu Mate Bionic distribution (18.04 LTS) using Etcher.
 
-https://1drv.ms/f/s!AlFrxWojM_Hflr0R80wOKHzWQMI88g --> Go to base folder for 4b start image
+https://share.obspm.fr/index.php/s/WowXMAZkHPd3K9j --> Go to base folder for 4b start image
 
 Then boot on the image et follow the standard installation procedure
 
