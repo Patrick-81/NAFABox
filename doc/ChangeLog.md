@@ -10,6 +10,7 @@ Start for 3.2 version. No change log before.
 - add more doc
 - add cockpit
 - add rpi4 and NanoPi support
+- remove support for 16.04LTS
 
 ### 3.2.2 :   
 - Add ddserver for qdslrdashboard (in web communications)
