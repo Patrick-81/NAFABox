@@ -19,7 +19,7 @@ https://github.com/Patrick-81/NAFABox/blob/master/doc/Tinkerboard.md
 https://github.com/Patrick-81/NAFABox/blob/master/doc/RPI3.md
 
 #### Pour Raspberry PI 4B (armv8/aarch64/arm64) :
-https://github.com/Patrick-81/NAFABox/blob/master/doc/RPI4_en.md
+https://github.com/Patrick-81/NAFABox/blob/master/doc/RPI4.md
 
 #### Pour une carte ARM compatible Armbian (armv7/armv8/armhf/aarch64/arm32/arm64) :
 https://github.com/Patrick-81/NAFABox/blob/master/doc/arm_board_armbian.md
