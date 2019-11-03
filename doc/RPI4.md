@@ -14,7 +14,7 @@ Il est nécessaire de disposer d'au moins 10Go d'espace de stockage ou d'une Car
 
 1/ Installer la distribution Ubuntu Mate Bionic (18.04 LTS) via Etcher.
 
-https://share.obspm.fr/index.php/s/6z7qFmkyQW9ACpm --> pour 4b
+https://share.obspm.fr/index.php/s/WowXMAZkHPd3K9j --> Aller dans le dossier base pour l'image de départ pour rpi4b
 
 Puis démarrer l'image et suivez la procédure d'installation standard
 
