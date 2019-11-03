@@ -68,7 +68,7 @@ https://github.com/Patrick-81/NAFABox/blob/master/doc/tuto_acceleration_graphiqu
 https://share.obspm.fr/index.php/s/oGtH7pbD9ZsyTTG
 
 **Miroir pour les dernières versions :**  
-https://1drv.ms/f/s!AlFrxWojM_Hflr0R80wOKHzWQMI88g   
+https://share.obspm.fr/index.php/s/WowXMAZkHPd3K9j   
 https://drive.google.com/drive/folders/19rKybLnewPy2NaOpZ7BoXR5x_koXWGFJ?usp=sharing  
 
 ### Tuto pour utiliser les images :   

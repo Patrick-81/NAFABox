@@ -60,7 +60,7 @@ https://github.com/Patrick-81/NAFABox/blob/master/doc/Amelioration_affichage_rpi
 
 
 ### to get a ready made image of the NAFABox :   
-https://share.obspm.fr/index.php/s/oGtH7pbD9ZsyTTG
+https://share.obspm.fr/index.php/s/WowXMAZkHPd3K9j
 
 **Mirrors for last versions :**  
 https://1drv.ms/f/s!AlFrxWojM_Hflr0R80wOKHzWQMI88g   

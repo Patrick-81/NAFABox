@@ -65,7 +65,7 @@ https://github.com/Patrick-81/NAFABox/blob/master/doc/Switch_kernel_armbian.md
 https://github.com/Patrick-81/NAFABox/blob/master/doc/tuto_acceleration_graphique_tinker.md
 
 ### To get a full functionnal NAFABox image :   
-https://share.obspm.fr/index.php/s/oGtH7pbD9ZsyTTG
+https://share.obspm.fr/index.php/s/WowXMAZkHPd3K9j
 
 **Mirrors for the latest versions :**  
 https://1drv.ms/f/s!AlFrxWojM_Hflr0R80wOKHzWQMI88g   
