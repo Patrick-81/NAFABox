@@ -2,6 +2,12 @@
 
 Start for 3.2 version. No change log before.
 
+### 3.3.3 :   
+- add new install mode : default, server, custom
+- add gimp, darktable, ser player, Stackistry, Imppg
+- add MobIndi
+- add Sirilic with siril
+
 ### 3.2.2 :   
 - Add ddserver for qdslrdashboard (in web communications)
 - Add package for ExFat

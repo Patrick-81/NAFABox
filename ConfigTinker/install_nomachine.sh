@@ -22,52 +22,53 @@ echo "================================================="
 ######
 # Recherche du répertoire ConfigTinker
 ######
-if [ -z "$nafabox_path" ]
+if [[ -z "$nafabox_path" ]]
 then
 	echo "Run first Pre_Install.sh and reload Terminal"
 	exit
 fi
-dirinstall=$nafabox_path
+dirinstall=${nafabox_path}
 
 # ATTENTION : Need update $version and $sous_version
 
 ######
 # detect processeur
 ######
-source $dirinstall/proctype.sh
+source ${dirinstall}/proctype.sh
+
+base_version="6.8"
+version=${base_version}".1"
 
 # test version
-if [[ $proc == "_amd64" ]]
+if [[ ${proc} == "_amd64" ]]
 then
 	type="amd64"
     type2="Linux"
-    sous_version="6_11_"
-elif [[ $proc == "_armhf" ]]
+    sous_version="1"
+elif [[ ${proc} == "_armhf" ]]
 then
 	type="armhf"
     type2="Arm"
-    sous_version="6_3_"
-elif [[ $proc == "_x86" ]]
+    sous_version="1"
+elif [[ ${proc} == "_x86" ]]
 then
 	type="i386"
     type2="Linux"
-    sous_version="6_11_"
-elif [[ $proc == "_aarch64" ]]
+    sous_version="1"
+elif [[ ${proc} == "_aarch64" ]]
 then
 	type="arm64"
     type2="Arm"
-    sous_version="6_3_"
+    sous_version="1"
 else
 	echo "architecture not support"
     exit
 fi
 
-version="6.7"
+file=nomachine_${version}_${sous_version}_${type}.deb
 
-file=nomachine_$version.$sous_version$type.deb
-
-wget https://download.nomachine.com/download/$version/$type2/$file -P /tmp/
-sudo dpkg -i /tmp/$file
+wget https://download.nomachine.com/download/${base_version}/${type2}/${file} -P /tmp/
+sudo dpkg -i /tmp/${file}
 
 
 # for keyboard bug correction :
@@ -75,9 +76,9 @@ sudo dpkg -i /tmp/$file
 ######
 # detect language
 ######
-source $dirinstall/detect_language.sh
+source ${dirinstall}/detect_language.sh
 
-if $french
+if ${french}
 then
     localectl set-x11-keymap fr
 else

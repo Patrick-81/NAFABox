@@ -1,10 +1,11 @@
 [Unit]
 Description=Start x11vnc at startup.
-After=multi-user.target
  
 [Service]
-Type=simple
+User=MOI
+Group=MOI
 ExecStart=/usr/bin/x11vnc OPTION
+Restart=on-failure
  
 [Install]
 WantedBy=multi-user.target

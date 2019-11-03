@@ -10,76 +10,69 @@
 ######
 # Recherche du répertoire ConfigTinker
 ######
-if [ -z "$nafabox_path" ]
+if [[ -z "$nafabox_path" ]]
 then
 	echo "Run first Pre_Install.sh and reload Terminal"
 	exit
 fi
-dirinstall=$nafabox_path
+dirinstall=${nafabox_path}
 ######
-source $dirinstall/detect_language.sh
+source ${dirinstall}/detect_language.sh
 ######
 # Créer le raccourci bureau
 ######
-echo $1 $2 $3
+#terminal='true'
+#AppExec=''
+#AppName=''
+#option='2' # defaut en cas d'oubli
+for ARGUMENT in "$@"
+do
 
-if [ -n "$2"  ]
+    KEY=$(echo $ARGUMENT | cut -f1 -d=)
+    VALUE=$(echo $ARGUMENT | cut -f2 -d=)   
+
+    case "$KEY" in
+            APPNAME)  AppName=${VALUE} ;;
+            APPEXEC)  AppExec=${VALUE} ;;
+			TERMINAL) terminal=${VALUE};;
+			OPTION)   option=${VALUE};;  
+            *)   
+    esac    
+done
+if test -z "${AppExec}"
 then
-    if [[ $2 == "0" ]] || [[ $2 == "1" ]]
-    then
-	    AppExec=$1
-    else
-        AppExec=$2
-    fi
-else
-	AppExec=$1
+	AppExec=$AppName
 fi
-
-if [ -d ~/Desktop ]
+######
+if [[ -d ~/Desktop ]]
 then
 	desktop="Desktop"
 else
 	desktop="Bureau"
 fi
 ######
-AppName=$(echo $1 | sed 's/^./\u&/')
+# Caps on first letter of AppName
+AppIcon=$AppName
+AppName=$(echo $AppName | sed 's/^./\u&/')
+######
+# Nettoyer les résidus d'un précédent appel
+rm -f /tmp/shortcut*
+rm -f /tmp/${AppName}.desktop
+######
+num=1
+cat ${dirinstall}/template.desktop  | sed -e "s/APP_NAME/$AppName/g" | sed -e "s%APP_EXEC%$AppExec%g" | sed -e "s/NAME/$AppName/g" | sed -e "s/TERMOP/$terminal/g" | sed -e "s/APP_ICON/$AppIcon/g" > /tmp/${AppName}.desktop
+chmod +x /tmp/${AppName}.desktop
 
-rm -f /tmp/shortcut1
-rm -f /tmp/shortcut2
-rm -f /tmp/$AppName.desktop
-
-cat $dirinstall/template.desktop  | sed -e "s/APP_NAME/$1/g" > /tmp/shortcut1
-cat /tmp/shortcut1  | sed -e "s%APP_EXEC%$AppExec%g" > /tmp/shortcut2
-cat /tmp/shortcut2 | sed -e "s/NAME/$AppName/g" > /tmp/$AppName.desktop
-chmod +x /tmp/$AppName.desktop
-
-option="rien"
-if [ -n "$3"  ]
-then
-    if [[ $3 == "0" ]] || [[ $3 == "1" ]]
-    then
-        option=$3
-    fi
-else
-    if [ -n "$2"  ]
-    then
-        if [[ $2 == "0" ]] || [[ $2 == "1" ]]
-        then
-            option=$2
-        fi
-    fi
-fi
-    
-
-if [[ $option == "1" ]]
-then
-	sudo mv /tmp/$AppName.desktop /usr/share/applications/$AppName.desktop
-elif [[ $option == "0" ]]
-then
-	mv /tmp/$AppName.desktop ~/$desktop/$AppName.desktop
-
-else
-	mv /tmp/$AppName.desktop ~/$desktop/$AppName.desktop
-    sudo cp ~/$desktop/$AppName.desktop /usr/share/applications/$AppName.desktop
-fi
-
+case ${option} in
+0)
+  sudo cp /tmp/${AppName}.desktop /usr/share/applications/${AppName}.desktop
+  ;;
+1)
+  cp /tmp/${AppName}.desktop ~/${desktop}/${AppName}.desktop
+  ;;
+2)
+  cp /tmp/${AppName}.desktop ~/${desktop}/${AppName}.desktop
+  sudo cp ~/${desktop}/${AppName}.desktop /usr/share/applications/${AppName}.desktop
+  ;;
+esac
+sudo rm /tmp/${AppName}.desktop

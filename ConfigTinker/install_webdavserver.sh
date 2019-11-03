@@ -10,12 +10,12 @@
 ######
 # Recherche du répertoire ConfigTinker
 ######
-if [ -z "$nafabox_path" ]
+if [[ -z "$nafabox_path" ]]
 then
 	echo "Run first Pre_Install.sh and reload Terminal"
 	exit
 fi
-dirinstall=$nafabox_path
+dirinstall=${nafabox_path}
 
 figlet -k Install Serveur WebDav
 echo "================================================="
@@ -24,16 +24,16 @@ echo "================================================="
 ######
 # detect language
 ######
-source $dirinstall/detect_language.sh
+source ${dirinstall}/detect_language.sh
 ######
 # Installation du serveur webdav
 ######
 # Extras nginx
 sudo apt-get -y install nginx-extras
 # copy of the server file
-cat $dirinstall/webdav-server.txt | sed -e "s/MOI/${USER}/g" > /tmp/site-webdav_tmp
+cat ${dirinstall}/webdav-server.txt | sed -e "s/MOI/${USER}/g" > /tmp/site-webdav_tmp
 sudo cp /tmp/site-webdav_tmp /etc/nginx/sites-available/site-webdav
-sudo chown $USER:$USER /etc/nginx/sites-available/site-webdav
+sudo chown ${USER}:${USER} /etc/nginx/sites-available/site-webdav
 sudo ln -sf /etc/nginx/sites-available/site-webdav /etc/nginx/sites-enabled/site-webdav
 
 # move apache at port 8280

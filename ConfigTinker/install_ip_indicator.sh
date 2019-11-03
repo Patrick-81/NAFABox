@@ -31,7 +31,7 @@ sudo apt-get -y install libido3-0.1-dev  libgee-0.8-dev liburl-dispatcher1-dev
 sudo apt-get -y install indicator-application indicator-messages indicator-sound
 sudo apt-get -y install indicator-application-gtk2 indicator-sound-gtk2
 version=`lsb_release -c -s`
-if [[ $version == "xenial" ]]
+if [[ ${version} == "xenial" ]]
 then
     sudo apt-get -y install indicator-messages-gtk2
 fi
@@ -47,7 +47,7 @@ sudo apt-get -y install indicator-ip
 # Detect language
 ######
 lang=$(locale | grep LANG= | grep fr_FR)
-if [[ $lang == *"fr_FR"* ]]
+if [[ ${lang} == *"fr_FR"* ]]
 then
 	echo "ajouter l'Applet de notification général au tableau de bord pour afficher ip_indicator"
 else

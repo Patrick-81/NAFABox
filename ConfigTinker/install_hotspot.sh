@@ -2,12 +2,12 @@
 ######
 # Recherche du répertoire ConfigTinker
 ######
-if [ -z "$nafabox_path" ]
+if [[ -z "$nafabox_path" ]]
 then
 	echo "Run first Pre_Install.sh and reload Terminal"
 	exit
 fi
-dirinstall=$nafabox_path
+dirinstall=${nafabox_path}
 
 figlet -k Install HotSpot
 echo "================================================="
@@ -19,7 +19,7 @@ echo "================================================="
 installed=$(apt -qq list uuid)
 testinstall=$([[ $(grep "install" <<< $installed) ]] && echo true || echo false)
 
-if $testinstall 
+if ${testinstall}
 #if test -z "$installed"
 then
 	echo "installé"
@@ -30,7 +30,7 @@ fi
 ######
 # detect language
 ######
-source $dirinstall/detect_language.sh
+source ${dirinstall}/detect_language.sh
 ######
 # recupere le user
 ######
@@ -40,9 +40,9 @@ moi=$(whoami)
 ######
 # get wifi device
 device=($(basename -a $(find /sys/class/net -name wl*)))
-if test ! -z $device
+if test ! -z ${device}
 then
-	if $french
+	if ${french}
 	then
         pop="Voulez vous créer un point d'accés ?"
     else
@@ -69,7 +69,7 @@ then
         # Création du hotspot
         ######
 	    
-	    if $french
+	    if ${french}
 	    then
 		    dial[0]="Fixer un nom discriminant pour votre hotspot"
 		    dial[1]="Soyez créatif d'autres personnes peuvent aussi utiliser une NAFABox"
@@ -87,7 +87,7 @@ then
 				    --center \
 				    --form \
 				    --title "${dial[2]}" \
-				    --image=$dirinstall/install_hotspot.png \
+				    --image=${dirinstall}/install_hotspot.png \
 				    --text "${dial[0]}, \n${dial[1]}" \
 				    --field="WIFI Board :":CB "$liste_device" \
 				    --field="${dial[2]}" "$default_hostname" \
@@ -99,44 +99,44 @@ then
 		    mdp=$(echo "$option" | cut -d "|" -f3)
 
             # add "_box" for hotspot name
-		    hotspot_name=$name_w"_box"
+		    hotspot_name=${name_w}"_box"
 
-		    mac_address=$(sudo cat /sys/class/net/$de_wifi/address)
+		    mac_address=$(sudo cat /sys/class/net/${de_wifi}/address)
 		    security="[wifi-security]\ngroup=\nkey-mgmt=wpa-psk\npairwise=\nproto=\npsk=MDP"
 
 		    fic0=$(tempfile)
-		    cat $dirinstall/nafabox.template | sed -e "s/WLAN/${de_wifi}/g" > $fic0
+		    cat ${dirinstall}/nafabox.template | sed -e "s/WLAN/${de_wifi}/g" > ${fic0}
 		    fic1=$(tempfile)
-		    cat $fic0 | sed -e "s/HOTSPOTNAME/${hotspot_name}/g" > $fic1
+		    cat ${fic0} | sed -e "s/HOTSPOTNAME/${hotspot_name}/g" > ${fic1}
 		    fic2=$(tempfile)
-		    cat $fic1 | sed -e "s/UUID/${hsuuid}/g" > $fic2
+		    cat ${fic1} | sed -e "s/UUID/${hsuuid}/g" > ${fic2}
 		    fic3=$(tempfile)
-		    cat $fic2 | sed -e "s/MAC_ADDRESS/${mac_address}/g" > $fic3
+		    cat ${fic2} | sed -e "s/MAC_ADDRESS/${mac_address}/g" > ${fic3}
 	    
 
 		    if [[ -z "$mdp" ]]
 		    then
 			    fic5=$(tempfile)
-			    cat $fic3 | sed -e "s/SECURITY//g" > $fic5
+			    cat ${fic3} | sed -e "s/SECURITY//g" > ${fic5}
 		    else
 			    fic4=$(tempfile)
-			    cat $fic3 | sed -e "s/SECURITY/${security}/g" > $fic4
+			    cat ${fic3} | sed -e "s/SECURITY/${security}/g" > ${fic4}
 			    fic5=$(tempfile)
-			    cat $fic4 | sed -e "s/MDP/${mdp}/g" > $fic5
+			    cat ${fic4} | sed -e "s/MDP/${mdp}/g" > ${fic5}
 		    fi
 		    ######
 		    # Find active access point
 		    ######
-		    activeap=$(iw $de_wifi info | grep ssid | cut -f 2 -d" ")
+		    activeap=$(iw ${de_wifi} info | grep ssid | cut -f 2 -d" ")
             sudo systemctl stop NetworkManager
-		    if test ! -z $activeap
+		    if test ! -z ${activeap}
 		    then
-			    sudo rm -f /etc/NetworkManager/system-connections/$activeap
+			    sudo rm -f /etc/NetworkManager/system-connections/${activeap}
 		    fi
 		    ######
 		    # Create new one
 		    ######
-		    sudo cp $fic5 /etc/NetworkManager/system-connections/$hotspot_name
+		    sudo cp ${fic5} /etc/NetworkManager/system-connections/${hotspot_name}
 		    
 		    sleep 5
 		    sudo systemctl start NetworkManager
@@ -147,7 +147,7 @@ then
 		    exit
 	    fi
     else
-	    if $french
+	    if ${french}
 	    then
             pop="supprimer un point d'acces ?"		    
             dial[0]="Supprimer le point d'acces :"
@@ -161,18 +161,18 @@ then
 				    --center \
 				    --form \
 				    --title "$pop" \
-				    --image=$dirinstall/install_hotspot.png \
+				    --image=${dirinstall}/install_hotspot.png \
 				    --text "${dial[0]}" \
 				    --field="WIFI Board :":CB "$liste_device"`
 				    
 	    then
 		    de_wifi=$(echo "$option" | cut -d "|" -f1)
-            activeap=$(iw $de_wifi info | grep ssid | cut -f 2 -d" ")
+            activeap=$(iw ${de_wifi} info | grep ssid | cut -f 2 -d" ")
 
             sudo systemctl stop NetworkManager
-            if test ! -z $activeap
+            if test ! -z ${activeap}
 		    then
-                sudo rm -f /etc/NetworkManager/system-connections/$activeap
+                sudo rm -f /etc/NetworkManager/system-connections/${activeap}
             fi
             sleep 5
 		    sudo systemctl start NetworkManager

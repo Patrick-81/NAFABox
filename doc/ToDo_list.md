@@ -2,7 +2,7 @@
 
 - Ajouter un Tuto pour la synchro GPS
 - Ajouter Astrophoto plus
-- Passer sur une version stable de oacapture (1.6.0)
+- Passer sur une version stable de oacapture (1.7.0)
 - Creer une image Nanopi-M4 et Rockpi 4
 - Ajouter Aude pour les ordi x86 seulement
 - Teste d'un ordinateur sous Celeron J1900 + 4Go RAM pour le planetaire

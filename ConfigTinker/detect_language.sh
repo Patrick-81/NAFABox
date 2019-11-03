@@ -11,7 +11,7 @@
 # Detect language
 ######
 lang=$(locale | grep LANG= | grep fr_FR)
-if [[ $lang == *"fr_FR"* ]]
+if [[ ${lang} == *"fr_FR"* ]]
 then
 	french=true
 else

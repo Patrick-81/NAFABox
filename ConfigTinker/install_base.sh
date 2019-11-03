@@ -12,13 +12,13 @@
 ######
 # Recherche du répertoire ConfigTinker
 ######
-if [ -z "$nafabox_path" ]
+if [[ -z "$nafabox_path" ]]
 then
 	echo "Run first Pre_Install.sh and reload Terminal"
 	exit
 fi
-dirinstall=$nafabox_path
-source $dirinstall/proctype.sh
+dirinstall=${nafabox_path}
+source ${dirinstall}/proctype.sh
 
 server_choice=$2
 
@@ -51,7 +51,6 @@ version=`lsb_release -c -s`
 # init
 
 installMate="FALSE"
-language="FALSE"
 autologin="FALSE"
 ip_indicator="FALSE"
 o_indicator="FALSE"
@@ -59,22 +58,44 @@ host="FALSE"
 
 if [[ $1 == "initial" ]]
 then
-	st=(true true true false false true)
+	st=(true true true false true)
 
 else
-	st=(false false false false false false)
+	st=(false false false false false)
 fi
 
-if [[ $server_choice == "server" ]]
+if [[ ${server_choice} == "server" ]]
 then
     installMate="FALSE"
-    language="FALSE"
     autologin="FALSE"
     ip_indicator="FALSE"
     o_indicator="FALSE"
-    host="FALSE"
+    host="TRUE"
+
+elif [[ ${server_choice} == "default" ]]
+then
+    installMate="FALSE"
+    dialog --title " Install Ubuntu MATE" --clear \
+	    --yesno "Do you need install Ubuntu MATE" 10 30
+
+    case $? in
+	    0)	echo "Install Ubuntu MATE"
+            installMate="TRUE"
+            ;;
+	    1)	
+            installMate="FALSE"
+            ;;
+	    255)	
+            echo "exit"
+            ;;
+    esac
+
+    autologin="FALSE"
+    ip_indicator="TRUE"
+    o_indicator="TRUE"
+    host="TRUE"
 else
-    if [[ $DESKTOP_SESSION == "mate" ]]
+    if [[ ${DESKTOP_SESSION} == "mate" ]]
     then
         if chose=`yad --width=350 \
 	        --center \
@@ -84,17 +105,15 @@ else
 	        --field=":LBL" \
 	        --field="Plugin IP Indicator:CHK" \
             --field="Other indicator:CHK" \
-	        --field="Fr language:CHK" \
 	        --field="Autologin for dev armbian (nightly):CHK" \
 	        --field="Change hostname to NAFABox ?:CHK" \
-	        "" "${st[1]}" "${st[2]}" "${st[3]}" "${st[4]}" "${st[5]}"`
+	        "" "${st[1]}" "${st[2]}" "${st[3]}" "${st[4]}"`
         then
 	        # recuperation des valeurs
 	        ip_indicator=$(echo "$chose" | cut -d "|" -f2)
             o_indicator=$(echo "$chose" | cut -d "|" -f3)
-	        language=$(echo "$chose" | cut -d "|" -f4)
-	        autologin=$(echo "$chose" | cut -d "|" -f5)
-	        host=$(echo "$chose" | cut -d "|" -f6)
+	        autologin=$(echo "$chose" | cut -d "|" -f4)
+	        host=$(echo "$chose" | cut -d "|" -f5)
 
         else
 	        echo "cancel"
@@ -107,20 +126,18 @@ else
 		    --text="Install Program :" \
 		    --field=":LBL" \
 		    --field="Mate destktop and components:CHK" \
-		    --field="Fr language:CHK" \
 		    --field="Plugin IP Indicator:CHK" \
             --field="Other indicator:CHK" \
 		    --field="Autologin for dev armbian (nightly):CHK" \
 		    --field="Change hostname to NAFABox ?:CHK" \
-		    "" "${st[0]}" "${st[1]}" "${st[2]}" "${st[3]}" "${st[4]}" "${st[5]}"`
+		    "" "${st[0]}" "${st[1]}" "${st[2]}" "${st[3]}" "${st[4]}"`
 	    then
 		    # recuperation des valeurs
 		    installMate=$(echo "$chose" | cut -d "|" -f2)
-		    language=$(echo "$chose" | cut -d "|" -f3)
-		    ip_indicator=$(echo "$chose" | cut -d "|" -f4)
-            o_indicator=$(echo "$chose" | cut -d "|" -f5)
-		    autologin=$(echo "$chose" | cut -d "|" -f6)
-		    host=$(echo "$chose" | cut -d "|" -f7)
+		    ip_indicator=$(echo "$chose" | cut -d "|" -f3)
+            o_indicator=$(echo "$chose" | cut -d "|" -f4)
+		    autologin=$(echo "$chose" | cut -d "|" -f5)
+		    host=$(echo "$chose" | cut -d "|" -f6)
 
 	    else
 		    echo "cancel"
@@ -128,24 +145,24 @@ else
     fi
 fi
 
-if [[ $host == "TRUE" ]]
+if [[ ${host} == "TRUE" ]]
 then
 
 
-	$dirinstall/install_hostname.sh
+	${dirinstall}/install_hostname.sh ${server_choice}
 
 fi
 
 # Options de apt-get pour l'installation des paquets
 options="-y"
 #activation de l'autologin pour les version nightly
-if [[ $autologin == "TRUE" ]]
+if [[ ${autologin} == "TRUE" ]]
 then
 	figlet -k Install AutoLogin
 	echo "================================================="
 	echo "================================================="
 
-	if [ -f "/usr/share/lightdm/lightdm.conf.d/60-lightdm-gtk-greeter.conf" ]
+	if [[ -f "/usr/share/lightdm/lightdm.conf.d/60-lightdm-gtk-greeter.conf" ]]
 	then
 		if [grep -q "autologin" "/usr/share/lightdm/lightdm.conf.d/60-lightdm-gtk-greeter.conf" ]
 		then
@@ -157,7 +174,7 @@ then
 	fi
 fi
 #  Désinstallation de xfce et installation de Mate
-if [[ $installMate == "TRUE" ]]
+if [[ ${installMate} == "TRUE" ]]
 then
 
 	figlet -k Install Ubuntu Mate
@@ -165,7 +182,7 @@ then
 	echo "================================================="
 
 	# add repository pour avoir la 1.16 au lieu de la 1.12
-	if [[ $version == "xenial" ]]
+	if [[ ${version} == "xenial" ]]
 	then
 		sudo apt-add-repository -y ppa:ubuntu-mate-dev/xenial-mate # ==> bug
 	fi
@@ -185,23 +202,23 @@ then
 	sudo apt-get -y install xserver-xorg
 	sudo apt-get -y install lightdm-greeter
 	# Mise à jour de l'autologin
-	cat  $dirinstall/20-lightdm.conf | sed -e "s/MOI/$(whoami)/g" > /tmp/20-lightdm.conf
+	cat  ${dirinstall}/20-lightdm.conf | sed -e "s/MOI/$(whoami)/g" > /tmp/20-lightdm.conf
 	sudo cp /tmp/20-lightdm.conf /etc/lighdm/lightdm.conf.d/.
 
     machine=$(sudo lshw | grep "produit\|product" | grep "Raspberry")
 
 	# installation de base de mate
-	sudo apt-get $options install mate
-    sudo apt-get $options install ubuntu-mate-core ubuntu-mate-desktop
-    sudo apt-get $options install ubuntu-mate-default-settings ubuntu-mate-icon-themes
-    sudo apt-get $options install ubuntu-mate-live-settings ubuntu-mate-guide
+	sudo apt-get ${options} install mate
+    sudo apt-get ${options} install ubuntu-mate-core ubuntu-mate-desktop
+    sudo apt-get ${options} install ubuntu-mate-default-settings ubuntu-mate-icon-themes
+    sudo apt-get ${options} install ubuntu-mate-live-settings ubuntu-mate-guide
 
 	# installation de mate compléments
-	sudo apt-get $options install mate-desktop-environment-extras mate-indicator-applet
-	sudo apt-get $options install mate-dock-applet plank mate-hud mate-applet-brisk-menu mate-menu mate-applet-appmenu
+	sudo apt-get ${options} install mate-desktop-environment-extras mate-indicator-applet
+	sudo apt-get ${options} install mate-dock-applet plank mate-hud mate-applet-brisk-menu mate-menu mate-applet-appmenu
 
     # dangereux à remplacer des que possible
-	sudo apt-get $options install mate-*
+	sudo apt-get ${options} install mate-*
 
 	
 	# supprimer veille
@@ -213,23 +230,23 @@ then
 	echo "================================================="
 	echo "================================================="
 
-	sudo apt-get $options install synaptic
-	sudo apt-get $options install engrapa
-	sudo apt-get $options install caja-actions
-	sudo apt-get $options install caja-wallpaper
-	sudo apt-get $options install caja-open-terminal
-	sudo apt-get $options install mozo
-	sudo apt-get $options install pluma
-	sudo apt-get $options install mate-tweak
-	sudo apt-get $options install mate-themes
-	sudo apt-get $options install mate-applets gnome-media
-	sudo apt-get $options install mate-panel
-	sudo apt-get $options install mate-system-monitor
-	sudo apt-get $options install blueman
-	sudo apt-get $options install firefox
-	sudo apt-get $options install ubuntu-mate-themes
-    sudo apt-get $options install pulseaudio libcanberra-pulse paprefs 
-    sudo apt-get $options install pulseaudio-module-bluetooth pulseaudio-module-gconf pulseaudio-module-zeroconf
+	sudo apt-get ${options} install synaptic
+	sudo apt-get ${options} install engrapa
+	sudo apt-get ${options} install caja-actions
+	sudo apt-get ${options} install caja-wallpaper
+	sudo apt-get ${options} install caja-open-terminal
+	sudo apt-get ${options} install mozo
+	sudo apt-get ${options} install pluma
+	sudo apt-get ${options} install mate-tweak
+	sudo apt-get ${options} install mate-themes
+	sudo apt-get ${options} install mate-applets gnome-media
+	sudo apt-get ${options} install mate-panel
+	sudo apt-get ${options} install mate-system-monitor
+	sudo apt-get ${options} install blueman
+	sudo apt-get ${options} install firefox
+	sudo apt-get ${options} install ubuntu-mate-themes
+    sudo apt-get ${options} install pulseaudio libcanberra-pulse paprefs
+    sudo apt-get ${options} install pulseaudio-module-bluetooth pulseaudio-module-gconf pulseaudio-module-zeroconf
     sudo alsa force-reload
 	# désinstallation diverses des relicats de xfce et de thunderbird ajouté par maté
 	sudo apt-get -y purge thunderbird transmission-gtk thunar leafpad hexchat geany k3b brasero cheese
@@ -240,7 +257,7 @@ then
     sudo apt-get -y autoremove
     sudo apt-get clean
 
-    if [ -z "$DESKTOP_SESSION" ]
+    if [[ -z "$DESKTOP_SESSION" ]]
     then
 	    echo "export DESKTOP_SESSION=\"mate\""  >> ~/.bashrc
     fi
@@ -251,24 +268,24 @@ then
 
 fi
 
-if [[ $o_indicator == "TRUE" ]]
+if [[ ${o_indicator} == "TRUE" ]]
 then
-    sudo apt-get $options install indicator-cpufreq indicator-multiload 
-    sudo apt-get $options install indicator-sound indicator-power indicator-messages indicator-application indicator-session
-    #sudo apt-get $options install indicator-bluetooth
+    sudo apt-get ${options} install indicator-cpufreq indicator-multiload
+    sudo apt-get ${options} install indicator-sound indicator-power indicator-messages indicator-application indicator-session
+    #sudo apt-get ${options} install indicator-bluetooth
 fi
 
-sudo apt-get $options purge indicator-china-weather
-if [[ $version == "xenial" ]]
+sudo apt-get ${options} purge indicator-china-weather
+if [[ ${version} == "xenial" ]]
 then
-    sudo apt-get $options purge indicator-network-tools indicator-network-autopilot
+    sudo apt-get ${options} purge indicator-network-tools indicator-network-autopilot
 fi
 
 
 # install ip indicator
-if [[ $ip_indicator == "TRUE" ]]
+if [[ ${ip_indicator} == "TRUE" ]]
 then
-	$dirinstall/install_ip_indicator.sh
+	${dirinstall}/install_ip_indicator.sh
 fi
 
 # Installation du fond d'écran
@@ -281,40 +298,26 @@ echo "================================================="
 mkdir -p ~/bin
 backpic="PIA16008-1920x1200.jpg"
 dest="$HOME/bin"
-cp $dirinstall/$backpic $dest/$backpic
+cp ${dirinstall}/${backpic} ${dest}/${backpic}
 
-if [[ $installMate == "TRUE" ]]
+if [[ ${installMate} == "TRUE" ]]
 then
-    gsettings set org.mate.background picture-filename $dest/$backpic
-elif [[ $DESKTOP_SESSION == "mate" ]]
+    gsettings set org.mate.background picture-filename ${dest}/${backpic}
+elif [[ ${DESKTOP_SESSION} == "mate" ]]
 then
-    gsettings set org.mate.background picture-filename $dest/$backpic
-elif [[ $DESKTOP_SESSION == "lxde" ]]
+    gsettings set org.mate.background picture-filename ${dest}/${backpic}
+elif [[ ${DESKTOP_SESSION} == "lxde" ]]
 then
     pcmanfm --set-wallpaper="$dest/$backpic"
-elif [[ $DESKTOP_SESSION == "xfce" ]] || [[ $DESKTOP_SESSION == "xubuntu" ]]
+elif [[ ${DESKTOP_SESSION} == "xfce" ]] || [[ ${DESKTOP_SESSION} == "xubuntu" ]]
 then
     xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor0/image-show -s true
-    xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitor0/image-path --set $dest/$backpic
-    xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitor0/workspace0/last-image --set $dest/$backpic
+    xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitor0/image-path --set ${dest}/${backpic}
+    xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitor0/workspace0/last-image --set ${dest}/${backpic}
 fi
 
 
-if [[ $language == "TRUE" ]]
-then
 
-	figlet -k Install Language
-	echo "================================================="
-	echo "================================================="
-	# passer le systeme en français
-	# ajout des packs langage
-	sudo apt-get $options install language-pack-fr language-pack-gnome-fr
-	sudo apt-get $options install firefox-locale.fr
-    sudo apt-get $options install language-pack-fr language-pack-gnome-fr-base
-	sudo locale-gen fr_FR fr_FR.UTF-8
-	sudo update-locale LC_ALL=fr_FR.UTF-8 LANG=fr_FR.UTF-8
-	sudo dpkg-reconfigure keyboard-configuration
-fi
 	
 
 

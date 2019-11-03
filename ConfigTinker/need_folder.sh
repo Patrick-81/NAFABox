@@ -8,7 +8,7 @@
 ################################################
 #!/bin/bash -i
 
-if [ -f "./temp_directory.tmp" ]
+if [[ -f "./temp_directory.tmp" ]]
 then
 	rm ./temp_directory.tmp
 fi
@@ -18,14 +18,14 @@ error=`tempfile 2>/dev/null` || fichtemp=/tmp/error$$
 zenity  --file-selection \
 		--title="Select ConfigTinker Folder" \
 		--file-filter=""ConfigTinker"" \
-		--directory 1>$fichtemp 2>$error
+		--directory 1>${fichtemp} 2>${error}
 
-ConfigTinker_path=$(cat $fichtemp)
+ConfigTinker_path=$(cat ${fichtemp})
 if test "$ConfigTinker_path" = ""
 then 
 	echo "Pas de fichier pour NAFABOX Détecté."
 fi
 
-dirinstall=$ConfigTinker_path
+dirinstall=${ConfigTinker_path}
 
-echo ''$dirinstall''>> $dirinstall/temp_directory.tmp
+echo ''${dirinstall}''>> ${dirinstall}/temp_directory.tmp

@@ -15,7 +15,7 @@ then
 	echo "Run first Pre_Install.sh and reload Terminal"
 	exit
 fi
-dirinstall=$nafabox_path
+dirinstall=${nafabox_path}
 ######
 
 figlet -k Install PAD
@@ -23,8 +23,8 @@ echo "================================================="
 echo "================================================="
 
 dest="/usr/share/kstars/ekos/mount/qml"
-sudo mv $dest/mountbox.qml $dest/mountbox.qml.old
-cp $dirinstall/pad.tar.gz /tmp
-sudo tar xvzf $dirinstall/pad.tar.gz -C $dest/
+sudo mv ${dest}/mountbox.qml ${dest}/mountbox.qml.old
+cp ${dirinstall}/pad.tar.gz /tmp
+sudo tar xvzf ${dirinstall}/pad.tar.gz -C ${dest}/
  
 

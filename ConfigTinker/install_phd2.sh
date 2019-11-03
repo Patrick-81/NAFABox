@@ -10,12 +10,12 @@
 ######
 # Recherche du répertoire ConfigTinker
 ######
-if [ -z "$nafabox_path" ]
+if [[ -z "$nafabox_path" ]]
 then
 	echo "Run first Pre_Install.sh and reload Terminal"
 	exit
 fi
-dirinstall=$nafabox_path
+dirinstall=${nafabox_path}
 
 ######
 options="--auto-remove --yes -q"
@@ -32,9 +32,9 @@ sudo apt-get update
 ######
 # Installation du programme : phd2
 ######
-sudo apt-get $options install phd2
+sudo apt-get ${options} install phd2
 ######
 # Création de l'icône sur le bureau
 ######
-$dirinstall/install_shortcut.sh phd2 0
+${dirinstall}/install_shortcut.sh APPNAME='phd2' OPTION='1' TERMINAL="false"
 

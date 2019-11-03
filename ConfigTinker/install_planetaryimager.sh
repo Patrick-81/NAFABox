@@ -10,12 +10,12 @@
 ######
 # Recherche du répertoire ConfigTinker
 ######
-if [ -z "$nafabox_path" ]
+if [[ -z "$nafabox_path" ]]
 then
 	echo "Run first Pre_Install.sh and reload Terminal"
 	exit
 fi
-dirinstall=$nafabox_path
+dirinstall=${nafabox_path}
 
 figlet -k Install PlanetaryImager
 echo "================================================="
@@ -24,9 +24,9 @@ echo "================================================="
 ######
 # detect processeur
 ######
-source $dirinstall/proctype.sh
+source ${dirinstall}/proctype.sh
 
-if [[ $proc == "_aarch64" ]]
+if [[ ${proc} == "_aarch64" ]]
 then
 	echo "planetary imager is not compatible with arm64 board"
 	exit
@@ -38,7 +38,7 @@ fi
 sudo apt-get -y install libccfits-dev libopencv-dev libqt5opengl5 libv4l-0 libv4lconvert0 
 sudo apt-get -y install gcc libboost-all-dev fxload git cmake qtbase5-dev qtdeclarative5-dev
 
-if [ -d "/tmp/libdc1394" ]
+if [[ -d "/tmp/libdc1394" ]]
 then
 	rm -Rf /tmp/libdc1394
 fi
@@ -75,7 +75,7 @@ echo "==========================================================================
 echo "==========================================================================================="
 echo " warning desactivate miniconda/anaconda for install planetary imager"
 echo "==========================================================================================="
-if [ -d "/tmp/planetary" ]
+if [[ -d "/tmp/planetary" ]]
 then
 	rm -Rf /tmp/planetary
 fi
@@ -101,5 +101,5 @@ make all && sudo make install
 # Création de l'icône sur le bureau
 ######
 sudo cp /usr/share/icons/hicolor/16x16/apps/planetary_imager.png /usr/share/pixmaps
-$dirinstall/install_shortcut.sh planetary_imager 0
+${dirinstall}/install_shortcut.sh APPNAME='planetary_imager' OPTION='1' TERMINAL="false"
 

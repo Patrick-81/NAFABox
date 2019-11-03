@@ -10,22 +10,22 @@
 ######
 # Recherche du répertoire ConfigTinker
 ######
-if [ -z "$nafabox_path" ]
+if [[ -z "$nafabox_path" ]]
 then
 	echo "Run first Pre_Install.sh and reload Terminal"
 	exit
 fi
-dirinstall=$nafabox_path
+dirinstall=${nafabox_path}
 
 ######
 # detect processeur
 ######
-source $dirinstall/proctype.sh
+source ${dirinstall}/proctype.sh
 
 ######
 # detect language
 ######
-source $dirinstall/detect_language.sh
+source ${dirinstall}/detect_language.sh
 
 server_choice=$1
 
@@ -41,7 +41,7 @@ sudo apt-get install libusb-dev git
 sudo apt-get purge modemmanager
 sudo apt-get install python3-serial
 
-if [[ $server_choice == "server" ]]
+if [[ ${server_choice} == "server" ]]
 then
     echo "############################"
     echo "## install in server mode ##"
@@ -50,7 +50,7 @@ then
 	ide_arduino=FALSE
 	gen=FALSE
 else
-	if $french
+	if ${french}
 	then
 		dial[0]="Installation/Mise à jour des logiciels"
 		dial[1]="Choisir le(s) logiciel(s) à installer"
@@ -87,16 +87,16 @@ else
 fi
 
 # test version
-if [[ $proc == "_amd64" ]]
+if [[ ${proc} == "_amd64" ]]
 then
 	type="linux64"
-elif [[ $proc == "_armhf" ]]
+elif [[ ${proc} == "_armhf" ]]
 then
 	type="linuxarm"
-elif [[ $proc == "_x86" ]]
+elif [[ ${proc} == "_x86" ]]
 then
 	type="linux32"
-elif [[ $proc == "_aarch64" ]]
+elif [[ ${proc} == "_aarch64" ]]
 then
 	type="linuxaarch64"
 else
@@ -105,7 +105,7 @@ fi
 
 
 
-if [[ $onstep_c == "TRUE" ]]
+if [[ ${onstep_c} == "TRUE" ]]
 then
 	######
 	# install rules file
@@ -117,33 +117,33 @@ then
 	# install teensy loader
 	######
 
-	if [[ $type == "no" ]]
+	if [[ ${type} == "no" ]]
 	then	
 		echo "teensy loader not support this platform"
-	elif [[ $type == "linuxaarch64" ]]
+	elif [[ ${type} == "linuxaarch64" ]]
 	then
 		echo "teensy loader not support this platform"
 	else
-		if [[ $type == "linuxarm" ]]
+		if [[ ${type} == "linuxarm" ]]
 		then
 			type="raspberrypi"
 		fi
 		# telechargeemnt de l'installateur
-		file=teensy_$type.tar.gz
-		wget https://www.pjrc.com/teensy/$file -P /tmp/
-		mkdir -p /home/$USER/Teensy_loader
-		cd /home/$USER/Teensy_loader
-		tar -xzf /tmp/$file
+		file=teensy_${type}.tar.gz
+		wget https://www.pjrc.com/teensy/${file} -P /tmp/
+		mkdir -p /home/${USER}/Teensy_loader
+		cd /home/${USER}/Teensy_loader
+		tar -xzf /tmp/${file}
 		
 	fi
 	
 	# telechargeemnt de onstep
-	cd /home/$USER/
+	cd /home/${USER}/
 	if [ -d "/home/${USER}/Onstep/" ]
 	then
 		# mise a jour
 		echo "update onstep git"
-		cd /home/$USER/OnStep/
+		cd /home/${USER}/OnStep/
 		git pull
 	else
 		# installation
@@ -152,7 +152,7 @@ then
 
 	fi
 
-	cd /home/$USER/OnStep/
+	cd /home/${USER}/OnStep/
 	# choix de version de OnStep
 	if ret=`yad --width 400 \
 			--center \
@@ -164,10 +164,10 @@ then
 			--button="gtk-close:0" \
 			--entry-text "Beta" "Alpha" "stable"`
 	then
-		if [[ $ret == "Beta" ]]
+		if [[ ${ret} == "Beta" ]]
 		then
 			git checkout Beta
-		elif [[ $ret == "Alpha" ]]
+		elif [[ ${ret} == "Alpha" ]]
 		then
 			git checkout Alpha
 		else
@@ -179,7 +179,7 @@ then
 fi
 
 # change if need
-if [[ $type == "raspberrypi" ]]
+if [[ ${type} == "raspberrypi" ]]
 then
 	type="linuxarm"
 fi
@@ -187,23 +187,25 @@ fi
 arduino_v="1.8.5" # need 1.8.5 for onstep compatibility
 teensduino_v="145"
 
-if [[ $ide_arduino == "TRUE" ]]
+if [[ ${ide_arduino} == "TRUE" ]]
 then
 	# Installation de l'IDE Arduino en version PPA
-	if [[ $type != "no" ]]
+	if [[ ${type} != "no" ]]
+	then
 		lien="https://downloads.arduino.cc/"
 	fi
 
-	if [[ $type != "no" ]]
-		if [[ $type == "linuxaarch64" ]]
+	if [[ ${type} != "no" ]]
+	then
+		if [[ ${type} == "linuxaarch64" ]]
 		then
 			echo "linuxaarch64 not support arduino $arduino_v, force v1.8.7"
 			arduino_v="1.8.7"
 		fi
-		wget $lien/arduino-$arduino_v-$type.tar.xz -P /tmp/
-		cd /home/$USER
-		tar -xf /tmp/arduino-$arduino_v-$type.tar.xz
-		/home/$USER/arduino-$arduino_v/install.sh
+		wget ${lien}/arduino-${arduino_v}-${type}.tar.xz -P /tmp/
+		cd /home/${USER}
+		tar -xf /tmp/arduino-${arduino_v}-${type}.tar.xz
+		/home/${USER}/arduino-${arduino_v}/install.sh
 
 		echo "Arduino folder is : /home/$USER/arduino-$arduino_v/"
 
@@ -216,42 +218,42 @@ then
 		# install arduino IDE
 		umake ide arduino
 
-		$dirinstall/install_shortcut.sh arduino
+		${dirinstall}/install_shortcut.sh APPNAME='arduino' OPTION='1'
 		echo "Arduino folder is : ~/.local/share/umake/ide/arduino"
-
-	sudo usermod -a -G dialout $USER
+    fi
+	sudo usermod -a -G dialout ${USER}
 
 	# install teensduino
 	file="TeensyduinoInstall.$type"
 
-	wget https://www.pjrc.com/teensy/td_144/$file -P /tmp/
-	chmod +x /tmp/TeensyduinoInstall.$type
+	wget https://www.pjrc.com/teensy/td_144/${file} -P /tmp/
+	chmod +x /tmp/TeensyduinoInstall.${type}
 
 	# run install process
-	/tmp/TeensyduinoInstall.$type
+	/tmp/TeensyduinoInstall.${type}
 
 fi
 	
-if [[ $gen == "TRUE" ]]
+if [[ ${gen} == "TRUE" ]]
 then
 
 	sudo apt-get -y install python3 python3-pyqt5
 
 	onstep_generator_path="/home/$USER/Onstep_Generator"
 
-	cd /home/$USER
+	cd /home/${USER}
 
-	if [ -d "/home/${USER}/Onstep_Generator" ]
+	if [[ -d "/home/${USER}/Onstep_Generator" ]]
 	then
 		echo "Update Onstep_Generator"
-		cd $onstep_generator_path
+		cd ${onstep_generator_path}
 		git reset --hard
 		git pull
 	else
 		git clone https://github.com/dragonlost/Onstep_Generator.git
-		cd $onstep_generator_path
-
-	cp $onstep_generator_path/temp_Onstep_Generator.desktop.temp /tmp/Onstep_Generator.desktop
+		cd ${onstep_generator_path}
+    fi
+	cp ${onstep_generator_path}/temp_Onstep_Generator.desktop.temp /tmp/Onstep_Generator.desktop
 	sed -i -e "s=/LOCAL_FOLDER=$onstep_generator_path=" /tmp/Onstep_Generator.desktop
 	echo -e "Icon update"
 

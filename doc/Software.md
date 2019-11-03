@@ -23,7 +23,7 @@
 
 - Couche de communication web
   - timezone : Script for change time zone in system time
-  - interface HTML : NAFABox application for reboot, shutdown and change time system in html page
+  - interface HTML : NAFABox application for reboot, shutdown and change time system in html page and Cockpit dashboard
   - X11VNC : https://github.com/LibVNC/x11vnc
   - Webdav : http://www.webdav.org/
   - Browsepy : http://ergoithz.github.io/browsepy/
@@ -31,6 +31,7 @@
   - NoMachine : https://www.nomachine.com/fr
   - Hotspot awake : NAFABox script for re-up hotspot (outdate)
   - Server for qDslrDashboard 
+  - Server Mobindi : https://github.com/pludov/mobindi.git
   
 - Lin Guider : https://sourceforge.net/projects/linguider/
 
@@ -59,6 +60,13 @@
 
 - OACapture (Beta github) : https://github.com/openastroproject/openastro
 
-- Siril : https://www.siril.org/fr/
+- logiciel de traitement photo 
+    - Siril : https://www.siril.org/fr/
+    - Sirilic : https://gitlab.com/free-astro/sirilic.git
+    - DarkTale : https://www.darktable.org/
+    - GIMP : https://www.gimp.org/
+    - Ser Player : https://sites.google.com/site/astropipp/ser-player
+    - Stackistry : https://github.com/GreatAttractor/stackistry/
+    - ImPPG : https://github.com/GreatAttractor/imppg/
 
 - Stellarium : https://stellarium.org/fr/

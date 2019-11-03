@@ -10,12 +10,12 @@
 ######
 # Recherche du répertoire ConfigTinker
 ######
-if [ -z "$nafabox_path" ]
+if [[ -z "$nafabox_path" ]]
 then
 	echo "Run first Pre_Install.sh and reload Terminal"
 	exit
 fi
-dirinstall=$nafabox_path
+dirinstall=${nafabox_path}
 
 figlet -k Install Siril
 echo "================================================="
@@ -24,7 +24,8 @@ echo "================================================="
 ######
 # Installation des pré-requis
 ######
-sudo apt-get -y install libconfig++9v5 libffms2-4 libraw15
+sudo apt-get -y install libconfig++9v5 libffms2-4 
+sudo apt-get -y install libraw-dev
 sudo apt-get -y install -f
 ######
 # Options de apt-get pour l'installation des paquets
@@ -41,16 +42,16 @@ sudo apt-get update
 ######
 # Installation du programme : siril
 ######
-sudo apt-get $options install siril
+sudo apt-get ${options} install siril
 
 # add folder for script :
-mkdir -p /home/$USER/siril/script
-mkdir -p /home/$USER/.siril/script
+mkdir -p /home/${USER}/siril/script
+mkdir -p /home/${USER}/.siril/script
 
 
 ######
 # Création de l'icône sur le bureau
 ######
 sudo cp /usr/share/icons/hicolor/32x32/apps/siril.png /usr/share/pixmaps/.
-$dirinstall/install_shortcut.sh siril
+${dirinstall}/install_shortcut.sh APPNAME='siril' OPTION='1' TERMINAL="false"
 

@@ -1,0 +1,9 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Type=Application
+Terminal=true
+Exec=HOME/bin/stackistry/bin/stackistry
+Name=Stackisry
+Icon=HOME/bin/stackistry/icons/stackistry-app.svg
+Categories=Application;Education;

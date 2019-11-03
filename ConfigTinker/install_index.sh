@@ -13,16 +13,16 @@
 # Recherche du répertoire ConfigTinker
 ######
 echo $1
-if [ "$1" = "debug" ]
+if [[ "$1" == "debug" ]]
 then
 	dirinstall=$(pwd)
 else
-	if [ -z "$nafabox_path" ]
+	if [[ -z "$nafabox_path" ]]
 	then
 		echo "Run first Pre_Install.sh and reload Terminal"
 		exit
 	fi
-	dirinstall=$nafabox_path
+	dirinstall=${nafabox_path}
 fi
 
 figlet -k Install Index
@@ -35,8 +35,9 @@ sudo apt-get -y install curl
 ######
 # test locale
 ######
-source $dirinstall/detect_language.sh
-if $french
+source ${dirinstall}/detect_language.sh
+
+if ${french}
 then
 	compute[0]="Chargement des fichiers index"
 	compute[1]="Caractéristiques du setup"
@@ -62,7 +63,7 @@ if tel=`yad --width=300 \
 	--center \
 	--form \
 	--title="${compute[0]}" \
-	--image=$dirinstall/install_index.png \
+	--image=${dirinstall}/install_index.png \
 	--text="${compute[1]}\n${compute[2]} :" \
 	--field=":LBL" \
 	--field="${compute[3]}":NUM \
@@ -108,45 +109,45 @@ then
 	######
 	# Charger le fichier des références d'index
 	######
-	file2read=$dirinstall/index.txt
+	file2read=${dirinstall}/index.txt
 
 	declare -a tabfile
 	declare -a tabvmin
 	declare -a tabvmax
 	index=0
 	while IFS='' read -r line || [[ -n "$line" ]]; do
-		tabfile[$index]=$(echo $line | cut -f2 -d\;)
-		intervalle=$(echo $line | cut -f1 -d\;)
-		tabvmin[$index]=$(echo $intervalle | cut -f1 -d-)
-		tabvmax[$index]=$(echo $intervalle | cut -f2 -d-)
+		tabfile[$index]=$(echo ${line} | cut -f2 -d\;)
+		intervalle=$(echo ${line} | cut -f1 -d\;)
+		tabvmin[$index]=$(echo ${intervalle} | cut -f1 -d-)
+		tabvmax[$index]=$(echo ${intervalle} | cut -f2 -d-)
 		((index++))
-	done < $file2read
-	nval=$index
+	done < ${file2read}
+	nval=${index}
 
 	######
 	# Chercher les fichiers utiles
 	######
 	index=0
-	while [ $index -lt $nval ]
+	while [[ ${index} -lt ${nval} ]]
 	do
 		a=$(echo "$vmin <= ${tabvmax[$index]}" | bc)
-		if [[ $a -eq 1 ]]
+		if [[ ${a} -eq 1 ]]
 		then
 			a=$(expr "$vmin >= ${tabvmin[$index]}" | bc)
-			if  [[ $a -eq 1 ]]
+			if  [[ ${a} -eq 1 ]]
 			then
 				minfile=${tabfile[$index]}
-				indmin=$index
+				indmin=${index}
 			fi
 		fi
 		a=$(echo "$vmax <= ${tabvmax[$index]}" | bc)
-		if [[ $a -eq 1 ]]
+		if [[ ${a} -eq 1 ]]
 		then
 			a=$(expr "$vmax >= ${tabvmin[$index]}" | bc)
-			if  [[ $a -eq 1 ]]
+			if  [[ ${a} -eq 1 ]]
 			then
 				maxfile=${tabfile[$index]}
-				indmax=$index
+				indmax=${index}
 			fi
 		fi
 		((index++))
@@ -157,17 +158,17 @@ then
 	######
 	# création de la liste des fichiers :
 	listfile=""
-	for index in $(seq $indmax $indmin);
+	for index in $(seq ${indmax} ${indmin});
 	do
-		listfile=$listfile"\t"${tabfile[$index]}'\n'
+		listfile=${listfile}"\t"${tabfile[$index]}'\n'
 	done
 
 	# affichage de la liste
-	if $french
+	if ${french}
 	then
-		echo -e "Les fichiers a telecharger sont:\n"$listfile
+		echo -e "Les fichiers a telecharger sont:\n"${listfile}
 	else
-		echo -e "Files to download:\n"$listfile
+		echo -e "Files to download:\n"${listfile}
 	fi
 
 	######
@@ -177,26 +178,26 @@ then
 	allfiles=
 	choices=
 	COUNT=0
-	for index in $(seq $indmax $indmin);
+	for index in $(seq ${indmax} ${indmin});
 	do
 		IFS=':' read -r -a files <<< "${tabfile[$index]}"
 		for f in ${files[@]}
 		do
 			ff="$f""_0.45_all.deb"
 			response=$(curl --head "http://data.astrometry.net/debian/$ff" | grep Content-Length)
-			length=$(echo $response | cut -f2 -d\:)
-			length=$(echo $length | sed -e "s/\r//g")
+			length=$(echo ${response} | cut -f2 -d\:)
+			length=$(echo ${length} | sed -e "s/\r//g")
 			# Size MB
 			length=$(expr "$length/1024/1024" | bc)
 	   		COUNT=$[COUNT+1]
-			allfiles[$COUNT]=$f
+			allfiles[$COUNT]=${f}
 			label="$f""->$length(M)"
 	   		MENU_OPTIONS="${MENU_OPTIONS} false ${COUNT} $label"
 		done
 	done
 	#echo $MENU_OPTIONS
 	# choix de la langue
-	if $french
+	if ${french}
 	then
 		select[0]="Sélectionnez les fichiers à installer:"
 		select[1]="Attention à la taille des fichiers (jusqu'à plusieurs Go)\
@@ -230,25 +231,25 @@ then
 		
 		choices_tmp=$("${cmd[@]}" "${options[@]}")
 
-		for choice_tmp in $choices_tmp
+		for choice_tmp in ${choices_tmp}
 		do
 			choices="${choices} $(echo "$choice_tmp" | cut -d "|" -f2)"
 		done
-		echo $choices
+		echo ${choices}
 
 
 		# download files
-		for choice in $choices
+		for choice in ${choices}
 		do
 			f=${allfiles[$choice]}
-			verifinstall=$(sudo apt list | grep $f)		
+			verifinstall=$(sudo apt list | grep ${f})
 			if [[ -z "$verifinstall" ]]
 			then
 				echo "${select[2]} $f"
-				wget http://data.astrometry.net/debian/$f\_0.45_all.deb -P /tmp
-				sudo dpkg -i /tmp/$f\_0.45_all.deb
+				wget http://data.astrometry.net/debian/${f}\_0.45_all.deb -P /tmp
+				sudo dpkg -i /tmp/${f}\_0.45_all.deb
 			else
-				if [[ $verifinstall == *"${select[3]}"* ]]
+				if [[ ${verifinstall} == *"${select[3]}"* ]]
 				then
 					echo "$f ${select[4]}"
 				else
