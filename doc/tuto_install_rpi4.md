@@ -33,6 +33,7 @@ Log in to nafa user
 
 ### Install Desktop (xubuntu for exemple) :
 
+`sudo apt update`
 `sudo apt install xubuntu-desktop`   
 `reboot`
 
