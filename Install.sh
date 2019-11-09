@@ -60,7 +60,7 @@ Custom installation: with graphical interface,
 
     if [[ ${server_choice} == "" ]]
     then
-        trap sert à être propre.
+        # trap sert à être propre.
         touch /tmp/dialogtmp && FICHTMP=/tmp/dialogtmp
         trap "rm -f ${FICHTMP}" 0 1 2 3 5 15
         # dialog for inital choice
