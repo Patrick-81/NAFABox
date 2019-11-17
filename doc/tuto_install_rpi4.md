@@ -1,13 +1,17 @@
-# Install Ubuntu image for RPI4 (just rpi4 not for other rpi) :
+# Install Ubuntu image for RPI4 and RPI3b+ :
 
 ## Download and install last Image Release :
 
-Go here for download last Image :
+Go here for download last Image for RPI4B:
 [Unofficial RI4 releases](https://github.com/TheRemote/Ubuntu-Server-raspi4-unofficial/releases)
+
+Go here for download last Image for RPI3B/RPI3B+:
+[Official RI3 releases](https://ubuntu.com/download/iot/raspberry-pi)
+
 
 Install this image with Etcher and put micro SDcard on your rpi4
 
-## Install desktop on Rpi4 Ubuntu server :
+## Install desktop on Rpi4/Rpi3B Ubuntu server :
 
 ### Create new sudo user (nafa for exemple):
 
