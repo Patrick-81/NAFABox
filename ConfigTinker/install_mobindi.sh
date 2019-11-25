@@ -59,19 +59,42 @@ if [ $? -eq 0 ]; then
     #######
     # Scipt de lancement du serveur au login
     #######
-    echo -e '#!/bin/bash'"\ncd /home/$USER/bin/mobindi\n/home/$USER/bin/mobindi/startup.sh &\n" > /home/$USER/bin/mobindi_up.sh
-    chmod +x /home/$USER/bin/mobindi_up.sh
-    echo -e "[Desktop Entry]
-    Encoding=UTF-8
-    Version=1.1.0
-    Type=Application
-    Name=UI_Indi
-    Comment=Contrôle de Indi
-    Exec=/home/$USER/bin/mobindi_up.sh
-    StartupNotify=false
-    Terminal=false
-    Hidden=false" > /home/$USER/.config/autostart/mobindi.desktop
-    chmod +x /home/$USER/.config/autostart/mobindi.desktop
+    #echo -e '#!/bin/bash'"\ncd /home/$USER/bin/mobindi\n/home/$USER/bin/mobindi/startup.sh &\n" > /home/$USER/bin/mobindi_up.sh
+    #chmod +x /home/$USER/bin/mobindi_up.sh
+    #echo -e "[Desktop Entry]
+    #Encoding=UTF-8
+    #Version=1.1.0
+    #Type=Application
+    #Name=UI_Indi
+    #Comment=Contrôle de Indi
+    #Exec=/home/$USER/bin/mobindi_up.sh
+    #StartupNotify=false
+    #Terminal=false
+    #Hidden=false" > /home/$USER/.config/autostart/mobindi.desktop
+    #chmod +x /home/$USER/.config/autostart/mobindi.desktop
+    
+    dir=/etc/systemd/system   #mettre le chemin du service en memoire
+    MOI=${USER}
+
+    sudo updatedb     # mettre à jour la base d'indexation
+
+    dir_mobindi="/home/$USER/bin/mobindi/startup.sh"  #récupérer le chemin du binaire browsepy
+
+    echo -e '[UNIT]\nDescription=MobIndi\nAfter=multi-user.target\n\n[Service]\nType=idle\nUser='${MOI}'\nExecStart='${dir_mobindi}'\nRestart=Always\nRestartSec=5\n[Install]\nWantedBy=multi-user.target' >> /tmp/mobindi.service
+
+    sudo cp /tmp/mobindi.service ${dir}/
+    sudo rm /tmp/mobindi.service
+    sudo chmod 644 ${dir}/mobindi.service
+
+    ######
+    # enregistrer/lancer le service
+    ######
+
+    sudo systemctl daemon-reload
+    sudo systemctl enable mobindi.service
+    sudo systemctl start mobindi.service
+    
+    
 else
     echo "Indi-full is NOT installed!"
 fi
