@@ -73,4 +73,11 @@ sudo apt-get install -y libatik indi-atik
 #wget http://www.inova-ccd.fr/download/E.\ Drivers/Linux/$file -P /tmp/
 #sudo dpkg -i /tmp/$file
 sudo apt-get install -y indi-inovaplx indi-inovaplx-dbg libinovasdk
+
+######
+# Installation du driver : altair
+######
+sudo apt install indi-altaircam
+
+
 sudo apt-get install -f
