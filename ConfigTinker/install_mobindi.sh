@@ -47,13 +47,13 @@ if [ $? -eq 0 ]; then
         cd mobindi
         git pull --ff-only
         # install and compil
-        ./install.sh
+        ./install.sh --log-dir /var/log/mobindi
 
     else
         git clone https://github.com/pludov/mobindi.git
         cd mobindi
         # install and compil
-        ./install.sh
+        ./install.sh --log-dir /var/log/mobindi
     fi
 
     #######
@@ -73,26 +73,28 @@ if [ $? -eq 0 ]; then
     #Hidden=false" > /home/$USER/.config/autostart/mobindi.desktop
     #chmod +x /home/$USER/.config/autostart/mobindi.desktop
     
-    dir=/etc/systemd/system   #mettre le chemin du service en memoire
+    # dir=/etc/systemd/system   #mettre le chemin du service en memoire
     MOI=${USER}
 
-    sudo updatedb     # mettre à jour la base d'indexation
+    # sudo updatedb     # mettre à jour la base d'indexation
 
-    dir_mobindi="/home/$USER/bin/mobindi/startup.sh"  #récupérer le chemin du binaire browsepy
+    # dir_mobindi="/home/$USER/bin/mobindi/startup.sh"  #récupérer le chemin du binaire browsepy
 
-    echo -e '[UNIT]\nDescription=MobIndi\nAfter=multi-user.target\n\n[Service]\nType=idle\nUser='${MOI}'\nExecStart='${dir_mobindi}'\nRestart=Always\nRestartSec=5\n[Install]\nWantedBy=multi-user.target' >> /tmp/mobindi.service
+    # echo -e '[UNIT]\nDescription=MobIndi\nAfter=multi-user.target\n\n[Service]\nType=idle\nUser='${MOI}'\nExecStart='${dir_mobindi}'\nRestart=Always\nRestartSec=5\n[Install]\nWantedBy=multi-user.target' >> /tmp/mobindi.service
 
-    sudo cp /tmp/mobindi.service ${dir}/
-    sudo rm /tmp/mobindi.service
-    sudo chmod 644 ${dir}/mobindi.service
+    # sudo cp /tmp/mobindi.service ${dir}/
+    # sudo rm /tmp/mobindi.service
+    # sudo chmod 644 ${dir}/mobindi.service
 
     ######
     # enregistrer/lancer le service
     ######
 
-    sudo systemctl daemon-reload
-    sudo systemctl enable mobindi.service
-    sudo systemctl start mobindi.service
+    # sudo systemctl daemon-reload
+    # sudo systemctl enable mobindi.service
+    # sudo systemctl start mobindi.service
+    
+    
     
     
 else
