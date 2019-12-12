@@ -77,7 +77,7 @@ sudo apt-get install -y indi-inovaplx indi-inovaplx-dbg libinovasdk
 ######
 # Installation du driver : altair
 ######
-sudo apt install indi-altaircam
+# sudo apt install indi-altaircam
 
 
 sudo apt-get install -f
