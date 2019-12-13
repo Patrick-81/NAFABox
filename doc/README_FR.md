@@ -15,6 +15,9 @@ Il est nécessaire de disposer d'au moins 10Go d'espace de stockage ou d'une Car
 #### Pour TinkerBoard ou Tinkerboard S (armv7/armhf/arm32) :
 https://github.com/Patrick-81/NAFABox/blob/master/doc/Tinkerboard.md   
 
+#### Pour NanoPi-M4 (armv8/aarch64/arm64) :
+https://github.com/Patrick-81/NAFABox/blob/master/doc/nanopi_m4.md   
+
 #### Pour Raspberry PI 3B+/4B (armv8/aarch64/arm64) :    
 https://github.com/Patrick-81/NAFABox/blob/master/doc/RPI4.md
 
