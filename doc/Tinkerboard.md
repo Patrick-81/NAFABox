@@ -13,7 +13,7 @@ Il est nécessaire de disposer d'au moins 10Go d'espace de stockage ou d'une Car
 
 ### Etape par étape pour la TinkerBoard/S (ou une autre carte (ARMHF/arm32/armv7) compatible avec Armbian):
 
-1/ Installer la distribution ARMBIAN ( version default Bionic) via Etcher.
+1. Installer la distribution ARMBIAN ( version default Bionic) via Etcher.
 
 https://dl.armbian.com/_old/tinkerboard/archive/Armbian_5.90_Tinkerboard_Ubuntu_bionic_default_4.4.182_desktop.7z
 
