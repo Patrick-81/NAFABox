@@ -50,9 +50,10 @@ Log in to nafa user
 --> uncomment autoboot section (2 lines) and replace default user (user1)  
 `reboot`
 
-### Error Correction (for <v17):
+### Error Correction just for <v17:    
+`sudo nano /etc/modules-load.d/cups-filters.conf` --> comment all lines   
 
-`sudo nano /etc/modules-load.d/cups-filters.conf` --> comment all lines    
+### Error Correction :    
 `sudo apt remove light-locker`   
 `sudo rm /var/crash/*`   
 `reboot`
