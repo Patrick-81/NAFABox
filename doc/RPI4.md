@@ -42,7 +42,7 @@ Vous pouvez choisir d'installer la langue francaise et le clavier si ce n'est pa
 ### Documentation pour les Raspberry Pi 3b/3b+/4b (obsolete) :    
 http://nafabox.linux-astro.fr/#nafabox
 
-### Documentation to create HotSpot for Raspberry Pi 3b/3b+/4b and X86 System (in french):   
+### Documentation pour crée un HotSpot pour Raspberry Pi 3b/3b+/4b et systeme X86 :   
 
 
 ### Documentation pour installer Un RTC sur Raspberry Pi 3b/3b+/4b :   
