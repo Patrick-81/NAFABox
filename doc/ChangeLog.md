@@ -2,6 +2,12 @@
 
 Start for 3.2 version. No change log before.
 
+### 3.3.1 :
+- correction for mobindi startup
+- correction for browsepy startup
+- update FR doc
+- small debug
+
 ### 3.3.0 :   
 - add new install mode : default, server, custom
 - add gimp, darktable, ser player, Stackistry, Imppg
