@@ -12,11 +12,9 @@ Il est nécessaire de disposer d'au moins 10Go d'espace de stockage ou d'une Car
 
 ### Etape par étape pour les Raspberry Pi 4b :
 
-1/ Installer la distribution Ubuntu Mate Bionic (18.04 LTS) via Etcher.
+1/ Installer la distribution Ubuntu Server Bionic (18.04 LTS) via ce tuto.   
 
-https://share.obspm.fr/index.php/s/WowXMAZkHPd3K9j --> Aller dans le dossier base pour l'image de départ pour rpi4b
-
-Puis démarrer l'image et suivez la procédure d'installation standard
+https://github.com/Patrick-81/NAFABox/blob/master/doc/tuto_install_rpi4.md  
 
 2/ Télécharger :  https://github.com/Patrick-81/NAFABox/archive/master.zip  
 ou  
