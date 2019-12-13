@@ -2,11 +2,11 @@
 
 ## Download and install last Image Release :
 
-Go here for download last Image for RPI4B:
+Go here for download last Image for RPI4B/RPI3B+:
 [Unofficial RI4 releases](https://github.com/TheRemote/Ubuntu-Server-raspi4-unofficial/releases)
 
 
-Install this image with Etcher and put micro SDcard on your rpi4
+Install this image with Etcher and put micro SDcard on your rpi4/rpi3b+
 
 ## Install desktop on Rpi4/Rpi3B Ubuntu server :
 
