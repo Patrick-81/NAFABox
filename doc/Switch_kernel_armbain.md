@@ -9,7 +9,7 @@ Afin de passer du Kernel default au kernel next ou inversement, 2 techniques :
 
 1/ Refaire l'installation de la nafabox en changant d'image de dépard :
 
-https://dl.armbian.com/tinkerboard/Ubuntu_bionic_next_desktop.7z
+https://dl.armbian.com/tinkerboard/Ubuntu_bionic_next_desktop.7z     
 https://dl.armbian.com/tinkerboard/Ubuntu_bionic_default_desktop.7z
 
 2/ changer de kernel via Armbian config :
