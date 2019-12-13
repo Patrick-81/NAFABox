@@ -2,7 +2,7 @@
 
 Script d'installation pour Créer une NAFABox.
 
-Ces scripts sont compatibles avec les carte compatible Armbian .   
+Ces scripts sont compatibles avec la plupart des cartes compatibles Armbian .   
 Les scripts ont été testés avec Ubuntu Xenial (16.04 LTS) et Ubuntu Bionic (18.04 LTS).  
 Il est recomandé d'utiliser **Ubuntu Bionic (18.04 LTS)**.
 
@@ -11,7 +11,7 @@ Il est nécessaire de disposer d'au moins 10Go d'espace de stockage ou d'une Car
 **ATTENTION :** Vérifier que les mises à jour automatiques sont désactivées afin qu'elles n'interfèrent pas avec les scripts.
 
 
-### Etape par étape pour la TinkerBoard/S (ou une autre carte (ARMHF/arm32/armv7) compatible avec Armbian):
+### Etape par étape pour une carte compatible avec Armbian):
 
 1/ Installer la distribution ARMBIAN ( version default Bionic) via Etcher.
 
@@ -36,7 +36,13 @@ ou
 
 Vous pouvez choisir d'installer la langue francaise et le clavier si ce n'est pas déjà fait. 
 
-6/ Une fois le script Pre_Install fini, fermer le terminal puis ouvrir un nouveau terminal. Lancer **Install.sh**
+6/ Une fois le script __Pre_Install__ fini, fermer le terminal puis redémarer.
+
+__Si vous avez modifié la langue,__ le systeme vas vous proposer de renomé les dossiers utilisateurs, accepter puis redémarer. A cause du mode de fonctionnement, après le redémarage, il faut suprimer l'ancien dossier correspondant au bureau ( supprimer le dossier Desktop pour un passage d'anglais au français).
+
+ouvrir un nouveau terminal.
+
+Lancer __Install.sh__
 
 `$ ./Install.sh` 
 ( Pour un clavier Francais AZERTY : `:!Instqll:sh` ) 
