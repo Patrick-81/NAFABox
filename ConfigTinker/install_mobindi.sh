@@ -73,7 +73,7 @@ if [ $? -eq 0 ]; then
     #Hidden=false" > /home/$USER/.config/autostart/mobindi.desktop
     #chmod +x /home/$USER/.config/autostart/mobindi.desktop
     
-    # dir=/etc/systemd/system   #mettre le chemin du service en memoire
+    dir=/etc/systemd/system   #mettre le chemin du service en memoire
     MOI=${USER}
 
     sudo updatedb     # mettre à jour la base d'indexation
