@@ -39,7 +39,7 @@ Vous pouvez choisir d'installer la langue francaise et le clavier si ce n'est pa
 8/ Quand tout est fini vous pouvez redémarrer.
 
 
-### Documentation pour les Raspberry Pi 3b/3b+/4b :    
+### Documentation pour les Raspberry Pi 3b/3b+/4b (obsolete) :    
 http://nafabox.linux-astro.fr/#nafabox
 
 ### Documentation to create HotSpot for Raspberry Pi 3b/3b+/4b and X86 System (in french):   
