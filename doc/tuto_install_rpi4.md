@@ -5,9 +5,6 @@
 Go here for download last Image for RPI4B:
 [Unofficial RI4 releases](https://github.com/TheRemote/Ubuntu-Server-raspi4-unofficial/releases)
 
-Go here for download last Image for RPI3B/RPI3B+:
-[Official RI3 releases](https://ubuntu.com/download/iot/raspberry-pi)
-
 
 Install this image with Etcher and put micro SDcard on your rpi4
 
