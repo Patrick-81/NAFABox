@@ -19,7 +19,7 @@ https://dl.armbian.com/_old/tinkerboard/archive/Armbian_5.90_Tinkerboard_Ubuntu_
 
 Puis démarrer l'image et suivez la procédure d'installation standard (Attention: par défaut Armbian en QWERTY)
 
-**ATTENTION** Il faut actuellement freezer la version de arbian à la 4.4.182 : [tuto](https://github.com/Patrick-81/NAFABox/blob/master/doc/Switch_kernel_armbain.md)
+**ATTENTION** Il faut actuellement freezer la version de arbian à la 4.4.182 : [tuto](https://github.com/Patrick-81/NAFABox/blob/master/doc/Switch_kernel_armbain.md#optionnel-mais-conseill%C3%A9-surtout-en-version-next-et-nightly)
 
 **ATTENTION** Il faut redémarer la carte avant toute manipulation
 
