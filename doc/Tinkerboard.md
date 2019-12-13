@@ -41,10 +41,10 @@ Vous pouvez choisir d'installer la langue francaise et le clavier si ce n'est pa
 __Si vous avez modifié la langue,__ le systeme vas vous proposer de renomé les dossiers utilisateurs, accepter puis redémarer. A cause du mode de fonctionnement, après le redémarage, il faut suprimer l'ancien dossier correspondant au bureau ( supprimer le dossier Desktop pour un passage d'anglais au français).
 
 ouvrir un nouveau terminal.  
+
 Lancer __Install.sh__
 
 `$ ./Install.sh` 
-( Pour un clavier Francais AZERTY : `:!Instqll:sh` ) 
 
 7/ répondez aux questions lorsque vous y êtes invité, et entrez votre mot de passe quand c'est demandé, remplissez les menus si nécessaire.
 
