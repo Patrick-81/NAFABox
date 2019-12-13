@@ -13,7 +13,7 @@ Il est nécessaire de disposer d'au moins 10Go d'espace de stockage ou d'une Car
 
 ### Etape par étape pour la TinkerBoard/S (ou une autre carte (ARMHF/arm32/armv7) compatible avec Armbian):
 
-1. Installer la distribution ARMBIAN ( version default Bionic) via Etcher.
+__1-__ Installer la distribution ARMBIAN ( version default Bionic) via Etcher.
 
 https://dl.armbian.com/_old/tinkerboard/archive/Armbian_5.90_Tinkerboard_Ubuntu_bionic_default_4.4.182_desktop.7z
 
@@ -21,22 +21,22 @@ Puis démarrer l'image et suivez la procédure d'installation standard (Attentio
 
 **ATTENTION** Il faut redémarer la carte avant toute manipulation
 
-2. Télécharger :  https://github.com/Patrick-81/NAFABox/archive/master.zip  
+__2-__ Télécharger :  https://github.com/Patrick-81/NAFABox/archive/master.zip  
 ou  
 2bis. Dans votre home : `git clone https://github.com/Patrick-81/NAFABox.git`
 
-3. Décompresser le fichier zip ( juste pour 2/)
+__3-__ Décompresser le fichier zip ( juste pour 2/)
 
-4. Ouvrez le dossier ainsi créé
+__4-__ Ouvrez le dossier ainsi créé
 
-5. lancer **Pre_Install.sh** dans un terminal (avec un clic droit dans le dossier)
+__5-__ lancer **Pre_Install.sh** dans un terminal (avec un clic droit dans le dossier)
 
 `$ ./Pre_Install.sh` 
 ( Pour un clavier Francais AZERTY : `:!Pre°Instqll:sh` ) 
 
 Vous pouvez choisir d'installer la langue francaise et le clavier si ce n'est pas déjà fait.
 
-6. Une fois le script __Pre_Install__ fini, fermer le terminal puis redémarer.
+__6-__ Une fois le script __Pre_Install__ fini, fermer le terminal puis redémarer.
 
 __Si vous avez modifié la langue,__ le systeme vas vous proposer de renomé les dossiers utilisateurs, accepter puis redémarer. A cause du mode de fonctionnement, après le redémarage, il faut suprimer l'ancien dossier correspondant au bureau ( supprimer le dossier Desktop pour un passage d'anglais au français).
 
@@ -46,9 +46,9 @@ Lancer __Install.sh__
 
 `$ ./Install.sh` 
 
-7. répondez aux questions lorsque vous y êtes invité, et entrez votre mot de passe quand c'est demandé, remplissez les menus si nécessaire.
+__7-__ répondez aux questions lorsque vous y êtes invité, et entrez votre mot de passe quand c'est demandé, remplissez les menus si nécessaire.
 
-8. Quand tout est fini vous pouvez redémarrer.
+__8-__ Quand tout est fini vous pouvez redémarrer.
 
 
 ### Documentation pour la TinkerBoard/S :   
