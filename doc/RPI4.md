@@ -32,7 +32,7 @@ Vous pouvez choisir d'installer la langue francaise et le clavier si ce n'est pa
 
 6/ Une fois le script Pre_Install fini, fermer le terminal puis redémarer.
 
-Si vous avez modifié la langue, le systeme vas vous proposer de renomé les dossiers utilisateurs, acceptez puis redémarer.
+__Si vous avez modifié la langue,__ le systeme vas vous proposer de renomé les dossiers utilisateurs, acceptez puis redémarer.
 A cause du mode de fonctionnement, après le redémarage, il faut suprimer l'ancien dossier correspondant au bureau ( supprimer le dossier Desktop pour un passage d'anglais au français).   
 
 ouvrir un nouveau terminal.
