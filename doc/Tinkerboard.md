@@ -15,7 +15,7 @@ Il est nécessaire de disposer d'au moins 10Go d'espace de stockage ou d'une Car
 
 1/ Installer la distribution ARMBIAN ( version default Bionic) via Etcher.
 
-https://dl.armbian.com/tinkerboard/Ubuntu_bionic_default_desktop.7z (ou une autre image pour une autre carte)
+https://dl.armbian.com/_old/tinkerboard/archive/Armbian_5.90_Tinkerboard_Ubuntu_bionic_default_4.4.182_desktop.7z
 
 Puis démarrer l'image et suivez la procédure d'installation standard (Attention: par défaut Armbian en QWERTY)
 
@@ -36,7 +36,12 @@ ou
 
 Vous pouvez choisir d'installer la langue francaise et le clavier si ce n'est pas déjà fait.
 
-6/ Une fois le script Pre_Install fini, fermer le terminal puis ouvrir un nouveau terminal. Lancer **Install.sh**
+6/ Une fois le script __Pre_Install__ fini, fermer le terminal puis redémarer.
+
+__Si vous avez modifié la langue,__ le systeme vas vous proposer de renomé les dossiers utilisateurs, accepter puis redémarer. A cause du mode de fonctionnement, après le redémarage, il faut suprimer l'ancien dossier correspondant au bureau ( supprimer le dossier Desktop pour un passage d'anglais au français).
+
+ouvrir un nouveau terminal.  
+Lancer __Install.sh__
 
 `$ ./Install.sh` 
 ( Pour un clavier Francais AZERTY : `:!Instqll:sh` ) 
