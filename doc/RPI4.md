@@ -37,6 +37,12 @@ A cause du mode de fonctionnement, après le redémarage, il faut suprimer l'anc
 
 ouvrir un nouveau terminal.
 
+Lancer une mise a jour :
+`$ sudo apt update`    
+`$ sudo apt upgrade -y`
+redémarer
+
+ouvrir un nouveau terminal.
 Lancer **Install.sh**
 
 `$ ./Install.sh` 
