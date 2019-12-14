@@ -44,6 +44,10 @@ __Si vous avez modifié la langue,__ le systeme vas vous proposer de renomé les
 
 ouvrir un nouveau terminal.  
 
+Lancer une lise a jour :
+`$ sudo apt update`    
+`$ sudo apt upgrade -y`
+
 Lancer __Install.sh__
 
 `$ ./Install.sh` 
