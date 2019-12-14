@@ -42,12 +42,15 @@ __6-__ Une fois le script __Pre_Install__ fini, fermer le terminal puis redémar
 
 __Si vous avez modifié la langue,__ le systeme vas vous proposer de renomé les dossiers utilisateurs, accepter puis redémarer. A cause du mode de fonctionnement, après le redémarage, il faut suprimer l'ancien dossier correspondant au bureau ( supprimer le dossier Desktop pour un passage d'anglais au français).
 
-ouvrir un nouveau terminal.  
 
-Lancer une lise a jour :
-`$ sudo apt update`    
-`$ sudo apt upgrade -y`
+ouvrir un nouveau terminal.
 
+Lancer une mise a jour :    
+`$ sudo apt update`      
+`$ sudo apt upgrade -y`    
+redémarer
+
+ouvrir un nouveau terminal.    
 Lancer __Install.sh__
 
 `$ ./Install.sh` 
