@@ -38,6 +38,9 @@ else
     figlet -k Install Astroberry-DIY
 
     sudo apt-get -y install cmake
+    
+    sudo groupadd -f -r gpio
+    sudo usermod -a -G gpio ${USER}
 
     # check install indi :
     dpkg -s indi-full &> /dev/null
