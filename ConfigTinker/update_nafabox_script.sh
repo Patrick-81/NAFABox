@@ -22,7 +22,7 @@ source ${dirinstall}/detect_language.sh
 if ${french}
 then
 	title="Mise à jour des script NAFABox"
-	text="Voulez vous mettere à jour les script NAFABox ?"
+	text="Voulez vous mettre à jour les script NAFABox ?"
 	message="suppression de l'ancien dossier NAFABOX"
 else
 	title="Update NAFABox Script"
