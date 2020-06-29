@@ -182,7 +182,9 @@ then
 	IP adress which is different if it is on home network or access point"
 	fi
 	#echo "Dirinstall "$dirinstall
-	cat ${dirinstall}/index.html | sed -e "s/ACTUATE/${dial[0]}/g" > ${site}/index.html
+#	cat ${dirinstall}/index.html | sed -e "s/ACTUATE/${dial[0]}/g" > ${site}/index.html
+	cat ${dirinstall}/startup.php | sed -e "s/ACTUATE/${dial[0]}/g" > ${site}/startup.php
+
 	sudo systemctl stop nginx.service
 	sudo systemctl disable nginx.service
 	sudo cp ${dirinstall}/setdate.php ${site}/setdate.php
@@ -239,21 +241,8 @@ fi
 
 if [[ ${awake} == "TRUE" ]]
 then
-	######
-	# Pour les machines pour lesquelles le hanshake se passe mal
-	######
-	cat ${dirinstall}/hotspotawake.service | sed -e "s/MOI/${USER}/g" > /tmp/hotspotawake.service
-	sudo cp /tmp/hotspotawake.service /lib/systemd/system/hotspotawake.service
-	chmod +x ${dirinstall}/hotspotawake.sh
-	cp ${dirinstall}/hotspotawake.sh ~/bin/
-	sudo systemctl stop hotspotawake.service
-	sudo systemctl disable hotspotawake.service
-	sudo systemctl daemon-reload
-	sudo systemctl enable hotspotawake.service
-	sudo systemctl start hotspotawake.service
-	######
+	echo "Non available"
 fi
-
 
 
 if [[ ${dav} == "TRUE" ]]
