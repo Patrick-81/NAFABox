@@ -54,8 +54,11 @@ libs/jquery/1.3.0/jquery.min.js"></script>
           </tr>
           <tr><td style="text-align: center;width: 200px;">
           <script type="text/javascript">
-            $(document).ready( function(){
+            $(document).ready(function(){
+                setInterval(
+                function(){
                        $('#RAM').load('getTemp.php?id=123456&func=getRAM');
+                }, 2000);
             });
           </script>
           <div id="RAM"></div>
