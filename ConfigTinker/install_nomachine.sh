@@ -36,7 +36,7 @@ dirinstall=${nafabox_path}
 ######
 source ${dirinstall}/proctype.sh
 
-base_version="6.9"
+base_version="6.11"
 version=${base_version}".2"
 
 # test version
@@ -49,7 +49,7 @@ elif [[ ${proc} == "_armhf" ]]
 then
 	type="armhf"
     type2="Arm"
-    sous_version="3"
+    sous_version="1"
 elif [[ ${proc} == "_x86" ]]
 then
 	type="i386"
