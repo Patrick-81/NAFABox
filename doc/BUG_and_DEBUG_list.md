@@ -1,7 +1,7 @@
 
 # BUG and DEBUG
 
-#### 1/ for Nomachine keyboard bug (fixed in 3.2.1):
+### 1/ for Nomachine keyboard bug (fixed in 3.2.1):
 
 - Une fois connecté via NoMachine pour avoir le clavier en francais vous pouvez lancer le script reconfig_keyboard    
 - If in NoMachine, your keyboard is not in english need run reconfig_keyboard script    
