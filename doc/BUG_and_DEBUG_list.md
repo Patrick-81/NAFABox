@@ -45,17 +45,17 @@ Si il y a un resultat ou que vous avez générer le fichier :
     `sudo nano /etc/netplan/50-cloud-init.yaml`    
     
 Assurer vous que le contenue du fichier soit le suivant :    
-`# This file is generated from information provided by`
-`# the datasource.  Changes to it will not persist across an instance`
-`# To disable cloud-init's network configuration capabilities, write a file`
-`# /etc/cloud/cloud.cfg.d/99-disable-network-config.cfg with the following`
-`# network: {config: disabled}`
-`network:`
-`    renderer: NetworkManager`
-`    ethernets:`
-`        eth0:`
-`            dhcp4: true`
-`    version: 2`
+`# This file is generated from information provided by`   
+`# the datasource.  Changes to it will not persist across an instance`   
+`# To disable cloud-init's network configuration capabilities, write a file`   
+`# /etc/cloud/cloud.cfg.d/99-disable-network-config.cfg with the following`   
+`# network: {config: disabled}`   
+`network:`   
+`    renderer: NetworkManager`   
+`    ethernets:`   
+`        eth0:`   
+`            dhcp4: true`   
+`    version: 2`   
     
 Pour sortir et sauvegarder __CTRL+X__ puis tapez "y" ou "o" puis __ENTER__.
 
