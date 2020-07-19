@@ -32,6 +32,39 @@
 - Start a Terminal and type the following commands:
      `gsettings get org.blueman.transfer shared-path` --> to find out where blueman points
      `gsettings set org.blueman.transfer shared-path '/home/toto'` --> to point blueman to '/home/toto'
+     
+6/ Ethernet not support on RPI4 :
+- Lancer un terminal puis :
+    `ls /etc/netplan/50-cloud-init.yaml`
+Si il y a pas de resulat alors devez le créer :   
+- dans un terminal :    
+    `sudo netplan generate`    
+    `sudo netplan apply`   
+Si il y a un resultat ou que vous avez générer le fichier :    
+- dans un terminal :    
+    `sudo nano /etc/netplan/50-cloud-init.yaml`    
+    
+Assurer vous que le contenue du fichier soit le suivant :    
+`# This file is generated from information provided by
+# the datasource.  Changes to it will not persist across an instance
+# To disable cloud-init's network configuration capabilities, write a file
+# /etc/cloud/cloud.cfg.d/99-disable-network-config.cfg with the following
+# network: {config: disabled}
+network:
+    renderer: NetworkManager
+    ethernets:
+        eth0:
+            dhcp4: true
+    version: 2`
+    
+Pour sortir et sauvegarder __CTRL+X__ puis tapez "y" ou "o" puis __ENTER__.
+
+7/ For Wifi Instability on RPI4 :  
+Il faut désactiver le mode économie d'énergie du wifi.
+- dans un terminal :   
+    `sudo iw wlan0 set power_save off`    
+    `sudo apt purge gnome-power-manager`    
+    `sudo apt autoremove`   
 
 X/ For New bug :
 
