@@ -46,7 +46,6 @@ then
 	dav=TRUE
 	browse=TRUE
 	novnc=FALSE
-	awake=FALSE
     nomach=FALSE
     ddserv=TRUE
     mobindi=FALSE
@@ -61,7 +60,6 @@ then
 	dav=TRUE
 	browse=TRUE
 	novnc=TRUE
-	awake=FALSE
     nomach=TRUE
     ddserv=TRUE
     mobindi=TRUE
@@ -78,9 +76,8 @@ else
 		choice[4]="Installation BrowsePy"
 		choice[5]="Installation NoVNC"
         choice[6]="Installation Nomachine"
-		choice[7]="HotspotAwake Script"
-        choice[8]="Serveur pour QDslrDashboard"
-		choice[9]="Installation de Mobindi"
+        choice[7]="Serveur pour QDslrDashboard"
+		choice[8]="Installation de Mobindi"
 
 	else
 		dial[0]="Install/Update of software"
@@ -92,13 +89,12 @@ else
 		choice[4]="Install BrowsePy"
 		choice[5]="Install NoVNC"
         choice[6]="Install Nomachine"
-		choice[7]="HotspotAwake Script"
-        choice[8]="Server for QDslrDashboard"
-		choice[9]="Install Mobindi"
+        choice[7]="Server for QDslrDashboard"
+		choice[8]="Install Mobindi"
 
 	fi
 
-	st=(true true true true true true true false true true)
+	st=(true true true true true true true true true)
 
 	# interface de choix
 	if chose=`yad --width=400 \
@@ -116,10 +112,9 @@ else
 		--field="${choice[6]}:CHK" \
         --field="${choice[7]}:CHK" \
         --field="${choice[8]}:CHK" \
-        --field="${choice[9]}:CHK" \
 		"" "${st[0]}" "${st[1]}" "${st[2]}" \
 		"${st[3]}" "${st[4]}" "${st[5]}" "${st[6]}" \
-        "${st[7]}" "${st[8]}" "${st[9]}"`
+        "${st[7]}" "${st[8]}"`
 	then
 		time_z=$(echo "$chose" | cut -d "|" -f2)
 		web=$(echo "$chose" | cut -d "|" -f3)
@@ -128,9 +123,8 @@ else
 		browse=$(echo "$chose" | cut -d "|" -f6)
 		novnc=$(echo "$chose" | cut -d "|" -f7)
         nomach=$(echo "$chose" | cut -d "|" -f8)
-		awake=$(echo "$chose" | cut -d "|" -f9)
-        ddserv=$(echo "$chose" | cut -d "|" -f10)
-        mobindi=$(echo "$chose" | cut -d "|" -f11)
+        ddserv=$(echo "$chose" | cut -d "|" -f9)
+        mobindi=$(echo "$chose" | cut -d "|" -f10)
 	else
 		echo "cancel"
 	fi
@@ -236,25 +230,6 @@ then
 	sudo ln -sf /etc/nginx/sites-available/site-${USER} /etc/nginx/sites-enabled/site-${USER}
 
 fi
-
-if [[ ${awake} == "TRUE" ]]
-then
-	######
-	# Pour les machines pour lesquelles le hanshake se passe mal
-	######
-	cat ${dirinstall}/hotspotawake.service | sed -e "s/MOI/${USER}/g" > /tmp/hotspotawake.service
-	sudo cp /tmp/hotspotawake.service /lib/systemd/system/hotspotawake.service
-	chmod +x ${dirinstall}/hotspotawake.sh
-	cp ${dirinstall}/hotspotawake.sh ~/bin/
-	sudo systemctl stop hotspotawake.service
-	sudo systemctl disable hotspotawake.service
-	sudo systemctl daemon-reload
-	sudo systemctl enable hotspotawake.service
-	sudo systemctl start hotspotawake.service
-	######
-fi
-
-
 
 if [[ ${dav} == "TRUE" ]]
 then
@@ -377,14 +352,12 @@ then
 	  rm -Rf /home/${USER}/bin/noVNC
 	fi
 
-    wget https://github.com/novnc/noVNC/raw/master/VERSION
-    version=`cat VERSION`
-    rm VERSION
+    version=`curl -s "https://api.github.com/repos/novnc/noVNC/releases/latest" | awk -F '"' '/tag_name/{print $4}'`
 
-    wget https://github.com/novnc/noVNC/archive/v${version}.zip
-    unzip v${version}.zip
-    rm v${version}.zip
-    mv noVNC-1.1.0 noVNC
+    wget https://github.com/novnc/noVNC/archive/${version}.zip
+    unzip ${version}.zip
+    rm ${version}.zip
+    mv noVNC-${version} noVNC
 
 
 	#git clone git://github.com/kanaka/noVNC
