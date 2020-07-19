@@ -357,7 +357,7 @@ then
     wget https://github.com/novnc/noVNC/archive/${version}.zip
     unzip ${version}.zip
     rm ${version}.zip
-    mv noVNC-${version} noVNC
+    mv noVNC-${version:1} noVNC
 
 
 	#git clone git://github.com/kanaka/noVNC
