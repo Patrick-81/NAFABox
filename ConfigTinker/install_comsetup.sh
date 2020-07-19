@@ -352,8 +352,8 @@ then
 	  rm -Rf /home/${USER}/bin/noVNC
 	fi
 
-    version=`curl -s "https://api.github.com/repos/novnc/noVNC/releases/latest" | awk -F '"' '/tag_name/{print $4}'`
-
+    #version=`curl -s "https://api.github.com/repos/novnc/noVNC/releases/latest" | awk -F '"' '/tag_name/{print $4}'`
+    version="v1.1.0"
     wget https://github.com/novnc/noVNC/archive/${version}.zip
     unzip ${version}.zip
     rm ${version}.zip
