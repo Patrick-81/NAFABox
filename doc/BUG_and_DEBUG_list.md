@@ -33,7 +33,8 @@
      `gsettings get org.blueman.transfer shared-path` --> to find out where blueman points
      `gsettings set org.blueman.transfer shared-path '/home/toto'` --> to point blueman to '/home/toto'
      
-6/ Ethernet not support on RPI4 :
+6/ Ethernet not support on RPI4 :    
+https://askubuntu.com/questions/1189146/raspberry-pi-4b-ubutnu-19-10-wired-network-unmanaged    
 - Lancer un terminal puis :
     `ls /etc/netplan/50-cloud-init.yaml`
 Si il y a pas de resulat alors devez le créer :   
