@@ -224,7 +224,6 @@ then
     elif  [[ -S "/var/run/php/php7.3-fpm.sock" ]]
     then
         cat /tmp/site-temp | sed -e "s/VER-PHP/7.3/g" > /tmp/site-${USER}
-    fi
     elif  [[ -S "/var/run/php/php7.4-fpm.sock" ]]
     then
         cat /tmp/site-temp | sed -e "s/VER-PHP/7.4/g" > /tmp/site-${USER}
