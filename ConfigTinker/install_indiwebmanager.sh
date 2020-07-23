@@ -19,17 +19,17 @@ echo "================================================="
 # pre-req
 #####
 
-sudo apt-get install -y python-pip
-sudo apt-get install -y python-setuptools
-sudo apt-get install -y python-dev python3-dev
+sudo apt-get install -y python3-pip
+sudo apt-get install -y python3-setuptools
+sudo apt-get install -y python3-dev
 sudo apt-get install -y mlocate
-sudo apt-get install -y python-bottle python-psutil python-requests
+sudo apt-get install -y python3-bottle python3-psutil python3-requests
 sudo chmod -R uga+rw /usr/local
 
 # installation des sources du serveur
 ######
 #pip install --upgrade pip
-pip install indiweb
+pip3 install indiweb
 #pip install indiweb --user
 
 ######
