@@ -225,6 +225,10 @@ then
     then
         cat /tmp/site-temp | sed -e "s/VER-PHP/7.3/g" > /tmp/site-${USER}
     fi
+    elif  [[ -S "/var/run/php/php7.4-fpm.sock" ]]
+    then
+        cat /tmp/site-temp | sed -e "s/VER-PHP/7.4/g" > /tmp/site-${USER}
+    fi
 	sudo cp /tmp/site-${USER} /etc/nginx/sites-available/site-${USER}
 	sudo chown ${USER}:${USER} /etc/nginx/sites-available/site-${USER}
 	sudo ln -sf /etc/nginx/sites-available/site-${USER} /etc/nginx/sites-enabled/site-${USER}
