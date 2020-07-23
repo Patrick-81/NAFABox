@@ -16,7 +16,7 @@ Ensuite, sélectionnez l’option **System**, puis l’option **Hardware**, et c
 
 Pour vérifier le fonctionnement de l’ensemble, il faudra installer les programmes python-smbus et i2c-tools :
 
-`sudo apt-get install python-smbus`   
+`sudo apt-get install python3-smbus`   
 `sudo apt-get install i2c-tools`   
 
 Une fois cela effectué, vous pourrez vérifier que tout fonctionne en tapant la commande suivante :
