@@ -24,7 +24,7 @@ echo "================================================="
 ######
 source ${dirinstall}/detect_language.sh
 
-sudo apt-get -y install python-tk python-imaging-tk python3-tk
+sudo apt-get -y install python3-pil.imagetk python3-tk
 cp $dirinstall/setres.py ~/bin/.
 cp $dirinstall/resol.scr ~/.config/.
 chmod +x $dirinstall/resol.scr
