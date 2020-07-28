@@ -6,6 +6,8 @@ Start for 3.2 version. No change log before.
 - update nomachine version
 - force NoVNC version to 1.1.0 beacause 1.2.0 version need last libvncserver
 - add debug info
+- change python2 to python3
+- update script for compatibility with Ubuntu 20.04LTS
 
 ### 3.3.1 :
 - correction for mobindi startup
