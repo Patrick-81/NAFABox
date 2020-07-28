@@ -19,30 +19,24 @@ dirinstall=$nafabox_path
 figlet -k Install Sirilic
 echo "================================================="
 echo "================================================="
-######
-# detect processeur
-######
-source $dirinstall/proctype.sh
 
-if [[ $proc == "_aarch64" ]]
-then
-	echo "OAcapture is in BETA in arm64 board"
-fi
 ######
 # Installation des pré-requis
 #######
-sudo pip install pyinstaller
-sudo apt install imagemagick-6.q16
+sudo apt-get -y python3 python3-pip
+sudo apt-get -y install python3-wx*
+sudo pip3 install pyinstaller
+sudo apt-get -y install imagemagick
 ######
 # Clonage de sirilic
 ######
-mkdir -p /home/$USER/Projects
-cd /home/$USER/Projects
+mkdir -p /home/$USER/bin/
+cd /home/$USER/bin/
 git clone https://gitlab.com/free-astro/sirilic.git
 ######
 # Installation
 ######
-cd /home/$USER/Projects/sirilic/package
+cd /home/$USER/bin/sirilic/sirilic/package
 ./MakePackage.sh
 sudo cp dist/* /usr/local/bin/.
 cd ..
