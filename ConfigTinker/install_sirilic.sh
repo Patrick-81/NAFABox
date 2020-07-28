@@ -23,10 +23,10 @@ echo "================================================="
 ######
 # Installation des pré-requis
 #######
-sudo apt-get -y python3 python3-pip
-sudo apt-get -y install python3-wx*
+
+sudo apt-get -y install python3 python3-pip imagemagick python3-wx*
 sudo pip3 install pyinstaller
-sudo apt-get -y install imagemagick
+
 ######
 # Clonage de sirilic
 ######
