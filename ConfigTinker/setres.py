@@ -13,7 +13,7 @@ class Application(Frame):
         fres.write(cmd+'\n')
         fres.close()
         os.system("chmod +x "+fresname)
-        print "res:",cmd
+        print("res:",cmd)
         os.system(cmd)
 
     def createWidgets(self):
