@@ -20,8 +20,8 @@ dirinstall=${nafabox_path}
 machine=$(sudo lshw | grep "produit\|product" | grep "Raspberry")
 if [[ ${machine} == *"Raspberry"* ]]
 then
-    echo "stellarium requires too much power for a raspberry"
-exit
+    echo "stellarium requires too much power for a raspberry 3b/3b+"
+#exit
 fi
 figlet -k Install Stellarium
 echo "================================================="

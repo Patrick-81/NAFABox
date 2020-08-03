@@ -2,14 +2,11 @@
 
 ## Download and install last Image Release :
 
-Go here for download last Image for RPI4B:
+Go here for download last Image for RPI4B/RPI3B+:
 [Unofficial RI4 releases](https://github.com/TheRemote/Ubuntu-Server-raspi4-unofficial/releases)
 
-Go here for download last Image for RPI3B/RPI3B+:
-[Official RI3 releases](https://ubuntu.com/download/iot/raspberry-pi)
 
-
-Install this image with Etcher and put micro SDcard on your rpi4
+Install this image with Etcher and put micro SDcard on your rpi4/rpi3b+
 
 ## Install desktop on Rpi4/Rpi3B Ubuntu server :
 
@@ -50,9 +47,10 @@ Log in to nafa user
 --> uncomment autoboot section (2 lines) and replace default user (user1)  
 `reboot`
 
-### Error Correction (for <v17):
+### Error Correction just for <v17:    
+`sudo nano /etc/modules-load.d/cups-filters.conf` --> comment all lines   
 
-`sudo nano /etc/modules-load.d/cups-filters.conf` --> comment all lines    
+### Error Correction :    
 `sudo apt remove light-locker`   
 `sudo rm /var/crash/*`   
 `reboot`

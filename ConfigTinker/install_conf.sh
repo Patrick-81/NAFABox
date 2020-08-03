@@ -65,7 +65,7 @@ sudo apt-get ${options} install libjpeg62 libglu1
 sudo apt-get ${options} install xplanet espeak openssh-server uuid
 
 # add package for exfat :
-sudo apt-get install --reinstall -y exfat-fuse  exfat-utils
+sudo apt-get install -y exfat-fuse  exfat-utils
 
 #	echo prereq >> $dirinstall/install-status.txt
 #fi

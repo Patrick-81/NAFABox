@@ -21,7 +21,7 @@ echo "================================================="
 echo "================================================="
 cd ${dirinstall}
 # s'assurer que que pip est installe
-sudo apt-get -y install python-pip python3-pip python-setuptools python3-setuptools
+sudo apt-get -y install python3-pip python3-setuptools
 # installer browsepy
 pip3 install scandir
 pip3 install backports.shutil_get_terminal_size

@@ -2,6 +2,19 @@
 
 Start for 3.2 version. No change log before.
 
+### 3.3.2 :
+- update nomachine version
+- force NoVNC version to 1.1.0 beacause 1.2.0 version need last libvncserver
+- add debug info
+- change python2 to python3
+- update script for compatibility with Ubuntu 20.04LTS
+
+### 3.3.1 :
+- correction for mobindi startup
+- correction for browsepy startup
+- update FR doc
+- small debug
+
 ### 3.3.0 :   
 - add new install mode : default, server, custom
 - add gimp, darktable, ser player, Stackistry, Imppg

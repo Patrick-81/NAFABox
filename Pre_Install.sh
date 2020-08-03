@@ -36,7 +36,6 @@ case $? in
 	    # passer le systeme en français
 	    # ajout des packs langage
 	    sudo apt-get -y install language-pack-fr language-pack-gnome-fr
-	    sudo apt-get -y install firefox-locale.fr
         sudo apt-get -y install language-pack-fr language-pack-gnome-fr-base
         sudo apt-get -y install wfrench chromium-browser-l10n
 	    sudo locale-gen fr_FR fr_FR.UTF-8

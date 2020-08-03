@@ -47,13 +47,13 @@ if [ $? -eq 0 ]; then
         cd mobindi
         git pull --ff-only
         # install and compil
-        ./install.sh
+        ./install.sh --log-dir /var/log/mobindi
 
     else
         git clone https://github.com/pludov/mobindi.git
         cd mobindi
         # install and compil
-        ./install.sh
+        ./install.sh --log-dir /var/log/mobindi
     fi
 
     #######
@@ -91,9 +91,7 @@ if [ $? -eq 0 ]; then
     ######
 
     sudo systemctl daemon-reload
-    sudo systemctl enable mobindi.service
-    sudo systemctl start mobindi.service
-    
+    sudo systemctl enable mobindi.service  
     
 else
     echo "Indi-full is NOT installed!"

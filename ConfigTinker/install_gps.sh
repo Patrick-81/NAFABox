@@ -35,5 +35,5 @@ sudo apt-get update
 ######
 # Installation du programme : GPSD
 ######
-sudo apt-get -y install gpsd gpsd-clients python-gps
+sudo apt-get -y install gpsd gpsd-clients python3-gps
 
