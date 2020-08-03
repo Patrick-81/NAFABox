@@ -176,12 +176,17 @@ then
 	IP adress which is different if it is on home network or access point"
 	fi
 	#echo "Dirinstall "$dirinstall
-	cat ${dirinstall}/index.html | sed -e "s/ACTUATE/${dial[0]}/g" > ${site}/index.html
+#	cat ${dirinstall}/index.html | sed -e "s/ACTUATE/${dial[0]}/g" > ${site}/index.html
+	cat ${dirinstall}/startup.php | sed -e "s/ACTUATE/${dial[0]}/g" > ${site}/startup.php
+
 	sudo systemctl stop nginx.service
 	sudo systemctl disable nginx.service
 	sudo cp ${dirinstall}/setdate.php ${site}/setdate.php
+	sudo cp ${dirinstall}/getTemp.php ${site}/getTemp.php
 	sudo cp ${dirinstall}/shutdown_reboot.php ${site}/shutdown_reboot.php
+	sudo chown www-data:www-data ${site}/startup.php
 	sudo chown www-data:www-data ${site}/setdate.php
+	sudo chown www-data:www-data ${site}/getTemp.php
 	sudo chown www-data:www-data ${site}/shutdown_reboot.php
 
 	# move apache at port 8280
