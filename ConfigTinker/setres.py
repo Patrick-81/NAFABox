@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 from os.path import expanduser
-from Tkinter import *
+from tkinter import *
 import os
 
 class Application(Frame):
