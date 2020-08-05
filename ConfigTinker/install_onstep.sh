@@ -37,9 +37,9 @@ echo "================================================="
 # installation des dépendances
 ######
 sudo apt-get update
-sudo apt-get install libusb-dev git
-sudo apt-get purge modemmanager
-sudo apt-get install python3-serial
+sudo apt-get -y install libusb-dev git
+sudo apt-get -y purge modemmanager
+sudo apt-get -y install python3-serial
 
 if [[ ${server_choice} == "server" ]]
 then
