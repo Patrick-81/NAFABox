@@ -46,7 +46,7 @@ then
     echo "############################"
     echo "## install in server mode ##"
     echo "############################"
-	onstep_c=TRUE
+	onstep_c=FALSE
 	ide_arduino=FALSE
 	gen=FALSE
 else
