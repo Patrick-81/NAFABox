@@ -184,8 +184,8 @@ then
 	type="linuxarm"
 fi
 
-arduino_v="1.8.5" # need 1.8.5 for onstep compatibility
-teensduino_v="145"
+arduino_v="1.8.13" # need 1.8.5 for onstep compatibility
+teensduino_v="153"
 
 if [[ ${ide_arduino} == "TRUE" ]]
 then
@@ -197,11 +197,6 @@ then
 
 	if [[ ${type} != "no" ]]
 	then
-		if [[ ${type} == "linuxaarch64" ]]
-		then
-			echo "linuxaarch64 not support arduino $arduino_v, force v1.8.7"
-			arduino_v="1.8.7"
-		fi
 		wget ${lien}/arduino-${arduino_v}-${type}.tar.xz -P /tmp/
 		cd /home/${USER}
 		tar -xf /tmp/arduino-${arduino_v}-${type}.tar.xz
@@ -226,7 +221,7 @@ then
 	# install teensduino
 	file="TeensyduinoInstall.$type"
 
-	wget https://www.pjrc.com/teensy/td_144/${file} -P /tmp/
+	wget https://www.pjrc.com/teensy/td_${teensduino_v}/${file} -P /tmp/
 	chmod +x /tmp/TeensyduinoInstall.${type}
 
 	# run install process
