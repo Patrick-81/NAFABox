@@ -192,7 +192,7 @@ then
 	# Installation de l'IDE Arduino en version PPA
 	if [[ ${type} != "no" ]]
 	then
-		lien="https://downloads.arduino.cc/"
+		lien="https://downloads.arduino.cc"
 	fi
 
 	if [[ ${type} != "no" ]]
