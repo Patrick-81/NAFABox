@@ -23,7 +23,7 @@ echo "================================================="
 ######
 # Installation des pré-requis
 #######
-sudo apt-get -y install git cmake zlib1g-dev libcurl4-openssl-dev libgsl-dev libraw-dev libcfitsio-dev libjpeg-dev libpng-dev libcgicc-dev daemontools nginx
+sudo apt-get -y install git cmake zlib1g-dev libcurl4-openssl-dev libgsl-dev libcfitsio-dev libjpeg-dev libpng-dev libcgicc-dev daemontools nginx
 
 # check install indi :
 dpkg -s indi-full &> /dev/null
