@@ -217,6 +217,12 @@ then
 		echo "Arduino folder is : ~/.local/share/umake/ide/arduino"
     fi
 	sudo usermod -a -G dialout ${USER}
+	
+	######
+	# install rules file
+	######
+	wget https://www.pjrc.com/teensy/49-teensy.rules -P /tmp/
+	sudo cp /tmp/49-teensy.rules /etc/udev/rules.d/
 
 	# install teensduino
 	file="TeensyduinoInstall.$type"
