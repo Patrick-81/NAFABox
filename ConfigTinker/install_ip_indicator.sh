@@ -42,7 +42,7 @@ fi
 # Installation du programme : IP_Indicator
 ######
 
-sudo apt-get -y install indicator-ip
+sudo apt-get -y install python3-indicator-ip
 
 ######
 # Detect language

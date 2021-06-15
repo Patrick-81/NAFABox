@@ -67,6 +67,13 @@ Il faut désactiver le mode économie d'énergie du wifi.
     `sudo apt purge gnome-power-manager`    
     `sudo apt autoremove`   
 
+### 8/ For Mobindi don't run :  
+Il faut charger une première fois Mobindi sur l'adresse :
+
+    `https://localhost:8443`    
+
+Apres cela l'adresse standard (port 8080) chargera corectement Mobindi
+
 ### X/ For New bug :
 
 - poster une "Issue" sur github et fournissez le fichier nafabox.log (dans .../NAFABox/ConfigTinker/ )    

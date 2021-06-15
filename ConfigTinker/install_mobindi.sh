@@ -33,8 +33,8 @@ if [ $? -eq 0 ]; then
 
     sudo apt-get -y install libindi-dev
     # install last nodejs
-    curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-    sudo apt-get install -y nodejs npm
+    curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+    sudo apt-get install -y nodejs
     npm install
 
     #######
