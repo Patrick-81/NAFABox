@@ -71,14 +71,18 @@ Il faut désactiver le mode économie d'énergie du wifi.
 Il faut charger une première fois Mobindi via la commande :
 
     `/home/$USER/bin/mobindi/startup.sh`    
+Apres le chargement (arret de défilement du texte), vous pouvez éteindre la commande (CTRL+c)   
+Puis relancer le service :   
 
-Apres cela l'adresse standard (port 8080) chargera correctement Mobindi
-A recommencer a chaque redémarage ( correction du bug en cours).
+    `service mobindi start`   
+
+Apres cela, l'adresse standard (port 8080) chargera correctement Mobindi   
+A recommencer à chaque redémarage ( correction du bug en cours).
 
 ### 9/ Oacapture don't run your Cam :
 
 Il faut télécharger le packet qui vas avec votre webcam.   
-Attention :  la plupart des packet sont installer via Indi   
+Attention :  la plupart des packet sont installé via Indi   
 
 https://www.openastroproject.org/downloads/
 
