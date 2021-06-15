@@ -67,12 +67,13 @@ Il faut désactiver le mode économie d'énergie du wifi.
     `sudo apt purge gnome-power-manager`    
     `sudo apt autoremove`   
 
-### 8/ For Mobindi don't run :  
-Il faut charger une première fois Mobindi sur l'adresse :
+### 8/ For Mobindi don't run on boot:  
+Il faut charger une première fois Mobindi via la commande :
 
-    `https://localhost:8443`    
+    `/home/$USER/bin/mobindi/startup.sh`    
 
-Apres cela l'adresse standard (port 8080) chargera corectement Mobindi
+Apres cela l'adresse standard (port 8080) chargera correctement Mobindi
+A recommencer a chaque redémarage ( correction du bug en cours).
 
 ### 9/ Oacapture don't run your Cam :
 
