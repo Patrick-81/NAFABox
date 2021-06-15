@@ -74,6 +74,15 @@ Il faut charger une première fois Mobindi sur l'adresse :
 
 Apres cela l'adresse standard (port 8080) chargera corectement Mobindi
 
+### 9/ Oacapture don't run your Cam :
+
+Il faut télécharger le packet qui vas avec votre webcam.   
+Attention :  la plupart des packet sont installer via Indi   
+
+https://www.openastroproject.org/downloads/
+
+`sudo apt install ./nom_du_packet.deb`
+
 ### X/ For New bug :
 
 - poster une "Issue" sur github et fournissez le fichier nafabox.log (dans .../NAFABox/ConfigTinker/ )    
