@@ -99,7 +99,7 @@ then
     then
         echo "darktable is not compatible with this platform"
     else
-        sudo add-apt-repository -y ppa:pmjdebruijn/darktable-release
+        sudo add-apt-repository -y ppa:ubuntuhandbook1/darktable
         sudo apt-get update
         sudo apt-get -y install darktable
     fi
@@ -108,17 +108,17 @@ fi
 
 if [[ ${s_gimp} == "TRUE" ]]
 then
-	if ${french}
-	then
+
+    sudo apt-add-repository -y ppa:ubuntuhandbook1/gimp
+    sudo apt-get update
+    sudo apt-get install -y gimp
+
+    if ${french}
+    then
         sudo apt-get install -y gimp-help-fr
     else
         sudo apt-get install -y gimp-help-en
     fi
-
-    sudo apt-add-repository -y ppa:otto-kesselgulasch/gimp
-    sudo apt-get update
-    sudo apt-get install -y gimp
-
 fi
 
 if [[ ${ser_p} == "TRUE" ]]

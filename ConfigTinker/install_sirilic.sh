@@ -24,7 +24,8 @@ echo "================================================="
 # Installation des pré-requis
 #######
 
-sudo apt-get -y install python3 python3-pip imagemagick python3-wx*
+sudo apt-get -y install python3 python3-pip imagemagick python3-wx* 
+sudo apt-get -y install python-is-python3
 # sudo pip3 install pyinstaller
 
 ######
@@ -37,8 +38,8 @@ sudo apt-get -y install python3 python3-pip imagemagick python3-wx*
 # Installation
 ######
 cd /tmp/
-wget https://gitlab.com/free-astro/sirilic/uploads/56cc1649b374542cfc0f590ee1319799/python3-sirilic_1.12.4-1_all.deb
-sudo ap-get -y install /tmp/python3-sirilic_1.12.4-1_all.deb
+wget https://gitlab.com/free-astro/sirilic/uploads/3233062590b55181c660c06eece42f95/python3-sirilic_1.13.7-1_all.deb
+sudo apt-get -y install /tmp/python3-sirilic_1.13.7-1_all.deb
 # cd /home/$USER/bin/sirilic/sirilic/package
 # ./MakePackage.sh
 # sudo cp dist/* /usr/local/bin/.
