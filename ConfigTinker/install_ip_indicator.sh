@@ -19,7 +19,7 @@ echo "================================================="
 # Add PPA
 ######
 # sudo apt-add-repository -y ppa:bovender/bovender
-sudo add-apt-repository ppa:nico-marcq/indicator-ip
+sudo add-apt-repository -y ppa:nico-marcq/indicator-ip
 ######
 # basic update
 ######
