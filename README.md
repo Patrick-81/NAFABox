@@ -1,6 +1,6 @@
 # NAFABox (Nomad Astronomy For All)
 
-Current version : **3.3.2**
+Current version : **3.4.0**
 
 [Change Log](https://github.com/Patrick-81/NAFABox/blob/master/doc/ChangeLog.md)
 
