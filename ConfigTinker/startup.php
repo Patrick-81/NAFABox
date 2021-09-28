@@ -17,7 +17,7 @@ libs/jquery/1.3.0/jquery.min.js"></script>
    		window.open(window.location.origin+':8180');
 	}
 	function opennovnc() {
-   		window.open(window.location.origin+':5901/vnc.html');
+   		window.open(window.location.origin+':5899/vnc.html');
 	}
 	function openindiwebmanager() {
    		window.open(window.location.origin+':8624');
