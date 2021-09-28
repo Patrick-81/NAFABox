@@ -263,6 +263,7 @@ then
 	${dirinstall}/install_nomachine.sh
 fi
 
+
 if [[ ${xvnc} == "TRUE" ]]
 then
 	######
@@ -286,22 +287,22 @@ then
 	#
 
 	# demarage sur le X11
-    vnc_path=/home/${USER}/.vnc/passwd
-    rm ${vnc_path}
-    test_w=true
-    number_t=0
-    while ${test_w} && [[ "$number_t" < 3 ]]
-    do
-        echo "Enter Le mot de passe VNC pour votre BOX :"
-        x11vnc -storepasswd
-        if [[ -f ${vnc_path} ]]
-        then
-            test_w=false
-        else
-            number_t=$((number_t + 1))
-            echo "Reload, remaing test: "$((3-number_t))
-        fi
-    done
+	vnc_path=/home/${USER}/.vnc/passwd
+	rm ${vnc_path}
+	test_w=true
+	number_t=0
+	while ${test_w} && [[ "$number_t" < 3 ]]
+	do
+        	echo "Enter Le mot de passe VNC pour votre BOX :"
+        	x11vnc -storepasswd
+        	if [[ -f ${vnc_path} ]]
+        	then
+        	    test_w=false
+        	else
+        	    number_t=$((number_t + 1))
+        	    echo "Reload, remaing test: "$((3-number_t))
+        	fi
+	done
 	echo "Merci ! ----------------------------------"
 
 	machine=$(sudo lshw | grep "produit\|product" | grep "Raspberry")
@@ -325,7 +326,12 @@ then
 		option=${normal_option}
 	elif [[ ${proc} == "_aarch64" ]]
 	then
-		option=${tinker_option}
+		if [[ ${machine} == *"Raspberry"* ]]
+		then 
+			option=${normal_option}
+		else
+			option=${tinker_option}
+		fi
 	fi
 
 	# injection fichier system
@@ -339,7 +345,27 @@ then
 	sudo systemctl enable x11vnc.service
 	sudo systemctl start x11vnc.service
 	echo "Need reboot for active VNC"
+
+	######
+	# Installation TightVNC Server
+	######
+
+	figlet -k Install TightVNC Server
+
+	sudo apt-get -y install tightvncserver
+
+	# injection fichier system
+	cat ${dirinstall}/tightvnc.service | sed -e "s=MOI=${USER}=g" > /tmp/tightvnc.service
+	sudo mv /tmp/tightvnc.service /lib/systemd/system/tightvnc.service
+	# allumage au démarage
+	sudo systemctl stop tightvnc.service
+	sudo systemctl disable tightvnc.service
+	sudo systemctl daemon-reload
+	sudo systemctl enable tightvnc.service
+	sudo systemctl start tightvnc.service
+	echo "Need reboot for active VNC"
 fi
+
 
 if [[ ${novnc} == "TRUE" ]]
 then

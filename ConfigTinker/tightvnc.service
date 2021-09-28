@@ -1,0 +1,18 @@
+[Unit]
+Description=TightVNC server
+After=syslog.target network.target
+ 
+[Service]
+Type=forking
+User=MOI
+Group=MOI
+PAMName=login
+PIDFile=/home/pi/.vnc/%H:2.pid
+ExecStartPre=-/usr/bin/vncserver -kill :2 > /dev/null 2>&1
+ExecStart=/usr/bin/vncserver -depth 24 -geometry 1920x1080 :2
+ExecStop=/usr/bin/vncserver -kill :2
+Restart=always
+RestartSec=3
+ 
+[Install]
+WantedBy=multi-user.target
