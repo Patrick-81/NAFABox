@@ -37,9 +37,9 @@ Pour cela il vas falloir déjà verifier que les lignes permetant de forcer
 la resolution ne sont pas déjà présentes dans le fichier.
 
 Les lignes à repérer sont les suivantes ( avec **..** = une valeur quelconque):   
-`hdmi_force_hotplug=..`
-`hdmi_ignore_hotplug=..`
-`disable_overscan=..`   
+`hdmi_force_hotplug=..`    
+`hdmi_ignore_hotplug=..`     
+`disable_overscan=..`      
 `hdmi_mode=..`   
 `hdmi_group=..`   
    
