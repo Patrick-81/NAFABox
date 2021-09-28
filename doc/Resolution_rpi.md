@@ -33,11 +33,12 @@ Il ne vous reste plus qu'à ouvrir le fichier **config.txt**.
 -----------------------
 
 Nous allons maintenant modifier le fichier **config.txt**. 
-Pour cela il vas faloir déjà verifier que des lignes permetant de forcer 
-la resolution ne sont pas déjà présente dans le fichier.
+Pour cela il vas falloir déjà verifier que les lignes permetant de forcer 
+la resolution ne sont pas déjà présentes dans le fichier.
 
 Les lignes à repérer sont les suivantes ( avec **..** = une valeur quelconque):   
-`hdmi_ignore_hotplug=..`   
+`hdmi_force_hotplug=..`
+`hdmi_ignore_hotplug=..`
 `disable_overscan=..`   
 `hdmi_mode=..`   
 `hdmi_group=..`   
@@ -46,7 +47,7 @@ Si vous trouvez ces lignes il faudra les supprimer ou les commenter pour plus de
 prudence ( rajouter seulement un `#` devant la ligne que vous shouaitez commenter).
 
 Une fois fait il ne vous reste plus qu'à ajouter les lignes suivantes à la fin du fichier :     
-`hdmi_ignore_hotplug=1`   
+`hdmi_force_hotplug=1`   
 `disable_overscan=1`   
 
 Ainsi que les ligne **hdmi_group=..** et **hdmi_mode=..** en fonction du choix de la resolution voulu : 
