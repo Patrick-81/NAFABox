@@ -4,7 +4,7 @@ Description=Start novnc at startup
 [Service]
 User=MOI
 Group=MOI
-ExecStart=/home/MOI/bin/noVNC/utils/launch.sh --vnc localhost:5900 --listen 5901 --web /home/MOI/bin/noVNC
+ExecStart=/home/MOI/bin/noVNC/utils/launch.sh --vnc localhost:5900 --listen 5899 --web /home/MOI/bin/noVNC
 Restart=on-failure
 
 [Install]
