@@ -2,7 +2,7 @@
 
 Cette manipulation est assez experimentale mais permet une nette acceleration de l'interface graphique. Elle donc inutile si vous n'utiliser pas le bureau de la Tinkerboard.
 
-__Attention :__ Stellarium ne fonctionnera plus car l'émulation openGL n'est pas dans une version assez élevé ( OpenGL 3.1).
+__Attention :__ Stellarium ne fonctionnera plus car l'émulation openGL n'est pas dans une version assez élevé ( OpenGL 3.1). C'est possible de le faire fonctionner si Stellarium est compilé pour openGL. 
 
 ## Téléchargement du pack :
 

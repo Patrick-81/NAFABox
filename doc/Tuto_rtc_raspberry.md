@@ -8,11 +8,14 @@ Ce tuto est dédié au module RTC à base de DS3132 (peut marché aussi avec le 
 ---
 ### Configuration de l’I2C
 
-Ce module fonctionne en I2C, il est donc nécessaire de l’activer et de le faire fonctionner. Pour cela, le plus simple est d’exécuter l’utilitaire raspi-config :
-	
-`sudo raspi-config`
+Ce module fonctionne en I2C, il est donc nécessaire de l’activer et de le faire fonctionner. Pour cela, il faut activer l'I2C :   
 
-Ensuite, sélectionnez l’option **3 – Interfacing Options**, puis l’option **P4 I2C**, et choisissez YES, OK, YES, et encore OK. Vous pouvez alors faire finish, puis accepter de redémarrer.        
+`sudo pluma /boot/firmware/syscfg.txt`   
+
+Modifiez le fichier afin d'avoir cette ligne sur **on** et non commenté :   
+
+`dtparam=i2c_arm=on`   
+
 
 Pour vérifier le fonctionnement de l’ensemble, il faudra installer les programmes python-smbus et i2c-tools :
 
@@ -21,7 +24,7 @@ Pour vérifier le fonctionnement de l’ensemble, il faudra installer les progra
 
 Une fois cela effectué, vous pourrez vérifier que tout fonctionne en tapant la commande suivante :
 	
-`sudo i2cdetect -y 1`
+`i2cdetect -y 1`
 
 __Attention :__ Les premiers modèles de Raspberry pi (très anciens) devront recevoir la commande sudo i2cdetect -y 0 à la place.
 

@@ -1,8 +1,14 @@
 # NAFABox (Nomad Astronomy For All)
 
-Installation scripts to build a NAFABox.
+**Warning**   
+Tinkerboard is **no longer supported** by NAFABox scripts.
+We do not have enough time to maintain this caret we recommend that you switch to the raspberry pi4B. 
 
-CThose scripts are for TinkerBoard (Armbian, Ubuntu) and TinkerBoard S (Armbian, Ubuntu).
+The scripts keep the tags specific to the Tinkerboard but will no longer be systematically tested with it.
+
+#Installation scripts to build a NAFABox.
+
+This scripts are for TinkerBoard (Armbian, Ubuntu) and TinkerBoard S (Armbian, Ubuntu).
 Scripts have been tested with Ubuntu Xenial (16.04 LTS) et Ubuntu Bionic (18.04 LTS).  
 **Ubuntu Bionic (18.04 LTS)** is highly recommanded
 
@@ -15,7 +21,7 @@ You need at least 10Gb of storage space or a 16Gb SD card to store astrometry in
 
 1/ Install ARMBIAN distribution (Bionic default version) with Etcher.
 
-https://dl.armbian.com/tinkerboard/Ubuntu_bionic_default_desktop.7z (or other armbian image for your card)
+https://armbian.systemonachip.net/archive/tinkerboard/archive/Armbian_5.90_Tinkerboard_Ubuntu_bionic_default_4.4.182_desktop.7z    
 
 Boot on your mage et follow the standard install procedure (warning: default keyboard is QWERTY)
 
@@ -23,7 +29,9 @@ Boot on your mage et follow the standard install procedure (warning: default key
 
 2/ Download :  https://github.com/Patrick-81/NAFABox/archive/master.zip  
 or  
-2bis/ In your home : `git clone https://github.com/Patrick-81/NAFABox.git`
+2bis/ In your home `cd ~`:   
+`sudo apt install git`   
+`git clone https://github.com/Patrick-81/NAFABox.git`
 
 3/ Unzip the file ( only for point 2/)
 

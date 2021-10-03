@@ -7,7 +7,11 @@ Vous ne pouvez donc pas utiliser l'application **SetRes**
 
 Pour une utilisation nomade (sans écran), il est necessaire de forcer 
 une resolution d'affichage afin de ne pas se retrouver avec une resolution trop 
-faible sur **VNC/NoMachine**.  
+faible sur **X11VNC**.  
+
+Vpus pouvez utiliser TightVNC qui génére un écran virtuel de 1920x1080. Attention cet écran ne sera pas visible si vous branchez un écran physique.
+
+NoMachine peut acceder aux écrans physiques (X11VNC) et virtuels (TightVNC)
 
 Pour **Kstars**, afin d'afficher correctement toute les options, il est necessaire 
 d'avoir plus qu'un carré de 800x800 pixel.  
@@ -23,16 +27,16 @@ Pour trouver ce fichier rien ne plus simple, 2 choix s'offre a vous :
 
 ### Via le terminal sur le raspberry :
 
-Vous pouvez taper (sur ubuntu mate): `pluma /boot/config.txt`
+Vous pouvez taper (sur ubuntu mate): `sudo pluma /boot/firmware/usercfg.txt`
 
 ### Via un autre ordinateur :
 
 Branchez la carte SD à l'ordinateur et acceder à la partition/disque **PI_BOOT**.
-Il ne vous reste plus qu'à ouvrir le fichier **config.txt**.
+Il ne vous reste plus qu'à ouvrir le fichier **usercfg.txt**.
 
 -----------------------
 
-Nous allons maintenant modifier le fichier **config.txt**. 
+Nous allons maintenant modifier le fichier **usercfg.txt**. 
 Pour cela il vas falloir déjà verifier que les lignes permetant de forcer 
 la resolution ne sont pas déjà présentes dans le fichier.
 
@@ -52,9 +56,11 @@ Une fois fait il ne vous reste plus qu'à ajouter les lignes suivantes à la fin
 
 Ainsi que les ligne **hdmi_group=..** et **hdmi_mode=..** en fonction du choix de la resolution voulu : 
 
-(les tableaux ne contienne que les resolutions compatibles avec **kstars** + HD 720p)   
+(les tableaux ne contienne que les resolutions compatibles avec **kstars** + la résolution HD 720p)   
+
 **ATTENTION**: la resolution sera forcé, donc si vous réglez sur une resolution 
 non supporté par l'écran sur lequel le raspberry sera branché alors vous aurez un écran noir. 
+
 
 Pour :   
 `hdmi_group=1`   
@@ -136,5 +142,19 @@ Pour :
 *au dessus de la limite de resolution du raspberry
 
 Une fois les lignes ajouté, n'oubliez pas de sauvegarder puis redémarer (ou remettre la carte SD).
+
+**ATTENTION**: ceci ne fonctionne pas sur le RPI 4B. 
+
+Pour le RPI 4B (TODO):    
+commenter la ligne suivante dans le **config.txt** :    
+
+`dtoverlay=vc4-fkms-v3d`
+
+voir l'utilité de la commande : `disable_fw_kms_setup=1`
+
+Pour régler la résolution, ajoutez/modifiez :   
+
+`framebuffer_with=1920`   
+`framebuffer_height=1080`   
 
 **Pour aller plus loin (en anglais):** https://www.raspberrypi.org/documentation/configuration/config-txt/video.md

@@ -2,9 +2,9 @@
 
 Script d'installation pour Créer une NAFABox.
 
-Ces scripts sont compatibles avec la plupart des cartes compatibles Armbian .   
-Les scripts ont été testés avec Ubuntu Xenial (16.04 LTS) et Ubuntu Bionic (18.04 LTS).  
-Il est recomandé d'utiliser **Ubuntu Bionic (18.04 LTS)**.
+Ces scripts sont compatibles avec les carte compatible Armbian .   
+Les scripts ont été testés avec Ubuntu Bionic (18.04 LTS) et Ubuntu Focal (20.04 LTS).  
+Il est recomandé d'utiliser **Ubuntu Focal (20.04 LTS)**.
 
 Il est nécessaire de disposer d'au moins 10Go d'espace de stockage ou d'une Carte SD de 16Go au minimum ( index d'astrométrie non compris)  
 
@@ -13,13 +13,13 @@ Il est nécessaire de disposer d'au moins 10Go d'espace de stockage ou d'une Car
 
 ### Etape par étape pour une carte compatible avec Armbian):
 
-1/ Installer la distribution ARMBIAN ( version default Bionic) via Etcher.
+1/ Installer la distribution ARMBIAN (version current Focal) via Etcher.
 
-https://www.armbian.com/download/ (version default bionic desktop)
+https://www.armbian.com/download/ (version **current Focal** desktop)
 
 Puis démarrer l'image et suivez la procédure d'installation standard (Attention: par défaut Armbian en QWERTY)
 
-**ATTENTION** Il faut redémarer la carte avant toute manipulation
+**ATTENTION** Il faut redémarer la carte avant toute manipulation (apres l'installation auto de armbian)   
 
 2/ Télécharger :  https://github.com/Patrick-81/NAFABox/archive/master.zip  
 ou  

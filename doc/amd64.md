@@ -13,20 +13,20 @@ Il est nécessaire de disposer d'au moins 10Go d'espace de stockage ou d'une Car
 
 ### Pour les systèmes X86_64/Amd64 Ubuntu Linux system :
 
-__1-__ Installez la distribution 
+__1-__ Installez la distribution via Etcher pour une installation USB.
 
-**Ubuntu Mate** Bionic (18.04 LTS) via Etcher pour une installation USB.
-http://cdimage.ubuntu.com/ubuntu-mate/releases/18.04/release/ubuntu-mate-18.04.2-desktop-amd64.iso   
-ou **Xubuntu** Bionic (18.04 LTS):   
-http://cdimage.ubuntu.com/xubuntu/releases/18.04/release/xubuntu-18.04.2-desktop-amd64.iso   
-ou **Lubuntu** Bionic (18.04 LTS) (Pas testé):  
-http://cdimage.ubuntu.com/lubuntu/releases/18.04/release/lubuntu-18.04.2-desktop-amd64.iso   
-ou **Ubuntu** Bionic (18.04 LTS) (Pas testé):  
-http://mirrors.phx.ms/ubuntu-cd/18.04.2/ubuntu-18.04.2-desktop-amd64.iso   
-ou **Kubuntu** Bionic (18.04 LTS) (Pas testé):  
-http://cdimage.ubuntu.com/kubuntu/releases/18.04/release/kubuntu-18.04.2-desktop-amd64.iso   
-ou **Ubuntu-Budgie** Bionic (18.04 LTS) (Pas testé):  
-http://cdimage.ubuntu.com/ubuntu-budgie/releases/18.04/release/ubuntu-budgie-18.04.2-desktop-amd64.iso   
+**Ubuntu Mate** Focal (20.04 LTS) --> conseillé 
+http://cdimage.ubuntu.com/ubuntu-mate/releases/20.04/release/ubuntu-mate-20.04.3-desktop-amd64.iso   
+ou **Xubuntu** Focal (20.04 LTS):   
+http://cdimage.ubuntu.com/xubuntu/releases/20.04/release/xubuntu-20.04.3-desktop-amd64.iso   
+ou **Lubuntu** Focal (20.04 LTS) (Pas testé):  
+http://cdimage.ubuntu.com/lubuntu/releases/20.04/release/lubuntu-20.04.3-desktop-amd64.iso   
+ou **Ubuntu** Focal (20.04 LTS) (Pas testé):  
+https://releases.ubuntu.com/20.04.3/ubuntu-20.04.3-desktop-amd64.iso 
+ou **Kubuntu** Focal (20.04 LTS) (Pas testé):  
+http://cdimage.ubuntu.com/kubuntu/releases/20.04/release/kubuntu-20.04.3-desktop-amd64.iso   
+ou **Ubuntu-Budgie** Focal (20.04 LTS) (Pas testé):  
+http://cdimage.ubuntu.com/ubuntu-budgie/releases/20.04/release/ubuntu-budgie-20.04.3-desktop-amd64.iso   
 
 
 Puis démarrer l'image et suivez la procédure d'installation standard.
@@ -46,9 +46,20 @@ __5-__ lancer **Pre_Install.sh** dans un terminal (avec un clic droit dans le do
 
 Vous pouvez choisir d'installer la langue francaise et le clavier si ce n'est pas déjà fait.
 
-__6-__ Une fois le script Pre_Install fini, __redémarer__ puis ouvrer un nouveau terminal. 
+6/ Une fois le script __Pre_Install__ fini, fermer le terminal puis redémarer.
 
-Lancer **Install.sh**    
+__Si vous avez modifié la langue,__ le systeme vas vous proposer de renomé les dossiers utilisateurs, accepter puis redémarer. A cause du mode de fonctionnement, après le redémarage, il faut suprimer l'ancien dossier correspondant au bureau ( supprimer le dossier Desktop pour un passage d'anglais au français).    
+__Attention__ Ne pas supprimer le dossier __Desktop__ si c'est le seul présent.
+
+ouvrir un nouveau terminal.
+
+Lancer une mise a jour :   
+`$ sudo apt update`    
+`$ sudo apt upgrade -y`    
+redémarer
+
+ouvrir un nouveau terminal.    
+Lancer __Install.sh__   
 
 `$ ./Install.sh` 
 
