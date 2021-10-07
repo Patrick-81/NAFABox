@@ -1,12 +1,31 @@
 # NAFABox (Nomad Astronomy For All)
 
+<p align="center">
+  <img src="https://github.com/Patrick-81/NAFABox/blob/beta/doc/logo.png"?raw=true" alt="NAFABox Logo"/>
+</p>
+
 Current version : **3.4.0**
 
-[Change Log](https://github.com/Patrick-81/NAFABox/blob/master/doc/ChangeLog.md)
+Le projet NAFABox consiste en un ensemble de script bash destiné à simplifier l'installation et l'utilisation des logiciels linux dédié à la pratique de l'astronomie amateur.   
+Ce projet permet aussi de mettre un place tout un environement dédié à la pratique de l'astrophoto nomade.   
+Afin d'aider le plus grand nombre ce projet est compatible avec la carte Raspberry Pi 4B, la carte NanoPi-M4, les cartes compatible Armbian ainsi que les ordinateurs classique (NUC, micro ordinateur, ordinateur portable, ...).    
+Les scripts ont été développé pour fonctionné dans l'environement Ubuntu. La plupard des tests ont été réalisé sur les distribution Ubuntu Mate et Xubuntu.    
 
-[En Francais](https://github.com/Patrick-81/NAFABox/blob/master/doc/README_FR.md)
+L'intégralité du projet est gratuit et open source !    
 
-[In English](https://github.com/Patrick-81/NAFABox/blob/master/doc/README_EN.md)
+Tout aides sur le projet est la bienvenu ! (dévelopement de nouveau script, tuto, contenu graphique,...).    
+
+
+  
+[Software List](https://github.com/Patrick-81/NAFABox/blob/master/doc/Software.md)   
+
+[Change Log](https://github.com/Patrick-81/NAFABox/blob/master/doc/ChangeLog.md)    
+
+
+
+[En Francais](https://github.com/Patrick-81/NAFABox/blob/master/doc/README_FR.md)    
+
+[In English](https://github.com/Patrick-81/NAFABox/blob/master/doc/README_EN.md)    
 
 **Thanks All !**   
 **Merci à tous !**
