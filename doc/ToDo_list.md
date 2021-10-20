@@ -9,4 +9,5 @@
 - tester focal avec la nanopi-m4
 - ajout d'une page dédier a l'installation des images
 - debug mobindi boot
+- ajout du mode rouge
 
