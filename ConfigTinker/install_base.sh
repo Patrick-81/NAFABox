@@ -296,9 +296,9 @@ echo "================================================="
 echo "================================================="
 # set NAFABox wallpaper
 mkdir -p ~/bin
-backpic="PIA16008-1920x1200.jpg"
+backpic="wallpaper.png"
 dest="$HOME/bin"
-cp ${dirinstall}/${backpic} ${dest}/${backpic}
+cp ${dirinstall}/../doc/${backpic} ${dest}/${backpic}
 
 if [[ ${installMate} == "TRUE" ]]
 then
