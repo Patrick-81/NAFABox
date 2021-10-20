@@ -22,10 +22,16 @@ echo "================================================="
 echo "================================================="
 
 ######
-# Installation de libpasastro
-source ${dirinstall}/proctype.sh
-software="libpasastro"
-version="version_1.1-20"
-file="libpasastro_1.1-20$proc.deb"
-wget https://sourceforge.net/projects/${software}/files/${version}/${file} -P /tmp/
-sudo dpkg -i /tmp/${file}
+# Installation de libpasastro via sourceforge
+
+#source ${dirinstall}/proctype.sh
+#software="libpasastro"
+#version="version_1.4.1"
+#file="libpasastro_1.4.1-51_$proc.deb"
+#wget https://sourceforge.net/projects/${software}/files/${version}/${file} -P /tmp/
+#sudo dpkg -i /tmp/${file}
+
+# Install via PPA
+
+sudo add-apt-repository -y ppa:pch/ppa-skychart
+sudo apt-get install -y libpasastro

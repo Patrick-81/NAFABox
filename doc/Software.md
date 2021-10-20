@@ -50,7 +50,9 @@ __Onstep and other__
     - Onstep Generator : https://github.com/dragonlost/Onstep_Generator   
 __- last Gphoto2 :__ https://launchpad.net/~mutlaqja/+archive/ubuntu/libgphoto2   
 __- Astroberry-DIY :__ https://github.com/rkaczorek/astroberry-diy    
-__- ASTAP :__ http://www.hnsky.org/astap.htm   
+
+####ASTAP :
+http://www.hnsky.org/astap.htm   
   
 ####PHD2 : 
 https://openphdguiding.org/
