@@ -298,7 +298,7 @@ echo "================================================="
 mkdir -p ~/bin
 backpic="wallpaper.png"
 dest="$HOME/bin"
-cp ${dirinstall}/../doc/${backpic} ${dest}/${backpic}
+cp ${dirinstall}/${backpic} ${dest}/${backpic}
 
 if [[ ${installMate} == "TRUE" ]]
 then
