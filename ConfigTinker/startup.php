@@ -2,11 +2,13 @@
     <head>
         <meta content="text/html; charset=utf-8" http-equiv="content-type">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>UTILITAIRES NAFAbox</title>
+        <title>NAFAbox Utilitaires</title>
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.0/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> 
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link id="stylepage" href="dark.css" rel="stylesheet">
+        
         <script type="text/javascript">
 	        var a = update();
             function update() {
@@ -31,18 +33,48 @@
             function cockpit() {
                 window.open(window.location.origin+':9090');
             }
+            function setDarkTheme(){
+                console.log('OK dark');
+                var css_filename = "dark.css";
+                $("#stylepage")[0].setAttribute("href", css_filename)
+            }
+            function setLightTheme(){
+                console.log('OK light');
+                var css_filename = "light.css";
+                $("#stylepage")[0].setAttribute("href", css_filename)
+        
+            }
       </script>
       </head>
       <body>
         <div class="container">
-          <div class="col">
-            <h1>NAFABox - Utilitaires</h1>
-          </div>
-          
-          <div class="row">
 
-            <div class="col-sm text-center align-self-center">
-              <h3>Statuts système</h3>
+       <!-- Image and text -->
+       <nav class="navbar navbar-light bg-light">
+          <a class="navbar-brand d-flex h-100 justify-content-center align-items-center" href="#">
+            <img src="logo_256.png" width="96" height="96" class="d-inline-block align-top" alt=""> 
+            <span class="h2 p-2"> NAFABox Utilitaires</span>
+          </a>    
+        </nav>
+        <br/><br/>
+
+        <div class="row">
+            <div class="col-sm text-center align-self-center ">
+              <div class="row d-flex h-100 justify-content-center align-items-center">
+                <h3>Statuts système</h3>
+              </div>
+                <div class="row">
+                  <div class="col-sm text-center align-self-center">
+                    <button type="button" class="btn btn-sm btn-secondary btn-block" onclick="setLightTheme()()"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-brightness-high-fill" viewBox="0 0 16 16">
+                      <path d="M12 8a4 4 0 1 1-8 0 4 4 0 0 1 8 0zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+                    </svg></button>
+                  </div>
+                  <div class="col-sm text-center align-self-center">
+                    <button type="button" class="btn btn-sm btn-secondary btn-block" onclick="setDarkTheme()()"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-moon-fill" viewBox="0 0 16 16">
+                  <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+                </svg></button>
+                </div>
+              </div>
             </div>
 
             <!-- RAM Block -->
