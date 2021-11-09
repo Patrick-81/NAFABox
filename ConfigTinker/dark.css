@@ -1,0 +1,43 @@
+/* Set !important to overwrite the default style applied by Bootstrap */
+body {
+    color:rgb(148, 9, 9) !important;
+    background: rgb(25, 25, 26) !important; 
+}
+
+
+.form-control{
+    color:rgb(148, 9, 9) !important;
+    background: rgb(25, 25, 26) !important; 
+
+}
+
+
+button{
+    color:rgb(158, 9, 9) !important;
+    background: rgb(25, 25, 26) !important; 
+
+}
+
+.navbar {
+    background: rgb(25, 25, 26) !important; 
+    color:rgb(158, 9, 9) !important;
+    
+}
+
+.navbar-brand{
+    background: rgb(25, 25, 26) !important; 
+    color:rgb(158, 9, 9) !important;
+    
+}
+
+.card{
+    background: rgb(25, 25, 26) !important; 
+    color:rgb(158, 9, 9) !important;
+    border: none !important;
+}
+
+.card-body a{
+    background: rgb(25, 25, 26) !important; 
+    color:rgb(158, 9, 9) !important;
+
+}
