@@ -2,7 +2,7 @@
     <head>
         <meta content="text/html; charset=utf-8" http-equiv="content-type">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>NAFAbox Utilitaires</title>
+        <title>NAFAbox Tools</title>
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.0/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
@@ -30,6 +30,9 @@
             function openmobindi() {
                 window.open(window.location.origin+':8080');
             }
+            function openals() {
+                window.open(window.location.origin+':6000');
+            }
             function cockpit() {
                 window.open(window.location.origin+':9090');
             }
@@ -53,7 +56,7 @@
        <nav class="navbar navbar-light bg-light">
           <a class="navbar-brand d-flex h-100 justify-content-center align-items-center" href="#">
             <img src="logo_256.png" width="96" height="96" class="d-inline-block align-top" alt=""> 
-            <span class="h2 p-2"> NAFABox Utilitaires</span>
+            <span class="h2 p-2"> NAFABox Tools</span>
           </a>    
         </nav>
         <br/><br/>
@@ -61,7 +64,7 @@
         <div class="row">
             <div class="col-sm text-center align-self-center ">
               <div class="row d-flex h-100 justify-content-center align-items-center">
-                <h3>Statuts système</h3>
+                <h3>System status</h3>
               </div>
                 <div class="row">
                   <div class="col-sm text-center align-self-center">
@@ -167,12 +170,15 @@
 
 
               <div class="row">
-                <div class="col-sm-8">
+                <div class="col-sm">
                   <button type="button" class="btn btn-primary btn-block" onclick="openindiwebmanager()">Open indiwebmanager</button>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm">
                   <button type="button" class="btn btn-primary btn-block" onclick="openmobindi()">Open mobindi</button>
                 </div>
+                <div class="col-sm">
+                  <button type="button" class="btn btn-primary btn-block" onclick="openals()">Open ALS</button>
+                </div> 
               </div>
               <br/>
               <div class="row">
@@ -207,6 +213,10 @@
               <h5 class="card-title">Documentation & Questions</h5>
               <p class="card-text">Click the button below to access the Nafabox documentation. Enjoy.</p>
               <a href="https://github.com/Patrick-81/NAFABox" target="_blank" class="btn btn-primary">Documentation</a>
+              <br/><br/>
+              <em style="font-size: 1em;">NAFABox</em>
+              <br/>
+              <em style="font-size: 0.8em;">Authors Dragonlost & Pat81 -  Design M. Le Lain</em>
             </div>
           </div>
         
