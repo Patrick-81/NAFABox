@@ -183,10 +183,16 @@ then
 	sudo systemctl disable nginx.service
 	sudo cp ${dirinstall}/setdate.php ${site}/setdate.php
 	sudo cp ${dirinstall}/getTemp.php ${site}/getTemp.php
+	sudo cp ${dirinstall}/logo_256.png ${site}/logo_256.png
+	sudo cp ${dirinstall}/light.css ${site}/light.css
+	sudo cp ${dirinstall}/dark.css ${site}/dark.css
 	sudo cp ${dirinstall}/shutdown_reboot.php ${site}/shutdown_reboot.php
 	sudo chown www-data:www-data ${site}/startup.php
 	sudo chown www-data:www-data ${site}/setdate.php
 	sudo chown www-data:www-data ${site}/getTemp.php
+	sudo chown www-data:www-data ${site}/logo_256.png
+	sudo chown www-data:www-data ${site}/light.css
+	sudo chown www-data:www-data ${site}/dark.css
 	sudo chown www-data:www-data ${site}/shutdown_reboot.php
 
 	# move apache at port 8280
