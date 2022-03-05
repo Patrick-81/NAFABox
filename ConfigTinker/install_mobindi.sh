@@ -81,7 +81,7 @@ if [ $? -eq 0 ]; then
 
     dir_mobindi="/home/$USER/bin/mobindi/startup.sh"  #récupérer le chemin du binaire browsepy
 
-    echo -e '[Unit]\nDescription=MobIndi\nAfter=multi-user.target\n\n[Service]\nType=idle\nUser='${MOI}'\nExecStart='${dir_mobindi}'\nRestart=Always\nRestartSec=5\n[Install]\nWantedBy=multi-user.target' >> /tmp/mobindi.service
+    echo -e '[Unit]\nDescription=MobIndi\nAfter=multi-user.target\n\n[Service]\nType=idle\nUser='${MOI}'\nExecStart='${dir_mobindi}'\nRestart=always\nRestartSec=5\n[Install]\nWantedBy=multi-user.target' >> /tmp/mobindi.service
 
     sudo cp /tmp/mobindi.service ${dir}/
     sudo rm /tmp/mobindi.service
