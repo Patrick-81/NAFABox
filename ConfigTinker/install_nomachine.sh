@@ -44,12 +44,12 @@ if [[ ${proc} == "_amd64" ]]
 then
 	type="amd64"
     type2="Linux"
-    sous_version="4"
+    sous_version="1"
 elif [[ ${proc} == "_armhf" ]]
 then
 	type="armhf"
     type2="Arm"
-    sous_version="3"
+    sous_version="1"
 elif [[ ${proc} == "_x86" ]]
 then
 	type="i386"
@@ -59,7 +59,7 @@ elif [[ ${proc} == "_aarch64" ]]
 then
 	type="arm64"
     type2="Arm"
-    sous_version="3"
+    sous_version="1"
 else
 	echo "architecture not support"
     exit
