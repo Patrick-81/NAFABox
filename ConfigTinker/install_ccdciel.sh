@@ -55,8 +55,8 @@ sudo apt-get -y install libpango-1.0-0 xplanet espeak
 software="indistarter"
 
 #need update
-version="$software""-""2.3.0"
-subversion="159"
+version="$software""-""2.3.1"
+subversion="167"
 
 file="$version""-$subversion""$proc.deb"
 wget https://sourceforge.net/projects/$software/files/$version/$file -P /tmp
@@ -79,8 +79,8 @@ sudo dpkg -i /tmp/$file
 software="ccdciel"
 
 #need update
-version="$software""_""0.9.76"
-subversion="2478"
+version="$software""_""0.9.79"
+subversion="2663"
 
 file="$version""-$subversion""$proc.deb"
 wget https://sourceforge.net/projects/$software/files/$version/$file -P /tmp/
