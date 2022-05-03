@@ -249,4 +249,5 @@ echo "================================================="
 
 
 # add script for debug keyboard in nomachine :
+mkdir ~/.config/autostart/
 sudo cp ${dirinstall}/setxkbmap.desktop ~/.config/autostart/setxkbmap.desktop
