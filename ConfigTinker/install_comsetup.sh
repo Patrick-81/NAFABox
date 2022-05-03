@@ -238,6 +238,15 @@ then
     elif  [[ -S "/var/run/php/php7.4-fpm.sock" ]]
     then
         cat /tmp/site-temp | sed -e "s/VER-PHP/7.4/g" > /tmp/site-${USER}
+    elif  [[ -S "/var/run/php/php8.0-fpm.sock" ]]
+    then
+        cat /tmp/site-temp | sed -e "s/VER-PHP/8.0/g" > /tmp/site-${USER}
+    elif  [[ -S "/var/run/php/php8.1-fpm.sock" ]]
+        then
+        cat /tmp/site-temp | sed -e "s/VER-PHP/8.1/g" > /tmp/site-${USER}
+    elif  [[ -S "/var/run/php/php8.2-fpm.sock" ]]
+    then
+        cat /tmp/site-temp | sed -e "s/VER-PHP/8.2/g" > /tmp/site-${USER}
     fi
 	sudo cp /tmp/site-${USER} /etc/nginx/sites-available/site-${USER}
 	sudo chown ${USER}:${USER} /etc/nginx/sites-available/site-${USER}
@@ -395,7 +404,7 @@ then
 	fi
 
     #version=`curl -s "https://api.github.com/repos/novnc/noVNC/releases/latest" | awk -F '"' '/tag_name/{print $4}'`
-    version="v1.1.0"
+    version="v1.3.0"
     wget https://github.com/novnc/noVNC/archive/${version}.zip
     unzip ${version}.zip
     rm ${version}.zip
