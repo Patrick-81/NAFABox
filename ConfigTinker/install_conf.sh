@@ -77,7 +77,7 @@ mkdir -p ~/bin
 
 # Modificateur de résolution
 # Resolution modifier
-${dirinstall}/install_setres.sh | tee -a "$dirinstall/nafabox.log"
+# marche plus : ${dirinstall}/install_setres.sh | tee -a "$dirinstall/nafabox.log"
 
 
 ######
