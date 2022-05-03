@@ -58,9 +58,9 @@ then
 	# install skychart via sourceforge beta
 
 	#need update
-	date="2021-09-20"
+	date="2022-05-02"
 	version="4.3"
-	subversion="4384"
+	subversion="4496"
 
 	file="$software""_""$version""-$subversion""$proc.deb"
 	wget https://sourceforge.net/projects/$software/files/0-beta/$date/$file -P /tmp
