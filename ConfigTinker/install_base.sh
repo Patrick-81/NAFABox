@@ -313,7 +313,18 @@ elif [[ ${DESKTOP_SESSION} == "xfce" ]] || [[ ${DESKTOP_SESSION} == "xubuntu" ]]
 then
     xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor0/image-show -s true
     xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitor0/image-path --set ${dest}/${backpic}
+    xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitor1/image-path --set ${dest}/${backpic}
+    xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitor2/image-path --set ${dest}/${backpic}
+    xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitor3/image-path --set ${dest}/${backpic}
     xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitor0/workspace0/last-image --set ${dest}/${backpic}
+    xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitor0/workspace1/last-image --set ${dest}/${backpic}
+    xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitor0/workspace2/last-image --set ${dest}/${backpic}
+    xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitor0/workspace3/last-image --set ${dest}/${backpic}
+    xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitorVirtual1/workspace0/last-image --set ${dest}/${backpic}
+    xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitorVirtual1/workspace1/last-image --set ${dest}/${backpic}
+    xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitorVirtual1/workspace2/last-image --set ${dest}/${backpic}
+    xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitorVirtual1/workspace3/last-image --set ${dest}/${backpic}
+    
 fi
 
 
