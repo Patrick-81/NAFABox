@@ -40,61 +40,57 @@ then
     echo "############################"
     echo "## install in server mode ##"
     echo "############################"
-	time_z=TRUE
 	web=TRUE
 	xvnc=FALSE
 	dav=TRUE
 	browse=TRUE
 	novnc=FALSE
-    nomach=FALSE
-    ddserv=TRUE
-    mobindi=FALSE
+    	nomach=FALSE
+    	ddserv=TRUE
+    	mobindi=FALSE
 elif [[ ${server_choice} == "default" ]]
 then
     echo "#############################"
     echo "## install in default mode ##"
     echo "#############################"
-	time_z=TRUE
 	web=TRUE
 	xvnc=TRUE
 	dav=TRUE
 	browse=TRUE
 	novnc=TRUE
-    nomach=TRUE
-    ddserv=TRUE
-    mobindi=TRUE
+    	nomach=TRUE
+    	ddserv=TRUE
+    	mobindi=TRUE
     
 else
 	if ${french}
 	then
 		dial[0]="Installation/Mise à jour des logiciels"
 		dial[1]="Choisir le(s) logiciel(s) à installer"
-		choice[0]="Définir time zone"
-		choice[1]="Installation Interface HTML"
-		choice[2]="Installation X11VNC"
-		choice[3]="Install WebDav"
-		choice[4]="Installation BrowsePy"
-		choice[5]="Installation NoVNC"
-        choice[6]="Installation Nomachine"
-        choice[7]="Serveur pour QDslrDashboard"
-		choice[8]="Installation de Mobindi"
+		choice[0]="Installation Interface HTML"
+		choice[1]="Installation X11VNC"
+		choice[2]="Install WebDav"
+		choice[3]="Installation BrowsePy"
+		choice[4]="Installation NoVNC"
+        	choice[5]="Installation Nomachine"
+        	choice[6]="Serveur pour QDslrDashboard"
+		choice[7]="Installation de Mobindi"
 
 	else
 		dial[0]="Install/Update of software"
 		dial[1]="Choose software(s) to install"
-		choice[0]="define time zone"
-		choice[1]="Install HTML Interface"
-		choice[2]="Install X11VNC"
-		choice[3]="Install WebDav"
-		choice[4]="Install BrowsePy"
-		choice[5]="Install NoVNC"
-        choice[6]="Install Nomachine"
-        choice[7]="Server for QDslrDashboard"
-		choice[8]="Install Mobindi"
+		choice[0]="Install HTML Interface"
+		choice[1]="Install X11VNC"
+		choice[2]="Install WebDav"
+		choice[3]="Install BrowsePy"
+		choice[4]="Install NoVNC"
+        	choice[5]="Install Nomachine"
+        	choice[6]="Server for QDslrDashboard"
+		choice[7]="Install Mobindi"
 
 	fi
 
-	st=(true true true true true true true true true)
+	st=(true true true true true true true true)
 
 	# interface de choix
 	if chose=`yad --width=400 \
@@ -110,32 +106,22 @@ else
 		--field="${choice[4]}:CHK" \
 		--field="${choice[5]}:CHK" \
 		--field="${choice[6]}:CHK" \
-        --field="${choice[7]}:CHK" \
-        --field="${choice[8]}:CHK" \
+        	--field="${choice[7]}:CHK" \
 		"" "${st[0]}" "${st[1]}" "${st[2]}" \
 		"${st[3]}" "${st[4]}" "${st[5]}" "${st[6]}" \
-        "${st[7]}" "${st[8]}"`
+        	"${st[7]}"`
 	then
-		time_z=$(echo "$chose" | cut -d "|" -f2)
-		web=$(echo "$chose" | cut -d "|" -f3)
-		xvnc=$(echo "$chose" | cut -d "|" -f4)
-		dav=$(echo "$chose" | cut -d "|" -f5)
-		browse=$(echo "$chose" | cut -d "|" -f6)
-		novnc=$(echo "$chose" | cut -d "|" -f7)
-        nomach=$(echo "$chose" | cut -d "|" -f8)
-        ddserv=$(echo "$chose" | cut -d "|" -f9)
-        mobindi=$(echo "$chose" | cut -d "|" -f10)
+		web=$(echo "$chose" | cut -d "|" -f2)
+		xvnc=$(echo "$chose" | cut -d "|" -f3)
+		dav=$(echo "$chose" | cut -d "|" -f4)
+		browse=$(echo "$chose" | cut -d "|" -f5)
+		novnc=$(echo "$chose" | cut -d "|" -f6)
+        	nomach=$(echo "$chose" | cut -d "|" -f7)
+        	ddserv=$(echo "$chose" | cut -d "|" -f8)
+        	mobindi=$(echo "$chose" | cut -d "|" -f9)
 	else
 		echo "cancel"
 	fi
-fi
-
-if [[ ${time_z} == "TRUE" ]]
-then
-	######
-	# Définir time zone
-	######
-	sudo dpkg-reconfigure tzdata
 fi
 
 if [[ ${web} == "TRUE" ]]
