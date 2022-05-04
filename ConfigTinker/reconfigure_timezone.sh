@@ -8,3 +8,4 @@
 ################################################
 #!/bin/bash -i
 
+sudo dpkg-reconfigure tzdata
