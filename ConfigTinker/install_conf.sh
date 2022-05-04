@@ -211,6 +211,21 @@ sudo ln -sf ~/bin/reconfig_keyboard.sh /usr/bin/reconfig_keyboard
 sudo cp /usr/share/icons/gnome/48x48/apps/preferences-desktop-keyboard.png /usr/share/pixmaps/reconfig_keyboard.png
 ${dirinstall}/install_shortcut.sh APPNAME='reconfig_keyboard' APPEXEC='bash -ic reconfig_keyboard' OPTION='0' TERMINAL='true'
 
+
+##### 
+# Création du raccourci pour reconfigure_timezone
+######
+
+figlet -k Install reconfigure_timezone program
+echo "================================================="
+echo "================================================="
+
+cp ${dirinstall}/reconfigure_timezone.sh ~/bin/reconfigure_timezone.sh
+sudo ln -sf ~/bin/reconfigure_timezone.sh /usr/bin/reconfigure_timezone
+sudo cp /usr/share/icons/gnome/48x48/apps/preferences-desktop-keyboard.png /usr/share/pixmaps/reconfig_keyboard.png
+${dirinstall}/install_shortcut.sh APPNAME='reconfigure_timezone' APPEXEC='bash -ic reconfigure_timezone' OPTION='0' TERMINAL='true'
+
+
 ##### 
 # Création du raccourci pour setup_time.sh
 ######
