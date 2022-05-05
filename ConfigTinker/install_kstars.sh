@@ -34,7 +34,8 @@ source ${dirinstall}/detect_language.sh
 ######
 # Installation des pré-requis
 ######
-sudo apt-get install ppa-purge
+sudo apt-get -y install ppa-purge
+sudo apt-get -y remove brltty
 
 # remove media auto mount for dslr :
 sudo gsettings set org.gnome.desktop.media-handling automount false
