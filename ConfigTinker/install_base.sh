@@ -270,8 +270,9 @@ fi
 
 if [[ ${o_indicator} == "TRUE" ]]
 then
-    sudo apt-get ${options} install indicator-cpufreq indicator-multiload
-    sudo apt-get ${options} install indicator-sound indicator-power indicator-messages indicator-application indicator-session
+    sudo apt-get ${options} install indicator-cpufreq
+    sudo apt-get ${options} install indicator-multiload
+    #sudo apt-get ${options} install indicator-sound indicator-power indicator-messages indicator-application indicator-session
     #sudo apt-get ${options} install indicator-bluetooth
 fi
 
