@@ -180,6 +180,9 @@ then
 	sudo chown www-data:www-data ${site}/light.css
 	sudo chown www-data:www-data ${site}/dark.css
 	sudo chown www-data:www-data ${site}/shutdown_reboot.php
+	
+	# ajout droit d'acces pour nginx
+	sudo gpasswd -a www-data ${USER}
 
 	# move apache at port 8280
 	cat /etc/apache2/ports.conf | sed -e "s/Listen 80/Listen 8280/g" > /tmp/ports.conf
