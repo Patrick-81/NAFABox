@@ -242,7 +242,7 @@ then
 		for choice in ${choices}
 		do
 			f=${allfiles[$choice]}
-			verifinstall=$(sudo apt list | grep ${f})
+			verifinstall=$(sudo apt list --installed | grep ${f})
 			if [[ -z "$verifinstall" ]]
 			then
 				echo "${select[2]} $f"
