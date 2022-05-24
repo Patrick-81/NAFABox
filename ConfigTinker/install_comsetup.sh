@@ -431,7 +431,7 @@ then
 	  echo "suppression de l'ancien dossier ddserver"
 	  rm -Rf /home/${USER}/bin/DslrDashboardServer
 	fi
-    git clone git://github.com/hubaiz/DslrDashboardServer
+    git clone https://github.com/hubaiz/DslrDashboardServer.git
     sudo apt-get -y install build-essential pkg-config libusb-1.0-0-dev
     cd ~/bin/DslrDashboardServer
     g++ -Wall src/main.cpp src/communicator.cpp `pkg-config --libs --cflags libusb-1.0` -lpthread -lrt -lstdc++ -o ddserver
