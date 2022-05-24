@@ -99,7 +99,7 @@ then
     then
         echo "darktable is not compatible with this platform"
     else
-        sudo add-apt-repository -y ppa:pmjdebruijn/darktable-release
+        sudo add-apt-repository -y ppa:ubuntuhandbook1/darktable
         sudo apt-get update
         sudo apt-get -y install darktable
     fi
@@ -108,17 +108,17 @@ fi
 
 if [[ ${s_gimp} == "TRUE" ]]
 then
-	if ${french}
-	then
+
+    sudo apt-add-repository -y ppa:ubuntuhandbook1/gimp
+    sudo apt-get update
+    sudo apt-get install -y gimp
+
+    if ${french}
+    then
         sudo apt-get install -y gimp-help-fr
     else
         sudo apt-get install -y gimp-help-en
     fi
-
-    sudo apt-add-repository -y ppa:otto-kesselgulasch/gimp
-    sudo apt-get update
-    sudo apt-get install -y gimp
-
 fi
 
 if [[ ${ser_p} == "TRUE" ]]
@@ -129,32 +129,26 @@ fi
 if [[ ${stack} == "TRUE" ]]
 then
 
-	#test si les dossiers existes, si oui suppression
-	if [[ -d "/home/${USER}/bin/libskry" ]]
-	then
-	  echo "suppression de l'ancien dossier libskry"
-	  rm -Rf /home/${USER}/bin/libskry
-	fi
-	if [[ -d "/home/${USER}/bin/stackistry" ]]
-	then
-	  echo "suppression de l'ancien dossier stackistry"
-	  rm -Rf /home/${USER}/bin/stackistry
-	fi
-    version="0.3.0"
-    sudo apt-get install -y libgtkmm-3.0-dev ffmpeg libavcodec-dev libavformat-dev libavutil-dev gcc g++
+    #test si les dossiers existes, si oui suppression
+    if [[ -d "/home/${USER}/bin/libskry" ]]
+    then
+        echo "suppression de l'ancien dossier libskry"
+        rm -Rf /home/${USER}/bin/libskry
+    fi
+    if [[ -d "/home/${USER}/bin/stackistry" ]]
+    then
+        echo "suppression de l'ancien dossier stackistry"
+        rm -Rf /home/${USER}/bin/stackistry
+    fi
+
+    sudo apt-get install -y libgtkmm-3.0-dev ffmpeg libavcodec-dev libavformat-dev libavutil-dev gcc g++ git
     cd ~/bin
-    wget https://github.com/GreatAttractor/libskry/archive/v${version}.tar.gz
-    tar zxvf v${version}.tar.gz
-    rm ./v${version}.tar.gz
-    mv ./libskry-${version} ./libskry
+    git clone https://github.com/GreatAttractor/libskry.git
     cd ./libskry
     make
 
     cd ~/bin
-    wget https://github.com/GreatAttractor/stackistry/archive/v${version}.tar.gz
-    tar zxvf v${version}.tar.gz
-    rm ./v${version}.tar.gz
-    mv ./stackistry-${version} ./stackistry
+    git clone https://github.com/GreatAttractor/stackistry.git
     cd ./stackistry
     make
     cat ${dirinstall}/Stackistry.desktop  | sed -e "s/HOME/$HOME/g" > /tmp/Stackistry.desktop
@@ -164,22 +158,21 @@ fi
 
 if [[ ${impg} == "TRUE" ]]
 then
-    sudo apt-get install -y libgtkmm-3.0-dev ffmpeg libavcodec-dev libavformat-dev libavutil-dev gcc g++ cmake libwxgtk3.0-dev libwxgtk-media3.0-dev libwxgtk-media3.0-gtk3-dev libwxgtk-webview3.0-gtk3-dev libwxgtk3.0-gtk3-dev libfreeimage-dev libboost-all-dev
+    sudo apt-get install -y libgtkmm-3.0-dev ffmpeg libavcodec-dev libavformat-dev libavutil-dev gcc g++ cmake libwxgtk-webview3.0-gtk3-dev libwxgtk3.0-gtk3-dev libfreeimage-dev libboost-all-dev libwxgtk-media3.0-gtk3-dev
+    sudo apt-get install -y libwxgtk3.0-dev libwxgtk-media3.0-dev 
 
-	#test si le dossiers existe, si oui suppression
-	if [[ -d "/home/${USER}/bin/imppg" ]]
-	then
-	  echo "suppression de l'ancien dossier imppg"
-	  rm -Rf /home/${USER}/bin/imppg
-	fi
+    #test si le dossiers existe, si oui suppression
+    if [[ -d "/home/${USER}/bin/imppg" ]]
+    then
+      echo "suppression de l'ancien dossier imppg"
+      rm -Rf /home/${USER}/bin/imppg
+    fi
     #sudo ln -s /usr/bin/wx-config-3.0 /usr/bin/wx-config
     cd ~/bin
     git clone https://github.com/GreatAttractor/imppg.git
     cd ./imppg
-    cmake -G "Unix Makefiles"
+    cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release
     make
-    cat ${dirinstall}/Imppg.desktop  | sed -e "s/HOME/$HOME/g" > /tmp/Imppg.desktop
-    cp /tmp/Imppg.desktop ~/${desktop}/Imppg.desktop
-    sudo cp ~/${desktop}/Imppg.desktop /usr/share/applications
+    sudo cmake -P cmake_install.cmake
 fi
 

@@ -1,6 +1,6 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 from os.path import expanduser
-from Tkinter import *
+from tkinter import *
 import os
 
 class Application(Frame):
@@ -13,7 +13,7 @@ class Application(Frame):
         fres.write(cmd+'\n')
         fres.close()
         os.system("chmod +x "+fresname)
-        print "res:",cmd
+        print("res:",cmd)
         os.system(cmd)
 
     def createWidgets(self):

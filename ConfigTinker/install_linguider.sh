@@ -28,6 +28,8 @@ whereiam=${dirinstall}
 ######
 # Installation des pré-requis
 ######
+sudo add-apt-repository -y ppa:rock-core/qt4
+sudo apt-get update
 sudo apt-get -y install g++
 sudo apt-get -y install libusb-1.0-0-dev
 sudo apt-get -y install libqt4-dev

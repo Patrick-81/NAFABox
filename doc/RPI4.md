@@ -2,19 +2,21 @@
 
 Script d'installation pour Créer une NAFABox.
 
-Ces scripts sont compatibles avec les Raspberry Pi 4b/3b+ (Ubuntu Mate).   
-Les scripts ont été testés avec Ubuntu Xenial (16.04 LTS) et Ubuntu Bionic (18.04 LTS).  
-Il est recomandé d'utiliser **Ubuntu Bionic (18.04 LTS)**.
+Ces scripts sont compatibles avec les Raspberry Pi 4b (Ubuntu Mate).   
+Les scripts ont été testés avec Ubuntu Bionic (18.04 LTS) et Ubuntu Focal (20.04 LTS).  
+Il est recomandé d'utiliser **Ubuntu Focal (20.04 LTS)**.
 
 Il est nécessaire de disposer d'au moins 10Go d'espace de stockage ou d'une Carte SD de 16Go au minimum ( index d'astrométrie non compris)  
 
 **ATTENTION :** Vérifier que les mises à jour automatiques sont désactivées afin qu'elles n'interfèrent pas avec les scripts.
 
-### Etape par étape pour les Raspberry Pi 4b/3b+ :
+### Etape par étape pour les Raspberry Pi 4b :
 
-__1-__ Installer la distribution Ubuntu Server Bionic (18.04 LTS) via ce tuto.   
+__1-__ Installer la distribution Ubuntu Mate Focal (20.04 LTS) via Raspberry Pi Imager ou Etcher :   
 
-https://github.com/Patrick-81/NAFABox/blob/master/doc/tuto_install_rpi4.md  
+https://releases.ubuntu-mate.org/focal/arm64/ubuntu-mate-20.04.1-desktop-arm64+raspi.img.xz
+
+Si vous avez besoin d'utiliser UBUNTU Server (tuto) : https://github.com/Patrick-81/NAFABox/blob/master/doc/tuto_install_rpi4.md
 
 __2-__ Télécharger :  https://github.com/Patrick-81/NAFABox/archive/master.zip  
 ou  

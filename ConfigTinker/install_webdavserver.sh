@@ -29,7 +29,7 @@ source ${dirinstall}/detect_language.sh
 # Installation du serveur webdav
 ######
 # Extras nginx
-sudo apt-get -y install nginx-extras
+sudo apt-get -y install nginx-full
 # copy of the server file
 cat ${dirinstall}/webdav-server.txt | sed -e "s/MOI/${USER}/g" > /tmp/site-webdav_tmp
 sudo cp /tmp/site-webdav_tmp /etc/nginx/sites-available/site-webdav

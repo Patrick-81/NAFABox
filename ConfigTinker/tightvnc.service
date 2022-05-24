@@ -1,0 +1,14 @@
+[Unit]
+Description=TightVNC server
+After=syslog.target network.target
+ 
+[Service]
+Type=forking
+User=MOI
+Group=MOI
+ExecStartPre=-/usr/bin/vncserver -kill :1
+ExecStart=/usr/bin/vncserver -depth 24 -geometry 1920x1080 :1
+ExecStop=/usr/bin/vncserver -kill :1
+ 
+[Install]
+WantedBy=multi-user.target

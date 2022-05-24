@@ -1,16 +1,16 @@
 # Changement de version du kernel sur Armbian (passer de Next à Default)
 
-Il existe 3 version de Armbian :
-- la version stable (4.4.xxxx) appeler version "default"
-- la version de développement (4.19.xx qui ontient toute les dernière mise à jour, appeler version "next"
-- la version de teste (4.20.xx, 5.0.xx, ...) appelé version "nightly"
+Il existe 3 version de Armbian Ubuntu :
+- la version stable (5.10.xxxx) appeler version "current" : Focal 20.04.x
+- la version de développement (5.12.xx ), appelés version "edge" : Hirsute 21.04.x
+- la version de test (>5.12) appelé version "unstable/nightly"
 
 Afin de passer du Kernel default au kernel next ou inversement, 2 techniques :
 
-1/ Refaire l'installation de la nafabox en changant d'image de dépard :
+1/ Refaire l'installation de la nafabox en changant d'image de dépard (NanoPi-M4 par exemple):
 
-https://dl.armbian.com/tinkerboard/Ubuntu_bionic_next_desktop.7z     
-https://dl.armbian.com/tinkerboard/Ubuntu_bionic_default_desktop.7z
+https://redirect.armbian.com/nanopim4/Focal_current_xfce    
+https://redirect.armbian.com/nanopim4/Hirsute_edge_xfce
 
 2/ changer de kernel via Armbian config :
 

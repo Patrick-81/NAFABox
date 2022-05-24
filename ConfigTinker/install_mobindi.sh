@@ -33,8 +33,9 @@ if [ $? -eq 0 ]; then
 
     sudo apt-get -y install libindi-dev
     # install last nodejs
-    curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+    curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
     sudo apt-get install -y nodejs
+    sudo apt-get install -y npm
     npm install
 
     #######
@@ -80,7 +81,7 @@ if [ $? -eq 0 ]; then
 
     dir_mobindi="/home/$USER/bin/mobindi/startup.sh"  #récupérer le chemin du binaire browsepy
 
-    echo -e '[UNIT]\nDescription=MobIndi\nAfter=multi-user.target\n\n[Service]\nType=idle\nUser='${MOI}'\nExecStart='${dir_mobindi}'\nRestart=Always\nRestartSec=5\n[Install]\nWantedBy=multi-user.target' >> /tmp/mobindi.service
+    echo -e '[Unit]\nDescription=MobIndi\nAfter=multi-user.target\n\n[Service]\nType=idle\nUser='${MOI}'\nExecStart='${dir_mobindi}'\nRestart=always\nRestartSec=5\n[Install]\nWantedBy=multi-user.target' >> /tmp/mobindi.service
 
     sudo cp /tmp/mobindi.service ${dir}/
     sudo rm /tmp/mobindi.service

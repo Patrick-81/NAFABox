@@ -270,8 +270,9 @@ fi
 
 if [[ ${o_indicator} == "TRUE" ]]
 then
-    sudo apt-get ${options} install indicator-cpufreq indicator-multiload
-    sudo apt-get ${options} install indicator-sound indicator-power indicator-messages indicator-application indicator-session
+    sudo apt-get ${options} install indicator-cpufreq
+    sudo apt-get ${options} install indicator-multiload
+    #sudo apt-get ${options} install indicator-sound indicator-power indicator-messages indicator-application indicator-session
     #sudo apt-get ${options} install indicator-bluetooth
 fi
 
@@ -296,7 +297,7 @@ echo "================================================="
 echo "================================================="
 # set NAFABox wallpaper
 mkdir -p ~/bin
-backpic="PIA16008-1920x1200.jpg"
+backpic="wallpaper.png"
 dest="$HOME/bin"
 cp ${dirinstall}/${backpic} ${dest}/${backpic}
 
@@ -313,7 +314,18 @@ elif [[ ${DESKTOP_SESSION} == "xfce" ]] || [[ ${DESKTOP_SESSION} == "xubuntu" ]]
 then
     xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor0/image-show -s true
     xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitor0/image-path --set ${dest}/${backpic}
+    xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitor1/image-path --set ${dest}/${backpic}
+    xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitor2/image-path --set ${dest}/${backpic}
+    xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitor3/image-path --set ${dest}/${backpic}
     xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitor0/workspace0/last-image --set ${dest}/${backpic}
+    xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitor0/workspace1/last-image --set ${dest}/${backpic}
+    xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitor0/workspace2/last-image --set ${dest}/${backpic}
+    xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitor0/workspace3/last-image --set ${dest}/${backpic}
+    xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitorVirtual1/workspace0/last-image --set ${dest}/${backpic}
+    xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitorVirtual1/workspace1/last-image --set ${dest}/${backpic}
+    xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitorVirtual1/workspace2/last-image --set ${dest}/${backpic}
+    xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitorVirtual1/workspace3/last-image --set ${dest}/${backpic}
+    
 fi
 
 

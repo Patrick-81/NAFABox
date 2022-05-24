@@ -40,61 +40,57 @@ then
     echo "############################"
     echo "## install in server mode ##"
     echo "############################"
-	time_z=TRUE
 	web=TRUE
 	xvnc=FALSE
 	dav=TRUE
 	browse=TRUE
 	novnc=FALSE
-    nomach=FALSE
-    ddserv=TRUE
-    mobindi=FALSE
+    	nomach=FALSE
+    	ddserv=TRUE
+    	mobindi=FALSE
 elif [[ ${server_choice} == "default" ]]
 then
     echo "#############################"
     echo "## install in default mode ##"
     echo "#############################"
-	time_z=TRUE
 	web=TRUE
 	xvnc=TRUE
 	dav=TRUE
 	browse=TRUE
 	novnc=TRUE
-    nomach=TRUE
-    ddserv=TRUE
-    mobindi=TRUE
+    	nomach=TRUE
+    	ddserv=TRUE
+    	mobindi=TRUE
     
 else
 	if ${french}
 	then
 		dial[0]="Installation/Mise à jour des logiciels"
 		dial[1]="Choisir le(s) logiciel(s) à installer"
-		choice[0]="Définir time zone"
-		choice[1]="Installation Interface HTML"
-		choice[2]="Installation X11VNC"
-		choice[3]="Install WebDav"
-		choice[4]="Installation BrowsePy"
-		choice[5]="Installation NoVNC"
-        choice[6]="Installation Nomachine"
-        choice[7]="Serveur pour QDslrDashboard"
-		choice[8]="Installation de Mobindi"
+		choice[0]="Installation Interface HTML"
+		choice[1]="Installation X11VNC"
+		choice[2]="Install WebDav"
+		choice[3]="Installation BrowsePy"
+		choice[4]="Installation NoVNC"
+        	choice[5]="Installation Nomachine"
+        	choice[6]="Serveur pour QDslrDashboard"
+		choice[7]="Installation de Mobindi"
 
 	else
 		dial[0]="Install/Update of software"
 		dial[1]="Choose software(s) to install"
-		choice[0]="define time zone"
-		choice[1]="Install HTML Interface"
-		choice[2]="Install X11VNC"
-		choice[3]="Install WebDav"
-		choice[4]="Install BrowsePy"
-		choice[5]="Install NoVNC"
-        choice[6]="Install Nomachine"
-        choice[7]="Server for QDslrDashboard"
-		choice[8]="Install Mobindi"
+		choice[0]="Install HTML Interface"
+		choice[1]="Install X11VNC"
+		choice[2]="Install WebDav"
+		choice[3]="Install BrowsePy"
+		choice[4]="Install NoVNC"
+        	choice[5]="Install Nomachine"
+        	choice[6]="Server for QDslrDashboard"
+		choice[7]="Install Mobindi"
 
 	fi
 
-	st=(true true true true true true true true true)
+	st=(true true true true true true true true)
 
 	# interface de choix
 	if chose=`yad --width=400 \
@@ -110,32 +106,22 @@ else
 		--field="${choice[4]}:CHK" \
 		--field="${choice[5]}:CHK" \
 		--field="${choice[6]}:CHK" \
-        --field="${choice[7]}:CHK" \
-        --field="${choice[8]}:CHK" \
+        	--field="${choice[7]}:CHK" \
 		"" "${st[0]}" "${st[1]}" "${st[2]}" \
 		"${st[3]}" "${st[4]}" "${st[5]}" "${st[6]}" \
-        "${st[7]}" "${st[8]}"`
+        	"${st[7]}"`
 	then
-		time_z=$(echo "$chose" | cut -d "|" -f2)
-		web=$(echo "$chose" | cut -d "|" -f3)
-		xvnc=$(echo "$chose" | cut -d "|" -f4)
-		dav=$(echo "$chose" | cut -d "|" -f5)
-		browse=$(echo "$chose" | cut -d "|" -f6)
-		novnc=$(echo "$chose" | cut -d "|" -f7)
-        nomach=$(echo "$chose" | cut -d "|" -f8)
-        ddserv=$(echo "$chose" | cut -d "|" -f9)
-        mobindi=$(echo "$chose" | cut -d "|" -f10)
+		web=$(echo "$chose" | cut -d "|" -f2)
+		xvnc=$(echo "$chose" | cut -d "|" -f3)
+		dav=$(echo "$chose" | cut -d "|" -f4)
+		browse=$(echo "$chose" | cut -d "|" -f5)
+		novnc=$(echo "$chose" | cut -d "|" -f6)
+        	nomach=$(echo "$chose" | cut -d "|" -f7)
+        	ddserv=$(echo "$chose" | cut -d "|" -f8)
+        	mobindi=$(echo "$chose" | cut -d "|" -f9)
 	else
 		echo "cancel"
 	fi
-fi
-
-if [[ ${time_z} == "TRUE" ]]
-then
-	######
-	# Définir time zone
-	######
-	sudo dpkg-reconfigure tzdata
 fi
 
 if [[ ${web} == "TRUE" ]]
@@ -176,13 +162,27 @@ then
 	IP adress which is different if it is on home network or access point"
 	fi
 	#echo "Dirinstall "$dirinstall
-	cat ${dirinstall}/index.html | sed -e "s/ACTUATE/${dial[0]}/g" > ${site}/index.html
+#	cat ${dirinstall}/index.html | sed -e "s/ACTUATE/${dial[0]}/g" > ${site}/index.html
+	cat ${dirinstall}/startup.php | sed -e "s/ACTUATE/${dial[0]}/g" > ${site}/startup.php
+
 	sudo systemctl stop nginx.service
 	sudo systemctl disable nginx.service
 	sudo cp ${dirinstall}/setdate.php ${site}/setdate.php
+	sudo cp ${dirinstall}/getTemp.php ${site}/getTemp.php
+	sudo cp ${dirinstall}/logo_256.png ${site}/logo_256.png
+	sudo cp ${dirinstall}/light.css ${site}/light.css
+	sudo cp ${dirinstall}/dark.css ${site}/dark.css
 	sudo cp ${dirinstall}/shutdown_reboot.php ${site}/shutdown_reboot.php
+	sudo chown www-data:www-data ${site}/startup.php
 	sudo chown www-data:www-data ${site}/setdate.php
+	sudo chown www-data:www-data ${site}/getTemp.php
+	sudo chown www-data:www-data ${site}/logo_256.png
+	sudo chown www-data:www-data ${site}/light.css
+	sudo chown www-data:www-data ${site}/dark.css
 	sudo chown www-data:www-data ${site}/shutdown_reboot.php
+	
+	# ajout droit d'acces pour nginx
+	sudo gpasswd -a www-data ${USER}
 
 	# move apache at port 8280
 	cat /etc/apache2/ports.conf | sed -e "s/Listen 80/Listen 8280/g" > /tmp/ports.conf
@@ -227,6 +227,15 @@ then
     elif  [[ -S "/var/run/php/php7.4-fpm.sock" ]]
     then
         cat /tmp/site-temp | sed -e "s/VER-PHP/7.4/g" > /tmp/site-${USER}
+    elif  [[ -S "/var/run/php/php8.0-fpm.sock" ]]
+    then
+        cat /tmp/site-temp | sed -e "s/VER-PHP/8.0/g" > /tmp/site-${USER}
+    elif  [[ -S "/var/run/php/php8.1-fpm.sock" ]]
+        then
+        cat /tmp/site-temp | sed -e "s/VER-PHP/8.1/g" > /tmp/site-${USER}
+    elif  [[ -S "/var/run/php/php8.2-fpm.sock" ]]
+    then
+        cat /tmp/site-temp | sed -e "s/VER-PHP/8.2/g" > /tmp/site-${USER}
     fi
 	sudo cp /tmp/site-${USER} /etc/nginx/sites-available/site-${USER}
 	sudo chown ${USER}:${USER} /etc/nginx/sites-available/site-${USER}
@@ -258,6 +267,7 @@ then
 	${dirinstall}/install_nomachine.sh
 fi
 
+
 if [[ ${xvnc} == "TRUE" ]]
 then
 	######
@@ -281,22 +291,22 @@ then
 	#
 
 	# demarage sur le X11
-    vnc_path=/home/${USER}/.vnc/passwd
-    rm ${vnc_path}
-    test_w=true
-    number_t=0
-    while ${test_w} && [[ "$number_t" < 3 ]]
-    do
-        echo "Enter Le mot de passe VNC pour votre BOX :"
-        x11vnc -storepasswd
-        if [[ -f ${vnc_path} ]]
-        then
-            test_w=false
-        else
-            number_t=$((number_t + 1))
-            echo "Reload, remaing test: "$((3-number_t))
-        fi
-    done
+	vnc_path=/home/${USER}/.vnc/passwd
+	rm ${vnc_path}
+	test_w=true
+	number_t=0
+	while ${test_w} && [[ "$number_t" < 3 ]]
+	do
+        	echo "Enter Le mot de passe VNC pour votre BOX :"
+        	x11vnc -storepasswd
+        	if [[ -f ${vnc_path} ]]
+        	then
+        	    test_w=false
+        	else
+        	    number_t=$((number_t + 1))
+        	    echo "Reload, remaing test: "$((3-number_t))
+        	fi
+	done
 	echo "Merci ! ----------------------------------"
 
 	machine=$(sudo lshw | grep "produit\|product" | grep "Raspberry")
@@ -320,7 +330,12 @@ then
 		option=${normal_option}
 	elif [[ ${proc} == "_aarch64" ]]
 	then
-		option=${tinker_option}
+		if [[ ${machine} == *"Raspberry"* ]]
+		then 
+			option=${normal_option}
+		else
+			option=${tinker_option}
+		fi
 	fi
 
 	# injection fichier system
@@ -334,7 +349,29 @@ then
 	sudo systemctl enable x11vnc.service
 	sudo systemctl start x11vnc.service
 	echo "Need reboot for active VNC"
+
+	######
+	# Installation TightVNC Server
+	######
+
+	figlet -k Install TightVNC Server
+
+	sudo apt-get -y install tightvncserver
+
+	# injection fichier system
+	cat ${dirinstall}/tightvnc.service | sed -e "s=MOI=${USER}=g" > /tmp/tightvnc.service
+	sudo mv /tmp/tightvnc.service /lib/systemd/system/tightvnc.service
+	# allumage au démarage
+	sudo systemctl stop tightvnc.service
+	sudo systemctl disable tightvnc.service
+	sudo systemctl daemon-reload
+	sudo systemctl enable tightvnc.service
+	sudo systemctl start tightvnc.service
+	echo "Need reboot for active VNC"
+
+	cp ${dirinstall}/xstartup ${USER}/.vnc/xstartup
 fi
+
 
 if [[ ${novnc} == "TRUE" ]]
 then
@@ -356,7 +393,7 @@ then
 	fi
 
     #version=`curl -s "https://api.github.com/repos/novnc/noVNC/releases/latest" | awk -F '"' '/tag_name/{print $4}'`
-    version="v1.1.0"
+    version="v1.3.0"
     wget https://github.com/novnc/noVNC/archive/${version}.zip
     unzip ${version}.zip
     rm ${version}.zip

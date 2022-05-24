@@ -1,6 +1,10 @@
 # Change Log for Nafabox Script and System Image:
 
 Start for 3.2 version. No change log before.
+### 3.4.0 :
+- complet compatibility for Ubuntu Focal 20.04LTS (and 20.10)
+- add ASTAP and big stardatabase
+- debug skchart and ccdciel installation
 
 ### 3.3.2 :
 - update nomachine version

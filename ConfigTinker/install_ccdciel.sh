@@ -24,33 +24,68 @@ echo "================================================="
 # Installation des pré-requis
 ######
 
-sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys AA716FC2
-#echo "deb http://www.ap-i.net/apt unstable main" > /tmp/skychart.list
-#sudo mv /tmp/skychart.list /etc/apt/sources.list.d/skychart.list
-sudo apt-add-repository 'deb http://www.ap-i.net/apt unstable main'
-sudo apt-get update
-
-sudo apt-get -y install libpango1.0-0 xplanet espeak indistarter skychart-data-dso skychart-data-pictures eqmodgui
-#$dirinstall/install_libpasastro.sh
 ######
 # détection de l'architecture
 ######
-#source $dirinstall/proctype.sh
+source $dirinstall/proctype.sh
+
+# install libpasastro
+$dirinstall/install_libpasastro.sh
+
 ######
-# Installation du programme : ccdciel
-######
-#software="ccdciel"
-#version="$software""_""0.9.8"
-#subversion="533"
-#file="$version""-$subversion""$proc.deb"
-#echo $file
-#wget https://sourceforge.net/projects/$software/files/$version/$file -P /tmp/
-#sudo dpkg -i /tmp/$file
-######
-# Installation du programme : ccdciel + libpasastro via ppa
+# install via "PPA" outdate
 ######
 
-sudo apt-get -y install ccdciel
+#sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys AA716FC2
+#echo "deb http://www.ap-i.net/apt unstable main" > /tmp/skychart.list
+#sudo mv /tmp/skychart.list /etc/apt/sources.list.d/skychart.list
+#sudo apt-add-repository 'deb http://www.ap-i.net/apt unstable main'
+#sudo apt-get update
+
+sudo apt-get -y install libpango-1.0-0 xplanet espeak
+#sudo apt-get -y install ccdciel indistarter eqmodgui
+
+
+######
+# install via sourceforge
+######
+
+# install indistarter via sourceforge
+
+software="indistarter"
+
+#need update
+version="$software""-""2.3.1"
+subversion="167"
+
+file="$version""-$subversion""$proc.deb"
+wget https://sourceforge.net/projects/$software/files/$version/$file -P /tmp
+sudo dpkg -i /tmp/$file
+
+# install eqmodgui via sourceforge
+
+software="eqmodgui"
+
+#need update
+version="$software""_""1.7.0"
+subversion="127"
+
+file="$version""-$subversion""$proc.deb"
+wget https://sourceforge.net/projects/$software/files/$version/$file -P /tmp
+sudo dpkg -i /tmp/$file
+
+# Installation de ccdciel
+
+software="ccdciel"
+
+#need update
+version="$software""_""0.9.79"
+subversion="2663"
+
+file="$version""-$subversion""$proc.deb"
+wget https://sourceforge.net/projects/$software/files/$version/$file -P /tmp/
+sudo dpkg -i /tmp/$file
+
 
 ######
 # Création de l'icône sur le bureau

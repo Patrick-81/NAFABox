@@ -67,6 +67,27 @@ Il faut désactiver le mode économie d'énergie du wifi.
     `sudo apt purge gnome-power-manager`    
     `sudo apt autoremove`   
 
+### 8/ For Mobindi don't run on boot:  
+Il faut charger une première fois Mobindi via la commande :
+
+    `/home/$USER/bin/mobindi/startup.sh`    
+Apres le chargement (arret de défilement du texte), vous pouvez éteindre la commande (CTRL+c)   
+Puis relancer le service :   
+
+    `service mobindi start`   
+
+Apres cela, l'adresse standard (port 8080) chargera correctement Mobindi   
+A recommencer à chaque redémarage ( correction du bug en cours).
+
+### 9/ Oacapture don't run your Cam :
+
+Il faut télécharger le packet qui vas avec votre webcam.   
+Attention :  la plupart des packet sont installé via Indi   
+
+https://www.openastroproject.org/downloads/
+
+`sudo apt install ./nom_du_packet.deb`
+
 ### X/ For New bug :
 
 - poster une "Issue" sur github et fournissez le fichier nafabox.log (dans .../NAFABox/ConfigTinker/ )    

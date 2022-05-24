@@ -34,7 +34,8 @@ source ${dirinstall}/detect_language.sh
 ######
 # Installation des pré-requis
 ######
-sudo apt-get install ppa-purge
+sudo apt-get -y install ppa-purge
+sudo apt-get -y remove brltty
 
 # remove media auto mount for dslr :
 sudo gsettings set org.gnome.desktop.media-handling automount false
@@ -181,7 +182,7 @@ then
 		cd ~/Projects/build/kstars
 		sudo make uninstall
 	fi
-    sudo ppa-purge ppa:mutlaqja/indinightly
+    sudo ppa-purge -y ppa:mutlaqja/indinightly
     sudo apt-add-repository -y ppa:mutlaqja/ppa
     sudo apt-get update
     sudo apt-get ${options} install indi-full kstars-bleeding gsc
@@ -202,7 +203,7 @@ then
 		cd ~/Projects/build/kstars
 		sudo make uninstall
 	fi
-    sudo ppa-purge ppa:mutlaqja/ppa
+    sudo ppa-purge -y ppa:mutlaqja/ppa
     sudo apt-add-repository -y ppa:mutlaqja/indinightly
     sudo apt-get update
     sudo apt-get ${options} install indi-full kstars-bleeding gsc

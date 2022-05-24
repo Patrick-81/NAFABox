@@ -1,6 +1,12 @@
 # NAFABox (Nomad Astronomy For All)
 
-Script d'installation pour Créer une NAFABox.
+**ATTENTION :**   
+La Tinkerboard **n'est plus supporté** par les scripts NAFABox. 
+Nous n'avons pas assez de temps pour maintenir cette caret nous vous recommandons de passer au raspberry pi4B. 
+
+Les scripts gardent les balises propres à la Tinkerboard mais ne seront plus testés avec celle-ci systématiquement.
+
+#Script d'installation pour Créer une NAFABox.
 
 Ces scripts sont compatibles avec la TinkerBoard (Armbian, Ubuntu) et la TinkerBoard S (Armbian, Ubuntu).
 Les scripts ont été testés avec Ubuntu Xenial (16.04 LTS) et Ubuntu Bionic (18.04 LTS).  
@@ -15,7 +21,7 @@ Il est nécessaire de disposer d'au moins 10Go d'espace de stockage ou d'une Car
 
 __1-__ Installer la distribution ARMBIAN ( version default Bionic) via Etcher.
 
-https://dl.armbian.com/_old/tinkerboard/archive/Armbian_5.90_Tinkerboard_Ubuntu_bionic_default_4.4.182_desktop.7z
+https://armbian.systemonachip.net/archive/tinkerboard/archive/Armbian_5.90_Tinkerboard_Ubuntu_bionic_default_4.4.182_desktop.7z    
 
 Puis démarrer l'image et suivez la procédure d'installation standard (Attention: par défaut Armbian en QWERTY)
 
@@ -25,7 +31,9 @@ Puis démarrer l'image et suivez la procédure d'installation standard (Attentio
 
 __2-__ Télécharger :  https://github.com/Patrick-81/NAFABox/archive/master.zip  
 ou  
-__2bis-__ Dans votre home : `git clone https://github.com/Patrick-81/NAFABox.git`
+__2bis-__ Dans votre home `cd ~`:   
+`sudo apt install git`   
+`git clone https://github.com/Patrick-81/NAFABox.git`
 
 __3-__ Décompresser le fichier zip ( juste pour 2/)
 
