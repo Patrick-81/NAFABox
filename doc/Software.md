@@ -43,7 +43,8 @@ __- Kstars github :__ https://github.com/KDE/kstars
 __- Indi github :__ https://github.com/indilib/indi   
 __- GPSD :__ http://www.catb.org/gpsd/ (for GPS USB)   
 __- IndiWebManager :__ https://github.com/knro/indiwebmanager   
-__- Additional driver :__ ATIK Indi + Inova Indi   
+ 
+ 
 __Onstep and other__   
     - Onstep : https://github.com/hjd1964/OnStep   
     - Arduino IDE : https://www.arduino.cc/en/main/software   
