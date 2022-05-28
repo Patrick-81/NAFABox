@@ -2,9 +2,10 @@
 
 Start for 3.2 version. No change log before.
 ### 3.4.0 :
-- complet compatibility for Ubuntu Focal 20.04LTS (and 20.10)
+- complet compatibility for Ubuntu Focal 22.04LTS (and 20.04)
 - add ASTAP and big stardatabase
 - debug skchart and ccdciel installation
+- __remove__ compatibility with 16.04LTS and18.04LTS
 
 ### 3.3.2 :
 - update nomachine version
