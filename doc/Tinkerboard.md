@@ -1,7 +1,7 @@
 # NAFABox (Nomad Astronomy For All)
 
 **ATTENTION :**   
-La Tinkerboard n'est plus la carte ofiiciel du projet elle est remplacé par le raspberry pi4B (4 ou 8Go).   
+La Tinkerboard n'est plus la carte ofiiciel du projet elle est remplacé par le Raspberry Pi4B (4 ou 8Go).   
 
 # Script d'installation pour Créer une NAFABox.
 
