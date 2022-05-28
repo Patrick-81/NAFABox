@@ -2,17 +2,18 @@
 
 Script d'installation pour Créer une NAFABox.
 
-Les Script sont esclusivement dédié à Linux via une variante d'Ubuntu (sauf Debian)
+Les Scripts sont esclusivement dédiés à Ubuntu
 
-Ces scripts sont compatibles avec le Raspberry Pi 4b (Ubuntu Mate), la NanoPi-m4 et les systèmes classiques amd64/x86_64 (Ubuntu).   
-Les scripts ont été testés avec Ubuntu Bionic (18.04 LTS) et Ubuntu Focal (20.04 LTS).  
-Il est recomandé d'utiliser **Ubuntu Focal (20.04 LTS)**.
+Ces scripts sont compatibles avec le Raspberry Pi 4b (Armbian Xubuntu), la NanoPi-m4 (Arbian Xubuntu), les cartes Armbian et les systèmes classiques amd64/x86_64 (Xubuntu, Ubuntu Mate, Ubuntu,...).   
+Les scripts ont été testés avec Ubuntu Focal (20.04 LTS) et Ubuntu Jammy (22.04 LTS).  
+
+Il est recomandé d'utiliser **Ubuntu Jammy (22.04 LTS)**.
 
 Il est nécessaire de disposer d'au moins 10Go d'espace de stockage ou d'une Carte SD de 16Go au minimum ( index d'astrométrie non compris)  
 
 **ATTENTION :** Vérifier que les mises à jour automatiques sont désactivées afin qu'elles n'interfèrent pas avec les scripts.
 
-#### Pour TinkerBoard ou Tinkerboard S (armv7/armhf/arm32) : **ATTENTION support arrêté** 
+#### Pour TinkerBoard ou Tinkerboard S (armv7/armhf/arm32) :
 https://github.com/Patrick-81/NAFABox/blob/master/doc/Tinkerboard.md   
 
 #### Pour NanoPi-M4 (armv8/aarch64/arm64) :
