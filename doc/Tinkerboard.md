@@ -27,7 +27,8 @@ https://mirrors.dotsrc.org/armbian-dl/tinkerboard/archive/Armbian_22.02.1_Tinker
 or for Bionic :     
 https://armbian.systemonachip.net/archive/tinkerboard/archive/Armbian_5.95_Tinkerboard_Ubuntu_bionic_default_4.4.190_desktop.7z    
 
-Puis démarrer l'image et suivez la procédure d'installation standard (Attention: par défaut Armbian en QWERTY)
+Puis démarrer l'image et suivez la procédure d'installation standard (Attention: par défaut Armbian est en QWERTY)
+Il vas vous demander de créer un mots de passe superutilisateur (root), puis votre nom d'utilisateur et son mots de passe (de préférence mettre le même que le root) et enfin redémarer.
 
 Pour freezer la version de armbian : [tuto](https://github.com/Patrick-81/NAFABox/blob/master/doc/Switch_kernel_armbain.md#optionnel-mais-conseill%C3%A9-surtout-en-version-next-et-nightly)
 
@@ -45,14 +46,22 @@ __4-__ Décompresser le fichier zip ( juste pour 2/)
 
 __5-__ Ouvrez le dossier ainsi créé
 
-__6-__ lancer **Pre_Install.sh** dans un terminal (avec un clic droit dans le dossier)
+__6-__ Il est conseiller de faire le ménage dans Armbian pour enlever les logiciels inutiled pour l'astronomie.   
+Dans cette optique nous avons créer un script destiné à nettoyer Armbian dans sa configuration desktop de base.
+
+Vous pouvez le lancer via le terminal (avec un clic droit dans le dossier)
+
+`$ ./Clean_Install.sh` 
+( Pour un clavier Francais AZERTY : `:!Cleqn°Instqll:sh` ) 
+
+__7-__ lancer **Pre_Install.sh** dans un terminal (avec un clic droit dans le dossier)
 
 `$ ./Pre_Install.sh` 
 ( Pour un clavier Francais AZERTY : `:!Pre°Instqll:sh` ) 
 
-Vous pouvez choisir d'installer la langue francaise et le clavier si ce n'est pas déjà fait.
+Vous pouvez choisir d'installer la langue francaise si ce n'est pas déjà fait.
 
-__7-__ Une fois le script __Pre_Install__ fini, fermer le terminal puis redémarer.
+__8-__ Une fois le script __Pre_Install__ fini, fermer le terminal puis redémarer.
 
 __Si vous avez modifié la langue,__ le systeme vas vous proposer de renomé les dossiers utilisateurs, accepter puis redémarer. A cause du mode de fonctionnement, après le redémarage, il faut suprimer l'ancien dossier correspondant au bureau ( supprimer le dossier __Desktop__ pour un passage d'anglais au français).    
 __Attention__ Ne pas supprimer le dossier __Desktop__ si c'est le seul présent.
@@ -69,9 +78,9 @@ Lancer __Install.sh__
 
 `$ ./Install.sh` 
 
-__8-__ répondez aux questions lorsque vous y êtes invité, et entrez votre mot de passe quand c'est demandé, remplissez les menus si nécessaire.
+__9-__ répondez aux questions lorsque vous y êtes invité, et entrez votre mot de passe quand c'est demandé, remplissez les menus si nécessaire.
 
-__9-__ Quand tout est fini vous devez redémarrer.
+__10-__ Quand tout est fini vous devez redémarrer.
 
 
 ### Documentation pour la TinkerBoard/S :   
