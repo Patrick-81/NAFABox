@@ -4,7 +4,7 @@
   <img src="https://github.com/Patrick-81/NAFABox/blob/master/doc/logo.png"?raw=true" alt="NAFABox Logo"/>
 </p>
 
-Current version : **3.4.0**
+# Current version : **3.4.0**
 
 Le projet NAFABox consiste en un ensemble de script bash destiné à simplifier l'installation et l'utilisation des logiciels linux dédié à la pratique de l'astronomie amateur.   
 Ce projet permet aussi de mettre un place tout un environement dédié à la pratique de l'astrophoto nomade.   
