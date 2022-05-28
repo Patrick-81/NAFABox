@@ -7,7 +7,7 @@ Les Scripts sont esclusivement dédiés à Ubuntu
 Ces scripts sont compatibles avec le Raspberry Pi 4b (Armbian Xubuntu), la NanoPi-m4 (Arbian Xubuntu), les cartes Armbian et les systèmes classiques amd64/x86_64 (Xubuntu, Ubuntu Mate, Ubuntu,...).   
 Les scripts ont été testés avec Ubuntu Focal (20.04 LTS) et Ubuntu Jammy (22.04 LTS).  
 
-Il est recomandé d'utiliser **Ubuntu Jammy (22.04 LTS)**.
+Il est recomandé d'utiliser **Ubuntu Jammy (22.04 LTS)** (ou Focal si Jammy non disponible).
 
 Il est nécessaire de disposer d'au moins 10Go d'espace de stockage ou d'une Carte SD de 16Go au minimum ( index d'astrométrie non compris)  
 
