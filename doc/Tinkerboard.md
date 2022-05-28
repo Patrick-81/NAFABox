@@ -1,16 +1,13 @@
 # NAFABox (Nomad Astronomy For All)
 
 **ATTENTION :**   
-La Tinkerboard **n'est plus supporté** par les scripts NAFABox. 
-Nous n'avons pas assez de temps pour maintenir cette caret nous vous recommandons de passer au raspberry pi4B. 
+La Tinkerboard n'est plus la carte ofiiciel du projet elle est remplacé par le raspberry pi4B (4 ou 8Go).   
 
-Les scripts gardent les balises propres à la Tinkerboard mais ne seront plus testés avec celle-ci systématiquement.
+# Script d'installation pour Créer une NAFABox.
 
-#Script d'installation pour Créer une NAFABox.
-
-Ces scripts sont compatibles avec la TinkerBoard (Armbian, Ubuntu) et la TinkerBoard S (Armbian, Ubuntu).
-Les scripts ont été testés avec Ubuntu Xenial (16.04 LTS) et Ubuntu Bionic (18.04 LTS).  
-Il est recomandé d'utiliser **Ubuntu Bionic (18.04 LTS)**.
+Ces scripts sont compatibles avec la TinkerBoard (Armbian, Xubuntu) et la TinkerBoard S (Armbian, Xubuntu).
+Les scripts ont été testés avec Ubuntu Focal (20.04 LTS) et Ubuntu Jammy (22.04 LTS).  
+Il est recomandé d'utiliser **Ubuntu Jammy (22.04 LTS)**.
 
 Il est nécessaire de disposer d'au moins 10Go d'espace de stockage ou d'une Carte SD de 16Go au minimum ( index d'astrométrie non compris)  
 
@@ -19,34 +16,43 @@ Il est nécessaire de disposer d'au moins 10Go d'espace de stockage ou d'une Car
 
 ### Etape par étape pour la TinkerBoard/S (ou une autre carte (ARMHF/arm32/armv7) compatible avec Armbian):
 
-__1-__ Installer la distribution ARMBIAN ( version default Bionic) via Etcher.
+__1-__ Installer la distribution ARMBIAN ( version default Bionic) via Etcher.    
 
-https://armbian.systemonachip.net/archive/tinkerboard/archive/Armbian_5.90_Tinkerboard_Ubuntu_bionic_default_4.4.182_desktop.7z    
+For Jammy :   
+TODO    
+
+or for Focal :      
+https://mirrors.dotsrc.org/armbian-dl/tinkerboard/archive/Armbian_22.02.1_Tinkerboard_focal_current_5.15.25_xfce_desktop.img.xz
+
+or for Bionic :     
+https://armbian.systemonachip.net/archive/tinkerboard/archive/Armbian_5.95_Tinkerboard_Ubuntu_bionic_default_4.4.190_desktop.7z    
 
 Puis démarrer l'image et suivez la procédure d'installation standard (Attention: par défaut Armbian en QWERTY)
 
-**ATTENTION** Il faut actuellement freezer la version de arbian à la 4.4.182 : [tuto](https://github.com/Patrick-81/NAFABox/blob/master/doc/Switch_kernel_armbain.md#optionnel-mais-conseill%C3%A9-surtout-en-version-next-et-nightly)
+Pour freezer la version de armbian : [tuto](https://github.com/Patrick-81/NAFABox/blob/master/doc/Switch_kernel_armbain.md#optionnel-mais-conseill%C3%A9-surtout-en-version-next-et-nightly)
 
-**ATTENTION** Il faut redémarer la carte avant toute manipulation
+**ATTENTION** Il faut redémarer la carte avant toute manipulation     
 
-__2-__ Télécharger :  https://github.com/Patrick-81/NAFABox/archive/master.zip  
+__2-__ Dans un terminal pour redéfinir votre clavier : `sudo dpkg-reconfigure keyboard-configuration` puis redémarez   
+
+__3-__ Télécharger :  https://github.com/Patrick-81/NAFABox/archive/master.zip  
 ou  
-__2bis-__ Dans votre home `cd ~`:   
+__3bis-__ Dans votre home `cd ~`:   
 `sudo apt install git`   
 `git clone https://github.com/Patrick-81/NAFABox.git`
 
-__3-__ Décompresser le fichier zip ( juste pour 2/)
+__4-__ Décompresser le fichier zip ( juste pour 2/)
 
-__4-__ Ouvrez le dossier ainsi créé
+__5-__ Ouvrez le dossier ainsi créé
 
-__5-__ lancer **Pre_Install.sh** dans un terminal (avec un clic droit dans le dossier)
+__6-__ lancer **Pre_Install.sh** dans un terminal (avec un clic droit dans le dossier)
 
 `$ ./Pre_Install.sh` 
 ( Pour un clavier Francais AZERTY : `:!Pre°Instqll:sh` ) 
 
 Vous pouvez choisir d'installer la langue francaise et le clavier si ce n'est pas déjà fait.
 
-__6-__ Une fois le script __Pre_Install__ fini, fermer le terminal puis redémarer.
+__7-__ Une fois le script __Pre_Install__ fini, fermer le terminal puis redémarer.
 
 __Si vous avez modifié la langue,__ le systeme vas vous proposer de renomé les dossiers utilisateurs, accepter puis redémarer. A cause du mode de fonctionnement, après le redémarage, il faut suprimer l'ancien dossier correspondant au bureau ( supprimer le dossier __Desktop__ pour un passage d'anglais au français).    
 __Attention__ Ne pas supprimer le dossier __Desktop__ si c'est le seul présent.
@@ -63,9 +69,9 @@ Lancer __Install.sh__
 
 `$ ./Install.sh` 
 
-__7-__ répondez aux questions lorsque vous y êtes invité, et entrez votre mot de passe quand c'est demandé, remplissez les menus si nécessaire.
+__8-__ répondez aux questions lorsque vous y êtes invité, et entrez votre mot de passe quand c'est demandé, remplissez les menus si nécessaire.
 
-__8-__ Quand tout est fini vous pouvez redémarrer.
+__9-__ Quand tout est fini vous devez redémarrer.
 
 
 ### Documentation pour la TinkerBoard/S :   
