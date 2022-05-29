@@ -4,7 +4,7 @@ Script d'installation pour Créer une NAFABox.
 
 Les Scripts sont esclusivement dédiés à Ubuntu
 
-Ces scripts sont compatibles avec le Raspberry Pi 4b (Armbian Xubuntu), la NanoPi-m4 (Arbian Xubuntu), les cartes Armbian et les systèmes classiques amd64/x86_64 (Xubuntu, Ubuntu Mate, Ubuntu,...).   
+Ces scripts sont compatibles avec le Raspberry Pi 4b (Armbian Xubuntu), la NanoPi-m4 (Arbian Xubuntu), Tinkerboard/S, les cartes Armbian et les systèmes classiques amd64/x86_64 (Xubuntu, Ubuntu Mate, Ubuntu,...).   
 Les scripts ont été testés avec Ubuntu Focal (20.04 LTS) et Ubuntu Jammy (22.04 LTS).  
 
 Il est recomandé d'utiliser **Ubuntu Jammy (22.04 LTS)** (ou Focal si Jammy non disponible).
