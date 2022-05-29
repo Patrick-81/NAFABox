@@ -49,7 +49,6 @@ https://armbian.hosthatch.com/archive/nanopim4/archive/Armbian_21.02.1_Nanopim4_
 - Pour la Tinkerboard/S :  
 https://armbian.systemonachip.net/archive/tinkerboard/archive/Armbian_5.95_Tinkerboard_Ubuntu_bionic_default_4.4.190_desktop.7z    
 https://armbian.systemonachip.net/archive/tinkerboard/archive/Armbian_21.02.1_Tinkerboard_bionic_legacy_4.4.213_desktop.img.xz    
-
 https://imola.armbian.com/archive/tinkerboard/archive/Armbian_5.95_Tinkerboard_Ubuntu_bionic_default_4.4.190_desktop.7z    
 https://imola.armbian.com/archive/tinkerboard/archive/Armbian_21.02.1_Tinkerboard_bionic_legacy_4.4.213_desktop.img.xz    
 
