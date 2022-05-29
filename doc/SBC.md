@@ -5,9 +5,8 @@ La Tinkerboard n'est plus la carte ofiiciel du projet elle est remplacé par le 
 
 # Script d'installation pour Créer une NAFABox.
 
-Ces scripts sont compatibles avec la TinkerBoard (Armbian, Xubuntu) et la TinkerBoard S (Armbian, Xubuntu).
 Les scripts ont été testés avec Ubuntu Focal (20.04 LTS) et Ubuntu Jammy (22.04 LTS).  
-Il est recomandé d'utiliser **Ubuntu Jammy (22.04 LTS)**.
+Il est recomandé d'utiliser **Ubuntu Jammy (22.04 LTS)** (ou Focal si non disponible)
 
 Il est nécessaire de disposer d'au moins 10Go d'espace de stockage ou d'une Carte SD de 16Go au minimum ( index d'astrométrie non compris)  
 
@@ -16,15 +15,24 @@ Il est nécessaire de disposer d'au moins 10Go d'espace de stockage ou d'une Car
 
 ### Etape par étape pour la TinkerBoard/S (ou une autre carte (ARMHF/arm32/armv7) compatible avec Armbian):
 
-__1-__ Installer la distribution ARMBIAN ( version default Bionic) via Etcher.    
+__1-__ Installer la distribution ARMBIAN (Xubuntu) via Balena Etcher (https://github.com/balena-io/etcher/releases) ou Raspberry Pi Imager (https://www.raspberrypi.com/software/).    
 
-For Jammy :   
+__For Jammy :__   
+- Pour le Raspberry Pi4B :   
+
+
+- Pour le NanoPi-M4 :    
+
+
+- Pour la Tinkerboard/S :    
 TODO    
 
-or for Focal :      
+__For Focal :__  
+- Pour la Tinkerboard/S :
 https://mirrors.dotsrc.org/armbian-dl/tinkerboard/archive/Armbian_22.02.1_Tinkerboard_focal_current_5.15.25_xfce_desktop.img.xz
 
-or for Bionic :     
+__For Bionic :__    
+- Pour la Tinkerboard/S :
 https://armbian.systemonachip.net/archive/tinkerboard/archive/Armbian_5.95_Tinkerboard_Ubuntu_bionic_default_4.4.190_desktop.7z    
 
 Puis démarrer l'image et suivez la procédure d'installation standard (Attention: par défaut Armbian est en QWERTY)
