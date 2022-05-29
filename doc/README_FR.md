@@ -37,5 +37,5 @@ __Lien utile :__
 ### Liste des logiciels de la NAFABox :   
 https://github.com/Patrick-81/NAFABox/blob/master/doc/Software.md
 
-### NAFABox Bug et Debug connus :
+## IMPORTANT : NAFABox Bug et Debug connus :
 https://github.com/Patrick-81/NAFABox/blob/master/doc/BUG_and_DEBUG_list.md
