@@ -14,7 +14,7 @@ Il est nécessaire de disposer d'au moins 10Go d'espace de stockage ou d'une Car
 **ATTENTION :** Vérifier que les mises à jour automatiques sont désactivées afin qu'elles n'interfèrent pas avec les scripts.
 
 
-#### Pour Raspberry Pi 4B (4/8Go)/NanoPi-M4/Tinkerboard/Autre carte Armbian (armv8/aarch64/arm64) :     
+#### Pour Raspberry Pi 4B (4/8Go) / NanoPi-M4 / Tinkerboard / Autre carte Armbian (armv8/aarch64/arm64) :     
 https://github.com/Patrick-81/NAFABox/blob/master/doc/Tinkerboard.md    
 
 #### Pour un ordinateur/carte amd64/x86_64 :    
