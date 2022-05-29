@@ -19,21 +19,40 @@ __1-__ Installer la distribution ARMBIAN (Xubuntu) via Balena Etcher (https://gi
 
 __For Jammy :__   
 - Pour le Raspberry Pi4B :   
-
+https://mirrors.dotsrc.org/armbian-dl/rpi4b/archive/Armbian_22.05.1_Rpi4b_jammy_current_5.15.36_xfce_desktop.img.xz    
+https://imola.armbian.com/archive/rpi4b/archive/Armbian_22.02.1_Rpi4b_jammy_current_5.15.24_xfce_desktop.img.xz    
 
 - Pour le NanoPi-M4 :    
+https://armbian.site-meganet.com/dl/nanopim4/archive/Armbian_22.05.1_Nanopim4_jammy_edge_5.18.0_xfce_desktop.img.xz    
+https://armbian.hosthatch.com/archive/nanopim4/archive/Armbian_22.02.1_Nanopim4_jammy_edge_5.16.11_xfce_desktop.img.xz    
 
 
 - Pour la Tinkerboard/S :    
 TODO    
 
-__For Focal :__  
-- Pour la Tinkerboard/S :
-https://mirrors.dotsrc.org/armbian-dl/tinkerboard/archive/Armbian_22.02.1_Tinkerboard_focal_current_5.15.25_xfce_desktop.img.xz
 
-__For Bionic :__    
-- Pour la Tinkerboard/S :
+__For Focal :__    
+ - Pour le NanoPi-M4 :    
+https://armbian.hosthatch.com/archive/nanopim4/archive/Armbian_22.02.1_Nanopim4_focal_current_5.15.25_xfce_desktop.img.xz    
+https://armbian.site-meganet.com/dl/nanopim4/archive/Armbian_22.05.1_Nanopim4_focal_current_5.15.35_xfce_desktop.img.xz    
+
+- Pour la Tinkerboard/S :  
+https://armbian.site-meganet.com/dl/tinkerboard/archive/Armbian_22.05.1_Tinkerboard_focal_current_5.15.35_xfce_desktop.img.xz    
+
+
+__For Bionic :__   
+
+- Pour le NanoPi-M4 :    
+https://armbian.hosthatch.com/archive/nanopim4/archive/Armbian_5.98_Nanopim4_Ubuntu_bionic_default_4.4.192_desktop.7z    
+https://armbian.hosthatch.com/archive/nanopim4/archive/Armbian_21.02.1_Nanopim4_bionic_legacy_4.4.213_desktop.img.xz    
+
+- Pour la Tinkerboard/S :  
 https://armbian.systemonachip.net/archive/tinkerboard/archive/Armbian_5.95_Tinkerboard_Ubuntu_bionic_default_4.4.190_desktop.7z    
+https://armbian.systemonachip.net/archive/tinkerboard/archive/Armbian_21.02.1_Tinkerboard_bionic_legacy_4.4.213_desktop.img.xz    
+
+https://imola.armbian.com/archive/tinkerboard/archive/Armbian_5.95_Tinkerboard_Ubuntu_bionic_default_4.4.190_desktop.7z    
+https://imola.armbian.com/archive/tinkerboard/archive/Armbian_21.02.1_Tinkerboard_bionic_legacy_4.4.213_desktop.img.xz    
+
 
 Puis démarrer l'image et suivez la procédure d'installation standard (Attention: par défaut Armbian est en QWERTY)
 Il vas vous demander de créer un mots de passe superutilisateur (root), puis votre nom d'utilisateur et son mots de passe (de préférence mettre le même que le root) et enfin redémarer.
@@ -91,13 +110,13 @@ __9-__ répondez aux questions lorsque vous y êtes invité, et entrez votre mot
 __10-__ Quand tout est fini vous devez redémarrer.
 
 
-### Documentation pour la TinkerBoard/S :   
+### Documentation pour une SBC (obsolète):   
 http://nafabox.linux-astro.fr/#Nafabox_1
 
-### Documentation pour créer un HotSpot pour Tinkerboard/S :  
+### Documentation pour créer un HotSpot pour SBC :  
 https://github.com/Patrick-81/NAFABox/blob/master/doc/Install_Hotspot_Armbian.md   
 
-### Documentation pour installer Un RTC sur Tinkerboard/S :   
+### Documentation pour installer Un RTC sur SBC (avec i2c) :   
 https://github.com/Patrick-81/NAFABox/blob/master/doc/Tuto_rtc_tinkerboard.md
 
 ### Documentation pour le mappage persistant pour les péripheriques serial/usb (en anglais):   
@@ -106,8 +125,11 @@ https://indilib.org/support/tutorials/157-persistent-serial-port-mapping.html
 ### Documentation pour le changement de kernel sur Armbian :
 https://github.com/Patrick-81/NAFABox/blob/master/doc/Switch_kernel_armbian.md
 
-### Documentation activation acceleration graphique :
+### Documentation activation acceleration graphique sur Tinkerboard/S (seulement sur Bionic et Focal):
 https://github.com/Patrick-81/NAFABox/blob/master/doc/tuto_acceleration_graphique_tinker.md
+
+### Documentation activation acceleration graphique sur Nanopi-M4 (seulement sur Bionic et Focal):
+https://github.com/Patrick-81/NAFABox/blob/master/doc/tuto_acceleration_graphique_nanopim4.md
 
 ### pour récupérer une image toute faite de la NAFABox :   
 https://share.obspm.fr/index.php/s/WowXMAZkHPd3K9j
