@@ -14,20 +14,11 @@ Il est nécessaire de disposer d'au moins 10Go d'espace de stockage ou d'une Car
 **ATTENTION :** Vérifier que les mises à jour automatiques sont désactivées afin qu'elles n'interfèrent pas avec les scripts.
 
 
-#### Pour Raspberry PI 4b (armv8/aarch64/arm64) :    
-https://github.com/Patrick-81/NAFABox/blob/master/doc/RPI4.md    
+#### Pour Raspberry Pi 4B (4/8Go)/NanoPi-M4/Tinkerboard/Autre carte Armbian (armv8/aarch64/arm64) :     
+https://github.com/Patrick-81/NAFABox/blob/master/doc/Tinkerboard.md    
 
-#### Pour NanoPi-M4 (armv8/aarch64/arm64) :
-https://github.com/Patrick-81/NAFABox/blob/master/doc/nanopi_m4.md   
-
-#### Pour TinkerBoard ou Tinkerboard S (armv7/armhf/arm32) :
-https://github.com/Patrick-81/NAFABox/blob/master/doc/Tinkerboard.md   
-
-#### Pour une carte ARM compatible Armbian (armv7/armv8/armhf/aarch64/arm32/arm64) :
-https://github.com/Patrick-81/NAFABox/blob/master/doc/arm_board_armbian.md    
-
-#### Pour un ordinateur/carte amd64/x86_64 :
-https://github.com/Patrick-81/NAFABox/blob/master/doc/amd64.md    
+#### Pour un ordinateur/carte amd64/x86_64 :    
+https://github.com/Patrick-81/NAFABox/blob/master/doc/amd64.md     
 
 
 __Lien utile :__
