@@ -2,9 +2,9 @@
 
 Script d'installation pour Créer une NAFABox.
 
-Ces scripts sont compatibles avec les systèmes classiques amd64/x86_64 (Ubuntu).   
-Les scripts ont été testés avec Ubuntu Xenial (16.04 LTS) et Ubuntu Bionic (18.04 LTS).  
-Il est recomandé d'utiliser **Ubuntu Bionic (18.04 LTS)**.
+Ces scripts sont compatibles avec les systèmes classiques amd64/x86_64 (type Ubuntu, sauf Debian).   
+Les scripts ont été testés avec Ubuntu Focal (20.04 LTS) et Ubuntu Jammy (22.04 LTS).  
+Il est recomandé d'utiliser **Ubuntu Jammy (22.04 LTS)**.
 
 Il est nécessaire de disposer d'au moins 10Go d'espace de stockage ou d'une Carte SD de 16Go au minimum ( index d'astrométrie non compris)  
 
@@ -14,19 +14,19 @@ Il est nécessaire de disposer d'au moins 10Go d'espace de stockage ou d'une Car
 ### Pour les systèmes X86_64/Amd64 Ubuntu Linux system :
 
 __1-__ Installez la distribution via Etcher pour une installation USB.
-
-**Ubuntu Mate** Focal (20.04 LTS) --> conseillé 
-http://cdimage.ubuntu.com/ubuntu-mate/releases/20.04/release/ubuntu-mate-20.04.3-desktop-amd64.iso   
-ou **Xubuntu** Focal (20.04 LTS):   
-http://cdimage.ubuntu.com/xubuntu/releases/20.04/release/xubuntu-20.04.3-desktop-amd64.iso   
-ou **Lubuntu** Focal (20.04 LTS) (Pas testé):  
-http://cdimage.ubuntu.com/lubuntu/releases/20.04/release/lubuntu-20.04.3-desktop-amd64.iso   
-ou **Ubuntu** Focal (20.04 LTS) (Pas testé):  
-https://releases.ubuntu.com/20.04.3/ubuntu-20.04.3-desktop-amd64.iso 
-ou **Kubuntu** Focal (20.04 LTS) (Pas testé):  
-http://cdimage.ubuntu.com/kubuntu/releases/20.04/release/kubuntu-20.04.3-desktop-amd64.iso   
-ou **Ubuntu-Budgie** Focal (20.04 LTS) (Pas testé):  
-http://cdimage.ubuntu.com/ubuntu-budgie/releases/20.04/release/ubuntu-budgie-20.04.3-desktop-amd64.iso   
+  
+ou **Xubuntu** Jammy (22.04 LTS): --> conseillé   
+http://cdimage.ubuntu.com/xubuntu/releases/22.04/release/xubuntu-22.04-desktop-amd64.iso   
+**Ubuntu Mate** Jammy (22.04 LTS)    
+http://cdimage.ubuntu.com/ubuntu-mate/releases/22.04/release/ubuntu-mate-22.04-desktop-amd64.iso    
+ou **Kubuntu** Jammy (22.04 LTS):   
+http://cdimage.ubuntu.com/kubuntu/releases/22.04/release/kubuntu-22.04-desktop-amd64.iso    
+ou **Lubuntu** Jammy (22.04 LTS) (Pas testé):   
+http://cdimage.ubuntu.com/lubuntu/releases/22.04/release/lubuntu-22.04-desktop-amd64.iso   
+ou **Ubuntu** Jammy (22.04 LTS) (Pas testé):    
+https://ubuntu.univ-nantes.fr/ubuntu-cd/22.04/ubuntu-22.04-desktop-amd64.iso
+ou **Ubuntu-Budgie** Jammy (22.04 LTS) (Pas testé):    
+http://cdimage.ubuntu.com/ubuntu-budgie/releases/22.04/release/ubuntu-budgie-22.04-desktop-amd64.iso    
 
 
 Puis démarrer l'image et suivez la procédure d'installation standard.
