@@ -18,11 +18,11 @@ Il est nécessaire de disposer d'au moins 10Go d'espace de stockage ou d'une Car
 __1-__ Installer la distribution ARMBIAN (Xubuntu) via Balena Etcher (https://github.com/balena-io/etcher/releases) ou Raspberry Pi Imager (https://www.raspberrypi.com/software/).    
 
 __For Jammy :__   
-- Pour le Raspberry Pi4B :   
+- Pour la Raspberry Pi4B :   
 https://mirrors.dotsrc.org/armbian-dl/rpi4b/archive/Armbian_22.05.1_Rpi4b_jammy_current_5.15.36_xfce_desktop.img.xz    
 https://imola.armbian.com/archive/rpi4b/archive/Armbian_22.02.1_Rpi4b_jammy_current_5.15.24_xfce_desktop.img.xz    
 
-- Pour le NanoPi-M4 :    
+- Pour la NanoPi-M4 :    
 https://armbian.site-meganet.com/dl/nanopim4/archive/Armbian_22.05.1_Nanopim4_jammy_edge_5.18.0_xfce_desktop.img.xz    
 https://armbian.hosthatch.com/archive/nanopim4/archive/Armbian_22.02.1_Nanopim4_jammy_edge_5.16.11_xfce_desktop.img.xz    
 
@@ -32,7 +32,7 @@ TODO
 
 
 __For Focal :__    
- - Pour le NanoPi-M4 :    
+ - Pour la NanoPi-M4 :    
 https://armbian.hosthatch.com/archive/nanopim4/archive/Armbian_22.02.1_Nanopim4_focal_current_5.15.25_xfce_desktop.img.xz    
 https://armbian.site-meganet.com/dl/nanopim4/archive/Armbian_22.05.1_Nanopim4_focal_current_5.15.35_xfce_desktop.img.xz    
 
@@ -42,7 +42,7 @@ https://armbian.site-meganet.com/dl/tinkerboard/archive/Armbian_22.05.1_Tinkerbo
 
 __For Bionic :__   
 
-- Pour le NanoPi-M4 :    
+- Pour la NanoPi-M4 :    
 https://armbian.hosthatch.com/archive/nanopim4/archive/Armbian_5.98_Nanopim4_Ubuntu_bionic_default_4.4.192_desktop.7z    
 https://armbian.hosthatch.com/archive/nanopim4/archive/Armbian_21.02.1_Nanopim4_bionic_legacy_4.4.213_desktop.img.xz    
 
