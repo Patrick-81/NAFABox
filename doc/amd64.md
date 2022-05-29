@@ -32,40 +32,47 @@ http://cdimage.ubuntu.com/ubuntu-budgie/releases/22.04/release/ubuntu-budgie-22.
 Puis démarrer l'image et suivez la procédure d'installation standard.
 
 
-__2-__ Télécharger :  https://github.com/Patrick-81/NAFABox/archive/master.zip  
+**ATTENTION** Il faut redémarer l'ordinateur avant toute manipulation     
+
+__2-__ Dans un terminal pour redéfinir votre clavier si besoin : `sudo dpkg-reconfigure keyboard-configuration` puis redémarez   
+
+__3-__ Télécharger :  https://github.com/Patrick-81/NAFABox/archive/master.zip  
 ou  
-__2bis-__ Dans votre home : `git clone https://github.com/Patrick-81/NAFABox.git`
+__3bis-__ Dans votre home `cd ~`:   
+`sudo apt install git`   
+`git clone https://github.com/Patrick-81/NAFABox.git`
 
-__3-__ Décompresser le fichier zip ( juste pour 2/)
+__4-__ Décompresser le fichier zip ( juste pour 2/)
 
-__4-__ Ouvrez le dossier ainsi créé
+__5-__ Ouvrez le dossier ainsi créé
 
-__5-__ lancer **Pre_Install.sh** dans un terminal (avec un clic droit dans le dossier)
+__6-__ lancer **Pre_Install.sh** dans un terminal (avec un clic droit dans le dossier)
 
 `$ ./Pre_Install.sh` 
+( Pour un clavier Francais AZERTY : `:!Pre°Instqll:sh` ) 
 
-Vous pouvez choisir d'installer la langue francaise et le clavier si ce n'est pas déjà fait.
+Vous pouvez choisir d'installer la langue francaise si ce n'est pas déjà fait.
 
-6/ Une fois le script __Pre_Install__ fini, fermer le terminal puis redémarer.
+__7-__ Une fois le script __Pre_Install__ fini, fermer le terminal puis redémarer.
 
-__Si vous avez modifié la langue,__ le systeme vas vous proposer de renomé les dossiers utilisateurs, accepter puis redémarer. A cause du mode de fonctionnement, après le redémarage, il faut suprimer l'ancien dossier correspondant au bureau ( supprimer le dossier Desktop pour un passage d'anglais au français).    
+__Si vous avez modifié la langue,__ le systeme vas vous proposer de renomé les dossiers utilisateurs, accepter puis redémarer. A cause du mode de fonctionnement, après le redémarage, il faut suprimer l'ancien dossier correspondant au bureau ( supprimer le dossier __Desktop__ pour un passage d'anglais au français).    
 __Attention__ Ne pas supprimer le dossier __Desktop__ si c'est le seul présent.
 
 ouvrir un nouveau terminal.
 
-Lancer une mise a jour :   
-`$ sudo apt update`    
+Lancer une mise a jour :    
+`$ sudo apt update`      
 `$ sudo apt upgrade -y`    
 redémarer
 
 ouvrir un nouveau terminal.    
-Lancer __Install.sh__   
+Lancer __Install.sh__
 
 `$ ./Install.sh` 
 
-__7-__ répondez aux questions lorsque vous y êtes invité, et entrez votre mot de passe quand c'est demandé, remplissez les menus si nécessaire.
+__8-__ répondez aux questions lorsque vous y êtes invité, et entrez votre mot de passe quand c'est demandé, remplissez les menus si nécessaire.
 
-__8-__ Quand tout est fini vous pouvez redémarrer.
+__9-__ Quand tout est fini vous devez redémarrer.
 
 
 ### Documentation pour le mappage persistant pour les péripheriques serial/usb (en anglais):   
