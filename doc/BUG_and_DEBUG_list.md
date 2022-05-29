@@ -88,6 +88,28 @@ https://www.openastroproject.org/downloads/
 
 `sudo apt install ./nom_du_packet.deb`
 
+
+### 10/ Active Autoboot :
+__install gdm3 (for autoboot/login) :__
+
+`sudo apt install gdm3` --> select gdm3
+
+__edit gdm3 for autoboot/login__
+`sudo nano /etc/gdm3/custom.conf`   
+--> uncomment autoboot section (2 lines) and replace default user (user1)
+
+### 11/ Active 3D acceleration on Jammy (22.04LTS) or highter :
+__For RPI4B update PPA link :__
+
+`sudo nano /etc/apt/sources.list.d/oibaf-ubuntu-graphics-drivers-jammy.list`
+Replace __hirsute__ with __jammy__ and save
+`sudo apt update`
+
+__install Mesa driver (for OpenGL, EGL and Vulkan support) :__
+
+`sudo apt install mesa-*`
+`sudo apt install vulkan-*`
+
 ### X/ For New bug :
 
 - poster une "Issue" sur github et fournissez le fichier nafabox.log (dans .../NAFABox/ConfigTinker/ )    
