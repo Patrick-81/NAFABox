@@ -18,7 +18,7 @@ Il est nécessaire de disposer d'au moins 10Go d'espace de stockage ou d'une Car
 [TUTO pour SBC (Single Board Computer)](https://github.com/Patrick-81/NAFABox/blob/master/doc/Tinkerboard.md)    
 
 #### Pour un ordinateur/carte amd64/x86_64 :    
-https://github.com/Patrick-81/NAFABox/blob/master/doc/amd64.md     
+[TUTO pour Ordinateur fixe ou Portable](https://github.com/Patrick-81/NAFABox/blob/master/doc/amd64.md)     
 
 
 __Lien utile :__
