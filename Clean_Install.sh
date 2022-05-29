@@ -15,4 +15,8 @@ then
 	echo "Run first Pre_Install.sh and reload Terminal"
 else
 
+	echo "############################"
+        echo "##   Clean Installation   ##"
+        echo "############################" 
+
 fi
