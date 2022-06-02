@@ -49,10 +49,10 @@ if [ $? -eq 0 ]; then
 	git clone https://github.com/pludov/mobindi.git
     else
         git clone https://github.com/pludov/mobindi.git
-        cd mobindi
-        # install and compil
-        ./install.sh --log-dir /var/log/mobindi
     fi
+    cd mobindi
+    # install and compil
+    ./install.sh --log-dir /var/log/mobindi
 
     #######
     # Scipt de lancement du serveur au login
