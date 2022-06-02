@@ -36,7 +36,6 @@ if [ $? -eq 0 ]; then
     curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
     sudo apt-get install -y nodejs
     sudo apt-get install -y npm
-    npm install
 
     #######
     # clonage mobindi dans ~/bin
