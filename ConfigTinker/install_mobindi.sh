@@ -44,11 +44,9 @@ if [ $? -eq 0 ]; then
     cd /home/$USER/bin
     if [[ -d "/home/$USER/bin/mobindi" ]]
     then
-        cd mobindi
-        git pull --ff-only
-        # install and compil
-        ./install.sh --log-dir /var/log/mobindi
-
+	echo "suppression de l'ancien dossier mobindi"
+	rm -Rf /home/${USER}/bin/mobindi
+	git clone https://github.com/pludov/mobindi.git
     else
         git clone https://github.com/pludov/mobindi.git
         cd mobindi
