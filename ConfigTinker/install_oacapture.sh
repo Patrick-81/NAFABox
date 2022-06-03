@@ -38,8 +38,13 @@ if [ $? -eq 0 ]; then
     ######
     # Installation des pré-requis
     #######
-    # sudo apt-get -y install qt4-dev-tools qt4-qmake libqt4-dev
-    sudo apt-get -y install libv4l-dev libdc1394-22-dev libcfitsio-dev libudev-dev libtiff-dev gawk gcc g++ yasm autoconf autoconf-archive libtool m4 automake libevent-dev pkg-config libhidapi-dev libpng-dev libsdl-dev libusb-dev libusb-1.0 libftdi-dev libraw-dev libraw1394-11 libgtkmm-2.4-1v5 libglademm-2.4-1v5 libgtkglextmm-x11-1.2-dev libgtkglextmm-x11-1.2 qt5-default fxload qtbase5-dev qttools5-dev-tools
+    # for bionic : 
+    sudo apt-get -y install libdc1394-22-dev
+    # for bionic focal :
+    sudo apt-get -y install libsdl-dev qt5-default
+    # for focal jammy :
+    sudo apt-get -y install libdc1394-dev libsdl1.2-dev
+    sudo apt-get -y install libv4l-dev libcfitsio-dev libudev-dev libtiff-dev gawk gcc g++ yasm autoconf autoconf-archive libtool m4 automake libevent-dev pkg-config libhidapi-dev libpng-dev libusb-dev libusb-1.0 libftdi-dev libraw-dev libraw1394-11 libgtkmm-2.4-1v5 libglademm-2.4-1v5 libgtkglextmm-x11-1.2-dev libgtkglextmm-x11-1.2 fxload qtbase5-dev qttools5-dev-tools qtchooser qt5-qmake qtbase5-dev-tools
     sudo apt-get -y install libuvc-dev
 
     mode_install="dev"
@@ -119,70 +124,94 @@ if [ $? -eq 0 ]; then
             sudo make uninstall
             sudo make clean
         fi
-        oa_version="1.6.0-1"
+        oa_version="1.8.0-1"
         date_ver="2019/05"
         if [[ ${proc} == "_amd64" ]]
         then
             platform="amd64"
-            wget http://www.openastroproject.org/wp-content/uploads/${date_ver}/ubuntu-18.04-${platform}/libasicamera_1.14.0227-0_${platform}.deb -P /tmp
-            wget http://www.openastroproject.org/wp-content/uploads/${date_ver}/ubuntu-18.04-${platform}/libefwfilter_0.3.1205-3_${platform}.deb -P /tmp
-            wget http://www.openastroproject.org/wp-content/uploads/${date_ver}/ubuntu-18.04-${platform}/libuvc_0.0.6-2openastro3_${platform}deb -P /tmp
-            wget http://www.openastroproject.org/wp-content/uploads/${date_ver}/ubuntu-18.04-${platform}/libtoupcam_1.33.13725-2_${platform}.deb -P /tmp
-            wget http://www.openastroproject.org/wp-content/uploads/${date_ver}/ubuntu-18.04-${platform}/libaltaircam_1.32.13483-1_${platform}.deb -P /tmp
-            wget http://www.openastroproject.org/wp-content/uploads/${date_ver}/ubuntu-18.04-${platform}/qhy-firmware_4.0.16-0_all.deb -P /tmp
-
-            wget http://www.openastroproject.org/wp-content/uploads/${date_ver}/ubuntu-18.04-${platform}/libqhyccd_4.0.16-0_${platform}.deb -P /tmp
-            wget http://www.openastroproject.org/wp-content/uploads/${date_ver}/ubuntu-18.04-${platform}/libaltaircamlegacy_1.24.11330-1_${platform}.deb -P /tmp
-
-            sudo dpkg -i /tmp/libasicamera_1.14.0227-0_${platform}.deb
-            sudo dpkg -i /tmp/libefwfilter_0.3.1205-3_${platform}.deb
-            sudo dpkg -i /tmp/libuvc_0.0.6-2openastro3_${platform}deb
-            sudo dpkg -i /tmp/libtoupcam_1.33.13725-2_${platform}.deb
-            sudo dpkg -i /tmp/libaltaircam_1.32.13483-1_${platform}.deb
-            sudo dpkg -i /tmp/qhy-firmware_4.0.16-0_all.deb
-            sudo dpkg -i /tmp/libqhyccd_4.0.16-0_${platform}.deb
-            sudo dpkg -i /tmp/libaltaircamlegacy_1.24.11330-1_${platform}.deb
+	    wget http://www.openastroproject.org/wp-content/uploads/${date_ver}/ubuntu-20.04-${platform}/libaltaircam_1.39.15364-1_${platform}.deb -P /tmp
+	    wget http://www.openastroproject.org/wp-content/uploads/${date_ver}/ubuntu-20.04-${platform}/libaltaircamlegacy_1.24.11330-2_${platform}.deb -P /tmp
+            wget http://www.openastroproject.org/wp-content/uploads/${date_ver}/ubuntu-20.04-${platform}/libasicamera_1.16-0_${platform}.deb -P /tmp
+            wget http://www.openastroproject.org/wp-content/uploads/${date_ver}/ubuntu-20.04-${platform}/libefwfilter_1.5.0615-1_${platform}.deb -P /tmp
+	    wget http://www.openastroproject.org/wp-content/uploads/${date_ver}/ubuntu-20.04-${platform}/libmallincam_1.43.15988-1_${platform}.deb -P /tmp
+	    wget http://www.openastroproject.org/wp-content/uploads/${date_ver}/ubuntu-20.04-${platform}/libnncam_1.46.16709-1_${platform}.deb -P /tmp
+	    wget http://www.openastroproject.org/wp-content/uploads/${date_ver}/ubuntu-20.04-${platform}/libomegonprocam_1.39.15325-1_${platform}.deb -P /tmp
+	    wget http://www.openastroproject.org/wp-content/uploads/${date_ver}/ubuntu-20.04-${platform}/libqhyccd_20.8.26.3-1_${platform}.deb -P /tmp
+	    wget http://www.openastroproject.org/wp-content/uploads/${date_ver}/ubuntu-20.04-${platform}/libstarshootg_1.46.16627-1_${platform}.deb -P /tmp
+	    wget http://www.openastroproject.org/wp-content/uploads/${date_ver}/ubuntu-20.04-${platform}/libtoupcam_1.48.18042-1_${platform}.deb -P /tmp
+            wget http://www.openastroproject.org/wp-content/uploads/${date_ver}/ubuntu-20.04-${platform}/libuvc_0.0.6-2openastro4_${platform}deb -P /tmp
+            wget http://www.openastroproject.org/wp-content/uploads/${date_ver}/ubuntu-20.04-${platform}/qhy-firmware_20.8.26.3-1_all.deb -P /tmp
+	    
+            sudo dpkg -i /tmp/libaltaircam_1.39.15364-1_${platform}.deb
+            sudo dpkg -i /tmp/libaltaircamlegacy_1.24.11330-2_${platform}.deb
+            sudo dpkg -i /tmp/libasicamera_1.16-0_${platform}.deb
+            sudo dpkg -i /tmp/libefwfilter_1.5.0615-1_${platform}.deb
+            sudo dpkg -i /tmp/libmallincam_1.43.15988-1_${platform}.deb
+            sudo dpkg -i /tmp/libnncam_1.46.16709-1_${platform}.deb
+            sudo dpkg -i /tmp/libomegonprocam_1.39.15325-1_${platform}.deb
+            sudo dpkg -i /tmp/libqhyccd_20.8.26.3-1_${platform}.deb
+            sudo dpkg -i /tmp/libstarshootg_1.46.16627-1_${platform}.deb
+            sudo dpkg -i /tmp/libtoupcam_1.48.18042-1_${platform}.deb
+            sudo dpkg -i /tmp/libuvc_0.0.6-2openastro4_${platform}deb
+            sudo dpkg -i /tmp/qhy-firmware_20.8.26.3-1_all.deb
 
         elif [[ ${proc} == "_armhf" ]]
         then
             platform="armhf"
-            wget http://www.openastroproject.org/wp-content/uploads/${date_ver}/ubuntu-18.04-${platform}/libasicamera_1.14.0227-0_${platform}.deb -P /tmp
-            wget http://www.openastroproject.org/wp-content/uploads/${date_ver}/ubuntu-18.04-${platform}/libefwfilter_0.3.1205-3_${platform}.deb -P /tmp
-            wget http://www.openastroproject.org/wp-content/uploads/${date_ver}/ubuntu-18.04-${platform}/libuvc_0.0.6-2openastro3_${platform}.deb -P /tmp
-            wget http://www.openastroproject.org/wp-content/uploads/${date_ver}/ubuntu-18.04-${platform}/libtoupcam_1.33.13725-2_${platform}.deb -P /tmp
-            wget http://www.openastroproject.org/wp-content/uploads/${date_ver}/ubuntu-18.04-${platform}/libaltaircam_1.32.13483-1_${platform}.deb -P /tmp
-            wget http://www.openastroproject.org/wp-content/uploads/${date_ver}/ubuntu-18.04-${platform}/qhy-firmware_4.0.16-0_all.deb -P /tmp
-
-            wget http://www.openastroproject.org/wp-content/uploads/${date_ver}/ubuntu-18.04-${platform}/libqhyccd_4.0.16-0_${platform}.deb -P /tmp
-
-            sudo dpkg -i /tmp/libasicamera_1.14.0227-0_${platform}.deb
-            sudo dpkg -i /tmp/libefwfilter_0.3.1205-3_${platform}.deb
-            sudo dpkg -i /tmp/libuvc_0.0.6-2openastro3_${platform}deb
-            sudo dpkg -i /tmp/libtoupcam_1.33.13725-2_${platform}.deb
-            sudo dpkg -i /tmp/libaltaircam_1.32.13483-1_${platform}.deb
-            sudo dpkg -i /tmp/qhy-firmware_4.0.16-0_all.deb
-            sudo dpkg -i /tmp/libqhyccd_4.0.16-0_${platform}.deb
+	    wget http://www.openastroproject.org/wp-content/uploads/${date_ver}/ubuntu-20.04-${platform}/libaltaircam_1.47.17497-1_${platform}.deb -P /tmp
+            wget http://www.openastroproject.org/wp-content/uploads/${date_ver}/ubuntu-20.04-${platform}/libasicamera_1.16-0_${platform}.deb -P /tmp
+            wget http://www.openastroproject.org/wp-content/uploads/${date_ver}/ubuntu-20.04-${platform}/libefwfilter_1.5.0615-1_${platform}.deb -P /tmp
+	    wget http://www.openastroproject.org/wp-content/uploads/${date_ver}/ubuntu-20.04-${platform}/libmallincam_1.43.15988-1_${platform}.deb -P /tmp
+	    wget http://www.openastroproject.org/wp-content/uploads/${date_ver}/ubuntu-20.04-${platform}/libnncam_1.46.16709-1_${platform}.deb -P /tmp
+	    wget http://www.openastroproject.org/wp-content/uploads/${date_ver}/ubuntu-20.04-${platform}/libomegonprocam_1.39.15325-1_${platform}.deb -P /tmp
+	    wget http://www.openastroproject.org/wp-content/uploads/${date_ver}/ubuntu-20.04-${platform}/libqhyccd_20.8.26.3-1_${platform}.deb -P /tmp
+	    wget http://www.openastroproject.org/wp-content/uploads/${date_ver}/ubuntu-20.04-${platform}/libstarshootg_1.46.16627-1_${platform}.deb -P /tmp
+	    wget http://www.openastroproject.org/wp-content/uploads/${date_ver}/ubuntu-20.04-${platform}/libtoupcam_1.48.18042-1_${platform}.deb -P /tmp
+            wget http://www.openastroproject.org/wp-content/uploads/${date_ver}/ubuntu-20.04-${platform}/libuvc_0.0.6-2openastro4_${platform}deb -P /tmp
+            wget http://www.openastroproject.org/wp-content/uploads/${date_ver}/ubuntu-20.04-${platform}/qhy-firmware_20.8.26.3-1_all.deb -P /tmp
+	    
+            sudo dpkg -i /tmp/libaltaircam_1.39.15364-1_${platform}.deb
+            sudo dpkg -i /tmp/libasicamera_1.16-0_${platform}.deb
+            sudo dpkg -i /tmp/libefwfilter_1.5.0615-1_${platform}.deb
+            sudo dpkg -i /tmp/libmallincam_1.43.15988-1_${platform}.deb
+            sudo dpkg -i /tmp/libnncam_1.46.16709-1_${platform}.deb
+            sudo dpkg -i /tmp/libomegonprocam_1.39.15325-1_${platform}.deb
+            sudo dpkg -i /tmp/libqhyccd_20.8.26.3-1_${platform}.deb
+            sudo dpkg -i /tmp/libstarshootg_1.46.16627-1_${platform}.deb
+            sudo dpkg -i /tmp/libtoupcam_1.48.18042-1_${platform}.deb
+            sudo dpkg -i /tmp/libuvc_0.0.6-2openastro4_${platform}deb
+            sudo dpkg -i /tmp/qhy-firmware_20.8.26.3-1_all.deb
 
         elif [[ ${proc} == "_aarch64" ]]
         then
-            platform="arm64"
-            wget http://www.openastroproject.org/wp-content/uploads/${date_ver}/ubuntu-18.04-${platform}/libasicamera_1.14.0227-0_${platform}.deb -P /tmp
-            wget http://www.openastroproject.org/wp-content/uploads/${date_ver}/ubuntu-18.04-${platform}/libefwfilter_0.3.1205-3_${platform}.deb -P /tmp
-            wget http://www.openastroproject.org/wp-content/uploads/${date_ver}/ubuntu-18.04-${platform}/libuvc_0.0.6-2openastro3_${platform}.deb -P /tmp
-            wget http://www.openastroproject.org/wp-content/uploads/${date_ver}/ubuntu-18.04-${platform}/libtoupcam_1.33.13725-2_${platform}.deb -P /tmp
-            wget http://www.openastroproject.org/wp-content/uploads/${date_ver}/ubuntu-18.04-${platform}/libaltaircam_1.32.13483-1_${platform}.deb -P /tmp
-            wget http://www.openastroproject.org/wp-content/uploads/${date_ver}/ubuntu-18.04-armhf/qhy-firmware_4.0.16-0_all.deb -P /tmp
-
-            sudo dpkg -i /tmp/libasicamera_1.14.0227-0_${platform}.deb
-            sudo dpkg -i /tmp/libefwfilter_0.3.1205-3_${platform}.deb
-            sudo dpkg -i /tmp/libuvc_0.0.6-2openastro3_${platform}deb
-            sudo dpkg -i /tmp/libtoupcam_1.33.13725-2_${platform}.deb
-            sudo dpkg -i /tmp/libaltaircam_1.32.13483-1_${platform}.deb
-            sudo dpkg -i /tmp/qhy-firmware_4.0.16-0_all.deb
+	    platform="arm64"
+	    wget http://www.openastroproject.org/wp-content/uploads/${date_ver}/ubuntu-20.04-${platform}/libaltaircam_1.47.17497-1_${platform}.deb -P /tmp
+            wget http://www.openastroproject.org/wp-content/uploads/${date_ver}/ubuntu-20.04-${platform}/libasicamera_1.16-0_${platform}.deb -P /tmp
+            wget http://www.openastroproject.org/wp-content/uploads/${date_ver}/ubuntu-20.04-${platform}/libefwfilter_1.5.0615-1_${platform}.deb -P /tmp
+	    wget http://www.openastroproject.org/wp-content/uploads/${date_ver}/ubuntu-20.04-${platform}/libmallincam_1.43.15988-1_${platform}.deb -P /tmp
+	    wget http://www.openastroproject.org/wp-content/uploads/${date_ver}/ubuntu-20.04-${platform}/libnncam_1.46.16709-1_${platform}.deb -P /tmp
+	    wget http://www.openastroproject.org/wp-content/uploads/${date_ver}/ubuntu-20.04-${platform}/libomegonprocam_1.39.15325-1_${platform}.deb -P /tmp
+	    wget http://www.openastroproject.org/wp-content/uploads/${date_ver}/ubuntu-20.04-${platform}/libqhyccd_20.8.26.3-1_${platform}.deb -P /tmp
+	    wget http://www.openastroproject.org/wp-content/uploads/${date_ver}/ubuntu-20.04-${platform}/libstarshootg_1.46.16627-1_${platform}.deb -P /tmp
+	    wget http://www.openastroproject.org/wp-content/uploads/${date_ver}/ubuntu-20.04-${platform}/libtoupcam_1.48.18042-1_${platform}.deb -P /tmp
+            wget http://www.openastroproject.org/wp-content/uploads/${date_ver}/ubuntu-20.04-${platform}/libuvc_0.0.6-2openastro4_${platform}deb -P /tmp
+            wget http://www.openastroproject.org/wp-content/uploads/${date_ver}/ubuntu-20.04-${platform}/qhy-firmware_20.8.26.3-1_all.deb -P /tmp
+	    
+            sudo dpkg -i /tmp/libaltaircam_1.39.15364-1_${platform}.deb
+            sudo dpkg -i /tmp/libasicamera_1.16-0_${platform}.deb
+            sudo dpkg -i /tmp/libefwfilter_1.5.0615-1_${platform}.deb
+            sudo dpkg -i /tmp/libmallincam_1.43.15988-1_${platform}.deb
+            sudo dpkg -i /tmp/libnncam_1.46.16709-1_${platform}.deb
+            sudo dpkg -i /tmp/libomegonprocam_1.39.15325-1_${platform}.deb
+            sudo dpkg -i /tmp/libqhyccd_20.8.26.3-1_${platform}.deb
+            sudo dpkg -i /tmp/libstarshootg_1.46.16627-1_${platform}.deb
+            sudo dpkg -i /tmp/libtoupcam_1.48.18042-1_${platform}.deb
+            sudo dpkg -i /tmp/libuvc_0.0.6-2openastro4_${platform}deb
+            sudo dpkg -i /tmp/qhy-firmware_20.8.26.3-1_all.deb
 
         fi
 
-        wget http://www.openastroproject.org/wp-content/uploads/${date_ver}/ubuntu-18.04-${platform}/oacapture_${oa_version}_${platform}.deb -P /tmp
+        wget http://www.openastroproject.org/wp-content/uploads/${date_ver}/ubuntu-20.04-${platform}/oacapture_${oa_version}_${platform}.deb -P /tmp
         sudo dpkg -i /tmp/oacapture_${oa_version}_${platform}.deb
     fi
 
