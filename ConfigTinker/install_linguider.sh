@@ -28,9 +28,9 @@ whereiam=${dirinstall}
 ######
 # Installation des pré-requis
 ######
-sudo apt-get -y install g++ make binutils binutils-dev
+sudo apt-get -y install g++ make binutils binutils-dev cmake
 sudo apt-get -y install libusb-1.0-0-dev
-sudo apt-get -y install qtdeclarative5-dev
+sudo apt-get -y install qtdeclarative5-dev qt5-qmake
 ######
 # Installation du programme : lin_guider
 #      Récupération
