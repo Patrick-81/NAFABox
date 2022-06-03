@@ -51,7 +51,7 @@ then
 
 	file="$software"_""$version"-$subversion""$proc.deb"
 	wget https://sourceforge.net/projects/$software/files/1-software/version_$version/$file -P /tmp
-	sudo dpkg -i /tmp/$file
+	sudo apt-get -y install /tmp/$file
 
 elif [[ ${skychart_version} == "beta" ]]
 then
@@ -64,7 +64,7 @@ then
 
 	file="$software""_""$version""-$subversion""$proc.deb"
 	wget https://sourceforge.net/projects/$software/files/0-beta/$date/$file -P /tmp
-	sudo dpkg -i /tmp/$file
+	sudo apt-get -y install /tmp/$file
 fi
 
 ######
@@ -81,7 +81,7 @@ subversion="3421"
 
 file="$software""_""$version""-$subversion""_all.deb"
 wget https://sourceforge.net/projects/$software/files/2-catalogs/Stars/$file -P /tmp
-sudo dpkg -i /tmp/$file
+sudo apt-get -y install /tmp/$file
 
 # install skychart-data-dso via sourceforge
 
@@ -93,7 +93,7 @@ subversion="3431"
 
 file="$software""_""$version""-$subversion""_all.deb"
 wget https://sourceforge.net/projects/$software/files/2-catalogs/Nebulea/$version/$file -P /tmp
-sudo dpkg -i /tmp/$file
+sudo apt-get -y install /tmp/$file
 
 # install via skychart-data-pictures sourceforge
 
@@ -105,7 +105,7 @@ subversion="3421"
 
 file="$software""_""$version""-$subversion""_all.deb"
 wget https://sourceforge.net/projects/$software/files/2-catalogs/Nebulea/$version/$file -P /tmp
-sudo dpkg -i /tmp/$file
+sudo apt-get -y install /tmp/$file
 
 # install via "PPA" outdate
 
