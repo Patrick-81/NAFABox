@@ -28,19 +28,17 @@ whereiam=${dirinstall}
 ######
 # Installation des pré-requis
 ######
-sudo add-apt-repository -y ppa:rock-core/qt4
-sudo apt-get update
-sudo apt-get -y install g++
+sudo apt-get -y install g++ make binutils binutils-dev
 sudo apt-get -y install libusb-1.0-0-dev
-sudo apt-get -y install libqt4-dev
+sudo apt-get -y install qtdeclarative5-dev
 ######
 # Installation du programme : lin_guider
 #      Récupération
 #      Compilation
 #      Installation
 ######
-version="4.2.0"
-file="lin_guider-4.2.0.tar.bz2"
+version="5.0.1"
+file="lin_guider-5.0.1.tar.bz2"
 mkdir -p /tmp/linguider
 wget https://sourceforge.net/projects/linguider/files/${version}/${file} -P /tmp/linguider
 tar xvjf /tmp/linguider/${file} -C /tmp/linguider
@@ -49,7 +47,8 @@ cd /tmp/linguider/lin_guider_pack/lin_guider
 echo "Configuration $dirinstall"
 ./configure
 echo "Make"
-make
+make clean
+make -j4
 sudo cp lin_guider /usr/bin/.
 ######
 # Création de l'icône sur le bureau
