@@ -68,7 +68,7 @@ fi
 file=nomachine_${version}_${sous_version}_${type}.deb
 
 wget https://download.nomachine.com/download/${base_version}/${type2}/${file} -P /tmp/
-sudo dpkg -i /tmp/${file}
+sudo apt-get -y install /tmp/${file}
 
 
 # for keyboard bug correction :
