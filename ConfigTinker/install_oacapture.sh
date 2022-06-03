@@ -80,31 +80,37 @@ if [ $? -eq 0 ]; then
         fi
 
         cd /home/${USER}/bin/openastro/
-
+	
+	echo "autoconf oacapture"
         # config openastro
         set -x -e
         autoreconf -fvi
 
         # config libusb
+	echo "autoconf libusb"
         cd ./ext/libusb
         autoreconf -ivf
 
         # config libdc1394
+	echo "autoconf libdc1394"
         cd ..
         cd libdc1394
         autoreconf -fvi
 
         # config libhidapi
+	echo "autoconf libhidapi"
         cd ..
         cd libhidapi
         autoreconf -ivf
         cd ../../
 
         #install openastro
+	echo "compile oacature ... wait"
         ./configure
         make
         sudo make install
-
+	echo "compile oacature finish"
+	
         ######
         # Création de l'icône sur le bureau
         ######
