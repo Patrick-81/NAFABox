@@ -47,8 +47,11 @@ if [ $? -eq 0 ]; then
     sudo apt-get -y install libv4l-dev libcfitsio-dev libudev-dev libtiff-dev gawk gcc g++ yasm autoconf autoconf-archive libtool m4 automake libevent-dev pkg-config make
     sudo apt-get -y install libhidapi-dev libpng-dev libusb-dev libusb-1.0 libftdi-dev libraw-dev libraw1394-11 libgtkmm-2.4-1v5 libglademm-2.4-1v5 libgtkglextmm-x11-1.2-dev libgtkglextmm-x11-1.2 fxload 
     sudo apt-get -y install qtbase5-dev qttools5-dev-tools qtchooser qt5-qmake qtbase5-dev-tools
-    sudo apt-get -y install libuvc-dev
+    sudo apt-get -y install libuvc-dev gawk libv4l2rds0 libavcodec-dev libbz2-dev libavformat-dev libavutil-dev libftdi-dev
+    sudo apt-get -y install libcfitsio-dev libftdi-dev libavcodec-dev libavformat-dev libavdevice-dev libavfilter-dev yasm
 
+    # need add altaircamlegacy and omegonprocam
+    
     mode_install="dev"
     # go at home
     cd /home/${USER}/bin/
@@ -150,18 +153,18 @@ if [ $? -eq 0 ]; then
             wget http://www.openastroproject.org/wp-content/uploads/${date_ver}/ubuntu-20.04-${platform}/libuvc_0.0.6-2openastro4_${platform}deb -P /tmp
             wget http://www.openastroproject.org/wp-content/uploads/${date_ver}/ubuntu-20.04-${platform}/qhy-firmware_20.8.26.3-1_all.deb -P /tmp
 	    
-            sudo dpkg -i /tmp/libaltaircam_1.39.15364-1_${platform}.deb
-            sudo dpkg -i /tmp/libaltaircamlegacy_1.24.11330-2_${platform}.deb
-            sudo dpkg -i /tmp/libasicamera_1.16-0_${platform}.deb
-            sudo dpkg -i /tmp/libefwfilter_1.5.0615-1_${platform}.deb
-            sudo dpkg -i /tmp/libmallincam_1.43.15988-1_${platform}.deb
-            sudo dpkg -i /tmp/libnncam_1.46.16709-1_${platform}.deb
-            sudo dpkg -i /tmp/libomegonprocam_1.39.15325-1_${platform}.deb
-            sudo dpkg -i /tmp/libqhyccd_20.8.26.3-1_${platform}.deb
-            sudo dpkg -i /tmp/libstarshootg_1.46.16627-1_${platform}.deb
-            sudo dpkg -i /tmp/libtoupcam_1.48.18042-1_${platform}.deb
-            sudo dpkg -i /tmp/libuvc_0.0.6-2openastro4_${platform}deb
-            sudo dpkg -i /tmp/qhy-firmware_20.8.26.3-1_all.deb
+            sudo apt-get -y install /tmp/libaltaircam_1.39.15364-1_${platform}.deb
+            sudo apt-get -y install /tmp/libaltaircamlegacy_1.24.11330-2_${platform}.deb
+            sudo apt-get -y install /tmp/libasicamera_1.16-0_${platform}.deb
+            sudo apt-get -y install /tmp/libefwfilter_1.5.0615-1_${platform}.deb
+            sudo apt-get -y install /tmp/libmallincam_1.43.15988-1_${platform}.deb
+            sudo apt-get -y install /tmp/libnncam_1.46.16709-1_${platform}.deb
+            sudo apt-get -y install /tmp/libomegonprocam_1.39.15325-1_${platform}.deb
+            sudo apt-get -y install /tmp/libqhyccd_20.8.26.3-1_${platform}.deb
+            sudo apt-get -y install /tmp/libstarshootg_1.46.16627-1_${platform}.deb
+            sudo apt-get -y install /tmp/libtoupcam_1.48.18042-1_${platform}.deb
+            sudo apt-get -y install /tmp/libuvc_0.0.6-2openastro4_${platform}deb
+            sudo apt-get -y install /tmp/qhy-firmware_20.8.26.3-1_all.deb
 
         elif [[ ${proc} == "_armhf" ]]
         then
@@ -178,17 +181,17 @@ if [ $? -eq 0 ]; then
             wget http://www.openastroproject.org/wp-content/uploads/${date_ver}/ubuntu-20.04-${platform}/libuvc_0.0.6-2openastro4_${platform}deb -P /tmp
             wget http://www.openastroproject.org/wp-content/uploads/${date_ver}/ubuntu-20.04-${platform}/qhy-firmware_20.8.26.3-1_all.deb -P /tmp
 	    
-            sudo dpkg -i /tmp/libaltaircam_1.39.15364-1_${platform}.deb
-            sudo dpkg -i /tmp/libasicamera_1.16-0_${platform}.deb
-            sudo dpkg -i /tmp/libefwfilter_1.5.0615-1_${platform}.deb
-            sudo dpkg -i /tmp/libmallincam_1.43.15988-1_${platform}.deb
-            sudo dpkg -i /tmp/libnncam_1.46.16709-1_${platform}.deb
-            sudo dpkg -i /tmp/libomegonprocam_1.39.15325-1_${platform}.deb
-            sudo dpkg -i /tmp/libqhyccd_20.8.26.3-1_${platform}.deb
-            sudo dpkg -i /tmp/libstarshootg_1.46.16627-1_${platform}.deb
-            sudo dpkg -i /tmp/libtoupcam_1.48.18042-1_${platform}.deb
-            sudo dpkg -i /tmp/libuvc_0.0.6-2openastro4_${platform}deb
-            sudo dpkg -i /tmp/qhy-firmware_20.8.26.3-1_all.deb
+            sudo apt-get -y install /tmp/libaltaircam_1.39.15364-1_${platform}.deb
+            sudo apt-get -y install /tmp/libasicamera_1.16-0_${platform}.deb
+            sudo apt-get -y install /tmp/libefwfilter_1.5.0615-1_${platform}.deb
+            sudo apt-get -y install /tmp/libmallincam_1.43.15988-1_${platform}.deb
+            sudo apt-get -y install /tmp/libnncam_1.46.16709-1_${platform}.deb
+            sudo apt-get -y install /tmp/libomegonprocam_1.39.15325-1_${platform}.deb
+            sudo apt-get -y install /tmp/libqhyccd_20.8.26.3-1_${platform}.deb
+            sudo apt-get -y install /tmp/libstarshootg_1.46.16627-1_${platform}.deb
+            sudo apt-get -y install /tmp/libtoupcam_1.48.18042-1_${platform}.deb
+            sudo apt-get -y install /tmp/libuvc_0.0.6-2openastro4_${platform}deb
+            sudo apt-get -y install /tmp/qhy-firmware_20.8.26.3-1_all.deb
 
         elif [[ ${proc} == "_aarch64" ]]
         then
@@ -205,22 +208,22 @@ if [ $? -eq 0 ]; then
             wget http://www.openastroproject.org/wp-content/uploads/${date_ver}/ubuntu-20.04-${platform}/libuvc_0.0.6-2openastro4_${platform}deb -P /tmp
             wget http://www.openastroproject.org/wp-content/uploads/${date_ver}/ubuntu-20.04-${platform}/qhy-firmware_20.8.26.3-1_all.deb -P /tmp
 	    
-            sudo dpkg -i /tmp/libaltaircam_1.39.15364-1_${platform}.deb
-            sudo dpkg -i /tmp/libasicamera_1.16-0_${platform}.deb
-            sudo dpkg -i /tmp/libefwfilter_1.5.0615-1_${platform}.deb
-            sudo dpkg -i /tmp/libmallincam_1.43.15988-1_${platform}.deb
-            sudo dpkg -i /tmp/libnncam_1.46.16709-1_${platform}.deb
-            sudo dpkg -i /tmp/libomegonprocam_1.39.15325-1_${platform}.deb
-            sudo dpkg -i /tmp/libqhyccd_20.8.26.3-1_${platform}.deb
-            sudo dpkg -i /tmp/libstarshootg_1.46.16627-1_${platform}.deb
-            sudo dpkg -i /tmp/libtoupcam_1.48.18042-1_${platform}.deb
-            sudo dpkg -i /tmp/libuvc_0.0.6-2openastro4_${platform}deb
-            sudo dpkg -i /tmp/qhy-firmware_20.8.26.3-1_all.deb
+            sudo apt-get -y install /tmp/libaltaircam_1.39.15364-1_${platform}.deb
+            sudo apt-get -y install /tmp/libasicamera_1.16-0_${platform}.deb
+            sudo apt-get -y install /tmp/libefwfilter_1.5.0615-1_${platform}.deb
+            sudo apt-get -y install /tmp/libmallincam_1.43.15988-1_${platform}.deb
+            sudo apt-get -y install /tmp/libnncam_1.46.16709-1_${platform}.deb
+            sudo apt-get -y install /tmp/libomegonprocam_1.39.15325-1_${platform}.deb
+            sudo apt-get -y install /tmp/libqhyccd_20.8.26.3-1_${platform}.deb
+            sudo apt-get -y install /tmp/libstarshootg_1.46.16627-1_${platform}.deb
+            sudo apt-get -y install /tmp/libtoupcam_1.48.18042-1_${platform}.deb
+            sudo apt-get -y install /tmp/libuvc_0.0.6-2openastro4_${platform}deb
+            sudo apt-get -y install /tmp/qhy-firmware_20.8.26.3-1_all.deb
 
         fi
 
         wget http://www.openastroproject.org/wp-content/uploads/${date_ver}/ubuntu-20.04-${platform}/oacapture_${oa_version}_${platform}.deb -P /tmp
-        sudo dpkg -i /tmp/oacapture_${oa_version}_${platform}.deb
+        sudo apt-get -y install /tmp/oacapture_${oa_version}_${platform}.deb
     fi
 
 else
