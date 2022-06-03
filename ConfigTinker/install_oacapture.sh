@@ -49,7 +49,7 @@ if [ $? -eq 0 ]; then
     sudo apt-get -y install qtbase5-dev qttools5-dev-tools qtchooser qt5-qmake qtbase5-dev-tools
     sudo apt-get -y install libuvc-dev gawk libv4l2rds0 libavcodec-dev libbz2-dev libavformat-dev libavutil-dev libftdi-dev
     sudo apt-get -y install libcfitsio-dev libftdi-dev libavcodec-dev libavformat-dev libavdevice-dev libavfilter-dev yasm
-    sudo apt-get -y install ffmpeg
+    sudo apt-get -y install ffmpeg libftdi1-dev
     # need add altaircamlegacy and omegonprocam
     
     mode_install="dev"
