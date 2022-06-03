@@ -72,7 +72,7 @@ subversion="127"
 
 file="$version""-$subversion""$proc.deb"
 wget https://sourceforge.net/projects/$software/files/$version/$file -P /tmp
-sudo dpkg -i /tmp/$file
+sudo apt-get -y install /tmp/$file
 
 # Installation de ccdciel
 
@@ -84,7 +84,7 @@ subversion="2663"
 
 file="$version""-$subversion""$proc.deb"
 wget https://sourceforge.net/projects/$software/files/$version/$file -P /tmp/
-sudo dpkg -i /tmp/$file
+sudo apt-get -y install /tmp/$file
 
 
 ######
