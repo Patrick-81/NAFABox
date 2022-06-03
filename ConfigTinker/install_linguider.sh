@@ -49,7 +49,7 @@ echo "Configuration $dirinstall"
 echo "Make"
 make clean
 make -j4
-sudo cp lin_guider /usr/bin/.
+sudo cp ./build/release/lin_guider /usr/bin/.
 ######
 # Création de l'icône sur le bureau
 ######
