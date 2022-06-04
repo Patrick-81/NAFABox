@@ -24,9 +24,9 @@ echo "================================================="
 ######
 # Installation des pré-requis
 ######
-sudo apt-get -y install libconfig++9v5 libffms2-4 
-sudo apt-get -y install libraw-dev
-sudo apt-get -y install -f
+# sudo apt-get -y install libconfig++9v5 libffms2-4 
+# sudo apt-get -y install libraw-dev
+# sudo apt-get -y install -f
 ######
 # Options de apt-get pour l'installation des paquets
 ######
