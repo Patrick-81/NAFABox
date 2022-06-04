@@ -165,6 +165,7 @@ then
     sudo apt-get install -y libwxgtk3.0-dev
     sudo apt-get install -y libwxgtk-webview3.0-gtk3-dev libwxgtk3.0-gtk3-dev libwxgtk-media3.0-gtk3-dev libwxgtk-media3.0-gtk3-dev
     sudo apt-get install -y libglibmm-2.4-dev
+    sudo apt-get install -y libglew-dev
 
     #test si le dossiers existe, si oui suppression
     if [[ -d "/home/${USER}/bin/imppg" ]]
