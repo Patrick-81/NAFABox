@@ -109,7 +109,7 @@ fi
 if [[ ${s_gimp} == "TRUE" ]]
 then
 
-    sudo apt-add-repository -y ppa:ubuntuhandbook1/gimp
+    #sudo apt-add-repository -y ppa:ubuntuhandbook1/gimp
     sudo apt-get update
     sudo apt-get install -y gimp
 
