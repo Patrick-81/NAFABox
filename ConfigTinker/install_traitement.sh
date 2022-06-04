@@ -141,7 +141,9 @@ then
         rm -Rf /home/${USER}/bin/stackistry
     fi
 
-    sudo apt-get install -y libgtkmm-3.0-dev ffmpeg libavcodec-dev libavformat-dev libavutil-dev gcc g++ git
+    sudo apt-get install -y ffmpeg libavcodec-dev libavformat-dev libavutil-dev gcc g++ git cmake make
+    sudo apt-get install -y libgtkmm-3.0-dev libglibmm-2.4-dev libwxgtk-webview3.0-gtk3-dev libwxgtk3.0-gtk3-dev libwxgtk-media3.0-gtk3-dev libwxgtk-media3.0-gtk3-dev
+    
     cd ~/bin
     git clone https://github.com/GreatAttractor/libskry.git
     cd ./libskry
