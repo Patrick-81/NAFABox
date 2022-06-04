@@ -43,7 +43,7 @@ if [ $? -eq 0 ]; then
     # for bionic focal :
     sudo apt-get -y install libsdl-dev qt5-default
     # for focal jammy :
-    sudo apt-get -y install libdc1394-dev libsdl1.2-dev libudev1
+    sudo apt-get -y install libdc1394-dev libsdl1.2-dev libudev1 libhidapi-dev
     sudo apt-get -y install libv4l-dev libcfitsio-dev libudev-dev libtiff-dev gawk gcc g++ yasm autoconf autoconf-archive libtool m4 automake libevent-dev pkg-config make
     sudo apt-get -y install libhidapi-dev libpng-dev libusb-dev libusb-1.0 libftdi-dev libraw-dev libraw1394-11 libgtkmm-2.4-1v5 libglademm-2.4-1v5 libgtkglextmm-x11-1.2-dev libgtkglextmm-x11-1.2 fxload 
     sudo apt-get -y install qtbase5-dev qttools5-dev-tools qtchooser qt5-qmake qtbase5-dev-tools
@@ -86,8 +86,8 @@ if [ $? -eq 0 ]; then
 	
 	echo "autoconf oacapture"
         # config openastro
-        # set -x -e
-        # autoreconf -fvi
+        set -x -e
+        autoreconf -fvi
 
         # config libusb
 	# echo "autoconf libusb"
