@@ -153,7 +153,7 @@ then
     git clone https://github.com/GreatAttractor/stackistry.git
     cd ./stackistry
     make
-    cat ${dirinstall}/Stackistry.desktop  | sed -e "s/HOME/$HOME/g" > /tmp/Stackistry.desktop
+    cat ${dirinstall}/Stackistry.desktop | sed -e "s/HOME/$HOME/g" > /tmp/Stackistry.desktop
     cp /tmp/Stackistry.desktop ~/${desktop}/Stackistry.desktop
     sudo cp ~/${desktop}/Stackistry.desktop /usr/share/applications
 fi
