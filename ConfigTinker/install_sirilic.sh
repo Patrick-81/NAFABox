@@ -37,8 +37,8 @@ sudo apt-get -y install python-is-python3
 ######
 # Installation
 ######
-version="1.13.7-1" # a garder a jour
-code_dl="3233062590b55181c660c06eece42f95" # a garder à jour
+version="1.14.3-1" # a garder a jour
+code_dl="f07f8c4f28de25b61423b71d6ec538b6" # a garder à jour
 cd /tmp/
 wget https://gitlab.com/free-astro/sirilic/uploads/${code_dl}/python3-sirilic_${version}_all.deb
 sudo apt-get -y install /tmp/python3-sirilic_${version}_all.deb
