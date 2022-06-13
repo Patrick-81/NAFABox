@@ -34,6 +34,9 @@ Insérer votre carte SD dans votre ordinateur.
 ## Install de l'interface graphique et correction :
 
 ## (OPTIONNEL) :
+### définisez le bon clavier :
+Connectez vvous puis lancer la commande suivante : 
+`sudo dpkg-reconfigure keyboard-configuration`
 ### Pour créer un nouvelle utilisateur :
 Attention le clavier est en QWERTY par defaut. Sous Linux les mots de passe ne s'affiche pas c'est normal.  
 - Connectez vous sur l'utilisateur par defaut :
@@ -54,50 +57,42 @@ Il vous sera demendé de définir un nouveau mots de passe.
 - Suprimer les fichier de l'utilisateur par defaut :
 `sudo rm -R /home/ubuntu/`
 
-### Delete Cloud-init  (for more fast boot)
+## (Optimisation) :
+### Suprimez "cloud-init" pour un démarage plus rapide :
 
 `sudo apt purge cloud-init`   
 `sudo rm -rf /etc/cloud/`   
 `sudo rm -rf /var/lib/cloud`   
-`reboot`
 
-### Install Desktop manually :
-
+## Installation de la partie graphique :
+### mettez à jour le système :
 `sudo apt update`  
- 
-__Xubuntu :__ `sudo apt install xubuntu-desktop`  
-__Ubuntu Mate :__ `sudo apt install ubuntu-mate-desktop ubuntu-mate-welcome software-boutique` 
-  
+`sudo apt upgrade`
 `reboot`
 
-### Install Desktop auto (ubuntu mate for example):
+### installez l'interface graphique : 
+__Xubuntu :__ `sudo apt install xubuntu-desktop` --> très léger plutôt joli   
+__Kubuntu :__ `sudo apt install kubuntu-desktop` --> moins léger mais très joli   
+__Lubuntu :__ `sudo apt install lubuntu-desktop` --> très léger
+__Ubuntu Mate :__ `sudo apt install ubuntu-mate-desktop` --> pas testé
 
-`git clone https://github.com/wimpysworld/desktopify.git`   
-`cd desktopify`   
-`sudo ./desktopify --de ubuntu-mate`   
+### intallez gdm3 (surtout pour Lubuntu et Kubuntu) :
+`sudo apt install gdm3`    
 
-if you need setup wizard on the next boot : 
+### redémarez pour accéder au bureau :
+`reboot`
 
-`sudo ./desktopify --oem --de ubuntu-mate`
-
-### install gdm3 (for autoboot/login)(for xubuntu) :
-
-`sudo apt install gdm3` --> select gdm3
-
-#### edit gdm3 for autoboot/login
+#### éditez gdm3 pour avoir un autologgin
+Une fois redémarrez ouvrez un terminal puis lancez les commandes suivantes :   
 `sudo nano /etc/gdm3/custom.conf`   
---> uncomment autoboot section (2 lines) and replace default user (user1)  
+--> enlevez les commantaires de la section autoboot (2 lignes) et replacez l'utilisateur par default (user1) par votre nom d'utilisateur.
 `reboot`
 
+### supprimez l'économiseur d'écran (pour xubuntu):
 
-### Error Correction just for <v17:    
-`sudo nano /etc/modules-load.d/cups-filters.conf` --> comment all lines   
+Dans le menu : **Settings**-->**Screensaver** et désactivé Screensaver
 
-### Error Correction (for xubuntu) :    
-`sudo apt remove light-locker`   
-`sudo rm /var/crash/*`   
-`reboot`
+### installer complétement la langue (optionel):
 
-### Remove screensaver (for xubuntu):
-
-In program menu select **Settings**-->**Screensaver** and desactivate Screensaver
+Ouvrez le menu et cherchez "langue" et ouvrez le menu de langue. Le système vous proposera d'installer les paquet de langue manquant. Si ce n'est pas le cas, installer la lague voulu et mettez là en première position afin de la définir comme langue par defaut. Appliquez et redémarer.   
+Cette étape peut être fait automatiquement via les script NAFABox.
