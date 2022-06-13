@@ -33,19 +33,25 @@ Insérer votre carte SD dans votre ordinateur.
 
 ## Install de l'interface graphique et correction :
 
-### Create new sudo user (nafa for exemple):
+## (OPTIONNEL) :
+### Pour créer un nouvelle utilisateur :
+Attention le clavier est en QWERTY par defaut. Sous Linux les mots de passe ne s'affiche pas c'est normal.  
+- Connectez vous sur l'utilisateur par defaut :
+login : ubuntu
+mdp : ubuntu
 
-Log in to ubuntu user (login : ubuntu , pwd : ubuntu)
+Il vous sera demendé de définir un nouveau mots de passe.
 
-`sudo adduser nafa`   
-`sudo adduser nafa sudo`   
+- Créer un nouvelle utilisateur (nafabox par exemple):
+`sudo adduser nafabox`   
+- autorisez ce nouvelle utilisateur à ecceder à la commande "sudo" :
+`sudo adduser nafabox sudo`   
+- redémarez :
 `reboot`
-
-### Delete Ubuntu user :
-
-Log in to nafa user
-
+- connectez vous au nouvel utilisateur
+- Suprimer l'utilisateur par defaut :
 `sudo deluser ubuntu`   
+- Suprimer les fichier de l'utilisateur par defaut :
 `sudo rm -R /home/ubuntu/`
 
 ### Delete Cloud-init  (for more fast boot)
