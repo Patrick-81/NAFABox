@@ -1,17 +1,35 @@
-# Install Ubuntu image for RPI4 and RPI3b+ :   
+# Construction d'un image pour RPI4 et RPI3b+ :   
 
-this tutorial explains how to switch from Ubuntu server 20.04.x (64bit or 32bit) to an ubuntu with a graphical interface. 
+Ce tuto est destiné à vous accompagner afin de mettre en place un système de base avec interface graphique à l'aide de l'image d'Ubuntu Server 
 
-## Download and install :
+## Téléchargement et parametrage de base :
 
-Go here for download last Image for RPI4B/RPI3B+ :   
-[RPI Ubuntu server official realese 64bit](https://cdimage.ubuntu.com/releases/20.04.3/release/ubuntu-20.04.3-preinstalled-server-arm64+raspi.img.xz)   
-[RPI Ubuntu server official realese 32bit](https://cdimage.ubuntu.com/releases/20.04.3/release/ubuntu-20.04.3-preinstalled-server-armhf+raspi.img.xz)   
-
-Otherwise you can directly go through the Raspberry Pi Imager tool :   
+Pour installer l'image sur votre carte SD utilisez la logiciel fourni pour le Raspberry Pi :
 [Raspberry Pi Imager](https://www.raspberrypi.org/software/)   
+Téléchargez le puis installez, le il est compatible avec toutes les platformes !
 
-Install this image with Etcher or Raspberry Pi Imager and put micro SDcard on your rpi4/rpi3b+
+## Installation de la carte SD (min 32Go, version U3/V30) :
+
+Insérer votre carte SD dans votre ordinateur.   
+
+Sélectionnez "choisissez l'OS" :   
+![select image](https://github.com/Patrick-81/NAFABox/raw/master/doc/rpi_install_1.JPG)
+
+Sélectionnez "Other general-purpose OS" :   
+![select image](https://github.com/Patrick-81/NAFABox/raw/master/doc/rpi_install_2.JPG)
+
+Sélectionnez "Ubuntu" :
+![select image](https://github.com/Patrick-81/NAFABox/raw/master/doc/rpi_install_3.JPG)
+
+Sélectionnez "Ubuntu Server 22.04 LTS" (version arm64, 64-bit) :   
+![select image](https://github.com/Patrick-81/NAFABox/raw/master/doc/rpi_install_4.JPG)
+
+Sélectionnez "Choisissez le Stockage" et selectionnez votre carte SD :   
+![select image](https://github.com/Patrick-81/NAFABox/raw/master/doc/rpi_install_5.JPG)
+
+Sélectionnez les options afin de parametrer votre nom d'utilisateur, l'acces SSH, la conection wifi, le type de clavier :   
+![select image](https://github.com/Patrick-81/NAFABox/raw/master/doc/rpi_install_6.JPG)
+
 
 ## Install desktop on Rpi4/Rpi3B Ubuntu server :
 
