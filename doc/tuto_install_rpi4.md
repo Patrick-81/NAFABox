@@ -12,26 +12,26 @@ Téléchargez le puis installez, le il est compatible avec toutes les platformes
 
 Insérer votre carte SD dans votre ordinateur.   
 
-Sélectionnez "choisissez l'OS" :   
+### Sélectionnez "choisissez l'OS" :   
 ![select image](https://github.com/Patrick-81/NAFABox/raw/master/doc/rpi_install_1.JPG)
 
-Sélectionnez "Other general-purpose OS" :   
+### Sélectionnez "Other general-purpose OS" :   
 ![select image](https://github.com/Patrick-81/NAFABox/raw/master/doc/rpi_install_2.JPG)
 
-Sélectionnez "Ubuntu" :
+### Sélectionnez "Ubuntu" :   
 ![select image](https://github.com/Patrick-81/NAFABox/raw/master/doc/rpi_install_3.JPG)
 
-Sélectionnez "Ubuntu Server 22.04 LTS" (version arm64, 64-bit) :   
+### Sélectionnez "Ubuntu Server 22.04 LTS" (version arm64, 64-bit) :   
 ![select image](https://github.com/Patrick-81/NAFABox/raw/master/doc/rpi_install_4.JPG)
 
-Sélectionnez "Choisissez le Stockage" et selectionnez votre carte SD :   
+### Sélectionnez "Choisissez le Stockage" et selectionnez votre carte SD :   
 ![select image](https://github.com/Patrick-81/NAFABox/raw/master/doc/rpi_install_5.JPG)
 
-Sélectionnez les options afin de parametrer votre nom d'utilisateur, l'acces SSH, la conection wifi, le type de clavier :   
+### Sélectionnez les options afin de parametrer votre nom d'utilisateur, l'acces SSH, la conection wifi, le type de clavier :   
 ![select image](https://github.com/Patrick-81/NAFABox/raw/master/doc/rpi_install_6.JPG)
 
 
-## Install desktop on Rpi4/Rpi3B Ubuntu server :
+## Install de l'interface graphique et correction :
 
 ### Create new sudo user (nafa for exemple):
 
