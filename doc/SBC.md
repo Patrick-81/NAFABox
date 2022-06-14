@@ -15,7 +15,7 @@ Il est nécessaire de disposer d'au moins 10Go d'espace de stockage ou d'une Car
 
 ### Etape par étape pour la TinkerBoard/S (ou une autre carte (ARMHF/arm32/armv7) compatible avec Armbian):
 
-__1-__ Installer la distribution ARMBIAN (Xubuntu) via Balena Etcher (https://github.com/balena-io/etcher/releases) ou Raspberry Pi Imager (https://www.raspberrypi.com/software/).    
+__1-__ Installer la distribution ARMBIAN (Xubuntu) via Balena [Etcher](https://github.com/balena-io/etcher/releases) ou [Raspberry Pi Imager](https://www.raspberrypi.com/software/).    
 
 ## Les Raspberry Pi 2B/3B/3B+/4B/400 :
 https://github.com/Patrick-81/NAFABox/blob/master/doc/tuto_install_rpi4.md
