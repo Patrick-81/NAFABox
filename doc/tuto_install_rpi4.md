@@ -1,108 +1,111 @@
-# Construction d'un image pour RPI4 et RPI3b+ :   
+# Construction d'une image pour RPI4 et RPI3b+ :   
 
-Ce tuto est destiné à vous accompagner afin de mettre en place un système de base avec interface graphique à l'aide de l'image d'Ubuntu Server 
+Ce tuto est destiné à vous accompagner afin de mettre en place un système de base doté d’une interface graphique, à l'aide de l'image d'Ubuntu Server. 
 
-## Téléchargement et parametrage de base :
+## Téléchargement et paramétrage de base :
 
-Pour installer l'image sur votre carte SD utilisez la logiciel fourni pour le Raspberry Pi :
+Pour installer l'image sur votre carte SD, utilisez le logiciel fourni pour le Raspberry Pi :
 [Raspberry Pi Imager](https://www.raspberrypi.org/software/)   
-Téléchargez le puis installez, le il est compatible avec toutes les platformes !
+Téléchargez-le, puis installez-le. Il est compatible avec toutes les plateformes !
 
-## Installation de la carte SD (min 32Go, version U3/V30) :
+## Installation de la carte SD (minimum 32Go, version U3/V30) :
 
-Insérer votre carte SD dans votre ordinateur.   
+Insérez votre carte SD dans votre ordinateur.   
 
-### Sélectionnez "choisissez l'OS" :   
+### Sélectionnez « choisissez l'OS » :   
 ![select image](https://github.com/Patrick-81/NAFABox/raw/master/doc/rpi_install_1.JPG)
 
-### Sélectionnez "Other general-purpose OS" :   
+### Sélectionnez « Other general-purpose OS » :   
 ![select image](https://github.com/Patrick-81/NAFABox/raw/master/doc/rpi_install_2.JPG)
 
-### Sélectionnez "Ubuntu" :   
+### Sélectionnez « Ubuntu » :   
 ![select image](https://github.com/Patrick-81/NAFABox/raw/master/doc/rpi_install_3.JPG)
 
-### Sélectionnez "Ubuntu Server 22.04 LTS" (version arm64, 64-bit) :   
+### Sélectionnez « Ubuntu Server 22.04 LTS » (version arm64, 64-bit) :   
 ![select image](https://github.com/Patrick-81/NAFABox/raw/master/doc/rpi_install_4.JPG)
 
-### Sélectionnez "Choisissez le Stockage" et selectionnez votre carte SD :   
+### Sélectionnez « Choisissez le Stockage », puis votre carte SD :   
 ![select image](https://github.com/Patrick-81/NAFABox/raw/master/doc/rpi_install_5.JPG)
 
-### Sélectionnez les options afin de parametrer votre nom d'utilisateur, l'acces SSH, la conection wifi, le type de clavier :   
+### Sélectionnez les bonnes options afin de paramétrer votre nom d'utilisateur, l'accès SSH, la connexion wifi et le type de clavier :   
 ![select image](https://github.com/Patrick-81/NAFABox/raw/master/doc/rpi_install_6.JPG)
 
 
-Inserer la carte SD dans le Raspberry Pi,    
-Branchez le cable réseaux (ou utilisez la connection wifi parametré précédement)    
-Branchez l'écran   
-Branchez la souris et le clavier   
-Branchez l'alimentation    
+- Insérez la carte SD dans le Raspberry Pi.    
+- Branchez le câble réseau (ou utilisez la connexion wifi paramétrée précédemment);   
+- Branchez l'écran.
+- Branchez la souris et le clavier.
+- Branchez l'alimentation.
 
-## Install de l'interface graphique et correction :
+## Installation de l'interface graphique et correction :
 
 ## (OPTIONNEL) :
-### définisez le bon clavier :
-Connectez vvous puis lancer la commande suivante : 
+### Choisissez le bon clavier :
+Connectez-vous, puis tapez la commande suivante : 
 `sudo dpkg-reconfigure keyboard-configuration`
-### Pour créer un nouvelle utilisateur :
-Attention le clavier est en QWERTY par defaut. Sous Linux les mots de passe ne s'affiche pas c'est normal.  
-- Connectez vous sur l'utilisateur par defaut :
-login : ubuntu
-mdp : ubuntu
+### Pour créer un nouvel utilisateur :
+Attention : le clavier est en QWERTY par défaut. Sous Linux, les mots de passe ne s'affichent pas et c'est normal.  
+- Connectez-vous avec l'utilisateur par défaut :
 
-Il vous sera demendé de définir un nouveau mots de passe.
+login : `ubuntu`
+mot de passe : `ubuntu`
 
-- Créer un nouvelle utilisateur (nafabox par exemple):
+Il vous sera demandé de définir un nouveau mot de passe.
+
+- Créez un nouveau utilisateur (en l’appelant nafabox par exemple):
 `sudo adduser nafabox`   
-- autorisez ce nouvelle utilisateur à ecceder à la commande "sudo" :
+- Autorisez ce nouvel utilisateur à exécuter la commande « sudo » :
 `sudo adduser nafabox sudo`   
-- redémarez :
+- Redémarez :
 `reboot`
-- connectez vous au nouvel utilisateur
-- Suprimer l'utilisateur par defaut :
+- Connectez-vous avec le nouvel utilisateur
+- Supprimez l'utilisateur par défaut :
 `sudo deluser ubuntu`   
-- Suprimer les fichier de l'utilisateur par defaut :
+- Supprimez les fichiers lui appartenant :
 `sudo rm -R /home/ubuntu/`
 
 ## (Optimisation) :
-### Suprimez "cloud-init" pour un démarage plus rapide :
+### Supprimez « cloud-init » pour un démarrage plus rapide :
 
 `sudo apt purge cloud-init`   
 `sudo rm -rf /etc/cloud/`   
 `sudo rm -rf /var/lib/cloud`   
 
 ## Installation de la partie graphique :
-### mettez à jour le système :
+### Mettez à jour le système :
 `sudo apt update`  
 `sudo apt upgrade`
 `reboot`
 
-### installer les pilotes graphique :
+### Installez les pilotes graphiques :
 `sudo apt install mesa-* vulkan-*`
 
-### installez l'interface graphique : 
-__Attention :___ cette partie peut durer plus de 30min.
+### Installez l'interface graphique : 
+__Attention :__ cette partie peut durer plus de 30min.
+
 __Xubuntu :__ `sudo apt install xubuntu-desktop` --> très léger plutôt joli   
 __Kubuntu :__ `sudo apt install kubuntu-desktop` --> moins léger mais très joli   
 __Lubuntu :__ `sudo apt install lubuntu-desktop` --> très léger
 __Ubuntu Mate :__ `sudo apt install ubuntu-mate-desktop` --> pas testé
 
-### intallez gdm3 (surtout pour Lubuntu et Kubuntu) :
+### Intallez gdm3 (surtout pour Lubuntu et Kubuntu) :
 `sudo apt install gdm3`    
 
-### redémarez pour accéder au bureau :
+### Redémarrez pour accéder au bureau :
 `reboot`
 
-#### éditez gdm3 pour avoir un autologgin
-Une fois redémarrez ouvrez un terminal puis lancez les commandes suivantes :   
+#### Modifiez le fichier gdm3 pour vous connecter automatiquement :
+Après avoir redémarré, ouvrez un terminal puis tapez les commandes suivantes :   
 `sudo nano /etc/gdm3/custom.conf`   
---> enlevez les commantaires de la section autoboot (2 lignes) et replacez l'utilisateur par default (user1) par votre nom d'utilisateur.
+--> enlevez les commentaires de la section « autoboot » (2 lignes) et replacez l'utilisateur par default (user1) par votre propre nom d'utilisateur.
 `reboot`
 
-### supprimez l'économiseur d'écran (pour xubuntu):
+### Supprimez l'économiseur d'écran (pour xubuntu):
 
-Dans le menu : **Settings**-->**Screensaver** et désactivé Screensaver
+Dans le menu : **Settings**-->**Screensaver** et désactivez Screensaver
 
-### installer complétement la langue (optionel):
+### Installez la langue (optionnel) :
 
-Ouvrez le menu et cherchez "langue" et ouvrez le menu de langue. Le système vous proposera d'installer les paquet de langue manquant. Si ce n'est pas le cas, installer la lague voulu et mettez là en première position afin de la définir comme langue par defaut. Appliquez et redémarer.   
-Cette étape peut être fait automatiquement via les script NAFABox.
+Ouvrez le menu, cherchez « langue » et ouvrez le menu des langues. Le système vous proposera d'installer les paquets linguistiques manquants. Si ce n'est pas le cas, installez la lague voulue, puis mettez là en première position afin d’en faire celle par défaut. Appliquez et redémarrez.   
+Cette étape peut être faite automatiquement via les scripts NAFABox.
+![image](https://user-images.githubusercontent.com/67007335/173664180-53d373fa-06e6-49f1-9fa2-8298e6b12fb0.png)
