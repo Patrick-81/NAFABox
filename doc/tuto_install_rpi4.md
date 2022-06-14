@@ -85,7 +85,7 @@ __Attention :__ cette partie peut durer plus de 30min.
 
 __Xubuntu :__ `sudo apt install xubuntu-desktop` --> très léger plutôt joli   
 __Kubuntu :__ `sudo apt install kubuntu-desktop` --> moins léger mais très joli   
-__Lubuntu :__ `sudo apt install lubuntu-desktop` --> très léger
+__Lubuntu :__ `sudo apt install lubuntu-desktop` --> très léger   
 __Ubuntu Mate :__ `sudo apt install ubuntu-mate-desktop` --> pas testé
 
 ### Intallez gdm3 (surtout pour Lubuntu et Kubuntu) :
