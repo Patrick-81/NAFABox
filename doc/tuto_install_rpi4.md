@@ -31,6 +31,12 @@ Insérer votre carte SD dans votre ordinateur.
 ![select image](https://github.com/Patrick-81/NAFABox/raw/master/doc/rpi_install_6.JPG)
 
 
+Inserer la carte SD dans le Raspberry Pi,    
+Branchez le cable réseaux (ou utilisez la connection wifi parametré précédement)    
+Branchez l'écran   
+Branchez la souris et le clavier   
+Branchez l'alimentation    
+
 ## Install de l'interface graphique et correction :
 
 ## (OPTIONNEL) :
@@ -70,7 +76,11 @@ Il vous sera demendé de définir un nouveau mots de passe.
 `sudo apt upgrade`
 `reboot`
 
+### installer les pilotes graphique :
+`sudo apt install mesa-* vulkan-*`
+
 ### installez l'interface graphique : 
+__Attention :___ cette partie peut durer plus de 30min.
 __Xubuntu :__ `sudo apt install xubuntu-desktop` --> très léger plutôt joli   
 __Kubuntu :__ `sudo apt install kubuntu-desktop` --> moins léger mais très joli   
 __Lubuntu :__ `sudo apt install lubuntu-desktop` --> très léger
