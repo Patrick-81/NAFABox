@@ -13,7 +13,7 @@ Puis mettez là en première position afin d’en faire celle par défaut puis a
 
 Enfin redémarrez.   
 
-Après redémarage le système vas vous demandez si vous voulez renomer les dossier utilisateur pour correspondre a la nouvelle langue par défaut
+Après redémarage le système vas vous demandez si vous voulez renomer les dossier utilisateur pour correspondre a la nouvelle langue par défaut   
 ![rename_folder](https://github.com/Patrick-81/NAFABox/raw/master/doc/rename_folder.jpg)    
 
 Cette étape peut être faite automatiquement via les scripts NAFABox.
