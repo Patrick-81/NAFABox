@@ -30,9 +30,13 @@ https://armbian.hosthatch.com/archive/nanopim4/archive/Armbian_22.02.1_Nanopim4_
 TODO    
 
 __Pour Focal :__    
+- Pour la NanoPi-M4 :    
+https://armbian.hosthatch.com/archive/nanopim4/archive/Armbian_22.02.1_Nanopim4_focal_current_5.15.25_xfce_desktop.img.xz    
+https://armbian.site-meganet.com/dl/nanopim4/archive/Armbian_22.05.1_Nanopim4_focal_current_5.15.35_xfce_desktop.img.xz    
 - Pour la Tinkerboard/S :  
 https://armbian.site-meganet.com/dl/tinkerboard/archive/Armbian_22.05.1_Tinkerboard_focal_current_5.15.35_xfce_desktop.img.xz    
-
+https://armbian.systemonachip.net/archive/tinkerboard/archive/Armbian_22.02.1_Tinkerboard_focal_current_5.15.25_xfce_desktop.img.xz    
+https://imola.armbian.com/archive/tinkerboard/archive/Armbian_22.02.1_Tinkerboard_focal_current_5.15.25_xfce_desktop.img.xz    
 
 __Pour Bionic :__    
 - Pour la NanoPi-M4 :    
