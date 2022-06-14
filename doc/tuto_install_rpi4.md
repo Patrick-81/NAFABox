@@ -98,6 +98,7 @@ __Ubuntu Mate :__ `sudo apt install ubuntu-mate-desktop` --> pas testé
 Au premier redémarrage une fois votre utilisateur sélectionné mais avant le mot de passe il faudra sélectionner l'interface graphique que vous souhaitez démarrer.   
 Sélectionner l'engrenage en bas à droite et selectionner __Xubuntu__ (si vous avez installé Xubuntu).   
 Puis vous pouvez rentrer votre mot de passe et vous connecter.
+![select xubuntu session](https://github.com/Patrick-81/NAFABox/raw/master/doc/8212165581102701154.jpg)
 
 #### Modifiez le fichier gdm3 pour vous connecter automatiquement :
 Après avoir redémarré, ouvrez un terminal puis tapez les commandes suivantes :   
