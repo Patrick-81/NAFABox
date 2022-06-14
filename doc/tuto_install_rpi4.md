@@ -108,4 +108,3 @@ Dans le menu : **Settings**-->**Screensaver** et désactivez Screensaver
 
 Ouvrez le menu, cherchez « langue » et ouvrez le menu des langues. Le système vous proposera d'installer les paquets linguistiques manquants. Si ce n'est pas le cas, installez la lague voulue, puis mettez là en première position afin d’en faire celle par défaut. Appliquez et redémarrez.   
 Cette étape peut être faite automatiquement via les scripts NAFABox.
-![image](https://user-images.githubusercontent.com/67007335/173664180-53d373fa-06e6-49f1-9fa2-8298e6b12fb0.png)
