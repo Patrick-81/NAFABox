@@ -107,7 +107,8 @@ Puis vous pouvez rentrer votre mot de passe et vous connecter.
 Après avoir redémarré, ouvrez un terminal puis tapez les commandes suivantes :   
 `sudo nano /etc/gdm3/custom.conf`   
 --> enlevez les commentaires de la section « autoboot » (2 lignes) et replacez l'utilisateur par default (user1) par votre propre nom d'utilisateur.   
-Pour quitter et enregistrer : CTRL+X --> Y --> ENTER
+![edit_gdm3](https://github.com/Patrick-81/NAFABox/raw/master/doc/edit_gdm3.jpg)    
+Pour quitter et enregistrer : CTRL+X --> Y --> ENTER    
 `reboot`
 
 ### Supprimez l'économiseur d'écran (pour xubuntu):
