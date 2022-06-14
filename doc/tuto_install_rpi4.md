@@ -106,7 +106,8 @@ Puis vous pouvez rentrer votre mot de passe et vous connecter.
 #### Modifiez le fichier gdm3 pour vous connecter automatiquement :
 Après avoir redémarré, ouvrez un terminal puis tapez les commandes suivantes :   
 `sudo nano /etc/gdm3/custom.conf`   
---> enlevez les commentaires de la section « autoboot » (2 lignes) et replacez l'utilisateur par default (user1) par votre propre nom d'utilisateur.
+--> enlevez les commentaires de la section « autoboot » (2 lignes) et replacez l'utilisateur par default (user1) par votre propre nom d'utilisateur.   
+Pour quitter et enregistrer : CTRL+X --> Y --> ENTER
 `reboot`
 
 ### Supprimez l'économiseur d'écran (pour xubuntu):
