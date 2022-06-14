@@ -89,10 +89,11 @@ __Lubuntu :__ `sudo apt install lubuntu-desktop` --> très léger
 __Ubuntu Mate :__ `sudo apt install ubuntu-mate-desktop` --> pas testé
 
 ### Intallez gdm3 (surtout pour Lubuntu et Kubuntu) :
+Il faut installer un display manger leger pour plus de simplicité ( sddm pour kubuntu et lubuntu bug sur ubuntu server)   
 `sudo apt install gdm3`  
 
 ### Intallez firefox :
-Je vous conseil d'installer firefox car il n'y aura pas de navigateur par défaut :
+Je vous conseil d'installer firefox car il n'y aura pas de navigateur par défaut :   
 `sudo apt install firefox`  
 
 ### Redémarrez pour accéder au bureau :
