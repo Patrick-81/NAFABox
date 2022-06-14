@@ -71,6 +71,9 @@ Il vous sera demandé de définir un nouveau mot de passe.
 `sudo rm -rf /etc/cloud/`   
 `sudo rm -rf /var/lib/cloud`   
 
+### Supprimez « needrestart » :
+`sudo apt-get purge needrestart`
+
 ## Installation de la partie graphique :
 ### Mettez à jour le système :
 `sudo apt update`  
