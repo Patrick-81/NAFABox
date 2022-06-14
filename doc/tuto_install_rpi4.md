@@ -74,7 +74,7 @@ Il vous sera demandé de définir un nouveau mot de passe.
 ## Installation de la partie graphique :
 ### Mettez à jour le système :
 `sudo apt update`  
-`sudo apt upgrade`
+`sudo apt upgrade`   
 `reboot`
 
 ### Installez les pilotes graphiques :
