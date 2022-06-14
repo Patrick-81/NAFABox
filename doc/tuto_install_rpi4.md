@@ -16,19 +16,19 @@ Insérez votre carte SD dans votre ordinateur.
 ![select image](https://github.com/Patrick-81/NAFABox/raw/master/doc/rpi_install_1.JPG)
 
 ### Sélectionnez « Other general-purpose OS » :   
-![select image](https://github.com/Patrick-81/NAFABox/raw/master/doc/rpi_install_2.JPG)
+![select general OS](https://github.com/Patrick-81/NAFABox/raw/master/doc/rpi_install_2.JPG)
 
 ### Sélectionnez « Ubuntu » :   
-![select image](https://github.com/Patrick-81/NAFABox/raw/master/doc/rpi_install_3.JPG)
+![select ubuntu](https://github.com/Patrick-81/NAFABox/raw/master/doc/rpi_install_3.JPG)
 
 ### Sélectionnez « Ubuntu Server 22.04 LTS » (version arm64, 64-bit) :   
-![select image](https://github.com/Patrick-81/NAFABox/raw/master/doc/rpi_install_4.JPG)
+![select server 22.04](https://github.com/Patrick-81/NAFABox/raw/master/doc/rpi_install_4.JPG)
 
 ### Sélectionnez « Choisissez le Stockage », puis votre carte SD :   
-![select image](https://github.com/Patrick-81/NAFABox/raw/master/doc/rpi_install_5.JPG)
+![select SD](https://github.com/Patrick-81/NAFABox/raw/master/doc/rpi_install_5.JPG)
 
 ### Sélectionnez les bonnes options afin de paramétrer votre nom d'utilisateur, l'accès SSH, la connexion wifi et le type de clavier :   
-![select image](https://github.com/Patrick-81/NAFABox/raw/master/doc/rpi_install_6.JPG)
+![select param](https://github.com/Patrick-81/NAFABox/raw/master/doc/rpi_install_6.JPG)
 
 
 - Insérez la carte SD dans le Raspberry Pi.    
@@ -114,6 +114,6 @@ Après avoir redémarré, ouvrez un terminal puis tapez les commandes suivantes 
 Dans le menu : **Settings**-->**Screensaver** et désactivez Screensaver
 
 ### Installez votre langue (optionnel) :
-[language_tuto](https://github.com/Patrick-81/NAFABox/blob/master/doc/language.md)   
+[tuto langue](https://github.com/Patrick-81/NAFABox/blob/master/doc/language.md)   
 
 Cette étape peut être faite automatiquement via les scripts NAFABox (qeulement pour le francais).
