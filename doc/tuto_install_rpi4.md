@@ -113,19 +113,7 @@ Après avoir redémarré, ouvrez un terminal puis tapez les commandes suivantes 
 
 Dans le menu : **Settings**-->**Screensaver** et désactivez Screensaver
 
-### Installez la langue (optionnel) :
+### Installez votre langue (optionnel) :
+[language_tuto](https://github.com/Patrick-81/NAFABox/blob/master/doc/language.md)   
 
-Ouvrez le menu, cherchez « langue » et ouvrez le menu des langues.   
-![select xubuntu session](https://github.com/Patrick-81/NAFABox/raw/master/doc/language.jpg)    
-
-Le système vous proposera d'installer les paquets linguistiques manquants. Si ce n'est pas le cas, installez la lague voulue.
-![select xubuntu session](https://github.com/Patrick-81/NAFABox/raw/master/doc/install_language.jpg)    
-![select xubuntu session](https://github.com/Patrick-81/NAFABox/raw/master/doc/install_french_language.jpg)    
-![select xubuntu session](https://github.com/Patrick-81/NAFABox/raw/master/doc/install_french.jpg)    
-
-Puis mettez là en première position afin d’en faire celle par défaut puis appliquez :   
-![select xubuntu session](https://github.com/Patrick-81/NAFABox/raw/master/doc/apply_language_system.jpg)   
-
-Enfin redémarrez.   
-
-Cette étape peut être faite automatiquement via les scripts NAFABox.
+Cette étape peut être faite automatiquement via les scripts NAFABox (qeulement pour le francais).
