@@ -47,7 +47,7 @@ Connectez-vous, puis tapez la commande suivante :
 Attention : le clavier est en QWERTY par défaut. Sous Linux, les mots de passe ne s'affichent pas et c'est normal.  
 - Connectez-vous avec l'utilisateur par défaut :
 
-login : `ubuntu`
+login : `ubuntu`   
 mot de passe : `ubuntu`
 
 Il vous sera demandé de définir un nouveau mot de passe.
