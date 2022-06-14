@@ -98,7 +98,7 @@ __Ubuntu Mate :__ `sudo apt install ubuntu-mate-desktop` --> pas testé
 Au premier redémarrage une fois votre utilisateur sélectionné mais avant le mot de passe il faudra sélectionner l'interface graphique que vous souhaitez démarrer.   
 Sélectionner l'engrenage en bas à droite et selectionner __Xubuntu__ (si vous avez installé Xubuntu).   
 
-![select xubuntu session](https://github.com/Patrick-81/NAFABox/raw/master/doc/8212165581102701154.jpg)   
+![select xubuntu session](https://github.com/Patrick-81/NAFABox/raw/master/doc/select_interface.jpg)   
 
 Puis vous pouvez rentrer votre mot de passe et vous connecter.   
 
@@ -115,5 +115,17 @@ Dans le menu : **Settings**-->**Screensaver** et désactivez Screensaver
 
 ### Installez la langue (optionnel) :
 
-Ouvrez le menu, cherchez « langue » et ouvrez le menu des langues. Le système vous proposera d'installer les paquets linguistiques manquants. Si ce n'est pas le cas, installez la lague voulue, puis mettez là en première position afin d’en faire celle par défaut. Appliquez et redémarrez.   
+Ouvrez le menu, cherchez « langue » et ouvrez le menu des langues.   
+![select xubuntu session](https://github.com/Patrick-81/NAFABox/raw/master/doc/language.jpg)    
+
+Le système vous proposera d'installer les paquets linguistiques manquants. Si ce n'est pas le cas, installez la lague voulue.
+![select xubuntu session](https://github.com/Patrick-81/NAFABox/raw/master/doc/install_language.jpg)    
+![select xubuntu session](https://github.com/Patrick-81/NAFABox/raw/master/doc/install_french_language.jpg)    
+![select xubuntu session](https://github.com/Patrick-81/NAFABox/raw/master/doc/install_french.jpg)    
+
+Puis mettez là en première position afin d’en faire celle par défaut puis appliquez :   
+![select xubuntu session](https://github.com/Patrick-81/NAFABox/raw/master/doc/apply_language_system.jpg)   
+
+Enfin redémarrez.   
+
 Cette étape peut être faite automatiquement via les scripts NAFABox.
