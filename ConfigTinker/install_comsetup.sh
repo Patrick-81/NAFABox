@@ -368,8 +368,9 @@ then
 	sudo systemctl enable tightvnc.service
 	sudo systemctl start tightvnc.service
 	echo "Need reboot for active VNC"
-
-	cp ${dirinstall}/xstartup ${USER}/.vnc/xstartup
+	
+	# attention adaper la session au GUI
+	cp ${dirinstall}/xstartup ${HOME}/.vnc/xstartup
 fi
 
 
