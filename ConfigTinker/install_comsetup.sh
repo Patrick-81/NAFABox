@@ -369,7 +369,7 @@ then
 	sudo systemctl start tightvnc.service
 	echo "Need reboot for active VNC"
 	
-	# attention adaper la session au GUI
+	# attention adaper la session au GUI rajouter edition dynamique avec $DESKTOP_SESSION
 	cp ${dirinstall}/xstartup ${HOME}/.vnc/xstartup
 fi
 
