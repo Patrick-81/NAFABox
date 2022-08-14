@@ -37,9 +37,9 @@ Insérez votre carte SD dans votre ordinateur.
 - Branchez la souris et le clavier.
 - Branchez l'alimentation.
 
-## Installation de l'interface graphique et correction :
+## Installation :
 
-## (OPTIONNEL) :
+## (OPTIONNEL) si pas parametrer dans RPI imager :
 ### Choisissez le bon clavier :
 Connectez-vous, puis tapez la commande suivante : 
 `sudo dpkg-reconfigure keyboard-configuration`
