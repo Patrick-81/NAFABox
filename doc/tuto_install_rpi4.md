@@ -39,11 +39,11 @@ Insérez votre carte SD dans votre ordinateur.
 
 ## Installation :
 
-## (OPTIONNEL) si pas parametrer dans RPI imager :
-### Choisissez le bon clavier :
+### (OPTIONNEL) si pas parametrer dans RPI imager :
+#### Choisissez le bon clavier :
 Connectez-vous, puis tapez la commande suivante : 
 `sudo dpkg-reconfigure keyboard-configuration`
-### Pour créer un nouvel utilisateur :
+#### Pour créer un nouvel utilisateur :
 Attention : le clavier est en QWERTY par défaut. Sous Linux, les mots de passe ne s'affichent pas et c'est normal.  
 - Connectez-vous avec l'utilisateur par défaut :
 
@@ -64,14 +64,14 @@ Il vous sera demandé de définir un nouveau mot de passe.
 - Supprimez les fichiers lui appartenant :
 `sudo rm -R /home/ubuntu/`
 
-## (Optimisation) :
-### Supprimez « cloud-init » pour un démarrage plus rapide :
+### (Optimisation) :
+#### Supprimez « cloud-init » pour un démarrage plus rapide :
 
 `sudo apt purge cloud-init`   
 `sudo rm -rf /etc/cloud/`   
 `sudo rm -rf /var/lib/cloud`   
 
-### Supprimez « needrestart » :
+#### Supprimez « needrestart » :
 `sudo apt-get purge needrestart`
 
 ## Installation de la partie graphique :
