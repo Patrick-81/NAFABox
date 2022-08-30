@@ -23,11 +23,12 @@ https://github.com/Patrick-81/NAFABox/blob/master/doc/tuto_install_rpi4.md
 ## Les autres SBC (via Armbian):
 __Pour Jammy :__   
 - Pour la NanoPi-M4 :    
-https://armbian.site-meganet.com/dl/nanopim4/archive/Armbian_22.05.1_Nanopim4_jammy_edge_5.18.0_xfce_desktop.img.xz    
-https://armbian.hosthatch.com/archive/nanopim4/archive/Armbian_22.02.1_Nanopim4_jammy_edge_5.16.11_xfce_desktop.img.xz    
+https://armbian.site-meganet.com/dl/nanopim4/archive/Armbian_22.08.1_Nanopim4_jammy_current_5.15.63_xfce_desktop.img.xz    
+https://armbian.hosthatch.com/dl/nanopim4/archive/Armbian_22.05.4_Nanopim4_jammy_current_5.15.48_xfce_desktop.img.xz    
 
 - Pour la Tinkerboard/S :    
-TODO    
+https://armbian.hosthatch.com/dl/tinkerboard/archive/Armbian_22.05.4_Tinkerboard_jammy_current_5.15.48_xfce_desktop.img.xz
+
 
 __Pour Focal :__    
 - Pour la NanoPi-M4 :    
