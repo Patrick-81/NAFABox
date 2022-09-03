@@ -21,7 +21,7 @@ Insérez votre carte SD dans votre ordinateur.
 ### Sélectionnez « Ubuntu » :   
 ![select ubuntu](https://github.com/Patrick-81/NAFABox/raw/master/doc/rpi_install_3.JPG)
 
-### Sélectionnez « Ubuntu Server 22.04 LTS » (version arm64, 64-bit) :   
+### Sélectionnez « Ubuntu Server 22.04.1 LTS » (version arm64, 64-bit) :   
 ![select server 22.04](https://github.com/Patrick-81/NAFABox/raw/master/doc/rpi_install_4.JPG)
 
 ### Sélectionnez « Choisissez le Stockage », puis votre carte SD :   
