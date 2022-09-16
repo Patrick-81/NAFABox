@@ -42,7 +42,7 @@ __3bis-__ Dans votre home `cd ~`:
 `sudo apt install git`   
 `git clone https://github.com/Patrick-81/NAFABox.git`
 
-__4-__ Décompresser le fichier zip ( juste pour 2/)
+__4-__ Décompresser le fichier zip ( juste pour 3-)
 
 __5-__ Ouvrez le dossier ainsi créé
 
