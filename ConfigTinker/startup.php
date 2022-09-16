@@ -31,7 +31,7 @@
                 window.open(window.location.origin+':8080');
             }
             function openals() {
-                window.open(window.location.origin+':6000');
+                window.open(window.location.origin+':8000');
             }
             function cockpit() {
                 window.open(window.location.origin+':9090');
