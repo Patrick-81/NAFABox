@@ -126,4 +126,4 @@ Dans le menu : **Settings**-->**Screensaver** et désactivez Screensaver
 ### Installez votre langue (optionnel) :
 [tuto langue](https://github.com/Patrick-81/NAFABox/blob/master/doc/language.md)   
 
-Cette étape peut être faite automatiquement via les scripts NAFABox (qeulement pour le francais).
+Cette étape peut être faite automatiquement via les scripts NAFABox (seulement pour le francais).
