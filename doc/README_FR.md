@@ -4,7 +4,7 @@ Script d'installation pour Créer une NAFABox.
 
 Les Scripts sont esclusivement dédiés à Ubuntu
 
-Ces scripts sont compatibles avec le __Raspberry Pi 4B__ (Armbian Xubuntu), la __NanoPi-M4__ (Arbian Xubuntu), __Tinkerboard/S__, les __cartes Armbian__ et les systèmes classiques__ amd64/x86_64__ (Xubuntu, Ubuntu Mate, Ubuntu,...).   
+Ces scripts sont compatibles avec le __Raspberry Pi 4B__ (Armbian Xubuntu), la __NanoPi-M4__ (Arbian Xubuntu), __Tinkerboard/S__, les __cartes Armbian__ et les systèmes classiques __amd64/x86_64__ (Xubuntu, Ubuntu Mate, Ubuntu,...).   
 Les scripts ont été testés avec Ubuntu Focal (20.04 LTS) et Ubuntu Jammy (22.04 LTS).  
 
 Il est recomandé d'utiliser **Ubuntu Jammy (22.04 LTS)** (ou Focal si Jammy non disponible).
@@ -20,6 +20,8 @@ Il est nécessaire de disposer d'au moins 10Go d'espace de stockage ou d'une Car
 #### Pour un ordinateur/carte amd64/x86_64 :    
 [TUTO pour Ordinateur fixe ou Portable](https://github.com/Patrick-81/NAFABox/blob/master/doc/amd64.md)     
 
+#### Images Pré-Installées pour Raspberry Pi 4B, Nanopi-M4 et Tinkerboard :
+[TUTO pour Images Pré-Installées](https://github.com/Patrick-81/NAFABox/blob/master/doc/image_install.md) 
 
 __Lien utile :__
 
