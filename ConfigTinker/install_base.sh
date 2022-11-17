@@ -298,8 +298,10 @@ echo "================================================="
 # set NAFABox wallpaper
 mkdir -p ~/bin
 backpic="wallpaper.png"
+backpic2="logo_256.png"
 dest="$HOME/bin"
 cp ${dirinstall}/${backpic} ${dest}/${backpic}
+cp ${dirinstall}/${backpic2} ${dest}/${backpic2}
 
 if [[ ${installMate} == "TRUE" ]]
 then
@@ -357,6 +359,7 @@ then
     xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitorDP-1/workspace1/last-image --set ${dest}/${backpic}
     xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitorDP-1/workspace2/last-image --set ${dest}/${backpic}
     xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitorDP-1/workspace3/last-image --set ${dest}/${backpic}
+    xfconf-query --channel xfce4-panel --property /plugins/plugin-1/button-icon --set ${dest}/${backpic2}
 
     
 fi
