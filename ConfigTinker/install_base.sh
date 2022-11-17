@@ -321,10 +321,43 @@ then
     xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitor0/workspace1/last-image --set ${dest}/${backpic}
     xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitor0/workspace2/last-image --set ${dest}/${backpic}
     xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitor0/workspace3/last-image --set ${dest}/${backpic}
+    xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitor1/workspace0/last-image --set ${dest}/${backpic}
+    xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitor1/workspace1/last-image --set ${dest}/${backpic}
+    xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitor1/workspace2/last-image --set ${dest}/${backpic}
+    xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitor1/workspace3/last-image --set ${dest}/${backpic}
+    xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitorVirtual0/workspace0/last-image --set ${dest}/${backpic}
+    xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitorVirtual0/workspace1/last-image --set ${dest}/${backpic}
+    xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitorVirtual0/workspace2/last-image --set ${dest}/${backpic}
+    xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitorVirtual0/workspace3/last-image --set ${dest}/${backpic}
     xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitorVirtual1/workspace0/last-image --set ${dest}/${backpic}
     xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitorVirtual1/workspace1/last-image --set ${dest}/${backpic}
     xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitorVirtual1/workspace2/last-image --set ${dest}/${backpic}
     xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitorVirtual1/workspace3/last-image --set ${dest}/${backpic}
+    xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitorHDMI-1/workspace0/last-image --set ${dest}/${backpic}
+    xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitorHDMI-1/workspace1/last-image --set ${dest}/${backpic}
+    xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitorHDMI-1/workspace2/last-image --set ${dest}/${backpic}
+    xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitorHDMI-1/workspace3/last-image --set ${dest}/${backpic}
+    xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitorHDMI-0/workspace0/last-image --set ${dest}/${backpic}
+    xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitorHDMI-0/workspace1/last-image --set ${dest}/${backpic}
+    xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitorHDMI-0/workspace2/last-image --set ${dest}/${backpic}
+    xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitorHDMI-0/workspace3/last-image --set ${dest}/${backpic}
+    xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitoreDP-0/workspace0/last-image --set ${dest}/${backpic}
+    xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitoreDP-0/workspace1/last-image --set ${dest}/${backpic}
+    xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitoreDP-0/workspace2/last-image --set ${dest}/${backpic}
+    xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitoreDP-0/workspace3/last-image --set ${dest}/${backpic}
+    xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitoreDP-1/workspace0/last-image --set ${dest}/${backpic}
+    xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitoreDP-1/workspace1/last-image --set ${dest}/${backpic}
+    xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitoreDP-1/workspace2/last-image --set ${dest}/${backpic}
+    xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitoreDP-1/workspace3/last-image --set ${dest}/${backpic}
+    xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitorDP-0/workspace0/last-image --set ${dest}/${backpic}
+    xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitorDP-0/workspace1/last-image --set ${dest}/${backpic}
+    xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitorDP-0/workspace2/last-image --set ${dest}/${backpic}
+    xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitorDP-0/workspace3/last-image --set ${dest}/${backpic}
+    xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitorDP-1/workspace0/last-image --set ${dest}/${backpic}
+    xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitorDP-1/workspace1/last-image --set ${dest}/${backpic}
+    xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitorDP-1/workspace2/last-image --set ${dest}/${backpic}
+    xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitorDP-1/workspace3/last-image --set ${dest}/${backpic}
+
     
 fi
 
