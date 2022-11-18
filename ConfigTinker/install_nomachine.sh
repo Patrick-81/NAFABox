@@ -80,9 +80,9 @@ source ${dirinstall}/detect_language.sh
 
 if ${french}
 then
-    localectl set-x11-keymap fr
+    setxkbmap -model pc105 -layout fr
 else
-    localectl set-x11-keymap us
+    setxkbmap -model pc105 -layout us
 fi
 
 # ou sinon installer x2go :
