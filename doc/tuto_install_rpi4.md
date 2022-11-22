@@ -52,10 +52,10 @@ mot de passe : `ubuntu`
 
 Il vous sera demandé de définir un nouveau mot de passe.
 
-- Créez un nouveau utilisateur (en l’appelant nafabox par exemple):
-`sudo adduser nafabox`   
+- Créez un nouveau utilisateur (en l’appelant nafa par exemple):
+`sudo adduser nafa`   
 - Autorisez ce nouvel utilisateur à exécuter la commande « sudo » :
-`sudo adduser nafabox sudo`   
+`sudo adduser nafa sudo`   
 - Redémarez :
 `reboot`
 - Connectez-vous avec le nouvel utilisateur
