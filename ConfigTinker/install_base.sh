@@ -75,82 +75,39 @@ then
 elif [[ ${server_choice} == "default" ]]
 then
     installMate="FALSE"
-    dialog --title " Install Ubuntu MATE" --clear \
-	    --yesno "Do you need install Ubuntu MATE" 10 30
-
-    case $? in
-	    0)	echo "Install Ubuntu MATE"
-            installMate="TRUE"
-            ;;
-	    1)	
-            installMate="FALSE"
-            ;;
-	    255)	
-            echo "exit"
-            ;;
-    esac
-
     autologin="FALSE"
     ip_indicator="TRUE"
     o_indicator="TRUE"
     host="TRUE"
 else
-    if [[ ${DESKTOP_SESSION} == "mate" ]]
+    if chose=`yad --width=300 \
+	--center \
+	--form \
+	--title="Select Installation Options :" \
+	--text="Install Program :" \
+	--field=":LBL" \
+	--field="Mate destktop and components:CHK" \
+	--field="Plugin IP Indicator:CHK" \
+        --field="Other indicator:CHK" \
+	--field="Autologin for dev armbian (nightly):CHK" \
+	--field="Change hostname to NAFABox ?:CHK" \
+	"" "${st[0]}" "${st[1]}" "${st[2]}" "${st[3]}" "${st[4]}"`
     then
-        if chose=`yad --width=350 \
-	        --center \
-	        --form \
-	        --title="Select Installation Options :" \
-	        --text="Install Program :" \
-	        --field=":LBL" \
-	        --field="Plugin IP Indicator:CHK" \
-            --field="Other indicator:CHK" \
-	        --field="Autologin for dev armbian (nightly):CHK" \
-	        --field="Change hostname to NAFABox ?:CHK" \
-	        "" "${st[1]}" "${st[2]}" "${st[3]}" "${st[4]}"`
-        then
-	        # recuperation des valeurs
-	        ip_indicator=$(echo "$chose" | cut -d "|" -f2)
-            o_indicator=$(echo "$chose" | cut -d "|" -f3)
-	        autologin=$(echo "$chose" | cut -d "|" -f4)
-	        host=$(echo "$chose" | cut -d "|" -f5)
+	# recuperation des valeurs
+	installMate=$(echo "$chose" | cut -d "|" -f2)
+	ip_indicator=$(echo "$chose" | cut -d "|" -f3)
+        o_indicator=$(echo "$chose" | cut -d "|" -f4)
+	autologin=$(echo "$chose" | cut -d "|" -f5)
+	host=$(echo "$chose" | cut -d "|" -f6)
 
-        else
-	        echo "cancel"
-        fi
     else
-	    if chose=`yad --width=300 \
-		    --center \
-		    --form \
-		    --title="Select Installation Options :" \
-		    --text="Install Program :" \
-		    --field=":LBL" \
-		    --field="Mate destktop and components:CHK" \
-		    --field="Plugin IP Indicator:CHK" \
-            --field="Other indicator:CHK" \
-		    --field="Autologin for dev armbian (nightly):CHK" \
-		    --field="Change hostname to NAFABox ?:CHK" \
-		    "" "${st[0]}" "${st[1]}" "${st[2]}" "${st[3]}" "${st[4]}"`
-	    then
-		    # recuperation des valeurs
-		    installMate=$(echo "$chose" | cut -d "|" -f2)
-		    ip_indicator=$(echo "$chose" | cut -d "|" -f3)
-            o_indicator=$(echo "$chose" | cut -d "|" -f4)
-		    autologin=$(echo "$chose" | cut -d "|" -f5)
-		    host=$(echo "$chose" | cut -d "|" -f6)
-
-	    else
-		    echo "cancel"
-	    fi
+	echo "cancel"
     fi
 fi
 
 if [[ ${host} == "TRUE" ]]
 then
-
-
 	${dirinstall}/install_hostname.sh ${server_choice}
-
 fi
 
 # Options de apt-get pour l'installation des paquets
@@ -173,100 +130,6 @@ then
 		fi
 	fi
 fi
-#  Désinstallation de xfce et installation de Mate
-if [[ ${installMate} == "TRUE" ]]
-then
-
-	figlet -k Install Ubuntu Mate
-	echo "================================================="
-	echo "================================================="
-
-	# add repository pour avoir la 1.16 au lieu de la 1.12
-	if [[ ${version} == "xenial" ]]
-	then
-		sudo apt-add-repository -y ppa:ubuntu-mate-dev/xenial-mate # ==> bug
-	fi
-	sudo apt-get update
-	# désinstallation xfce4
-	sudo apt-get -y remove --purge  xfce*
-	sudo apt-get -y remove --purge  lxde
-	sudo apt-get -y remove --purge  lubuntu*
-	sudo apt autoremove -y
-	sudo apt-get -y clean
-	sudo apt-get update
-	# installation du session manager
-    echo "#################################"
-    echo "Chose NoDM after install"
-    echo "#################################"
-	sudo apt-get -y install lightdm
-	sudo apt-get -y install xserver-xorg
-	sudo apt-get -y install lightdm-greeter
-	# Mise à jour de l'autologin
-	cat  ${dirinstall}/20-lightdm.conf | sed -e "s/MOI/$(whoami)/g" > /tmp/20-lightdm.conf
-	sudo cp /tmp/20-lightdm.conf /etc/lighdm/lightdm.conf.d/.
-
-    machine=$(sudo lshw | grep "produit\|product" | grep "Raspberry")
-
-	# installation de base de mate
-	sudo apt-get ${options} install mate
-    sudo apt-get ${options} install ubuntu-mate-core ubuntu-mate-desktop
-    sudo apt-get ${options} install ubuntu-mate-default-settings ubuntu-mate-icon-themes
-    sudo apt-get ${options} install ubuntu-mate-live-settings ubuntu-mate-guide
-
-	# installation de mate compléments
-	sudo apt-get ${options} install mate-desktop-environment-extras mate-indicator-applet
-	sudo apt-get ${options} install mate-dock-applet plank mate-hud mate-applet-brisk-menu mate-menu mate-applet-appmenu
-
-    # dangereux à remplacer des que possible
-	sudo apt-get ${options} install mate-*
-
-	
-	# supprimer veille
-	sudo sed -i "/DPMS/ s/true/false/" /etc/X11/xorg.conf.d/01-armbian-defaults.conf
-	# Ajout d'utilitaires
-	echo "================================================="
-	echo "================================================="
-	echo "install supplements"
-	echo "================================================="
-	echo "================================================="
-
-	sudo apt-get ${options} install synaptic
-	sudo apt-get ${options} install engrapa
-	sudo apt-get ${options} install caja-actions
-	sudo apt-get ${options} install caja-wallpaper
-	sudo apt-get ${options} install caja-open-terminal
-	sudo apt-get ${options} install mozo
-	sudo apt-get ${options} install pluma
-	sudo apt-get ${options} install mate-tweak
-	sudo apt-get ${options} install mate-themes
-	sudo apt-get ${options} install mate-applets gnome-media
-	sudo apt-get ${options} install mate-panel
-	sudo apt-get ${options} install mate-system-monitor
-	sudo apt-get ${options} install blueman
-	sudo apt-get ${options} install firefox
-	sudo apt-get ${options} install ubuntu-mate-themes
-    sudo apt-get ${options} install pulseaudio libcanberra-pulse paprefs
-    sudo apt-get ${options} install pulseaudio-module-bluetooth pulseaudio-module-gconf pulseaudio-module-zeroconf
-    sudo alsa force-reload
-	# désinstallation diverses des relicats de xfce et de thunderbird ajouté par maté
-	sudo apt-get -y purge thunderbird transmission-gtk thunar leafpad hexchat geany k3b brasero cheese
-	sudo apt-get -y remove --purge  libreoffice-*
-    sudo apt-get -y install chromium-browser
-    sudo dpkg --configure -a
-    sudo apt-get install -f
-    sudo apt-get -y autoremove
-    sudo apt-get clean
-
-    if [[ -z "$DESKTOP_SESSION" ]]
-    then
-	    echo "export DESKTOP_SESSION=\"mate\""  >> ~/.bashrc
-    fi
-
-
-	# mise à jour de tout le système
-	# sudo apt-get -q --yes dist-upgrade
-
-fi
 
 if [[ ${o_indicator} == "TRUE" ]]
 then
@@ -277,6 +140,7 @@ then
 fi
 
 sudo apt-get ${options} purge indicator-china-weather
+
 if [[ ${version} == "xenial" ]]
 then
     sudo apt-get ${options} purge indicator-network-tools indicator-network-autopilot
