@@ -55,20 +55,20 @@ sudo apt-get -y install libpango-1.0-0 xplanet espeak
 software="indistarter"
 
 #need update
-version="$software""-""2.3.1"
-subversion="167"
+version="$software""-""2.3.2"
+subversion="185"
 
 file="$version""-$subversion""$proc.deb"
 wget https://sourceforge.net/projects/$software/files/$version/$file -P /tmp
-sudo dpkg -i /tmp/$file
+sudo apt-get -y install /tmp/$file
 
 # install eqmodgui via sourceforge
 
 software="eqmodgui"
 
 #need update
-version="$software""_""1.7.0"
-subversion="127"
+version="$software""_""1.7.1"
+subversion="149"
 
 file="$version""-$subversion""$proc.deb"
 wget https://sourceforge.net/projects/$software/files/$version/$file -P /tmp
@@ -79,8 +79,8 @@ sudo apt-get -y install /tmp/$file
 software="ccdciel"
 
 #need update
-version="$software""_""0.9.79"
-subversion="2663"
+version="$software""_""0.9.82"
+subversion="2979"
 
 file="$version""-$subversion""$proc.deb"
 wget https://sourceforge.net/projects/$software/files/$version/$file -P /tmp/

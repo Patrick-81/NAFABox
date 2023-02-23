@@ -30,7 +30,6 @@ sudo apt-get update
 sudo apt-get -y install dirmngr
 sudo apt-get -y install git
 sudo apt-get -y install gparted
-sudo apt-get -y install chromium-browser
 # for bluetooth
 sudo apt-get -y install bluetooth bluez bluez-tools pulseaudio-module-bluetooth blueman
 # for hotspot
@@ -50,55 +49,40 @@ version=`lsb_release -c -s`
 
 # init
 
-installMate="FALSE"
-autologin="FALSE"
 ip_indicator="FALSE"
-o_indicator="FALSE"
 host="FALSE"
 
 if [[ $1 == "initial" ]]
 then
-	st=(true true true false true)
+	st=(true true)
 
 else
-	st=(false false false false false)
+	st=(false false)
 fi
 
 if [[ ${server_choice} == "server" ]]
 then
-    installMate="FALSE"
-    autologin="FALSE"
     ip_indicator="FALSE"
-    o_indicator="FALSE"
     host="TRUE"
 
 elif [[ ${server_choice} == "default" ]]
 then
-    installMate="FALSE"
-    autologin="FALSE"
     ip_indicator="TRUE"
-    o_indicator="TRUE"
     host="TRUE"
 else
-    if chose=`yad --width=300 \
-	--center \
-	--form \
-	--title="Select Installation Options :" \
-	--text="Install Program :" \
-	--field=":LBL" \
-	--field="Mate destktop and components:CHK" \
-	--field="Plugin IP Indicator:CHK" \
-        --field="Other indicator:CHK" \
-	--field="Autologin for dev armbian (nightly):CHK" \
-	--field="Change hostname to NAFABox ?:CHK" \
-	"" "${st[0]}" "${st[1]}" "${st[2]}" "${st[3]}" "${st[4]}"`
+  if chose=`yad --width=300 \
+    --center \
+    --form \
+    --title="Select Installation Options :" \
+    --text="Install Program :" \
+    --field=":LBL" \
+    --field="Plugin IP Indicator:CHK" \
+    --field="Change hostname to NAFABox ?:CHK" \
+    "" "${st[0]}" "${st[1]}"`
     then
 	# recuperation des valeurs
-	installMate=$(echo "$chose" | cut -d "|" -f2)
-	ip_indicator=$(echo "$chose" | cut -d "|" -f3)
-        o_indicator=$(echo "$chose" | cut -d "|" -f4)
-	autologin=$(echo "$chose" | cut -d "|" -f5)
-	host=$(echo "$chose" | cut -d "|" -f6)
+	ip_indicator=$(echo "$chose" | cut -d "|" -f2)
+	host=$(echo "$chose" | cut -d "|" -f3)
 
     else
 	echo "cancel"
@@ -108,42 +92,6 @@ fi
 if [[ ${host} == "TRUE" ]]
 then
 	${dirinstall}/install_hostname.sh ${server_choice}
-fi
-
-# Options de apt-get pour l'installation des paquets
-options="-y"
-#activation de l'autologin pour les version nightly
-if [[ ${autologin} == "TRUE" ]]
-then
-	figlet -k Install AutoLogin
-	echo "================================================="
-	echo "================================================="
-
-	if [[ -f "/usr/share/lightdm/lightdm.conf.d/60-lightdm-gtk-greeter.conf" ]]
-	then
-		if [grep -q "autologin" "/usr/share/lightdm/lightdm.conf.d/60-lightdm-gtk-greeter.conf" ]
-		then
-			echo "autologin exist"
-		else
-			echo "autologin activate"
-			echo "autologin-user=$USER"| sudo tee -a /usr/share/lightdm/lightdm.conf.d/60-lightdm-gtk-greeter.conf
-		fi
-	fi
-fi
-
-if [[ ${o_indicator} == "TRUE" ]]
-then
-    #sudo apt-get ${options} install indicator-cpufreq
-    sudo apt-get ${options} install indicator-multiload
-    #sudo apt-get ${options} install indicator-sound indicator-power indicator-messages indicator-application indicator-session
-    #sudo apt-get ${options} install indicator-bluetooth
-fi
-
-sudo apt-get ${options} purge indicator-china-weather
-
-if [[ ${version} == "xenial" ]]
-then
-    sudo apt-get ${options} purge indicator-network-tools indicator-network-autopilot
 fi
 
 
@@ -167,10 +115,8 @@ dest="$HOME/bin"
 cp ${dirinstall}/${backpic} ${dest}/${backpic}
 cp ${dirinstall}/${backpic2} ${dest}/${backpic2}
 
-if [[ ${installMate} == "TRUE" ]]
-then
-    gsettings set org.mate.background picture-filename ${dest}/${backpic}
-elif [[ ${DESKTOP_SESSION} == "mate" ]]
+
+if [[ ${DESKTOP_SESSION} == "mate" ]]
 then
     gsettings set org.mate.background picture-filename ${dest}/${backpic}
 elif [[ ${DESKTOP_SESSION} == "lxde" ]]
@@ -224,8 +170,6 @@ then
     xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitorDP-1/workspace2/last-image --set ${dest}/${backpic}
     xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitorDP-1/workspace3/last-image --set ${dest}/${backpic}
     xfconf-query --channel xfce4-panel --property /plugins/plugin-1/button-icon --set ${dest}/${backpic2}
-
-    
 fi
 
 

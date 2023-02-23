@@ -59,7 +59,7 @@ sudo apt-get ${options} install libsonic0 espeak-data fonts-freefont-ttf
 version=`lsb_release -c -s`
 if [[ ${version} == "xenial" ]]
 then
-	sudo apt-get ${options} install ttf-freefont
+  sudo apt-get ${options} install ttf-freefont
 fi
 sudo apt-get ${options} install libjpeg62 libglu1
 sudo apt-get ${options} install xplanet espeak openssh-server uuid
@@ -126,43 +126,19 @@ figlet -k Install hotspot program
 echo "================================================="
 echo "================================================="
 
-machine=$(sudo lshw | grep "produit\|product" | grep "Raspberry")
-
-if [[ -d "/usr/lib/armbian-config/" ]]
+echo "install hotspot script"
+cp ${dirinstall}/install_hotspot.sh ~/bin/install_hotspot.sh
+sudo ln -sf ~/bin/install_hotspot.sh /usr/bin/install_hotspot
+if [[ ${server_choice} == "server" ]]
 then
-    echo "armbian-config is already install"
+    echo "no icon for server"
 else
-    machine=$(sudo lshw | grep "produit\|product" | grep "Raspberry")
-    if [[ ${machine} == *"Raspberry"* ]]
-    then
-        echo "install hotspot for raspberry"
-        cp ${dirinstall}/install_hotspot.sh ~/bin/install_hotspot.sh
-        sudo ln -sf ~/bin/install_hotspot.sh /usr/bin/install_hotspot
-        if [[ ${server_choice} == "server" ]]
-        then
-            echo "no icon for server"
-        else
-            sudo cp ${dirinstall}/install_hotspot.png /usr/share/pixmaps/install_hotspot.png
-            ${dirinstall}/install_shortcut.sh APPNAME='install_hotspot' APPEXEC='bash -ic install_hotspot' OPTION='0' TERMINAL='true'
-        fi
-        
-    elif [[ ${proc} == "_amd64" ]] || [[ ${proc} == "_x86" ]]
-    then
-        echo "install hotspot for X86 and Amd64 system"
-        cp ${dirinstall}/install_hotspot.sh ~/bin/install_hotspot.sh
-        sudo ln -sf ~/bin/install_hotspot.sh /usr/bin/install_hotspot
-        if [[ ${server_choice} == "server" ]]
-        then
-            echo "no icon for server"
-        else
-            sudo cp ${dirinstall}/install_hotspot.png /usr/share/pixmaps/install_hotspot.png
-            ${dirinstall}/install_shortcut.sh APPNAME='install_hotspot' APPEXEC='bash -ic install_hotspot' OPTION='0' TERMINAL='true'
-        fi
-    fi
+    sudo cp ${dirinstall}/install_hotspot.png /usr/share/pixmaps/install_hotspot.png
+    ${dirinstall}/install_shortcut.sh APPNAME='install_hotspot' APPEXEC='bash -ic install_hotspot' OPTION='0' TERMINAL='true'
 fi
 
 ######
-# Création du raccourci pour install_hotspot.sh
+# installation d'armbian-config
 ######
 figlet -k Install armbian-config program
 echo "================================================="
