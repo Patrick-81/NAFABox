@@ -28,21 +28,24 @@ __- X11VNC :__ https://github.com/LibVNC/x11vnc
 __- Webdav :__ http://www.webdav.org/   
 __- Browsepy :__ http://ergoithz.github.io/browsepy/   
 __- NoVNC :__ https://github.com/novnc/noVNC   
-__- NoMachine :__ https://www.nomachine.com/fr   
-__- Hotspot awake :__ NAFABox script for re-up hotspot (outdate)   
+__- NoMachine :__ https://www.nomachine.com/fr
 __- Server for qDslrDashboard :__ https://github.com/hubaiz/DslrDashboardServer   
 __- Server Mobindi :__ https://github.com/pludov/mobindi.git   
-  
+
+#### ALS :
+https://github.com/gehelem/als   
 #### Lin Guider : 
 https://sourceforge.net/projects/linguider/
 
 #### Kstars-EKOS-INDI
 __- Kstars :__ https://edu.kde.org/kstars/   
 __- Indi :__ https://indilib.org/   
-__- Kstars github :__ https://github.com/KDE/kstars   
-__- Indi github :__ https://github.com/indilib/indi   
+__- Kstars beta :__ https://github.com/KDE/kstars --> version ppa nightly  
+__- Indi beta :__ https://github.com/indilib/indi --> version ppa nightly  
+__- Kstars github :__ https://github.com/KDE/kstars --> version compilé du github  
+__- Indi github :__ https://github.com/indilib/indi --> version compilé du github  
 __- GPSD :__ http://www.catb.org/gpsd/ (for GPS USB)   
-__- IndiWebManager :__ https://github.com/knro/indiwebmanager   
+__- IndiWebManager :__ https://github.com/knro/indiwebmanager  
  
  
 __Onstep and other__   

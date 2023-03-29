@@ -191,7 +191,6 @@ then
 		cd ~/Projects/build/kstars
 		sudo make uninstall
 	fi
-    sudo ppa-purge -y ppa:mutlaqja/ppa
     sudo apt-add-repository -y ppa:mutlaqja/indinightly
     sudo apt-get update
     sudo apt-get ${options} install kstars-bleeding kstars-bleeding-dbg gsc
@@ -321,7 +320,7 @@ then
 
 elif [[ ${indi_beta} == "TRUE" ]]
 then
-    figlet -k Install Indi BETA
+  figlet -k Install Indi BETA
 	if [[ -d "/home/${USER}/Projects/build/libindi" ]]
 	then
 		echo "Remove Indi Dev"
@@ -335,7 +334,6 @@ then
 		sudo make uninstall
 	fi
 
-  sudo ppa-purge ppa:mutlaqja/ppa
   sudo apt-add-repository -y ppa:mutlaqja/indinightly
   sudo apt-get update
     
@@ -347,15 +345,16 @@ elif [[ ${indi_dev} == "TRUE" ]]
 then
 
   figlet -k Install Indi github
+
+  sudo ppa-purge ppa:mutlaqja/ppa
+  sudo ppa-purge ppa:mutlaqja/indinightly
+
 	sudo apt-get ${options} install build-essential cmake git libeigen3-dev libcfitsio-dev zlib1g-dev libindi-dev extra-cmake-modules libkf5plotting-dev libqt5svg5-dev libkf5xmlgui-dev kio-dev kinit-dev libkf5newstuff-dev kdoctools-dev libkf5notifications-dev libkf5crash-dev gettext libnova-dev libgsl-dev libraw-dev libkf5notifyconfig-dev wcslib-dev libqt5websockets5-dev qt5keychain-dev
 	sudo apt-get ${options} install libusb-1.0-0-dev libjpeg-dev libcurl4-gnutls-dev
 	sudo apt-get ${options} install libftdi-dev libgps-dev libdc1394-22-dev libgphoto2-dev libboost-dev libboost-regex-dev librtlsdr-dev libftdi1-dev libfftw3-dev
 	sudo add-apt-repository -y ppa:myriadrf/drivers
 	sudo apt-get update
 	sudo apt-get ${options} install liblimesuite-dev
-
-  sudo ppa-purge ppa:mutlaqja/ppa
-  sudo ppa-purge ppa:mutlaqja/indinightly
 
 	if [[ -d "/home/${USER}/Projects/build/libindi" ]]
 	then
@@ -408,18 +407,6 @@ if [[ ${indiW} == "TRUE" ]]
 then
   ${dirinstall}/install_indiwebmanager.sh
 fi
-######
-# Installation des drivers 3rdparty qui ne sont pas sous forme de dépot
-######
-#if [[ ${driver_3rd} == "TRUE" ]]
-#then
-#	${dirinstall}/install_other3rdparty_drivers.sh
-#fi
-
-######
-# Installer le pad amélioré
-######
-#$dirinstall/install_pad.sh
 
 ######
 # Installer gpsd

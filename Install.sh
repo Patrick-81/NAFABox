@@ -20,6 +20,10 @@ else
     ######
     source ${dirinstall}/detect_language.sh
 
+    #####
+    # Choix du mode d'installation
+    #####
+
     if ${french}
     then
         title[0]="Choix du type d'installation :"
@@ -60,7 +64,7 @@ Custom installation: with graphical interface,
 
     if [[ ${server_choice} == "" ]]
     then
-        # trap sert à être propre.
+        # trap sert à afficher proprement les démarcations entre les applications.
         touch /tmp/dialogtmp && FICHTMP=/tmp/dialogtmp
         trap "rm -f ${FICHTMP}" 0 1 2 3 5 15
         # dialog for inital choice
@@ -88,7 +92,6 @@ Custom installation: with graphical interface,
         fi
     fi
 
-    sudo apt-get update
     figlet -k NAFABox
     echo "================================================="
     echo "================================================="
@@ -99,12 +102,17 @@ Custom installation: with graphical interface,
         echo "############################"
 	    ${dirinstall}/install_conf.sh initial ${server_choice} | tee -a "$dirinstall/nafabox.log"
 
+
+
     elif [[ ${server_choice} == "default" ]]
     then
         echo "############################"
         echo "## install in default mode ##"
         echo "############################"
 	    ${dirinstall}/install_conf.sh initial ${server_choice} | tee -a "$dirinstall/nafabox.log"
+
+
+
     elif [[ ${server_choice} == "custom" ]]
     then
 	    echo "############################"

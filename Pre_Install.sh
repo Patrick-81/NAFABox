@@ -31,26 +31,28 @@ dialog --title " Install French config" --clear \
        --yesno "Do you need install French ?" 10 30
 
 case $? in
-    0)	echo "Install French"
-        figlet -k Install FRENCH
+    0)
+      echo "Install French"
+      figlet -k Install FRENCH
 	    echo "================================================="
 	    echo "================================================="
 	    # passer le systeme en français
 	    # ajout des packs langage
-	    sudo apt-get -y install language-pack-fr language-pack-gnome-fr
-        sudo apt-get -y install language-pack-fr language-pack-gnome-fr
-        sudo apt-get -y install wfrench chromium-browser-l10n
 	    sudo locale-gen fr_FR fr_FR.UTF-8
 	    sudo update-locale LC_ALL=fr_FR.UTF-8 LANG=fr_FR.UTF-8
 	    sudo dpkg-reconfigure keyboard-configuration
-        ;;
+	    sudo apt-get -y install language-pack-fr
+      sudo apt-get -y install language-pack-gnome-fr
+      sudo apt-get -y install wfrench
+      sudo apt-get -y chromium-browser-l10n
+      ;;
     1)	
-        echo "Language not change"
-        ;;
+      echo "Language not change"
+      ;;
     255)	
-        echo "exit"
-        ;;
+      echo "exit"
+      ;;
 esac
 
-echo "Please Reload Terminal and Run Install.sh"
+echo "Please Reboot and Run Install.sh after reboot"
 
