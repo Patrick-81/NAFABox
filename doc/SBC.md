@@ -86,4 +86,5 @@ __9-__ répondez aux questions lorsque vous y êtes invité et entrez votre mot 
 __10-__ Quand tout est fini vous devez redémarrer.
 
 __11-__ Installation complémentaire (Acceleration graphique, complément des langues, point d'accès wifi, resolution d'écran, RTC,...) :   
-[Tuto additionnel pour les cartes Armbian](https://github.com/Patrick-81/NAFABox/blob/master/doc/Tuto_armbian.md)
+[Tuto additionnel pour les cartes Armbian](https://github.com/Patrick-81/NAFABox/blob/master/doc/Tuto_armbian.md)   
+[Tuto additionnel pour les cartes RPI](https://github.com/Patrick-81/NAFABox/blob/master/doc/Tuto_RPI.md)
