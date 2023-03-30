@@ -39,7 +39,7 @@ Insérez votre carte SD dans votre ordinateur.
 
 ## Installation :
 
-### (OPTIONNEL) si pas parametrer dans RPI imager :
+### (OPTIONNEL) si pas paramétré dans RPI imager :
 #### Choisissez le bon clavier :
 Connectez-vous, puis tapez la commande suivante : 
 `sudo dpkg-reconfigure keyboard-configuration`
@@ -64,26 +64,26 @@ Il vous sera demandé de définir un nouveau mot de passe.
 - Supprimez les fichiers lui appartenant :
 `sudo rm -R /home/ubuntu/`
 
-### (Optimisation) :
-#### Supprimez « cloud-init » pour un démarrage plus rapide :
+
+### Supprimez « cloud-init » pour un démarrage plus rapide :
 
 `sudo apt purge cloud-init`   
 `sudo rm -rf /etc/cloud/`   
 `sudo rm -rf /var/lib/cloud`   
 
-#### Supprimez « needrestart » :
+### Supprimez « needrestart » :
 `sudo apt-get purge needrestart`
 
-## Installation de la partie graphique :
-### Mettez à jour le système :
+### Installation de la partie graphique :
+#### Mettez à jour le système :
 `sudo apt update`  
 `sudo apt upgrade`   
 `reboot`
 
-### Installez les pilotes graphiques :
+#### Installez les pilotes graphiques :
 `sudo apt install mesa-* vulkan-*`
 
-### Installez l'interface graphique : 
+#### Installez l'interface graphique : 
 __Attention :__ cette partie peut durer plus de 30min.
 
 __Xubuntu :__ `sudo apt install xubuntu-desktop` --> très léger plutôt joli   
@@ -91,7 +91,7 @@ __Kubuntu :__ `sudo apt install kubuntu-desktop` --> moins léger mais très jol
 __Lubuntu :__ `sudo apt install lubuntu-desktop` --> très léger   
 __Ubuntu Mate :__ `sudo apt install ubuntu-mate-desktop` --> pas testé
 
-### Intallez gdm3 (surtout pour Lubuntu et Kubuntu) :
+#### Intallez gdm3 (surtout pour Lubuntu et Kubuntu) :
 Il faut installer un display manger leger pour plus de simplicité ( sddm pour kubuntu et lubuntu bug sur ubuntu server)   
 `sudo apt install gdm3`  
 
@@ -102,26 +102,39 @@ Je vous conseil d'installer firefox car il n'y aura pas de navigateur par défau
 ### Redémarrez pour accéder au bureau :
 `reboot`
 
-### Démarer sur Xubuntu ( ou Kubuntu, Lubuntu, Mate)
+### Démarrer sur Xubuntu ( ou Kubuntu, Lubuntu, Mate)
 Au premier redémarrage une fois votre utilisateur sélectionné mais avant le mot de passe il faudra sélectionner l'interface graphique que vous souhaitez démarrer.   
-Sélectionner l'engrenage en bas à droite et selectionner __Xubuntu__ (si vous avez installé Xubuntu).   
+Sélectionner l'engrenage en bas à droite et sélectionner __Xubuntu__ (si vous avez installé Xubuntu).   
 
 ![select xubuntu session](https://github.com/Patrick-81/NAFABox/raw/master/doc/select_interface.jpg)   
 
 Puis vous pouvez rentrer votre mot de passe et vous connecter.   
 
 
-#### Modifiez le fichier gdm3 pour vous connecter automatiquement :
+### Modifiez le fichier gdm3 pour vous connecter automatiquement :
 Après avoir redémarré, ouvrez un terminal puis tapez les commandes suivantes :   
 `sudo nano /etc/gdm3/custom.conf`   
---> enlevez les commentaires de la section « autoboot » (2 lignes) et replacez l'utilisateur par default (user1) par votre propre nom d'utilisateur.   
-![edit_gdm3](https://github.com/Patrick-81/NAFABox/raw/master/doc/edit_gdm3.jpg)    
+--> enlevez les commentaires de la section « autoboot » (2 lignes) et replacez l'utilisateur par default (user1) par votre propre nom d'utilisateur.    
+![edit_gdm3](https://github.com/Patrick-81/NAFABox/raw/master/doc/edit_gdm3.jpg)     
+Il faut aussi désactiver WayLand : décommentez `WaylandEnable=false`   
+Pour quitter et enregistrer : CTRL+X --> Y --> ENTER    
+`reboot`
+
+### Modifiez le fichier lightdm pour vous connecter automatiquement :
+Après avoir redémarré, ouvrez un terminal puis tapez les commandes suivantes :   
+`sudo nano /etc/lightdm/lightdm.conf`   
+--> ajouter les 3 ligne suivantes :
+- `[SeatDefaults]`
+- `greeter-session=lightdm-gtk-greeter`
+- `autologin-user=ubuntu` --> en remplacant ubuntu par votre nom d'utilisateur.   
+![edit_gdm3](https://github.com/Patrick-81/NAFABox/raw/master/doc/edit_lightdm.jpg)    
 Pour quitter et enregistrer : CTRL+X --> Y --> ENTER    
 `reboot`
 
 ### Supprimez l'économiseur d'écran (pour xubuntu):
 
 Dans le menu : **Settings**-->**Screensaver** et désactivez Screensaver
+Il est conseillé de désactiver aussi l'économiseur d'énergie pour l'écran dans le même menu.
 
 ### Installez votre langue (optionnel) :
 [tuto langue](https://github.com/Patrick-81/NAFABox/blob/master/doc/language.md)   
