@@ -23,7 +23,9 @@ V30 = U3 pour Classe Video
 V60 = vitesse d'écriture minimum de 60Mo/s
 V90 = vitesse d'écriture minimum de 90Mo/s
 
+Les débits annoncés sont ceux garantis quelle que soit la facon d'exploité la carte SD.
 UHS-I : débit théorique max de 104MB/s 
 
-__Attention :__ il n'existe pas encore d'ordinateur compatible UHS-II   
-__Attention :__ les cartes UHS-II sont compatibles UHS-I mais les cartes UHS-I ne sont pas compatible UHS-II
+### __Attention :__ 
+- il n'existe pas encore de SBC compatible UHS-II   
+- les cartes UHS-II sont compatibles UHS-I, mais les cartes UHS-I ne sont pas compatible UHS-II
