@@ -51,26 +51,19 @@ echo "================================================="
 # pré-requis
 # pre requisite
 ######
-#if [[ -z $(cat install-status.txt | grep prereq) ]]
-#then
 
-sudo apt-get ${options} install libpangox-1.0-0 libespeak1 libpango1.0-0
-sudo apt-get ${options} install libsonic0 espeak-data fonts-freefont-ttf
-version=`lsb_release -c -s`
-if [[ ${version} == "xenial" ]]
-then
-  sudo apt-get ${options} install ttf-freefont
-fi
-sudo apt-get ${options} install libjpeg62 libglu1
-sudo apt-get ${options} install xplanet espeak openssh-server uuid
+sudo apt-get ${options} install libjpeg62
+sudo apt-get ${options} install openssh-server openssh-client uuid
+
+# add samba (for windows share) :
+sudo apt-get ${options} install samba
 
 # add package for exfat :
 sudo apt-get install -y exfat-fuse  
 sudo apt-get install -y exfat-utils
 sudo apt-get install -y exfatprogs
 
-#	echo prereq >> $dirinstall/install-status.txt
-#fi
+
 ######
 # Installer les utilitaires
 # Install utilities
