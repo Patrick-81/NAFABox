@@ -40,6 +40,11 @@ sudo apt-get -y remove brltty
 
 # remove media auto mount for dslr :
 sudo gsettings set org.gnome.desktop.media-handling automount false
+
+# add utility package :
+sudo apt-get -y install libfftw3-dev
+sudo apt-get -y install qt5-image-formats-plugins qt5-qmltooling-plugins
+
 if [[ ${server_choice} == "server" ]]
 then
   echo "############################"
