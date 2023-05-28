@@ -295,6 +295,7 @@ then
 	rm ${vnc_path}
 	test_w=true
 	number_t=0
+	figlet -k VNC Password :
 	while ${test_w} && [[ "$number_t" < 3 ]]
 	do
         	echo "Enter Le mot de passe VNC pour votre BOX :"
