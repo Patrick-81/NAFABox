@@ -33,7 +33,7 @@ sudo apt-get -y install gparted
 # for bluetooth
 sudo apt-get -y install bluetooth bluez bluez-tools pulseaudio-module-bluetooth blueman
 # for hotspot
-sudo apt-get -y install dnsmasq hostapd
+sudo apt-get -y install hostapd
 sudo apt-get -y install dhcpcd5 dhcpcd-gtk
 
 #sudo apt-get --reinstall -o Dpkg::Options::="--force-confnew" -y --no-install-recommends install hostapd
