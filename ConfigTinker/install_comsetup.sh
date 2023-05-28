@@ -377,47 +377,48 @@ fi
 
 if [[ ${novnc} == "TRUE" ]]
 then
-	######
-	# Installation accès vnc via navigateur
-	######
-	figlet -k Install novnc
-	sudo apt-get -y install novnc
-	sudo apt-get -y install git
 
-	cd /home/${USER}/bin/
-	#
-	#test si le dossier noVNC existe, si oui suppression
-	#
-	if [[ -d "/home/${USER}/bin/noVNC" ]]
-	then
-	  echo "suppression de l'ancien dossier noVNC"
-	  rm -Rf /home/${USER}/bin/noVNC
-	fi
+    ######
+    # Installation accès vnc via navigateur
+    ######
+    figlet -k Install novnc
+    sudo apt-get -y install novnc
+    sudo apt-get -y install git
+
+    cd /home/${USER}/bin/
+    #
+    #test si le dossier noVNC existe, si oui suppression
+    #
+    if [[ -d "/home/${USER}/bin/noVNC" ]]
+    then
+        echo "suppression de l'ancien dossier noVNC"
+        rm -Rf /home/${USER}/bin/noVNC
+    fi
 
     #version=`curl -s "https://api.github.com/repos/novnc/noVNC/releases/latest" | awk -F '"' '/tag_name/{print $4}'`
-    version="v1.3.0"
+    version="v1.4.0"
     wget https://github.com/novnc/noVNC/archive/${version}.zip
     unzip ${version}.zip
     rm ${version}.zip
     mv noVNC-${version:1} noVNC
 
 
-	#git clone git://github.com/kanaka/noVNC
+    #git clone git://github.com/kanaka/noVNC
 
-	if [[ -f /etc/systemd/system/novnc.service ]]
-	  then
-	  sudo systemctl stop novnc.service
-	  sudo systemctl disable novnc.service
-	  sudo rm /etc/systemd/system/novnc.service
-	fi
+    if [[ -f /etc/systemd/system/novnc.service ]]
+        then
+        sudo systemctl stop novnc.service
+        sudo systemctl disable novnc.service
+        sudo rm /etc/systemd/system/novnc.service
+    fi
 
-	cat ${dirinstall}/novnc.service | sed -e "s=MOI=${USER}=g" > /tmp/novnc.service
-	sudo cp /tmp/novnc.service /lib/systemd/system/novnc.service
-	# sudo chmod a+rwx /lib/systemd/system/novnc.service
+    cat ${dirinstall}/novnc.service | sed -e "s=MOI=${USER}=g" > /tmp/novnc.service
+    sudo cp /tmp/novnc.service /lib/systemd/system/novnc.service
+    # sudo chmod a+rwx /lib/systemd/system/novnc.service
 
-	sudo systemctl daemon-reload
-	sudo systemctl enable novnc.service
-	sudo systemctl start novnc.service
+    sudo systemctl daemon-reload
+    sudo systemctl enable novnc.service
+    sudo systemctl start novnc.service
 fi
 
 if [[ ${ddserv} == "TRUE" ]]
