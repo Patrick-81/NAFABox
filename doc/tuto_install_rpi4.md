@@ -111,7 +111,7 @@ Sélectionner l'engrenage en bas à droite et sélectionner __Xubuntu__ (si vous
 Puis vous pouvez rentrer votre mot de passe et vous connecter.   
 
 
-### Modifiez le fichier gdm3 pour vous connecter automatiquement :
+### Modifiez le fichier gdm3 pour vous connecter automatiquement (si vous voulez utiliser GDM):
 Après avoir redémarré, ouvrez un terminal puis tapez les commandes suivantes :   
 `sudo nano /etc/gdm3/custom.conf`   
 --> enlevez les commentaires de la section « autoboot » (2 lignes) et replacez l'utilisateur par default (user1) par votre propre nom d'utilisateur.    
@@ -120,14 +120,14 @@ Il faut aussi désactiver WayLand : décommentez `WaylandEnable=false`
 Pour quitter et enregistrer : CTRL+X --> Y --> ENTER    
 `reboot`
 
-### Modifiez le fichier lightdm pour vous connecter automatiquement :
+### Modifiez le fichier lightdm pour vous connecter automatiquement (si vous voulez utiliser lightDM):
 Après avoir redémarré, ouvrez un terminal puis tapez les commandes suivantes :   
 `sudo nano /etc/lightdm/lightdm.conf`   
 --> ajouter les 3 ligne suivantes :
 - `[SeatDefaults]`
 - `greeter-session=lightdm-gtk-greeter`
 - `autologin-user=ubuntu` --> en remplacant ubuntu par votre nom d'utilisateur.   
-![edit_gdm3](https://github.com/Patrick-81/NAFABox/raw/master/doc/edit_lightdm.jpg)    
+![edit_lightdm3](https://github.com/Patrick-81/NAFABox/raw/master/doc/edit_lightdm.jpg)    
 Pour quitter et enregistrer : CTRL+X --> Y --> ENTER    
 `reboot`
 
