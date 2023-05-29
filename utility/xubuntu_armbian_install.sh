@@ -19,7 +19,7 @@ sudo apt-get -y install xfce4-cpufreq-plugin xfce4-appmenu-plugin xfce4 desktop-
 sudo apt-get -y install network-manager-gnome network-manager-ssh-gnome 
 
 #install application
-sudo apt-get -y install git pluma gnome-disk-utility language-pack-gnome-fr file-roller evince shotwell eog gvfs gnome-calculator
+sudo apt-get -y install git pluma gnome-disk-utility language-pack-gnome-fr file-roller evince shotwell eog gvfs gnome-calculator firefox
 
 #install login manager
 sudo apt-get -y install policykit-1 policykit-desktop-privileges policykit-1-gnome
@@ -31,4 +31,3 @@ sudo apt-get -y install thunar-archive-plugin thunar-gtkhash
 sudo apt-get -y install blueman bluez-meshd bluez-tools bluez-alsa-utils bluez-obexd bluez-tests
 sudo apt-get -y install pulseaudio-module-bluetooth pulseaudio-module-jack 
 sudo apt-get -y install gnome-bluetooth indicator-bluetooth 
-
