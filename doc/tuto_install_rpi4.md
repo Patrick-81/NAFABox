@@ -83,13 +83,22 @@ Il vous sera demandé de définir un nouveau mot de passe.
 #### Installez les pilotes graphiques :
 `sudo apt install mesa-* vulkan-*`
 
+#### Installation de git pour la suite :
+`sudo apt install git`
+
 #### Installez l'interface graphique : 
 __Attention :__ cette partie peut durer plus de 30min.
 
 __Xubuntu :__ `sudo apt install xubuntu-desktop` --> très léger plutôt joli   
+Pour Xubuntu vous pouvez utiliser le script fourni qui installera la machine de facon plus complète:   
+`cd ~`   
+`git clone https://github.com/Patrick-81/NAFABox.git`   
+`cd ~/NAFABox/utility/`   
+`./xubuntu_armbian_install.sh`   
+
 __Kubuntu :__ `sudo apt install kubuntu-desktop` --> moins léger mais très joli   
-__Lubuntu :__ `sudo apt install lubuntu-desktop` --> très léger   
-__Ubuntu Mate :__ `sudo apt install ubuntu-mate-desktop` --> pas testé
+__Lubuntu :__ `sudo apt install lubuntu-desktop` --> très très léger   
+__Ubuntu Mate :__ `sudo apt install ubuntu-mate-desktop` --> pas testé   
 
 #### Intallez gdm3 (surtout pour Lubuntu et Kubuntu) :
 Il faut installer un display manger leger pour plus de simplicité ( sddm pour kubuntu et lubuntu bug sur ubuntu server)   
@@ -127,7 +136,7 @@ Après avoir redémarré, ouvrez un terminal puis tapez les commandes suivantes 
 - `[SeatDefaults]`
 - `greeter-session=lightdm-gtk-greeter`
 - `autologin-user=ubuntu` --> en remplacant ubuntu par votre nom d'utilisateur.   
-![edit_lightdm3](https://github.com/Patrick-81/NAFABox/raw/master/doc/edit_lightdm.jpg)    
+![edit_lightdm](https://github.com/Patrick-81/NAFABox/raw/master/doc/edit_lightdm.jpg)    
 Pour quitter et enregistrer : CTRL+X --> Y --> ENTER    
 `reboot`
 
