@@ -5,8 +5,10 @@
       echo "T CPU : $temperature °C";
     }
     if ($_GET["func"] == "getCPU") {
-      $load = sys_getloadavg();
-      echo "CPU: " .$load[0]."%";
+      $output=shell_exec("cat /proc/loadavg");
+      $loadavg=substr($output,0,strpos($output," "));
+      $loadavg=$loadavg*1;
+      echo "CPU: " .$loadavg;
     }
     if ($_GET["func"] == "getDSK") {
     }
@@ -15,7 +17,7 @@
        $mem = 0;
        while ($line = fgets($fh)) {
           $pieces = array();
-          if (preg_match('/^MemFree:\s+(\d+)\skB$/', $line, $pieces)) {
+          if (preg_match('/^MemAvailable:\s+(\d+)\skB$/', $line, $pieces)) {
           $mem = $pieces[1];
           break;
           }
@@ -24,7 +26,7 @@
        $mem = number_format($mem/1024/1024,1, '.', '');
        $dsk_free = disk_free_space("/home");
        $dsk_free = number_format($dsk_free/1024/1024/1024,1, '.', '');
-       echo "DSK: $dsk_free Gb\nRAM $mem Gb";
+       echo "Disk Free: $dsk_free Gb\n\n RAM Free: $mem Gb";
      }
 ?>
 
