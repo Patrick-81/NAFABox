@@ -123,8 +123,11 @@ Puis vous pouvez rentrer votre mot de passe et vous connecter.
 ### Modifiez le fichier gdm3 pour vous connecter automatiquement (si vous voulez utiliser GDM):
 Après avoir redémarré, ouvrez un terminal puis tapez les commandes suivantes :   
 `sudo nano /etc/gdm3/custom.conf`   
---> enlevez les commentaires de la section « autoboot » (2 lignes) et replacez l'utilisateur par default (user1) par votre propre nom d'utilisateur.    
-![edit_gdm3](https://github.com/Patrick-81/NAFABox/raw/master/doc/edit_gdm3.jpg)     
+- Avant :     
+![edit_gdm3_before](https://github.com/Patrick-81/NAFABox/raw/master/doc/edit_gdm3_before.jpg)   
+- Après :    
+![edit_gdm3_after](https://github.com/Patrick-81/NAFABox/raw/master/doc/edit_gdm3_after.jpg)    
+--> enlevez les commentaires de la section « autoboot » (2 lignes) et replacez l'utilisateur par default (user1) par votre propre nom d'utilisateur.       
 Il faut aussi désactiver WayLand : décommentez `WaylandEnable=false`   
 Pour quitter et enregistrer : CTRL+X --> Y --> ENTER    
 `reboot`
@@ -140,11 +143,17 @@ Après avoir redémarré, ouvrez un terminal puis tapez les commandes suivantes 
 Pour quitter et enregistrer : CTRL+X --> Y --> ENTER    
 `reboot`
 
-### Supprimez l'économiseur d'écran (pour xubuntu):
+### ATTENTION : Supprimez l'économiseur d'écran (pour xubuntu):
 
 Dans le menu : **Settings**-->**Screensaver** et désactivez Screensaver
-Il est conseillé de désactiver aussi l'économiseur d'énergie pour l'écran dans le même menu.
+Ilfaut aussi désactiver aussi l'économiseur d'énergie pour l'écran dans le même menu.
 
+![edit_screensaver1](https://github.com/Patrick-81/NAFABox/raw/master/doc/edit_screensaver1.jpg)    
+![edit_screensaver2](https://github.com/Patrick-81/NAFABox/raw/master/doc/edit_screensaver2.jpg)    
+![edit_screensaver3](https://github.com/Patrick-81/NAFABox/raw/master/doc/edit_screensaver3.jpg)    
+
+Il existe un bug qui freeze l'écran si l'économiseur d'écran s'allume. Si cela rrive il faudra redémarrer
+ 
 ### Installez votre langue (optionnel) :
 [tuto langue](https://github.com/Patrick-81/NAFABox/blob/master/doc/language.md)   
 
