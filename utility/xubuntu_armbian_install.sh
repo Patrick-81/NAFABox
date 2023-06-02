@@ -16,7 +16,7 @@ sudo apt-get -y install xubuntu-desktop gdm3
 sudo apt-get -y install xfce4-cpufreq-plugin xfce4-appmenu-plugin xfce4 desktop-base tango-icon-theme pavucontrol pulseaudio xfce4-whiskermenu-plugin xfce4-terminal xfce4-taskmanager xfce4-systemload-plugin xfce4-sntray-plugin xfce4-sensors-plugin xsensors lm-sensors xfce4-screenshooter xfce4-screensaver xfce4-power-manager xfce4-power-manager-plugins xfce4-netload-plugin xfce4-mount-plugin xfce4-indicator-plugin 
 
 #install networkmanger
-sudo apt-get -y install network-manager-gnome network-manager-ssh-gnome 
+sudo apt-get -y install network-manager-gnome network-manager-ssh-gnome ifupdown
 
 #install application
 sudo apt-get -y install git pluma gnome-disk-utility language-pack-gnome-fr file-roller evince shotwell eog gvfs gnome-calculator firefox
