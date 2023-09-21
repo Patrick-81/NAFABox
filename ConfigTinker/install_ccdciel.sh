@@ -55,7 +55,7 @@ sudo apt-get -y install libpango-1.0-0 xplanet espeak
 software="indistarter"
 
 #need update
-version="$software""-""2.4.0"
+version="$software""_""2.4.0"
 subversion="192"
 
 file="$version""-$subversion""$proc.deb"
