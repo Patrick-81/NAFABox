@@ -55,11 +55,10 @@ installconf()
 		    choice[3]="Installation Lin_guider"
 		    choice[4]="installation de Carte du ciel (Beta)"
 		    choice[5]="Installation Ccdciel (Beta)"
-		    choice[6]="Installation Planetary Imager (Beta)"
-		    choice[7]="Installation OACapture (Beta)"
-		    choice[8]="Installation logiciel de traitement d'image"
-		    choice[9]="Installation Stellarium"
-		    choice[10]="Telechargement du/des index(s) astrometrique"
+		    choice[6]="Installation OACapture (Beta)"
+		    choice[7]="Installation logiciel de traitement d'image"
+		    choice[8]="Installation Stellarium"
+		    choice[9]="Telechargement du/des index(s) astrometrique"
 	    else
 		    dial[0]="Install/Update of software"
 		    dial[1]="Choose software(s) to install"
@@ -69,11 +68,10 @@ installconf()
 		    choice[3]="Lin_guider"
 		    choice[4]="Skychart (Beta)"
 		    choice[5]="Ccdciel (Beta)"
-		    choice[6]="Planetary Imager (Beta)"
-		    choice[7]="OACapture (Beta)"
-		    choice[8]="Image processing software"
-		    choice[9]="Stellarium"
-		    choice[10]="install astrometry index(s)"
+		    choice[6]="OACapture (Beta)"
+		    choice[7]="Image processing software"
+		    choice[8]="Stellarium"
+		    choice[9]="install astrometry index(s)"
 	    fi
 
 	    message[0]="Install kstars-ekos-indi"
@@ -82,35 +80,33 @@ installconf()
 	    message[3]="Install Lin_guider"
 	    message[4]="Install Skychart"
 	    message[5]="Install ccdciel"
-	    message[6]="Install planetary imager"
-	    message[7]="Install OACapture"
-	    message[8]="Install image processing software"
-	    message[9]="Install stellarium"
-	    message[10]="Install index(s)"
+	    message[6]="Install OACapture"
+	    message[7]="Install image processing software"
+	    message[8]="Install stellarium"
+	    message[9]="Install index(s)"
 
-        script[0]=install_kstars.sh
+      script[0]=install_kstars.sh
 	    script[1]=install_comsetup.sh
 	    script[2]=install_phd2.sh
 	    script[3]=install_linguider.sh
 	    script[4]=install_skychart.sh
 	    script[5]=install_ccdciel.sh
-	    script[6]=install_planetaryimager.sh
-	    script[7]=install_oacapture.sh
-	    script[8]=install_traitement.sh
-	    script[9]=install_stellarium.sh
-	    script[10]=install_index.sh
+	    script[6]=install_oacapture.sh
+	    script[7]=install_traitement.sh
+	    script[8]=install_stellarium.sh
+	    script[9]=install_index.sh
 
 
 	    if [[ $2 == "initial" ]]
 	    then
-		    st=(true true true false false false false false false false false)
+		    st=(true true true false false false false false false false)
 
 	    else
-		    st=(false false false false false false false false false false false)
+		    st=(false false false false false false false false false false)
 	    fi
 
 	    # nombre de logiciel
-	    number=11
+	    number=10
 
 	    # echo ${st[*]}
 	    # echo ${choise[*]}
@@ -135,10 +131,9 @@ installconf()
 		    --field="${choice[7]}:CHK" \
 		    --field="${choice[8]}:CHK" \
 		    --field="${choice[9]}:CHK" \
-		    --field="${choice[10]}:CHK" \
 		    "" "${st[0]}" "${st[1]}" "${st[2]}" \
 		    "${st[3]}" "${st[4]}" "${st[5]}" "${st[6]}" \
-		    "${st[7]}" "${st[8]}" "${st[9]}" "${st[10]}"`
+		    "${st[7]}" "${st[8]}" "${st[9]}"`
 	    then
 		    for (( i=0; i<=$number-1; i++ ))
 		    do
