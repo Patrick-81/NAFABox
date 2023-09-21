@@ -55,11 +55,11 @@ sudo apt-get -y install libpango-1.0-0 xplanet espeak
 software="indistarter"
 
 #need update
-version="$software""_""2.4.0"
+version="2.4.0"
 subversion="192"
 
-file="$version""-$subversion""$proc.deb"
-wget https://sourceforge.net/projects/$software/files/$version/$file -P /tmp
+file="$software""_$version""-$subversion""$proc.deb"
+wget https://sourceforge.net/projects/$software/files/$software-$version/$file -P /tmp
 sudo apt-get -y install /tmp/$file
 
 # install eqmodgui via sourceforge

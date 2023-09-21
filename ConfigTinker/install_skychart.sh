@@ -92,7 +92,7 @@ version="4.0"
 subversion="3431"
 
 file="$software""_""$version""-$subversion""_all.deb"
-wget https://sourceforge.net/projects/skychart/files/2-catalogs/Nebulea/$version/$file -P /tmp
+wget https://sourceforge.net/projects/skychart/files/2-catalogs/Nebulea/$file -P /tmp
 sudo apt-get -y install /tmp/$file
 
 # install via skychart-data-pictures sourceforge
@@ -104,7 +104,7 @@ version="4.0"
 subversion="3421"
 
 file="$software""_""$version""-$subversion""_all.deb"
-wget https://sourceforge.net/projects/skychart/files/2-catalogs/Nebulea/$version/$file -P /tmp
+wget https://sourceforge.net/projects/skychart/files/2-catalogs/Nebulea/$file -P /tmp
 sudo apt-get -y install /tmp/$file
 
 # install via "PPA" outdate
