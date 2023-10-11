@@ -59,8 +59,10 @@ sudo apt-get ${options} install openssh-server openssh-client uuid
 sudo apt-get ${options} install samba
 
 # add package for exfat :
+# before 22.04
 sudo apt-get install -y exfat-fuse  
 sudo apt-get install -y exfat-utils
+# after 22.04
 sudo apt-get install -y exfatprogs
 
 
