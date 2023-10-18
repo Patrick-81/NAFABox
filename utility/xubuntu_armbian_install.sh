@@ -35,6 +35,8 @@ sudo apt-get -y install gnome-bluetooth indicator-bluetooth
 #install update manger 
 sudo apt-get -y install ubuntu-advantage-tools
 
-# remove last cloud-init and run netplan
+# remove last cloud-init and run netplan, desactivate networkd
 sudo rm /etc/netplan/50-cloud-init.yaml
 sudo netplan generate
+sudo systemctl stop systemd-networkd-wait-online.service
+sudo systemctl disable systemd-networkd-wait-online.service
