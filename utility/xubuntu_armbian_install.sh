@@ -31,3 +31,6 @@ sudo apt-get -y install thunar-archive-plugin thunar-gtkhash
 sudo apt-get -y install blueman bluez-meshd bluez-tools bluez-alsa-utils bluez-obexd bluez-tests
 sudo apt-get -y install pulseaudio-module-bluetooth pulseaudio-module-jack 
 sudo apt-get -y install gnome-bluetooth indicator-bluetooth 
+
+#install update manger 
+sudo apt-get -y install ubuntu-advantage-tools
