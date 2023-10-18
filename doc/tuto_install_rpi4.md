@@ -94,7 +94,7 @@ Pour Xubuntu vous pouvez utiliser le script fourni qui installera la machine de 
 `cd ~`   
 `git clone https://github.com/Patrick-81/NAFABox.git`   
 `cd ~/NAFABox/utility/`   
-`./xubuntu_armbian_install.sh`   
+`./xubuntu_armbian_install.sh rpi`   
 
 __Kubuntu :__ `sudo apt install kubuntu-desktop` --> moins léger mais très joli   
 __Lubuntu :__ `sudo apt install lubuntu-desktop` --> très très léger   
