@@ -40,3 +40,5 @@ sudo rm /etc/netplan/50-cloud-init.yaml
 sudo netplan generate
 sudo systemctl stop systemd-networkd-wait-online.service
 sudo systemctl disable systemd-networkd-wait-online.service
+sudo rm /etc/network/interfaces.d/99-add-config.conf
+sudo echo "# The loopback network interface\nauto lo\niface lo inet loopback\n\n# The primary network interface\nauto eth0\niface eth0 inet dhcp" > /etc/network/interfaces.d/99-add-config.conf
