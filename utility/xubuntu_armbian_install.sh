@@ -35,8 +35,8 @@ sudo apt-get -y install gnome-bluetooth indicator-bluetooth
 #install update manger 
 sudo apt-get -y install ubuntu-advantage-tools
 
-if ["$1" = "rpi"]
-then
+if [["$1" == "rpi"]]; then
+
   # remove last cloud-init and run netplan, desactivate networkd
   sudo rm /etc/netplan/50-cloud-init.yaml
   sudo netplan generate
