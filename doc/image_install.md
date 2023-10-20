@@ -4,9 +4,6 @@
 
 pour récupérer une image de la NAFABox :
 
-- Lien principal (fermeture en Décembre 2022):   
-https://share.obspm.fr/index.php/s/WowXMAZkHPd3K9j
-
 - Miroir pour les dernières versions :   
 Lien OneDrive :   
 https://1drv.ms/f/s!AlFrxWojM_Hflr0R80wOKHzWQMI88g   
