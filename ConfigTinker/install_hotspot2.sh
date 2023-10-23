@@ -39,7 +39,7 @@ then
   echo ${device[@]} | tr " " ! > /tmp/device
   liste_device=`cat /tmp/device`
 
-   default_hostname="$moi"
+
 
 	if option=`yad --center \
                  --image dialog-question \
@@ -83,51 +83,48 @@ then
 
 	  then
 		  de_wifi=$(echo "$option" | cut -d "|" -f1)
-		  name_w=$(echo "$option" | cut -d "|" -f2)
+		  hotspot_name=$(echo "$option" | cut -d "|" -f2)
 		  mdp=$(echo "$option" | cut -d "|" -f3)
 
-      # add "_box" for hotspot name
-		  hotspot_name=${name_w}"_box"
-
 		  mac_address=$(sudo cat /sys/class/net/${de_wifi}/address)
-		  security="[wifi-security]\ngroup=\nkey-mgmt=wpa-psk\npairwise=\nproto=\npsk=MDP"
-
-		  fic0=$(tempfile)
-		  cat ${dirinstall}/nafabox.template | sed -e "s/WLAN/${de_wifi}/g" > ${fic0}
-		  fic1=$(tempfile)
-		  cat ${fic0} | sed -e "s/HOTSPOTNAME/${hotspot_name}/g" > ${fic1}
-		  fic2=$(tempfile)
-		  cat ${fic1} | sed -e "s/UUID/${hsuuid}/g" > ${fic2}
-		  fic3=$(tempfile)
-		  cat ${fic2} | sed -e "s/MAC_ADDRESS/${mac_address}/g" > ${fic3}
-
 
 		  if [[ -z "$mdp" ]]
 		  then
-			  fic5=$(tempfile)
-			  cat ${fic3} | sed -e "s/SECURITY//g" > ${fic5}
-		  else
-			  fic4=$(tempfile)
-			  cat ${fic3} | sed -e "s/SECURITY/${security}/g" > ${fic4}
-			  fic5=$(tempfile)
-			  cat ${fic4} | sed -e "s/MDP/${mdp}/g" > ${fic5}
+        mdp="nafa1234"
 		  fi
 		  ######
 		  # Find active access point
 		  ######
-		  activeap=$(iw ${de_wifi} info | grep ssid | cut -f 2 -d" ")
+		  activeap=$(iw ${de_wifi} info | grep id | cut -f 2 -d" ")
       sudo systemctl stop NetworkManager
 
 		  if test ! -z ${activeap}
 		  then
-			  sudo rm -f /etc/NetworkManager/system-connections/${activeap}
+			  nmcli connection down hotspot ifname ${de_wifi}
+        nmcli connection delete hotspot
 		  fi
 		  ######
 		  # Create new one
 		  ######
-		  sudo cp ${fic5} /etc/NetworkManager/system-connections/${hotspot_name}
-		  sleep 5
-		  sudo systemctl start NetworkManager
+		  nmcli connection down hotspot ifname ${de_wifi}
+      nmcli connection delete hotspot
+
+      nmcli connection add type wifi ifname ${de_wifi} con-name hotspot autoconnect yes ssid ${hotspot_name}
+      nmcli connection modify hotspot 802-11-wireless.mode ap 802-11-wireless.band bg 802-11-wireless.channel 1 # bande a utilisé (a = 5GHz, bg = 2.4GHz)
+
+      nmcli connection modify hotspot 802-11-wireless-security.key-mgmt wpa-psk # type de sécurité
+      # nmcli connection modify hotspot 802-11-wireless-security.proto rsn # type de wpa ( wpa ou rsn)
+      # nmcli connection modify hotspot 802-11-wireless-security.group ccmp # type of group encryption algo (tkip, ccmp)
+      # nmcli connection modify hotspot 802-11-wireless-security.pairwise ccmp # list of pairwise encryption algo (tkip, ccmp)
+      nmcli connection modify hotspot 802-11-wireless-security.psk ${mdp} # mot de passe
+      nmcli connection modify hotspot ipv4.method shared
+
+      nmcli connection up hotspot ifname ${de_wifi}
+      # nmcli connection up uuid ${hsuuid}
+
+      # commande alternatif
+      # nmcli dev wifi hotspot ifname ${de_wifi} con-name hotspot ssid ${hotspot_name} band bg channel 1 password ${mdp}
+      # nmcli dev wifi show-password #--> see wifi name, password and QRcode
 
 
 	  else
@@ -172,3 +169,4 @@ then
 else
 	echo "No wifi decice found"
 fi
+
