@@ -91,10 +91,10 @@
                     </div>
                     <div class="row">
                         <div class="col-sm text-center align-self-center">
-                            <button type="submit" class="btn btn-danger btn-block" type="submit" name="action" value="shutdown">ON</button>
+                            <button type="submit" class="btn btn-success btn-block" type="submit" name="action" value="ON">ON</button>
                         </div>
                         <div class="col-sm text-center align-self-center">
-                            <button type="submit" class="btn btn-danger btn-block" type="submit" name="action" value="shutdown">OFF</button>
+                            <button type="submit" class="btn btn-danger btn-block" type="submit" name="action" value="OFF">OFF</button>
                         </div>
                     </div>
                     </from>
