@@ -26,7 +26,8 @@
        $mem = number_format($mem/1024/1024,1, '.', '');
        $dsk_free = disk_free_space("/home");
        $dsk_free = number_format($dsk_free/1024/1024/1024,1, '.', '');
-       echo "Disk Free: $dsk_free Gb\n\n RAM Free: $mem Gb";
+       echo "Disk Free: $dsk_free";
+       echo "RAM Free: $mem Gb";
      }
 ?>
 
