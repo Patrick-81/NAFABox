@@ -36,11 +36,21 @@ then
     then 
         new_host="`cat $FICHTMP`"
         def_host=`cat /etc/hostname`
-	    sudo echo ${new_host} > /tmp/hostname
-	    sudo mv /tmp/hostname /etc/hostname
-	    cat  /etc/hosts | sed -e "s=$def_host=$new_host=g" > /tmp/hosts
-	    sudo mv /tmp/hosts /etc/hosts
-	    echo "hostname change for $new_host"
+	sudo echo ${new_host} > /tmp/hostname
+	sudo mv /tmp/hostname /etc/hostname
+
+	if grep -q $def_host /etc/hosts
+	then 
+	    echo "hosts trouvé"
+	else 
+	    echo "hosts pas trouvé, creation"
+	    sudo sed -i "1i127.0.0.1	"$def_host /etc/hosts
+	fi
+	    
+	cat  /etc/hosts | sed -e "s=$def_host=$new_host=g" > /tmp/hosts
+	sudo mv /tmp/hosts /etc/hosts
+	echo "hostname change for $new_host"
+	    
     else 
         echo "hostname not change"
     fi
@@ -52,14 +62,23 @@ else
 			    --text="Chose your HostName (no special character):" \
 			    --field="HostName:" "NAFABox"`
     then
-	    new_host=$(echo "$name" | cut -d "|" -f1)
-	    def_host=`cat /etc/hostname`
-	    sudo echo ${new_host} > /tmp/hostname
-	    sudo mv /tmp/hostname /etc/hostname
-	    cat  /etc/hosts | sed -e "s=$def_host=$new_host=g" > /tmp/hosts
-	    sudo mv /tmp/hosts /etc/hosts
-	    echo "hostname change for $new_host"
+        new_host=$(echo "$name" | cut -d "|" -f1)
+        def_host=`cat /etc/hostname`
+        sudo echo ${new_host} > /tmp/hostname
+        sudo mv /tmp/hostname /etc/hostname
+	    
+        if grep -q $def_host /etc/hosts
+        then 
+            echo "hosts trouvé"
+        else 
+            echo "hosts pas trouvé, creation"
+            sudo sed -i "1i127.0.0.1	"$def_host /etc/hosts
+        fi
+	    
+        cat  /etc/hosts | sed -e "s=$def_host=$new_host=g" > /tmp/hosts
+        sudo mv /tmp/hosts /etc/hosts
+        echo "hostname change for $new_host"
     else
-	    echo "hostname not change"
+        echo "hostname not change"
     fi
 fi
