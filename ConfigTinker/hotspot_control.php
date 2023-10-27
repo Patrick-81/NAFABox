@@ -4,12 +4,12 @@
       $command="nmcli connection up hotspot";
       echo "Hotspot ON<br>";
       $output = shell_exec($command);
-      echo "$output<br>";
+      echo "$output<br><br>";
    } elseif ($action == "OFF") {
       $command="nmcli connection down hotspot";
       echo "HotSpot OFF<br>";
       $output = shell_exec($command);
-      echo "$output<br>";
+      echo "$output<br><br>";
    } else {
       echo "Unknown command";
    } 
