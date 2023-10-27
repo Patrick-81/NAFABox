@@ -10,7 +10,11 @@
       $loadavg=$loadavg*1;
       echo "CPU: " .$loadavg;
     }
-    if ($_GET["func"] == "getDSK") {
+    if ($_GET["func"] == "getNET") {
+      $output=shell_exec("ip -o addr show scope global | awk '{split($4, a, "/"); print $2" : "a[1]}'");
+      echo "$output<br>";
+      $output=shell_exec("curl ifconfig.me");
+      echo "$output<br>";
     }
     if ($_GET["func"] == "getRAM") {
        $fh = fopen('/proc/meminfo','r');
@@ -26,7 +30,7 @@
        $mem = number_format($mem/1024/1024,1, '.', '');
        $dsk_free = disk_free_space("/home");
        $dsk_free = number_format($dsk_free/1024/1024/1024,1, '.', '');
-       echo "Disk Free: $dsk_free";
+       echo "Disk Free: $dsk_free<br>";
        echo "RAM Free: $mem Gb";
      }
 ?>
