@@ -11,7 +11,7 @@
       echo "CPU: " .$loadavg;
     }
     if ($_GET["func"] == "getNET") {
-      $output=shell_exec("ip -o addr show scope global | awk '{split($4, a, "/"); print $2" : "a[1]}'");
+      $output=shell_exec("(ifconfig | awk -v RS='' '{print $6')");
       echo "$output<br>";
       $output=shell_exec("curl ifconfig.me");
       echo "$output<br>";
