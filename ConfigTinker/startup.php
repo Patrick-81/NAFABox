@@ -96,6 +96,9 @@
                         <div class="col-sm text-center align-self-center">
                             <button type="submit" class="btn btn-danger btn-block" type="submit" name="action" value="OFF">OFF</button>
                         </div>
+                        <div class="col-sm text-center align-self-center">
+                            <button type="submit" class="btn btn-primary btn-block" type="submit" name="action" value="STAT">Statut</button>
+                        </div>
                     </div>
                     </from>
 
