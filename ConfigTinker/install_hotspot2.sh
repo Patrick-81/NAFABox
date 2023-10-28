@@ -27,6 +27,8 @@ moi=$(whoami)
 ######
 # get wifi device
 device=($(basename -a $(find /sys/class/net -name wl*)))
+
+# demande de creation hotspot y/n
 if test ! -z ${device}
 then
 	if ${french}
@@ -35,7 +37,8 @@ then
   else
     pop="Do you want to create an hotspot ?"
   fi
-  # list all wifi device :
+
+  #create list all wifi device :
   echo ${device[@]} | tr " " ! > /tmp/device
   liste_device=`cat /tmp/device`
 
@@ -90,43 +93,34 @@ then
 
 		  if [[ -z "$mdp" ]]
 		  then
-        mdp="nafa1234"
+        mdp="nafa12345678"
 		  fi
-		  ######
-		  # Find active access point
-		  ######
-		  activeap=$(iw ${de_wifi} info | grep id | cut -f 2 -d" ")
-      sudo systemctl stop NetworkManager
+	  if option=`yad --width 450 \
+				    --center \
+				    --form \
+				    --title "Choose Canal" \
+				    --image=${dirinstall}/install_hotspot.png \
+				    --text "Choose Canal" \
+				    --field="Canal Support :":CB "$liste_canal"`
 
-		  if test ! -z ${activeap}
-		  then
-			  nmcli connection down hotspot ifname ${de_wifi}
+      then
+        de_canal=$(echo "$option" | cut -d "|" -f1)
+        echo $de_canal
+        channel_select=1
+        canal_select=bg
+
+        ######
+        # delete Hotspot
+        ######
+        nmcli connection down hotspot ifname ${de_wifi}
         nmcli connection delete hotspot
-		  fi
-		  ######
-		  # Create new one
-		  ######
-		  nmcli connection down hotspot ifname ${de_wifi}
-      nmcli connection delete hotspot
 
-      nmcli connection add type wifi ifname ${de_wifi} con-name hotspot autoconnect yes ssid ${hotspot_name}
-      nmcli connection modify hotspot 802-11-wireless.mode ap 802-11-wireless.band bg 802-11-wireless.channel 1 # bande a utilisé (a = 5GHz, bg = 2.4GHz)
-
-      nmcli connection modify hotspot 802-11-wireless-security.key-mgmt wpa-psk # type de sécurité
-      # nmcli connection modify hotspot 802-11-wireless-security.proto rsn # type de wpa ( wpa ou rsn)
-      # nmcli connection modify hotspot 802-11-wireless-security.group ccmp # type of group encryption algo (tkip, ccmp)
-      # nmcli connection modify hotspot 802-11-wireless-security.pairwise ccmp # list of pairwise encryption algo (tkip, ccmp)
-      nmcli connection modify hotspot 802-11-wireless-security.psk ${mdp} # mot de passe
-      nmcli connection modify hotspot ipv4.method shared
-
-      nmcli connection up hotspot ifname ${de_wifi}
-      # nmcli connection up uuid ${hsuuid}
-
-      # commande alternatif
-      # nmcli dev wifi hotspot ifname ${de_wifi} con-name hotspot ssid ${hotspot_name} band bg channel 1 password ${mdp}
-      # nmcli dev wifi show-password #--> see wifi name, password and QRcode
-
-
+        ######
+        # Create HotSpot
+        ######
+        nmcli dev wifi hotspot ifname ${de_wifi} con-name hotspot ssid ${hotspot_name} band ${canal_select} channel ${channel_select} password ${mdp} autoconnect yes
+        nmcli connection modify hotspot connection.autoconnect yes
+    fi
 	  else
       echo "[ESC] key pressed."
 		  exit
@@ -152,21 +146,14 @@ then
 
 	  then
 		  de_wifi=$(echo "$option" | cut -d "|" -f1)
-      activeap=$(iw ${de_wifi} info | grep ssid | cut -f 2 -d" ")
 
-      sudo systemctl stop NetworkManager
-
-      if test ! -z ${activeap}
-		  then
-        sudo rm -f /etc/NetworkManager/system-connections/${activeap}
-      fi
-
-      sleep 5
-		  sudo systemctl start NetworkManager
+		  # remove hotspot
+			nmcli connection down hotspot ifname ${de_wifi}
+      nmcli connection delete hotspot
 
     fi
 	fi
 else
 	echo "No wifi decice found"
 fi
-
+iwlist wlan0 channel | tail -n+2

@@ -22,7 +22,8 @@ figlet -k Install SkyChart
 echo "================================================="
 echo "================================================="
 
-skychart_version="stable"
+skychart_version="stable" #or beta
+install_method="sourceforge" #of ppa
 
 ######
 # Installation des pré-requis
@@ -39,82 +40,102 @@ source $dirinstall/proctype.sh
 ######
 
 sudo apt-get -y remove skychart
-software="skychart"
 
-if [[ ${skychart_version} == "stable" ]]
+if [[ ${install_method} == "ppa" ]]
 then
-	# install skychart via sourceforge stable
+  # install via PPA
+  sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 8B8B57C1AA716FC2
 
-	#need update
-	version="4.2.1"
-	subversion="4073"
+  if [[ ${skychart_version} == "stable" ]]
+  then
+    sudo rm /etc/apt/sources.list.d/skychart.list
+    sudo apt-get update
+    sudo sh -c "echo deb http://www.ap-i.net/apt stable main > /etc/apt/sources.list.d/skychart.list"
+  elif [[ ${skychart_version} == "beta" ]]
+  then
+    sudo rm /etc/apt/sources.list.d/skychart.list
+    sudo apt-get update
+    sudo sh -c "echo deb http://www.ap-i.net/apt unstable main > /etc/apt/sources.list.d/skychart.list"
+  fi
+  sudo apt-get update
 
-	file="$software"_""$version"-$subversion""$proc.deb"
-	wget https://sourceforge.net/projects/$software/files/1-software/version_$version/$file -P /tmp
-	sudo apt-get -y install /tmp/$file
-
-elif [[ ${skychart_version} == "beta" ]]
-then
-	# install skychart via sourceforge beta
-
-	#need update
-	date="2023-09-18"
-	version="4.3"
-	subversion="4630"
-
-	file="$software""_""$version""-$subversion""$proc.deb"
-	wget https://sourceforge.net/projects/$software/files/0-beta/$date/$file -P /tmp
-	sudo apt-get -y install /tmp/$file
+  sudo apt-get -y install skychart
+  sudo apt-get -y install skychart-data-stars skychart-data-dso skychart-data-picture
 fi
 
-######
-# Installation des catalogues minimaux
-######
+if [[ ${install_method} == "sourceforge" ]]
+then
 
-# install skychart-data-stars via sourceforge
+  software="skychart"
 
-software="skychart-data-stars"
+  if [[ ${skychart_version} == "stable" ]]
+  then
+    # install skychart via sourceforge stable
 
-#need update
-version="4.0"
-subversion="3421"
+    #need update
+    version="4.2.1"
+    subversion="4073"
 
-file="$software""_""$version""-$subversion""_all.deb"
-wget https://sourceforge.net/projects/skychart/files/2-catalogs/Stars/$file -P /tmp
-sudo apt-get -y install /tmp/$file
+    file="$software"_""$version"-$subversion""$proc.deb"
+    wget https://sourceforge.net/projects/$software/files/1-software/version_$version/$file -P /tmp
+    sudo apt-get -y install /tmp/$file
 
-# install skychart-data-dso via sourceforge
+  elif [[ ${skychart_version} == "beta" ]]
+  then
+    # install skychart via sourceforge beta
 
-software="skychart-data-dso"
+    #need update
+    date="2023-09-18"
+    version="4.3"
+    subversion="4630"
 
-#need update
-version="4.0"
-subversion="3431"
+    file="$software""_""$version""-$subversion""$proc.deb"
+    wget https://sourceforge.net/projects/$software/files/0-beta/$date/$file -P /tmp
+    sudo apt-get -y install /tmp/$file
+  fi
 
-file="$software""_""$version""-$subversion""_all.deb"
-wget https://sourceforge.net/projects/skychart/files/2-catalogs/Nebulea/$file -P /tmp
-sudo apt-get -y install /tmp/$file
+  ######
+  # Installation des catalogues minimaux
+  ######
 
-# install via skychart-data-pictures sourceforge
+  # install skychart-data-stars via sourceforge
 
-software="skychart-data-pictures"
+  software="skychart-data-stars"
 
-#need update
-version="4.0"
-subversion="3421"
+  #need update
+  version="4.0"
+  subversion="3421"
 
-file="$software""_""$version""-$subversion""_all.deb"
-wget https://sourceforge.net/projects/skychart/files/2-catalogs/Nebulea/$file -P /tmp
-sudo apt-get -y install /tmp/$file
+  file="$software""_""$version""-$subversion""_all.deb"
+  wget https://sourceforge.net/projects/skychart/files/2-catalogs/Stars/$file -P /tmp
+  sudo apt-get -y install /tmp/$file
 
-# install via "PPA" outdate
+  # install skychart-data-dso via sourceforge
 
-#sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys AA716FC2
-#echo "deb http://www.ap-i.net/apt stable main" > /tmp/skychart.list
-#sudo mv /tmp/skychart.list /etc/apt/sources.list.d/skychart.list
-#sudo apt-add-repository 'deb http://www.ap-i.net/apt stable main'
-#sudo apt-get update
-#sudo apt-get install -y skychart skychart-data-stars
+  software="skychart-data-dso"
+
+  #need update
+  version="4.0"
+  subversion="3431"
+
+  file="$software""_""$version""-$subversion""_all.deb"
+  wget https://sourceforge.net/projects/skychart/files/2-catalogs/Nebulea/$file -P /tmp
+  sudo apt-get -y install /tmp/$file
+
+  # install via skychart-data-pictures sourceforge
+
+  software="skychart-data-pictures"
+
+  #need update
+  version="4.0"
+  subversion="3421"
+
+  file="$software""_""$version""-$subversion""_all.deb"
+  wget https://sourceforge.net/projects/skychart/files/2-catalogs/Nebulea/$file -P /tmp
+  sudo apt-get -y install /tmp/$file
+
+fi
+
 
 ######
 # Création de l'icône sur le bureau

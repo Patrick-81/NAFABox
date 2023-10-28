@@ -31,61 +31,65 @@ source $dirinstall/proctype.sh
 
 # install libpasastro
 $dirinstall/install_libpasastro.sh
+sudo apt-get -y install libpango-1.0-0 xplanet espeak libpasraw
 
-######
-# install via "PPA" outdate
-######
+install_method="ppa" #or sourceforge
 
-#sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys AA716FC2
-#echo "deb http://www.ap-i.net/apt unstable main" > /tmp/skychart.list
-#sudo mv /tmp/skychart.list /etc/apt/sources.list.d/skychart.list
-#sudo apt-add-repository 'deb http://www.ap-i.net/apt unstable main'
-#sudo apt-get update
+if [[ ${install_method} == "ppa" ]]
+then
+  ######
+  # install via "PPA" outdate
+  ######
 
-sudo apt-get -y install libpango-1.0-0 xplanet espeak
-#sudo apt-get -y install ccdciel indistarter eqmodgui
+  sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 8B8B57C1AA716FC2
+  sudo sh -c "echo deb http://www.ap-i.net/apt unstable main > /etc/apt/sources.list.d/skychart.list"
+  sudo apt-get update
 
+  sudo apt-get -y install ccdciel indistarter eqmodgui
+fi
 
-######
-# install via sourceforge
-######
+if [[ ${install_method} == "sourceforge" ]]
+then
+  ######
+  # install via sourceforge
+  ######
 
-# install indistarter via sourceforge
+  # install indistarter via sourceforge
 
-software="indistarter"
+  software="indistarter"
 
-#need update
-version="2.4.0"
-subversion="192"
+  #need update
+  version="2.4.0"
+  subversion="192"
 
-file="$software""_$version""-$subversion""$proc.deb"
-wget https://sourceforge.net/projects/$software/files/$software-$version/$file -P /tmp
-sudo apt-get -y install /tmp/$file
+  file="$software""_$version""-$subversion""$proc.deb"
+  wget https://sourceforge.net/projects/$software/files/$software-$version/$file -P /tmp
+  sudo apt-get -y install /tmp/$file
 
-# install eqmodgui via sourceforge
+  # install eqmodgui via sourceforge
 
-software="eqmodgui"
+  software="eqmodgui"
 
-#need update
-version="$software""_""1.7.1"
-subversion="149"
+  #need update
+  version="$software""_""1.7.1"
+  subversion="149"
 
-file="$version""-$subversion""$proc.deb"
-wget https://sourceforge.net/projects/$software/files/$version/$file -P /tmp
-sudo apt-get -y install /tmp/$file
+  file="$version""-$subversion""$proc.deb"
+  wget https://sourceforge.net/projects/$software/files/$version/$file -P /tmp
+  sudo apt-get -y install /tmp/$file
 
-# Installation de ccdciel
+  # Installation de ccdciel
 
-software="ccdciel"
+  software="ccdciel"
 
-#need update
-version="$software""_""0.9.86"
-subversion="3243"
+  #need update
+  version="$software""_""0.9.86"
+  subversion="3243"
 
-file="$version""-$subversion""$proc.deb"
-wget https://sourceforge.net/projects/$software/files/$version/$file -P /tmp/
-sudo apt-get -y install /tmp/$file
-
+  file="$version""-$subversion""$proc.deb"
+  wget https://sourceforge.net/projects/$software/files/$version/$file -P /tmp/
+  sudo apt-get -y install /tmp/$file
+fi
 
 ######
 # Création de l'icône sur le bureau

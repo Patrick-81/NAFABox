@@ -40,27 +40,27 @@ then
     echo "############################"
     echo "## install in server mode ##"
     echo "############################"
-	web=TRUE
-	xvnc=FALSE
-	dav=TRUE
-	browse=TRUE
-	novnc=FALSE
-    	nomach=FALSE
-    	ddserv=TRUE
-    	mobindi=FALSE
+    web=TRUE
+	  xvnc=FALSE
+	  dav=TRUE
+	  browse=TRUE
+	  novnc=FALSE
+    nomach=FALSE
+    ddserv=TRUE
+    mobindi=FALSE
 elif [[ ${server_choice} == "default" ]]
 then
     echo "#############################"
     echo "## install in default mode ##"
     echo "#############################"
-	web=TRUE
-	xvnc=TRUE
-	dav=TRUE
-	browse=TRUE
-	novnc=TRUE
-    	nomach=TRUE
-    	ddserv=TRUE
-    	mobindi=TRUE
+	  web=TRUE
+	  xvnc=TRUE
+	  dav=TRUE
+	  browse=TRUE
+	  novnc=TRUE
+    nomach=TRUE
+    ddserv=TRUE
+    mobindi=TRUE
     
 else
 	if ${french}
@@ -72,8 +72,8 @@ else
 		choice[2]="Install WebDav"
 		choice[3]="Installation BrowsePy"
 		choice[4]="Installation NoVNC"
-        	choice[5]="Installation Nomachine"
-        	choice[6]="Serveur pour QDslrDashboard"
+    choice[5]="Installation Nomachine"
+    choice[6]="Serveur pour QDslrDashboard"
 		choice[7]="Installation de Mobindi"
 
 	else
@@ -84,8 +84,8 @@ else
 		choice[2]="Install WebDav"
 		choice[3]="Install BrowsePy"
 		choice[4]="Install NoVNC"
-        	choice[5]="Install Nomachine"
-        	choice[6]="Server for QDslrDashboard"
+    choice[5]="Install Nomachine"
+    choice[6]="Server for QDslrDashboard"
 		choice[7]="Install Mobindi"
 
 	fi
@@ -106,19 +106,19 @@ else
 		--field="${choice[4]}:CHK" \
 		--field="${choice[5]}:CHK" \
 		--field="${choice[6]}:CHK" \
-        	--field="${choice[7]}:CHK" \
+    --field="${choice[7]}:CHK" \
 		"" "${st[0]}" "${st[1]}" "${st[2]}" \
 		"${st[3]}" "${st[4]}" "${st[5]}" "${st[6]}" \
-        	"${st[7]}"`
+    "${st[7]}"`
 	then
 		web=$(echo "$chose" | cut -d "|" -f2)
 		xvnc=$(echo "$chose" | cut -d "|" -f3)
 		dav=$(echo "$chose" | cut -d "|" -f4)
 		browse=$(echo "$chose" | cut -d "|" -f5)
 		novnc=$(echo "$chose" | cut -d "|" -f6)
-        	nomach=$(echo "$chose" | cut -d "|" -f7)
-        	ddserv=$(echo "$chose" | cut -d "|" -f8)
-        	mobindi=$(echo "$chose" | cut -d "|" -f9)
+    nomach=$(echo "$chose" | cut -d "|" -f7)
+    ddserv=$(echo "$chose" | cut -d "|" -f8)
+    mobindi=$(echo "$chose" | cut -d "|" -f9)
 	else
 		echo "cancel"
 	fi
@@ -127,7 +127,7 @@ fi
 if [[ ${web} == "TRUE" ]]
 then
 
-    figlet -k Install web server
+  figlet -k Install web server
 	######
 	# Installer nginx
 	######
@@ -146,29 +146,18 @@ then
 	# en remote
 	######
 	# le fichier html d'accès au site
-	if ${french}
-	then
-		dial[0]="Actualiser la date"
-		dial[1]="Date==>NAFABox"
-		dial[2]="Date actualisée a"
-		dial[3]="Pour la mise a l\'heure se connecter sur le boitier
-	avec l\'adresse IP de ce dernier qui differe selon qu\'il
-	est soit en reseau domestique soit en mode point d\'acces."
-	else
-		dial[0]="Actuate Date"
-		dial[1]="Update hour"
-		dial[2]="Date and time updated to"
-		dial[3]="To update remote date do connect to the box with its
+
+	dial[0]="Actuate Date"
+	dial[1]="To update remote date do connect to the box with its
 	IP adress which is different if it is on home network or access point"
-	fi
-	#echo "Dirinstall "$dirinstall
-#	cat ${dirinstall}/index.html | sed -e "s/ACTUATE/${dial[0]}/g" > ${site}/index.html
-	cat ${dirinstall}/startup.php | sed -e "s/ACTUATE/${dial[0]}/g" > ${site}/startup.php
+
 
 	sudo systemctl stop nginx.service
 	sudo systemctl disable nginx.service
+	sudo cp ${dirinstall}/startup.php ${site}/startup.php
 	sudo cp ${dirinstall}/setdate.php ${site}/setdate.php
 	sudo cp ${dirinstall}/getTemp.php ${site}/getTemp.php
+	sudo cp ${dirinstall}/hotspot_control.php ${site}/hotspot_control.php
 	sudo cp ${dirinstall}/logo_256.png ${site}/logo_256.png
 	sudo cp ${dirinstall}/light.css ${site}/light.css
 	sudo cp ${dirinstall}/dark.css ${site}/dark.css
@@ -176,6 +165,7 @@ then
 	sudo chown www-data:www-data ${site}/startup.php
 	sudo chown www-data:www-data ${site}/setdate.php
 	sudo chown www-data:www-data ${site}/getTemp.php
+	sudo chown www-data:www-data ${site}/hotspot_control.php
 	sudo chown www-data:www-data ${site}/logo_256.png
 	sudo chown www-data:www-data ${site}/light.css
 	sudo chown www-data:www-data ${site}/dark.css
@@ -183,6 +173,8 @@ then
 	
 	# ajout droit d'acces pour nginx
 	sudo gpasswd -a www-data ${USER}
+	# add right for nmcli command
+	# sudo
 
 	# move apache at port 8280
 	cat /etc/apache2/ports.conf | sed -e "s/Listen 80/Listen 8280/g" > /tmp/ports.conf
@@ -191,18 +183,18 @@ then
 	sudo mv /tmp/000-default.conf /etc/apache2/sites-enabled/000-default.conf
 	sudo service apache2 restart
 
-
+  # restart nginx
 	sudo systemctl enable nginx.service
 	sudo systemctl start nginx.service
 
 	cat sudoers.txt | sed -e "s/MOI/${USER}/g" > /tmp/sudoers
 	sudo cp /tmp/sudoers /etc/sudoers.d/perm${USER}
 	echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
-	echo "${dial[3]}"
+	echo "${dial[1]}"
 	echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
 
 	######
-	# Installation du serveur nginx
+	# Installation du serveur nginx et PHP
 	######
 	# mod 22/11/2018
 	sudo apt-get install -y --reinstall php-fpm
@@ -212,31 +204,35 @@ then
 	sudo rm /etc/nginx/sites-available/default
 	sudo rm /etc/nginx/sites-enabled/default
 	cat ${dirinstall}/server.txt | sed -e "s/MOI/${USER}/g" > /tmp/site-temp
-    if [[ -S "/var/run/php/php7.0-fpm.sock" ]]
-    then
-        cat /tmp/site-temp | sed -e "s/VER-PHP/7.0/g" > /tmp/site-${USER}
-    elif  [[ -S "/var/run/php/php7.1-fpm.sock" ]]
-    then
-        cat /tmp/site-temp | sed -e "s/VER-PHP/7.1/g" > /tmp/site-${USER}
-    elif  [[ -S "/var/run/php/php7.2-fpm.sock" ]]
-    then
-        cat /tmp/site-temp | sed -e "s/VER-PHP/7.2/g" > /tmp/site-${USER}
-    elif  [[ -S "/var/run/php/php7.3-fpm.sock" ]]
-    then
-        cat /tmp/site-temp | sed -e "s/VER-PHP/7.3/g" > /tmp/site-${USER}
-    elif  [[ -S "/var/run/php/php7.4-fpm.sock" ]]
-    then
-        cat /tmp/site-temp | sed -e "s/VER-PHP/7.4/g" > /tmp/site-${USER}
-    elif  [[ -S "/var/run/php/php8.0-fpm.sock" ]]
-    then
-        cat /tmp/site-temp | sed -e "s/VER-PHP/8.0/g" > /tmp/site-${USER}
-    elif  [[ -S "/var/run/php/php8.1-fpm.sock" ]]
-        then
-        cat /tmp/site-temp | sed -e "s/VER-PHP/8.1/g" > /tmp/site-${USER}
-    elif  [[ -S "/var/run/php/php8.2-fpm.sock" ]]
-    then
-        cat /tmp/site-temp | sed -e "s/VER-PHP/8.2/g" > /tmp/site-${USER}
-    fi
+  if [[ -S "/var/run/php/php7.0-fpm.sock" ]]
+  then
+      cat /tmp/site-temp | sed -e "s/VER-PHP/7.0/g" > /tmp/site-${USER}
+  elif  [[ -S "/var/run/php/php7.1-fpm.sock" ]]
+  then
+      cat /tmp/site-temp | sed -e "s/VER-PHP/7.1/g" > /tmp/site-${USER}
+  elif  [[ -S "/var/run/php/php7.2-fpm.sock" ]]
+  then
+      cat /tmp/site-temp | sed -e "s/VER-PHP/7.2/g" > /tmp/site-${USER}
+  elif  [[ -S "/var/run/php/php7.3-fpm.sock" ]]
+  then
+      cat /tmp/site-temp | sed -e "s/VER-PHP/7.3/g" > /tmp/site-${USER}
+  elif  [[ -S "/var/run/php/php7.4-fpm.sock" ]]
+  then
+      cat /tmp/site-temp | sed -e "s/VER-PHP/7.4/g" > /tmp/site-${USER}
+  elif  [[ -S "/var/run/php/php8.0-fpm.sock" ]]
+  then
+      cat /tmp/site-temp | sed -e "s/VER-PHP/8.0/g" > /tmp/site-${USER}
+  elif  [[ -S "/var/run/php/php8.1-fpm.sock" ]]
+      then
+      cat /tmp/site-temp | sed -e "s/VER-PHP/8.1/g" > /tmp/site-${USER}
+  elif  [[ -S "/var/run/php/php8.2-fpm.sock" ]]
+  then
+      cat /tmp/site-temp | sed -e "s/VER-PHP/8.2/g" > /tmp/site-${USER}
+  fi
+  elif  [[ -S "/var/run/php/php8.3-fpm.sock" ]]
+  then
+      cat /tmp/site-temp | sed -e "s/VER-PHP/8.3/g" > /tmp/site-${USER}
+  fi
 	sudo cp /tmp/site-${USER} /etc/nginx/sites-available/site-${USER}
 	sudo chown ${USER}:${USER} /etc/nginx/sites-available/site-${USER}
 	sudo ln -sf /etc/nginx/sites-available/site-${USER} /etc/nginx/sites-enabled/site-${USER}
@@ -298,15 +294,15 @@ then
 	figlet -k VNC Password :
 	while ${test_w} && [[ "$number_t" < 3 ]]
 	do
-        	echo "Enter Le mot de passe VNC pour votre BOX :"
-        	x11vnc -storepasswd
-        	if [[ -f ${vnc_path} ]]
-        	then
-        	    test_w=false
-        	else
-        	    number_t=$((number_t + 1))
-        	    echo "Reload, remaing test: "$((3-number_t))
-        	fi
+    echo "Enter Le mot de passe VNC pour votre BOX :"
+    x11vnc -storepasswd
+    if [[ -f ${vnc_path} ]]
+    then
+        test_w=false
+    else
+        number_t=$((number_t + 1))
+        echo "Reload, remaing test: "$((3-number_t))
+    fi
 	done
 	echo "Merci ! ----------------------------------"
 
