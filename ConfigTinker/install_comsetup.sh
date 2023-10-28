@@ -37,30 +37,30 @@ source ${dirinstall}/proctype.sh
 sudo apt-get update
 if [[ ${server_choice} == "server" ]]
 then
-    echo "############################"
-    echo "## install in server mode ##"
-    echo "############################"
-    web=TRUE
+	echo "############################"
+	echo "## install in server mode ##"
+	echo "############################"
+	web=TRUE
 	xvnc=FALSE
 	dav=TRUE
 	browse=TRUE
 	novnc=FALSE
-    nomach=FALSE
-    ddserv=TRUE
-    mobindi=FALSE
+	nomach=FALSE
+	ddserv=TRUE
+	mobindi=FALSE
 elif [[ ${server_choice} == "default" ]]
 then
-    echo "#############################"
-    echo "## install in default mode ##"
-    echo "#############################"
+	echo "#############################"
+	echo "## install in default mode ##"
+	echo "#############################"
 	web=TRUE
 	xvnc=TRUE
 	dav=TRUE
 	browse=TRUE
 	novnc=TRUE
-    nomach=TRUE
-    ddserv=TRUE
-    mobindi=TRUE
+	nomach=TRUE
+	ddserv=TRUE
+	mobindi=TRUE
     
 else
 	if ${french}
@@ -72,8 +72,8 @@ else
 		choice[2]="Install WebDav"
 		choice[3]="Installation BrowsePy"
 		choice[4]="Installation NoVNC"
-    	choice[5]="Installation Nomachine"
-    	choice[6]="Serveur pour QDslrDashboard"
+		choice[5]="Installation Nomachine"
+		choice[6]="Serveur pour QDslrDashboard"
 		choice[7]="Installation de Mobindi"
 
 	else
@@ -84,8 +84,8 @@ else
 		choice[2]="Install WebDav"
 		choice[3]="Install BrowsePy"
 		choice[4]="Install NoVNC"
-    	choice[5]="Install Nomachine"
-    	choice[6]="Server for QDslrDashboard"
+		choice[5]="Install Nomachine"
+		choice[6]="Server for QDslrDashboard"
 		choice[7]="Install Mobindi"
 
 	fi
@@ -106,19 +106,19 @@ else
 		--field="${choice[4]}:CHK" \
 		--field="${choice[5]}:CHK" \
 		--field="${choice[6]}:CHK" \
-    	--field="${choice[7]}:CHK" \
+		--field="${choice[7]}:CHK" \
 		"" "${st[0]}" "${st[1]}" "${st[2]}" \
 		"${st[3]}" "${st[4]}" "${st[5]}" "${st[6]}" \
-    	"${st[7]}"`
+		"${st[7]}"`
 	then
 		web=$(echo "$chose" | cut -d "|" -f2)
 		xvnc=$(echo "$chose" | cut -d "|" -f3)
 		dav=$(echo "$chose" | cut -d "|" -f4)
 		browse=$(echo "$chose" | cut -d "|" -f5)
 		novnc=$(echo "$chose" | cut -d "|" -f6)
-    	nomach=$(echo "$chose" | cut -d "|" -f7)
-    	ddserv=$(echo "$chose" | cut -d "|" -f8)
-    	mobindi=$(echo "$chose" | cut -d "|" -f9)
+		nomach=$(echo "$chose" | cut -d "|" -f7)
+		ddserv=$(echo "$chose" | cut -d "|" -f8)
+		mobindi=$(echo "$chose" | cut -d "|" -f9)
 	else
 		echo "cancel"
 	fi
@@ -228,7 +228,6 @@ then
 	elif  [[ -S "/var/run/php/php8.2-fpm.sock" ]]
 	then
 		cat /tmp/site-temp | sed -e "s/VER-PHP/8.2/g" > /tmp/site-${USER}
-	fi
 	elif  [[ -S "/var/run/php/php8.3-fpm.sock" ]]
 	then
 		cat /tmp/site-temp | sed -e "s/VER-PHP/8.3/g" > /tmp/site-${USER}
@@ -236,6 +235,7 @@ then
 	sudo cp /tmp/site-${USER} /etc/nginx/sites-available/site-${USER}
 	sudo chown ${USER}:${USER} /etc/nginx/sites-available/site-${USER}
 	sudo ln -sf /etc/nginx/sites-available/site-${USER} /etc/nginx/sites-enabled/site-${USER}
+
 fi
 
 if [[ ${dav} == "TRUE" ]]
