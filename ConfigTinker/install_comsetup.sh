@@ -41,10 +41,10 @@ then
     echo "## install in server mode ##"
     echo "############################"
     web=TRUE
-	  xvnc=FALSE
-	  dav=TRUE
-	  browse=TRUE
-	  novnc=FALSE
+	xvnc=FALSE
+	dav=TRUE
+	browse=TRUE
+	novnc=FALSE
     nomach=FALSE
     ddserv=TRUE
     mobindi=FALSE
@@ -53,11 +53,11 @@ then
     echo "#############################"
     echo "## install in default mode ##"
     echo "#############################"
-	  web=TRUE
-	  xvnc=TRUE
-	  dav=TRUE
-	  browse=TRUE
-	  novnc=TRUE
+	web=TRUE
+	xvnc=TRUE
+	dav=TRUE
+	browse=TRUE
+	novnc=TRUE
     nomach=TRUE
     ddserv=TRUE
     mobindi=TRUE
@@ -72,8 +72,8 @@ else
 		choice[2]="Install WebDav"
 		choice[3]="Installation BrowsePy"
 		choice[4]="Installation NoVNC"
-    choice[5]="Installation Nomachine"
-    choice[6]="Serveur pour QDslrDashboard"
+    	choice[5]="Installation Nomachine"
+    	choice[6]="Serveur pour QDslrDashboard"
 		choice[7]="Installation de Mobindi"
 
 	else
@@ -84,8 +84,8 @@ else
 		choice[2]="Install WebDav"
 		choice[3]="Install BrowsePy"
 		choice[4]="Install NoVNC"
-    choice[5]="Install Nomachine"
-    choice[6]="Server for QDslrDashboard"
+    	choice[5]="Install Nomachine"
+    	choice[6]="Server for QDslrDashboard"
 		choice[7]="Install Mobindi"
 
 	fi
@@ -106,19 +106,19 @@ else
 		--field="${choice[4]}:CHK" \
 		--field="${choice[5]}:CHK" \
 		--field="${choice[6]}:CHK" \
-    --field="${choice[7]}:CHK" \
+    	--field="${choice[7]}:CHK" \
 		"" "${st[0]}" "${st[1]}" "${st[2]}" \
 		"${st[3]}" "${st[4]}" "${st[5]}" "${st[6]}" \
-    "${st[7]}"`
+    	"${st[7]}"`
 	then
 		web=$(echo "$chose" | cut -d "|" -f2)
 		xvnc=$(echo "$chose" | cut -d "|" -f3)
 		dav=$(echo "$chose" | cut -d "|" -f4)
 		browse=$(echo "$chose" | cut -d "|" -f5)
 		novnc=$(echo "$chose" | cut -d "|" -f6)
-    nomach=$(echo "$chose" | cut -d "|" -f7)
-    ddserv=$(echo "$chose" | cut -d "|" -f8)
-    mobindi=$(echo "$chose" | cut -d "|" -f9)
+    	nomach=$(echo "$chose" | cut -d "|" -f7)
+    	ddserv=$(echo "$chose" | cut -d "|" -f8)
+    	mobindi=$(echo "$chose" | cut -d "|" -f9)
 	else
 		echo "cancel"
 	fi
@@ -127,7 +127,7 @@ fi
 if [[ ${web} == "TRUE" ]]
 then
 
-  figlet -k Install web server
+  	figlet -k Install web server
 	######
 	# Installer nginx
 	######
@@ -170,7 +170,7 @@ then
 	sudo chown www-data:www-data ${site}/light.css
 	sudo chown www-data:www-data ${site}/dark.css
 	sudo chown www-data:www-data ${site}/shutdown_reboot.php
-	
+
 	# ajout droit d'acces pour nginx
 	sudo gpasswd -a www-data ${USER}
 	# add right for nmcli command
@@ -183,7 +183,7 @@ then
 	sudo mv /tmp/000-default.conf /etc/apache2/sites-enabled/000-default.conf
 	sudo service apache2 restart
 
-  # restart nginx
+	# restart nginx
 	sudo systemctl enable nginx.service
 	sudo systemctl start nginx.service
 
@@ -198,45 +198,44 @@ then
 	######
 	# mod 22/11/2018
 	sudo apt-get install -y --reinstall php-fpm
-    #
+	#
 	sudo apt-get install -y --reinstall nginx
 	sudo apt-get -y install php-fpm
 	sudo rm /etc/nginx/sites-available/default
 	sudo rm /etc/nginx/sites-enabled/default
 	cat ${dirinstall}/server.txt | sed -e "s/MOI/${USER}/g" > /tmp/site-temp
-  if [[ -S "/var/run/php/php7.0-fpm.sock" ]]
-  then
-      cat /tmp/site-temp | sed -e "s/VER-PHP/7.0/g" > /tmp/site-${USER}
-  elif  [[ -S "/var/run/php/php7.1-fpm.sock" ]]
-  then
-      cat /tmp/site-temp | sed -e "s/VER-PHP/7.1/g" > /tmp/site-${USER}
-  elif  [[ -S "/var/run/php/php7.2-fpm.sock" ]]
-  then
-      cat /tmp/site-temp | sed -e "s/VER-PHP/7.2/g" > /tmp/site-${USER}
-  elif  [[ -S "/var/run/php/php7.3-fpm.sock" ]]
-  then
-      cat /tmp/site-temp | sed -e "s/VER-PHP/7.3/g" > /tmp/site-${USER}
-  elif  [[ -S "/var/run/php/php7.4-fpm.sock" ]]
-  then
-      cat /tmp/site-temp | sed -e "s/VER-PHP/7.4/g" > /tmp/site-${USER}
-  elif  [[ -S "/var/run/php/php8.0-fpm.sock" ]]
-  then
-      cat /tmp/site-temp | sed -e "s/VER-PHP/8.0/g" > /tmp/site-${USER}
-  elif  [[ -S "/var/run/php/php8.1-fpm.sock" ]]
-      then
-      cat /tmp/site-temp | sed -e "s/VER-PHP/8.1/g" > /tmp/site-${USER}
-  elif  [[ -S "/var/run/php/php8.2-fpm.sock" ]]
-  then
-      cat /tmp/site-temp | sed -e "s/VER-PHP/8.2/g" > /tmp/site-${USER}
-  fi
-  elif  [[ -S "/var/run/php/php8.3-fpm.sock" ]]
-  then
-      cat /tmp/site-temp | sed -e "s/VER-PHP/8.3/g" > /tmp/site-${USER}
-  fi
+	if [[ -S "/var/run/php/php7.0-fpm.sock" ]]
+	then
+		cat /tmp/site-temp | sed -e "s/VER-PHP/7.0/g" > /tmp/site-${USER}
+	elif  [[ -S "/var/run/php/php7.1-fpm.sock" ]]
+	then
+		cat /tmp/site-temp | sed -e "s/VER-PHP/7.1/g" > /tmp/site-${USER}
+	elif  [[ -S "/var/run/php/php7.2-fpm.sock" ]]
+	then
+		cat /tmp/site-temp | sed -e "s/VER-PHP/7.2/g" > /tmp/site-${USER}
+	elif  [[ -S "/var/run/php/php7.3-fpm.sock" ]]
+	then
+		cat /tmp/site-temp | sed -e "s/VER-PHP/7.3/g" > /tmp/site-${USER}
+	elif  [[ -S "/var/run/php/php7.4-fpm.sock" ]]
+	then
+		cat /tmp/site-temp | sed -e "s/VER-PHP/7.4/g" > /tmp/site-${USER}
+	elif  [[ -S "/var/run/php/php8.0-fpm.sock" ]]
+	then
+		cat /tmp/site-temp | sed -e "s/VER-PHP/8.0/g" > /tmp/site-${USER}
+	elif  [[ -S "/var/run/php/php8.1-fpm.sock" ]]
+	then
+		cat /tmp/site-temp | sed -e "s/VER-PHP/8.1/g" > /tmp/site-${USER}
+	elif  [[ -S "/var/run/php/php8.2-fpm.sock" ]]
+	then
+		cat /tmp/site-temp | sed -e "s/VER-PHP/8.2/g" > /tmp/site-${USER}
+	fi
+	elif  [[ -S "/var/run/php/php8.3-fpm.sock" ]]
+	then
+		cat /tmp/site-temp | sed -e "s/VER-PHP/8.3/g" > /tmp/site-${USER}
+	fi
 	sudo cp /tmp/site-${USER} /etc/nginx/sites-available/site-${USER}
 	sudo chown ${USER}:${USER} /etc/nginx/sites-available/site-${USER}
 	sudo ln -sf /etc/nginx/sites-available/site-${USER} /etc/nginx/sites-enabled/site-${USER}
-
 fi
 
 if [[ ${dav} == "TRUE" ]]
@@ -424,17 +423,17 @@ then
 	######
 	figlet -k Install ddserver
 
-    cd ~/bin
-    if [[ -d "/home/${USER}/bin/DslrDashboardServer" ]]
-	  then
-	  echo "suppression de l'ancien dossier ddserver"
-	  rm -Rf /home/${USER}/bin/DslrDashboardServer
+  	cd ~/bin
+  	if [[ -d "/home/${USER}/bin/DslrDashboardServer" ]]
+  	then
+    	echo "suppression de l'ancien dossier ddserver"
+    	rm -Rf /home/${USER}/bin/DslrDashboardServer
 	fi
-    git clone https://github.com/hubaiz/DslrDashboardServer.git
-    sudo apt-get -y install build-essential pkg-config libusb-1.0-0-dev
-    cd ~/bin/DslrDashboardServer
-    g++ -Wall src/main.cpp src/communicator.cpp `pkg-config --libs --cflags libusb-1.0` -lpthread -lrt -lstdc++ -o ddserver
-    sudo ln -sf ~/bin/DslrDashboardServer/ddserver /usr/bin/ddserver
+  	git clone https://github.com/hubaiz/DslrDashboardServer.git
+  	sudo apt-get -y install build-essential pkg-config libusb-1.0-0-dev
+  	cd ~/bin/DslrDashboardServer
+  	g++ -Wall src/main.cpp src/communicator.cpp `pkg-config --libs --cflags libusb-1.0` -lpthread -lrt -lstdc++ -o ddserver
+  	sudo ln -sf ~/bin/DslrDashboardServer/ddserver /usr/bin/ddserver
 
 	cat ${dirinstall}/ddserver.service | sed -e "s/MOI/${USER}/g" > /tmp/ddserver.service
 	sudo cp /tmp/ddserver.service /lib/systemd/system/ddserver.service
