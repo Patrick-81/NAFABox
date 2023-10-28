@@ -131,7 +131,7 @@ then
 	######
 	# Installer nginx
 	######
-	sudo apt-get -y install nginx apache2 cockpit
+	sudo apt-get -y install nginx apache2 cockpit python3
 	######
 	# Installer php
 	######
