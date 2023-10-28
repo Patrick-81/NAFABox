@@ -27,6 +27,8 @@ moi=$(whoami)
 ######
 # get wifi device
 device=($(basename -a $(find /sys/class/net -name wl*)))
+
+# demande de creation hotspot y/n
 if test ! -z ${device}
 then
 	if ${french}
@@ -35,11 +37,10 @@ then
   else
     pop="Do you want to create an hotspot ?"
   fi
-  # list all wifi device :
-  echo ${device[@]} | tr " " ! > /tmp/device
-  liste_device=`cat /tmp/device`
 
-   default_hostname="$moi"
+  #create list all wifi device :
+  echo ${device} | tr " " ! > /tmp/device
+  liste_device=`cat /tmp/device`
 
 	if option=`yad --center \
                  --image dialog-question \
@@ -83,53 +84,45 @@ then
 
 	  then
 		  de_wifi=$(echo "$option" | cut -d "|" -f1)
-		  name_w=$(echo "$option" | cut -d "|" -f2)
+		  hotspot_name=$(echo "$option" | cut -d "|" -f2)
 		  mdp=$(echo "$option" | cut -d "|" -f3)
 
-      # add "_box" for hotspot name
-		  hotspot_name=${name_w}"_box"
-
 		  mac_address=$(sudo cat /sys/class/net/${de_wifi}/address)
-		  security="[wifi-security]\ngroup=\nkey-mgmt=wpa-psk\npairwise=\nproto=\npsk=MDP"
-
-		  fic0=$(tempfile)
-		  cat ${dirinstall}/nafabox.template | sed -e "s/WLAN/${de_wifi}/g" > ${fic0}
-		  fic1=$(tempfile)
-		  cat ${fic0} | sed -e "s/HOTSPOTNAME/${hotspot_name}/g" > ${fic1}
-		  fic2=$(tempfile)
-		  cat ${fic1} | sed -e "s/UUID/${hsuuid}/g" > ${fic2}
-		  fic3=$(tempfile)
-		  cat ${fic2} | sed -e "s/MAC_ADDRESS/${mac_address}/g" > ${fic3}
-
 
 		  if [[ -z "$mdp" ]]
 		  then
-			  fic5=$(tempfile)
-			  cat ${fic3} | sed -e "s/SECURITY//g" > ${fic5}
-		  else
-			  fic4=$(tempfile)
-			  cat ${fic3} | sed -e "s/SECURITY/${security}/g" > ${fic4}
-			  fic5=$(tempfile)
-			  cat ${fic4} | sed -e "s/MDP/${mdp}/g" > ${fic5}
+        mdp="nafa12345678"
 		  fi
-		  ######
-		  # Find active access point
-		  ######
-		  activeap=$(iw ${de_wifi} info | grep ssid | cut -f 2 -d" ")
-      sudo systemctl stop NetworkManager
+		  #create list all wifi canal :
+		  echo $(iwlist ${de_wifi} channel | tail -n+2) > /tmp/canal
+		  sed -i -e "s/z /z\!/g" /tmp/canal
+		  liste_canal=`cat /tmp/canal`
+      if option=`yad --width 450 \
+                     --center \
+                     --form \
+                     --title "Choose Canal" \
+                     --image=${dirinstall}/install_hotspot.png \
+                     --text "Choose Canal" \
+                     --field="Canal Support :":CB "$liste_canal"`
 
-		  if test ! -z ${activeap}
-		  then
-			  sudo rm -f /etc/NetworkManager/system-connections/${activeap}
-		  fi
-		  ######
-		  # Create new one
-		  ######
-		  sudo cp ${fic5} /etc/NetworkManager/system-connections/${hotspot_name}
-		  sleep 5
-		  sudo systemctl start NetworkManager
+      then
+        de_canal=$(echo "$option" | cut -d "|" -f1)
+        echo $de_canal
+        channel_select="1" #$(echo $de_canal | awk '{print $2}')
+        canal_select="bg" #$(echo $test | awk '{print $4}') if <3 alors =bg sinon =a
 
+        ######
+        # delete Hotspot
+        ######
+        nmcli connection down Hotspot ifname ${de_wifi}
+        nmcli connection delete Hotspot
 
+        ######
+        # Create HotSpot
+        ######
+        nmcli dev wifi hotspot ifname ${de_wifi} ssid ${hotspot_name} band ${canal_select} channel ${channel_select} password ${mdp}
+        nmcli connection modify Hotspot connection.autoconnect yes
+    fi
 	  else
       echo "[ESC] key pressed."
 		  exit
@@ -155,20 +148,14 @@ then
 
 	  then
 		  de_wifi=$(echo "$option" | cut -d "|" -f1)
-      activeap=$(iw ${de_wifi} info | grep ssid | cut -f 2 -d" ")
 
-      sudo systemctl stop NetworkManager
-
-      if test ! -z ${activeap}
-		  then
-        sudo rm -f /etc/NetworkManager/system-connections/${activeap}
-      fi
-
-      sleep 5
-		  sudo systemctl start NetworkManager
+		  # remove hotspot
+			nmcli connection down hotspot ifname ${de_wifi}
+      nmcli connection delete hotspot
 
     fi
 	fi
 else
 	echo "No wifi decice found"
 fi
+
