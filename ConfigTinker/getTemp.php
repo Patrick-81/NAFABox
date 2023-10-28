@@ -1,39 +1,30 @@
 <?php
     if ($_GET["func"] == "getT") {
-      $temperature = exec("cat /sys/class/thermal/thermal_zone0/temp");
-      $temperature = number_format($temperature/1000,1,'.','');
-      echo "T CPU : $temperature °C";
+      $command="(sensors | awk -v RS='' '{print $1 FS $6}'| sed 's/cpu_thermal-virtual-0/CPU_TEMP/g' | sed 's/rpi_volt-isa-0000/RPI_Voltage/g')";
+      $output=shell_exec($command);
+      $new_output=nl2br($output);
+      echo "$new_output";
     }
     if ($_GET["func"] == "getCPU") {
-      $output=shell_exec("cat /proc/loadavg");
-      $loadavg=substr($output,0,strpos($output," "));
-      $loadavg=$loadavg*1;
-      echo "CPU: " .$loadavg;
+      $output=shell_exec("python3 /home/nafa/test.py");
+      $new_output=nl2br($output);
+      echo "$new_output";
     }
     if ($_GET["func"] == "getNET") {
-      $output=shell_exec("(ifconfig | awk -v RS='' '{print $6')");
+      $output=shell_exec("(ifconfig  | awk -v RS='' '{print $1$6}')");
       $new_output=nl2br($output);
       echo "$new_output";
       $output=shell_exec("curl ifconfig.me");
-      echo "$output<br>";
+      echo "Internet : $output<br>";
     }
     if ($_GET["func"] == "getRAM") {
-       $fh = fopen('/proc/meminfo','r');
-       $mem = 0;
-       while ($line = fgets($fh)) {
-          $pieces = array();
-          if (preg_match('/^MemAvailable:\s+(\d+)\skB$/', $line, $pieces)) {
-          $mem = $pieces[1];
-          break;
-          }
-       }
-       fclose($fh);
-       $mem = number_format($mem/1024/1024,1, '.', '');
-       $dsk_free = disk_free_space("/home");
-       $dsk_free = number_format($dsk_free/1024/1024/1024,1, '.', '');
-       echo "Disk Free: $dsk_free<br>";
-       echo "RAM Free: $mem Gb";
+       $av_mem=shell_exec("(free -m | awk 'FNR == 2 {print $3}')");
+       $total_mem=shell_exec("(free -m | awk 'FNR == 2 {print $2}')");
+       $DISK_SIZE_TOTAL=shell_exec("(df -kh . | tail -n1 | awk '{print $2}')");
+       $DISK_SIZE_FREE=shell_exec("(df -kh . | tail -n1 | awk '{print $4}')");
+       $DISK_PERCENT_USED=shell_exec("(df -kh . | tail -n1 | awk '{print $5}')");
+       echo "Disk Free: $DISK_SIZE_FREE/$DISK_SIZE_TOTAL<br>$DISK_PERCENT_USED Disk Used<br>";
+       echo "RAM : $av_mem/$total_mem Mb";
      }
 ?>
-
 
