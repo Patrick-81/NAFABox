@@ -151,7 +151,8 @@ then
 	dial[1]="To update remote date do connect to the box with its
 	IP adress which is different if it is on home network or access point"
 
-
+	mkdir ~/bin/
+	cp ${dirinstall}/cpu_load.py ~/bin/cpu_load.py
 	sudo systemctl stop nginx.service
 	sudo systemctl disable nginx.service
 	sudo cp ${dirinstall}/startup.php ${site}/startup.php

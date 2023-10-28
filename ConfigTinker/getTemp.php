@@ -6,7 +6,7 @@
       echo "$new_output";
     }
     if ($_GET["func"] == "getCPU") {
-      $output=shell_exec("python3 /home/nafa/test.py");
+      $output=shell_exec("python3 ~/bin/test.py");
       $new_output=nl2br($output);
       echo "$new_output";
     }
