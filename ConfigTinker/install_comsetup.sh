@@ -127,7 +127,7 @@ fi
 if [[ ${web} == "TRUE" ]]
 then
 
-  	figlet -k Install web server
+	figlet -k Install web server
 	######
 	# Installer nginx
 	######
@@ -171,6 +171,9 @@ then
 	sudo chown www-data:www-data ${site}/light.css
 	sudo chown www-data:www-data ${site}/dark.css
 	sudo chown www-data:www-data ${site}/shutdown_reboot.php
+
+	# add web right 
+	sudo adduser www-data netdev
 
 	# ajout droit d'acces pour nginx
 	sudo gpasswd -a www-data ${USER}
