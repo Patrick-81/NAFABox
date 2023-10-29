@@ -155,7 +155,8 @@ then
 	cp ${dirinstall}/cpu_load.py ~/bin/cpu_load.py
 	sudo systemctl stop nginx.service
 	sudo systemctl disable nginx.service
-	sudo cp ${dirinstall}/startup.php ${site}/startup.php
+	cat ${dirinstall}/startup.php | sed -e "s/USER/$USER/g" > /tmp/startup.php
+	sudo cp /tmp/startup.php ${site}/startup.php
 	sudo cp ${dirinstall}/setdate.php ${site}/setdate.php
 	sudo cp ${dirinstall}/getTemp.php ${site}/getTemp.php
 	sudo cp ${dirinstall}/hotspot_control.php ${site}/hotspot_control.php
@@ -172,7 +173,7 @@ then
 	sudo chown www-data:www-data ${site}/dark.css
 	sudo chown www-data:www-data ${site}/shutdown_reboot.php
 
-	# add web right 
+	# add web right
 	sudo adduser www-data netdev
 
 	# ajout droit d'acces pour nginx
