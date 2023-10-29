@@ -87,7 +87,7 @@ then
 		  hotspot_name=$(echo "$option" | cut -d "|" -f2)
 		  mdp=$(echo "$option" | cut -d "|" -f3)
 
-		  mac_address=$(sudo cat /sys/class/net/${de_wifi}/address)
+		  # mac_address=$(sudo cat /sys/class/net/${de_wifi}/address)
 
 		  if [[ -z "$mdp" ]]
 		  then
@@ -150,8 +150,8 @@ then
 		  de_wifi=$(echo "$option" | cut -d "|" -f1)
 
 		  # remove hotspot
-			nmcli connection down hotspot ifname ${de_wifi}
-      nmcli connection delete hotspot
+			nmcli connection down Hotspot ifname ${de_wifi}
+      nmcli connection delete Hotspot
 
     fi
 	fi
