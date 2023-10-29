@@ -114,7 +114,7 @@ then
         ######
         # delete Hotspot
         ######
-        nmcli connection down Hotspot ifname ${de_wifi}
+        # nmcli connection down Hotspot ifname ${de_wifi}
         nmcli connection delete Hotspot
 
         ######
@@ -150,7 +150,7 @@ then
 		  de_wifi=$(echo "$option" | cut -d "|" -f1)
 
 		  # remove hotspot
-			nmcli connection down Hotspot ifname ${de_wifi}
+			# nmcli connection down Hotspot ifname ${de_wifi}
       nmcli connection delete Hotspot
 
     fi
