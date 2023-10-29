@@ -155,9 +155,10 @@ then
 	cp ${dirinstall}/cpu_load.py ~/bin/cpu_load.py
 	sudo systemctl stop nginx.service
 	sudo systemctl disable nginx.service
-	cat ${dirinstall}/startup.php | sed -e "s/USER/$USER/g" > /tmp/startup.php
-	sudo cp /tmp/startup.php ${site}/startup.php
+	sudo cp ${dirinstall}/startup.php ${site}/startup.php
 	sudo cp ${dirinstall}/setdate.php ${site}/setdate.php
+	cat ${dirinstall}/getTemp.php | sed -e "s/USER/$USER/g" > /tmp/getTemp.php
+	sudo cp /tmp/getTemp.php ${site}/getTemp.php
 	sudo cp ${dirinstall}/getTemp.php ${site}/getTemp.php
 	sudo cp ${dirinstall}/hotspot_control.php ${site}/hotspot_control.php
 	sudo cp ${dirinstall}/logo_256.png ${site}/logo_256.png
