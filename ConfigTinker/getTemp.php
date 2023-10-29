@@ -11,7 +11,7 @@
       echo "$new_output";
     }
     if ($_GET["func"] == "getNET") {
-      $output=shell_exec("(ifconfig  | awk -v RS='' '{print $1$6}')");
+      $output=shell_exec("(ifconfig  | awk -v RS='' '{print $1 FS $6}')");
       $new_output=nl2br($output);
       echo "$new_output";
       $output=shell_exec("curl ifconfig.me");

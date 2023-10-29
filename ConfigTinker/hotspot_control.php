@@ -1,12 +1,12 @@
 <?php 
    $action  = $_POST['action'];
    if ($action == "ON") {
-      $command="nmcli connection up hotspot";
+      $command="nmcli connection up Hotspot";
       echo "Hotspot ON<br>";
       $output = shell_exec($command);
       echo "$output<br><br>";
    } elseif ($action == "OFF") {
-      $command="nmcli connection down hotspot";
+      $command="nmcli connection down Hotspot";
       echo "HotSpot OFF<br>";
       $output = shell_exec($command);
       echo "$output<br><br>";
