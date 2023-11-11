@@ -39,7 +39,8 @@ then
   fi
 
   #create list all wifi device :
-  echo ${device} | tr " " ! > /tmp/device
+  basename -a $(find /sys/class/net -name wl*) | tr "\n" ! > /tmp/device
+  sed -i 's/!$//' /tmp/device
   liste_device=`cat /tmp/device`
 
 	if option=`yad --center \
@@ -122,6 +123,7 @@ then
         ######
         nmcli dev wifi hotspot ifname ${de_wifi} ssid ${hotspot_name} band ${canal_select} channel ${channel_select} password ${mdp}
         nmcli connection modify Hotspot connection.autoconnect yes
+		nmcli connection modify Hotspot 802-11-wireless-security.proto rsn
     fi
 	  else
       echo "[ESC] key pressed."

@@ -151,13 +151,20 @@ then
 	dial[1]="To update remote date do connect to the box with its
 	IP adress which is different if it is on home network or access point"
 
+	# create folder
 	mkdir ~/bin/
+
+	# copy phython script
 	cp ${dirinstall}/cpu_load.py ~/bin/cpu_load.py
+
+	# stop nginx service
 	sudo systemctl stop nginx.service
 	sudo systemctl disable nginx.service
+
+	# copy php file
 	sudo cp ${dirinstall}/startup.php ${site}/startup.php
 	sudo cp ${dirinstall}/setdate.php ${site}/setdate.php
-	cat ${dirinstall}/getTemp.php | sed -e "s/USER/$USER/g" > /tmp/getTemp.php
+	cat ${dirinstall}/getTemp.php | sed -e "s/TOTO/${USER}/g" > /tmp/getTemp.php
 	sudo cp /tmp/getTemp.php ${site}/getTemp.php
 	sudo cp ${dirinstall}/getTemp.php ${site}/getTemp.php
 	sudo cp ${dirinstall}/hotspot_control.php ${site}/hotspot_control.php
@@ -165,6 +172,8 @@ then
 	sudo cp ${dirinstall}/light.css ${site}/light.css
 	sudo cp ${dirinstall}/dark.css ${site}/dark.css
 	sudo cp ${dirinstall}/shutdown_reboot.php ${site}/shutdown_reboot.php
+
+	# change right acces for all www file
 	sudo chown www-data:www-data ${site}/startup.php
 	sudo chown www-data:www-data ${site}/setdate.php
 	sudo chown www-data:www-data ${site}/getTemp.php
@@ -173,6 +182,13 @@ then
 	sudo chown www-data:www-data ${site}/light.css
 	sudo chown www-data:www-data ${site}/dark.css
 	sudo chown www-data:www-data ${site}/shutdown_reboot.php
+
+	# add execute right on php file
+	sudo chmod +x ${site}/startup.php
+	sudo chmod +x ${site}/setdate.php
+	sudo chmod +x ${site}/getTemp.php
+	sudo chmod +x ${site}/hotspot_control.php
+	sudo chmod +x ${site}/shutdown_reboot.php
 
 	# add web right
 	sudo adduser www-data netdev

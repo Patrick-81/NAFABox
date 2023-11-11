@@ -38,8 +38,10 @@ sudo updatedb     # mettre à jour la base d'indexation
 
 dir_browsepy="/home/${USER}/.local/bin/browsepy"  #récupérer le chemin du binaire browsepy
 
+sudo rm /tmp/browsepy.service
 echo -e '[Unit]\nDescription=Browsepy\nAfter=multi-user.target\n\n[Service]\nType=idle\nUser='${MOI}'\nExecStart=browsepy --directory /home/'${MOI}' 0.0.0.0 8180\nRestart=always\nRestartSec=5\n[Install]\nWantedBy=multi-user.target' >> /tmp/browsepy.service
 
+sudo rm ${dir}/browsepy.service
 sudo cp /tmp/browsepy.service ${dir}/
 sudo rm /tmp/browsepy.service
 sudo chmod 644 ${dir}/browsepy.service
