@@ -164,9 +164,8 @@ then
 	# copy php file
 	sudo cp ${dirinstall}/startup.php ${site}/startup.php
 	sudo cp ${dirinstall}/setdate.php ${site}/setdate.php
-	cat ${dirinstall}/getTemp.php | sed -e "s=TOTO=${USER}=g" > /tmp/getTemp.php
+	cat ${dirinstall}/getTemp.php | sed -e "s/TOTO/${USER}/g" > /tmp/getTemp.php
 	sudo cp /tmp/getTemp.php ${site}/getTemp.php
-	sudo cp ${dirinstall}/getTemp.php ${site}/getTemp.php
 	sudo cp ${dirinstall}/hotspot_control.php ${site}/hotspot_control.php
 	sudo cp ${dirinstall}/logo_256.png ${site}/logo_256.png
 	sudo cp ${dirinstall}/light.css ${site}/light.css
