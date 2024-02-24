@@ -14,7 +14,7 @@ sudo apt-get -y install kubuntu-desktop plasma-desktop sddm kde-standard kde-pla
 # install discover plastform 
 sudo apt-get -y install plasma-discover* fwupd
 # install kde tools
-sudo apt-get -y plasma-disks plasma-nm kde-config-screenloker kde-config-sddm kde-config-plymouth kde-cli* plasma-integration kde-config-systemd kde-config-updates kdeplasma-addons-data plasma-wokspace plymouth-theme-kubuntu-logo plasma-pa plymouth-theme-kubuntu-text powerdevil systemsettings kubuntu-settings-desktop
+sudo apt-get -y plasma-disks plasma-nm kde-config-screenloker kde-config-sddm kde-config-plymouth kde-cli* plasma-integration kde-config-systemd kde-config-updates kdeplasma-addons-data plasma-wokspace plymouth-theme-kubuntu-logo plasma-pa plymouth-theme-kubuntu-text powerdevil systemsettings kubuntu-settings-desktop plasma-systemmonitor
 #install breeze theme
 kwin-style-breeze breeze breeze-icon-theme breeze-cursor-theme
 
