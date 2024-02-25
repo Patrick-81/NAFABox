@@ -14,15 +14,15 @@ sudo apt-get -y install kubuntu-desktop plasma-desktop sddm kde-standard kde-pla
 # install discover plastform 
 sudo apt-get -y install plasma-discover* fwupd
 # install kde tools
-sudo apt-get -y plasma-disks plasma-nm kde-config-screenloker kde-config-sddm kde-config-plymouth kde-cli* plasma-integration kde-config-systemd kde-config-updates kdeplasma-addons-data plasma-wokspace plymouth-theme-kubuntu-logo plasma-pa plymouth-theme-kubuntu-text powerdevil systemsettings kubuntu-settings-desktop plasma-systemmonitor
+sudo apt-get -y install plasma-disks plasma-nm kde-config-screenlocker kde-config-sddm kde-config-plymouth kde-cli* plasma-integration kde-config-systemd kde-config-updates kdeplasma-addons-data plasma-workspace plymouth-theme-kubuntu-logo plasma-pa plymouth-theme-kubuntu-text powerdevil systemsettings kubuntu-settings-desktop plasma-systemmonitor
 #install breeze theme
-sudo apt-get -y kwin-style-breeze breeze breeze-icon-theme breeze-cursor-theme
+sudo apt-get -y install kwin-style-breeze breeze breeze-icon-theme breeze-cursor-theme
 
 #install networkmanger
 sudo apt-get -y install network-manager-gnome network-manager-ssh-gnome ifupdown
 
 #install application
-sudo apt-get -y install git pluma gnome-disk-utility language-pack-gnome-fr file-roller evince shotwell eog gvfs gnome-calculator firefox hostapd
+sudo apt-get -y install git pluma gnome-disk-utility language-pack-gnome-fr file-roller evince shotwell eog gvfs gnome-calculator firefox hostapd konsole
 
 #install login manager
 sudo apt-get -y install policykit-1 policykit-desktop-privileges policykit-1-gnome
