@@ -1,3 +1,8 @@
+# Changement d'adresse ( change of address) Cette version est obsolète (This version is obsolete) :
+
+[New repository](https://github.com/dragonlost/NAFABox)
+
+
 # NAFABox (Nomad Astronomy For All)
 
 <p align="center">
